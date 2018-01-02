@@ -422,6 +422,7 @@
     <Compile Include="DataAccess\Data\IData.cs" />
     <Compile Include="Exeption\Validar.cs" />
     <Compile Include="Exeption\ValidarExeption.cs" />
+    <Compile Include="Model\Fabricante.cs" />
     <Compile Include="Model\UsuarioL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Login\login.aspx.cs">
