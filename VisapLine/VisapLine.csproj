@@ -422,8 +422,23 @@
     <Compile Include="DataAccess\Data\IData.cs" />
     <Compile Include="Exeption\Validar.cs" />
     <Compile Include="Exeption\ValidarExeption.cs" />
+    <Compile Include="Model\Barrios.cs" />
+    <Compile Include="Model\Caracteristicas.cs" />
+    <Compile Include="Model\Departamento.cs" />
     <Compile Include="Model\Fabricante.cs" />
+    <Compile Include="Model\Menu.cs" />
+    <Compile Include="Model\Municipio.cs" />
+    <Compile Include="Model\Pais.cs" />
+    <Compile Include="Model\Permisos.cs" />
+    <Compile Include="Model\Rol.cs" />
+    <Compile Include="Model\Telefono.cs" />
+    <Compile Include="Model\Terceros.cs" />
+    <Compile Include="Model\TipoDoc.cs" />
+    <Compile Include="Model\TipoFactura.cs" />
+    <Compile Include="Model\TipoResidencia.cs" />
+    <Compile Include="Model\TipoTercero.cs" />
     <Compile Include="Model\UsuarioL.cs" />
+    <Compile Include="Model\Zonas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Login\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
