@@ -18,7 +18,7 @@ namespace VisapLine.Model
 
         public DataTable ValidarUsuario(UsuarioL usu)
         {
-            return data.ConsultarDatos("select * from persona p inner join tipousuario tu on p.tipousuario_idusuario=tu.idtipousuario inner join usuario u on u.persona_idpersona=p.idpersona where u.usuauser='"+usu.usuauser+"' and usuapassw='"+usu.usuapassw+"'; ");
+            return data.ConsultarDatos("");
         }
     }
 }
