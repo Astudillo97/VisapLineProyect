@@ -10,7 +10,15 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="icon" href="../../Contenido/images/favicon.ico" />
-    <title></title>
+    <title>Login</title>
+        <script>
+        function nobackbutton() {
+            window.location.hash = "no-back-button";
+            window.location.hash = "Again-No-back-button" //chrome
+            window.onhashchange = function () { window.location.hash = "no-back-button"; }
+        }
+
+    </script>
     <link rel="stylesheet" href="../../Contenido/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css" />
 
     <!-- Bootstrap 4.0-->
