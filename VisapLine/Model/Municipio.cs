@@ -8,19 +8,17 @@ using System.Data;
 
 namespace VisapLine.Model
 {
-    public class Fabricante
+    public class Municipio
     {
         IData data = new Data();
-        public string idfabricante { get; set; }
-        public string fabricante { get; set; }
+        public string idmunicipio { get; set; }
+        public string departamento_iddepartamento { get; set; }
+        public string municipio { get; set; }
 
-        public bool RegistrarFabricante(Fabricante fb)
-        {
-            return data.OperarDatos("");
-        }
-        public DataTable ConsultarFabricante()
+        public DataTable ConsultarMunicipioIdDepartamento(Municipio mun)
         {
             return data.ConsultarDatos("");
         }
+
     }
 }

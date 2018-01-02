@@ -8,19 +8,16 @@ using System.Data;
 
 namespace VisapLine.Model
 {
-    public class Fabricante
+    public class Pais
     {
         IData data = new Data();
-        public string idfabricante { get; set; }
-        public string fabricante { get; set; }
+        public string idpais { get; set; }
+        public string pais { get; set; }
 
-        public bool RegistrarFabricante(Fabricante fb)
-        {
-            return data.OperarDatos("");
-        }
-        public DataTable ConsultarFabricante()
+        public DataTable ConsultarPais()
         {
             return data.ConsultarDatos("");
         }
+       
     }
 }

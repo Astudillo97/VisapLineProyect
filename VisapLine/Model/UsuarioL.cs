@@ -14,7 +14,7 @@ namespace VisapLine.Model
         public string idusuario { get; set; }
         public string usuauser { get; set; }
         public string usuapassw { get; set; }
-        public string persona_idpersona { get; set; }
+        public string rol_idrol { get; set; }
 
         public DataTable ValidarUsuario(UsuarioL usu)
         {
