@@ -22,7 +22,7 @@ namespace VisapLine.Model
 
         public bool RegistrarZona(Zonas zon)
         {
-            return data.OperarDatos("");
+            return data.OperarDatos("s");
         }
     }
 }
