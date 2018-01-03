@@ -8,19 +8,18 @@ using System.Data;
 
 namespace VisapLine.Model
 {
-    public class Barrios
+    public class PlanServicios
     {
         IData data = new Data();
-        public string idbarrios { get; set; }
-        public string barrios { get; set; }
-        public string zonas_idzonas { get; set; }
+        public string idplanservicio { get; set; }
+        public string tipo { get; set; }
 
-        public DataTable ConsultarBarriosIdZonas(Barrios bar)
+        public DataTable ConsultarPlanServicios(PlanServicios pls)
         {
             return data.ConsultarDatos("");
         }
 
-        public bool RegistrarBarrios(Barrios bar)
+        public bool RegistrarPlanServicios(PlanServicios pls)
         {
             return data.OperarDatos("");
         }

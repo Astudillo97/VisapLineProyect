@@ -8,19 +8,20 @@ using System.Data;
 
 namespace VisapLine.Model
 {
-    public class Barrios
+    public class Pagos
     {
         IData data = new Data();
-        public string idbarrios { get; set; }
-        public string barrios { get; set; }
-        public string zonas_idzonas { get; set; }
+        public string idpago { get; set; }
+        public string fechapago { get; set; }
+        public string factura_idfactura { get; set; }
+        public string personal_idpersonal { get; set; }
 
-        public DataTable ConsultarBarriosIdZonas(Barrios bar)
+        public DataTable ConsultarPago(Pagos fac)
         {
             return data.ConsultarDatos("");
         }
 
-        public bool RegistrarBarrios(Barrios bar)
+        public bool RegistrarPago(Pagos fac)
         {
             return data.OperarDatos("");
         }

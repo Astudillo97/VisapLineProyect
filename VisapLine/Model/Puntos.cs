@@ -8,19 +8,21 @@ using System.Data;
 
 namespace VisapLine.Model
 {
-    public class Barrios
+    public class Puntos
     {
         IData data = new Data();
-        public string idbarrios { get; set; }
-        public string barrios { get; set; }
-        public string zonas_idzonas { get; set; }
+        public string idpunto { get; set; }
+        public string estado { get; set; }
+        public string direccion { get; set; }
+        public string coordenadas { get; set; }
+        public string barrios_idbarrios { get; set; }
 
-        public DataTable ConsultarBarriosIdZonas(Barrios bar)
+        public DataTable ConsultarPuntos(Puntos punt)
         {
             return data.ConsultarDatos("");
         }
 
-        public bool RegistrarBarrios(Barrios bar)
+        public bool RegistrarPuntos(Puntos punt)
         {
             return data.OperarDatos("");
         }
