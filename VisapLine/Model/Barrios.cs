@@ -17,7 +17,7 @@ namespace VisapLine.Model
 
         public DataTable ConsultarBarriosIdZonas(Barrios bar)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("s");
         }
 
         public bool RegistrarBarrios(Barrios bar)
