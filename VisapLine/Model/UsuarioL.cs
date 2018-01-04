@@ -18,7 +18,7 @@ namespace VisapLine.Model
 
         public DataTable ValidarUsuario(UsuarioL usu)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select pr_consultarlogin('"+usu.usuauser+"','"+usu.usuapassw+"'); ");
         }
     }
 }
