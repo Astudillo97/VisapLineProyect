@@ -72,6 +72,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Archivos\data.txt" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.eot" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.ttf" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.woff" />
@@ -95,6 +96,7 @@
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regulard41d.eot" />
     <None Include="packages.config" />
+    <Content Include="index.html" />
     <Content Include="View\Private\Admin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -422,6 +424,7 @@
     <Compile Include="DataAccess\Data\IData.cs" />
     <Compile Include="Exeption\Validar.cs" />
     <Compile Include="Exeption\ValidarExeption.cs" />
+    <Compile Include="Model\class_correo.cs" />
     <Compile Include="Model\Factura.cs" />
     <Compile Include="Model\Pagos.cs" />
     <Compile Include="Model\PlanSCaract.cs" />

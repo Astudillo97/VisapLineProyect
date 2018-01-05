@@ -11,14 +11,13 @@
     <meta name="author" content="" />
     <link rel="icon" href="../../Contenido/images/favicon.ico" />
     <title>Login</title>
-        <script>
+    <%--    <script>
         function nobackbutton() {
             window.location.hash = "no-back-button";
             window.location.hash = "Again-No-back-button" //chrome
             window.onhashchange = function () { window.location.hash = "no-back-button"; }
         }
-
-    </script>
+    </script>--%>
     <link rel="stylesheet" href="../../Contenido/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css" />
 
     <!-- Bootstrap 4.0-->
@@ -48,48 +47,82 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
 </head>
 <body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="#"><b>Visap</b>Line</a>
-        </div>
-        <!-- /.login-logo -->
-        <div class="login-box-body">
-            <p class="login-box-msg">Iniciar Session</p>
-
-            <form method="post" runat="server" class="form-element">
-                <div class="form-group has-feedback">
-                    <input type="text" class="form-control" runat="server" id="user_" placeholder="Usuario" />
-                    <span class="ion ion-email form-control-feedback"></span>
-                </div>
-                <div class="form-group has-feedback">
-                    <input type="password" class="form-control" runat="server" id="pas_" placeholder="Contraseña" />
-                    <span class="ion ion-locked form-control-feedback"></span>
-                </div>
-                <div class="row">
-                    <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <label class="text-center" runat="server" id="textError"></label>
-                        <div class="fog-pwd">
-                            <a href="#"><i class="ion ion-locked"></i>Olvido la contraseña?</a><br />
-                        </div>
-                    </asp:Panel>
-                    <!-- /.col -->
-                    <div class="col-12 text-center">
-                        <asp:Button class="btn btn-block btn-flat margin-top-10 btn-primary" ID="btnInciarSession" OnClick="Login" runat="server" Text="INICIAR SESSION" />
-                    </div>
-                    <!-- /.col -->
-                </div>
-            </form>
-            <!-- /.social-auth-links -->
-
-            <div class="margin-top-30 text-center">
-                <p>¿No tienes una cuenta? <a href="Error.aspx?error=Error: No se ha encontrado el modulo de registros" class="text-info m-l-5">Registrarse</a></p>
+    <form method="post" runat="server">
+        <div class="login-box">
+            <div class="login-logo">
+                <a href="#"><b>Visap</b>Line</a>
             </div>
-        </div>
-        <!-- /.login-box-body -->
-    </div>
-    <!-- /.login-box -->
+            <!-- /.login-logo -->
+            <div class="login-box-body">
+                <p class="login-box-msg">Iniciar Session</p>
 
+                <div class="form-element">
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" runat="server" id="user_" placeholder="Usuario" />
+                        <span class="ion ion-email form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" runat="server" id="pas_" placeholder="Contraseña" />
+                        <span class="ion ion-locked form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="alert alert-error col-12">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <label class="text-center" runat="server" id="textError"></label>
+                            <div class="fog-pwd">
+                                <a href="#"><i class="ion ion-locked"></i>Olvido la contraseña?</a><br />
+                            </div>
+                        </asp:Panel>
+                        <!-- /.col -->
+                        <div class="col-12 text-center">
+                            <asp:Button class="btn btn-block btn-flat margin-top-10 btn-primary" ID="btnInciarSession" OnClick="Login" runat="server" Text="INICIAR SESSION" />
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </div>
+                <!-- /.social-auth-links -->
+
+                <div class="margin-top-30 text-center">
+                    <p>¿Eres socio o funcionario? <a href="#" data-toggle="modal" data-target="#modal-primary">Obtener acceso</a></p>
+                </div>
+            </div>
+            <!-- /.login-box-body -->
+        </div>
+        <!-- /.login-box -->
+        <div class="modal fade" id="modal-primary">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Obtención de credenciales</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box box-primary bg-transparent">
+                            <div class="form-element">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" runat="server" id="correo" placeholder="Ingrese su correo" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" runat="server" id="nui" placeholder="Ingrese su Numero unico" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary float-right" runat="server" onserverclick="RecuperarContraseña" >Gurdar Cambios</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </form>
 
     <!-- jQuery 3 -->
     <script src="../../Contenido/assets/vendor_components/jquery/dist/jquery.min.js"></script>
