@@ -10,6 +10,9 @@ namespace VisapLine.View.Login
     public partial class login : System.Web.UI.Page
     {
         UsuarioL usua = new UsuarioL();
+        Terceros ter = new Terceros();
+        Random rnd1 = new Random();
+        class_correo cor = new class_correo();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -38,49 +41,39 @@ namespace VisapLine.View.Login
                 String rootPath = Server.MapPath("~");
                 string subcarpeta = "Archivos\\";
                 string salida = rootPath + subcarpeta;
-
-                class_correo correo = new class_correo();
-                correo.destinatario = "jab291214@outlook.com";
-                correo.asunto = "Cambio de Contraseña";
-                correo.cuerpo = "Mas mensaje";
-                //pr_actulizarcontrasenausuario(id, pass);
-                //salida+"data.txt";
-                correo.archivo = null;
-
-                Terceros ter = new Terceros();
-                UsuarioL usu = new UsuarioL();
-                ter.correo = this.correo.Value;
-                ter.identificacion = this.nui.Value;
-                DataRow dat = Validar.Consulta(ter.ConsultarTerceros(ter)).Rows[0];
-                usu.idusuario = dat["usuario_idusuario"].ToString();
-                usu.usuapassw = dat["identificacion"].ToString();
-                correo.cuerpo = "Contraseña: "+ dat["identificacion"].ToString();
-                if (usu.CambiarContraseña(usu))
+                ter.correo = Validar.validarlleno( this.correo.Value);
+                ter.identificacion = Validar.validarlleno( this.nui.Value);
+                DataRow datos = Validar.Consulta(ter.ConsultarRecuperacion(ter)).Rows[0];
+                usua.idusuario = datos["usuario_idusuario"].ToString();
+                usua.usuapassw = Convert.ToString(rnd1.Next(10000,99999));
+                if (usua.CambiarContraseña(usua))
                 {
-                    textError.InnerHtml = "Cambiada";
-                    Alerta.CssClass = "alert alert-error";
-                    Alerta.Visible = true;
+                    DataRow dat = usua.ConsultarUsuarioId(usua).Rows[0];
+                    cor.destinatario = datos["correo"].ToString();
+                    cor.asunto = "VisapLine Telecomunicaciones";
+                    cor.cuerpo = "Credenciales para acceso:\n Usuario:"+dat["usuario"].ToString()+"\n"+usua.usuapassw;
+                    cor.archivo = null;
 
-                    if (correo.EnviarMensaje())
+                    if (cor.EnviarMensaje())
                     {
-                        textError.InnerHtml = "Enviado!";
-                        Alerta.CssClass = "alert alert-error";
+                        textError.InnerHtml = "Credenciales enviadas al correo";
+                        Alerta.CssClass = "alert-success";
                         Alerta.Visible = true;
                     }
                     else
                     {
-                        textError.InnerHtml = "ya no envia!";
+                        textError.InnerHtml = "No se pudo enviar el correo";
                         Alerta.CssClass = "alert alert-error";
                         Alerta.Visible = true;
                     }
                 }
                 else
                 {
-                    textError.InnerHtml = "Error Contraseña";
+                    textError.InnerHtml = "No se pudo restablecer la contraseña";
                     Alerta.CssClass = "alert alert-error";
                     Alerta.Visible = true;
                 }
-
+                //salida+"nombre.extencion"; para cargar archivos de una carpeta especifica
             }
             catch (Exception ex)
             {
