@@ -415,6 +415,7 @@
     <Content Include="Contenido\js\template.js" />
     <Content Include="View\Login\login.aspx" />
     <Content Include="View\Private\index.aspx" />
+    <Content Include="View\Private\Tipofact.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -475,6 +476,13 @@
     </Compile>
     <Compile Include="View\Private\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Tipofact.aspx.cs">
+      <DependentUpon>Tipofact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Tipofact.aspx.designer.cs">
+      <DependentUpon>Tipofact.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
