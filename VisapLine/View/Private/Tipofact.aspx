@@ -68,13 +68,13 @@
                         <div class="form-group row">
 
                             <div class="col-sm-10">
-                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
+                                <asp:GridView ID="GridView1"  runat="server"  class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
                                     <Columns>
-                                        <asp:BoundField HeaderText="Id Tipo Factura" DataField="idtipofactura" Visible="false" />
+                                        <asp:BoundField  HeaderText="Id Tipo Factura" DataField="idtipofactura" Visible="false" />
                                         <asp:BoundField HeaderText="Tipo Factura" DataField="tipofactura" />
-                                        <asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Borrar">
                                             <ItemTemplate>
-                                                <asp:Button ID="hola" runat="server" CommandName="borrar" CommandArgument='<%# Eval("idtipofactura") %>' Text="Borrar" />
+                                                <asp:Button ID="hola" runat="server" class="btn btn-block btn-danger btn-flat" CommandName="borrar" CommandArgument='<%# Eval("idtipofactura") %>' Text="Borrar" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
