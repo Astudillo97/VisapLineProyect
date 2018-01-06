@@ -17,16 +17,20 @@ namespace VisapLine.Model
 
         public DataTable ConsultarTelefonosIdTerceros(Telefono tel)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("SELECT * from public.pr_consultartelefono('"+tel.terceros_idterceros+"');");
         }
-        public DataTable Consultar()
+        public DataTable Consultar(Telefono tel)
         {
-            return data.ConsultarDatos("select * from telefonos;");
+            return data.ConsultarDatos("");
         }
 
         public bool RegistrarTelefono(Telefono tpt)
         {
-            return data.OperarDatos("");
+            return data.OperarDatos("SELECT public.pr_insertartelefono('"+tpt.telefono+"','"+tpt.terceros_idterceros    +"');");
+        }
+        public bool EliminarTelefono(Telefono tpt)
+        {
+            return data.OperarDatos("SELECT public.pr_borrartelefono('"+tpt.idtelefono+"');");
         }
     }
 }

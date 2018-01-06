@@ -41,5 +41,9 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("SELECT * from public.pr_insertartercero('"+per.identificacion+"','"+per.nombre+ "','" + per.apellido + "','" + per.direccion + "','" + per.correo + "','" + per.estrato + "','" + per.estado + "','" + per.tipotercero_idtipotercero + "','" + per.tipodoc_idtipodoc + "','" + per.fechanatcimiento + "','" + per.tiporesidencia_idtiporesidencia + "','" + per.tipofactura_idtipofactura + "','" + per.barrios_idbarrios + "');");
         }
+        public DataTable ConsultarPersonaIdentif(Terceros ter)
+        {
+            return data.ConsultarDatos("SELECT * from pr_consultarterceroid('"+ter.identificacion+"');");
+        }
     }
 }
