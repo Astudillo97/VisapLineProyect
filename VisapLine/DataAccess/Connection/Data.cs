@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
+﻿using System.Data;
 using VisapLine.DataAccess.Data;
 using Npgsql;
 using VisapLine.DataAccess.Connection;
 namespace VisapLine.DataAccess.Connection
 {
-    public class Data : conexion_psql,IData
+    public class Data : conexion_psql, IData
     {
-        
-        public  bool OperarDatos(string sql)
+
+        public bool OperarDatos(string sql)
         {
             try
             {

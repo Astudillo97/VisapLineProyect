@@ -22,7 +22,12 @@ namespace VisapLine.Model
         }
         public bool CambiarContraseña(UsuarioL usu)
         {
-            return data.OperarDatos("select * from pr_actulizarcontrasenausuario('"+usu.idusuario+"','"+usu.usuapassw+"');");
+            return data.OperarDatos("SELECT pr_actulizarcontrasenausuario('" + usu.idusuario+"','"+usu.usuapassw+"');");
+        }
+
+        public DataTable ConsultarUsuarioId(UsuarioL usu)
+        {
+            return data.ConsultarDatos("SELECT * from  public.pr_consultaridusuario('"+usu.idusuario+"');");
         }
     }
 }

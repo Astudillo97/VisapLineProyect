@@ -32,9 +32,9 @@ namespace VisapLine.Model
             return data.ConsultarDatos("");
         }
 
-        public DataTable ConsultarTerceros(Terceros ter)
+        public DataTable ConsultarRecuperacion(Terceros ter)
         {
-            return data.ConsultarDatos("select * from terceros where correo='" + ter.correo + "' and identificacion='" + ter.identificacion + "'; ");
+            return data.ConsultarDatos("select * from pr_consultarrecuperacion('"+ter.identificacion+"', '"+ter.correo+"');");
         }
 
         public bool RegistrarTerceros(Terceros per)

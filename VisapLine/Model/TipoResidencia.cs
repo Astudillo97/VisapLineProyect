@@ -16,7 +16,7 @@ namespace VisapLine.Model
 
         public DataTable ConsultarTipoResidencia()
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("SELECT public.pr_consultartiporesidencia();");
         }
 
         public bool RegistrarTipoResidencia(TipoResidencia tpres)
