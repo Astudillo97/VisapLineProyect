@@ -30,7 +30,7 @@ namespace VisapLine.DataAccess.Connection
             }
             catch
             {
-                throw new ValidarExeption("No se ha podido guardar el registro");
+                throw new ValidarExeption("No se ha realizado la operacion");
             }
             //try
             //{

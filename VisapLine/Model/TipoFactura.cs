@@ -16,15 +16,18 @@ namespace VisapLine.Model
 
         public DataTable ConsultarTipoFactura()
         {
+
             return data.ConsultarDatos("select * from pr_consultartipofactura()");
+
         }
         public void eliminar(int x)
         {
-             data.ConsultarDatos("select * from pr_borrartipofactura("+x+")");
+             data.OperarDatos("select * from pr_borrartipofactura("+x+")");
         }
         
         public bool RegistrarTipoFactura(TipoFactura tf)
         {
+
             return data.OperarDatos("select * from pr_insertartipofactura('"+tipofactura+"')");
         }
     }

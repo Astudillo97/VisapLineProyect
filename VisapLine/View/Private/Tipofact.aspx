@@ -27,7 +27,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Nombre:</label>
                             <div class="col-sm-10">
-                                <asp:TextBox runat="server" type="text" class="form-control" ID="texboxtipofactura" Style="text-transform: uppercase" required="true" title="Este campo esta vacio"></asp:TextBox>
+                                <asp:TextBox runat="server" type="text" class="form-control" ID="texboxtipofactura" Style="text-transform: uppercase" ></asp:TextBox>
                             </div>
 
 
@@ -68,15 +68,17 @@
                         <div class="form-group row">
 
                             <div class="col-sm-10">
-                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
+                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
                                     <Columns>
+                                        <asp:BoundField HeaderText="Id Tipo Factura" DataField="idtipofactura" Visible="false" />
                                         <asp:BoundField HeaderText="Tipo Factura" DataField="tipofactura" />
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <asp:Button ID="BtnEliminar" CommandArgument="<%# ((GridViewRow) Container) %>" CommandName="Eliminar" Text="Eliminar" runat="server" />
+                                                <asp:Button ID="hola" runat="server" CommandName="borrar" CommandArgument='<%# Eval("idtipofactura") %>' Text="Borrar" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
+
                                 </asp:GridView>
                             </div>
 

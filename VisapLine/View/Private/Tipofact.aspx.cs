@@ -15,41 +15,89 @@ namespace VisapLine.View.Private
         TipoFactura tf = new TipoFactura();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack){
-                DataTable dt = tf.ConsultarTipoFactura();
-                GridView1.DataSource = dt;
-                GridView1.DataBind();
-            } 
-            
+
+
+            try
+            {
+                if (!IsPostBack)
+                {
+                    texboxtipofactura.Text = "";
+                    tablatipofactura();
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
             tf.tipofactura = texboxtipofactura.Text.ToUpper();
+            
+
             if (tf.RegistrarTipoFactura(tf))
             {
                 textError.InnerHtml = "Se ha Registrado correctamente";
                 Alerta.CssClass = "alert alert-success";
-                Alerta.Visible =true;
-
-            }else
+                Alerta.Visible = true;
+               
+                Response.Redirect("Tipofact.aspx");
+            }
+            else
             {
                 textError.InnerHtml = "No se registro";
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
+                texboxtipofactura.Text = "";
+                Response.Redirect("Tipofact.aspx");
             }
-           
-            texboxtipofactura.Text = "";
 
-            
+
+
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName== "Eliminar") {
-                tf.eliminar(Convert.ToInt32(e.CommandArgument));
-               }
+            try
+            {
+                if (e.CommandName.ToString() == "borrar")
+                {
+                    string DeleteRowId = e.CommandArgument.ToString();
+                    tf.eliminar(int.Parse(DeleteRowId));
+                    //Call Procedure here to delete row
+                    Response.Redirect("Tipofact.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+          
+        }
+
+
+        protected void tablatipofactura()
+        {
+            try
+            {
+                DataTable dt = tf.ConsultarTipoFactura();
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+            
         }
     }
 }
