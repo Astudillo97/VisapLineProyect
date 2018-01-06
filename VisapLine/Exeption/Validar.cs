@@ -43,6 +43,18 @@ namespace VisapLine.Exeption
             }
         }
 
+        public static string validarselected(string dat)
+        {
+            if (dat != "Seleccione")
+            {
+                return dat;
+            }
+            else
+            {
+                throw new ValidarExeption("Debe selecionar un elemento");
+            }
+        }
+
         public static string validarnumero(string dat)
         {
             int numero;

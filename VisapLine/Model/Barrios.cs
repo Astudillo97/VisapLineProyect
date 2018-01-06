@@ -17,7 +17,7 @@ namespace VisapLine.Model
 
         public DataTable ConsultarBarriosIdMunicipio(Barrios bar)
         {
-            return data.ConsultarDatos("SELECT public.pr_consultarbarrio('"+bar.muninicio_idmunicipio+"');");
+            return data.ConsultarDatos("SELECT * FROM public.pr_consultarbarrio('"+bar.muninicio_idmunicipio+"');");
         }
 
         public bool RegistrarBarrios(Barrios bar)
