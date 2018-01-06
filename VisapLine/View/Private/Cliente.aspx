@@ -26,6 +26,39 @@
             <div class="tab-content">
                 <div class="active tab-pane" id="informacion">
                     <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Clientes</h3>
+                                </div>
+                                <div class="form-element">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Identificación</label>
+                                            <input type="text" class="form-control" runat="server" id="identif_" placeholder="Nit o Identificación">
+                                        </div>
+                                        <button class="btn btn-primary float-right" runat="server" onserverclick="ConsultarIdentif">Consultar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Listado de clientes</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <asp:GridView runat="server" ID="example1" CssClass="table table-bordered table-striped table-responsive"></asp:GridView>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="contratos">
+                    <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
@@ -60,7 +93,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Tipo Factura</label>
                                             <div class="col-sm-8">
-                                                <asp:DropDownList runat="server" ID="tipofact_" CssClass="form-control" AppendDataBoundItems="true" >
+                                                <asp:DropDownList runat="server" ID="tipofact_" CssClass="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
@@ -201,14 +234,79 @@
                         </div>
                     </div>
                 </div>
-                <div class="active tab-pane" id="contratos">
-                    <asp:GridView ID="GridView1"  runat="server">
+                <div class="tab-pane" id="insidencias">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Información </h3>
+                                </div>
+                                <div class="form-element">
+                                    <div class="box-body">
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-form-label">Tipo Usuario</label>
+                                            <div class="col-sm-8">
+                                                <asp:DropDownList runat="server" ID="DropDownList1" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-form-label">Tipo Documento</label>
+                                            <div class="col-sm-8">
+                                                <asp:DropDownList runat="server" ID="DropDownList2" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-form-label">Tipo Residencia</label>
+                                            <div class="col-sm-8">
+                                                <asp:DropDownList runat="server" ID="DropDownList3" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-form-label">Tipo Factura</label>
+                                            <div class="col-sm-8">
+                                                <asp:DropDownList runat="server" ID="DropDownList4" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Información de Contacto</h3>
+                                </div>
+                                <div class="form-element">
+                                    <div class="box-body">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Telefono</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="telefono_" runat="server" placeholder="Telefono o celular">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <button class="btn btn-primary" runat="server" onserverclick="RegistrarTelefono">Guardar Telefono</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <asp:GridView ID="telefonos" OnRowDeleting="GridView1_RowDeleting1" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server">
                         <Columns>
-                            <asp:CommandField SelectText=" " ControlStyle-CssClass="fa fa-recycle" ShowSelectButton="True"></asp:CommandField>
+                            <asp:BoundField DataField="idtelefono" HeaderText="Codigo"></asp:BoundField>
+                            <asp:BoundField DataField="telefono" HeaderText="Celular"></asp:BoundField>
+                            <asp:CommandField ShowDeleteButton="True"></asp:CommandField>
                         </Columns>
                     </asp:GridView>
-                </div>
-                <div class="active tab-pane" id="insidencias">
                 </div>
             </div>
         </div>

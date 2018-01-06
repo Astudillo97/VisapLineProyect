@@ -57,10 +57,10 @@ namespace VisapLine.Exeption
 
         public static string validarnumero(string dat)
         {
-            int numero;
+            long numero;
             try
             {
-                numero = Convert.ToInt32(validarlleno(dat));
+                numero = Convert.ToInt64(validarlleno(dat));
                 return numero.ToString();
             }
             catch (FormatException)

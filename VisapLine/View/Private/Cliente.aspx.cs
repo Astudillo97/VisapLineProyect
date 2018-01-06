@@ -55,6 +55,8 @@ namespace VisapLine.View.Private
                     pais_.DataTextField = "pais";
                     pais_.DataValueField = "idpais";
                     pais_.DataBind();
+
+
                 }
 
                 Alerta.Visible = false;
@@ -73,6 +75,7 @@ namespace VisapLine.View.Private
         {
             try
             {
+
                 departamento_.Items.Clear();
                 departamento_.Items.Add(new ListItem("Seleccione", "Seleccione"));
                 depart.pais_idpais = Validar.validarselected(pais_.SelectedValue);
@@ -83,7 +86,6 @@ namespace VisapLine.View.Private
             }
             catch (Exception ex)
             {
-
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert-error";
                 Alerta.Visible = true;
@@ -125,7 +127,6 @@ namespace VisapLine.View.Private
             }
             catch (Exception ex)
             {
-
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert-error";
                 Alerta.Visible = true;
@@ -137,23 +138,33 @@ namespace VisapLine.View.Private
             try
             {
                 terc.identificacion = Validar.validarnumero(identificacion_.Value);
-                terc.nombre = Validar.validarlleno(nombre_.Value);
-                terc.apellido = apellido_.Value;
-                terc.direccion = Validar.validarlleno(Direccion_.Value);
-                terc.correo = Validar.validarlleno(correo_.Value);
-                terc.estrato = Validar.validarselected(estrato_.SelectedValue);
-                terc.estado = Validar.validarselected(estado_.SelectedValue);
-                terc.tipotercero_idtipotercero = Validar.validarselected(tipotercero_.SelectedValue);
-                terc.tipodoc_idtipodoc = Validar.validarselected(tipodoc_.SelectedValue);
-                terc.tiporesidencia_idtiporesidencia = Validar.validarselected(tiporesident_.SelectedValue);
-                terc.tipofactura_idtipofactura = Validar.validarselected(tipofact_.SelectedValue);
-                terc.barrios_idbarrios = Validar.validarselected(barrio_.SelectedValue);
-                terc.fechanatcimiento = Validar.validarlleno( fecnac_.Value);
-                if (terc.RegistrarTerceros(terc))
+                if (terc.ConsultarPersonaIdentif(terc).Rows.Count > 0)
                 {
-                    textError.InnerHtml = "Se ha registrado con exito";
-                    Alerta.CssClass = "alert alert-success";
+                    textError.InnerHtml = "El usuario ya se encuentra registrado";
+                    Alerta.CssClass = "alert alert-error";
                     Alerta.Visible = true;
+                }
+                else
+                {
+                    terc.identificacion = Validar.validarnumero(identificacion_.Value);
+                    terc.nombre = Validar.validarlleno(nombre_.Value);
+                    terc.apellido = apellido_.Value;
+                    terc.direccion = Validar.validarlleno(Direccion_.Value);
+                    terc.correo = Validar.validarlleno(correo_.Value);
+                    terc.estrato = Validar.validarselected(estrato_.SelectedValue);
+                    terc.estado = Validar.validarselected(estado_.SelectedValue);
+                    terc.tipotercero_idtipotercero = Validar.validarselected(tipotercero_.SelectedValue);
+                    terc.tipodoc_idtipodoc = Validar.validarselected(tipodoc_.SelectedValue);
+                    terc.tiporesidencia_idtiporesidencia = Validar.validarselected(tiporesident_.SelectedValue);
+                    terc.tipofactura_idtipofactura = Validar.validarselected(tipofact_.SelectedValue);
+                    terc.barrios_idbarrios = Validar.validarselected(barrio_.SelectedValue);
+                    terc.fechanatcimiento = Validar.validarlleno(fecnac_.Value);
+                    if (terc.RegistrarTerceros(terc))
+                    {
+                        textError.InnerHtml = "Se ha registrado con exito";
+                        Alerta.CssClass = "alert alert-success";
+                        Alerta.Visible = true;
+                    }
                 }
             }
             catch (Exception ex)
@@ -163,5 +174,82 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
+
+        protected void GridView1_RowDeleting1(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                TableCell cell = telefonos.Rows[e.RowIndex].Cells[0];
+                tlf.idtelefono = cell.Text;
+                tlf.terceros_idterceros = identificacion_.Value;
+                if (tlf.EliminarTelefono(tlf))
+                {
+                    CargarTelefono(tlf.terceros_idterceros);
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void CargarTelefono(string idpersona)
+        {
+            try
+            {
+                tlf.terceros_idterceros = idpersona;
+                if (tlf.ConsultarTelefonosIdTerceros(tlf)!=null)
+                {
+                    telefonos.DataSource = tlf.ConsultarTelefonosIdTerceros(tlf);
+                    telefonos.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void RegistrarTelefono(object sender, EventArgs e)
+        {
+            try
+            {
+                tlf.telefono = Validar.validarnumero(telefono_.Value);
+                tlf.terceros_idterceros = identificacion_.Value;
+                if (tlf.RegistrarTelefono(tlf))
+                {
+                    CargarTelefono(tlf.terceros_idterceros);
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void ConsultarIdentif(object sender, EventArgs e)
+        {
+            try
+            {
+                terc.identificacion = Validar.validarnumero(identif_.Value);
+                example1.DataSource = Validar.Consulta(terc.ConsultarPersonaIdentif(terc));
+                example1.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+
     }
 }
