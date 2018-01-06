@@ -128,7 +128,7 @@ namespace VisapLine.View.Private
         protected void BtnGuardarbarrio_Click(object sender, EventArgs e)
         {
             barr.barrios = TextBox1.Text.ToUpper();
-            barr.barrios=
+            barr.barrios = zonabarrio.SelectedValue;
 
             if (barr.RegistrarBarrios(barr))
             {
@@ -143,7 +143,7 @@ namespace VisapLine.View.Private
                 textError.InnerHtml = "No se registro";
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-                texboxtipofactura.Text = "";
+                TextBox1.Text = "";
                 Response.Redirect("Tipofact.aspx");
             }
 
