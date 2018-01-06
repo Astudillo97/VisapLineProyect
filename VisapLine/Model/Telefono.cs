@@ -19,6 +19,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("");
         }
+        public DataTable Consultar()
+        {
+            return data.ConsultarDatos("select * from telefonos;");
+        }
 
         public bool RegistrarTelefono(Telefono tpt)
         {

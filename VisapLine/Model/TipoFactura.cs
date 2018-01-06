@@ -16,7 +16,7 @@ namespace VisapLine.Model
 
         public DataTable ConsultarTipoFactura()
         {
-            return data.ConsultarDatos("SELECT * FROM public.pr_consultartipofactura();");
+            return data.ConsultarDatos("SELECT * FROM pr_consultartipofactura()");
         }
 
         public bool RegistrarTipoFactura(TipoFactura tpt)
