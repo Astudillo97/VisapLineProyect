@@ -13,11 +13,11 @@ namespace VisapLine.Model
         IData data = new Data();
         public string idbarrios { get; set; }
         public string barrios { get; set; }
-        public string zonas_idzonas { get; set; }
+        public string muninicio_idmunicipio { get; set; }
 
-        public DataTable ConsultarBarriosIdZonas(Barrios bar)
+        public DataTable ConsultarBarriosIdMunicipio(Barrios bar)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("SELECT * FROM public.pr_consultarbarrio('"+bar.muninicio_idmunicipio+"');");
         }
 
         public bool RegistrarBarrios(Barrios bar)

@@ -1,32 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
+﻿using System.Data;
 using VisapLine.DataAccess.Data;
 using Npgsql;
 using VisapLine.DataAccess.Connection;
+using System;
+using VisapLine.Exeption;
+
 namespace VisapLine.DataAccess.Connection
 {
-    public class Data : conexion_psql,IData
+    public class Data : conexion_psql, IData
     {
-        
-        public  bool OperarDatos(string sql)
+
+        public bool OperarDatos(string sql)
         {
+            DataTable datos = new DataTable();
             try
             {
-                NpgsqlCommand comando = new NpgsqlCommand(sql, OpenConexion());
-                if (comando.ExecuteNonQuery() > 0)
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, OpenConexion());
+                da.Fill(datos);
+                CloseConexion();
+                if (Convert.ToInt32(datos.Rows[0][0].ToString()) > 0)
                 {
-                    CloseConexion();
                     return true;
                 }
-                return false;
+                else
+                {
+                    return false;
+                }
+
             }
             catch
             {
-                return false;
+                throw new ValidarExeption("No se ha podido guardar el registro");
             }
+            //try
+            //{
+            //    NpgsqlCommand comando = new NpgsqlCommand(sql, OpenConexion());
+            //    if (comando.ExecuteNonQuery() > 0)
+            //    {
+            //        CloseConexion();
+            //        return true;
+            //    }
+            //    return false;
+            //}
+            //catch
+            //{
+            //    return false;
+            //}
         }
 
         public DataTable ConsultarDatos(string sql)
@@ -41,7 +60,7 @@ namespace VisapLine.DataAccess.Connection
             }
             catch
             {
-                return null;
+                throw new ValidarExeption("No se han encontrado registros");
             }
         }
     }

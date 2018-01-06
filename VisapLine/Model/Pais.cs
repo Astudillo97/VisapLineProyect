@@ -16,7 +16,7 @@ namespace VisapLine.Model
 
         public DataTable ConsultarPais()
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("SELECT * FROM public.pr_consultarpais();");
         }
        
     }

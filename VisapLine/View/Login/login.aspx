@@ -106,8 +106,8 @@
                                         <input type="email" class="form-control" runat="server" id="correo" placeholder="Ingrese su correo" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" runat="server" id="nui" placeholder="Ingrese su Numero unico" />
+                                        <label for="exampleInputEmail1">NIT</label>
+                                        <input type="text" class="form-control" runat="server" id="nui" placeholder="Ingrese su Numero unico" />
                                     </div>
                                 </div>
                             </div>
