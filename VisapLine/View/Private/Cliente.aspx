@@ -162,7 +162,6 @@
                                                 <input type="email" class="form-control" id="correo_" runat="server" placeholder="Correo">
                                             </div>
                                         </div>
-
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Direccion</label>
                                             <div class="col-sm-9">
@@ -203,6 +202,11 @@
                     </div>
                 </div>
                 <div class="active tab-pane" id="contratos">
+                    <asp:GridView ID="GridView1"  runat="server">
+                        <Columns>
+                            <asp:CommandField SelectText=" " ControlStyle-CssClass="fa fa-recycle" ShowSelectButton="True"></asp:CommandField>
+                        </Columns>
+                    </asp:GridView>
                 </div>
                 <div class="active tab-pane" id="insidencias">
                 </div>
