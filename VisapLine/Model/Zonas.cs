@@ -17,12 +17,12 @@ namespace VisapLine.Model
 
         public DataTable ConsultarZonaIdMunicipio(Zonas zon)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("pr_consultarzona('"+zon+"')");
         }
 
         public bool RegistrarZona(Zonas zon)
         {
-            return data.OperarDatos("s");
+            return data.OperarDatos("pr_insertarzona('"+zon+"')");
         }
     }
 }
