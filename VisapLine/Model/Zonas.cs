@@ -15,14 +15,14 @@ namespace VisapLine.Model
         public string zona { get; set; }
         public string municipio_idmunicipio { get; set; }
 
-        public DataTable ConsultarZonaIdMunicipio(Zonas zon)
+        public DataTable ConsultarZonaIdMunicipio(Zonas zn)
         {
-            return data.ConsultarDatos("pr_consultarzona('"+zon+"')");
+            return data.ConsultarDatos("select * from pr_consultarzonas('"+zn.municipio_idmunicipio+"')");
         }
 
         public bool RegistrarZona(Zonas zon)
         {
-            return data.OperarDatos("pr_insertarzona('"+zon+"')");
+            return data.OperarDatos("select pr_insertarzona('"+zon+"')");
         }
     }
 }

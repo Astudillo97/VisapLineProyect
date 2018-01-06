@@ -127,6 +127,28 @@ namespace VisapLine.View.Private
 
         protected void BtnGuardarbarrio_Click(object sender, EventArgs e)
         {
+            barr.barrios = TextBox1.Text.ToUpper();
+            barr.barrios=
+
+            if (barr.RegistrarBarrios(barr))
+            {
+                textError.InnerHtml = "Se ha Registrado correctamente";
+                Alerta.CssClass = "alert alert-success";
+                Alerta.Visible = true;
+
+                Response.Redirect("Tipofact.aspx");
+            }
+            else
+            {
+                textError.InnerHtml = "No se registro";
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+                texboxtipofactura.Text = "";
+                Response.Redirect("Tipofact.aspx");
+            }
+
+
+
 
         }
 
@@ -158,13 +180,13 @@ namespace VisapLine.View.Private
             try
             {
 
-                municipiobarrio.Items.Clear();
-                municipiobarrio.Items.Add(new ListItem("Seleccione", "Seleccione"));
-                munic.departamento_iddepartamento = Validar.validarselected(departamentobarrio.SelectedValue);
-                departamentobarrio.DataSource = Validar.Consulta(depart.ConsultarDepartamentoIdPais(depart));
-                departamentobarrio.DataTextField = "municipio";
-                departamentobarrio.DataValueField = "idmunicipio";
-                departamentobarrio.DataBind();
+                municipiozona.Items.Clear();
+                municipiozona.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                munic.departamento_iddepartamento = Validar.validarselected(departamentozona.SelectedValue);
+                municipiozona.DataSource = Validar.Consulta(munic.ConsultarMunicipioIdDepartamento(munic));
+                municipiozona.DataTextField = "municipio";
+                municipiozona.DataValueField = "idmunicipio";
+                municipiozona.DataBind();
 
             }
             catch (Exception ex)
@@ -178,10 +200,7 @@ namespace VisapLine.View.Private
         protected void municipiozona_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-
-
-
-
+           
         }
 
         protected void Button2_Click(object sender, EventArgs e)

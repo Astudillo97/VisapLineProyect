@@ -13,6 +13,7 @@
         <div class="box box-default">
             <div class="box-header with-border">
                 <h3 class="box-title">Crear Tipo Factura</h3>
+                <a href="Tipofact.aspx">Tipofact.aspx</a>
 
 
                 <div class="box-tools pull-right">

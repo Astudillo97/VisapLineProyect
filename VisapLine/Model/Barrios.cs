@@ -15,6 +15,7 @@ namespace VisapLine.Model
         public string barrios { get; set; }
         public string muninicio_idmunicipio { get; set; }
 
+        public string zona_idzona { get; set; }
         public DataTable ConsultarBarriosIdMunicipio(Barrios bar)
         {
             return data.ConsultarDatos("SELECT * FROM public.pr_consultarbarrio('"+bar.muninicio_idmunicipio+"');");
@@ -22,7 +23,7 @@ namespace VisapLine.Model
 
         public bool RegistrarBarrios(Barrios bar)
         {
-            return data.OperarDatos("");
+            return data.OperarDatos("select from pr_insertarbarriozona('"+bar+"')");
         }
     }
 }
