@@ -16,7 +16,7 @@ namespace VisapLine.Model
 
         public DataTable ConsultarTipoTercero()
         {
-            return data.ConsultarDatos("SELECT public.pr_consultartipotercero();");
+            return data.ConsultarDatos("SELECT * FROM public.pr_consultartipotercero();");
         }
 
         public bool RegistrarTipoTercero(TipoTercero tpt)

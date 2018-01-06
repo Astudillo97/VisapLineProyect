@@ -17,7 +17,7 @@ namespace VisapLine.Model
 
         public DataTable ConsultarMunicipioIdDepartamento(Municipio mun)
         {
-            return data.ConsultarDatos("SELECT public.pr_consultarmunicipio('"+mun.departamento_iddepartamento+"');");
+            return data.ConsultarDatos("SELECT * FROM public.pr_consultarmunicipio('"+mun.departamento_iddepartamento+"');");
         }
 
     }
