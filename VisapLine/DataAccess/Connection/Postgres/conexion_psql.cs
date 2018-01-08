@@ -18,6 +18,7 @@ namespace VisapLine.DataAccess.Connection
             {
 
                 conexion1.Close();
+                throw new ValidarExeption("Error de conexion:Intentelo de nuevo");
             }
             return conexion1;
         }
