@@ -421,6 +421,7 @@
     <Content Include="View\Private\index.aspx" />
     <Content Include="View\Private\pagplan.aspx" />
     <Content Include="View\Private\pagzona.aspx" />
+    <Content Include="View\Private\Personal.aspx" />
     <Content Include="View\Private\Tipofact.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
     <Content Include="Web.config" />
@@ -520,6 +521,13 @@
     </Compile>
     <Compile Include="View\Private\pagzona.aspx.designer.cs">
       <DependentUpon>pagzona.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Personal.aspx.cs">
+      <DependentUpon>Personal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Personal.aspx.designer.cs">
+      <DependentUpon>Personal.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Tipofact.aspx.cs">
       <DependentUpon>Tipofact.aspx</DependentUpon>

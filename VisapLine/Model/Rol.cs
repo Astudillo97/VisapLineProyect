@@ -16,7 +16,7 @@ namespace VisapLine.Model
 
         public DataTable ConsultarRol()
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from pr_consultarrol();");
         }
 
         public bool RegistrarRol(Rol rol)
