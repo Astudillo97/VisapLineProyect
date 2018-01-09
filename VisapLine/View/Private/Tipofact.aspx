@@ -9,14 +9,14 @@
     </asp:Panel>
     <section class="content-header">
         <h3>Tipo Factura</h3>
-   </section>
+    </section>
 
     <section class="content">
-        <div class="box box-default">
+        <div class="box box-default collapsed-box">
             <div class="box-header with-border">
                 <h3 class="box-title">Crear Tipo Factura</h3>
                 <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
                 </div>
             </div>
             <!-- /.box-header -->
@@ -64,36 +64,23 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group row">
-
-                            <div class="col-sm-10">
-                                <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
-                                    <Columns>
-                                        <asp:BoundField HeaderText="Id Tipo Factura" DataField="idtipofactura" Visible="false" />
-                                        <asp:BoundField HeaderText="Tipo Factura" DataField="tipofactura" />
-                                        <asp:TemplateField HeaderText="Borrar">
-                                            <ItemTemplate>
-                                                <asp:Button ID="hola" runat="server" class="btn btn-block btn-danger btn-flat" CommandName="borrar" CommandArgument='<%# Eval("idtipofactura") %>' Text="Borrar" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-
-                                </asp:GridView>
-                            </div>
-
-
-                        </div>
+                        <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive " AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
+                            <Columns>
+                                <asp:BoundField HeaderText="Id Tipo Factura" DataField="idtipofactura" Visible="false" />
+                                <asp:BoundField HeaderText="Tipo Factura" DataField="tipofactura" />
+                                <asp:TemplateField HeaderText="Borrar">
+                                    <ItemTemplate>
+                                        <asp:Button ID="hola" runat="server" class="btn btn-block btn-danger btn-flat" CommandName="borrar" CommandArgument='<%# Eval("idtipofactura") %>' Text="Borrar" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
                     </div>
-
-
                 </div>
-
                 <!-- /.col -->
             </div>
             <!-- /.row -->
         </div>
-
-
     </section>
 </asp:Content>
 

@@ -45,7 +45,7 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-success";
                 Alerta.Visible = true;
                
-                Response.Redirect("Tipofact.aspx");
+                
             }
             else
             {
@@ -53,7 +53,7 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
                 texboxtipofactura.Text = "";
-                Response.Redirect("Tipofact.aspx");
+            
             }
 
 

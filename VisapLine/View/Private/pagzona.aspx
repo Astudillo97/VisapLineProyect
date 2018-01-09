@@ -5,7 +5,6 @@
         function panel2() {
             document.getElementById("reg").click();
         }
-
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -55,6 +54,9 @@
                                                                     <div class="col-sm-9">
                                                                         <asp:DropDownList ID="departamentozona" runat="server" CssClass="form-control select2" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="departamentozona_SelectedIndexChanged">
                                                                             <asp:ListItem>Seleccione</asp:ListItem>
+                                                                              <asp:ListItem>PUBLICO</asp:ListItem>
+                                                                              <asp:ListItem>EMPRESARIAL</asp:ListItem>
+                                                                              <asp:ListItem>ESPECIAL</asp:ListItem>
                                                                         </asp:DropDownList>
 
                                                                     </div>

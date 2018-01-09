@@ -20,5 +20,24 @@ namespace VisapLine.Model
         public string tipoplan { get; set; }
         public string subida { get; set; }
         public string bajada { get; set; }
+
+
+
+
+        public DataTable ConsultarPlan()
+        {
+            return data.ConsultarDatos("select * from pr_consultarpplan()");
+        }
+
+
+        public bool RegistrarPlan(Plan pln)
+        {
+            return data.OperarDatos("");
+        }
     }
+
+
+  
+
+
 }
