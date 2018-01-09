@@ -1,6 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Cliente.aspx.cs" Inherits="VisapLine.View.Private.Cliente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="Cliente.aspx.cs" Inherits="VisapLine.View.Private.Cliente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        function panel2() {
+            document.getElementById("reg").click();
+        }
+        function panel3() {
+            document.getElementById("pan3").click();
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
@@ -19,9 +27,9 @@
     <section class="content">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li><a class="active" href="#informacion" data-toggle="tab">Información</a></li>
-                <li><a href="#contratos" data-toggle="tab">Contratos</a></li>
-                <li><a href="#insidencias" data-toggle="tab">Insidencias</a></li>
+                <li><a class="active" id="inf" href="#informacion" data-toggle="tab">Cliente</a></li>
+                <li><a href="#contratos" id="reg" data-toggle="tab">Registro</a></li>
+                <li><a href="#insidencias" id="pan3" data-toggle="tab">Telefono</a></li>
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="informacion">
@@ -50,14 +58,47 @@
                                     <h3 class="box-title">Listado de clientes</h3>
                                 </div>
                                 <!-- /.box-header -->
-                                <div class="box-body">
-                                    <asp:GridView runat="server" ID="example1" CssClass="table table-bordered table-striped table-responsive"></asp:GridView>
+                                <div class="box-body" style="overflow-x: scroll">
+                                    <asp:GridView runat="server" ID="tablacliente" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" OnRowDataBound="tablacliente_RowDataBound" OnRowCommand="tablacliente_RowCommand">
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="">
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="ver_btn" Width="45" runat="server" ImageUrl="../../Contenido/images/icons/ver.png" CssClass="btn btn-link" CommandName="Ver" CommandArgument='<%# Eval("identificacion") %>' Text="" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="">
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="actualizar_btn" runat="server" ImageUrl="../../Contenido/images/icons/editar.png" class="btn btn-link" CommandName="Editar" CommandArgument='<%# Eval("identificacion") %>' Text="Borrar" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="">
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("identificacion") %>' Text="Borrar" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="tipoterceros" HeaderText=""></asp:BoundField>
+                                            <asp:BoundField DataField="residencia" HeaderText="Resid"></asp:BoundField>
+                                            <asp:BoundField DataField="identificacion" HeaderText="NUI"></asp:BoundField>
+                                            <asp:BoundField DataField="nombre" HeaderText="Usuario"></asp:BoundField>
+                                            <asp:BoundField DataField="direccion" HeaderText="Direcci&#243;n"></asp:BoundField>
+                                            <asp:BoundField DataField="correo" HeaderText="Correo"></asp:BoundField>
+                                            <asp:BoundField DataField="estado" HeaderText=""></asp:BoundField>
+                                            <asp:BoundField DataField="estrato" HeaderText="Estrato"></asp:BoundField>
+                                            <asp:BoundField DataField="fechadenacimiento" HeaderText="Nacim"></asp:BoundField>
+                                        </Columns>
+                                    </asp:GridView>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane" id="contratos">
+                    <asp:Panel ID="viewedicion" Visible="false" runat="server" CssClass="col-12 alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <label class="text-center" runat="server" id="textediccion"></label>
+                         <label runat="server" visible="false" id="codigo"></label>
+                    </asp:Panel>
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="box box-primary">
@@ -228,7 +269,8 @@
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <button class="btn btn-primary" runat="server" onserverclick="RegistrarTercero">Registrar</button>
+                                    <button class="btn btn-primary" runat="server" onserverclick="CancelarTercero">Cancelar</button>
+                                    <button class="btn btn-primary float-right" runat="server" onserverclick="RegistrarTercero">Guardar</button>
                                 </div>
                             </div>
                         </div>
