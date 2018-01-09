@@ -61,6 +61,7 @@ namespace VisapLine.View.Private
                 departamentobarrio.DataTextField = "departamento";
                 departamentobarrio.DataValueField = "iddepartamento";
                 departamentobarrio.DataBind();
+                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
 
             }
             catch (Exception ex)
@@ -68,6 +69,7 @@ namespace VisapLine.View.Private
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
+                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             }
 
    
@@ -88,6 +90,7 @@ namespace VisapLine.View.Private
                 municipiobarrio.DataTextField = "municipio";
                 municipiobarrio.DataValueField = "idmunicipio";
                 municipiobarrio.DataBind();
+                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
 
             }
             catch (Exception ex)
@@ -95,6 +98,7 @@ namespace VisapLine.View.Private
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
+                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             }
         }
 
@@ -110,6 +114,7 @@ namespace VisapLine.View.Private
                 zonabarrio.DataTextField = "zonas";
                 zonabarrio.DataValueField = "idzonas";
                 zonabarrio.DataBind();
+                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
 
             }
             catch (Exception ex)
@@ -117,26 +122,38 @@ namespace VisapLine.View.Private
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
+                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             }
         }
 
         protected void zonabarrio_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
         }
 
         protected void BtnGuardarbarrio_Click(object sender, EventArgs e)
         {
-            barr.barrios = TextBox1.Text.ToUpper();
-            barr.barrios = zonabarrio.SelectedValue;
+            barr.barrios= TextBox1.Text.ToUpper();
+            barr.muninicio_idmunicipio = municipiobarrio.SelectedValue;
+            barr.zona_idzona = zonabarrio.SelectedValue;
+
+
 
             if (barr.RegistrarBarrios(barr))
             {
+
                 textError.InnerHtml = "Se ha Registrado correctamente";
                 Alerta.CssClass = "alert alert-success";
                 Alerta.Visible = true;
+               
+                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
 
-                Response.Redirect("Tipofact.aspx");
+                paisbarrio.SelectedValue="Seleccione";
+                departamentobarrio.Items.Clear();
+                municipiobarrio.Items.Clear();
+                zonabarrio.Items.Clear();
+                TextBox1.Text = "";
+
             }
             else
             {
@@ -144,11 +161,18 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
                 TextBox1.Text = "";
-                Response.Redirect("Tipofact.aspx");
+                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+
+                paisbarrio.SelectedValue = "Seleccione";
+                departamentobarrio.Items.Clear();
+                municipiobarrio.Items.Clear();
+                zonabarrio.Items.Clear();
+                TextBox1.Text = "";
             }
 
 
 
+         
 
         }
 
@@ -164,6 +188,7 @@ namespace VisapLine.View.Private
                 departamentozona.DataTextField = "departamento";
                 departamentozona.DataValueField = "iddepartamento";
                 departamentozona.DataBind();
+
 
             }
             catch (Exception ex)
@@ -188,6 +213,8 @@ namespace VisapLine.View.Private
                 municipiozona.DataValueField = "idmunicipio";
                 municipiozona.DataBind();
 
+                
+
             }
             catch (Exception ex)
             {
@@ -205,7 +232,35 @@ namespace VisapLine.View.Private
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+           
+            zn.municipio_idmunicipio = municipiozona.SelectedValue;
+            zn.zona = TextBox2.Text.ToUpper();
 
+            if (zn.RegistrarZona(zn))
+            {
+                textError.InnerHtml = "Se ha Registrado correctamente";
+                Alerta.CssClass = "alert alert-success";
+                Alerta.Visible = true;
+                paiszona.SelectedValue = "Seleccione";
+                departamentozona.Items.Clear();
+                municipiozona.Items.Clear();
+                TextBox1.Text = "";
+                
+            }
+            else
+            {
+                textError.InnerHtml = "No se registro";
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            
+                paiszona.SelectedValue = "Seleccione";
+                departamentozona.Items.Clear();
+                municipiozona.Items.Clear();
+                TextBox1.Text = "";
+            }
+
+
+           
         }
     }
 }

@@ -22,7 +22,7 @@ namespace VisapLine.Model
 
         public bool RegistrarZona(Zonas zon)
         {
-            return data.OperarDatos("select pr_insertarzona('"+zon+"')");
+            return data.OperarDatos("select pr_insertarzona('"+zon.municipio_idmunicipio+"','"+zon.zona+"')");
         }
     }
 }

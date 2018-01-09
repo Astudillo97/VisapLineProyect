@@ -8,17 +8,15 @@
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
     <section class="content-header">
-        <center><h3>Tipo Factura</h3></center>
+        <h3>Tipo Factura</h3>
+   </section>
 
+    <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
                 <h3 class="box-title">Crear Tipo Factura</h3>
-                <a href="Tipofact.aspx">Tipofact.aspx</a>
-
-
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-
                 </div>
             </div>
             <!-- /.box-header -->
@@ -28,7 +26,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Nombre:</label>
                             <div class="col-sm-10">
-                                <asp:TextBox runat="server" type="text" class="form-control" ID="texboxtipofactura" Style="text-transform: uppercase" ></asp:TextBox>
+                                <asp:TextBox runat="server" type="text" class="form-control" ID="texboxtipofactura" Style="text-transform: uppercase"></asp:TextBox>
                             </div>
 
 
@@ -69,9 +67,9 @@
                         <div class="form-group row">
 
                             <div class="col-sm-10">
-                                <asp:GridView ID="GridView1"  runat="server"  class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
+                                <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
                                     <Columns>
-                                        <asp:BoundField  HeaderText="Id Tipo Factura" DataField="idtipofactura" Visible="false" />
+                                        <asp:BoundField HeaderText="Id Tipo Factura" DataField="idtipofactura" Visible="false" />
                                         <asp:BoundField HeaderText="Tipo Factura" DataField="tipofactura" />
                                         <asp:TemplateField HeaderText="Borrar">
                                             <ItemTemplate>

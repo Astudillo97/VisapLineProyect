@@ -10,10 +10,10 @@
         }
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
-        <h1>Gestion del Cliente
-        </h1>
+        <h2>Gestion del Cliente
+        </h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
             <li class="breadcrumb-item"><a href="#">Clientes</a></li>
@@ -25,6 +25,7 @@
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
     <section class="content">
+
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li><a class="active" id="inf" href="#informacion" data-toggle="tab">Cliente</a></li>
