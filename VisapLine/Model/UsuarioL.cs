@@ -24,10 +24,17 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("SELECT pr_actulizarcontrasenausuario('" + usu.idusuario+"','"+usu.usuapassw+"');");
         }
-
         public DataTable ConsultarUsuarioId(UsuarioL usu)
         {
             return data.ConsultarDatos("SELECT * from  public.pr_consultaridusuario('"+usu.idusuario+"');");
+        }
+        public bool RegistrarUsuario(UsuarioL usu)
+        {
+            return data.OperarDatos("select * from pr_insertarusuario( '"+usu.usuauser+"','"+usu.usuapassw+"','"+usu.rol_idrol+"')");
+        }
+        public DataTable ConsultarUsuarioByUsuario(UsuarioL usu)
+        {
+            return data.ConsultarDatos("select * from pr_consultarusuarioName('" + usu.usuauser+"');");
         }
     }
 }

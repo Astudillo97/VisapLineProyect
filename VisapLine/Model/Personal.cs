@@ -18,6 +18,20 @@ namespace VisapLine.Model
         public string fechanac { get; set; }
         public string rh { get; set; }
         public string usuario_idusuario { get; set; }
-        
+        public string estado { get; set; }
+        public string correo { get; set; }
+
+        public bool RegistrarPersonal(Personal pers)
+        {
+            return data.OperarDatos(" select * from public.pr_insertarpersonal('"+pers.identificacion+ "','"+pers.nombre+ "','" + pers.apellido + "', '" + pers.fechanac + "', '" + pers.rh + "', '" + pers.usuario_idusuario + "','" + pers.estado + "','" + pers.correo + "')");
+        }
+        public bool ActualizarPersonal( Personal pers)
+        {
+            return data.OperarDatos("select * from public.pr_actulizarpersonal('" + pers.idpersonal + "','" + pers.identificacion + "','" + pers.nombre + "','" + pers.apellido + "','" + pers.fechanac + "','" + pers.rh + "', '" + pers.estado + "', '" + pers.correo + "')");
+        }
+        public DataTable ConsultarPersonalIdentf(Personal pers)
+        {
+            return data.ConsultarDatos("SELECT * from public.pr_consultarppersona('"+pers.identificacion+"');");
+        }
     }
 }
