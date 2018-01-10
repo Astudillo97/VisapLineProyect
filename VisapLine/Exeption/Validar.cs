@@ -33,7 +33,7 @@ namespace VisapLine.Exeption
         }
         public static string validarlleno(string dat)
         {
-            if (dat != null && dat.Length>0)
+            if (dat != null && dat.Length > 0)
             {
                 return dat;
             }
@@ -67,6 +67,21 @@ namespace VisapLine.Exeption
             {
                 throw new ValidarExeption("Esta ingresando letras en donde debe ir un numero");
             }
+        }
+
+        public static bool validartrue(bool check)
+        {
+            
+                if (check)
+                {
+                    return true;
+                }
+                else
+                {
+                    throw new ValidarExeption("Debe seleccionar un plan de servicio");
+                }
+           
+           
         }
 
     }

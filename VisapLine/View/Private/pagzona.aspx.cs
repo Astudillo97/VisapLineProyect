@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using VisapLine.Model;
 using VisapLine.Exeption;
 
+
 namespace VisapLine.View.Private
 {
     public partial class pagzona : System.Web.UI.Page
@@ -61,8 +62,8 @@ namespace VisapLine.View.Private
                 departamentobarrio.DataTextField = "departamento";
                 departamentobarrio.DataValueField = "iddepartamento";
                 departamentobarrio.DataBind();
-                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
 
+                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             }
             catch (Exception ex)
             {
@@ -133,42 +134,55 @@ namespace VisapLine.View.Private
 
         protected void BtnGuardarbarrio_Click(object sender, EventArgs e)
         {
-            barr.barrios= TextBox1.Text.ToUpper();
-            barr.muninicio_idmunicipio = municipiobarrio.SelectedValue;
-            barr.zona_idzona = zonabarrio.SelectedValue;
 
-
-
-            if (barr.RegistrarBarrios(barr))
+            try
             {
+                barr.barrios = Validar.validarlleno(TextBox1.Text.ToUpper());
+                barr.muninicio_idmunicipio = Validar.validarselected(municipiobarrio.SelectedValue);
+                barr.zona_idzona = Validar.validarselected(zonabarrio.SelectedValue);
 
-                textError.InnerHtml = "Se ha Registrado correctamente";
-                Alerta.CssClass = "alert alert-success";
-                Alerta.Visible = true;
-               
-                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
 
-                paisbarrio.SelectedValue="Seleccione";
-                departamentobarrio.Items.Clear();
-                municipiobarrio.Items.Clear();
-                zonabarrio.Items.Clear();
-                TextBox1.Text = "";
 
+                if (barr.RegistrarBarrios(barr))
+                {
+
+                    textError.InnerHtml = "Se ha Registrado correctamente";
+                    Alerta.CssClass = "alert alert-success";
+                    Alerta.Visible = true;
+
+                    ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+
+                    paisbarrio.SelectedValue = "Seleccione";
+                    departamentobarrio.Items.Clear();
+                    municipiobarrio.Items.Clear();
+                    zonabarrio.Items.Clear();
+                    TextBox1.Text = "";
+
+                }
+                else
+                {
+                    textError.InnerHtml = "No se registro";
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+                    TextBox1.Text = "";
+                    ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+
+                    paisbarrio.SelectedValue = "Seleccione";
+                    departamentobarrio.Items.Clear();
+                    municipiobarrio.Items.Clear();
+                    zonabarrio.Items.Clear();
+                    TextBox1.Text = "";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                textError.InnerHtml = "No se registro";
+
+                textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-                TextBox1.Text = "";
-                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
 
-                paisbarrio.SelectedValue = "Seleccione";
-                departamentobarrio.Items.Clear();
-                municipiobarrio.Items.Clear();
-                zonabarrio.Items.Clear();
-                TextBox1.Text = "";
             }
+           
 
 
 
@@ -232,32 +246,42 @@ namespace VisapLine.View.Private
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-           
-            zn.municipio_idmunicipio = municipiozona.SelectedValue;
-            zn.zona = TextBox2.Text.ToUpper();
+            try
+            {
+                zn.municipio_idmunicipio = Validar.validarselected(municipiozona.SelectedValue);
+                zn.zona = Validar.validarlleno(TextBox2.Text.ToUpper());
 
-            if (zn.RegistrarZona(zn))
-            {
-                textError.InnerHtml = "Se ha Registrado correctamente";
-                Alerta.CssClass = "alert alert-success";
-                Alerta.Visible = true;
-                paiszona.SelectedValue = "Seleccione";
-                departamentozona.Items.Clear();
-                municipiozona.Items.Clear();
-                TextBox1.Text = "";
-                
+                if (zn.RegistrarZona(zn))
+                {
+                    textError.InnerHtml = "Se ha Registrado correctamente";
+                    Alerta.CssClass = "alert alert-success";
+                    Alerta.Visible = true;
+                    paiszona.SelectedValue = "Seleccione";
+                    departamentozona.Items.Clear();
+                    municipiozona.Items.Clear();
+                    TextBox1.Text = "";
+
+                }
+                else
+                {
+                    textError.InnerHtml = "No se registro";
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+
+                    paiszona.SelectedValue = "Seleccione";
+                    departamentozona.Items.Clear();
+                    municipiozona.Items.Clear();
+                    TextBox1.Text = "";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                textError.InnerHtml = "No se registro";
+                textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-            
-                paiszona.SelectedValue = "Seleccione";
-                departamentozona.Items.Clear();
-                municipiozona.Items.Clear();
-                TextBox1.Text = "";
+
             }
+            
 
 
            

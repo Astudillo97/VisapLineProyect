@@ -13,14 +13,14 @@ namespace VisapLine.Model
         public string idplan { get; set; }
         public string valor { get; set; }
         public string detalle { get; set; }
-        public string telefonia { get; set; }
+        public string  telefonia { get; set; }
         public string televicion { get; set; }
         public string internet { get; set; }
         public string estado { get; set; }
         public string tipoplan { get; set; }
         public string subida { get; set; }
         public string bajada { get; set; }
-
+        public string zona_idzona { get; set; }
 
 
 
@@ -32,7 +32,7 @@ namespace VisapLine.Model
 
         public bool RegistrarPlan(Plan pln)
         {
-            return data.OperarDatos("");
+            return data.OperarDatos("select * from pr_insertarplan('"+pln.valor+"','"+pln.detalle+"','"+pln.telefonia+"','"+pln.televicion+"','"+pln.internet+"','"+pln.estado+"','"+pln.tipoplan+"','"+pln.subida+"','"+pln.bajada+"','"+pln.zona_idzona+"')");
         }
     }
 

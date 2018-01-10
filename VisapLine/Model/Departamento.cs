@@ -19,5 +19,11 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("SELECT * FROM public.pr_consultardepartamento('"+dep.pais_idpais+"'); ");
         }
+
+        public DataTable ConsultarDepartamento()
+        {
+            return data.ConsultarDatos("SELECT * FROM pr_consultardepartamento(); ");
+        }
+        
     }
 }

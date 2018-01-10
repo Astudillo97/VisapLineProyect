@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VisapLine.Model;
+using VisapLine.Exeption;
 
 namespace VisapLine.View.Private
 {
@@ -36,25 +37,38 @@ namespace VisapLine.View.Private
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            tf.tipofactura = texboxtipofactura.Text.ToUpper();
-            
+            try
+            {
+                tf.tipofactura = Validar.validarlleno(texboxtipofactura.Text.ToUpper());
 
-            if (tf.RegistrarTipoFactura(tf))
-            {
-                textError.InnerHtml = "Se ha Registrado correctamente";
-                Alerta.CssClass = "alert alert-success";
-                Alerta.Visible = true;
-               
-                
+
+                if (tf.RegistrarTipoFactura(tf))
+                {
+                    textError.InnerHtml = "Se ha Registrado correctamente";
+                    Alerta.CssClass = "alert alert-success";
+                    Alerta.Visible = true;
+
+
+                }
+                else
+                {
+                    textError.InnerHtml = "No se registro";
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+                    texboxtipofactura.Text = "";
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                textError.InnerHtml = "No se registro";
+                textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-                texboxtipofactura.Text = "";
-            
+
+
             }
+
+            
 
 
 
