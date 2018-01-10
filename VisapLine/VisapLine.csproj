@@ -417,6 +417,7 @@
     <Content Include="Contenido\js\pages\widget-morris-charts.js" />
     <Content Include="Contenido\js\template.js" />
     <Content Include="View\Login\login.aspx" />
+    <Content Include="View\Private\Almacen.aspx" />
     <Content Include="View\Private\Cliente.aspx" />
     <Content Include="View\Private\index.aspx" />
     <Content Include="View\Private\pagzona.aspx" />
@@ -492,6 +493,13 @@
     </Compile>
     <Compile Include="View\Private\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Almacen.aspx.cs">
+      <DependentUpon>Almacen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Almacen.aspx.designer.cs">
+      <DependentUpon>Almacen.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Cliente.aspx.cs">
       <DependentUpon>Cliente.aspx</DependentUpon>
