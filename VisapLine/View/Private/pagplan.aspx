@@ -24,6 +24,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
+
     <section class="content">
         <div class="box box-default ">
             <div class="box-header with-border">

@@ -419,6 +419,7 @@
     <Content Include="View\Login\login.aspx" />
     <Content Include="View\Private\Almacen.aspx" />
     <Content Include="View\Private\Cliente.aspx" />
+    <Content Include="View\Private\Contratoterc.aspx" />
     <Content Include="View\Private\index.aspx" />
     <Content Include="View\Private\pagplan.aspx" />
     <Content Include="View\Private\pagzona.aspx" />
@@ -508,6 +509,13 @@
     </Compile>
     <Compile Include="View\Private\Cliente.aspx.designer.cs">
       <DependentUpon>Cliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Contratoterc.aspx.cs">
+      <DependentUpon>Contratoterc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Contratoterc.aspx.designer.cs">
+      <DependentUpon>Contratoterc.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
