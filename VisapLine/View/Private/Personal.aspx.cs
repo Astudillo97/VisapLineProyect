@@ -71,22 +71,22 @@ namespace VisapLine.View.Private
                 if (e.CommandName.ToString() == "Editar")
                 {
                     ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
-                    pers.identificacion= e.CommandArgument.ToString();
+                    pers.identificacion = e.CommandArgument.ToString();
                     DataRow dat = pers.ConsultarPersonalIdentf(pers).Rows[0];
                     codigo.InnerHtml = dat["idpersonal"].ToString();
                     identificacion_.Value = dat["identificacion"].ToString();
                     nombre_.Value = dat["nombre"].ToString();
                     apellido_.Value = dat["apellido"].ToString();
-                    fecnac_.Value =Convert.ToDateTime( dat["fechanat"].ToString()).ToString("yyyy-MM-dd");
+                    fecnac_.Value = Convert.ToDateTime(dat["fechanat"].ToString()).ToString("yyyy-MM-dd");
                     rh_.SelectedValue = dat["correo"].ToString();
-                    estado_.SelectedValue=dat["correo"].ToString();
-                    correo_.Value=dat["correo"].ToString();
-                    usua.idusuario= dat["usuario_idusuario"].ToString();
+                    estado_.SelectedValue = dat["correo"].ToString();
+                    correo_.Value = dat["correo"].ToString();
+                    usua.idusuario = dat["usuario_idusuario"].ToString();
                     DataRow daat = usua.ConsultarUsuarioId(usua).Rows[0];
                     usuario_.Value = daat["usuario"].ToString();
                     textediccion.InnerHtml = "Edicción habilitada para " + dat["nombre"].ToString() + " " + dat["apellido"].ToString();
                     viewedicion.Visible = true;
-                    
+                    activacion = true;
                 }
                 if (e.CommandName.ToString() == "Eliminar")
                 {
@@ -123,44 +123,47 @@ namespace VisapLine.View.Private
 
                     }
                 }
-                usua.usuapassw = Convert.ToString(rnd1.Next(10000, 99999));
-                usua.usuauser = Validar.validarlleno(identificacion_.Value);
-                usua.rol_idrol = Validar.validarselected(rol_.SelectedValue);
-
-                //Datos del Personal
-                pers.identificacion = Validar.validarlleno(identificacion_.Value);
-                pers.nombre = Validar.validarlleno(nombre_.Value);
-                pers.apellido = Validar.validarlleno(apellido_.Value);
-                pers.fechanac = Validar.validarlleno(fecnac_.Value);
-                pers.rh = Validar.validarselected(rh_.SelectedValue);
-                pers.estado = Validar.validarselected(estado_.SelectedValue);
-                pers.correo = Validar.validarlleno(correo_.Value);
-                if (usua.RegistrarUsuario(usua))
+                else
                 {
-                    DataRow dat = usua.ConsultarUsuarioByUsuario(usua).Rows[0];
-                    pers.usuario_idusuario = dat["idusuario"].ToString();
-                    if (pers.RegistrarPersonal(pers))
+                    usua.usuapassw = Convert.ToString(rnd1.Next(10000, 99999));
+                    usua.usuauser = Validar.validarlleno(identificacion_.Value);
+                    usua.rol_idrol = Validar.validarselected(rol_.SelectedValue);
+
+                    //Datos del Personal
+                    pers.identificacion = Validar.validarlleno(identificacion_.Value);
+                    pers.nombre = Validar.validarlleno(nombre_.Value);
+                    pers.apellido = Validar.validarlleno(apellido_.Value);
+                    pers.fechanac = Validar.validarlleno(fecnac_.Value);
+                    pers.rh = Validar.validarselected(rh_.SelectedValue);
+                    pers.estado = Validar.validarselected(estado_.SelectedValue);
+                    pers.correo = Validar.validarlleno(correo_.Value);
+                    if (usua.RegistrarUsuario(usua))
                     {
-                        cor.destinatario = pers.correo;
-                        cor.asunto = "Bienvenido a VisapLine";
-                        cor.cuerpo = "Ya eres parte de la empresa.\n Inicia sesión con:\n Usuario:" + pers.identificacion + " Contraseña:" + usua.usuapassw + "";
-                        cor.EnviarMensaje();
-                        textError.InnerHtml = "Registrado correctamente";
-                        Alerta.CssClass = "alert alert-success";
-                        Alerta.Visible = true;
+                        DataRow dat = usua.ConsultarUsuarioByUsuario(usua).Rows[0];
+                        pers.usuario_idusuario = dat["idusuario"].ToString();
+                        if (pers.RegistrarPersonal(pers))
+                        {
+                            cor.destinatario = pers.correo;
+                            cor.asunto = "Bienvenido a VisapLine";
+                            cor.cuerpo = "Ya eres parte de la empresa.\n Inicia sesión con:\n Usuario:" + pers.identificacion + " Contraseña:" + usua.usuapassw + "";
+                            cor.EnviarMensaje();
+                            textError.InnerHtml = "Registrado correctamente";
+                            Alerta.CssClass = "alert alert-success";
+                            Alerta.Visible = true;
+                        }
+                        else
+                        {
+                            textError.InnerHtml = "No se ha podido conpletar el registro, es posible que ya se encuente registrado";
+                            Alerta.CssClass = "alert alert-error";
+                            Alerta.Visible = true;
+                        }
                     }
                     else
                     {
-                        textError.InnerHtml = "No se ha podido conpletar el registro, es posible que ya se encuente registrado";
+                        textError.InnerHtml = "No se ha podido completar el registro, verifique el usuario no se encuentre registrado";
                         Alerta.CssClass = "alert alert-error";
                         Alerta.Visible = true;
                     }
-                }
-                else
-                {
-                    textError.InnerHtml = "No se ha podido completar el registro, verifique el usuario no se encuentre registrado";
-                    Alerta.CssClass = "alert alert-error";
-                    Alerta.Visible = true;
                 }
             }
             catch (Exception ex)
