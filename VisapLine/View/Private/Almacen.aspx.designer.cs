@@ -40,6 +40,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlInputText tipoproducto;
         
         /// <summary>
+        /// Control tablatipoproducto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView tablatipoproducto;
+        
+        /// <summary>
         /// Control nit_.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlInputText correo_;
         
         /// <summary>
+        /// Control tablaproveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView tablaproveedores;
+        
+        /// <summary>
         /// Control fabricante_.
         /// </summary>
         /// <remarks>
@@ -83,6 +101,15 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText fabricante_;
+        
+        /// <summary>
+        /// Control tablafabricantes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView tablafabricantes;
         
         /// <summary>
         /// Control modelo_.
@@ -94,12 +121,21 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlInputText modelo_;
         
         /// <summary>
-        /// Control fabricante.
+        /// Control listfabricante.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList fabricante;
+        protected global::System.Web.UI.WebControls.DropDownList listfabricante;
+        
+        /// <summary>
+        /// Control tablamodelo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView tablamodelo;
     }
 }

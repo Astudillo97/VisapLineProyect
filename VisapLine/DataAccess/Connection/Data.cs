@@ -28,9 +28,9 @@ namespace VisapLine.DataAccess.Connection
                 }
 
             }
-            catch
+            catch(Exception ex)
             {
-                throw new ValidarExeption("No se ha realizado la operacion");
+                throw new ValidarExeption("No se ha realizado la operacion",ex);
             }
             //try
             //{
@@ -58,9 +58,9 @@ namespace VisapLine.DataAccess.Connection
                 CloseConexion();
                 return datos;
             }
-            catch
+            catch(Exception ex)
             {
-                throw new ValidarExeption("No se han encontrado registros");
+                throw new ValidarExeption("No se han encontrado registros",ex);
             }
         }
     }

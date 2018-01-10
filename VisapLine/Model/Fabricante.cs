@@ -16,11 +16,15 @@ namespace VisapLine.Model
 
         public bool RegistrarFabricante(Fabricante fb)
         {
-            return data.OperarDatos("");
+            return data.OperarDatos("select * from pr_insertarfabricante('"+fb.fabricante+"')");
         }
         public DataTable ConsultarFabricante()
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from pr_consultarfabricante()");
+        }
+        public bool EliminarFabricante(Fabricante fb)
+        {
+            return data.OperarDatos("select * from pr_borrarfabricante('"+fb.idfabricante+"')");
         }
     }
 }

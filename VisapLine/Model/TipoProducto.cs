@@ -13,5 +13,17 @@ namespace VisapLine.Model
         IData data = new Data();
         public string idtipoproducto { get; set; }
         public string tipoproducto { get; set; }
+        public bool RegistrarTipoProducto(TipoProducto tpd)
+        {
+            return data.OperarDatos(" select * from pr_insertartipoproduc('"+tpd.tipoproducto+"')");
+        }
+        public bool EliminarTipoProducto(TipoProducto tipd)
+        {
+            return data.OperarDatos(" select * from pr_borrartipoproducto('"+tipd.idtipoproducto+"')");
+        }
+        public DataTable ConsultarTipoProducto()
+        {
+            return data.ConsultarDatos("select * from pr_consultartipoproducto()");
+        }
     }
 }
