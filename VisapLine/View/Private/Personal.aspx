@@ -2,11 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
+        function panel1() {
+            document.getElementById("pan1").click();
+        }
         function panel2() {
             document.getElementById("pan2").click();
-        }
-        function panel3() {
-            document.getElementById("pan3").click();
         }
     </script>
 </asp:Content>
@@ -15,7 +15,7 @@
         <h1>Gestion del Personal
         </h1>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item" ><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
+            <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
             <li class="breadcrumb-item"><a href="#">Peronal</a></li>
             <li class="breadcrumb-item active">Registro</li>
         </ol>
@@ -29,7 +29,6 @@
             <ul class="nav nav-tabs">
                 <li><a class="active" id="pan1" href="#informacion" data-toggle="tab">Personal</a></li>
                 <li><a href="#contratos" id="pan2" data-toggle="tab">Registro</a></li>
-                <li><a href="#insidencias" id="pan3" data-toggle="tab">Rol del Usuario</a></li>
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="informacion">
@@ -95,6 +94,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <label class="text-center" runat="server" id="textediccion"></label>
                         <label runat="server" visible="false" id="codigo"></label>
+                        <label runat="server" visible="false" id="codigo1"></label>
                     </asp:Panel>
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -104,6 +104,14 @@
                                 </div>
                                 <div class="form-element">
                                     <div class="box-body">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Tipo Usuario</label>
+                                            <div class="col-sm-9">
+                                                <asp:DropDownList runat="server" ID="rol_" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Identificación</label>
                                             <div class="col-sm-9">
@@ -160,54 +168,19 @@
                                                 <input type="email" class="form-control" id="correo_" runat="server" placeholder="Correo">
                                             </div>
                                         </div>
+                                        <div class="box-body">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Usuario de acceso</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="usuario_" disabled runat="server" placeholder="Este campo es automatico">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="box-footer">
                                     <button class="btn btn-primary" runat="server" onserverclick="CancelarPersonal">Cancelar</button>
                                     <button class="btn btn-primary float-right" runat="server" onserverclick="RegistrarPersonal">Guardar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="insidencias">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Usuario y Rol </h3>
-                                </div>
-                                <div class="form-element">
-                                    <div class="box-body">
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Usuario de acceso</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="usuario_" disabled runat="server" placeholder="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Información de Contacto</h3>
-                                </div>
-                                <div class="form-element">
-                                    <div class="box-body">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Tipo Usuario</label>
-                                            <div class="col-sm-8">
-                                                <asp:DropDownList runat="server" ID="rol_" CssClass="form-control" AppendDataBoundItems="true">
-                                                    <asp:ListItem>Seleccione</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-footer">
-                                    <button class="btn btn-primary" runat="server" onserverclick="RegistrarRol">Guardar</button>
                                 </div>
                             </div>
                         </div>

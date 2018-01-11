@@ -74,13 +74,15 @@ namespace VisapLine.View.Private
                     pers.identificacion = e.CommandArgument.ToString();
                     DataRow dat = pers.ConsultarPersonalIdentf(pers).Rows[0];
                     codigo.InnerHtml = dat["idpersonal"].ToString();
+                    codigo1.InnerHtml = dat["usuario_idusuario"].ToString();
                     identificacion_.Value = dat["identificacion"].ToString();
                     nombre_.Value = dat["nombre"].ToString();
                     apellido_.Value = dat["apellido"].ToString();
                     fecnac_.Value = Convert.ToDateTime(dat["fechanat"].ToString()).ToString("yyyy-MM-dd");
-                    rh_.SelectedValue = dat["correo"].ToString();
-                    estado_.SelectedValue = dat["correo"].ToString();
+                    rh_.SelectedValue = dat["rh"].ToString();
+                    estado_.SelectedValue = dat["estado"].ToString().ToLower();
                     correo_.Value = dat["correo"].ToString();
+                    rol_.SelectedValue = dat["rol_idrol"].ToString();
                     usua.idusuario = dat["usuario_idusuario"].ToString();
                     DataRow daat = usua.ConsultarUsuarioId(usua).Rows[0];
                     usuario_.Value = daat["usuario"].ToString();
@@ -90,7 +92,23 @@ namespace VisapLine.View.Private
                 }
                 if (e.CommandName.ToString() == "Eliminar")
                 {
-
+                    pers.identificacion = e.CommandArgument.ToString();
+                    DataRow dat = pers.ConsultarPersonalIdentf(pers).Rows[0];
+                    pers.idpersonal = dat["idpersonal"].ToString();
+                    pers.identificacion = dat["identificacion"].ToString();
+                    pers.nombre = dat["nombre"].ToString();
+                    pers.apellido = dat["apellido"].ToString();
+                    pers.fechanac = Convert.ToDateTime(dat["fechanat"].ToString()).ToString("yyyy-MM-dd");
+                    pers.rh = dat["rh"].ToString();
+                    pers.estado = "false";
+                    pers.correo = dat["correo"].ToString();
+                    pers.usuario_idusuario= dat["usuario_idusuario"].ToString();
+                    if (pers.ActualizarPersonal(pers))
+                    {
+                        pers.identificacion = pers.identificacion;
+                        tablausuario.DataSource = Validar.Consulta(pers.ConsultarPersonalIdentf(pers));
+                        tablausuario.DataBind();
+                    }
                 }
             }
             catch (Exception ex)
@@ -100,17 +118,14 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
-
-        protected void RegistrarRol(object sender, EventArgs e)
-        {
-
-        }
         protected void RegistrarPersonal(object sender, EventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             try
             {
                 if (activacion)
                 {
+                    
                     pers.identificacion = Validar.validarlleno(identificacion_.Value);
                     pers.nombre = Validar.validarlleno(nombre_.Value);
                     pers.apellido = Validar.validarlleno(apellido_.Value);
@@ -118,9 +133,29 @@ namespace VisapLine.View.Private
                     pers.rh = Validar.validarselected(rh_.SelectedValue);
                     pers.estado = Validar.validarselected(estado_.SelectedValue);
                     pers.correo = Validar.validarlleno(correo_.Value);
+                    pers.idpersonal = codigo.InnerHtml;
                     if (pers.ActualizarPersonal(pers))
                     {
-
+                        usua.idusuario = codigo1.InnerHtml;
+                        usua.rol_idrol = rol_.SelectedValue;
+                        if (usua.ActualizarUsuarioRol(usua))
+                        {
+                            textError.InnerHtml = "Actualizado correctamente";
+                            Alerta.CssClass = "alert alert-success";
+                            Alerta.Visible = true;
+                        }
+                        else
+                        {
+                            textError.InnerHtml = "Se actualizo el empleado pero no se le actualizo el rol";
+                            Alerta.CssClass = "alert alert-error";
+                            Alerta.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        textError.InnerHtml = "No se ha podido actualizar el empleado";
+                        Alerta.CssClass = "alert alert-error";
+                        Alerta.Visible = true;
                     }
                 }
                 else
@@ -176,7 +211,22 @@ namespace VisapLine.View.Private
         }
         protected void CancelarPersonal(object sender, EventArgs e)
         {
-
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+            codigo.InnerHtml ="";
+            codigo1.InnerHtml = "";
+            identificacion_.Value = "";
+            nombre_.Value = "";
+            apellido_.Value = "";
+            fecnac_.Value = "";
+            rh_.SelectedValue = "Seleccione";
+            estado_.SelectedValue = "Seleccione";
+            correo_.Value = "";
+            rol_.SelectedValue = "Seleccione";
+            usuario_.Value = "";
+            activacion = false;
+            textediccion.InnerHtml = "";
+            viewedicion.Visible = false;
+            Alerta.Visible = false;
         }
     }
 }
