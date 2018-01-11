@@ -15,11 +15,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
-        <h1>Gestion del Cliente
+        <h1>Gestion del Inventario
         </h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
-            <li class="breadcrumb-item"><a href="#">Clientes</a></li>
+            <li class="breadcrumb-item"><a href="#">Inventario</a></li>
             <li class="breadcrumb-item active">Registro</li>
         </ol>
     </section>
@@ -30,22 +30,113 @@
     <section class="content">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li><a href="#Compras" id="pan1" data-toggle="tab" class="active">Compras</a></li>
-                <li><a href="#Inventario" id="pan2" data-toggle="tab">Inventario</a></li>
+                <li><a href="#Comprass" id="pan1" data-toggle="tab" class="active">Compras</a></li>
+                <li><a href="#Inventarioss" id="pan2" data-toggle="tab">Inventario</a></li>
                 <li><a href="#Tipoproduct" id="pan3" data-toggle="tab">Tipo de Productos</a></li>
-                <li><a href="#Proveedor" id="pan4" data-toggle="tab">Proveedores</a></li>
-                <li><a href="#Fabricantes" id="pan5" data-toggle="tab">Fabricantes</a></li>
-                <li><a href="#Modelos" id="pan6" data-toggle="tab">Modelos</a></li>
+                <li><a href="#Proveedors" id="pan4" data-toggle="tab">Proveedores</a></li>
+                <li><a href="#Fabricantess" id="pan5" data-toggle="tab">Fabricantes</a></li>
+                <li><a href="#Modeloss" id="pan6" data-toggle="tab">Modelos</a></li>
             </ul>
             <div class="tab-content">
-                <div class="active tab-pane" id="Compras">
+                <div class="active tab-pane" id="Comprass">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Compras</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-element">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Numero de pedido</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="numeropedido_" runat="server" placeholder="Serial">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Valor</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="valor_" runat="server" placeholder="Serial">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Proveedor</label>
+                                            <div class="col-sm-9">
+                                                <asp:DropDownList runat="server" ID="listProveedor_" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"></h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-element">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Fecha de Pedido</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" class="form-control" id="fechped_" runat="server" placeholder="Serial">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Fecha de Llegada</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" class="form-control" id="fechlleg_" runat="server" placeholder="Serial">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <button class="btn btn-primary float-right" runat="server" onserverclick="RegistrarCompra">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="box box-default collapsed-box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Tipos de producto</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <asp:GridView runat="server" ID="tablacompras" AutoGenerateColumns="true" class="table table-bordered table-striped table-responsive" OnRowCommand="tablatipoproducto_RowCommand">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="">
+                                            <ItemTemplate>
+                                                <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("idcompra") %>' Text="Borrar" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                            </div>
+                            <!-- /.box-footer-->
+                        </div>
+                    </div>
                 </div>
-                <div class="tab-pane" id="Inventario">
+                <div class="tab-pane" id="Inventarioss">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Inventario</h3>
+                                    <label runat="server" id="codigoCompra" visible="false"></label>
                                 </div>
                                 <div class="box-body">
                                     <div class="form-element">
@@ -78,6 +169,14 @@
                                             <div class="col-sm-9">
                                                 <asp:DropDownList runat="server" ID="estado_" CssClass="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
+                                                    <asp:ListItem>Activo</asp:ListItem>
+                                                    <asp:ListItem>Inactivo</asp:ListItem>
+                                                    <asp:ListItem>Da&#241;ado</asp:ListItem>
+                                                    <asp:ListItem>Vendido</asp:ListItem>
+                                                    <asp:ListItem>Prestado</asp:ListItem>
+                                                    <asp:ListItem>Disponible</asp:ListItem>
+                                                    <asp:ListItem>Revisi&#243;n</asp:ListItem>
+                                                    <asp:ListItem>Obsoleto</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
@@ -119,37 +218,37 @@
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <button class="btn btn-primary" runat="server" onserverclick="RegistrarTipoProducto">Guardar</button>
+                                    <button class="btn btn-primary" runat="server" onserverclick="RegistrarInventario">Guardar</button>
                                 </div>
                                 <div class="box box-default collapsed-box">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Tipos de producto</h3>
-                                    <div class="box-tools pull-right">
-                                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                                            <i class="fa fa-times"></i>
-                                        </button>
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Tipos de producto</h3>
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
                                     </div>
+                                    <div class="box-body">
+                                        <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" OnRowCommand="tablatipoproducto_RowCommand">
+                                            <Columns>
+                                                <asp:BoundField DataField="tipoproducto" HeaderText="Tipo de Producto"></asp:BoundField>
+                                                <asp:TemplateField HeaderText="">
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("idtipoproducto") %>' Text="Borrar" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                    </div>
+                                    <!-- /.box-footer-->
                                 </div>
-                                <div class="box-body">
-                                    <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" OnRowCommand="tablatipoproducto_RowCommand">
-                                        <Columns>
-                                            <asp:BoundField DataField="tipoproducto" HeaderText="Tipo de Producto"></asp:BoundField>
-                                            <asp:TemplateField HeaderText="">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("idtipoproducto") %>' Text="Borrar" />
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                        </Columns>
-                                    </asp:GridView>
-                                </div>
-                                <!-- /.box-body -->
-                                <div class="box-footer">
-                                </div>
-                                <!-- /.box-footer-->
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -207,7 +306,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="Proveedor">
+                <div class="tab-pane" id="Proveedors">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="box box-primary">
@@ -282,7 +381,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="Fabricantes">
+                <div class="tab-pane" id="Fabricantess">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="box box-primary">
@@ -336,7 +435,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="Modelos">
+                <div class="tab-pane" id="Modeloss">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="box box-primary">

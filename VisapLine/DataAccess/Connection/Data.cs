@@ -30,22 +30,8 @@ namespace VisapLine.DataAccess.Connection
             }
             catch(Exception ex)
             {
-                throw new ValidarExeption("No se ha realizado la operacion",ex);
+                throw new ValidarExeption("No se ha realizado la operacion "+ex.Message,ex);
             }
-            //try
-            //{
-            //    NpgsqlCommand comando = new NpgsqlCommand(sql, OpenConexion());
-            //    if (comando.ExecuteNonQuery() > 0)
-            //    {
-            //        CloseConexion();
-            //        return true;
-            //    }
-            //    return false;
-            //}
-            //catch
-            //{
-            //    return false;
-            //}
         }
 
         public DataTable ConsultarDatos(string sql)
@@ -60,7 +46,7 @@ namespace VisapLine.DataAccess.Connection
             }
             catch(Exception ex)
             {
-                throw new ValidarExeption("No se han encontrado registros",ex);
+                throw new ValidarExeption("No se han encontrado registros "+ex.Message,ex);
             }
         }
     }

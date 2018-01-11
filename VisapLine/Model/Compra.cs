@@ -17,5 +17,35 @@ namespace VisapLine.Model
         public string fechallegada { get; set; }
         public string valor { get; set; }
         public string proveedor_idproveedor { get; set; }
+        public string personal_idpersonal{get;set; }
+
+        public DataTable RegistrarCompra( Compra comp)
+        {
+            return data.ConsultarDatos("select * from pr_insertarcompra('" + comp.fechapedido + "' ,'" + comp.numeropedido+"','"+comp.fechallegada+ "','" + comp.valor + "','" + comp.proveedor_idproveedor + "','"+comp.personal_idpersonal+"')");
+        }
+        public bool ActualizarCompra(Compra comp)
+        {
+            return data.OperarDatos("select * from pr_actualizarrcompra('" + comp.idcompra + "', '" + comp.fechapedido + "','" + comp.numeropedido + "','" + comp.fechallegada + "','" + comp.valor + "','" + comp.personal_idpersonal + "')");
+        }
+        public bool EliminarCompra(Compra comp)
+        {
+            return data.OperarDatos("");
+        }
+        public DataTable ConsultarCompraByNumero(Compra comp)
+        {
+            return data.ConsultarDatos("");
+        }
+        public DataTable ConsultarCompraById(Compra comp)
+        {
+            return data.ConsultarDatos("");
+        }
+        public DataTable ConsultarCompraByProveedor(Compra comp)
+        {
+            return data.ConsultarDatos("");
+        }
+        public DataTable ConsultarComprar()
+        {
+            return data.ConsultarDatos("select * from pr_consultarrcompra()");
+        }
     }
 }
