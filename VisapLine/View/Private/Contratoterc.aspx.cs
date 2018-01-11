@@ -26,7 +26,11 @@ namespace VisapLine.View.Private
                     tipotercero.DataTextField = "tipoterceros";
                     tipotercero.DataValueField = "idtipotercero";
                     tipotercero.DataBind();
-                   
+
+                    DropDownListpais.DataSource = pais.ConsultarPais();
+                    DropDownListpais.DataTextField = "pais";
+                    DropDownListpais.DataValueField = "idpais";
+                    DropDownListpais.DataBind();
                 }
             }
             catch (Exception ex)
