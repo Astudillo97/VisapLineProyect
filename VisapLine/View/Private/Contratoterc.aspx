@@ -139,8 +139,20 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Telefono</label>
                                                                         <div class="col-sm-9">
-                                                                            <asp:TextBox ID="TextBoxtelefononatu" type="number" runat="server" CssClass="form-control" placeholder="Telefono"></asp:TextBox>
+                                                                            <div class="form-group row">
+                                                                                <asp:TextBox ID="TextBoxtelefononatu" type="number" runat="server" CssClass="form-control" placeholder="Telefono" Width="232px" ></asp:TextBox>
+                                                                                <div class="col-md-auto">
+                                                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="textboxtelefonoplus" Text="+" Width="37px"  Height="31px" OnClick="textboxtelefonoplus_Click" />
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
+                                                                        <asp:GridView ID="telefonos" OnRowDeleting="telefonos_RowDeleting" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server">
+                                                                            <Columns>
+                                                                                <asp:BoundField DataField="idtelefono" HeaderText="Codigo"></asp:BoundField>
+                                                                                <asp:BoundField DataField="telefono" HeaderText="Celular"></asp:BoundField>
+                                                                                <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="p-0"></asp:CommandField>
+                                                                            </Columns>
+                                                                        </asp:GridView>
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VisapLine.Model;
 using VisapLine.Exeption;
+using System.Data;
 
 namespace VisapLine.View.Private
 {
@@ -20,6 +21,8 @@ namespace VisapLine.View.Private
         TipoFactura tpfact = new TipoFactura();
         TipoResidencia tpres = new TipoResidencia();
         TipoDoc tpdoc = new TipoDoc();
+        Telefono tlf = new Telefono();
+        static DataTable listtelefono = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -31,6 +34,12 @@ namespace VisapLine.View.Private
                     tipotercero.DataValueField = "idtipotercero";
                     tipotercero.DataBind();
 
+                    listtelefono.Rows.Clear();
+                    listtelefono.Dispose();
+                    telefonos.Dispose();
+                    listtelefono.Columns.Clear();
+                    listtelefono.Columns.Add("idtelefono");
+                    listtelefono.Columns.Add("telefono");
 
                     DropDownListpais.DataSource = pais.ConsultarPais();
                     DropDownListpais.DataTextField = "pais";
@@ -163,7 +172,7 @@ namespace VisapLine.View.Private
             {
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;                
+                Alerta.Visible = true;
             }
 
 
@@ -174,7 +183,7 @@ namespace VisapLine.View.Private
             {
                 DropDownListbarrio.Items.Clear();
                 DropDownListbarrio.Items.Add(new ListItem("Seleccione", "Seleccione"));
-                barr.muninicio_idmunicipio= Validar.validarselected(DropDownListmunicipio.SelectedValue);
+                barr.muninicio_idmunicipio = Validar.validarselected(DropDownListmunicipio.SelectedValue);
                 DropDownListbarrio.DataSource = Validar.Consulta(barr.ConsultarBarriosIdMunicipio(barr));
                 DropDownListbarrio.DataTextField = "barrios";
                 DropDownListbarrio.DataValueField = "idbarrios";
@@ -195,13 +204,14 @@ namespace VisapLine.View.Private
             try
             {
                 terc.identificacion = Validar.validarnumero(TextBox1identificacion.Text);
-
-
+                
                 if (terc.ConsultarPersonaIdentifall(terc).Rows.Count > 0)
                 {
                     textError.InnerHtml = "El usuario ya se encuentra registrado";
-                    Alerta.CssClass = "alert alert-error";
-                    Alerta.Visible = true; 
+                    Alerta.CssClass = "alert alert-success";
+                    Alerta.Visible = true;
+
+
                 }
                 else
                 {
@@ -217,25 +227,117 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
+        protected void telefonos_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                TableCell cell = telefonos.Rows[e.RowIndex].Cells[0];
+                listtelefono.Rows.Remove(listtelefono.Rows[e.RowIndex]);
+                CargarTelefono();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void CargarTelefono()
+        {
+
+            try
+            {
+                telefonos.DataSource = listtelefono;
+                telefonos.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+        protected void textboxtelefonoplus_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataRow dat = listtelefono.NewRow();
+                dat["idtelefono"] = listtelefono.Rows.Count + 1;
+                dat["telefono"] = Validar.validarnumero(TextBoxtelefononatu.Text);
+                listtelefono.Rows.Add(dat);
+                CargarTelefono();
+                TextBoxtelefononatu.Text = "";
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
             try
             {
-                 
-                 Validar.validarnumero(TextBox1identificacion.Text);
-                terc.identificacion= Validar.validarlleno(TextBox1identificacion.Text);
-                terc.direccion= Validar.validarlleno(TextBoxdireccion.Text);
+
+                Validar.validarnumero(TextBox1identificacion.Text);
+                terc.identificacion = Validar.validarlleno(TextBox1identificacion.Text);
+                terc.direccion = Validar.validarlleno(TextBoxdireccion.Text);
                 terc.tipodoc_idtipodoc = Validar.validarselected(DropDownListtipodocu.SelectedValue);
+                terc.tipofactura_idtipofactura = Validar.validarselected(DropDownList2.SelectedValue);
+                terc.nombre = Validar.validarlleno(TextBoxnombre.Text);
+                terc.apellido = Validar.validarlleno(TextBox1apellido.Text);
+                terc.fechanatcimiento = Validar.validarlleno(TextBox1fecnac.Text);
+                terc.correo = Validar.validarlleno(TextBoxcorreo.Text);
+                terc.barrios_idbarrios = Validar.validarselected(DropDownListbarrio.SelectedValue);
+                terc.tiporesidencia_idtiporesidencia = Validar.validarselected(DropDownListtiporesi.SelectedValue);
+                terc.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
+                terc.estrato = Validar.validarselected(DropDownListestrato.SelectedValue);
+                terc.estado = Validar.validarselected(DropDownListestado.SelectedValue);
 
+
+
+                if (terc.RegistrarTerceros(terc))
+                {
+                    foreach (DataRow item in listtelefono.Rows)
+                    {
+                        if (listtelefono.Rows.Count > 0)
+                        {
+                            tlf.telefono = item["telefono"].ToString();
+                            tlf.terceros_idterceros = terc.identificacion;
+                            tlf.RegistrarTelefono(tlf);
+
+                        }
+                        else
+                        {
+                            textError.InnerHtml = "Por favor agregue el telefono a la lista";
+                            Alerta.CssClass = "alert alert-error";
+                            Alerta.Visible = true;
+                        }
+                    }
+                    textError.InnerHtml = "Se ha registrado con exito";
+                    Alerta.CssClass = "alert alert-success";
+                    Alerta.Visible = true;
+                }
+                else
+                {
+                    textError.InnerHtml = "Error al registrar el usuario";
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+                }
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
             }
-          
+
 
 
 
@@ -249,7 +351,7 @@ namespace VisapLine.View.Private
 
         }
 
-        
+
     }
 }
 

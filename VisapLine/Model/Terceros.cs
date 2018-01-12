@@ -49,5 +49,11 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("select * from pr_actualizartercero('"+ter.idterceros+"','" + ter.identificacion+"','"+ter.nombre+ "','"+ter.apellido+ "','"+ter.direccion+ "','"+ter.correo+ "','"+ter.estrato+ "','"+ter.estado+ "','"+ter.tipotercero_idtipotercero+ "','"+ter.tipodoc_idtipodoc+ "','"+ter.fechanatcimiento+ "','"+ter.tiporesidencia_idtiporesidencia+ "','"+ter.tipofactura_idtipofactura+ "','"+ter.barrios_idbarrios+"'); ");
         }
+
+        public bool RegitrarTerceros2(Terceros per)
+        {
+            return data.OperarDatos("SELECT * from public.pr_insertartercero('" + per.identificacion + "','" + per.estrato + "','" + per.estado + "','" + per.tipotercero_idtipotercero + "','" + per.tiporesidencia_idtiporesidencia + "','" + per.tipofactura_idtipofactura + "');");
+        }
+
     }
 }
