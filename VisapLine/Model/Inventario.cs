@@ -19,6 +19,11 @@ namespace VisapLine.Model
         public string estado { get; set; }
         public string modelo_idmodelo { get; set; }
         public string mac { get; set; }
-        public string detallecompra_iddetallecompra { get; set; }
+        public string compra_idcompra { get; set; }
+
+        public bool RegistrarInventario(Inventario inv)
+        {
+            return data.OperarDatos("select * from pr_insertarinventario('"+inv.serial+ "','" + inv.descripcion + "','" + inv.tipoproducto_idtipoproducto + "','" + inv.vidautil + "','" + inv.estado + "','" + inv.modelo_idmodelo + "','" + inv.mac + "','" + inv.compra_idcompra + "')");
+        }
     }
 }

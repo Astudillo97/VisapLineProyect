@@ -42,6 +42,17 @@ namespace VisapLine.Exeption
                 throw new ValidarExeption("Campo vacio");
             }
         }
+        public static string validarsession(string dat)
+        {
+            if (dat != null && dat.Length > 0)
+            {
+                return dat;
+            }
+            else
+            {
+                throw new ValidarExeption("Esta infringiendo normas de seguridad");
+            }
+        }
 
         public static string validarselected(string dat)
         {
