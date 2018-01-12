@@ -8,6 +8,14 @@
         function panel3() {
             document.getElementById("pan3").click();
         }
+        function myFunction() {
+            var id = document.getElementById("<%=tipotercero_.ClientID%>").value;
+            if (id === "2") {
+                document.getElementById("<%=apellido_.ClientID%>").style.display = 'none';
+                document.getElementById("<%=_apellido_.ClientID%>").style.display = 'none';
+                document.getElementById("<%=_nombre_.ClientID%>").innerHTML = "Razon Socail";
+            }
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -110,7 +118,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Tipo Usuario</label>
                                             <div class="col-sm-8">
-                                                <asp:DropDownList runat="server" ID="tipotercero_" CssClass="form-control" AppendDataBoundItems="true">
+                                                <asp:DropDownList runat="server" onchange="myFunction()" ID="tipotercero_" CssClass="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
@@ -185,8 +193,8 @@
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                        <button class="btn btn-primary" onclick="panel2();">Siguiente</button>
-                               </div>
+                                    <a href="#" class="btn btn-primary" onclick="panel3();">Siguiente</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -207,13 +215,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Nombre</label>
+                                            <label id="_nombre_" runat="server" class="col-sm-3 col-form-label">Nombre</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="nombre_" runat="server" placeholder="Nombre">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Apellido</label>
+                                            <label id="_apellido_" runat="server" class="col-sm-3 col-form-label">Apellido</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="apellido_" runat="server" placeholder="Apellido">
                                             </div>
@@ -224,56 +232,56 @@
                                                 <input type="date" class="form-control" id="fecnac_" runat="server" placeholder="Apellido">
                                             </div>
                                         </div>
-                                        <div class="box box-default">
-                                            <div class="box-header with-border">
-                                                <h3 class="box-title">Telefono</h3>
-                                                <div class="box-tools pull-right">
-                                                    <button type="button" data-toggle="modal" data-target="#modal-primary" class="btn btn-box-tool">
-                                                        <i class="glyphicon glyphicon-earphone"></i>
-                                                    </button>
-                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                                        <i class="fa fa-minus"></i>
-                                                    </button>
-                                                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="modal fade" id="modal-primary">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-body">
-                                                            <div class="box box-primary bg-transparent">
-                                                                <div class="form-element">
-                                                                    <div class="box-body">
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-8">
-                                                                                <input type="text" class="form-control" id="telefono_" runat="server" placeholder="Telefono o celular">
-                                                                            </div>
-                                                                            <div class="col-sm-4">
-                                                                                <button class="btn btn-primary" runat="server" onserverclick="RegistrarTelefono">Guardar</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-default">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Telefono</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" data-toggle="modal" data-target="#modal-primary" class="btn btn-box-tool">
+                                            <i class="glyphicon glyphicon-earphone"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="modal-primary">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="box box-primary bg-transparent">
+                                                    <div class="form-element">
+                                                        <div class="box-body">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control" id="telefono_" runat="server" placeholder="Telefono o celular">
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <button class="btn btn-primary" runat="server" onserverclick="RegistrarTelefono">Guardar</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!-- /.modal-content -->
                                                 </div>
-                                                <!-- /.modal-dialog -->
-                                            </div>
-                                            <div class="box-body">
-                                                <asp:GridView ID="telefonos" OnRowDeleting="telefonos_RowDeleting1" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server">
-                                                    <Columns>
-                                                        <asp:BoundField DataField="idtelefono" HeaderText="Codigo"></asp:BoundField>
-                                                        <asp:BoundField DataField="telefono" HeaderText="Celular"></asp:BoundField>
-                                                        <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="p-0"></asp:CommandField>
-                                                    </Columns>
-                                                </asp:GridView>
                                             </div>
                                         </div>
+                                        <!-- /.modal-content -->
                                     </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <div class="box-body">
+                                    <asp:GridView ID="telefonos" OnRowDeleting="telefonos_RowDeleting1" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server">
+                                        <Columns>
+                                            <asp:BoundField DataField="idtelefono" HeaderText="Codigo"></asp:BoundField>
+                                            <asp:BoundField DataField="telefono" HeaderText="Celular"></asp:BoundField>
+                                            <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="p-0"></asp:CommandField>
+                                        </Columns>
+                                    </asp:GridView>
                                 </div>
                             </div>
                         </div>
