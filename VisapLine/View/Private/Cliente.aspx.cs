@@ -22,7 +22,8 @@ namespace VisapLine.View.Private
         Pais pais = new Pais();
         Departamento depart = new Departamento();
         Municipio munic = new Municipio();
-        public static bool activacion=false;
+        static DataTable listtelefono = new DataTable();
+        public static bool activacion = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,7 +31,12 @@ namespace VisapLine.View.Private
             {
                 if (!IsPostBack)
                 {
-
+                    listtelefono.Rows.Clear();
+                    listtelefono.Dispose();
+                    telefonos.Dispose();
+                    listtelefono.Columns.Clear();
+                    listtelefono.Columns.Add("idtelefono");
+                    listtelefono.Columns.Add("telefono");
 
                     tipotercero_.DataSource = tpter.ConsultarTipoTercero();
                     tipotercero_.DataTextField = "tipoterceros";
@@ -57,7 +63,7 @@ namespace VisapLine.View.Private
                     pais_.DataValueField = "idpais";
                     pais_.DataBind();
 
-
+                    CargarTelefono();
                 }
                 Alerta.Visible = false;
             }
@@ -73,10 +79,10 @@ namespace VisapLine.View.Private
 
         protected void pais__SelectedIndexChanged(object sender, EventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             try
             {
                 cargarDepartamentos(Validar.validarselected(pais_.SelectedValue));
-                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             }
             catch (Exception ex)
             {
@@ -84,14 +90,13 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert-error";
                 Alerta.Visible = true;
             }
-            
+
         }
 
         private void cargarDepartamentos(string dat)
         {
             try
             {
-
                 departamento_.Items.Clear();
                 departamento_.Items.Add(new ListItem("Seleccione", "Seleccione"));
                 depart.pais_idpais = dat;
@@ -110,10 +115,10 @@ namespace VisapLine.View.Private
 
         protected void departamento__SelectedIndexChanged(object sender, EventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             try
             {
                 cargarMunicipios(Validar.validarselected(departamento_.SelectedValue));
-                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             }
             catch (Exception ex)
             {
@@ -145,10 +150,10 @@ namespace VisapLine.View.Private
 
         protected void municipio__SelectedIndexChanged(object sender, EventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             try
             {
                 cargarBarrios(Validar.validarselected(municipio_.SelectedValue));
-                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             }
             catch (Exception ex)
             {
@@ -180,6 +185,7 @@ namespace VisapLine.View.Private
 
         protected void RegistrarTercero(object sender, EventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             try
             {
                 if (activacion)//si es true se activa la actualizacion de lo contrario solo registra
@@ -213,12 +219,11 @@ namespace VisapLine.View.Private
                         Alerta.CssClass = "alert alert-error";
                         Alerta.Visible = true;
                     }
-                    ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
                 }
                 else
                 {
                     terc.identificacion = Validar.validarnumero(identificacion_.Value);
-                    if (terc.ConsultarPersonaIdentif(terc).Rows.Count > 0)
+                    if (terc.ConsultarPersonaIdentifall(terc).Rows.Count > 0)
                     {
                         textError.InnerHtml = "El usuario ya se encuentra registrado";
                         Alerta.CssClass = "alert alert-error";
@@ -241,9 +246,12 @@ namespace VisapLine.View.Private
                         terc.fechanatcimiento = Validar.validarlleno(fecnac_.Value);
                         if (terc.RegistrarTerceros(terc))
                         {
-                            terc.identificacion = identificacion_.Value;
-                            DataRow dat = terc.ConsultarPersonaIdentifall(terc).Rows[0];
-                            codigo.InnerHtml = dat["idterceros"].ToString();
+                            foreach (DataRow item in listtelefono.Rows)
+                            {
+                                tlf.telefono = item["telefono"].ToString();
+                                tlf.terceros_idterceros = terc.identificacion;
+                                tlf.RegistrarTelefono(tlf);
+                            }
                             textError.InnerHtml = "Se ha registrado con exito";
                             Alerta.CssClass = "alert alert-success";
                             Alerta.Visible = true;
@@ -254,7 +262,6 @@ namespace VisapLine.View.Private
                             Alerta.CssClass = "alert alert-error";
                             Alerta.Visible = true;
                         }
-                        ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
                     }
                 }
 
@@ -268,45 +275,37 @@ namespace VisapLine.View.Private
             }
         }
 
-        protected void GridView1_RowDeleting1(object sender, GridViewDeleteEventArgs e)
+        protected void telefonos_RowDeleting1(object sender, GridViewDeleteEventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
             try
             {
                 TableCell cell = telefonos.Rows[e.RowIndex].Cells[0];
-                tlf.idtelefono = cell.Text;
-                tlf.terceros_idterceros = codigo.InnerHtml;
-                if (tlf.EliminarTelefono(tlf))
-                {
-                    CargarTelefono(tlf.terceros_idterceros);
-                    ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
-                }
+                listtelefono.Rows.Remove(listtelefono.Rows[e.RowIndex]);
+                CargarTelefono();
             }
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
             }
         }
 
-        protected void CargarTelefono(string idpersona)
+        protected void CargarTelefono()
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
             try
             {
-                tlf.terceros_idterceros = idpersona;
-                if (tlf.ConsultarTelefonosIdTerceros(tlf) != null)
-                {
-                    telefonos.DataSource = tlf.ConsultarTelefonosIdTerceros(tlf);
-                    telefonos.DataBind();
-                }
+                telefonos.DataSource = listtelefono;
+                telefonos.DataBind();
+
             }
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
             }
         }
 
@@ -314,21 +313,19 @@ namespace VisapLine.View.Private
         {
             try
             {
-                tlf.telefono = Validar.validarnumero(telefono_.Value);
-                tlf.terceros_idterceros = codigo.InnerHtml;
-                if (tlf.RegistrarTelefono(tlf))
-                {
-                    CargarTelefono(tlf.terceros_idterceros);
-                    ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
-                }
+                DataRow dat = listtelefono.NewRow();
+                dat["idtelefono"] = listtelefono.Rows.Count+1;
+                dat["telefono"] = Validar.validarnumero(telefono_.Value);
+                listtelefono.Rows.Add(dat);
+                CargarTelefono();
             }
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
             }
+
         }
 
         protected void ConsultarIdentif(object sender, EventArgs e)
@@ -336,7 +333,7 @@ namespace VisapLine.View.Private
             try
             {
                 terc.identificacion = Validar.validarnumero(identif_.Value);
-                tablacliente.DataSource = Validar.Consulta(terc.ConsultarPersonaIdentif(terc));
+                tablacliente.DataSource = Validar.Consulta(terc.ConsultarPersonaIdentifall(terc));
                 tablacliente.DataBind();
             }
             catch (Exception ex)
@@ -358,22 +355,20 @@ namespace VisapLine.View.Private
                 }
                 if (e.CommandName.ToString() == "Editar")
                 {
-                    
                     string DeleteRowId = e.CommandArgument.ToString();
                     terc.identificacion = DeleteRowId;
-                    DataRow dat=terc.ConsultarPersonaIdentifall(terc).Rows[0];
+                    DataRow dat = terc.ConsultarPersonaIdentifall(terc).Rows[0];
                     barr.idbarrios = dat["barrios_idbarrios"].ToString();
                     DataRow dir = barr.ConsultarTodoporBarrio(barr).Rows[0];
                     cargarDepartamentos(dir["idpais"].ToString());
                     pais_.SelectedValue = dir["idpais"].ToString();
                     departamento_.SelectedValue = dir["iddepartamento"].ToString();
                     cargarMunicipios(dir["iddepartamento"].ToString());
-                    municipio_.SelectedValue= dir["idmunicipio"].ToString();
+                    municipio_.SelectedValue = dir["idmunicipio"].ToString();
                     cargarBarrios(dir["idmunicipio"].ToString());
                     viewedicion.Visible = true;
-                    textediccion.InnerHtml = "Edicción habilitada para " + dat["nombre"].ToString()+" "+ dat["apelldio"].ToString();
+                    textediccion.InnerHtml = "Edicción habilitada para " + dat["nombre"].ToString() + " " + dat["apelldio"].ToString();
                     codigo.InnerHtml = dat["idterceros"].ToString();
-                    CargarTelefono(dat["idterceros"].ToString());
                     identificacion_.Value = dat["identificacion"].ToString();
                     nombre_.Value = dat["nombre"].ToString();
                     apellido_.Value = dat["apelldio"].ToString();
@@ -386,7 +381,7 @@ namespace VisapLine.View.Private
                     tiporesident_.SelectedValue = dat["tiporesidencia_idtiporesidencia"].ToString();
                     tipofact_.SelectedValue = dat["tipofactura_idtipofactura"].ToString();
                     barrio_.SelectedValue = dat["barrios_idbarrios"].ToString();
-                    fecnac_.Value =Convert.ToDateTime(dat["fechanatcimiento"]).ToString("yyyy-MM-dd");
+                    fecnac_.Value = Convert.ToDateTime(dat["fechanatcimiento"]).ToString("yyyy-MM-dd");
                     ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
                     activacion = true;
 
@@ -394,7 +389,7 @@ namespace VisapLine.View.Private
                 if (e.CommandName.ToString() == "Eliminar")
                 {
                     string DeleteRowId = e.CommandArgument.ToString();
-                    
+
                 }
             }
             catch (Exception ex)
