@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
         function panel2() {
-            document.getElementById("reg").click();
+            document.getElementById("pan2").click();
         }
         function panel3() {
             document.getElementById("pan3").click();
@@ -27,9 +27,9 @@
     <section class="content">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li><a class="active" id="inf" href="#informacion" data-toggle="tab">Cliente</a></li>
-                <li><a href="#contratos" id="reg" data-toggle="tab">Registro</a></li>
-                <li><a href="#insidencias" id="pan3" data-toggle="tab">Telefono</a></li>
+                <li><a class="active" id="pan1" href="#informacion" data-toggle="tab">Cliente</a></li>
+                <li><a href="#registro" id="pan2" data-toggle="tab">Registro</a></li>
+                <li><a href="#finalizacion" id="pan3" data-toggle="tab">Finalización</a></li>
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="informacion">
@@ -63,17 +63,17 @@
                                         <Columns>
                                             <asp:TemplateField HeaderText="">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ver_btn" Width="45" runat="server" ImageUrl="../../Contenido/images/icons/ver.png" CssClass="btn btn-link" CommandName="Ver" CommandArgument='<%# Eval("identificacion") %>' Text="" />
+                                                    <asp:ImageButton ID="ver_btn" Width="45" runat="server" ImageUrl="../../Contenido/images/icons/ver.png" CssClass="btn btn-link" CommandName="Ver" CommandArgument='<%# Eval("idterceros") %>' Text="" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="actualizar_btn" runat="server" ImageUrl="../../Contenido/images/icons/editar.png" class="btn btn-link" CommandName="Editar" CommandArgument='<%# Eval("identificacion") %>' Text="Borrar" />
+                                                    <asp:ImageButton ID="actualizar_btn" runat="server" ImageUrl="../../Contenido/images/icons/editar.png" class="btn btn-link" CommandName="Editar" CommandArgument='<%# Eval("idterceros") %>' Text="Borrar" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("identificacion") %>' Text="Borrar" />
+                                                    <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("idterceros") %>' Text="Borrar" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="tipoterceros" HeaderText=""></asp:BoundField>
@@ -93,17 +93,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="contratos">
+                <div class="tab-pane" id="registro">
                     <asp:Panel ID="viewedicion" Visible="false" runat="server" CssClass="col-12 alert alert-success">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <label class="text-center" runat="server" id="textediccion"></label>
-                         <label runat="server" visible="false" id="codigo"></label>
+                        <label runat="server" visible="false" id="codigo"></label>
                     </asp:Panel>
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Información </h3>
+                                    <h3 class="box-title">Información del contrato </h3>
                                 </div>
                                 <div class="form-element">
                                     <div class="box-body">
@@ -146,43 +146,6 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Información Personal</h3>
-                                </div>
-                                <div class="form-element">
-                                    <div class="box-body">
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Identificación</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="identificacion_" runat="server" placeholder="Nit o Identificación">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Nombre</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="nombre_" runat="server" placeholder="Nombre">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Apellido</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="apellido_" runat="server" placeholder="Apellido">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Nacimiento</label>
-                                            <div class="col-sm-9">
-                                                <input type="date" class="form-control" id="fecnac_" runat="server" placeholder="Apellido">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
                                     <h3 class="box-title">Información de residencia </h3>
                                 </div>
                                 <div class="form-element">
@@ -221,12 +184,103 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="box-footer">
+                                        <button class="btn btn-primary" onclick="panel2();">Siguiente</button>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="finalizacion">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Información</h3>
+                                </div>
+                                <div class="form-element">
+                                    <div class="box-body">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Identificación</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="identificacion_" runat="server" placeholder="Nit o Identificación">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Nombre</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="nombre_" runat="server" placeholder="Nombre">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Apellido</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="apellido_" runat="server" placeholder="Apellido">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Nacimiento</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" class="form-control" id="fecnac_" runat="server" placeholder="Apellido">
+                                            </div>
+                                        </div>
+                                        <div class="box box-default">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Telefono</h3>
+                                                <div class="box-tools pull-right">
+                                                    <button type="button" data-toggle="modal" data-target="#modal-primary" class="btn btn-box-tool">
+                                                        <i class="glyphicon glyphicon-earphone"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                                        <i class="fa fa-minus"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" id="modal-primary">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                            <div class="box box-primary bg-transparent">
+                                                                <div class="form-element">
+                                                                    <div class="box-body">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control" id="telefono_" runat="server" placeholder="Telefono o celular">
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <button class="btn btn-primary" runat="server" onserverclick="RegistrarTelefono">Guardar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                            <div class="box-body">
+                                                <asp:GridView ID="telefonos" OnRowDeleting="telefonos_RowDeleting1" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server">
+                                                    <Columns>
+                                                        <asp:BoundField DataField="idtelefono" HeaderText="Codigo"></asp:BoundField>
+                                                        <asp:BoundField DataField="telefono" HeaderText="Celular"></asp:BoundField>
+                                                        <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="p-0"></asp:CommandField>
+                                                    </Columns>
+                                                </asp:GridView>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Información Personal</h3>
+                                    <h3 class="box-title">Información</h3>
                                 </div>
                                 <div class="form-element">
                                     <div class="box-body">
@@ -267,88 +321,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="box-footer">
-                                    <button class="btn btn-primary" runat="server" onserverclick="CancelarTercero">Cancelar</button>
-                                    <button class="btn btn-primary float-right" runat="server" onserverclick="RegistrarTercero">Guardar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="insidencias">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Información </h3>
-                                </div>
-                                <div class="form-element">
-                                    <div class="box-body">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Tipo Usuario</label>
-                                            <div class="col-sm-8">
-                                                <asp:DropDownList runat="server" ID="DropDownList1" CssClass="form-control" AppendDataBoundItems="true">
-                                                    <asp:ListItem>Seleccione</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Tipo Documento</label>
-                                            <div class="col-sm-8">
-                                                <asp:DropDownList runat="server" ID="DropDownList2" CssClass="form-control" AppendDataBoundItems="true">
-                                                    <asp:ListItem>Seleccione</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Tipo Residencia</label>
-                                            <div class="col-sm-8">
-                                                <asp:DropDownList runat="server" ID="DropDownList3" CssClass="form-control" AppendDataBoundItems="true">
-                                                    <asp:ListItem>Seleccione</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Tipo Factura</label>
-                                            <div class="col-sm-8">
-                                                <asp:DropDownList runat="server" ID="DropDownList4" CssClass="form-control" AppendDataBoundItems="true">
-                                                    <asp:ListItem>Seleccione</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
+                                    <div class="box-footer">
+                                        <button class="btn btn-primary" runat="server" onserverclick="CancelarTercero">Cancelar</button>
+                                        <button class="btn btn-primary float-right" runat="server" onserverclick="RegistrarTercero">Guardar</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Información de Contacto</h3>
-                                </div>
-                                <div class="form-element">
-                                    <div class="box-body">
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Telefono</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="telefono_" runat="server" placeholder="Telefono o celular">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-footer">
-                                    <button class="btn btn-primary" runat="server" onserverclick="RegistrarTelefono">Guardar Telefono</button>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
-                    <asp:GridView ID="telefonos" OnRowDeleting="GridView1_RowDeleting1" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server">
-                        <Columns>
-                            <asp:BoundField DataField="idtelefono" HeaderText="Codigo"></asp:BoundField>
-                            <asp:BoundField DataField="telefono" HeaderText="Celular"></asp:BoundField>
-                            <asp:CommandField ShowDeleteButton="True"></asp:CommandField>
-                        </Columns>
-                    </asp:GridView>
                 </div>
             </div>
         </div>
