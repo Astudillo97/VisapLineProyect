@@ -20,6 +20,8 @@ namespace VisapLine.Model
         public string tipoplan { get; set; }
         public string subida { get; set; }
         public string bajada { get; set; }
+        public string medioconexion { get; set; }
+        public string wifi { get; set; }
         public string zona_idzona { get; set; }
 
 
@@ -32,7 +34,7 @@ namespace VisapLine.Model
 
         public bool RegistrarPlan(Plan pln)
         {
-            return data.OperarDatos("select * from pr_insertarplan('"+pln.valor+"','"+pln.detalle+"','"+pln.telefonia+"','"+pln.televicion+"','"+pln.internet+"','"+pln.estado+"','"+pln.tipoplan+"','"+pln.subida+"','"+pln.bajada+"','"+pln.zona_idzona+"')");
+            return data.OperarDatos("select * from pr_insertarplan('"+pln.valor+"','"+pln.detalle+"','"+pln.telefonia+"','"+pln.televicion+"','"+pln.internet+"','"+pln.estado+"','"+pln.tipoplan+"','"+pln.subida+"','"+pln.bajada+"','"+pln.zona_idzona+ "','" + pln.medioconexion + "','" + pln.wifi + "')");
         }
     }
 

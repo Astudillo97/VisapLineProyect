@@ -25,6 +25,8 @@ namespace VisapLine.View.Private
         static DataTable listtelefono = new DataTable();
         static DataTable listtelefonocorpo = new DataTable();
         static DataTable listtelefonoempre = new DataTable();
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -161,9 +163,7 @@ namespace VisapLine.View.Private
             }
         }
 
-
-
-
+        
 
         protected void tipotercero_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -413,6 +413,8 @@ namespace VisapLine.View.Private
 
         //---CORPORATIVO
 
+
+
         protected void telefonocorpoRowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             try
@@ -657,6 +659,8 @@ namespace VisapLine.View.Private
 
         //EMPRESARIAL
 
+
+
         protected void GridViewtelefonoempresa_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             try
@@ -844,19 +848,19 @@ namespace VisapLine.View.Private
             try
             {
 
-                Validar.validarnumero(TextBox1corporativo.Text);
-                terc.identificacion = Validar.validarlleno(TextBox1corporativo.Text);
+                Validar.validarnumero(TextBox1empresa.Text);
+                terc.identificacion = Validar.validarlleno(TextBox1empresa.Text);
                 terc.direccion = Validar.validarlleno(TextBoxdireccioncorpo.Text);
-                terc.tipodoc_idtipodoc = Validar.validarselected(DropDownList1tipodocucorpo.SelectedValue);
-                terc.tipofactura_idtipofactura = Validar.validarselected(DropDownList3tipofactucorpo.SelectedValue);
-                terc.nombre = Validar.validarlleno(TextBoxnombrecorpo.Text);
-                terc.fechanatcimiento = Validar.validarlleno(TextBoxexpedicioncorpo.Text);
-                terc.correo = Validar.validarlleno(TextBoxcorreocorpo.Text);
-                terc.barrios_idbarrios = Validar.validarselected(DropDownList7barricorpo.SelectedValue);
-                terc.tiporesidencia_idtiporesidencia = Validar.validarselected(DropDownListresidenciacorpo.SelectedValue);
+                terc.tipodoc_idtipodoc = Validar.validarselected(DropDownListtipodocumentoempresa.SelectedValue);
+                terc.tipofactura_idtipofactura = Validar.validarselected(DropDownListtipofacturaempresa.SelectedValue);
+                terc.nombre = Validar.validarlleno(TextBoxnombreempresa.Text);
+                terc.fechanatcimiento = Validar.validarlleno(TextBoxexdicionempresa.Text);
+                terc.correo = Validar.validarlleno(TextBoxcorreoempresa.Text);
+                terc.barrios_idbarrios = Validar.validarselected(DropDownListbarrioempresa.SelectedValue);
+                terc.tiporesidencia_idtiporesidencia = Validar.validarselected(DropDownListtiporeidenciaempresa.SelectedValue);
                 terc.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
-                terc.estrato = Validar.validarselected(DropDownListestratocorpo.SelectedValue);
-                terc.estado = Validar.validarselected(DropDownList10estadocorpo.SelectedValue);
+                terc.estrato = Validar.validarselected(DropDownListestratoempresa.SelectedValue);
+                terc.estado = Validar.validarselected(DropDownListestadoempresa.SelectedValue);
 
                 if (terc.RegistrarTerceros(terc))
                 {
@@ -896,6 +900,9 @@ namespace VisapLine.View.Private
             }
         }
     }
+
+
+
 
 }
 

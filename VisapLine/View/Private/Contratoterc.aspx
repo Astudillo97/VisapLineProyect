@@ -17,7 +17,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
             <li class="breadcrumb-item"><a href="#">Clientes</a></li>
-            <li class="breadcrumb-item active">Registro</li>
+            <li class="breadcrumb-item active">Contrato</li>
         </ol>
     </section>
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
@@ -30,7 +30,7 @@
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li><a class="active" id="inf" href="#informacion" data-toggle="tab">Cliente</a></li>
-                <li><a href="#contratos" id="reg" data-toggle="tab">Registro Contrato</a></li>
+                <li><a href="#contrato" id="contr" data-toggle="tab">Registro Contrato</a></li>
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="informacion">
@@ -49,7 +49,7 @@
                                     <div class="form-group">
                                         <h5>Tipo Persona<span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <asp:DropDownList ID="tipotercero" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true"  OnSelectedIndexChanged="tipotercero_SelectedIndexChanged">
+                                            <asp:DropDownList ID="tipotercero" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="tipotercero_SelectedIndexChanged">
                                                 <asp:ListItem>Seleccione</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
@@ -69,7 +69,7 @@
                                                                         <label class="col-sm-4 col-form-label">Identificación</label>
                                                                         <div class="col-sm-8">
                                                                             <div class="form-group row">
-                                                                                <asp:TextBox ID="TextBox1identificacion" class="form-control" placeholder="Identificación" runat="server" Width="154px"></asp:TextBox>
+                                                                                <asp:TextBox ID="TextBox1identificacion" class="form-control" Style="text-transform: uppercase" placeholder="Identificación" runat="server" Width="154px"></asp:TextBox>
                                                                                 <div class="col-md-auto">
                                                                                     <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button2" Text="buscar" Width="100px" OnClick="Button2_Click" />
                                                                                 </div>
@@ -79,7 +79,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-4 col-form-label">Direccion</label>
                                                                         <div class="col-sm-8">
-                                                                            <asp:TextBox ID="TextBoxdireccion" class="form-control" placeholder="Dirección" runat="server"></asp:TextBox>
+                                                                            <asp:TextBox ID="TextBoxdireccion" Style="text-transform: uppercase" class="form-control" placeholder="Dirección" runat="server"></asp:TextBox>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -112,13 +112,13 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Nombre</label>
                                                                         <div class="col-sm-9">
-                                                                            <asp:TextBox ID="TextBoxnombre" class="form-control" runat="server" placeholder="Nombre"></asp:TextBox>
+                                                                            <asp:TextBox ID="TextBoxnombre" Style="text-transform: uppercase" class="form-control" runat="server" placeholder="Nombre"></asp:TextBox>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Apellido</label>
                                                                         <div class="col-sm-9">
-                                                                            <asp:TextBox ID="TextBox1apellido" class="form-control" placeholder="Apellido" runat="server"></asp:TextBox>
+                                                                            <asp:TextBox ID="TextBox1apellido" class="form-control" Style="text-transform: uppercase" placeholder="Apellido" runat="server"></asp:TextBox>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -285,7 +285,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-4 col-form-label">Direccion</label>
                                                                         <div class="col-sm-8">
-                                                                            <asp:TextBox ID="TextBoxdireccioncorpo" class="form-control" placeholder="Dirección" runat="server"></asp:TextBox>
+                                                                            <asp:TextBox ID="TextBoxdireccioncorpo" class="form-control" Style="text-transform: uppercase" placeholder="Dirección" runat="server"></asp:TextBox>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -321,7 +321,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Nombre</label>
                                                                         <div class="col-sm-9">
-                                                                            <asp:TextBox ID="TextBoxnombrecorpo" class="form-control" runat="server" placeholder="Nombre"></asp:TextBox>
+                                                                            <asp:TextBox ID="TextBoxnombrecorpo" class="form-control" runat="server" Style="text-transform: uppercase" placeholder="Nombre"></asp:TextBox>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -486,7 +486,7 @@
                                                                             <div class="form-group row">
                                                                                 <asp:TextBox ID="TextBox1empresa" class="form-control" placeholder="Nit" runat="server" Width="154px"></asp:TextBox>
                                                                                 <div class="col-md-auto">
-                                                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonbuscarempresa" Text="buscar" Width="100px" OnClick="Buttonbuscarempresa_Click"  />
+                                                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonbuscarempresa" Text="buscar" Width="100px" OnClick="Buttonbuscarempresa_Click" />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -494,7 +494,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-4 col-form-label">Direccion</label>
                                                                         <div class="col-sm-8">
-                                                                            <asp:TextBox ID="TextBoxdireccionempresa" class="form-control" placeholder="Dirección" runat="server"></asp:TextBox>
+                                                                            <asp:TextBox ID="TextBoxdireccionempresa" class="form-control" Style="text-transform: uppercase" placeholder="Dirección" runat="server"></asp:TextBox>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -530,7 +530,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Nombre</label>
                                                                         <div class="col-sm-9">
-                                                                            <asp:TextBox ID="TextBoxnombreempresa" class="form-control" runat="server" placeholder="Nombre"></asp:TextBox>
+                                                                            <asp:TextBox ID="TextBoxnombreempresa" class="form-control" runat="server" Style="text-transform: uppercase" placeholder="Nombre"></asp:TextBox>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -541,7 +541,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Expedicion</label>
                                                                         <div class="col-sm-9">
-                                                                            <asp:TextBox ID="TextBoxexdicionempresa" type="date" runat="server" class="form-control" ></asp:TextBox>
+                                                                            <asp:TextBox ID="TextBoxexdicionempresa" type="date" runat="server" class="form-control"></asp:TextBox>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -584,7 +584,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Pais</label>
                                                                         <div class="col-sm-9">
-                                                                            <asp:DropDownList ID="DropDownListpaisempresa" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListpaisempresa_SelectedIndexChanged" >
+                                                                            <asp:DropDownList ID="DropDownListpaisempresa" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListpaisempresa_SelectedIndexChanged">
                                                                                 <asp:ListItem>Seleccione</asp:ListItem>
                                                                             </asp:DropDownList>
                                                                         </div>
@@ -592,7 +592,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Departamento</label>
                                                                         <div class="col-sm-9">
-                                                                            <asp:DropDownList ID="DropDownListdepartamentoempresa" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListdepartamentoempresa_SelectedIndexChanged" >
+                                                                            <asp:DropDownList ID="DropDownListdepartamentoempresa" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListdepartamentoempresa_SelectedIndexChanged">
                                                                                 <asp:ListItem>Seleccione</asp:ListItem>
                                                                             </asp:DropDownList>
                                                                         </div>
@@ -636,7 +636,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Estrato</label>
                                                                         <div class="col-sm-9">
-                                                                            <asp:DropDownList ID="DropDownListestratoempresa" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListestratoempresa_SelectedIndexChanged" >
+                                                                            <asp:DropDownList ID="DropDownListestratoempresa" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListestratoempresa_SelectedIndexChanged">
                                                                                 <asp:ListItem>Seleccione</asp:ListItem>
                                                                                 <asp:ListItem Value="1">Estrato 1</asp:ListItem>
                                                                                 <asp:ListItem Value="2">Estrato 2</asp:ListItem>
@@ -667,7 +667,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="box-footer">
-                                                                <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonguardarempresa" Text="Guardar" Width="146px" OnClick="Buttonguardarempresa_Click"  />
+                                                                <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonguardarempresa" Text="Guardar" Width="146px" OnClick="Buttonguardarempresa_Click" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -692,7 +692,32 @@
                     <!-- /.box -->
                 </div>
 
+                <div class="tab-pane" id="contrato">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <center><h2 class="card-title">Crear Contrato</h2></center>
+                        </div>
+                        <div class="box-tools pull-right">
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <div class="form-element">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group row">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </section>
 

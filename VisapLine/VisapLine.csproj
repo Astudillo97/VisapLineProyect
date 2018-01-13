@@ -95,6 +95,7 @@
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Archivos\Contrato_postpago_FIJOS3.pdf" />
     <None Include="packages.config" />
     <Content Include="Contenido\images\icons\editar.png" />
     <Content Include="Contenido\images\icons\eliminar.png" />

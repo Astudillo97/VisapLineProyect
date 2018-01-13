@@ -128,6 +128,8 @@ namespace VisapLine.View.Private
                         pn.subida = Validar.validarlleno(TextBox2.Text);
                         pn.bajada = Validar.validarlleno(TextBox3.Text);
                         pn.zona_idzona = Validar.validarselected(municipioplan.SelectedValue);
+                        pn.medioconexion= Validar.validarselected(DropDownListmedioconexion.SelectedValue);
+                        pn.wifi= CheckBox5.Checked.ToString();
 
                         if (pn.RegistrarPlan(pn))
                         {
@@ -143,6 +145,8 @@ namespace VisapLine.View.Private
                             departamentoplan.SelectedValue = "Seleccione";
                             municipioplan.Items.Clear();
                             zonaplan.Items.Clear();
+                            CheckBox5.Checked = false;
+                            DropDownListmedioconexion.SelectedValue = "Seleccione";
 
 
                         }

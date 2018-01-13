@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#"   MaintainScrollPositionOnPostback="true"  MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="pagplan.aspx.cs" Inherits="VisapLine.View.Private.pagplan" %>
+﻿<%@ Page Title="" Language="C#" MaintainScrollPositionOnPostback="true" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="pagplan.aspx.cs" Inherits="VisapLine.View.Private.pagplan" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
+
     <script type="text/javascript">
         function applyFormatCurrency(sender) {
             $(sender).formatCurrency({
@@ -43,9 +43,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
                                     <asp:TextBox ID="TextBox1" runat="server" type="number" class="form-control" onkeypress="applyFormatCurrency(this);" required data-validation-required-message="This field is required"></asp:TextBox>
-
                                 </div>
-
                             </div>
                         </div>
                         <div class="form-group row">
@@ -104,12 +102,21 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">Estado:</label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" required data-validation-required-message="This field is required" >
-                                    <asp:ListItem>Seleccione</asp:ListItem>
-                                    <asp:ListItem>ACTIVO</asp:ListItem>
-                                    <asp:ListItem>INACTIVO</asp:ListItem>                                    
-                                </asp:DropDownList>
+                                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" required data-validation-required-message="This field is required">
+                                        <asp:ListItem>Seleccione</asp:ListItem>
+                                        <asp:ListItem>ACTIVO</asp:ListItem>
+                                        <asp:ListItem>INACTIVO</asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Wifi:</label>
+                            <div class="col-sm-10 ">
+                                <div class="md-header btn-toolbar">
+                                    <asp:CheckBox ID="CheckBox5" Text=" " runat="server" class="filled-in chk-col-yellow" />
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -156,6 +163,19 @@
 
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Medio Conexion:</label>
+                            <div class="col-sm-10 ">
+                                <div class="md-header btn-toolbar">
+                                    <asp:DropDownList ID="DropDownListmedioconexion" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" required data-validation-required-message="This field is required" OnSelectedIndexChanged="zonaplan_SelectedIndexChanged">
+                                        <asp:ListItem>Seleccione</asp:ListItem>
+                                        <asp:ListItem>FIBRA</asp:ListItem>
+                                        <asp:ListItem>RADIO</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label"></label>
@@ -182,31 +202,26 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body" style="">
-                <div class="row">
-                    <div class="col-md-6 col-12">
-                        <div class="form-group row">
-                            <div class="col-sm-10">
-                                <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
-                                    <Columns>
-                                        <asp:BoundField HeaderText="Codigo de Plan" DataField="idplan" />
-                                        <asp:BoundField HeaderText="Valor" DataField="valor" />
-                                        <asp:BoundField HeaderText="Detalle" DataField="detalle" />
-                                        <asp:CheckBoxField HeaderText="Telefonia" DataField="telefonia" Text=" " ItemStyle-CssClass="filled-in chk-col-green" />
-                                        <asp:CheckBoxField HeaderText="Television" DataField="television" Text=" " />
-                                        <asp:CheckBoxField HeaderText="Internet" DataField="internet" Text=" " />
-                                        <asp:BoundField HeaderText="Estado" DataField="estado" />
-                                        <asp:BoundField HeaderText="Tipo de Plan" DataField="tipoplan" />
-                                        <asp:BoundField HeaderText="Subida" DataField="subida" />
-                                        <asp:BoundField HeaderText="Bajada" DataField="bajada" />
-                                        <asp:BoundField HeaderText="Zonas" DataField="zonas" />
-                                    </Columns>
-                                    
-                                </asp:GridView>
-                            </div>
-                        </div>
+                <div class="row"  style="overflow-x: scroll">
+                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                        <Columns>
+                            <asp:BoundField HeaderText="Codigo de Plan" DataField="idplan" />
+                            <asp:BoundField HeaderText="Valor" DataField="valor" />
+                            <asp:BoundField HeaderText="Detalle" DataField="detalle" />
+                            <asp:CheckBoxField HeaderText="Telefonia" DataField="telefonia" Text=" " ItemStyle-CssClass="filled-in chk-col-green" />
+                            <asp:CheckBoxField HeaderText="Television" DataField="television" Text=" " />
+                            <asp:CheckBoxField HeaderText="Internet" DataField="internet" Text=" " />
+                            <asp:BoundField HeaderText="Estado" DataField="estado" />
+                            <asp:BoundField HeaderText="Tipo de Plan" DataField="tipoplan" />
+                            <asp:BoundField HeaderText="Subida" DataField="subida" />
+                            <asp:BoundField HeaderText="Bajada" DataField="bajada" />
+                            <asp:BoundField HeaderText="Zonas" DataField="zonas" />
+                            <asp:BoundField HeaderText="Medio Conexion" DataField="medioconexion" />
+                            <asp:CheckBoxField HeaderText="Wifi" DataField="wifi" Text=" " />
 
-                        <!-- /.col -->
-                    </div>
+                        </Columns>
+
+                    </asp:GridView>
                     <!-- /.row -->
 
                 </div>
