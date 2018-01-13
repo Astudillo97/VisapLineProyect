@@ -25,5 +25,10 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("select * from pr_insertarinventario('"+inv.serial+ "','" + inv.descripcion + "','" + inv.tipoproducto_idtipoproducto + "','" + inv.vidautil + "','" + inv.estado + "','" + inv.modelo_idmodelo + "','" + inv.mac + "','" + inv.compra_idcompra + "')");
         }
+
+        public DataTable selecionarinventarioparaservicio() {
+            return data.ConsultarDatos("select * from  public.pr_consultarinventarioPROCE()");
+        }
+
     }
 }
