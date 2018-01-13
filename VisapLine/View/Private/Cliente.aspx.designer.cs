@@ -157,6 +157,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlInputText identificacion_;
         
         /// <summary>
+        /// Control _nombre_.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _nombre_;
+        
+        /// <summary>
         /// Control nombre_.
         /// </summary>
         /// <remarks>
@@ -164,6 +173,15 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText nombre_;
+        
+        /// <summary>
+        /// Control _apellido_.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _apellido_;
         
         /// <summary>
         /// Control apellido_.

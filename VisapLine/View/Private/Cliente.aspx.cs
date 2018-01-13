@@ -87,7 +87,7 @@ namespace VisapLine.View.Private
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert-error";
+                Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
 
@@ -123,7 +123,7 @@ namespace VisapLine.View.Private
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert-error";
+                Alerta.CssClass = " alert alert-error";
                 Alerta.Visible = true;
             }
         }
@@ -143,7 +143,7 @@ namespace VisapLine.View.Private
             {
 
                 textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert-error";
+                Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
         }
@@ -158,7 +158,7 @@ namespace VisapLine.View.Private
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert-error";
+                Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
         }
@@ -178,14 +178,14 @@ namespace VisapLine.View.Private
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert-error";
+                Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
         }
 
         protected void RegistrarTercero(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
             try
             {
                 if (activacion)//si es true se activa la actualizacion de lo contrario solo registra
@@ -271,7 +271,6 @@ namespace VisapLine.View.Private
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             }
         }
 
@@ -294,7 +293,6 @@ namespace VisapLine.View.Private
 
         protected void CargarTelefono()
         {
-            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
             try
             {
                 telefonos.DataSource = listtelefono;
@@ -311,6 +309,7 @@ namespace VisapLine.View.Private
 
         protected void RegistrarTelefono(object sender, EventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
             try
             {
                 DataRow dat = listtelefono.NewRow();
