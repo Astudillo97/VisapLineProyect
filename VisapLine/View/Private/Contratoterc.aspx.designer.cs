@@ -328,13 +328,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox TextBoxtelefocorpo;
         
         /// <summary>
-        /// Control Buttonbuscarcorpo.
+        /// Control Buttontelefonocorpo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Buttonbuscarcorpo;
+        protected global::System.Web.UI.WebControls.Button Buttontelefonocorpo;
         
         /// <summary>
         /// Control GridViewtelefonocorpo.
@@ -418,6 +418,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList10estadocorpo;
         
         /// <summary>
+        /// Control Buttonguardarcorpo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Buttonguardarcorpo;
+        
+        /// <summary>
         /// Control iddivempresa.
         /// </summary>
         /// <remarks>
@@ -427,130 +436,148 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl iddivempresa;
         
         /// <summary>
-        /// Control TextBoxnitempre.
+        /// Control TextBox1empresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxnitempre;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1empresa;
         
         /// <summary>
-        /// Control Buttonbuscarempre.
+        /// Control Buttonbuscarempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Buttonbuscarempre;
+        protected global::System.Web.UI.WebControls.Button Buttonbuscarempresa;
         
         /// <summary>
-        /// Control TextBoxdirretcionempre.
+        /// Control TextBoxdireccionempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxdirretcionempre;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxdireccionempresa;
         
         /// <summary>
-        /// Control DropDownList1tipodocuempre.
+        /// Control DropDownListtipodocumentoempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1tipodocuempre;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListtipodocumentoempresa;
         
         /// <summary>
-        /// Control DropDownListtipofacturaempre.
+        /// Control DropDownListtipofacturaempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListtipofacturaempre;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListtipofacturaempresa;
         
         /// <summary>
-        /// Control TextBoxnombreempre.
+        /// Control TextBoxnombreempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxnombreempre;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxnombreempresa;
         
         /// <summary>
-        /// Control TextBoexpedicionempre.
+        /// Control TextBoxexdicionempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoexpedicionempre;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxexdicionempresa;
         
         /// <summary>
-        /// Control TextBoxtelefonempre.
+        /// Control TextBoxcorreoempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxtelefonempre;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxcorreoempresa;
         
         /// <summary>
-        /// Control TextBoxcprreoempre.
+        /// Control TextBoxtelefonoempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxcprreoempre;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxtelefonoempresa;
         
         /// <summary>
-        /// Control DropDownListpaisempre.
+        /// Control Button4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListpaisempre;
+        protected global::System.Web.UI.WebControls.Button Button4;
         
         /// <summary>
-        /// Control DropDownListdepartaempre.
+        /// Control GridViewtelefonoempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListdepartaempre;
+        protected global::System.Web.UI.WebControls.GridView GridViewtelefonoempresa;
         
         /// <summary>
-        /// Control DropDownListmuniempre.
+        /// Control DropDownListpaisempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListmuniempre;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListpaisempresa;
         
         /// <summary>
-        /// Control DropDownListbarrioempre.
+        /// Control DropDownListdepartamentoempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListbarrioempre;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListdepartamentoempresa;
         
         /// <summary>
-        /// Control DropDownListtiporesiempre.
+        /// Control DropDownListmunicipioempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListtiporesiempre;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListmunicipioempresa;
+        
+        /// <summary>
+        /// Control DropDownListbarrioempresa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListbarrioempresa;
+        
+        /// <summary>
+        /// Control DropDownListtiporeidenciaempresa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListtiporeidenciaempresa;
         
         /// <summary>
         /// Control DropDownListestratoempresa.
@@ -562,21 +589,30 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListestratoempresa;
         
         /// <summary>
-        /// Control TextBoxivaempre.
+        /// Control TextBoxivaempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxivaempre;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxivaempresa;
         
         /// <summary>
-        /// Control DropDownListestratoempre.
+        /// Control DropDownListestadoempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListestratoempre;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListestadoempresa;
+        
+        /// <summary>
+        /// Control Buttonguardarempresa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Buttonguardarempresa;
     }
 }
