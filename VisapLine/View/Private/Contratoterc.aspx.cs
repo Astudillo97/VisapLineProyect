@@ -346,6 +346,10 @@ namespace VisapLine.View.Private
 
 
         //---CORPORATIVO
+
+
+
+
         protected void Buscarcorporativo_Click(object sender, EventArgs e)
         {
 

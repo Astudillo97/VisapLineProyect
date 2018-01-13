@@ -109,8 +109,6 @@
                                                             </div>
                                                             <div class="form-element">
                                                                 <div class="box-body">
-
-
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Nombre</label>
                                                                         <div class="col-sm-9">
