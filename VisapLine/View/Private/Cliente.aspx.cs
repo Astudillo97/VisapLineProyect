@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using VisapLine.Model;
 using VisapLine.Exeption;
 using System.Data;
+using System.Web.Services;
+using System.Web.Script.Serialization;
 
 namespace VisapLine.View.Private
 {
@@ -62,6 +64,12 @@ namespace VisapLine.View.Private
                     pais_.DataTextField = "pais";
                     pais_.DataValueField = "idpais";
                     pais_.DataBind();
+                    pais_.SelectedValue = "1";
+                    cargarDepartamentos(pais_.SelectedValue);
+                    departamento_.SelectedValue = "2";
+                    cargarMunicipios(departamento_.SelectedValue);
+                    municipio_.SelectedValue = "1";
+                    cargarBarrios(municipio_.SelectedValue);
 
                     CargarTelefono();
                 }
@@ -244,6 +252,7 @@ namespace VisapLine.View.Private
                         terc.tipofactura_idtipofactura = Validar.validarselected(tipofact_.SelectedValue);
                         terc.barrios_idbarrios = Validar.validarselected(barrio_.SelectedValue);
                         terc.fechanatcimiento = Validar.validarlleno(fecnac_.Value);
+                        Validar.validartelefono(listtelefono);
                         if (terc.RegistrarTerceros(terc))
                         {
                             foreach (DataRow item in listtelefono.Rows)
