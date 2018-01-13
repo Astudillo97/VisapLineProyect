@@ -60,6 +60,30 @@ namespace VisapLine.View.Private
                     DropDownListtipodocu.DataTextField = "tipodoc";
                     DropDownListtipodocu.DataValueField = "idtipodoc";
                     DropDownListtipodocu.DataBind();
+
+                    //CORPORACION
+
+                    DropDownList1tipodocucorpo.DataSource = tpdoc.ConsultarTipoDoc();
+                    DropDownList1tipodocucorpo.DataTextField = "tipodoc";
+                    DropDownList1tipodocucorpo.DataValueField = "idtipodoc";
+                    DropDownList1tipodocucorpo.DataBind();
+
+                    DropDownListresidenciacorpo.DataSource = tpres.ConsultarTipoResidencia();
+                    DropDownListresidenciacorpo.DataTextField = "tiporesidencia";
+                    DropDownListresidenciacorpo.DataValueField = "idtiporesidencia";
+                    DropDownListresidenciacorpo.DataBind();
+
+                    DropDownList3tipofactucorpo.DataSource = tpfact.ConsultarTipoFactura();
+                    DropDownList3tipofactucorpo.DataTextField = "tipofactura";
+                    DropDownList3tipofactucorpo.DataValueField = "idtipofactura";
+                    DropDownList3tipofactucorpo.DataBind();
+
+                    DropDownList4paiscorpo.DataSource = pais.ConsultarPais();
+                    DropDownList4paiscorpo.DataTextField = "pais";
+                    DropDownList4paiscorpo.DataValueField = "idpais";
+                    DropDownList4paiscorpo.DataBind();
+
+
                 }
             }
             catch (Exception ex)
@@ -108,7 +132,7 @@ namespace VisapLine.View.Private
         }
 
 
-        protected void cargariva()
+        protected void cargarivanatural()
         {
             if (DropDownListestrato.SelectedItem.Text == "Estrato 1" || DropDownListestrato.SelectedItem.Text == "Estrato 2")
             {
@@ -127,7 +151,7 @@ namespace VisapLine.View.Private
 
         protected void DropDownListestrato_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cargariva();
+            cargarivanatural();
         }
 
         protected void DropDownListpais_SelectedIndexChanged(object sender, EventArgs e)
@@ -345,15 +369,116 @@ namespace VisapLine.View.Private
         }
 
 
+
+
         //---CORPORATIVO
 
-
+        protected void telefonocorpoRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                TableCell cell = telefonos.Rows[e.RowIndex].Cells[0];
+                listtelefono.Rows.Remove(listtelefono.Rows[e.RowIndex]);
+                CargarTelefono();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
 
 
         protected void Buscarcorporativo_Click(object sender, EventArgs e)
         {
 
         }
+
+        protected void DropDownList4paiscorpo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DropDownList5departcorpo.Items.Clear();
+                DropDownList5departcorpo.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                depart.pais_idpais = Validar.validarselected(DropDownList4paiscorpo.SelectedValue);
+                DropDownList5departcorpo.DataSource = Validar.Consulta(depart.ConsultarDepartamentoIdPais(depart));
+                DropDownList5departcorpo.DataTextField = "departamento";
+                DropDownList5departcorpo.DataValueField = "iddepartamento";
+                DropDownList5departcorpo.DataBind();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+
+            }
+        }
+
+        protected void DropDownList5departcorpo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                DropDownList6municorpo.Items.Clear();
+                DropDownList6municorpo.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                munic.departamento_iddepartamento = Validar.validarselected(DropDownList5departcorpo.SelectedValue);
+                DropDownList6municorpo.DataSource = Validar.Consulta(munic.ConsultarMunicipioIdDepartamento(munic));
+                DropDownList6municorpo.DataTextField = "municipio";
+                DropDownList6municorpo.DataValueField = "idmunicipio";
+                DropDownList6municorpo.DataBind();
+
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+
+        }
+
+        protected void DropDownList6municorpo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DropDownList7barricorpo.Items.Clear();
+                DropDownList7barricorpo.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                barr.muninicio_idmunicipio = Validar.validarselected(DropDownList6municorpo.SelectedValue);
+                DropDownList7barricorpo.DataSource = Validar.Consulta(barr.ConsultarBarriosIdMunicipio(barr));
+                DropDownList7barricorpo.DataTextField = "barrios";
+                DropDownList7barricorpo.DataValueField = "idbarrios";
+                DropDownList7barricorpo.DataBind();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void DropDownListestratocorpo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DropDownListestratocorpo.SelectedItem.Text == "Estrato 1" || DropDownListestratocorpo.SelectedItem.Text == "Estrato 2")
+            {
+                TextBoxivacorpo.Text = "0";
+
+            }
+            else
+            {
+                if (DropDownListestratocorpo.SelectedItem.Text == "Estrato 3" || DropDownListestratocorpo.SelectedItem.Text == "Estrato 4" || DropDownListestratocorpo.SelectedItem.Text == "Estrato 5" || DropDownListestratocorpo.SelectedItem.Text == "Estrato 5")
+                {
+                    TextBoxivacorpo.Text = "0.16";
+                }
+            }
+        }
+
+
+
 
 
     }

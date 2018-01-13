@@ -310,15 +310,6 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox TextBoxexpedicioncorpo;
         
         /// <summary>
-        /// Control TextBoxtelefonocorpo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxtelefonocorpo;
-        
-        /// <summary>
         /// Control TextBoxcorreocorpo.
         /// </summary>
         /// <remarks>
@@ -326,6 +317,33 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxcorreocorpo;
+        
+        /// <summary>
+        /// Control TextBoxtelefocorpo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxtelefocorpo;
+        
+        /// <summary>
+        /// Control Buttonbuscarcorpo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Buttonbuscarcorpo;
+        
+        /// <summary>
+        /// Control GridViewtelefonocorpo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewtelefonocorpo;
         
         /// <summary>
         /// Control DropDownList4paiscorpo.
@@ -382,13 +400,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListestratocorpo;
         
         /// <summary>
-        /// Control TextBox7.
+        /// Control TextBoxivacorpo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxivacorpo;
         
         /// <summary>
         /// Control DropDownList10estadocorpo.
