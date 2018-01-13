@@ -31,6 +31,17 @@ namespace VisapLine.Exeption
                 throw new ValidarExeption("No se encontro ningun registro");
             }
         }
+        public static DataTable validartelefono(DataTable data)
+        {
+            if (data != null && data.Rows.Count > 0)
+            {
+                return data;
+            }
+            else
+            {
+                throw new ValidarExeption("No se ha registrado un telefono");
+            }
+        }
         public static string validarlleno(string dat)
         {
             if (dat != null && dat.Length>0)

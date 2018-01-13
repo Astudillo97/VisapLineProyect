@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="Cliente.aspx.cs" Inherits="VisapLine.View.Private.Cliente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript">
         function panel2() {
             document.getElementById("pan2").click();
@@ -10,10 +11,21 @@
         }
         function myFunction() {
             var id = document.getElementById("<%=tipotercero_.ClientID%>").value;
-            if (id === "2") {
+            if (id === "2" || id === "3") {
                 document.getElementById("<%=apellido_.ClientID%>").style.display = 'none';
                 document.getElementById("<%=_apellido_.ClientID%>").style.display = 'none';
+                document.getElementById("<%=_apellido_.ClientID%>").value = "";
                 document.getElementById("<%=_nombre_.ClientID%>").innerHTML = "Razon Socail";
+                document.getElementById("<%=estrato_.ClientID%>").value = "3";
+                document.getElementById("<%=tipodoc_.ClientID%>").value = "2";
+                document.getElementById("<%=estado_.ClientID%>").value = "Activo";
+            } else {
+                document.getElementById("<%=apellido_.ClientID%>").style.display = 'block';
+                document.getElementById("<%=_apellido_.ClientID%>").style.display = 'block';
+                document.getElementById("<%=_nombre_.ClientID%>").innerHTML = "Nombre";
+                document.getElementById("<%=estrato_.ClientID%>").value = "1";
+                document.getElementById("<%=tipodoc_.ClientID%>").value = "1";
+                document.getElementById("<%=estado_.ClientID%>").value = "Activo";
             }
         }
     </script>
@@ -48,6 +60,11 @@
                                     <h3 class="box-title">Clientes</h3>
                                 </div>
                                 <div class="form-element">
+                                    <asp:DropDownList ID="ddlPaises" runat="server">
+                                    </asp:DropDownList>
+                                    <asp:DropDownList ID="ddlCiudades" runat="server">
+                                    </asp:DropDownList>
+
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Identificación</label>
