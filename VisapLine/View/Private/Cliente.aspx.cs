@@ -366,20 +366,9 @@ namespace VisapLine.View.Private
                     string DeleteRowId = e.CommandArgument.ToString();
                     terc.identificacion = DeleteRowId;
                     DataRow dat = terc.ConsultarPersonaIdentifall(terc).Rows[0];
-                    barr.idbarrios = dat["barrios_idbarrios"].ToString();
-                    DataRow dir = barr.ConsultarTodoporBarrio(barr).Rows[0];
-                    cargarDepartamentos(dir["idpais"].ToString());
-                    pais_.SelectedValue = dir["idpais"].ToString();
-                    departamento_.SelectedValue = dir["iddepartamento"].ToString();
-                    cargarMunicipios(dir["iddepartamento"].ToString());
-                    municipio_.SelectedValue = dir["idmunicipio"].ToString();
-                    cargarBarrios(dir["idmunicipio"].ToString());
-                    viewedicion.Visible = true;
-                    textediccion.InnerHtml = "Edicción habilitada para " + dat["nombre"].ToString() + " " + dat["apelldio"].ToString();
-                    codigo.InnerHtml = dat["idterceros"].ToString();
                     identificacion_.Value = dat["identificacion"].ToString();
                     nombre_.Value = dat["nombre"].ToString();
-                    apellido_.Value = dat["apelldio"].ToString();
+                    apellido_.Value = dat["apellido"].ToString();
                     Direccion_.Value = dat["direccion"].ToString();
                     correo_.Value = dat["correo"].ToString();
                     estrato_.SelectedValue = dat["estrato"].ToString();
@@ -388,10 +377,23 @@ namespace VisapLine.View.Private
                     tipodoc_.SelectedValue = dat["tipodoc_idtipodoc"].ToString();
                     tiporesident_.SelectedValue = dat["tiporesidencia_idtiporesidencia"].ToString();
                     tipofact_.SelectedValue = dat["tipofactura_idtipofactura"].ToString();
-                    barrio_.SelectedValue = dat["barrios_idbarrios"].ToString();
-                    fecnac_.Value = Convert.ToDateTime(dat["fechanatcimiento"]).ToString("yyyy-MM-dd");
+                    barrio_.SelectedValue = dat["barrio_idbarrio"].ToString();
+                    fecnac_.Value = Convert.ToDateTime(dat["fechnac"]).ToString("yyyy-MM-dd");
                     ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
                     activacion = true;
+
+                    viewedicion.Visible = true;
+                    textediccion.InnerHtml = "Edicción habilitada para " + dat["nombre"].ToString() + " " + dat["apellido"].ToString();
+                    codigo.InnerHtml = dat["idterceros"].ToString();
+
+                    barr.idbarrios = dat["barrio_idbarrio"].ToString();
+                    DataRow dir = barr.ConsultarTodoporBarrio(barr).Rows[0];
+                    cargarDepartamentos(dir["idpais"].ToString());
+                    pais_.SelectedValue = dir["idpais"].ToString();
+                    departamento_.SelectedValue = dir["iddepartamento"].ToString();
+                    cargarMunicipios(dir["iddepartamento"].ToString());
+                    municipio_.SelectedValue = dir["idmunicipio"].ToString();
+                    cargarBarrios(dir["idmunicipio"].ToString());
 
                 }
                 if (e.CommandName.ToString() == "Eliminar")
@@ -410,28 +412,28 @@ namespace VisapLine.View.Private
 
         protected void tablacliente_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                if (e.Row.Cells[9].Text == "Activo")
-                {
-                    e.Row.Cells[9].Text = "";
-                    e.Row.Cells[9].CssClass = "glyphicon glyphicon-ok";
-                }
-                else
-                {
-                    e.Row.Cells[9].CssClass = "glyphicon glyphicon-remove";
-                }
-                if (e.Row.Cells[3].Text == "Natural")
-                {
-                    e.Row.Cells[3].Text = "";
-                    e.Row.Cells[3].CssClass = "glyphicon glyphicon-user";
-                }
-                else
-                {
-                    e.Row.Cells[3].CssClass = "glyphicon glyphicon-object-align-bottom";
-                }
-                e.Row.Cells[11].Text = Convert.ToDateTime(e.Row.Cells[11].Text).ToString("dd/MM/yyyy");
-            }
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+            //    if (e.Row.Cells[9].Text == "Activo")
+            //    {
+            //        e.Row.Cells[9].Text = "";
+            //        e.Row.Cells[9].CssClass = "glyphicon glyphicon-ok";
+            //    }
+            //    else
+            //    {
+            //        e.Row.Cells[9].CssClass = "glyphicon glyphicon-remove";
+            //    }
+            //    if (e.Row.Cells[3].Text == "Natural")
+            //    {
+            //        e.Row.Cells[3].Text = "";
+            //        e.Row.Cells[3].CssClass = "glyphicon glyphicon-user";
+            //    }
+            //    else
+            //    {
+            //        e.Row.Cells[3].CssClass = "glyphicon glyphicon-object-align-bottom";
+            //    }
+            //    e.Row.Cells[11].Text = Convert.ToDateTime(e.Row.Cells[11].Text).ToString("dd/MM/yyyy");
+            //}
         }
 
         protected void CancelarTercero(object sender, EventArgs e)

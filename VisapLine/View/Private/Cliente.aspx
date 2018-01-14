@@ -14,7 +14,7 @@
             if (id === "2" || id === "3") {
                 document.getElementById("<%=apellido_.ClientID%>").style.display = 'none';
                 document.getElementById("<%=_apellido_.ClientID%>").style.display = 'none';
-                document.getElementById("<%=_apellido_.ClientID%>").value = "";
+                document.getElementById("<%=apellido_.ClientID%>").value = "";
                 document.getElementById("<%=_nombre_.ClientID%>").innerHTML = "Razon Socail";
                 document.getElementById("<%=estrato_.ClientID%>").value = "3";
                 document.getElementById("<%=tipodoc_.ClientID%>").value = "2";
@@ -61,11 +61,6 @@
                                     <h3 class="box-title">Clientes</h3>
                                 </div>
                                 <div class="form-element">
-                                    <asp:DropDownList ID="ddlPaises" runat="server">
-                                    </asp:DropDownList>
-                                    <asp:DropDownList ID="ddlCiudades" runat="server">
-                                    </asp:DropDownList>
-
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Identificación</label>
@@ -85,32 +80,23 @@
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body" style="overflow-x: scroll">
-                                    <asp:GridView runat="server" ID="tablacliente" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" OnRowDataBound="tablacliente_RowDataBound" OnRowCommand="tablacliente_RowCommand">
+                                    <asp:GridView runat="server" ID="tablacliente" AutoGenerateColumns="true" CssClass="table table-bordered table-striped table-responsive p-0" OnRowDataBound="tablacliente_RowDataBound" OnRowCommand="tablacliente_RowCommand">
                                         <Columns>
                                             <asp:TemplateField HeaderText="">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ver_btn" Width="45" runat="server" ImageUrl="../../Contenido/images/icons/ver.png" CssClass="btn btn-link" CommandName="Ver" CommandArgument='<%# Eval("idterceros") %>' Text="" />
+                                                    <asp:ImageButton ID="ver_btn" runat="server" ImageUrl="../../Contenido/images/icons/ver.png" CssClass="btn btn-link" CommandName="Ver" CommandArgument='<%# Eval("identificacion") %>' Text="" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="actualizar_btn" runat="server" ImageUrl="../../Contenido/images/icons/editar.png" class="btn btn-link" CommandName="Editar" CommandArgument='<%# Eval("idterceros") %>' Text="Borrar" />
+                                                    <asp:ImageButton ID="actualizar_btn" runat="server" ImageUrl="../../Contenido/images/icons/editar.png" class="btn btn-link" CommandName="Editar" CommandArgument='<%# Eval("identificacion") %>' Text="Borrar" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("idterceros") %>' Text="Borrar" />
+                                                    <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("identificacion") %>' Text="Borrar" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="tipoterceros" HeaderText=""></asp:BoundField>
-                                            <asp:BoundField DataField="residencia" HeaderText="Resid"></asp:BoundField>
-                                            <asp:BoundField DataField="identificacion" HeaderText="NUI"></asp:BoundField>
-                                            <asp:BoundField DataField="nombre" HeaderText="Usuario"></asp:BoundField>
-                                            <asp:BoundField DataField="direccion" HeaderText="Direcci&#243;n"></asp:BoundField>
-                                            <asp:BoundField DataField="correo" HeaderText="Correo"></asp:BoundField>
-                                            <asp:BoundField DataField="estado" HeaderText=""></asp:BoundField>
-                                            <asp:BoundField DataField="estrato" HeaderText="Estrato"></asp:BoundField>
-                                            <asp:BoundField DataField="fechadenacimiento" HeaderText="Nacim"></asp:BoundField>
                                         </Columns>
                                     </asp:GridView>
                                 </div>
