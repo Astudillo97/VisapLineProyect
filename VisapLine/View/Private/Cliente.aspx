@@ -15,7 +15,7 @@
                 document.getElementById("<%=apellido_.ClientID%>").style.display = 'none';
                 document.getElementById("<%=_apellido_.ClientID%>").style.display = 'none';
                 document.getElementById("<%=apellido_.ClientID%>").value = "";
-                document.getElementById("<%=_nombre_.ClientID%>").innerHTML = "Razon Socail";
+                document.getElementById("<%=_nombre_.ClientID%>").innerHTML = "Razon Social";
                 document.getElementById("<%=estrato_.ClientID%>").value = "3";
                 document.getElementById("<%=tipodoc_.ClientID%>").value = "2";
                 document.getElementById("<%=estado_.ClientID%>").value = "Activo";
