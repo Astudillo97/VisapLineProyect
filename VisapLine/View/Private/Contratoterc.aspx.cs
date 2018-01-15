@@ -33,6 +33,7 @@ namespace VisapLine.View.Private
             {
                 if (!IsPostBack)
                 {
+                    
                     tipotercero.DataSource = ttr.ConsultarTipoTercero();
                     tipotercero.DataTextField = "tipoterceros";
                     tipotercero.DataValueField = "idtipotercero";
@@ -171,26 +172,26 @@ namespace VisapLine.View.Private
         }
 
 
-        protected void cargarivanatural()
-        {
-            if (DropDownListestrato.SelectedItem.Text == "Estrato 1" || DropDownListestrato.SelectedItem.Text == "Estrato 2")
-            {
-                TextBoxiva.Text = "0";
+        //protected void cargarivanatural()
+        //{
+        //    if (DropDownListestrato.SelectedItem.Text == "Estrato 1" || DropDownListestrato.SelectedItem.Text == "Estrato 2")
+        //    {
+        //        TextBoxiva.Text = "0";
 
-            }
-            else
-            {
-                if (DropDownListestrato.SelectedItem.Text == "Estrato 3" || DropDownListestrato.SelectedItem.Text == "Estrato 4" || DropDownListestrato.SelectedItem.Text == "Estrato 5" || DropDownListestrato.SelectedItem.Text == "Estrato 5")
-                {
-                    TextBoxiva.Text = "0.16";
-                }
-            }
+        //    }
+        //    else
+        //    {
+        //        if (DropDownListestrato.SelectedItem.Text == "Estrato 3" || DropDownListestrato.SelectedItem.Text == "Estrato 4" || DropDownListestrato.SelectedItem.Text == "Estrato 5" || DropDownListestrato.SelectedItem.Text == "Estrato 5")
+        //        {
+        //            TextBoxiva.Text = "0.16";
+        //        }
+        //    }
 
-        }
+        //}
 
         protected void DropDownListestrato_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cargarivanatural();
+            //cargarivanatural();
         }
 
         protected void DropDownListpais_SelectedIndexChanged(object sender, EventArgs e)
@@ -342,6 +343,25 @@ namespace VisapLine.View.Private
             }
 
         }
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+           
+            labelidentificacionnatural.Text = TextBox1identificacion.Text;
+            labelnaturaltipopersona.Text = tipotercero.SelectedItem.Text;
+            labeltipodocumentonatural.Text = DropDownListtipodocu.SelectedItem.Text;
+            labeltipofacturanatural.Text = DropDownList2.SelectedItem.Text;
+            labelnombrenatural.Text = TextBoxnombre.Text;
+            labelapellidonatural.Text = TextBox1apellido.Text;
+            labelnacimientonatural.Text = TextBox1fecnac.Text;
+            labelcorreonatural.Text = TextBoxcorreo.Text;            
+            labelbarrionatural.Text = DropDownListbarrio.SelectedItem.Text;
+            labeltiporesidencianatural.Text = DropDownListtiporesi.SelectedItem.Text;
+            labelestratonatural.Text = DropDownListestrato.SelectedItem.Text;        
+            ClientScript.RegisterStartupScript(GetType(), "", "botonmodal();", true);
+        }
+
+
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             try
@@ -349,11 +369,11 @@ namespace VisapLine.View.Private
 
                 Validar.validarnumero(TextBox1identificacion.Text);
                 terc.identificacion = Validar.validarlleno(TextBox1identificacion.Text);
-                terc.direccion = Validar.validarlleno(TextBoxdireccion.Text);
+                terc.direccion = Validar.validarlleno(TextBoxdireccion.Text.ToUpper());
                 terc.tipodoc_idtipodoc = Validar.validarselected(DropDownListtipodocu.SelectedValue);
                 terc.tipofactura_idtipofactura = Validar.validarselected(DropDownList2.SelectedValue);
-                terc.nombre = Validar.validarlleno(TextBoxnombre.Text);
-                terc.apellido = Validar.validarlleno(TextBox1apellido.Text);
+                terc.nombre = Validar.validarlleno(TextBoxnombre.Text.ToUpper());
+                terc.apellido = Validar.validarlleno(TextBox1apellido.Text.ToUpper());
                 terc.fechanatcimiento = Validar.validarlleno(TextBox1fecnac.Text);
                 terc.correo = Validar.validarlleno(TextBoxcorreo.Text);
                 terc.barrios_idbarrios = Validar.validarselected(DropDownListbarrio.SelectedValue);
@@ -385,6 +405,7 @@ namespace VisapLine.View.Private
                     textError.InnerHtml = "Se ha registrado con exito";
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
+                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
                 }
                 else
                 {
@@ -899,6 +920,8 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
+
+     
     }
 
 

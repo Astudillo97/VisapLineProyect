@@ -5134,6 +5134,7 @@ button.btn.dropdown-toggle::after, .wysihtml5-toolbar .btn.dropdown-toggle::afte
 .btn-success {
     background-color: #46be8a;
     border-color: #12a967;
+    height: 14px;
 }
 .btn-success.hover, .btn-success:active, .btn-success:hover {
     background-color: #12a967;

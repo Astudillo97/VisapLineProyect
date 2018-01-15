@@ -3,10 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
         function panel2() {
-            document.getElementById("reg").click();
+            document.getElementById("contr").click();
         }
-        function panel3() {
-            document.getElementById("pan3").click();
+      
+        function botonmodal() {
+            document.getElementById("botonmodal").click();
         }
     </script>
 
@@ -233,13 +234,6 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-sm-3 col-form-label">Iva</label>
-                                                                    <div class="col-sm-9">
-                                                                        <asp:TextBox ID="TextBoxiva" class="form-control" placeholder="Iva" runat="server"></asp:TextBox>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">Estado</label>
                                                                     <div class="col-sm-9">
                                                                         <asp:DropDownList ID="DropDownListestado" runat="server" CssClass="form-control" AppendDataBoundItems="true">
@@ -250,7 +244,10 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="box-footer">
-                                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button1" Text="Guardar" Width="146px" OnClick="Button1_Click" />
+
+                                                                    <asp:Button ID="Button3" class="btn btn-block btn-success btn-lg" runat="server" Text="Verificar" OnClick="Button3_Click" />
+
+                                                                    <a href="#" id="botonmodal" data-toggle="modal" data-target="#modal-natural" visible="false"></a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -706,9 +703,6 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group row">
-
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -719,9 +713,86 @@
                     </div>
                 </div>
 
+
+
+
             </div>
 
+            <div class="modal fade" id="modal-natural">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Confirmacion de datos Personales</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="box box-primary bg-transparent">
+                                <div class="form-element">
+                                    <div class="box-body">
+                                        <div class="form-group row">
+                                            <table class="table table-responsive">
+                                                <tr>
+                                                    <th>Datos Insertados</th>
+                                                    <th>Datos Insertados</th>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Tipo Persona:<asp:Label ID="labelnaturaltipopersona" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    <td>Identificacion:<asp:Label ID="labelidentificacionnatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tipo Documento:<asp:Label ID="labeltipodocumentonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    <td>Tipo Factura:<asp:Label ID="labeltipofacturanatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nombre:<asp:Label ID="labelnombrenatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    <td>Apellido:<asp:Label ID="labelapellidonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nacimiento:<asp:Label ID="labelnacimientonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    <td>Correo:<asp:Label ID="labelcorreonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Estado:<asp:Label ID="labelestadonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    <td>Barrio:<asp:Label ID="labelbarrionatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Residencia:<asp:Label ID="labeltiporesidencianatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    <td>Estrato:<asp:Label ID="labelestratonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button1" Text="Guardar" Width="146px" OnClick="Button1_Click" />
+                                                    </td>
+                                                    <td>
+                                                        <asp:Button ID="Button5" runat="server" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="146px" data-dismiss="modal" />
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+
+
+
+
         </div>
+
+
+
+
+
+
     </section>
 
 </asp:Content>
