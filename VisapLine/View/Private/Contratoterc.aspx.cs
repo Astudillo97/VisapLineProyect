@@ -135,6 +135,9 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
+
+
+
         protected void cargardiv()
         {
             if (tipotercero.SelectedItem.Text == "EMPRESARIAL")
@@ -171,28 +174,6 @@ namespace VisapLine.View.Private
             cargardiv();
         }
 
-
-        //protected void cargarivanatural()
-        //{
-        //    if (DropDownListestrato.SelectedItem.Text == "Estrato 1" || DropDownListestrato.SelectedItem.Text == "Estrato 2")
-        //    {
-        //        TextBoxiva.Text = "0";
-
-        //    }
-        //    else
-        //    {
-        //        if (DropDownListestrato.SelectedItem.Text == "Estrato 3" || DropDownListestrato.SelectedItem.Text == "Estrato 4" || DropDownListestrato.SelectedItem.Text == "Estrato 5" || DropDownListestrato.SelectedItem.Text == "Estrato 5")
-        //        {
-        //            TextBoxiva.Text = "0.16";
-        //        }
-        //    }
-
-        //}
-
-        protected void DropDownListestrato_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //cargarivanatural();
-        }
 
         protected void DropDownListpais_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -356,11 +337,10 @@ namespace VisapLine.View.Private
             labelcorreonatural.Text = TextBoxcorreo.Text;            
             labelbarrionatural.Text = DropDownListbarrio.SelectedItem.Text;
             labeltiporesidencianatural.Text = DropDownListtiporesi.SelectedItem.Text;
-            labelestratonatural.Text = DropDownListestrato.SelectedItem.Text;        
+            labelestratonatural.Text = DropDownListestrato.SelectedItem.Text;
+            labelestadonatural.Text = DropDownListestado.SelectedItem.Text;
             ClientScript.RegisterStartupScript(GetType(), "", "botonmodal();", true);
         }
-
-
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -406,6 +386,9 @@ namespace VisapLine.View.Private
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
                     ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                    iddivnatural.Visible = false;
+                    iddivcorporativo.Visible = false;
+                    iddivempresa.Visible = false;
                 }
                 else
                 {
@@ -677,6 +660,14 @@ namespace VisapLine.View.Private
 
 
         }
+
+
+
+
+
+
+
+
 
         //EMPRESARIAL
 

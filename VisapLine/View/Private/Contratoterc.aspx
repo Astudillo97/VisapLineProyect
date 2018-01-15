@@ -4,6 +4,7 @@
     <script type="text/javascript">
         function panel2() {
             document.getElementById("contr").click();
+
         }
       
         function botonmodal() {
@@ -222,7 +223,7 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">Estrato</label>
                                                                     <div class="col-sm-9">
-                                                                        <asp:DropDownList ID="DropDownListestrato" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListestrato_SelectedIndexChanged">
+                                                                        <asp:DropDownList ID="DropDownListestrato" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                                             <asp:ListItem>Seleccione</asp:ListItem>
                                                                             <asp:ListItem Value="1">Estrato 1</asp:ListItem>
                                                                             <asp:ListItem Value="2">Estrato 2</asp:ListItem>
