@@ -15,6 +15,7 @@ namespace VisapLine.Model
         public string usuauser { get; set; }
         public string usuapassw { get; set; }
         public string rol_idrol { get; set; }
+        public string datospersonales_iddatospersonales { get; set; }
 
         public DataTable ValidarUsuario(UsuarioL usu)
         {
@@ -30,7 +31,7 @@ namespace VisapLine.Model
         }
         public bool RegistrarUsuario(UsuarioL usu)
         {
-            return data.OperarDatos("select * from pr_insertarusuario( '"+usu.usuauser+"','"+usu.usuapassw+"','"+usu.rol_idrol+"')");
+            return data.OperarDatos("select * from pr_insertarusuario( '"+usu.usuauser+"','"+usu.usuapassw+"','"+usu.rol_idrol+"','"+datospersonales_iddatospersonales+"')");
         }
         public DataTable ConsultarUsuarioByUsuario(UsuarioL usu)
         {

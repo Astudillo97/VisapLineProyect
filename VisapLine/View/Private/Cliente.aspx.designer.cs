@@ -40,15 +40,6 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlInputText identif_;
         
         /// <summary>
-        /// Control tablacliente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView tablacliente;
-        
-        /// <summary>
         /// Control viewedicion.
         /// </summary>
         /// <remarks>

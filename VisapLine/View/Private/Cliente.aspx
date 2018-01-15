@@ -30,7 +30,7 @@
         }
     </script>
 </asp:Content>
-    <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
         <h2>Gestion del Cliente
         </h2>
@@ -79,7 +79,7 @@
                                     <h3 class="box-title">Listado de clientes</h3>
                                 </div>
                                 <!-- /.box-header -->
-                                <div class="box-body" style="overflow-x: scroll">
+                                <%--<div class="box-body" style="overflow-x: scroll">
                                     <asp:GridView runat="server" ID="tablacliente" AutoGenerateColumns="true" CssClass="table table-bordered table-striped table-responsive p-0" OnRowDataBound="tablacliente_RowDataBound" OnRowCommand="tablacliente_RowCommand">
                                         <Columns>
                                             <asp:TemplateField HeaderText="">
@@ -99,8 +99,51 @@
                                             </asp:TemplateField>
                                         </Columns>
                                     </asp:GridView>
-                                </div>
+                                </div>--%>
+                                <div class="box-body">
+                                    <div class="box">
+                                        <div class="box-header">
+                                            <h3 class="box-title">Clintes</h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                            <table id="example1" class="table table-bordered table-striped table-responsive">
+                                                <thead>
+                                                    <tr>
+                                                        <th>NUI</th>
+                                                        <th>NOMBRE</th>
+                                                        <th>DIRECCION</th>
+                                                        <th>CORREO</th>
+                                                        <th>EXPEDICIÓN</th>
+                                                        <th>ESTADO</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <%
+                                                        if (tablacliente != null)
+                                                        {
+                                                            foreach (System.Data.DataRow item in tablacliente.Rows)
+                                                            {
+                                                    %>
+                                                    <tr>
+                                                        <td><%=item["identificacion"].ToString() %></td>
+                                                        <td><a href="Cliente.aspx?codigo=<%=item["identificacion"].ToString() %>"><%=item["nombre"].ToString()+" "+item["apellido"].ToString() %></a></td>
+                                                        <td><%=item["direccion"].ToString()+"/B "+item["barrios"].ToString() %></td>
+                                                        <td><%=item["correo"].ToString() %></td>
+                                                        <td><%=Convert.ToDateTime(item["fechnac"].ToString()).ToString("yyyy-MM-dd") %></td>
+                                                        <td><%=item["estado"].ToString() %></td>
+                                                    </tr>
 
+                                                    <%
+                                                            }
+                                                        }
+                                                    %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
