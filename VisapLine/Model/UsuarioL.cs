@@ -15,6 +15,7 @@ namespace VisapLine.Model
         public string usuauser { get; set; }
         public string usuapassw { get; set; }
         public string rol_idrol { get; set; }
+        public string datospersonales_iddatospersonales { get; set; }
 
         public DataTable ValidarUsuario(UsuarioL usu)
         {
@@ -22,7 +23,7 @@ namespace VisapLine.Model
         }
         public bool CambiarContraseña(UsuarioL usu)
         {
-            return data.OperarDatos("SELECT pr_actulizarcontrasenausuario('" + usu.idusuario+"','"+usu.usuapassw+"');");
+            return data.OperarDatos("SELECT pr_actualizarcontrasenausuario('" + usu.idusuario+"','"+usu.usuapassw+"');");
         }
         public DataTable ConsultarUsuarioId(UsuarioL usu)
         {
@@ -30,11 +31,11 @@ namespace VisapLine.Model
         }
         public bool RegistrarUsuario(UsuarioL usu)
         {
-            return data.OperarDatos("select * from pr_insertarusuario( '"+usu.usuauser+"','"+usu.usuapassw+"','"+usu.rol_idrol+"')");
+            return data.OperarDatos("select * from pr_insertarusuario( '"+usu.usuauser+"','"+usu.usuapassw+"','"+usu.rol_idrol+"','"+datospersonales_iddatospersonales+"')");
         }
-        public DataTable ConsultarUsuarioByUsuario(UsuarioL usu)
+        public DataTable ConsultarUsuarioByUsuario(UsuarioL usu)//Consulta por fk del usuario asociado a los datos personales
         {
-            return data.ConsultarDatos("select * from pr_consultarusuarioName('" + usu.usuauser+"');");
+            return data.ConsultarDatos("select * from pr_consultarusuariocedula('" + usu.idusuario+"');");
         }
         public bool ActualizarUsuarioRol(UsuarioL usu)
         {

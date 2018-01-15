@@ -26,7 +26,7 @@ namespace VisapLine.View.Private
         Municipio munic = new Municipio();
         static DataTable listtelefono = new DataTable();
         public static bool activacion = false;
-
+        public DataTable tablacliente = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -71,6 +71,12 @@ namespace VisapLine.View.Private
                     municipio_.SelectedValue = "1";
                     cargarBarrios(municipio_.SelectedValue);
 
+                    string codig = Convert.ToString(Request.QueryString["codigo"]);
+                    if (codig != null)
+                    {
+                        cargarActualizar(codig);
+                    }
+
                     CargarTelefono();
                 }
                 Alerta.Visible = false;
@@ -99,6 +105,68 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
 
+        }
+
+        public void cargarActualizar(string ent)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+            try
+            {
+                terc.identificacion = ent;
+                DataRow dat = terc.ConsultarPersonaIdentifall(terc).Rows[0];
+                identificacion_.Value = dat["identificacion"].ToString();
+                nombre_.Value = dat["nombre"].ToString();
+                apellido_.Value = dat["apellido"].ToString();
+                Direccion_.Value = dat["direccion"].ToString();
+                correo_.Value = dat["correo"].ToString();
+                estrato_.SelectedValue = dat["estrato"].ToString();
+                estado_.SelectedValue = dat["estado"].ToString();
+                tipotercero_.SelectedValue = dat["tipotercero_idtipotercero"].ToString();
+                tipodoc_.SelectedValue = dat["tipodoc_idtipodoc"].ToString();
+                tiporesident_.SelectedValue = dat["tiporesidencia_idtiporesidencia"].ToString();
+                tipofact_.SelectedValue = dat["tipofactura_idtipofactura"].ToString();
+                barrio_.SelectedValue = dat["barrio_idbarrio"].ToString();
+                fecnac_.Value = Convert.ToDateTime(dat["fechnac"]).ToString("yyyy-MM-dd");
+
+                activacion = true;
+
+                viewedicion.Visible = true;
+                textediccion.InnerHtml = "Edicción habilitada para " + dat["nombre"].ToString() + " " + dat["apellido"].ToString();
+                codigo.InnerHtml = dat["idterceros"].ToString();
+
+                barr.idbarrios = dat["barrio_idbarrio"].ToString();
+                DataRow dir = barr.ConsultarTodoporBarrio(barr).Rows[0];
+                cargarDepartamentos(dir["idpais"].ToString());
+                pais_.SelectedValue = dir["idpais"].ToString();
+                departamento_.SelectedValue = dir["iddepartamento"].ToString();
+                cargarMunicipios(dir["iddepartamento"].ToString());
+                municipio_.SelectedValue = dir["idmunicipio"].ToString();
+                cargarBarrios(dir["idmunicipio"].ToString());
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+        public void Limpiar()
+        {
+            identificacion_.Value = "";
+            nombre_.Value = "";
+            apellido_.Value = "";
+            Direccion_.Value = "";
+            correo_.Value = "";
+            estrato_.SelectedValue = "Seleccione";
+            estado_.SelectedValue = "Seleccione";
+            tipotercero_.SelectedValue = "Seleccione";
+            tipodoc_.SelectedValue = "Seleccione";
+            tiporesident_.SelectedValue = "Seleccione";
+            tipofact_.SelectedValue = "Seleccione";
+            barrio_.SelectedValue = "Seleccione";
+            fecnac_.Value = "";
+            listtelefono.Dispose();
+            listtelefono.Rows.Clear();
         }
 
         private void cargarDepartamentos(string dat)
@@ -214,9 +282,13 @@ namespace VisapLine.View.Private
                     terc.fechanatcimiento = Validar.validarlleno(fecnac_.Value);
                     if (terc.ActualizarTercero(terc))
                     {
-                        terc.identificacion = identificacion_.Value;
-                        DataRow dat = terc.ConsultarPersonaIdentifall(terc).Rows[0];
-                        codigo.InnerHtml = dat["idterceros"].ToString();
+                        foreach (DataRow item in listtelefono.Rows)
+                        {
+                            tlf.telefono = item["telefono"].ToString();
+                            tlf.terceros_idterceros = terc.identificacion;
+                            tlf.RegistrarTelefono(tlf);
+                        }
+
                         textError.InnerHtml = "Actualizado correctamente";
                         Alerta.CssClass = "alert alert-success";
                         Alerta.Visible = true;
@@ -261,6 +333,7 @@ namespace VisapLine.View.Private
                                 tlf.terceros_idterceros = terc.identificacion;
                                 tlf.RegistrarTelefono(tlf);
                             }
+                            Limpiar();
                             textError.InnerHtml = "Se ha registrado con exito";
                             Alerta.CssClass = "alert alert-success";
                             Alerta.Visible = true;
@@ -306,7 +379,7 @@ namespace VisapLine.View.Private
             {
                 telefonos.DataSource = listtelefono;
                 telefonos.DataBind();
-
+                telefono_.Value = "";
             }
             catch (Exception ex)
             {
@@ -322,7 +395,7 @@ namespace VisapLine.View.Private
             try
             {
                 DataRow dat = listtelefono.NewRow();
-                dat["idtelefono"] = listtelefono.Rows.Count+1;
+                dat["idtelefono"] = listtelefono.Rows.Count + 1;
                 dat["telefono"] = Validar.validarnumero(telefono_.Value);
                 listtelefono.Rows.Add(dat);
                 CargarTelefono();
@@ -341,8 +414,7 @@ namespace VisapLine.View.Private
             try
             {
                 terc.identificacion = Validar.validarnumero(identif_.Value);
-                tablacliente.DataSource = Validar.Consulta(terc.ConsultarPersonaIdentifall(terc));
-                tablacliente.DataBind();
+                tablacliente = Validar.Consulta(terc.ConsultarPersonaIdentifall(terc));
             }
             catch (Exception ex)
             {
@@ -350,90 +422,6 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-        }
-
-        protected void tablacliente_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            try
-            {
-                if (e.CommandName.ToString() == "ver")
-                {
-                    string DeleteRowId = e.CommandArgument.ToString();
-                    //pendiete para la vista de contratos
-                }
-                if (e.CommandName.ToString() == "Editar")
-                {
-                    string DeleteRowId = e.CommandArgument.ToString();
-                    terc.identificacion = DeleteRowId;
-                    DataRow dat = terc.ConsultarPersonaIdentifall(terc).Rows[0];
-                    identificacion_.Value = dat["identificacion"].ToString();
-                    nombre_.Value = dat["nombre"].ToString();
-                    apellido_.Value = dat["apellido"].ToString();
-                    Direccion_.Value = dat["direccion"].ToString();
-                    correo_.Value = dat["correo"].ToString();
-                    estrato_.SelectedValue = dat["estrato"].ToString();
-                    estado_.SelectedValue = dat["estado"].ToString();
-                    tipotercero_.SelectedValue = dat["tipotercero_idtipotercero"].ToString();
-                    tipodoc_.SelectedValue = dat["tipodoc_idtipodoc"].ToString();
-                    tiporesident_.SelectedValue = dat["tiporesidencia_idtiporesidencia"].ToString();
-                    tipofact_.SelectedValue = dat["tipofactura_idtipofactura"].ToString();
-                    barrio_.SelectedValue = dat["barrio_idbarrio"].ToString();
-                    fecnac_.Value = Convert.ToDateTime(dat["fechnac"]).ToString("yyyy-MM-dd");
-                    ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
-                    activacion = true;
-
-                    viewedicion.Visible = true;
-                    textediccion.InnerHtml = "Edicción habilitada para " + dat["nombre"].ToString() + " " + dat["apellido"].ToString();
-                    codigo.InnerHtml = dat["idterceros"].ToString();
-
-                    barr.idbarrios = dat["barrio_idbarrio"].ToString();
-                    DataRow dir = barr.ConsultarTodoporBarrio(barr).Rows[0];
-                    cargarDepartamentos(dir["idpais"].ToString());
-                    pais_.SelectedValue = dir["idpais"].ToString();
-                    departamento_.SelectedValue = dir["iddepartamento"].ToString();
-                    cargarMunicipios(dir["iddepartamento"].ToString());
-                    municipio_.SelectedValue = dir["idmunicipio"].ToString();
-                    cargarBarrios(dir["idmunicipio"].ToString());
-
-                }
-                if (e.CommandName.ToString() == "Eliminar")
-                {
-                    string DeleteRowId = e.CommandArgument.ToString();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
-            }
-        }
-
-        protected void tablacliente_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            //if (e.Row.RowType == DataControlRowType.DataRow)
-            //{
-            //    if (e.Row.Cells[9].Text == "Activo")
-            //    {
-            //        e.Row.Cells[9].Text = "";
-            //        e.Row.Cells[9].CssClass = "glyphicon glyphicon-ok";
-            //    }
-            //    else
-            //    {
-            //        e.Row.Cells[9].CssClass = "glyphicon glyphicon-remove";
-            //    }
-            //    if (e.Row.Cells[3].Text == "Natural")
-            //    {
-            //        e.Row.Cells[3].Text = "";
-            //        e.Row.Cells[3].CssClass = "glyphicon glyphicon-user";
-            //    }
-            //    else
-            //    {
-            //        e.Row.Cells[3].CssClass = "glyphicon glyphicon-object-align-bottom";
-            //    }
-            //    e.Row.Cells[11].Text = Convert.ToDateTime(e.Row.Cells[11].Text).ToString("dd/MM/yyyy");
-            //}
         }
 
         protected void CancelarTercero(object sender, EventArgs e)
@@ -443,6 +431,8 @@ namespace VisapLine.View.Private
             textediccion.InnerHtml = "";
             ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             codigo.InnerHtml = "";
+            Limpiar();
+            telefono_.Value = "";
         }
     }
 }

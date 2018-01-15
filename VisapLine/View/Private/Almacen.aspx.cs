@@ -68,7 +68,7 @@ namespace VisapLine.View.Private
 
         protected void RegistrarProveedor(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel4();", true);
             try
             {
                 prov.nit = Validar.validarlleno(nit_.Value);
@@ -77,14 +77,14 @@ namespace VisapLine.View.Private
                 prov.correo = Validar.validarlleno(correo_.Value);
                 if (prov.RegistrarProveedor(prov))
                 {
-                    textError.InnerHtml = "Registrado correctamente";
+                    textError.InnerHtml = "Proveedor Registrado Correctamente";
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
                     CargarTableProveedor();
                 }
                 else
                 {
-                    textError.InnerHtml = "Error al registrar";
+                    textError.InnerHtml = "Error al registrar el Proveedor";
                     Alerta.CssClass = "alert alert-error";
                     Alerta.Visible = true;
                 }
@@ -179,14 +179,14 @@ namespace VisapLine.View.Private
                 tipopro.tipoproducto = tipoproducto.Value;
                 if (tipopro.RegistrarTipoProducto(tipopro))
                 {
-                    textError.InnerHtml = "Registrado correctamente";
+                    textError.InnerHtml = "Tipo de Producto Registrado correctamente";
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
                     CargarTabletipoProducto();
                 }
                 else
                 {
-                    textError.InnerHtml = "Error al registrar";
+                    textError.InnerHtml = "Error al registrar el Tipo de Producto";
                     Alerta.CssClass = "alert alert-error";
                     Alerta.Visible = true;
                 }
@@ -201,20 +201,20 @@ namespace VisapLine.View.Private
 
         protected void RegistrarFabricante(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel5();", true);
             try
             {
                 fab.fabricante = fabricante_.Value;
                 if (fab.RegistrarFabricante(fab))
                 {
-                    textError.InnerHtml = "Registrado correctamente";
+                    textError.InnerHtml = "Fabricante Registrado correctamente";
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
                     CargarTableFabricante();
                 }
                 else
                 {
-                    textError.InnerHtml = "Error al registrar";
+                    textError.InnerHtml = "Error al registrar el Fabricante";
                     Alerta.CssClass = "alert alert-error";
                     Alerta.Visible = true;
                 }
@@ -229,21 +229,21 @@ namespace VisapLine.View.Private
 
         protected void RegistrarModelo(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel6();", true);
             try
             {
                 mod.modelo = modelo_.Value;
                 mod.fabricante_idfabricante = listfabricante.SelectedValue;
                 if (mod.RegistrarModelo(mod))
                 {
-                    textError.InnerHtml = "Registrado correctamente";
+                    textError.InnerHtml = "Modelo Registrado correctamente";
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
                     CargarTableModelo();
                 }
                 else
                 {
-                    textError.InnerHtml = "Error al registrar";
+                    textError.InnerHtml = "Error al registrar el Modelo";
                     Alerta.CssClass = "alert alert-error";
                     Alerta.Visible = true;
                 }
@@ -258,6 +258,7 @@ namespace VisapLine.View.Private
 
         protected void tablatipoproducto_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
             try
             {
                 if (e.CommandName.ToString() == "Eliminar")
@@ -286,6 +287,7 @@ namespace VisapLine.View.Private
 
         protected void tablaproveedores_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel4();", true);
             try
             {
                 if (e.CommandName.ToString() == "Eliminar")
@@ -314,6 +316,7 @@ namespace VisapLine.View.Private
 
         protected void tablafabricantes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel5();", true);
             try
             {
                 if (e.CommandName.ToString() == "Eliminar")
@@ -326,7 +329,7 @@ namespace VisapLine.View.Private
                     }
                     else
                     {
-                        textError.InnerHtml = "No se puede eliminar por asociacion";
+                        textError.InnerHtml = "No se puede eliminar por la asociacion con el Modelo";
                         Alerta.CssClass = "alert alert-error";
                         Alerta.Visible = true;
                     }
@@ -342,6 +345,7 @@ namespace VisapLine.View.Private
 
         protected void tablamodelo_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel6();", true);
             try
             {
                 if (e.CommandName.ToString() == "Eliminar")
@@ -380,7 +384,6 @@ namespace VisapLine.View.Private
                 comp.personal_idpersonal = Validar.validarsession("2");
                 DataRow dat = Validar.Consulta(comp.RegistrarCompra(comp)).Rows[0];
                 codigoCompra.InnerHtml = dat[0].ToString();
-                ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             }
             catch (Exception ex)
             {
