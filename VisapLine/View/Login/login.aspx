@@ -47,6 +47,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
 </head>
 <body class="hold-transition login-page">
+
     <form method="post" runat="server">
         <div class="login-box">
             <div class="login-logo">
@@ -65,26 +66,27 @@
                         <input type="password" class="form-control" runat="server" id="pas_" placeholder="Contraseña" />
                         <span class="ion ion-locked form-control-feedback"></span>
                     </div>
-                    <div class="row">
-                        <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="alert alert-error col-12">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <label class="text-center" runat="server" id="textError"></label>
-                            <div class="fog-pwd">
-                                <a href="#"><i class="ion ion-locked"></i>Olvido la contraseña?</a><br />
-                            </div>
-                        </asp:Panel>
-                        <!-- /.col -->
-                        <div class="col-12 text-center">
-                            <asp:Button class="btn btn-block btn-flat margin-top-10 btn-primary" ID="btnInciarSession" OnClick="Login" runat="server" Text="INICIAR SESSION" />
-                        </div>
-                        <!-- /.col -->
-                    </div>
                 </div>
                 <!-- /.social-auth-links -->
 
                 <div class="margin-top-30 text-center">
-                    <p>¿Eres socio o funcionario? <a href="#" data-toggle="modal" data-target="#modal-primary">Obtener acceso</a></p>
+                    <p>¿Eres socio o funcionario? <a href="#" data-toggle="modal" data-target="#creacion">Obtener acceso</a></p>
                 </div>
+                <div class="row">
+                    <!-- /.col -->
+                    <div class="col-12 text-center">
+                        <asp:Button class="btn btn-block btn-flat margin-top-10 btn-primary" ID="btnInciarSession" OnClick="Login" runat="server" Text="INICIAR SESSION" />
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <div class="row fa-align-right">
+                        <a href="#" data-toggle="modal" data-target="#modal-primary"><i class="ion ion-locked"></i>¿Olvido la contraseña?</a><br />
+                </div>
+
+                <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="alert alert-error row ">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <label class="text-center" runat="server" id="textError"></label>
+                </asp:Panel>
             </div>
             <!-- /.login-box-body -->
         </div>
@@ -93,7 +95,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Obtención de credenciales</h4>
+                        <h4 class="modal-title">Recuperación de la contraseña</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
                     </div>
@@ -115,7 +117,48 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary float-right" runat="server" onserverclick="RecuperarContraseña" >Gurdar Cambios</button>
+                        <button type="button" class="btn btn-primary float-right" runat="server" onserverclick="RecuperarContraseña">Gurdar Cambios</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <div class="modal fade" id="creacion">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Obtención de credenciales</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box box-primary bg-transparent">
+                            <div class="form-element">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Numero Unico de identificación</label>
+                                        <input type="text" class="form-control" runat="server" id="nui_cre" placeholder="Ingrese su Numero unico" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Usuario</label>
+                                        <input type="email" class="form-control" runat="server" id="usuario_cre" placeholder="Ingrese un usuario" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Contraseña</label>
+                                        <input type="email" class="form-control" runat="server" id="password_cre" placeholder="Ingrese la contraseña" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Confrime Contraseña</label>
+                                        <input type="email" class="form-control" runat="server" id="password2_cre" placeholder="Vuelva a escribir la contraseña" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary float-right" runat="server" onserverclick="CrearUsuario">Gurdar Cambios</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->

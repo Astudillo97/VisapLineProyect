@@ -53,6 +53,17 @@ namespace VisapLine.Exeption
                 throw new ValidarExeption("Campo vacio");
             }
         }
+        public static string validarpassword(string pas1, string pas2)
+        {
+            if (pas1==pas2)
+            {
+                return pas1;
+            }
+            else
+            {
+                throw new ValidarExeption("Las contraseñas no son iguales");
+            }
+        }
         public static string validarsession(string dat)
         {
             if (dat != null && dat.Length > 0)

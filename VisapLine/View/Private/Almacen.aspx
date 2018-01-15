@@ -11,6 +11,15 @@
         function panel3() {
             document.getElementById("pan3").click();
         }
+        function panel4() {
+            document.getElementById("pan4").click();
+        }
+        function panel5() {
+            document.getElementById("pan5").click();
+        }
+        function panel6() {
+            document.getElementById("pan6").click();
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -67,7 +76,6 @@
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>

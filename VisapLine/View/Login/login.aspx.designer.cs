@@ -31,6 +31,15 @@ namespace VisapLine.View.Login {
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword pas_;
         
         /// <summary>
+        /// Control btnInciarSession.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnInciarSession;
+        
+        /// <summary>
         /// Control Alerta.
         /// </summary>
         /// <remarks>
@@ -49,15 +58,6 @@ namespace VisapLine.View.Login {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl textError;
         
         /// <summary>
-        /// Control btnInciarSession.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnInciarSession;
-        
-        /// <summary>
         /// Control correo.
         /// </summary>
         /// <remarks>
@@ -74,5 +74,41 @@ namespace VisapLine.View.Login {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText nui;
+        
+        /// <summary>
+        /// Control nui_cre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText nui_cre;
+        
+        /// <summary>
+        /// Control usuario_cre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl usuario_cre;
+        
+        /// <summary>
+        /// Control password_cre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl password_cre;
+        
+        /// <summary>
+        /// Control password2_cre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl password2_cre;
     }
 }
