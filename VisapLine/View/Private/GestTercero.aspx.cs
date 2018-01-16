@@ -270,7 +270,7 @@ namespace VisapLine.View.Private
 
         protected void RegistrarTercero(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
+            CargarPaneles("panel3();");
             try
             {
                 if (activacion)//si es true se activa la actualizacion de lo contrario solo registra
@@ -369,7 +369,7 @@ namespace VisapLine.View.Private
 
         protected void telefonos_RowDeleting1(object sender, GridViewDeleteEventArgs e)
         {
-            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
+            CargarPaneles("panel3();");
             try
             {
                 TableCell cell = telefonos.Rows[e.RowIndex].Cells[0];
@@ -417,7 +417,7 @@ namespace VisapLine.View.Private
 
         protected void RegistrarTelefono(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
+            CargarPaneles("panel3();");
             try
             {
                 DataRow dat = listtelefono.NewRow();
@@ -463,7 +463,7 @@ namespace VisapLine.View.Private
 
         protected void tipotercero__SelectedIndexChanged(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+            CargarPaneles("panel2();");
             try
             {
                 Validar.validarselected(tipotercero_.SelectedValue);
@@ -489,6 +489,20 @@ namespace VisapLine.View.Private
                     Alerta.CssClass = "alert alert-error";
                     Alerta.Visible = true;
                 } 
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        public void CargarPaneles(string funcion)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", funcion, true);
+            try
+            {
                 foreach (DataRow item in listtipotercero.Rows)
                 {
                     switch (item["Persona"].ToString())
@@ -512,7 +526,7 @@ namespace VisapLine.View.Private
 
         protected void listTipos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+            CargarPaneles("panel2();");
             try
             {
                 //TableCell cell = listTipos.Rows[e.RowIndex].Cells[0];

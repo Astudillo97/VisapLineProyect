@@ -10,7 +10,6 @@
             document.getElementById("pan3").click();
         }
         function Emresarial() {
-            alert("asdasdadasdad");
                     document.getElementById("<%=apellido_.ClientID%>").value = "NULL::character varying";
                     document.getElementById("<%=_nombre_.ClientID%>").innerHTML = "Razon Social";
                     document.getElementById("<%=estrato_.ClientID%>").value = "3";
