@@ -443,13 +443,6 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label class="col-sm-3 col-form-label">Iva</label>
-                                                                        <div class="col-sm-9">
-                                                                            <asp:TextBox ID="TextBoxivacorpo" class="form-control" placeholder="Iva" runat="server"></asp:TextBox>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Estado</label>
                                                                         <div class="col-sm-9">
                                                                             <asp:DropDownList ID="DropDownList10estadocorpo" runat="server" CssClass="form-control" AppendDataBoundItems="true">
@@ -463,7 +456,7 @@
                                                             </div>
                                                             <div class="box-footer">
                                                                 <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button6" Text="Verificar" Width="143px" Height="30px" OnClick="Button6_Click" />
-                                                                <a href="#" id="botonmodalcorpo" data-toggle="modal" data-target="#modal-corporativo" ></a>
+                                                                <a href="#" id="botonmodalcorpo" data-toggle="modal" data-target="#modal-corporativo"></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -561,7 +554,7 @@
                                                                             <div class="form-group row">
                                                                                 <asp:TextBox ID="TextBoxtelefonoempresa" type="number" runat="server" CssClass="form-control" placeholder="Telefono" Width="232px"></asp:TextBox>
                                                                                 <div class="col-md-auto">
-                                                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button4" Text="+" Width="37px" Height="31px" OnClick="Button4_Click" />
+                                                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="cargartelefonoempresa" Text="+" Width="37px" Height="31px" OnClick="cargartelefonoempresa_Click" />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -641,7 +634,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Estrato</label>
                                                                         <div class="col-sm-9">
-                                                                            <asp:DropDownList ID="DropDownListestratoempresa" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListestratoempresa_SelectedIndexChanged">
+                                                                            <asp:DropDownList ID="DropDownListestratoempresa" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                                                 <asp:ListItem>Seleccione</asp:ListItem>
                                                                                 <asp:ListItem Value="1">Estrato 1</asp:ListItem>
                                                                                 <asp:ListItem Value="2">Estrato 2</asp:ListItem>
@@ -652,13 +645,7 @@
                                                                             </asp:DropDownList>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group row">
-                                                                        <label class="col-sm-3 col-form-label">Iva</label>
-                                                                        <div class="col-sm-9">
-                                                                            <asp:TextBox ID="TextBoxivaempresa" class="form-control" placeholder="Iva" runat="server"></asp:TextBox>
 
-                                                                        </div>
-                                                                    </div>
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Estado</label>
                                                                         <div class="col-sm-9">
@@ -672,8 +659,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="box-footer">
-                                                                <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonguardarempresa" Text="Verificar" Width="143px" Height="30px" OnClick="Buttonguardarempresa_Click" />
-                                                                <a href="#" id="botonmodalempre" data-toggle="modal" data-target="#modal-empresarial" visible="false"></a>
+                                                                <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button8" Text="Verificar" Width="146px" OnClick="Button8_Click" />
+                                                                <a href="#" id="botonmodalempre" data-toggle="modal" data-target="#modal-empresarial"></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -712,6 +699,15 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label">Identificación</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="form-group row">
+                                                            <asp:TextBox ID="TextBox1" class="form-control" Style="text-transform: uppercase" placeholder="Identificación" runat="server" Width="154px"></asp:TextBox>
+                                                            <div class="col-md-auto">
+                                                                <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button4" Text="buscar" OnClick="Button2_Click" Width="100px" Height="30px" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -819,7 +815,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Tipo Documento:<asp:Label ID="labeltipodocumentocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                    <td>Tipo Factura:<asp:Label ID="label4" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    <td>Tipo Factura:<asp:Label ID="labeltipofacturacorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Nombre:<asp:Label ID="labelnombrecorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
@@ -904,7 +900,8 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button8" Text="Guardar" Width="146px" />
+                                                        <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonguardarempresa" Text="Verificar" Width="143px" Height="30px" OnClick="Buttonguardarempresa_Click" />
+
                                                     </td>
                                                     <td>
                                                         <asp:Button ID="Button9" runat="server" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="146px" data-dismiss="modal" />

@@ -325,7 +325,7 @@ namespace VisapLine.View.Private
                         terc.barrios_idbarrios = Validar.validarselected(barrio_.SelectedValue);
                         terc.fechanatcimiento = Validar.validarlleno(fecnac_.Value);
                         Validar.validartelefono(listtelefono);
-                        if (terc.RegistrarTerceros(terc))
+                        if (terc.RegistrarTercerocliente(terc))
                         {
                             foreach (DataRow item in listtelefono.Rows)
                             {

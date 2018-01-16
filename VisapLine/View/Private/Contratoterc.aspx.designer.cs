@@ -391,15 +391,6 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListestratocorpo;
         
         /// <summary>
-        /// Control TextBoxivacorpo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxivacorpo;
-        
-        /// <summary>
         /// Control DropDownList10estadocorpo.
         /// </summary>
         /// <remarks>
@@ -508,13 +499,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox TextBoxtelefonoempresa;
         
         /// <summary>
-        /// Control Button4.
+        /// Control cargartelefonoempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.WebControls.Button cargartelefonoempresa;
         
         /// <summary>
         /// Control GridViewtelefonoempresa.
@@ -580,15 +571,6 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListestratoempresa;
         
         /// <summary>
-        /// Control TextBoxivaempresa.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxivaempresa;
-        
-        /// <summary>
         /// Control DropDownListestadoempresa.
         /// </summary>
         /// <remarks>
@@ -598,13 +580,31 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListestadoempresa;
         
         /// <summary>
-        /// Control Buttonguardarempresa.
+        /// Control Button8.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Buttonguardarempresa;
+        protected global::System.Web.UI.WebControls.Button Button8;
+        
+        /// <summary>
+        /// Control TextBox1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        
+        /// <summary>
+        /// Control Button4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button4;
         
         /// <summary>
         /// Control labelnaturaltipopersona.
@@ -760,13 +760,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Label labeltipodocumentocorporativo;
         
         /// <summary>
-        /// Control label4.
+        /// Control labeltipofacturacorporativo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label4;
+        protected global::System.Web.UI.WebControls.Label labeltipofacturacorporativo;
         
         /// <summary>
         /// Control labelnombrecorporativo.
@@ -949,13 +949,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Label label1estadoempresarial;
         
         /// <summary>
-        /// Control Button8.
+        /// Control Buttonguardarempresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button8;
+        protected global::System.Web.UI.WebControls.Button Buttonguardarempresa;
         
         /// <summary>
         /// Control Button9.

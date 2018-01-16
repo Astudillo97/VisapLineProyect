@@ -37,9 +37,14 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select * from pr_consultarrecuperacion('"+ter.identificacion+"', '"+ter.correo+"');");
         }
 
-        public bool RegistrarTerceros(Terceros per)
+        public bool RegistrarTercerocliente(Terceros per)
         {
-            return data.OperarDatos("SELECT * from public.pr_insertartercero('"+per.identificacion+"','"+per.nombre+ "','" + per.apellido + "','" + per.direccion + "','" + per.correo + "','" + per.estrato + "','" + per.estado + "','" + per.tipotercero_idtipotercero + "','" + per.tipodoc_idtipodoc + "','" + per.fechanatcimiento + "','" + per.tiporesidencia_idtiporesidencia + "','" + per.tipofactura_idtipofactura + "','" + per.barrios_idbarrios + "');");
+            return data.OperarDatos("SELECT * from public.pr_insertartercerocliente('"+per.estrato+"', '"+per.estado+"', '"+per.tiporesidencia_idtiporesidencia+"', '"+per.tipofactura_idtipofactura+"', '"+per.identificacion+"', '"+per.nombre+"', '"+per.apellido+"','"+per.correo+"', '"+per.direccion+"', '"+per.barrios_idbarrios+"', '"+per.fechanatcimiento+"', '"+per.tipodoc_idtipodoc+"');");
+        }
+
+        public bool RegistrarTerceroempresacliente(Terceros per)
+        {
+            return data.OperarDatos("SELECT * from public.pr_insertarterceroempresacliente('" + per.estrato + "', '" + per.estado + "', '" + per.tiporesidencia_idtiporesidencia + "', '" + per.tipofactura_idtipofactura + "', '" + per.identificacion + "', '" + per.nombre + "', '" + per.correo + "', '" + per.direccion + "', '" + per.barrios_idbarrios + "', '" + per.fechanatcimiento + "', '" + per.tipodoc_idtipodoc + "');");
         }
         public DataTable ConsultarPersonaIdentifall(Terceros ter)
         {

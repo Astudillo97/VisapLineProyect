@@ -22,6 +22,7 @@ namespace VisapLine.View.Private
         TipoResidencia tpres = new TipoResidencia();
         TipoDoc tpdoc = new TipoDoc();
         Telefono tlf = new Telefono();
+        CargoTercero ctg = new CargoTercero();
         static DataTable listtelefono = new DataTable();
         static DataTable listtelefonocorpo = new DataTable();
         static DataTable listtelefonoempre = new DataTable();
@@ -33,7 +34,7 @@ namespace VisapLine.View.Private
             {
                 if (!IsPostBack)
                 {
-                    
+
                     tipotercero.DataSource = ttr.ConsultarTipoTercero();
                     tipotercero.DataTextField = "tipoterceros";
                     tipotercero.DataValueField = "idtipotercero";
@@ -149,7 +150,7 @@ namespace VisapLine.View.Private
             }
             else
             {
-                if (tipotercero.SelectedItem.Text == "Natural")
+                if (tipotercero.SelectedItem.Text == "NATURAL")
                 {
                     iddivcorporativo.Visible = false;
                     iddivnatural.Visible = true;
@@ -157,7 +158,7 @@ namespace VisapLine.View.Private
                 }
                 else
                 {
-                    if (tipotercero.SelectedItem.Text == "Corporativo")
+                    if (tipotercero.SelectedItem.Text == "CORPORATIVO")
                     {
                         iddivempresa.Visible = false;
                         iddivcorporativo.Visible = true;
@@ -343,7 +344,8 @@ namespace VisapLine.View.Private
             labelestadonatural.Text = DropDownListestado.SelectedItem.Text;
             ClientScript.RegisterStartupScript(GetType(), "", "botonmodal();", true);
         }
-
+        
+        //registrar natural 
         protected void Button1_Click(object sender, EventArgs e)
         {
             try
@@ -363,11 +365,14 @@ namespace VisapLine.View.Private
                 terc.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
                 terc.estrato = Validar.validarselected(DropDownListestrato.SelectedValue);
                 terc.estado = Validar.validarselected(DropDownListestado.SelectedValue);
+                
+                ctg.identificacion= Validar.validarlleno(TextBox1identificacion.Text);
+                ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
 
 
+                if (terc.RegistrarTercerocliente(terc) && ctg.Registrarcargotercero(ctg))
+                {           
 
-                if (terc.RegistrarTerceros(terc))
-                {
                     foreach (DataRow item in listtelefono.Rows)
                     {
                         if (listtelefono.Rows.Count > 0)
@@ -591,20 +596,18 @@ namespace VisapLine.View.Private
         //cargar modal corporacion
         protected void Button6_Click(object sender, EventArgs e)
         {
-            labelidentificacionnatural.Text = TextBox1identificacion.Text;
-            labelnaturaltipopersona.Text = tipotercero.SelectedItem.Text;
-            labeltipodocumentonatural.Text = DropDownListtipodocu.SelectedItem.Text;
-            labeltipofacturanatural.Text = DropDownList2.SelectedItem.Text;
-            labelnombrenatural.Text = TextBoxnombre.Text;
-            labelapellidonatural.Text = TextBox1apellido.Text;
-            labelnacimientonatural.Text = TextBox1fecnac.Text;
-            labelcorreonatural.Text = TextBoxcorreo.Text;
-            labelbarrionatural.Text = DropDownListbarrio.SelectedItem.Text;
-            labeltiporesidencianatural.Text = DropDownListtiporesi.SelectedItem.Text;
-            labelestratonatural.Text = DropDownListestrato.SelectedItem.Text;
-            labelestadonatural.Text = DropDownListestado.SelectedItem.Text;
+            labelnitcorporativo.Text = TextBox1corporativo.Text;
+            labeltipocorporativo.Text = tipotercero.SelectedItem.Text;
+            labeltipodocumentocorporativo.Text = DropDownList1tipodocucorpo.SelectedItem.Text;
+            labeltipofacturacorporativo.Text = DropDownList3tipofactucorpo.SelectedItem.Text;
+            labelnombrecorporativo.Text = TextBoxnombrecorpo.Text;
+            labelexpedicioncorporativo.Text = TextBoxexpedicioncorpo.Text;
+            labelcorreocorporativo.Text = TextBoxcorreocorpo.Text;
+            label1barriocorporativo.Text = DropDownList7barricorpo.SelectedItem.Text;
+            labelresidenciacorporativo.Text = DropDownListresidenciacorpo.SelectedItem.Text;
+            labelestratocorporativo.Text = DropDownListestratocorpo.SelectedItem.Text;
+            labelestadocorporativo.Text = DropDownList10estadocorpo.SelectedItem.Text;
             ClientScript.RegisterStartupScript(GetType(), "", "botonmodalcorporativo();", true);
-
 
         }
         protected void Buttonguardarcorpo_Click(object sender, EventArgs e)
@@ -615,10 +618,10 @@ namespace VisapLine.View.Private
 
                 Validar.validarnumero(TextBox1corporativo.Text);
                 terc.identificacion = Validar.validarlleno(TextBox1corporativo.Text);
-                terc.direccion = Validar.validarlleno(TextBoxdireccioncorpo.Text);
+                terc.direccion = Validar.validarlleno(TextBoxdireccioncorpo.Text.ToUpper());
                 terc.tipodoc_idtipodoc = Validar.validarselected(DropDownList1tipodocucorpo.SelectedValue);
                 terc.tipofactura_idtipofactura = Validar.validarselected(DropDownList3tipofactucorpo.SelectedValue);
-                terc.nombre = Validar.validarlleno(TextBoxnombrecorpo.Text);
+                terc.nombre = Validar.validarlleno(TextBoxnombrecorpo.Text.ToUpper());
                 terc.fechanatcimiento = Validar.validarlleno(TextBoxexpedicioncorpo.Text);
                 terc.correo = Validar.validarlleno(TextBoxcorreocorpo.Text);
                 terc.barrios_idbarrios = Validar.validarselected(DropDownList7barricorpo.SelectedValue);
@@ -627,7 +630,10 @@ namespace VisapLine.View.Private
                 terc.estrato = Validar.validarselected(DropDownListestratocorpo.SelectedValue);
                 terc.estado = Validar.validarselected(DropDownList10estadocorpo.SelectedValue);
 
-                if (terc.RegistrarTerceros(terc))
+                ctg.identificacion = Validar.validarlleno(TextBox1corporativo.Text);
+                ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
+
+                if (terc.RegistrarTercerocliente(terc) && ctg.Registrarcargotercero(ctg))
                 {
                     foreach (DataRow item in listtelefonocorpo.Rows)
                     {
@@ -649,6 +655,11 @@ namespace VisapLine.View.Private
                     textError.InnerHtml = "Se ha registrado con exito";
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
+                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                    iddivnatural.Visible = false;
+                    iddivcorporativo.Visible = false;
+                    iddivempresa.Visible = false;
+
                 }
                 else
                 {
@@ -790,16 +801,12 @@ namespace VisapLine.View.Private
         }
 
 
-
-
-
-
         protected void CargarTelefonoempresa()
         {
 
             try
             {
-                GridViewtelefonoempresa.DataSource = listtelefonocorpo;
+                GridViewtelefonoempresa.DataSource = listtelefonoempre;
                 GridViewtelefonoempresa.DataBind();
 
             }
@@ -812,7 +819,7 @@ namespace VisapLine.View.Private
 
         }
         //agregar el telefono a la tabla 
-        protected void Button4_Click(object sender, EventArgs e)
+        protected void cargartelefonoempresa_Click(object sender, EventArgs e)
         {
             try
             {
@@ -830,12 +837,13 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
+   
         protected void telefonoempresa_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             try
             {
                 TableCell cell = GridViewtelefonoempresa.Rows[e.RowIndex].Cells[0];
-                listtelefonoempre.Rows.Remove(listtelefonocorpo.Rows[e.RowIndex]);
+                listtelefonoempre.Rows.Remove(listtelefonoempre.Rows[e.RowIndex]);
                 CargarTelefonoempresa();
             }
             catch (Exception ex)
@@ -845,23 +853,24 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
-
-        protected void DropDownListestratoempresa_SelectedIndexChanged(object sender, EventArgs e)
+           
+        protected void Button8_Click(object sender, EventArgs e)
         {
-            if (DropDownListestratoempresa.SelectedItem.Text == "Estrato 1" || DropDownListestratoempresa.SelectedItem.Text == "Estrato 2")
-            {
-                TextBoxivacorpo.Text = "0.16";
+            labelnitempresarial.Text = TextBox1empresa.Text;
+            label1tipoempresarial.Text = tipotercero.SelectedItem.Text;
+            labeltipodocuemntoempresarial.Text = DropDownListtipodocumentoempresa.SelectedItem.Text;
+            labeltipofacturalempresarial.Text = DropDownListtipofacturaempresa.SelectedItem.Text;
+            labelnombreempresarial.Text = TextBoxnombreempresa.Text;
+            labelexpedicionempresarial.Text = TextBoxexdicionempresa.Text;
+            labelcorreoempresarial.Text = TextBoxcorreoempresa.Text;
+            labelbarrioempresarial.Text = DropDownListbarrioempresa.SelectedItem.Text;
+            labelresidenciaempresarial.Text = DropDownListtiporeidenciaempresa.SelectedItem.Text;
+            labelestratoempresarial.Text = DropDownListestratoempresa.SelectedItem.Text;
+            label1estadoempresarial.Text = DropDownListestadoempresa.SelectedItem.Text;
+            ClientScript.RegisterStartupScript(GetType(), "", "botonmodalempresa();", true);
 
-            }
-            else
-            {
-                if (DropDownListestratoempresa.SelectedItem.Text == "Estrato 3" || DropDownListestratoempresa.SelectedItem.Text == "Estrato 4" || DropDownListestratoempresa.SelectedItem.Text == "Estrato 5" || DropDownListestratoempresa.SelectedItem.Text == "Estrato 6")
-                {
-                    TextBoxivacorpo.Text = "0.16";
-                }
-            }
+
         }
-
         protected void Buttonguardarempresa_Click(object sender, EventArgs e)
         {
             try
@@ -869,10 +878,10 @@ namespace VisapLine.View.Private
 
                 Validar.validarnumero(TextBox1empresa.Text);
                 terc.identificacion = Validar.validarlleno(TextBox1empresa.Text);
-                terc.direccion = Validar.validarlleno(TextBoxdireccioncorpo.Text);
+                terc.direccion = Validar.validarlleno(TextBoxdireccionempresa.Text.ToUpper());
                 terc.tipodoc_idtipodoc = Validar.validarselected(DropDownListtipodocumentoempresa.SelectedValue);
                 terc.tipofactura_idtipofactura = Validar.validarselected(DropDownListtipofacturaempresa.SelectedValue);
-                terc.nombre = Validar.validarlleno(TextBoxnombreempresa.Text);
+                terc.nombre = Validar.validarlleno(TextBoxnombreempresa.Text.ToUpper());
                 terc.fechanatcimiento = Validar.validarlleno(TextBoxexdicionempresa.Text);
                 terc.correo = Validar.validarlleno(TextBoxcorreoempresa.Text);
                 terc.barrios_idbarrios = Validar.validarselected(DropDownListbarrioempresa.SelectedValue);
@@ -881,7 +890,10 @@ namespace VisapLine.View.Private
                 terc.estrato = Validar.validarselected(DropDownListestratoempresa.SelectedValue);
                 terc.estado = Validar.validarselected(DropDownListestadoempresa.SelectedValue);
 
-                if (terc.RegistrarTerceros(terc))
+                ctg.identificacion = Validar.validarlleno(TextBox1empresa.Text);
+                ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
+
+                if (terc.RegistrarTerceroempresacliente(terc) && ctg.Registrarcargotercero(ctg))
                 {
                     foreach (DataRow item in listtelefonocorpo.Rows)
                     {
@@ -890,8 +902,6 @@ namespace VisapLine.View.Private
                             tlf.telefono = item["telefono"].ToString();
                             tlf.terceros_idterceros = terc.identificacion;
                             tlf.RegistrarTelefono(tlf);
-
-
                         }
                         else
                         {
@@ -903,6 +913,10 @@ namespace VisapLine.View.Private
                     textError.InnerHtml = "Se ha registrado con exito";
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
+                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                    iddivnatural.Visible = false;
+                    iddivcorporativo.Visible = false;
+                    iddivempresa.Visible = false;
                 }
                 else
                 {
@@ -919,8 +933,12 @@ namespace VisapLine.View.Private
             }
         }
 
-     
+        
     }
+
+
+
+
 
 
 
