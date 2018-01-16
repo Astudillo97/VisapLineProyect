@@ -12,7 +12,7 @@ using System.Web.Script.Serialization;
 
 namespace VisapLine.View.Private
 {
-    public partial class Cliente : System.Web.UI.Page
+    public partial class GestTercero : System.Web.UI.Page
     {
         TipoTercero tpter = new TipoTercero();
         TipoFactura tpfact = new TipoFactura();
@@ -325,7 +325,7 @@ namespace VisapLine.View.Private
                         terc.barrios_idbarrios = Validar.validarselected(barrio_.SelectedValue);
                         terc.fechanatcimiento = Validar.validarlleno(fecnac_.Value);
                         Validar.validartelefono(listtelefono);
-                        if (terc.RegistrarTerceros(terc))
+                        if (terc.RegistrarTerceroGeneral(terc))
                         {
                             foreach (DataRow item in listtelefono.Rows)
                             {

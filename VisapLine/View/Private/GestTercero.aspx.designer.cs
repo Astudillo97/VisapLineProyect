@@ -10,7 +10,7 @@
 namespace VisapLine.View.Private {
     
     
-    public partial class Cliente {
+    public partial class GestTercero {
         
         /// <summary>
         /// Control Alerta.
