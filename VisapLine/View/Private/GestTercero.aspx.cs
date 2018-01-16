@@ -488,7 +488,7 @@ namespace VisapLine.View.Private
                     textError.InnerHtml = "Ya seleciono este tipo de usuario";
                     Alerta.CssClass = "alert alert-error";
                     Alerta.Visible = true;
-                }
+                } 
                 foreach (DataRow item in listtipotercero.Rows)
                 {
                     switch (item["Persona"].ToString())
