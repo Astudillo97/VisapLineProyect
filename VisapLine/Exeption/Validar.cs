@@ -31,6 +31,17 @@ namespace VisapLine.Exeption
                 throw new ValidarExeption("No se encontro ningun registro");
             }
         }
+        public static string ConvertVarchar(string cad)
+        {
+            if (cad=="Seleccione" || cad=="")
+            {
+                return "NULL::character varying";
+            }
+            else
+            {
+                return "'" + cad + "'";
+            }
+        }
         public static DataTable validartelefono(DataTable data)
         {
             if (data != null && data.Rows.Count > 0)

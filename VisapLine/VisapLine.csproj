@@ -419,7 +419,7 @@
     <Content Include="Contenido\js\template.js" />
     <Content Include="View\Login\login.aspx" />
     <Content Include="View\Private\Almacen.aspx" />
-    <Content Include="View\Private\Cliente.aspx" />
+    <Content Include="View\Private\GestTercero.aspx" />
     <Content Include="View\Private\Contratoterc.aspx" />
     <Content Include="View\Private\index.aspx" />
     <Content Include="View\Private\pagplan.aspx" />
@@ -505,12 +505,12 @@
     <Compile Include="View\Private\Almacen.aspx.designer.cs">
       <DependentUpon>Almacen.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Private\Cliente.aspx.cs">
-      <DependentUpon>Cliente.aspx</DependentUpon>
+    <Compile Include="View\Private\GestTercero.aspx.cs">
+      <DependentUpon>GestTercero.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Private\Cliente.aspx.designer.cs">
-      <DependentUpon>Cliente.aspx</DependentUpon>
+    <Compile Include="View\Private\GestTercero.aspx.designer.cs">
+      <DependentUpon>GestTercero.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Contratoterc.aspx.cs">
       <DependentUpon>Contratoterc.aspx</DependentUpon>

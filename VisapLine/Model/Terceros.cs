@@ -26,7 +26,7 @@ namespace VisapLine.Model
         public string tipofactura_idtipofactura { get; set; }
         public string barrios_idbarrios { get; set; }
         public string usuario_idusuario { get; set; }
-
+        public string rh { get; set; }
         public DataTable ConsultarTerceros()
         {
             return data.ConsultarDatos("");
@@ -59,6 +59,9 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("SELECT * from public.pr_insertartercero('" + per.identificacion + "','" + per.estrato + "','" + per.estado + "','" + per.tipotercero_idtipotercero + "','" + per.tiporesidencia_idtiporesidencia + "','" + per.tipofactura_idtipofactura + "');");
         }
-
+        public bool RegistrarTerceroGeneral(Terceros ter)
+        {
+            return data.OperarDatos("select * from pr_insertartercero('"+ter.estrato+"', '"+ter.estado+"',"+ter.tiporesidencia_idtiporesidencia+","+ter.tipofactura_idtipofactura+",'"+ter.identificacion+"','"+ter.nombre+"','"+ter.apellido+"','"+ter.correo+"','"+ter.direccion+"',"+ter.barrios_idbarrios+",'"+ter.fechanatcimiento+"',"+ter.tipodoc_idtipodoc+","+ter.rh+")");
+        }
     }
 }
