@@ -324,6 +324,8 @@ namespace VisapLine.View.Private
             }
 
         }
+
+        //cargar el modal con datos natural
         protected void Button3_Click(object sender, EventArgs e)
         {
            
@@ -531,21 +533,7 @@ namespace VisapLine.View.Private
             }
         }
 
-        protected void DropDownListestratocorpo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (DropDownListestratocorpo.SelectedItem.Text == "Estrato 1" || DropDownListestratocorpo.SelectedItem.Text == "Estrato 2")
-            {
-                TextBoxivacorpo.Text = "0";
-
-            }
-            else
-            {
-                if (DropDownListestratocorpo.SelectedItem.Text == "Estrato 3" || DropDownListestratocorpo.SelectedItem.Text == "Estrato 4" || DropDownListestratocorpo.SelectedItem.Text == "Estrato 5" || DropDownListestratocorpo.SelectedItem.Text == "Estrato 5")
-                {
-                    TextBoxivacorpo.Text = "0.16";
-                }
-            }
-        }
+    
         protected void CargarTelefonocorpo()
         {
 
@@ -600,6 +588,25 @@ namespace VisapLine.View.Private
             }
         }
 
+        //cargar modal corporacion
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            labelidentificacionnatural.Text = TextBox1identificacion.Text;
+            labelnaturaltipopersona.Text = tipotercero.SelectedItem.Text;
+            labeltipodocumentonatural.Text = DropDownListtipodocu.SelectedItem.Text;
+            labeltipofacturanatural.Text = DropDownList2.SelectedItem.Text;
+            labelnombrenatural.Text = TextBoxnombre.Text;
+            labelapellidonatural.Text = TextBox1apellido.Text;
+            labelnacimientonatural.Text = TextBox1fecnac.Text;
+            labelcorreonatural.Text = TextBoxcorreo.Text;
+            labelbarrionatural.Text = DropDownListbarrio.SelectedItem.Text;
+            labeltiporesidencianatural.Text = DropDownListtiporesi.SelectedItem.Text;
+            labelestratonatural.Text = DropDownListestrato.SelectedItem.Text;
+            labelestadonatural.Text = DropDownListestado.SelectedItem.Text;
+            ClientScript.RegisterStartupScript(GetType(), "", "botonmodalcorporativo();", true);
+
+
+        }
         protected void Buttonguardarcorpo_Click(object sender, EventArgs e)
         {
 
