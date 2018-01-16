@@ -9,24 +9,17 @@
         function panel3() {
             document.getElementById("pan3").click();
         }
-        function myFunction() {
-            var id = document.getElementById("<%=tipotercero_.ClientID%>").value;
-            if (id === "2" || id === "3") {
-                document.getElementById("<%=apellido_.ClientID%>").style.display = 'none';
-                document.getElementById("<%=_apellido_.ClientID%>").style.display = 'none';
-                document.getElementById("<%=apellido_.ClientID%>").value = "";
-                document.getElementById("<%=_nombre_.ClientID%>").innerHTML = "Razon Social";
-                document.getElementById("<%=estrato_.ClientID%>").value = "3";
-                document.getElementById("<%=tipodoc_.ClientID%>").value = "2";
-                document.getElementById("<%=estado_.ClientID%>").value = "Activo";
-            } else {
-                document.getElementById("<%=apellido_.ClientID%>").style.display = 'block';
-                document.getElementById("<%=_apellido_.ClientID%>").style.display = 'block';
-                document.getElementById("<%=_nombre_.ClientID%>").innerHTML = "Nombre";
-                document.getElementById("<%=estrato_.ClientID%>").value = "1";
-                document.getElementById("<%=tipodoc_.ClientID%>").value = "1";
-                document.getElementById("<%=estado_.ClientID%>").value = "Activo";
-            }
+        function Emresarial() {
+            alert("asdasdadasdad");
+                    document.getElementById("<%=apellido_.ClientID%>").value = "NULL::character varying";
+                    document.getElementById("<%=_nombre_.ClientID%>").innerHTML = "Razon Social";
+                    document.getElementById("<%=estrato_.ClientID%>").value = "3";
+                    document.getElementById("<%=tipodoc_.ClientID%>").value = "2";
+                    document.getElementById("<%=estado_.ClientID%>").value = "Activo";
+                    document.getElementById("divtiposangre").style.display = 'none';
+                    document.getElementById("<%=rh_.ClientID%>").value = "Seleccione";
+                    document.getElementById("<%=apellido_.ClientID%>").style.display = 'none';
+                    document.getElementById("<%=_apellido_.ClientID%>").style.display = 'none';
         }
     </script>
 </asp:Content>
@@ -127,10 +120,10 @@
                                                     %>
                                                     <tr>
                                                         <td><%=item["identificacion"].ToString() %></td>
-                                                        <td><a href="Cliente.aspx?codigo=<%=item["identificacion"].ToString() %>"><%=item["nombre"].ToString()+" "+item["apellido"].ToString() %></a></td>
-                                                        <td><%=item["direccion"].ToString()+"/B "+item["barrios"].ToString() %></td>
+                                                        <td><a href="GestTercero.aspx?codigo=<%=item["identificacion"].ToString() %>"><%=item["nombre"].ToString()+" "+item["apellido"].ToString() %></a></td>
+                                                        <td><%=item["direccion"].ToString() %></td>
                                                         <td><%=item["correo"].ToString() %></td>
-                                                        <td><%=Convert.ToDateTime(item["fechnac"].ToString()).ToString("yyyy-MM-dd") %></td>
+                                                        <td><%=Convert.ToDateTime(item["fechexp"].ToString()).ToString("yyyy-MM-dd") %></td>
                                                         <td><%=item["estado"].ToString() %></td>
                                                     </tr>
 
@@ -165,10 +158,20 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Tipo Usuario</label>
                                             <div class="col-sm-8">
-                                                <asp:DropDownList runat="server" onchange="myFunction()" ID="tipotercero_" CssClass="form-control" AppendDataBoundItems="true">
+                                                <!--onchange="myFunction()"-->
+                                                <asp:DropDownList runat="server" OnSelectedIndexChanged="tipotercero__SelectedIndexChanged" AutoPostBack="true" ID="tipotercero_" CssClass="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <asp:GridView ID="listTipos" OnRowDeleting="listTipos_RowDeleting" CssClass="table table-bordered table-striped table-responsive row" AutoGenerateColumns="false" runat="server">
+                                                <Columns>
+                                                    <asp:BoundField DataField="idpersona" Visible="false" HeaderText="idpersona"></asp:BoundField>
+                                                    <asp:BoundField DataField="Persona" HeaderText="Persona"></asp:BoundField>
+                                                    <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="p-0"></asp:CommandField>
+                                                </Columns>
+                                            </asp:GridView>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Tipo Documento</label>
@@ -372,6 +375,22 @@
                                                     <asp:ListItem>Seleccione</asp:ListItem>
                                                     <asp:ListItem>Activo</asp:ListItem>
                                                     <asp:ListItem>Inactivo</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="divtiposangre">
+                                            <label class="col-sm-3 col-form-label">Tipo Sangre</label>
+                                            <div class="col-sm-9">
+                                                <asp:DropDownList runat="server" ID="rh_" CssClass="form-control">
+                                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                                    <asp:ListItem>O+</asp:ListItem>
+                                                    <asp:ListItem>O-</asp:ListItem>
+                                                    <asp:ListItem>A+</asp:ListItem>
+                                                    <asp:ListItem>A-</asp:ListItem>
+                                                    <asp:ListItem>B+</asp:ListItem>
+                                                    <asp:ListItem>B-</asp:ListItem>
+                                                    <asp:ListItem>AB+</asp:ListItem>
+                                                    <asp:ListItem>AB-</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>

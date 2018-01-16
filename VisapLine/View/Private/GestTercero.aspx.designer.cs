@@ -76,6 +76,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList tipotercero_;
         
         /// <summary>
+        /// Control listTipos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView listTipos;
+        
+        /// <summary>
         /// Control tipodoc_.
         /// </summary>
         /// <remarks>
@@ -245,5 +254,14 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList estado_;
+        
+        /// <summary>
+        /// Control rh_.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList rh_;
     }
 }
