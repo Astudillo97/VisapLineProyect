@@ -71,7 +71,7 @@
 </head>
 <body class="hold-transition skin-black sidebar-mini">
     <form id="form1" runat="server">
-       <div class="wrapper">
+        <div class="wrapper">
             <header class="main-header">
                 <a href="index.aspx" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -87,6 +87,11 @@
                     </a>
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
+                            <li>
+                                <div class="form-element">
+                                    <asp:DropDownList ID="listRoles" CssClass="form-control margin-top-10" OnSelectedIndexChanged="listRoles_SelectedIndexChanged" AppendDataBoundItems="true" AutoPostBack="true" runat="server"></asp:DropDownList>
+                                </div>
+                            </li>
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="../../Contenido/images/user2-160x160.jpg" class="user-image rounded-circle" alt="User Image">
@@ -101,6 +106,7 @@
                                                 <label runat="server" id="tipousuar"></label>
                                             </small>
                                             <a href="#" class="btn btn-danger btn-sm">Ver Perfil</a>
+
                                         </p>
                                     </li>
                                     <li class="user-body">
@@ -127,6 +133,7 @@
                                     </li>
                                 </ul>
                             </li>
+
                             <li>
                                 <a href="#" data-toggle="control-sidebar"><i class="fa fa-cog fa-spin"></i></a>
                             </li>
@@ -136,7 +143,7 @@
             </header>
             <aside class="main-sidebar">
                 <section class="sidebar">
-                    <ul class="sidebar-menu" data-widget="tree">
+                    <ul class="sidebar-menu" id="menu" runat="server" data-widget="tree">
                         <li class="active">
                             <a href="index.aspx">
                                 <i class="fa fa-dashboard"></i><span>Dashboard</span>
@@ -423,9 +430,9 @@
 
 
         <script src="../../assets/vendor_components/jquery/dist/jquery.min.js"></script>
-	
-    <!-- wizard  -->
-    <script src="../../js/pages/steps.js"></script>
+
+        <!-- wizard  -->
+        <script src="../../js/pages/steps.js"></script>
 
         <!-- Nuevos Insersiones -->
         <!-- DataTables -->

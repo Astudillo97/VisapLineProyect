@@ -41,5 +41,9 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("SELECT public.pr_actulizarusuariorol('"+usu.idusuario+"','"+usu.rol_idrol+"'); ");
         }
+        public DataTable ConsultarUsuarioRol(UsuarioL usu)
+        {
+            return data.ConsultarDatos("select * from public.pr_consultarrol(" + usu.idusuario + ")");
+        }
     }
 }

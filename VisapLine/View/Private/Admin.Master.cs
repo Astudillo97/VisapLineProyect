@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,35 +13,50 @@ namespace VisapLine.View.Private
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["Persona"] != null && Session["Usuario"] != null)
-            //{
-            //    string sat = "";
-            //    switch (sat)
-            //    {
-            //        case "1":
-            //            Response.Redirect("Error.aspx?error=Error: El modulo de clientes");
-            //            break;
-            //        case "2":
-                        
-            //            break;
-            //        case "3":
-                       
-            //            break;
-            //        default:
-            //            Response.Redirect("Error.aspx?error=Tipo de Usuario no Incluido");
-            //            break;
-            //    }
-            //}
-            //else
-            //{
-            //    Response.Redirect("../../visapline/Private/login.aspx");
-            //}
+            try
+            {
+                if (Session["tercero"] != null && Session["roles"] != null)
+                {
+
+                    if (!IsPostBack)
+                    {
+                        DataTable listroels = (DataTable)Session["roles"];
+                        listRoles.DataSource = listroels;
+                        listRoles.DataValueField = "idrol";
+                        listRoles.DataTextField = "rol";
+                        listRoles.DataBind();
+
+                        if (Session["idrol"] == null)
+                        {
+                            listRoles.SelectedIndex = 0;
+                            Session["idrol"] = listRoles.SelectedValue;
+                        }
+                        listRoles.SelectedValue = Session["idrol"].ToString();
+                    }
+                    CargarMenu(Session["idrol"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         protected void Salir(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("~/View/Private/login.aspx");
+            Response.Redirect("~/View/Login/login.aspx");
+        }
+
+        protected void listRoles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["idrol"] = listRoles.SelectedValue;
+            CargarMenu(Session["idrol"].ToString());
+        }
+        public void CargarMenu(string idrol)
+        {
+            menu.InnerHtml = "";
+
         }
     }
 }

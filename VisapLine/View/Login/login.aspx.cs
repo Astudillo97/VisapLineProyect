@@ -15,7 +15,10 @@ namespace VisapLine.View.Login
         class_correo cor = new class_correo();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["tercero"]!=null && Session["roles"]!=null)
+            {
+                Response.Redirect("../Private/index.aspx");
+            }
         }
 
         protected void Login(object sender, EventArgs e)
@@ -26,10 +29,15 @@ namespace VisapLine.View.Login
             {
                 DataRow data = Validar.Login(usua.ValidarUsuario(usua));
                 ter.idterceros = data["terceros_idterceros"].ToString();
-                DataRow dat=ter.ConsultarPersonaIdentifall(ter).Rows[0];
+                DataRow dat=ter.ConsultarTercerosId(ter).Rows[0];
                 switch (dat["estado"].ToString())
                 {
                     case "Activo":
+                        usua.idusuario = data["idusuario"].ToString();
+                        
+                        DataTable roles=Validar.Consulta(usua.ConsultarUsuarioRol(usua));
+                        Session["roles"] = roles;
+
                         Terceros tercero = new Terceros();
                         tercero.idterceros = dat["idterceros"].ToString();
                         tercero.estrato = dat["estrato"].ToString();
@@ -45,7 +53,8 @@ namespace VisapLine.View.Login
                         tercero.fechanatcimiento = dat["fechexp"].ToString();
                         tercero.tipodoc_idtipodoc = dat["tipodoc_idtipodoc"].ToString();
                         tercero.rh = dat["rh"].ToString();
-
+                        Session["tercero"] = tercero;
+                        ClientScript.RegisterStartupScript(GetType(), "alerta", "redirect();", true);
                         break;
                     case "Inactivo":
                         textError.InnerHtml = "Actualmente se encuentra inactivo";
@@ -64,6 +73,8 @@ namespace VisapLine.View.Login
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
+                Session.Abandon();
+               
             }
         }
 

@@ -27,9 +27,9 @@ namespace VisapLine.Model
         public string barrios_idbarrios { get; set; }
         public string usuario_idusuario { get; set; }
         public string rh { get; set; }
-        public DataTable ConsultarTerceros()
+        public DataTable ConsultarTercerosId(Terceros terc)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("SELECT * from public.pr_consultarterceroidapk("+terc.idterceros+");");
         }
 
         public DataTable ConsultarRecuperacion(Terceros ter)
