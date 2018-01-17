@@ -25,6 +25,39 @@ namespace VisapLine.View.Login
             try
             {
                 DataRow data = Validar.Login(usua.ValidarUsuario(usua));
+                ter.idterceros = data["terceros_idterceros"].ToString();
+                DataRow dat=ter.ConsultarPersonaIdentifall(ter).Rows[0];
+                switch (dat["estado"].ToString())
+                {
+                    case "Activo":
+                        Terceros tercero = new Terceros();
+                        tercero.idterceros = dat["idterceros"].ToString();
+                        tercero.estrato = dat["estrato"].ToString();
+                        tercero.estado = dat["estado"].ToString();
+                        tercero.tiporesidencia_idtiporesidencia = dat["tiporesidencia_idtiporesidencia"].ToString();
+                        tercero.tipofactura_idtipofactura = dat["tipofactura_idtipofactura"].ToString();
+                        tercero.identificacion = dat["identificacion"].ToString();
+                        tercero.nombre = dat["nombre"].ToString();
+                        tercero.apellido = dat["apellido"].ToString();
+                        tercero.correo = dat["correo"].ToString();
+                        tercero.direccion = dat["direccion"].ToString();
+                        tercero.barrios_idbarrios = dat["barrio_idbarrio"].ToString();
+                        tercero.fechanatcimiento = dat["fechexp"].ToString();
+                        tercero.tipodoc_idtipodoc = dat["tipodoc_idtipodoc"].ToString();
+                        tercero.rh = dat["rh"].ToString();
+
+                        break;
+                    case "Inactivo":
+                        textError.InnerHtml = "Actualmente se encuentra inactivo";
+                        Alerta.CssClass = "alert alert-error";
+                        Alerta.Visible = true;
+                        break;
+                    default:
+                        textError.InnerHtml = "Estado no controlado";
+                        Alerta.CssClass = "alert alert-error";
+                        Alerta.Visible = true;
+                        break;
+                }
             }
             catch (Exception ex)
             {
