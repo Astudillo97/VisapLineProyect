@@ -26,6 +26,7 @@ namespace VisapLine.View.Private
         static DataTable listtelefono = new DataTable();
         static DataTable listtelefonocorpo = new DataTable();
         static DataTable listtelefonoempre = new DataTable();
+        Plan pn = new Plan();
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -168,7 +169,7 @@ namespace VisapLine.View.Private
             }
         }
 
-        
+
 
         protected void tipotercero_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -250,21 +251,19 @@ namespace VisapLine.View.Private
             try
             {
                 terc.identificacion = Validar.validarnumero(TextBox1identificacion.Text);
+                DataRow datcont = Validar.Consulta(terc.ConsultarPersonaIdentifall(terc)).Rows[0];
 
-                if (terc.ConsultarPersonaIdentifall(terc).Rows.Count > 0)
-                {
-                    textError.InnerHtml = "El usuario ya se encuentra registrado";
-                    Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;
-
-
-                }
-                else
-                {
-                    textError.InnerHtml = "El usuario no esta registrado";
-                    Alerta.CssClass = "alert alert-error";
-                    Alerta.Visible = true;
-                }
+                Labelnombrecontrato.Text = datcont["nombre"].ToString();
+                Labelapellidocontrato.Text = datcont["apellido"].ToString();
+                Labelcedulacontrato.Text = datcont["identificacion"].ToString();
+                Labelcorreocontrato.Text = datcont["correo"].ToString();
+                Labeldireccioncontrato.Text = datcont["direccion"].ToString();
+                Alerta.Visible = false;
+                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                iddivnatural.Visible = false;
+                iddivcorporativo.Visible = false;
+                iddivempresa.Visible = false;
+                tablanatural.Visible = true;
             }
             catch (Exception ex)
             {
@@ -329,7 +328,7 @@ namespace VisapLine.View.Private
         //cargar el modal con datos natural
         protected void Button3_Click(object sender, EventArgs e)
         {
-           
+
             labelidentificacionnatural.Text = TextBox1identificacion.Text;
             labelnaturaltipopersona.Text = tipotercero.SelectedItem.Text;
             labeltipodocumentonatural.Text = DropDownListtipodocu.SelectedItem.Text;
@@ -337,14 +336,14 @@ namespace VisapLine.View.Private
             labelnombrenatural.Text = TextBoxnombre.Text;
             labelapellidonatural.Text = TextBox1apellido.Text;
             labelnacimientonatural.Text = TextBox1fecnac.Text;
-            labelcorreonatural.Text = TextBoxcorreo.Text;            
+            labelcorreonatural.Text = TextBoxcorreo.Text;
             labelbarrionatural.Text = DropDownListbarrio.SelectedItem.Text;
             labeltiporesidencianatural.Text = DropDownListtiporesi.SelectedItem.Text;
             labelestratonatural.Text = DropDownListestrato.SelectedItem.Text;
             labelestadonatural.Text = DropDownListestado.SelectedItem.Text;
             ClientScript.RegisterStartupScript(GetType(), "", "botonmodal();", true);
         }
-        
+
         //registrar natural 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -365,13 +364,13 @@ namespace VisapLine.View.Private
                 terc.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
                 terc.estrato = Validar.validarselected(DropDownListestrato.SelectedValue);
                 terc.estado = Validar.validarselected(DropDownListestado.SelectedValue);
-                
-                ctg.identificacion= Validar.validarlleno(TextBox1identificacion.Text);
+
+                ctg.identificacion = Validar.validarlleno(TextBox1identificacion.Text);
                 ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
 
 
                 if (terc.RegistrarTercerocliente(terc) && ctg.Registrarcargotercero(ctg))
-                {           
+                {
 
                     foreach (DataRow item in listtelefono.Rows)
                     {
@@ -538,7 +537,7 @@ namespace VisapLine.View.Private
             }
         }
 
-    
+
         protected void CargarTelefonocorpo()
         {
 
@@ -837,7 +836,7 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
-   
+
         protected void telefonoempresa_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             try
@@ -853,7 +852,7 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
-           
+
         protected void Button8_Click(object sender, EventArgs e)
         {
             labelnitempresarial.Text = TextBox1empresa.Text;
@@ -933,7 +932,26 @@ namespace VisapLine.View.Private
             }
         }
 
-        
+        ///contrato
+        ///
+
+        protected void cargartabla()
+        {
+            pn.idtercero_idtercero = terc.idterceros;
+            DataTable dt = pn.ConsultarPlantipoterce(pn);
+            GridView2.DataSource = dt;
+            GridView2.DataBind();
+        }
+
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        }
     }
 
 
