@@ -323,7 +323,7 @@ namespace VisapLine.View.Private
 
                         terc.identificacion = Validar.validarlleno(identificacion_.Value);
                         terc.nombre = Validar.validarlleno(nombre_.Value);
-                        terc.apellido =Validar.ConvertVarchar( apellido_.Value);
+                        terc.apellido = Validar.ConvertVarchar(apellido_.Value);
                         terc.direccion = Validar.validarlleno(Direccion_.Value);
                         terc.correo = Validar.validarlleno(correo_.Value);
                         terc.estrato = Validar.validarselected(estrato_.SelectedValue);
@@ -463,14 +463,14 @@ namespace VisapLine.View.Private
 
         protected void tipotercero__SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargarPaneles("panel2();");
+
             try
             {
                 Validar.validarselected(tipotercero_.SelectedValue);
                 bool pase = true;
                 foreach (DataRow item in listtipotercero.Rows)
                 {
-                    if (item["Persona"].ToString()== tipotercero_.SelectedItem.ToString())
+                    if (item["Persona"].ToString() == tipotercero_.SelectedItem.ToString())
                     {
                         pase = false;
                     }
@@ -488,7 +488,8 @@ namespace VisapLine.View.Private
                     textError.InnerHtml = "Ya seleciono este tipo de usuario";
                     Alerta.CssClass = "alert alert-error";
                     Alerta.Visible = true;
-                } 
+                }
+                CargarPaneles("panel2();");
             }
             catch (Exception ex)
             {
@@ -501,6 +502,7 @@ namespace VisapLine.View.Private
         public void CargarPaneles(string funcion)
         {
             ClientScript.RegisterStartupScript(GetType(), "alerta", funcion, true);
+            ClientScript.RegisterStartupScript(GetType(), "alerta1", "Default();", true);
             try
             {
                 foreach (DataRow item in listtipotercero.Rows)
@@ -510,8 +512,17 @@ namespace VisapLine.View.Private
                         case "EMPRESARIAL":
                             ClientScript.RegisterStartupScript(GetType(), "alerta1", "Emresarial();", true);
                             break;
+                        case "NATURAL":
+                            ClientScript.RegisterStartupScript(GetType(), "alerta2", "Natural();", true);
+                            break;
+                        case "CORPORATIVO":
+                            ClientScript.RegisterStartupScript(GetType(), "alerta3", "Corporativo();", true);
+                            break;
+                        case "PROVEEDOR":
+                            ClientScript.RegisterStartupScript(GetType(), "alerta4", "Proveedor();", true);
+                            break;
                         default:
-
+                            ClientScript.RegisterStartupScript(GetType(), "alerta5", "Default();", true);
                             break;
                     }
                 }
@@ -526,12 +537,13 @@ namespace VisapLine.View.Private
 
         protected void listTipos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            CargarPaneles("panel2();");
+            
             try
             {
                 //TableCell cell = listTipos.Rows[e.RowIndex].Cells[0];
                 listtipotercero.Rows.Remove(listtipotercero.Rows[e.RowIndex]);
                 CargarTipo();
+                CargarPaneles("panel2();");
             }
             catch (Exception ex)
             {
@@ -539,6 +551,7 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
+            
         }
     }
 }

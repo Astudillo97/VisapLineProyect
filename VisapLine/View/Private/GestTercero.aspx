@@ -10,15 +10,31 @@
             document.getElementById("pan3").click();
         }
         function Emresarial() {
-                    document.getElementById("<%=apellido_.ClientID%>").value = "NULL::character varying";
-                    document.getElementById("<%=_nombre_.ClientID%>").innerHTML = "Razon Social";
-                    document.getElementById("<%=estrato_.ClientID%>").value = "3";
-                    document.getElementById("<%=tipodoc_.ClientID%>").value = "2";
-                    document.getElementById("<%=estado_.ClientID%>").value = "Activo";
-                    document.getElementById("divtiposangre").style.display = 'none';
-                    document.getElementById("<%=rh_.ClientID%>").value = "Seleccione";
-                    document.getElementById("<%=apellido_.ClientID%>").style.display = 'none';
-                    document.getElementById("<%=_apellido_.ClientID%>").style.display = 'none';
+            alert("Empresarial");
+        }
+        function Natural() {
+            Default();
+            document.getElementById("divtiposangre").style.display = 'none';
+            alert("Natural");
+        }
+        function Corporativo() {
+            alert("Coorporativo");
+        }
+        function Default() {
+            document.getElementById("divtipodoc").style.visibility = 'visible';
+            document.getElementById("divtiporesidencia").style.visibility = 'visible';
+            document.getElementById("divtipofactura").style.visibility = 'visible';
+            document.getElementById("divbarrio").style.visibility = 'visible';
+            document.getElementById("dividentificacion").style.visibility = 'visible';
+            document.getElementById("divnombre").style.visibility = 'visible';
+            document.getElementById("divapellido").style.visibility = 'visible';
+            document.getElementById("divnacimiento").style.visibility = 'visible';
+            document.getElementById("divtelefono").style.visibility = 'visible';
+            document.getElementById("divcorreo").style.visibility = 'visible';
+            document.getElementById("divdireccion").style.visibility = 'visible';
+            document.getElementById("divestrato").style.visibility = 'visible';
+            document.getElementById("divestado").style.visibility = 'visible';
+            document.getElementById("divtiposangre").style.visibility = 'visible';
         }
     </script>
 </asp:Content>
@@ -37,7 +53,6 @@
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
     <section class="content">
-
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li><a class="active" id="pan1" href="#informacion" data-toggle="tab">Cliente</a></li>
@@ -70,28 +85,6 @@
                                 <div class="box-header">
                                     <h3 class="box-title">Listado de clientes</h3>
                                 </div>
-                                <!-- /.box-header -->
-                                <%--<div class="box-body" style="overflow-x: scroll">
-                                    <asp:GridView runat="server" ID="tablacliente" AutoGenerateColumns="true" CssClass="table table-bordered table-striped table-responsive p-0" OnRowDataBound="tablacliente_RowDataBound" OnRowCommand="tablacliente_RowCommand">
-                                        <Columns>
-                                            <asp:TemplateField HeaderText="">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="ver_btn" runat="server" ImageUrl="../../Contenido/images/icons/ver.png" CssClass="btn btn-link" CommandName="Ver" CommandArgument='<%# Eval("identificacion") %>' Text="" />
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="actualizar_btn" runat="server" ImageUrl="../../Contenido/images/icons/editar.png" class="btn btn-link" CommandName="Editar" CommandArgument='<%# Eval("identificacion") %>' Text="Borrar" />
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("identificacion") %>' Text="Borrar" />
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                        </Columns>
-                                    </asp:GridView>
-                                </div>--%>
                                 <div class="box-body">
                                     <div class="box">
                                         <div class="box-header">
@@ -163,8 +156,8 @@
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <asp:GridView ID="listTipos" OnRowDeleting="listTipos_RowDeleting" CssClass="table table-bordered table-striped table-responsive row" AutoGenerateColumns="false" runat="server">
+                                        <div class="box-body">
+                                            <asp:GridView ID="listTipos" OnRowDeleting="listTipos_RowDeleting" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server">
                                                 <Columns>
                                                     <asp:BoundField DataField="idpersona" Visible="false" HeaderText="idpersona"></asp:BoundField>
                                                     <asp:BoundField DataField="Persona" HeaderText="Persona"></asp:BoundField>
@@ -172,7 +165,7 @@
                                                 </Columns>
                                             </asp:GridView>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row" id="divtipodoc">
                                             <label class="col-sm-4 col-form-label">Tipo Documento</label>
                                             <div class="col-sm-8">
                                                 <asp:DropDownList runat="server" ID="tipodoc_" CssClass="form-control" AppendDataBoundItems="true">
@@ -180,7 +173,7 @@
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row" id="divtiporesidencia">
                                             <label class="col-sm-4 col-form-label">Tipo Residencia</label>
                                             <div class="col-sm-8">
                                                 <asp:DropDownList runat="server" ID="tiporesident_" CssClass="form-control" AppendDataBoundItems="true">
@@ -188,7 +181,7 @@
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row" id="divtipofactura">
                                             <label class="col-sm-4 col-form-label">Tipo Factura</label>
                                             <div class="col-sm-8">
                                                 <asp:DropDownList runat="server" ID="tipofact_" CssClass="form-control" AppendDataBoundItems="true">
@@ -206,7 +199,7 @@
                                     <h3 class="box-title">Información de residencia </h3>
                                 </div>
                                 <div class="form-element">
-                                    <div class="box-body">
+                                    <div class="box-body" id="divbarrio">
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Pais</label>
                                             <div class="col-sm-9">
@@ -257,25 +250,25 @@
                                 </div>
                                 <div class="form-element">
                                     <div class="box-body">
-                                        <div class="form-group row">
+                                        <div class="form-group row" id="dividentificacion">
                                             <label class="col-sm-3 col-form-label">Identificación</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="identificacion_" runat="server" placeholder="Nit o Identificación">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row" id="divnombre">
                                             <label id="_nombre_" runat="server" class="col-sm-3 col-form-label">Nombre</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="nombre_" runat="server" placeholder="Nombre">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row" id="divapellido">
                                             <label id="_apellido_" runat="server" class="col-sm-3 col-form-label">Apellido</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="apellido_" runat="server" placeholder="Apellido">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row" id="divnacimiento">
                                             <label class="col-sm-3 col-form-label">Nacimiento</label>
                                             <div class="col-sm-9">
                                                 <input type="date" class="form-control" id="fecnac_" runat="server" placeholder="Apellido">
@@ -284,7 +277,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="box box-default">
+                            <div class="box box-default" id="divtelefono">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Telefono</h3>
                                     <div class="box-tools pull-right">
@@ -341,19 +334,19 @@
                                 </div>
                                 <div class="form-element">
                                     <div class="box-body">
-                                        <div class="form-group row">
+                                        <div class="form-group row" id="divcorreo">
                                             <label class="col-sm-3 col-form-label">Correo</label>
                                             <div class="col-sm-9">
                                                 <input type="email" class="form-control" id="correo_" runat="server" placeholder="Correo">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row" id="divdireccion">
                                             <label class="col-sm-3 col-form-label">Direccion</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="Direccion_" runat="server" placeholder="Dirección">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row" id="divestrato">
                                             <label class="col-sm-3 col-form-label">Estrato</label>
                                             <div class="col-sm-9">
                                                 <asp:DropDownList runat="server" ID="estrato_" CssClass="form-control" AppendDataBoundItems="true">
@@ -367,7 +360,7 @@
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row" id="divestado">
                                             <label class="col-sm-3 col-form-label">Estado</label>
                                             <div class="col-sm-9">
                                                 <asp:DropDownList runat="server" ID="estado_" CssClass="form-control" AppendDataBoundItems="true">
