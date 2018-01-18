@@ -23,9 +23,9 @@ namespace VisapLine.Model
             return data.ConsultarDatos("");
         }
 
-        public bool RegistrarPlanSCatact(PlanSCaract bar)
+        public bool RegistrarPlanSCatact(int servicios_idservicios, int caracteristicas_idcaracteristicas, int cantidad)
         {
-            return data.OperarDatos("");
+            return data.OperarDatos("SELECT * from public.pr_insertarplanserhascarac("+ servicios_idservicios + ","+ caracteristicas_idcaracteristicas + ","+ cantidad + ")");
         }
     }
 }

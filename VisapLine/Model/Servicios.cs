@@ -21,5 +21,11 @@ namespace VisapLine.Model
         public string puntos_idpuntos { get; set; }
         public string planservicios_idplanservicios { get; set; }
         public string inventario_idinventarios { get; set; }
+
+        public DataTable crearservicio(int varcanmeg , int varcontra ,string varestrato ,string varestadp,string varreferenci ,int varpuntos ,int  varinvern )
+        {
+            return data.ConsultarDatos("select * from pr_insertarservicio('2017-01-01',"+varcanmeg+","+varcontra+" ,'"+varestrato+"' ,'"+varestadp+"','"+varreferenci+"',"+varpuntos+","+varinvern+")");
+        }
     }
+   
 }

@@ -35,5 +35,9 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("");
         }
+
+        public DataTable consultadeserciciodeplancontratado(int contrato) {
+            return data.ConsultarDatos("select * from pr_consultarserviciosdelplancontratado("+ contrato + ")");
+        }
     }
 }
