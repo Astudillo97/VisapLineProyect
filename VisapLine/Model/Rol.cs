@@ -23,9 +23,6 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("");
         }
-        public DataTable ConsultarRolPermisos(Rol rol)
-        {
-            return data.ConsultarDatos("");
-        }
+        
     }
 }

@@ -31,9 +31,9 @@ namespace VisapLine.Model
         }
         public bool RegistrarUsuario(UsuarioL usu)
         {
-            return data.OperarDatos("select * from pr_insertarusuario( '"+usu.usuauser+"','"+usu.usuapassw+"','"+usu.rol_idrol+"','"+datospersonales_iddatospersonales+"')");
+            return data.OperarDatos("select * from pr_insertarusuario( '"+usu.usuauser+"','"+usu.usuapassw+"','"+datospersonales_iddatospersonales+"')");
         }
-        public DataTable ConsultarUsuarioByUsuario(UsuarioL usu)//Consulta por fk del usuario asociado a los datos personales
+        public DataTable ConsultarUsuarioByUsuarioCed(UsuarioL usu)//Consulta por fk del usuario asociado a los datos personales
         {
             return data.ConsultarDatos("select * from pr_consultarusuariocedula('" + usu.idusuario+"');");
         }

@@ -14,10 +14,17 @@ namespace VisapLine.Model
         public string idmenu { get; set; }
         public string nombre { get; set; }
         public string href { get; set; }
+        public string menu_idmenusub { get; set; }
+        public string icono { get; set; }
 
         public DataTable ConsultarMenu()
         {
             return data.ConsultarDatos("");
+        }
+
+        public DataTable ConsultarMenuSubmenu(Menu men)
+        {
+            return data.ConsultarDatos("select * from pr_consularmenusub("+men.menu_idmenusub+")");
         }
 
         public bool RegistrarMenu(Permisos per)

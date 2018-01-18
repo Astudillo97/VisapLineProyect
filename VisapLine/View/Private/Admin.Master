@@ -143,32 +143,7 @@
             </header>
             <aside class="main-sidebar">
                 <section class="sidebar">
-                    <ul class="sidebar-menu" id="menu" runat="server" data-widget="tree">
-                        <li class="active">
-                            <a href="index.aspx">
-                                <i class="fa fa-dashboard"></i><span>Dashboard</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-files-o"></i>
-                                <span>Gestion de Clientes</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="Registro_cliente.aspx">Registrar Cliente</a></li>
-                                <li><a href="VistaMapa.aspx">Consultas Maps</a></li>
-                                <li><a href="Servicios.aspx">Registrar Servicio</a></li>
-                                <li><a href="google.html">Consulta Google</a></li>
-                                <li><a href="Consultas.aspx">Consulta Avanzada</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <ul class="sidebar-menu" id="menu" runat="server" data-widget="tree"></ul>
                 </section>
                 <div class="sidebar-footer">
                     <!-- item-->

@@ -37,6 +37,11 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select * from pr_consultarrecuperacion('"+ter.identificacion+"', '"+ter.correo+"');");
         }
 
+        public DataTable ConsultarTerceroCargos(Terceros terc)
+        {
+            return data.ConsultarDatos("select * from pr_consultarcargotercero('"+terc.identificacion+"')");
+        }
+
         public bool RegistrarTerceros(Terceros per)
         {
             return data.OperarDatos("SELECT * from public.pr_insertartercero('"+per.identificacion+"','"+per.nombre+ "','" + per.apellido + "','" + per.direccion + "','" + per.correo + "','" + per.estrato + "','" + per.estado + "','" + per.tipotercero_idtipotercero + "','" + per.tipodoc_idtipodoc + "','" + per.fechanatcimiento + "','" + per.tiporesidencia_idtiporesidencia + "','" + per.tipofactura_idtipofactura + "','" + per.barrios_idbarrios + "');");
