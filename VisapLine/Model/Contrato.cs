@@ -26,6 +26,9 @@ namespace VisapLine.Model
         public string facturaunica { get; set; }
         public string personal_idpersonal { get; set; }
 
+        public DataTable estratoymegas(int contrato){
+            return data.ConsultarDatos("select plan.subida,terceros.estrato from contrato inner join terceros on terceros_idterceros_cont=idterceros inner join plan on plan_idplan = idplan where idcontrato="+ contrato + "");
+        }
         public DataTable ConsultarContratoIdTercero(Contrato bar)
         {
             return data.ConsultarDatos("");
