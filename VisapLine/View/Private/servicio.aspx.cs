@@ -61,6 +61,8 @@ namespace VisapLine.View.Private
             listequipo.DataBind();
             listequipo.Visible = true;
             Button1.Visible = true;
+            gridcaract.Visible = true;
+            btninser.Visible = true;
         }
 
         private DataTable GetIvserdt()
@@ -74,12 +76,14 @@ namespace VisapLine.View.Private
             invt.cancelarselecioninventarion(idpedido);
             listequipo.Visible=false;
             btnequipo.Visible = true;
+            gridcaract.Visible = false;
+            btninser.Visible = false;
         }
 
         protected void btninser_Click(object sender, EventArgs e)
         {
-
-            DataTable dtid = srv.crearservicio(10, 8, "1", "POR INSTALAR", "LA CASA DE AZUL", 1, idpedido);
+            DataRow dtrs=ctt.estratoymegas(8).Rows[0];
+            DataTable dtid = srv.crearservicio(ip.Text,int.Parse(dtrs[0].ToString()), 8, dtrs[1].ToString(), "POR INSTALAR", "LA CASA DE AZUL", 1, idpedido);
             int idservi = int.Parse(dtid.Rows[0][0].ToString());
             for (int i = 0; i < gridcaract.Rows.Count; i++)
             {
