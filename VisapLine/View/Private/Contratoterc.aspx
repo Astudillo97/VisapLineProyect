@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MaintainScrollPositionOnPostback="true" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Contratoterc.aspx.cs" Inherits="VisapLine.View.Private.Contratoterc" %>
+﻿<%@ Page Title="" Language="C#"  MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Contratoterc.aspx.cs" Inherits="VisapLine.View.Private.Contratoterc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
@@ -858,24 +858,31 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="box box-default">
                                     <div class="box box-primary">
                                         <div class="box-header with-border">
                                             <h3 class="box-title">Planes</h3>
                                         </div>
-                                        <div class="form-element">
-                                            <div class="box-body">
-                                                <div class="form-element">
-                                                    <div class="box-body">
-                                                        <div class="form-group row">
-                                                            <asp:GridView ID="GridView1" runat="server">
-                                                            </asp:GridView>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+                                        <div class="row" style="overflow-y: scroll">
+                                            <asp:GridView ID="GridView2" runat="server" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" OnRowDataBound="GridView2_RowDataBound">
+                                                <Columns>
+                                                    <asp:CommandField ShowSelectButton="true" />
+                                                    <asp:BoundField HeaderText="Codigo de Plan" DataField="idplan" />
+                                                    <asp:BoundField HeaderText="Valor" DataField="valor" />
+                                                    <asp:BoundField HeaderText="Detalle" DataField="detalle" />
+                                                    <asp:CheckBoxField HeaderText="Telefonia" DataField="telefonia" Text=" " ItemStyle-CssClass="filled-in chk-col-green" />
+                                                    <asp:CheckBoxField HeaderText="Television" DataField="television" Text=" " />
+                                                    <asp:CheckBoxField HeaderText="Internet" DataField="internet" Text=" " />
+                                                    <asp:BoundField HeaderText="Subida" DataField="subida" />
+                                                    <asp:BoundField HeaderText="Bajada" DataField="bajada" />
+                                                    <asp:BoundField HeaderText="Medio Conexion" DataField="medioconexion" />
+                                                    <asp:CheckBoxField HeaderText="Wifi" DataField="wifi" Text=" " />
+                                                </Columns>
+                                            </asp:GridView>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="row">
@@ -887,26 +894,30 @@
                                         <div class="form-element">
                                             <div class="box-body">
                                                 <div class="form-element">
-                                                    <div class="box-body">
+                                                    <div class="box-body">                                                      
                                                         <div class="form-group row">
-                                                            <asp:GridView ID="GridView2" runat="server" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" OnRowDataBound="GridView2_RowDataBound">
-                                                                <Columns>
-                                                                    <asp:CommandField ShowSelectButton="true" />
-                                                                    <asp:BoundField HeaderText="Codigo de Plan" DataField="idplan" />
-                                                                    <asp:BoundField HeaderText="Valor" DataField="valor" />
-                                                                    <asp:BoundField HeaderText="Detalle" DataField="detalle" />
-                                                                    <asp:CheckBoxField HeaderText="Telefonia" DataField="telefonia" Text=" " ItemStyle-CssClass="filled-in chk-col-green" />
-                                                                    <asp:CheckBoxField HeaderText="Television" DataField="television" Text=" " />
-                                                                    <asp:CheckBoxField HeaderText="Internet" DataField="internet" Text=" " />
-                                                                    <asp:BoundField HeaderText="Estado" DataField="estado" />
-                                                                    <asp:BoundField HeaderText="Tipo de Plan" DataField="tipoplan" />
-                                                                    <asp:BoundField HeaderText="Subida" DataField="subida" />
-                                                                    <asp:BoundField HeaderText="Bajada" DataField="bajada" />
-                                                                    <asp:BoundField HeaderText="Zonas" DataField="zonas" />
-                                                                    <asp:BoundField HeaderText="Medio Conexion" DataField="medioconexion" />
-                                                                    <asp:CheckBoxField HeaderText="Wifi" DataField="wifi" Text=" " />
-                                                                </Columns>
-                                                            </asp:GridView>
+                                                            <label class="col-sm-9 col-form-label">
+                                                                Subida:
+                                                                <asp:Label ID="Labelsubidaplancontrato" runat="server" Text=" 0"></asp:Label>BM</label>
+
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-9 col-form-label">
+                                                                Bajada:
+                                                                <asp:Label ID="Labelbajadaplancontrato" runat="server" Text=" 0"></asp:Label>BM</label>
+
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-9 col-form-label">
+                                                                Conectivida:
+                                                                <asp:Label ID="Labelconectividadplancontrato" runat="server" Text=" Ninguna"></asp:Label></label>
+
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-9 col-form-label">
+                                                                Detalle:
+                                                                <asp:Label ID="Labeldetalleplancontrato" runat="server" Text="Ninguna"></asp:Label></label>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -914,210 +925,233 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="modal fade" id="modal-natural">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Confirmacion de datos Personales</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="box box-primary bg-transparent">
-                                            <div class="form-element">
-                                                <div class="box-body">
-                                                    <div class="form-group row">
-                                                        <table class="table table-responsive">
-                                                            <tr>
-                                                                <th>Datos Insertados</th>
-                                                                <th>Datos Insertados</th>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Tipo Persona:<asp:Label ID="labelnaturaltipopersona" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Identificacion:<asp:Label ID="labelidentificacionnatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Tipo Documento:<asp:Label ID="labeltipodocumentonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Tipo Factura:<asp:Label ID="labeltipofacturanatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Nombre:<asp:Label ID="labelnombrenatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Apellido:<asp:Label ID="labelapellidonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Nacimiento:<asp:Label ID="labelnacimientonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Correo:<asp:Label ID="labelcorreonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Estado:<asp:Label ID="labelestadonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Barrio:<asp:Label ID="labelbarrionatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Residencia:<asp:Label ID="labeltiporesidencianatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Estrato:<asp:Label ID="labelestratonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button1" Text="Guardar" Width="146px" OnClick="Button1_Click" />
-                                                                </td>
-                                                                <td>
-                                                                    <asp:Button ID="Button5" runat="server" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="146px" data-dismiss="modal" />
-                                                                </td>
-                                                            </tr>
-
-                                                        </table>
-                                                    </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="box box-primary">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title"></h3>
+                                        </div>
+                                        <div class="form-element">
+                                            <div class="box-body">
+                                                <div class="form-group row">
+                                                    
+                                                            <asp:Label ID="Labelwifiplancontrato" runat="server" Text="Label"></asp:Label>
+                                                            <asp:Label ID="Labelvaloriva" runat="server" Text="Label"></asp:Label>
+                                                            <asp:Label ID="Labelvalorintalacionplancontrato" runat="server" Text="0"></asp:Label>
+                                                            <asp:Label ID="Labelmedioconexionplancontrato" runat="server" Text="Ninguna"></asp:Label>
+                                                            <asp:Button ID="Buttoncancelarplancontrato" class="btn btn-block btn-danger btn-lg" runat="server" Text="Cancelar" OnClick="Buttoncancelarplancontrato_Click" />
+                                                  
                                                 </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-                                <!-- /.modal-content -->
                             </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-
-
-
-                        <div class="modal fade" id="modal-corporativo">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Confirmacion de datos</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="box box-primary bg-transparent">
-                                            <div class="form-element">
-                                                <div class="box-body">
-                                                    <div class="form-group row">
-                                                        <table class="table table-responsive">
-                                                            <tr>
-                                                                <th>Datos Insertados</th>
-                                                                <th>Datos Insertados</th>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Tipo:<asp:Label ID="labeltipocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Nit:<asp:Label ID="labelnitcorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Tipo Documento:<asp:Label ID="labeltipodocumentocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Tipo Factura:<asp:Label ID="labeltipofacturacorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Nombre:<asp:Label ID="labelnombrecorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Expedicion:<asp:Label ID="labelexpedicioncorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Residencia:<asp:Label ID="labelresidenciacorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Correo:<asp:Label ID="labelcorreocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Estrato:<asp:Label ID="labelestratocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Barrio:<asp:Label ID="label1barriocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Estado:<asp:Label ID="labelestadocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonguardarcorpo" Text="Guardar" Width="143px" Height="30px" OnClick="Buttonguardarcorpo_Click" />
-
-                                                                </td>
-                                                                <td>
-                                                                    <asp:Button ID="Button7" runat="server" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="146px" data-dismiss="modal" />
-                                                                </td>
-                                                            </tr>
-
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-
-
-                        <div class="modal fade" id="modal-empresarial">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Confirmacion de datos</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="box box-primary bg-transparent">
-                                            <div class="form-element">
-                                                <div class="box-body">
-                                                    <div class="form-group row">
-                                                        <table class="table table-responsive">
-                                                            <tr>
-                                                                <th>Datos Insertados</th>
-                                                                <th>Datos Insertados</th>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Tipo:<asp:Label ID="label1tipoempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Nit:<asp:Label ID="labelnitempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Tipo Documento:<asp:Label ID="labeltipodocuemntoempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Tipo Factura:<asp:Label ID="labeltipofacturalempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Nombre:<asp:Label ID="labelnombreempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Expedicion:<asp:Label ID="labelexpedicionempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Residencia:<asp:Label ID="labelresidenciaempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Correo:<asp:Label ID="labelcorreoempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Estrato:<asp:Label ID="labelestratoempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                                <td>Barrio:<asp:Label ID="labelbarrioempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Estado:<asp:Label ID="label1estadoempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonguardarempresa" Text="Verificar" Width="143px" Height="30px" OnClick="Buttonguardarempresa_Click" />
-
-                                                                </td>
-                                                                <td>
-                                                                    <asp:Button ID="Button9" runat="server" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="146px" data-dismiss="modal" />
-                                                                </td>
-                                                            </tr>
-
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
                         </div>
                     </div>
                 </div>
+
+
+
+                <div class="modal fade" id="modal-natural">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Confirmacion de datos Personales</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="box box-primary bg-transparent">
+                                    <div class="form-element">
+                                        <div class="box-body">
+                                            <div class="form-group row">
+                                                <table class="table table-responsive">
+                                                    <tr>
+                                                        <th>Datos Insertados</th>
+                                                        <th>Datos Insertados</th>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Tipo Persona:<asp:Label ID="labelnaturaltipopersona" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Identificacion:<asp:Label ID="labelidentificacionnatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tipo Documento:<asp:Label ID="labeltipodocumentonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Tipo Factura:<asp:Label ID="labeltipofacturanatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Nombre:<asp:Label ID="labelnombrenatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Apellido:<asp:Label ID="labelapellidonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Nacimiento:<asp:Label ID="labelnacimientonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Correo:<asp:Label ID="labelcorreonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Estado:<asp:Label ID="labelestadonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Barrio:<asp:Label ID="labelbarrionatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Residencia:<asp:Label ID="labeltiporesidencianatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Estrato:<asp:Label ID="labelestratonatural" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button1" Text="Guardar" Width="146px" OnClick="Button1_Click" />
+                                                        </td>
+                                                        <td>
+                                                            <asp:Button ID="Button5" runat="server" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="146px" data-dismiss="modal" />
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+
+
+
+                <div class="modal fade" id="modal-corporativo">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Confirmacion de datos</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="box box-primary bg-transparent">
+                                    <div class="form-element">
+                                        <div class="box-body">
+                                            <div class="form-group row">
+                                                <table class="table table-responsive">
+                                                    <tr>
+                                                        <th>Datos Insertados</th>
+                                                        <th>Datos Insertados</th>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Tipo:<asp:Label ID="labeltipocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Nit:<asp:Label ID="labelnitcorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tipo Documento:<asp:Label ID="labeltipodocumentocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Tipo Factura:<asp:Label ID="labeltipofacturacorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Nombre:<asp:Label ID="labelnombrecorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Expedicion:<asp:Label ID="labelexpedicioncorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Residencia:<asp:Label ID="labelresidenciacorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Correo:<asp:Label ID="labelcorreocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Estrato:<asp:Label ID="labelestratocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Barrio:<asp:Label ID="label1barriocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Estado:<asp:Label ID="labelestadocorporativo" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonguardarcorpo" Text="Guardar" Width="143px" Height="30px" OnClick="Buttonguardarcorpo_Click" />
+
+                                                        </td>
+                                                        <td>
+                                                            <asp:Button ID="Button7" runat="server" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="146px" data-dismiss="modal" />
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+
+
+                <div class="modal fade" id="modal-empresarial">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Confirmacion de datos</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="box box-primary bg-transparent">
+                                    <div class="form-element">
+                                        <div class="box-body">
+                                            <div class="form-group row">
+                                                <table class="table table-responsive">
+                                                    <tr>
+                                                        <th>Datos Insertados</th>
+                                                        <th>Datos Insertados</th>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Tipo:<asp:Label ID="label1tipoempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Nit:<asp:Label ID="labelnitempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tipo Documento:<asp:Label ID="labeltipodocuemntoempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Tipo Factura:<asp:Label ID="labeltipofacturalempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Nombre:<asp:Label ID="labelnombreempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Expedicion:<asp:Label ID="labelexpedicionempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Residencia:<asp:Label ID="labelresidenciaempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Correo:<asp:Label ID="labelcorreoempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Estrato:<asp:Label ID="labelestratoempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                        <td>Barrio:<asp:Label ID="labelbarrioempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Estado:<asp:Label ID="label1estadoempresarial" class="col-sm-4 col-form-label" runat="server"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonguardarempresa" Text="Verificar" Width="143px" Height="30px" OnClick="Buttonguardarempresa_Click" />
+
+                                                        </td>
+                                                        <td>
+                                                            <asp:Button ID="Button9" runat="server" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="146px" data-dismiss="modal" />
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </div>
+        </div>
     </section>
 
 </asp:Content>

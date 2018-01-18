@@ -128,6 +128,7 @@ namespace VisapLine.View.Private
                     listtelefonoempre.Columns.Clear();
                     listtelefonoempre.Columns.Add("idtelefono");
                     listtelefonoempre.Columns.Add("telefono");
+                
                 }
             }
             catch (Exception ex)
@@ -264,6 +265,7 @@ namespace VisapLine.View.Private
                 iddivcorporativo.Visible = false;
                 iddivempresa.Visible = false;
                 tablanatural.Visible = true;
+                cargartabla(datcont["idterceros"].ToString());
             }
             catch (Exception ex)
             {
@@ -390,7 +392,30 @@ namespace VisapLine.View.Private
                     }
                     textError.InnerHtml = "Se ha registrado con exito";
                     Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;
+                    Alerta.Visible = true;      
+                    
+
+                    terc.identificacion = Validar.validarnumero(TextBox1identificacion.Text);
+                    DataRow datconte = Validar.Consulta(terc.ConsultarPersonaIdentifall(terc)).Rows[0];
+                    
+                    Labelnombrecontrato.Text = datconte["nombre"].ToString();
+                    Labelapellidocontrato.Text = datconte["apellido"].ToString();
+                    Labelcedulacontrato.Text = datconte["identificacion"].ToString();
+                    Labelcorreocontrato.Text = datconte["correo"].ToString();
+                    Labeldireccioncontrato.Text = datconte["direccion"].ToString();
+                    TextBox1identificacion.Text="";
+                    TextBoxdireccion.Text="";
+                    DropDownListtipodocu.SelectedValue="Seleccione";
+                    DropDownList2.SelectedValue="Seleccione";
+                    TextBoxnombre.Text="";
+                    TextBox1apellido.Text="";
+                    TextBox1fecnac.Text="";
+                    TextBoxcorreo.Text="";
+                    DropDownListbarrio.SelectedValue="Seleccione";
+                    DropDownListtiporesi.SelectedValue="Seleccione";
+                    tipotercero.SelectedValue="Seleccione";
+                    DropDownListestrato.SelectedValue="Seleccione";
+                    DropDownListestado.SelectedValue="Seleccciones";              
                     ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
                     iddivnatural.Visible = false;
                     iddivcorporativo.Visible = false;
@@ -935,23 +960,47 @@ namespace VisapLine.View.Private
         ///contrato
         ///
 
-        protected void cargartabla()
+        protected void cargartabla(string idusuario)
         {
-            pn.idtercero_idtercero = terc.idterceros;
-            DataTable dt = pn.ConsultarPlantipoterce(pn);
+           pn.idtercero_idtercero = terc.idterceros;
+            DataTable dt = pn.ConsultarPlantipoterce(idusuario);
             GridView2.DataSource = dt;
             GridView2.DataBind();
         }
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+            GridViewRow gridw = GridView2.SelectedRow;       
 
+            Labeldetalleplancontrato.Text = gridw.Cells[3].Text;
+            Labelsubidaplancontrato.Text= gridw.Cells[7].Text;
+            Labelbajadaplancontrato.Text= gridw.Cells[8].Text;
+            Labelvaloriva.Text= gridw.Cells[2].Text;
+            Labelwifiplancontrato.Text= gridw.Cells[10].Text;
+            Labelmedioconexionplancontrato.Text= gridw.Cells[9].Text;
+   
+
+        }
+        protected void Buttoncancelarplancontrato_Click(object sender, EventArgs e)
+        {
+            Labeldetalleplancontrato.Text = "";
+            Labelsubidaplancontrato.Text = "";
+            Labelbajadaplancontrato.Text = "";
+            Labelvaloriva.Text = "";
+            Labelwifiplancontrato.Text = "";
+            Labelmedioconexionplancontrato.Text ="";
+            ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
         }
 
         protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         {
 
         }
+
+      
+
+       
     }
 
 

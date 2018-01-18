@@ -202,7 +202,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body" style="">
-                <div class="row"  style="overflow-x: scroll">
+                <div class="row"  style="overflow-Y: scroll">
                     <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField HeaderText="Codigo de Plan" DataField="idplan" />
