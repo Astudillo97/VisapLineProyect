@@ -17,7 +17,7 @@ namespace VisapLine.Model
 
         public DataTable ConsultarCaracteristicas()
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("SELECT * FROM public.pr_consultarcaracteristicas()");
         }
     }
 }
