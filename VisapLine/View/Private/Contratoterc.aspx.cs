@@ -371,7 +371,7 @@ namespace VisapLine.View.Private
                 ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
 
 
-                if (terc.RegistrarTercerocliente(terc) && ctg.Registrarcargotercero(ctg))
+                if (terc.RegistrarTerceros(terc) && ctg.Registrarcargotercero(ctg))
                 {
 
                     foreach (DataRow item in listtelefono.Rows)
@@ -657,7 +657,7 @@ namespace VisapLine.View.Private
                 ctg.identificacion = Validar.validarlleno(TextBox1corporativo.Text);
                 ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
 
-                if (terc.RegistrarTercerocliente(terc) && ctg.Registrarcargotercero(ctg))
+                if (terc.RegistrarTerceros(terc) && ctg.Registrarcargotercero(ctg))
                 {
                     foreach (DataRow item in listtelefonocorpo.Rows)
                     {
@@ -917,7 +917,7 @@ namespace VisapLine.View.Private
                 ctg.identificacion = Validar.validarlleno(TextBox1empresa.Text);
                 ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
 
-                if (terc.RegistrarTerceroempresacliente(terc) && ctg.Registrarcargotercero(ctg))
+                if (terc.RegistrarTerceros(terc) && ctg.Registrarcargotercero(ctg))
                 {
                     foreach (DataRow item in listtelefonocorpo.Rows)
                     {
