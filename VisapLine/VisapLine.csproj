@@ -435,7 +435,6 @@
     <Compile Include="DataAccess\Connection\Data.cs" />
     <Compile Include="DataAccess\Data\IData.cs" />
     <Compile Include="Model\AsignacionRol.cs" />
-    <Compile Include="Model\CargoTercero.cs" />
     <Compile Include="Model\DetalleCompra.cs" />
     <Compile Include="Model\Garantia.cs" />
     <Compile Include="Model\Historico.cs" />
