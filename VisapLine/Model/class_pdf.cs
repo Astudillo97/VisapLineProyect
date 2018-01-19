@@ -43,7 +43,7 @@ namespace VisapLine.Model
             Paragraph empresatelefonos = new Paragraph("4351949 - 3184903427");
             Paragraph empresaweb = new Paragraph("wwww.visapline.com");
             Rectangle rect = new Rectangle(36, 700, 100, 100);
-            
+            doc.Add(empresanombre);
             doc.Close();
         }
     }
