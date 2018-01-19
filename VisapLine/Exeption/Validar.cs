@@ -42,6 +42,28 @@ namespace VisapLine.Exeption
                 return "'" + cad + "'";
             }
         }
+        public static string ConvertNumber(string cad)
+        {
+            if (cad == "Seleccione" || cad == "")
+            {
+                return "NULL::integer";
+            }
+            else
+            {
+                return "" + cad + "";
+            }
+        }
+        public static string ConvertDate(string cad)
+        {
+            if (cad == "Seleccione" || cad == "")
+            {
+                return "NULL::date";
+            }
+            else
+            {
+                return "'" + cad + "'";
+            }
+        }
         public static DataTable validartelefono(DataTable data)
         {
             if (data != null && data.Rows.Count > 0)

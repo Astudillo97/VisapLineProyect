@@ -23,7 +23,11 @@ namespace VisapLine.Model
 
         public bool RegistrarPermisos(Permisos per)
         {
-            return data.OperarDatos("");
+            return data.OperarDatos("select * from public.pr_insertarpermiso("+per.rol_idrol+",'"+per.permisos+"',"+per.menu_idmenu+")");
+        }
+        public DataTable ConsultarRolPermisos(Permisos per)
+        {
+            return data.ConsultarDatos("select * from pr_consularmenu(" + per.rol_idrol + ")");
         }
     }
 }
