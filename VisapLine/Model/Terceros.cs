@@ -61,7 +61,7 @@ namespace VisapLine.Model
         }
         public bool RegistrarTerceroGeneral(Terceros ter)
         {
-            return data.OperarDatos("select * from pr_insertartercero("+ter.estrato+", '"+ter.estado+"',"+ter.tiporesidencia_idtiporesidencia+","+ter.tipofactura_idtipofactura+",'"+ter.identificacion + "','"+ter.nombre+"',"+ter.apellido+",'"+ter.correo+"','"+ter.direccion+"',"+ter.barrios_idbarrios+","+ter.fechanatcimiento+","+ter.tipodoc_idtipodoc+","+ter.rh+")");
+            return data.OperarDatos("select * from pr_insertartercero("+ter.estrato+", '"+ter.estado+"',"+ter.tiporesidencia_idtiporesidencia+","+ter.tipofactura_idtipofactura+",'"+ter.identificacion+"','"+ter.nombre+"',"+ter.apellido+",'"+ter.correo+"','"+ter.direccion+"',"+ter.barrios_idbarrios+","+ter.fechanatcimiento+","+ter.tipodoc_idtipodoc+","+ter.rh+")");
         }
     }
 }
