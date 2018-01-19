@@ -928,7 +928,7 @@ namespace VisapLine.View.Private
             ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
             GridViewRow gridw = GridView2.SelectedRow;
 
-            TextArea1detalleplan.Text = gridw.Cells[3].Text;
+            TextArea1detalleplan.Value = gridw.Cells[3].Text;
             Labelsubidaplancontrato.Text= gridw.Cells[7].Text;
             Labelbajadaplancontrato.Text= gridw.Cells[8].Text;
             Labelvaloriva.Text= gridw.Cells[2].Text;
