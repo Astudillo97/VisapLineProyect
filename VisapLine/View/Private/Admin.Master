@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../Contenido/images/favicon.ico">
-    <title></title>
+    <title>VisapLine</title>
 
     <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="../../Contenido/assets/vendor_components/bootstrap/dist/css/bootstrap.css">
@@ -47,14 +47,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
-    <link href="../../assets/vendor_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
-
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../../css/master_style.css">
-
-    <!-- apro_admin Skins. Choose a skin from the css/skins
-	   folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="../../css/skins/_all-skins.css">
+    <link href="../../Contenido/assets/vendor_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -404,10 +397,7 @@
         <script src="../../Contenido/assets/vendor_plugins/weather-icons/WeatherIcon.js"></script>
 
 
-        <script src="../../assets/vendor_components/jquery/dist/jquery.min.js"></script>
-
-        <!-- wizard  -->
-        <script src="../../js/pages/steps.js"></script>
+        <script src="../../Contenido/assets/vendor_components/jquery/dist/jquery.min.js"></script>
 
         <!-- Nuevos Insersiones -->
         <!-- DataTables -->
