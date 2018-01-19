@@ -29,22 +29,22 @@ namespace VisapLine.Model
         public string rh { get; set; }
         public DataTable ConsultarTercerosId(Terceros terc)
         {
-            return data.ConsultarDatos("SELECT * from public.pr_consultarterceroidapk(" + terc.idterceros + ");");
+            return data.ConsultarDatos("SELECT * from public.pr_consultarterceroidapk("+terc.idterceros+");");
         }
 
         public DataTable ConsultarRecuperacion(Terceros ter)
         {
-            return data.ConsultarDatos("select * from pr_consultarrecuperacion('" + ter.identificacion + "', '" + ter.correo + "');");
+            return data.ConsultarDatos("select * from pr_consultarrecuperacion('"+ter.identificacion+"', '"+ter.correo+"');");
         }
 
         public DataTable ConsultarTerceroCargos(Terceros terc)
         {
-            return data.ConsultarDatos("select * from pr_consultarcargotercero('" + terc.identificacion + "')");
+            return data.ConsultarDatos("select * from pr_consultarcargotercero('"+terc.identificacion+"')");
         }
 
         public bool RegistrarTerceros(Terceros per)
         {
-            return data.OperarDatos("SELECT * from public.pr_insertartercero('" + per.identificacion + "','" + per.nombre + "','" + per.apellido + "','" + per.direccion + "','" + per.correo + "','" + per.estrato + "','" + per.estado + "','" + per.tipotercero_idtipotercero + "','" + per.tipodoc_idtipodoc + "','" + per.fechanatcimiento + "','" + per.tiporesidencia_idtiporesidencia + "','" + per.tipofactura_idtipofactura + "','" + per.barrios_idbarrios + "');");
+            return data.OperarDatos("SELECT * from public.pr_insertartercero('"+per.identificacion + "','"+per.nombre + "','"+per.apellido+"','"+per.direccion+"','"+per.correo+"','"+per.estrato + "','"+per.estado+"','"+per.tipotercero_idtipotercero+"','"+per.tipodoc_idtipodoc+"','"+per.fechanatcimiento+"','"+per.tiporesidencia_idtiporesidencia+"','"+per.tipofactura_idtipofactura+"','"+per.barrios_idbarrios+"');");
         }
         public DataTable ConsultarPersonaIdentifall(Terceros ter)
         {
