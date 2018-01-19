@@ -29,7 +29,7 @@ namespace VisapLine.Model
         public string rh { get; set; }
         public DataTable ConsultarTercerosId(Terceros terc)
         {
-            return data.ConsultarDatos("SELECT * from public.pr_consultarterceroidapk(" + terc.idterceros + ");");
+            return data.ConsultarDatos("SELECT * from public.pr_consultarterceroidapk("+terc.idterceros+");");
         }
 
         public DataTable ConsultarRecuperacion(Terceros ter)
