@@ -44,11 +44,19 @@ namespace VisapLine.Model
 
         public bool RegistrarTerceros(Terceros per)
         {
-            return data.OperarDatos("SELECT * from public.pr_insertartercero('"+per.identificacion + "','"+per.nombre + "','"+per.apellido+"','"+per.direccion+"','"+per.correo+"','"+per.estrato + "','"+per.estado+"','"+per.tipotercero_idtipotercero+"','"+per.tipodoc_idtipodoc+"','"+per.fechanatcimiento+"','"+per.tiporesidencia_idtiporesidencia+"','"+per.tipofactura_idtipofactura+"','"+per.barrios_idbarrios+"');");
+            return data.OperarDatos("SELECT * from public.pr_insertartercerocliente('" + per.estrato + "','" + per.estado + "','" + per.tiporesidencia_idtiporesidencia + "','" + per.tipofactura_idtipofactura + "','" + per.identificacion + "','"+per.nombre + "','"+per.apellido+"','" + per.correo+ "','" + per.direccion + "','" + per.barrios_idbarrios + "','" + per.fechanatcimiento + "','" + per.tipodoc_idtipodoc+"');");
+        }
+        public bool RegistrarTercerosempresatercero(Terceros per)
+        {
+            return data.OperarDatos("SELECT * from public.pr_insertarterceroempresacliente('" + per.estrato + "','" + per.estado + "','" + per.tiporesidencia_idtiporesidencia + "','" + per.tipofactura_idtipofactura + "','" + per.identificacion + "','" + per.nombre + "','" + per.correo + "','" + per.direccion + "','" + per.barrios_idbarrios + "','" + per.fechanatcimiento + "','" + per.tipodoc_idtipodoc + "');");
         }
         public DataTable ConsultarPersonaIdentifall(Terceros ter)
         {
             return data.ConsultarDatos("SELECT * from pr_consultarterceroidall('"+ter.identificacion+"');");
+        }
+        public DataTable ConsultarPersonaIdenti(string teriden)
+        {
+            return data.ConsultarDatos("SELECT * from pr_consultarterceroidall('" + teriden + "');");
         }
         public bool ActualizarTercero(Terceros ter)
         {

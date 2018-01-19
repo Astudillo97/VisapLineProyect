@@ -868,31 +868,22 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Label Labelbajadaplancontrato;
         
         /// <summary>
-        /// Control Labelconectividadplancontrato.
+        /// Control Labelmedioconexionplancontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labelconectividadplancontrato;
+        protected global::System.Web.UI.WebControls.Label Labelmedioconexionplancontrato;
         
         /// <summary>
-        /// Control Labeldetalleplancontrato.
+        /// Control CheckBox1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labeldetalleplancontrato;
-        
-        /// <summary>
-        /// Control Labelwifiplancontrato.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labelwifiplancontrato;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
         
         /// <summary>
         /// Control Labelvaloriva.
@@ -904,31 +895,31 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Label Labelvaloriva;
         
         /// <summary>
-        /// Control Labelvalorintalacionplancontrato.
+        /// Control Textboxvalorinstalacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labelvalorintalacionplancontrato;
+        protected global::System.Web.UI.WebControls.TextBox Textboxvalorinstalacion;
         
         /// <summary>
-        /// Control Labelmedioconexionplancontrato.
+        /// Control Labelconectividadplancontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labelmedioconexionplancontrato;
+        protected global::System.Web.UI.WebControls.Label Labelconectividadplancontrato;
         
         /// <summary>
-        /// Control Buttoncancelarplancontrato.
+        /// Control Button4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Buttoncancelarplancontrato;
+        protected global::System.Web.UI.WebControls.Button Button4;
         
         /// <summary>
         /// Control labelnaturaltipopersona.

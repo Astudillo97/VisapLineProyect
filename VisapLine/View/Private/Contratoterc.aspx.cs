@@ -53,7 +53,8 @@ namespace VisapLine.View.Private
                     DropDownListpais.DataTextField = "pais";
                     DropDownListpais.DataValueField = "idpais";
                     DropDownListpais.DataBind();
-
+                    
+                  
                     DropDownList2.DataSource = tpfact.ConsultarTipoFactura();
                     DropDownList2.DataTextField = "tipofactura";
                     DropDownList2.DataValueField = "idtipofactura";
@@ -247,12 +248,11 @@ namespace VisapLine.View.Private
 
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void cargardatoscontratosnatu(string identi)
         {
             try
             {
-                terc.identificacion = Validar.validarnumero(TextBox1identificacion.Text);
-                DataRow datcont = Validar.Consulta(terc.ConsultarPersonaIdentifall(terc)).Rows[0];
+                DataRow datcont = Validar.Consulta(terc.ConsultarPersonaIdenti(identi)).Rows[0];
 
                 Labelnombrecontrato.Text = datcont["nombre"].ToString();
                 Labelapellidocontrato.Text = datcont["apellido"].ToString();
@@ -273,6 +273,11 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
+        }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+            cargardatoscontratosnatu(Validar.validarnumero(TextBox1identificacion.Text));
         }
         protected void telefonos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -367,11 +372,11 @@ namespace VisapLine.View.Private
                 terc.estrato = Validar.validarselected(DropDownListestrato.SelectedValue);
                 terc.estado = Validar.validarselected(DropDownListestado.SelectedValue);
 
-                //ctg.identificacion = Validar.validarlleno(TextBox1identificacion.Text);
-                //ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
+                ctg.identificacion = Validar.validarlleno(TextBox1identificacion.Text);
+                ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
 
 
-                if (terc.RegistrarTerceros(terc) /*&& /*ctg.Registrarcargotercero(ctg)**/)
+                if (terc.RegistrarTerceros(terc) && ctg.Registrarcargotercero(ctg))
                 {
 
                     foreach (DataRow item in listtelefono.Rows)
@@ -392,34 +397,8 @@ namespace VisapLine.View.Private
                     }
                     textError.InnerHtml = "Se ha registrado con exito";
                     Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;      
-                    
-
-                    terc.identificacion = Validar.validarnumero(TextBox1identificacion.Text);
-                    DataRow datconte = Validar.Consulta(terc.ConsultarPersonaIdentifall(terc)).Rows[0];
-                    
-                    Labelnombrecontrato.Text = datconte["nombre"].ToString();
-                    Labelapellidocontrato.Text = datconte["apellido"].ToString();
-                    Labelcedulacontrato.Text = datconte["identificacion"].ToString();
-                    Labelcorreocontrato.Text = datconte["correo"].ToString();
-                    Labeldireccioncontrato.Text = datconte["direccion"].ToString();
-                    TextBox1identificacion.Text="";
-                    TextBoxdireccion.Text="";
-                    DropDownListtipodocu.SelectedValue="Seleccione";
-                    DropDownList2.SelectedValue="Seleccione";
-                    TextBoxnombre.Text="";
-                    TextBox1apellido.Text="";
-                    TextBox1fecnac.Text="";
-                    TextBoxcorreo.Text="";
-                    DropDownListbarrio.SelectedValue="Seleccione";
-                    DropDownListtiporesi.SelectedValue="Seleccione";
-                    tipotercero.SelectedValue="Seleccione";
-                    DropDownListestrato.SelectedValue="Seleccione";
-                    DropDownListestado.SelectedValue="Seleccciones";              
-                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
-                    iddivnatural.Visible = false;
-                    iddivcorporativo.Visible = false;
-                    iddivempresa.Visible = false;
+                    Alerta.Visible = true;
+                    cargardatoscontratosnatu(Validar.validarnumero(TextBox1identificacion.Text));
                 }
                 else
                 {
@@ -466,27 +445,25 @@ namespace VisapLine.View.Private
             }
         }
 
-
-        protected void Buscarcorporativo_Click(object sender, EventArgs e)
+        protected void buscardatoscontracorpo( string identicorpo)
         {
+
+        
             try
             {
-                terc.identificacion = Validar.validarnumero(TextBox1corporativo.Text);
 
-                if (terc.ConsultarPersonaIdentifall(terc).Rows.Count > 0)
-                {
-                    textError.InnerHtml = "La entidad ya se encuentra registrada";
-                    Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;
+                DataRow datcontcorpo = Validar.Consulta(terc.ConsultarPersonaIdenti(identicorpo)).Rows[0];
 
-
-                }
-                else
-                {
-                    textError.InnerHtml = "La entidad  no se encuentra registrada";
-                    Alerta.CssClass = "alert alert-error";
-                    Alerta.Visible = true;
-                }
+                Label7.Text = datcontcorpo["nombre"].ToString();
+                Label11.Text = datcontcorpo["identificacion"].ToString();
+                Label13.Text = datcontcorpo["correo"].ToString();
+                Label15.Text = datcontcorpo["direccion"].ToString();
+                cargartabla(datcontcorpo["idterceros"].ToString());
+                iddivnatural.Visible = false;
+                iddivcorporativo.Visible = false;
+                iddivempresa.Visible = false;
+                Tablecorporacionempresa.Visible = true;               
+                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
             }
             catch (Exception ex)
             {
@@ -494,6 +471,10 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
+        }
+        protected void Buscarcorporativo_Click(object sender, EventArgs e)
+        {
+            buscardatoscontracorpo(Validar.validarnumero(TextBox1corporativo.Text));
         }
 
         protected void DropDownList4paiscorpo_SelectedIndexChanged(object sender, EventArgs e)
@@ -657,7 +638,7 @@ namespace VisapLine.View.Private
                 ctg.identificacion = Validar.validarlleno(TextBox1corporativo.Text);
                 ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
 
-                if (terc.RegistrarTerceros(terc) && ctg.Registrarcargotercero(ctg))
+                if (terc.RegistrarTercerosempresatercero(terc) && ctg.Registrarcargotercero(ctg))
                 {
                     foreach (DataRow item in listtelefonocorpo.Rows)
                     {
@@ -678,11 +659,11 @@ namespace VisapLine.View.Private
                     }
                     textError.InnerHtml = "Se ha registrado con exito";
                     Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;
-                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                    Alerta.Visible = true;                 
                     iddivnatural.Visible = false;
                     iddivcorporativo.Visible = false;
                     iddivempresa.Visible = false;
+                    buscardatoscontracorpo(Validar.validarnumero(TextBox1corporativo.Text));
 
                 }
                 else
@@ -733,31 +714,7 @@ namespace VisapLine.View.Private
 
         protected void Buttonbuscarempresa_Click(object sender, EventArgs e)
         {
-            try
-            {
-                terc.identificacion = Validar.validarnumero(TextBox1empresa.Text);
-
-                if (terc.ConsultarPersonaIdentifall(terc).Rows.Count > 0)
-                {
-                    textError.InnerHtml = "La entidad ya se encuentra registrada";
-                    Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;
-
-
-                }
-                else
-                {
-                    textError.InnerHtml = "La entidad  no se encuentra registrada";
-                    Alerta.CssClass = "alert alert-error";
-                    Alerta.Visible = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
-            }
+            buscardatoscontracorpo(Validar.validarnumero(TextBox1empresa.Text));
         }
 
         protected void DropDownListpaisempresa_SelectedIndexChanged(object sender, EventArgs e)
@@ -917,7 +874,7 @@ namespace VisapLine.View.Private
                 ctg.identificacion = Validar.validarlleno(TextBox1empresa.Text);
                 ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
 
-                if (terc.RegistrarTerceros(terc) && ctg.Registrarcargotercero(ctg))
+                if (terc.RegistrarTercerosempresatercero(terc) && ctg.Registrarcargotercero(ctg))
                 {
                     foreach (DataRow item in listtelefonocorpo.Rows)
                     {
@@ -936,11 +893,9 @@ namespace VisapLine.View.Private
                     }
                     textError.InnerHtml = "Se ha registrado con exito";
                     Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;
-                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
-                    iddivnatural.Visible = false;
-                    iddivcorporativo.Visible = false;
-                    iddivempresa.Visible = false;
+                    Alerta.Visible = true;                 
+                 
+                    buscardatoscontracorpo(Validar.validarnumero(TextBox1empresa.Text));
                 }
                 else
                 {
@@ -971,24 +926,26 @@ namespace VisapLine.View.Private
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
-            GridViewRow gridw = GridView2.SelectedRow;       
+            GridViewRow gridw = GridView2.SelectedRow;
 
-            Labeldetalleplancontrato.Text = gridw.Cells[3].Text;
+            TextArea1detalleplan.Text = gridw.Cells[3].Text;
             Labelsubidaplancontrato.Text= gridw.Cells[7].Text;
             Labelbajadaplancontrato.Text= gridw.Cells[8].Text;
             Labelvaloriva.Text= gridw.Cells[2].Text;
-            Labelwifiplancontrato.Text= gridw.Cells[10].Text;
+            //if ()
+            //{
+
+            //}
             Labelmedioconexionplancontrato.Text= gridw.Cells[9].Text;
    
 
         }
         protected void Buttoncancelarplancontrato_Click(object sender, EventArgs e)
         {
-            Labeldetalleplancontrato.Text = "";
+            Textboxvalorinstalacion.Text = "";
             Labelsubidaplancontrato.Text = "";
             Labelbajadaplancontrato.Text = "";
-            Labelvaloriva.Text = "";
-            Labelwifiplancontrato.Text = "";
+            Labelvaloriva.Text = "";           
             Labelmedioconexionplancontrato.Text ="";
             ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
         }

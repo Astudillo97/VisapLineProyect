@@ -40,9 +40,9 @@ namespace VisapLine.Model
         }
 
 
-        public DataTable ConsultarPlantipoterce(string pln)
+        public DataTable ConsultarPlantipoterce(string plnt)
         {
-            return data.ConsultarDatos("select * from pr_consultarplanestipoter('"+pln+"')");
+            return data.ConsultarDatos("select * from pr_consultarplanestipoter('"+plnt+"')");
         }
 
     }

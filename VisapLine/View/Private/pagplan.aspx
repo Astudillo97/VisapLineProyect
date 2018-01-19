@@ -76,7 +76,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Tipo_Plan:</label>
                             <div class="col-sm-10">
-                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" required data-validation-required-message="This field is required" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true" required data-validation-required-message="This field is required" >
                                     <asp:ListItem>Seleccione</asp:ListItem>
                                     <asp:ListItem>PUBLICO</asp:ListItem>
                                     <asp:ListItem>EMPRESARIAL</asp:ListItem>
@@ -156,7 +156,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">Zona:</label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <asp:DropDownList ID="zonaplan" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" required data-validation-required-message="This field is required" OnSelectedIndexChanged="zonaplan_SelectedIndexChanged">
+                                    <asp:DropDownList ID="zonaplan" runat="server" CssClass="form-control" AppendDataBoundItems="true" required data-validation-required-message="This field is required" >
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
@@ -167,7 +167,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">Medio Conexion:</label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <asp:DropDownList ID="DropDownListmedioconexion" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" required data-validation-required-message="This field is required" OnSelectedIndexChanged="zonaplan_SelectedIndexChanged">
+                                    <asp:DropDownList ID="DropDownListmedioconexion" runat="server" CssClass="form-control" AppendDataBoundItems="true" required data-validation-required-message="This field is required" >
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>FIBRA</asp:ListItem>
                                         <asp:ListItem>RADIO</asp:ListItem>
@@ -201,9 +201,10 @@
                 <h2 class="box-title">Planes</h2>
             </div>
             <!-- /.box-header -->
+        
             <div class="box-body" style="">
-                <div class="row"  style="overflow-Y: scroll">
-                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                <div class="row"  style="overflow-y: scroll">
+                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" >
                         <Columns>
                             <asp:BoundField HeaderText="Codigo de Plan" DataField="idplan" />
                             <asp:BoundField HeaderText="Valor" DataField="valor" />
@@ -228,6 +229,7 @@
                 <!-- /.box-body -->
 
             </div>
+               
         </div>
 
     </section>
