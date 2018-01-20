@@ -649,7 +649,7 @@
                                                                     </div>
 
                                                                     <div class="form-group row">
-                                                                        <label class="col-sm-3 col-form-label">Estado</label>
+                                                                        <label class="col-sm-3 col-form-label">Estado</label>modal-empresarial
                                                                         <div class="col-sm-9">
                                                                             <asp:DropDownList ID="DropDownListestadoempresa" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                                                 <asp:ListItem>Seleccione</asp:ListItem>

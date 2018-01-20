@@ -3,7 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <label class="text-center" runat="server" id="textError"></label>
+    </asp:Panel>
     <div class="box box-default" id="divinternet" runat="server" visible="false">
         <div class="box-header with-border">
             <h3 class="box-title">INTERNET</h3>
@@ -17,9 +20,7 @@
             <div class="row">
                 <div class="col- col-6">
                     <asp:Button runat="server" ID="btnequipo" class="btn  btn-success btn-lg" Text="ASIGNAR EQUIPO" OnClick="btnequipo_Click" />
-
                     <asp:Button runat="server" ID="Button1" Text="CANCELAR" OnClick="Button1_Click" CssClass="btn  btn-danger btn-lg" />
-
                     <asp:Button runat="server" ID="btninser" Text="CREAR SERVICIO" OnClick="btninser_Click" CssClass="btn btn-success btn-lg" Visible="false" />
 
                 </div>
@@ -61,10 +62,10 @@
                         </asp:ListView>
                     </div>
                 </div>
-                
+
                 <div class="col-6  ">
-                  
-                        <div class="box box-primary">
+
+                    <div class="box box-primary">
                         <asp:GridView Visible="false" runat="server" ID="gridcaract" AutoGenerateColumns="false" CssClass="table table-bordered table-responsive">
                             <Columns>
                                 <asp:BoundField HeaderText="NUMERO" DataField="idcaracteristicas" />
@@ -79,15 +80,15 @@
 
                         </asp:GridView>
                     </div>
-                     
+
                 </div>
-                </div>
-  
-                <!-- /.col -->
             </div>
-            <!-- /.row -->
+
+            <!-- /.col -->
         </div>
-        <!-- /.box-body -->
+        <!-- /.row -->
+    </div>
+    <!-- /.box-body -->
 
     <div class="box box-default collapsed-box" id="divtv" runat="server" visible="false">
         <div class="box-header with-border">
@@ -115,6 +116,9 @@
                             <asp:TextBox runat="server" CssClass="form-control" ID="txbptv"></asp:TextBox>
                         </div>
                     </div>
+                </div>
+                <div class="col-6">                   
+                    <asp:Button runat="server" ID="creartev" Text="CREAR SERVICIO" OnClick="creartev_Click" CssClass="btn btn-success btn-lg" />
                 </div>
                 <!-- /.col -->
             </div>

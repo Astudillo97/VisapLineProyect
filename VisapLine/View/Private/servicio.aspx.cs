@@ -82,14 +82,39 @@ namespace VisapLine.View.Private
 
         protected void btninser_Click(object sender, EventArgs e)
         {
-            DataRow dtrs=ctt.estratoymegas(8).Rows[0];
-            DataTable dtid = srv.crearservicio(ip.Text,int.Parse(dtrs[0].ToString()), 8, dtrs[1].ToString(), "POR INSTALAR", "LA CASA DE AZUL", 1, idpedido);
-            int idservi = int.Parse(dtid.Rows[0][0].ToString());
-            for (int i = 0; i < gridcaract.Rows.Count; i++)
+            bool ctrl = true;
+            if (ip.Text.Equals("")){
+                ctrl = false;
+            }
+            for (int i = 0; i < gridcaract.Rows.Count && ctrl; i++)
             {
                 TextBox texto = (TextBox)gridcaract.Rows[i].Cells[2].FindControl("cantida");
-                psc.RegistrarPlanSCatact(idservi,int.Parse(gridcaract.Rows[i].Cells[0].Text),int.Parse(texto.Text));             
+                if (texto.Text.Equals("")) {
+                    ctrl = false;
+                }
             }
+            if (ctrl)
+            {
+                DataRow dtrs = ctt.estratoymegas(8).Rows[0];
+                DataTable dtid = srv.crearservicio(ip.Text, int.Parse(dtrs[0].ToString()), 8, dtrs[1].ToString(), "POR INSTALAR", "INTERNET", 1, idpedido);
+                int idservi = int.Parse(dtid.Rows[0][0].ToString());
+                for (int i = 0; i < gridcaract.Rows.Count; i++)
+                {
+                    TextBox texto = (TextBox)gridcaract.Rows[i].Cells[2].FindControl("cantida");
+                    psc.RegistrarPlanSCatact(idservi, int.Parse(gridcaract.Rows[i].Cells[0].Text), int.Parse(texto.Text));
+                }
+            }
+            else {
+                textError.InnerHtml = "POR FAVOR DIGITE TODOS LOS CAMPOS";
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void creartev_Click(object sender, EventArgs e)
+        {
+            DataRow dtrs = ctt.estratoymegas(8).Rows[0];
+            srv.crearservicio(txbdiptv.Text, int.Parse(dtrs[0].ToString()), 8, dtrs[1].ToString(), "POR INSTALAR", "TELEVISION", 1, idpedido);
         }
     }
 }
