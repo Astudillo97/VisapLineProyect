@@ -20,8 +20,9 @@ namespace VisapLine.View.Private
             String rootPath = Server.MapPath("~");
             string urlpdf = rootPath + "Archivos\\mipdf.pdf";
             string imagen = rootPath + "Archivos\\imgvisap.png";
-            pdf.CrearPdf(urlpdf);
+            //pdf.CrearPdf(urlpdf);
             pdf.CrearFactura(urlpdf, imagen);
+
         }
     }
 }
