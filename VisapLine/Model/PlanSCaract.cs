@@ -29,7 +29,7 @@ namespace VisapLine.Model
         }
         public bool registrarpuertos(int servicios_idservicios, int cantidad)
         {
-            return data.OperarDatos("INSERT INTO public.planservicios_has_caracteristicas(caracteristicas_idcaracteristicas,cantidad, servicio_idservicio) VALUES((select idcaracteristicas from caracteristicas where caracteristica = 'PUNTOS'),"+ cantidad + ", "+ servicios_idservicios + "); ");
+            return data.OperarDatos("INSERT INTO public.planservicios_has_caracteristicas(caracteristicas_idcaracteristicas,cantidad, servicio_idservicio) VALUES((select idcaracteristicas from caracteristicas where caracteristica = 'PUNTOS'),"+ cantidad + ", "+ servicios_idservicios + ") returning planservicios_has_caracteristicascol; ");
         }
     }
 }

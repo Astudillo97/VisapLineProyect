@@ -26,29 +26,39 @@ namespace VisapLine.View.Private
         {
             
             
-            if (!IsPostBack) {
+            if (!IsPostBack)
+            {
                 DataTable dpcdt = ctt.consultadeserciciodeplancontratado(8);
-                
+                cargardtservicio();
                 DataRow rdt = dpcdt.Rows[0];
-                bool telefoo= bool.Parse(rdt["telef"].ToString());
-                if (telefoo) {
+                bool telefoo = bool.Parse(rdt["telef"].ToString());
+                if (telefoo)
+                {
                     divtelefono.Visible = true;
                 }
                 bool tv = bool.Parse(rdt["tv"].ToString());
-                if (tv) {
+                if (tv)
+                {
                     divtv.Visible = true;
                 }
                 bool internet = bool.Parse(rdt["inter"].ToString());
-                if (internet) {
+                if (internet)
+                {
                     divinternet.Visible = true;
-                    DataTable crtsdt=crts.ConsultarCaracteristicas();
+                    DataTable crtsdt = crts.ConsultarCaracteristicas();
                     gridcaract.DataSource = crtsdt;
                     gridcaract.DataBind();
 
                 }
-                
+
             }
 
+        }
+
+        private void cargardtservicio()
+        {
+            gridservicios.DataSource = srv.consultaservicioscont(8);
+            gridservicios.DataBind();
         }
 
         protected void btnequipo_Click(object sender, EventArgs e)
@@ -113,8 +123,61 @@ namespace VisapLine.View.Private
 
         protected void creartev_Click(object sender, EventArgs e)
         {
-            DataRow dtrs = ctt.estratoymegas(8).Rows[0];
-            srv.crearservicio(txbdiptv.Text, int.Parse(dtrs[0].ToString()), 8, dtrs[1].ToString(), "POR INSTALAR", "TELEVISION", 1, idpedido);
+            if (!txbdiptv.Text.Equals(""))
+            {
+                if (txbptv.Text.Equals(""))
+                {
+                    DataRow dtrs = ctt.estratoymegas(8).Rows[0];
+                    DataTable dtid = srv.crearsertv(txbdiptv.Text, 8, dtrs[1].ToString(), "POR INSTALAR", "TELEVISION", 1);
+                    int idservi = int.Parse(dtid.Rows[0][0].ToString());
+                    psc.registrarpuertos(idservi, int.Parse(txbptv.Text));
+                    divtv.Visible = false;
+                }
+                else {
+                    textError.InnerHtml = "POR FAVOR DIGITE TODOS LOS PUERTOS";
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+                }
+                
+            }
+            else {
+                textError.InnerHtml = "POR FAVOR DIGITE LA DIRECCION IP";
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+            
+        }
+
+        protected void ceartl_Click(object sender, EventArgs e)
+        {
+            if (!TextBox1.Text.Equals(""))
+            {
+                if (!TextBox2.Text.Equals("")) {
+                    DataRow dtrs = ctt.estratoymegas(8).Rows[0];
+                    DataTable dtid = srv.crearsertv(TextBox1.Text, 8, dtrs[1].ToString(), "POR INSTALAR", "TELEFONIA", 1);
+                    int idservi = int.Parse(dtid.Rows[0][0].ToString());
+                    psc.registrarpuertos(idservi, int.Parse(TextBox2.Text));
+                    divtelefono.Visible = false;
+                }
+                else {
+                    textError.InnerHtml = "POR FAVOR DIGITE TODOS LOS PUERTOS";
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+                }
+                
+            }
+            else {
+                textError.InnerHtml = "POR FAVOR DIGITE LA DIRECCION IP";
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+            
+        }
+
+        protected void gridservicios_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridservicios.PageIndex = e.NewPageIndex;
+            cargardtservicio();
         }
     }
 }
