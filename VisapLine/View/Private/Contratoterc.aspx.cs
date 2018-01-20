@@ -1042,23 +1042,10 @@ namespace VisapLine.View.Private
                 }
                
             }
-            
-           
+                      
 
         }
-
-        protected void Buttoncancelarplanselect_Click(object sender, EventArgs e)
-        {
-                     
-            Textboxvalorinstalacion.Text = "";
-            Labelsubidaplancontrato.Text = "";
-            Labelbajadaplancontrato.Text = "";
-            Labelvaloriva.Text = "";
-            Labelmedioconexionplancontrato.Text = "";
-            TextArea1detalleplan.Value = "";
-            ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
-
-        }
+         
 
 
     }

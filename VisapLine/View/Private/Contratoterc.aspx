@@ -971,12 +971,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <asp:Button ID="Buttoncancelarplanselect" runat="server" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="80px" OnClick="Buttoncancelarplanselect_Click" />
+                                                    <label class="col-sm-12 col-form-label">
+                                                        Fecha de Inicio de permanencia: 
+                                                            <asp:TextBox ID="Textboxfechainiciopermanencia" runat="server" type="date" class="form-control"></asp:TextBox>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <div class="box box-primary">
@@ -984,45 +988,52 @@
                                             <h3 class="box-title"></h3>
                                             <div class="form-element">
                                                 <div class="box-body">
+
+
                                                     <div class="form-group row">
                                                         <label class="col-sm-12 col-form-label">
-                                                            Fecha de Inicio de permanencia: 
-                                                            <asp:TextBox ID="Textboxfechainiciopermanencia" runat="server" type="date" class="form-control"></asp:TextBox>
+                                                            Fecha de Finalizacion de permanencia:   
+                                                            <asp:TextBox ID="Textboxfechafinalizacionpermanencia" runat="server" type="date" class="form-control"></asp:TextBox>
                                                         </label>
+
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-sm-12 col-form-label">
-                                                            Fecha de Finalizacion de permanencia:    <asp:TextBox ID="Textbox4" runat="server" type="date" class="form-control"></asp:TextBox>                                                        
+                                                            Fecha de activacion del servicio:    
+                                                            <asp:TextBox ID="Textboxfechaactivacionservicio" runat="server" type="date" class="form-control"></asp:TextBox>
                                                         </label>
-                                                     
-                                                         
-                                                       
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-5 col-form-label">
-                                                            Fecha de activacion del servicio:                                                        
-                                                        </label>
-                                                        <div class="col-sm-5">
-                                                            <asp:TextBox ID="Textbox5" runat="server" type="date" class="form-control"></asp:TextBox>
-                                                        </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label class="col-sm-5 col-form-label">
-                                                            Sub Total:                                                        
-                                                        </label>
-                                                        <div class="col-sm-5">
+                                                        <label class="col-sm-12 col-form-label">
+                                                            Sub Total:                   
                                                             <asp:TextBox ID="Textbox2" runat="server" type="number" class="form-control" placeholder="$"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-5 col-form-label">
-                                                            Total:                                                        
                                                         </label>
-                                                        <div class="col-sm-5">
-                                                            <asp:TextBox ID="Textbox3" runat="server" type="number" class="form-control" placeholder="$"></asp:TextBox>
-                                                        </div>
+
                                                     </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="box box-primary">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Total</h3>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Total</label>
+                                                <div class="col-sm-9">
+                                                    <asp:TextBox ID="TextBox3" CssClass="form-control" runat="server" placeholder="$" type="number"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">                                        
+                                                <div class="col-sm-9">
+                                                <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button4" Text="Crear Contrato" Width="146px" OnClick="Button1_Click" />
                                                 </div>
                                             </div>
                                         </div>

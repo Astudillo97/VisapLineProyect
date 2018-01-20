@@ -904,15 +904,6 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox Textboxvalorinstalacion;
         
         /// <summary>
-        /// Control Buttoncancelarplanselect.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Buttoncancelarplanselect;
-        
-        /// <summary>
         /// Control Textboxfechainiciopermanencia.
         /// </summary>
         /// <remarks>
@@ -922,22 +913,22 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox Textboxfechainiciopermanencia;
         
         /// <summary>
-        /// Control Textbox4.
+        /// Control Textboxfechafinalizacionpermanencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox4;
+        protected global::System.Web.UI.WebControls.TextBox Textboxfechafinalizacionpermanencia;
         
         /// <summary>
-        /// Control Textbox5.
+        /// Control Textboxfechaactivacionservicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox5;
+        protected global::System.Web.UI.WebControls.TextBox Textboxfechaactivacionservicio;
         
         /// <summary>
         /// Control Textbox2.
@@ -949,13 +940,22 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox Textbox2;
         
         /// <summary>
-        /// Control Textbox3.
+        /// Control TextBox3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox3;
+        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        
+        /// <summary>
+        /// Control Button4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button4;
         
         /// <summary>
         /// Control labelnaturaltipopersona.
