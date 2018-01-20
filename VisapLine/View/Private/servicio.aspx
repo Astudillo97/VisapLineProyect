@@ -7,6 +7,29 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
+    <div class="box box-body">
+    <asp:GridView AllowPaging="true" PageSize="6" OnPageIndexChanging="gridservicios_PageIndexChanging" AutoGenerateColumns="false" runat="server" ID="gridservicios" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-responsive">
+        <AlternatingRowStyle BackColor="White" />
+        <EditRowStyle BackColor="#2461BF" />
+        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#EFF3FB" />
+        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        <Columns>
+            <asp:BoundField HeaderText="REFEERENCIA" DataField="id" />
+            <asp:BoundField HeaderText="FECHA DE INICIO" DataField="fechainiciocol" />
+            <asp:BoundField HeaderText="MEGAS" DataField="cantidadmegascol" />
+            <asp:BoundField HeaderText="ESTADO" DataField="estadocol" />
+            <asp:BoundField HeaderText="SERVICIO" DataField="referenciascol" />
+            <asp:BoundField HeaderText="EQUIPO" DataField="referenciaequipocol" />
+        </Columns>
+    </asp:GridView>
+        </div>
     <div class="box box-default" id="divinternet" runat="server" visible="false">
         <div class="box-header with-border">
             <h3 class="box-title">INTERNET</h3>
@@ -22,7 +45,6 @@
                     <asp:Button runat="server" ID="btnequipo" class="btn  btn-success btn-lg" Text="ASIGNAR EQUIPO" OnClick="btnequipo_Click" />
                     <asp:Button runat="server" ID="Button1" Text="CANCELAR" OnClick="Button1_Click" CssClass="btn  btn-danger btn-lg" />
                     <asp:Button runat="server" ID="btninser" Text="CREAR SERVICIO" OnClick="btninser_Click" CssClass="btn btn-success btn-lg" Visible="false" />
-
                 </div>
                 <div class="col-6">
                     <div class="form-group row">
@@ -56,15 +78,11 @@
                                         <asp:TextBox runat="server" ID="tdescrp" CssClass="form-control" ReadOnly="true" Text='<%#Eval("descripcion")%>'></asp:TextBox>
                                     </div>
                                 </div>
-
-
                             </ItemTemplate>
                         </asp:ListView>
                     </div>
                 </div>
-
                 <div class="col-6  ">
-
                     <div class="box box-primary">
                         <asp:GridView Visible="false" runat="server" ID="gridcaract" AutoGenerateColumns="false" CssClass="table table-bordered table-responsive">
                             <Columns>
@@ -77,19 +95,15 @@
                                 </asp:TemplateField>
                                 <asp:BoundField HeaderText="UNIDAD" DataField="unidad" />
                             </Columns>
-
                         </asp:GridView>
                     </div>
-
                 </div>
             </div>
-
             <!-- /.col -->
         </div>
         <!-- /.row -->
     </div>
     <!-- /.box-body -->
-
     <div class="box box-default collapsed-box" id="divtv" runat="server" visible="false">
         <div class="box-header with-border">
             <h3 class="box-title">TELEVISION</h3>
@@ -137,13 +151,24 @@
         <!-- /.box-header -->
         <div class="box-body">
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <div class="form-group row">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">PUERTO</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">DIIRECCION IP</label>
                         <div class="col-sm-10">
-                            <asp:TextBox runat="server" ID="txbptlf" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="TextBox1" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">PUERTOS</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="TextBox2"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">                   
+                    <asp:Button runat="server" ID="ceartl" Text="CREAR SERVICIO" OnClick="ceartl_Click" CssClass="btn btn-success btn-lg" />
                 </div>
                 <!-- /.col -->
             </div>
