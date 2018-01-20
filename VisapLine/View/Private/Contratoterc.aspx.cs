@@ -129,7 +129,19 @@ namespace VisapLine.View.Private
                     listtelefonoempre.Columns.Clear();
                     listtelefonoempre.Columns.Add("idtelefono");
                     listtelefonoempre.Columns.Add("telefono");
-                
+
+                    //CONTRATO
+
+                    DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
+                    DropDownListpaiscontrato.DataTextField = "pais";
+                    DropDownListpaiscontrato.DataValueField = "idpais";
+                    DropDownListpaiscontrato.DataBind();
+
+                    DropDownListtiporedenciacontrato.DataSource = tpres.ConsultarTipoResidencia();
+                    DropDownListtiporedenciacontrato.DataTextField = "tiporesidencia";
+                    DropDownListtiporedenciacontrato.DataValueField = "idtiporesidencia";
+                    DropDownListtiporedenciacontrato.DataBind();
+
                 }
             }
             catch (Exception ex)
@@ -931,33 +943,124 @@ namespace VisapLine.View.Private
             TextArea1detalleplan.Value = gridw.Cells[3].Text;
             Labelsubidaplancontrato.Text= gridw.Cells[7].Text;
             Labelbajadaplancontrato.Text= gridw.Cells[8].Text;
-            Labelvaloriva.Text= gridw.Cells[2].Text;
-            //if ()
-            //{
-
-            //}
+            Labelvaloriva.Text= gridw.Cells[2].Text;         
             Labelmedioconexionplancontrato.Text= gridw.Cells[9].Text;
-   
+            
 
         }
-        protected void Buttoncancelarplancontrato_Click(object sender, EventArgs e)
-        {
-            Textboxvalorinstalacion.Text = "";
-            Labelsubidaplancontrato.Text = "";
-            Labelbajadaplancontrato.Text = "";
-            Labelvaloriva.Text = "";           
-            Labelmedioconexionplancontrato.Text ="";
-            ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
-        }
+      
 
         protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         {
 
         }
 
-      
+     
 
-       
+        protected void DropDownListpaiscontrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DropDownListdepartamentocontrato.Items.Clear();
+                DropDownListdepartamentocontrato.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                depart.pais_idpais = Validar.validarselected(DropDownListpaiscontrato.SelectedValue);
+                DropDownListdepartamentocontrato.DataSource = Validar.Consulta(depart.ConsultarDepartamentoIdPais(depart));
+                DropDownListdepartamentocontrato.DataTextField = "departamento";
+                DropDownListdepartamentocontrato.DataValueField = "iddepartamento";
+                DropDownListdepartamentocontrato.DataBind();            
+                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+            }
+        }
+        protected void DropDownListdepartamentocontrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DropDownListmunicipiocontrato.Items.Clear();
+                DropDownListmunicipiocontrato.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                munic.departamento_iddepartamento = Validar.validarselected(DropDownListdepartamentocontrato.SelectedValue);
+                DropDownListmunicipiocontrato.DataSource = Validar.Consulta(munic.ConsultarMunicipioIdDepartamento(munic));
+                DropDownListmunicipiocontrato.DataTextField = "municipio";
+                DropDownListmunicipiocontrato.DataValueField = "idmunicipio";
+                DropDownListmunicipiocontrato.DataBind();
+
+                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+
+            }
+
+
+        }
+        protected void DropDownListmunicipiocontrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DropDownListbarriocontrato.Items.Clear();
+                DropDownListbarriocontrato.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                barr.muninicio_idmunicipio = Validar.validarselected(DropDownListmunicipiocontrato.SelectedValue);
+                DropDownListbarriocontrato.DataSource = Validar.Consulta(barr.ConsultarBarriosIdMunicipio(barr));
+                DropDownListbarriocontrato.DataTextField = "barrios";
+                DropDownListbarriocontrato.DataValueField = "idbarrios";
+                DropDownListbarriocontrato.DataBind();
+                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+            }
+        }
+
+        protected void DropDownListestratocontrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DropDownListestratocontrato.Text == "1"|| DropDownListestratocontrato.Text=="2"|| DropDownListestratocontrato.Text=="3")
+            {
+                TextBoxivacontrato.Text = "0";
+                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+            }
+            else
+            {
+                if (DropDownListestratocontrato.Text=="4"|| DropDownListestratocontrato.Text=="5"|| DropDownListestratocontrato.Text=="6")
+                {
+                    TextBoxivacontrato.Text = "0.19";
+                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                }
+               
+            }
+            
+           
+
+        }
+
+        protected void Buttoncancelarplanselect_Click(object sender, EventArgs e)
+        {
+                     
+            Textboxvalorinstalacion.Text = "";
+            Labelsubidaplancontrato.Text = "";
+            Labelbajadaplancontrato.Text = "";
+            Labelvaloriva.Text = "";
+            Labelmedioconexionplancontrato.Text = "";
+            TextArea1detalleplan.Value = "";
+            ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+
+        }
+
+
     }
 
 
