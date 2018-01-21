@@ -24,5 +24,10 @@ namespace VisapLine.View.Private
             pdf.CrearFactura(urlpdf, imagen);
 
         }
+
+        protected void tipodoc__SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

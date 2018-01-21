@@ -194,6 +194,7 @@ namespace VisapLine.Model
                 " mismos en relación a nuestros servicio cominiquese a nuestra linea 098-435-1949--FAVOR GIRAR CHEQUE A NOMBRE DE C & C" +
                 " VISION SAS. ---Cuenta Corriente No. 36400496-0 Banco BBVA Florencia. \n\n")).Add(new Paragraph("Número de Resolucion" +
                 " Dian 18762001688490 autoriza en 2016-12-28 prefijo FS desde el número 10001 al 20000 Regimen Común - Actividad Económica Tarifa."));
+            normativa.AddCell(norm);
             doc.Add(normativa);
 
             doc.Close();
