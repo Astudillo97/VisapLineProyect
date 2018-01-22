@@ -940,7 +940,7 @@ namespace VisapLine.View.Private
             ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
             GridViewRow gridw = GridView2.SelectedRow;
 
-            TextArea1detalleplan.Value = gridw.Cells[3].Text.ToString();
+            TextArea1detalleplan.Value = gridw.Cells[3].Text;
             Labelsubidaplancontrato.Text= gridw.Cells[7].Text;
             Labelbajadaplancontrato.Text= gridw.Cells[8].Text;
             Labelvaloriva.Text= gridw.Cells[2].Text;         
@@ -1047,7 +1047,18 @@ namespace VisapLine.View.Private
 
         }
 
-    
+        protected void Buttoncancelarplanselect_Click(object sender, EventArgs e)
+        {
+                     
+            Textboxvalorinstalacion.Text = "";
+            Labelsubidaplancontrato.Text = "";
+            Labelbajadaplancontrato.Text = "";
+            Labelvaloriva.Text = "";
+            Labelmedioconexionplancontrato.Text = "";
+            TextArea1detalleplan.Value = "";
+            ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+
+        }
 
 
     }
