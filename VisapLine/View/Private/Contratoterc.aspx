@@ -692,8 +692,18 @@
                         <div class="box-header">
                             <center><h2 class="card-title">Crear Contrato</h2></center>
                         </div>
+
+
                         <div class="box-body">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">
+                                    Codigo:  
+                                    <asp:TextBox ID="Textboxcodigocontrato" runat="server" class="form-control" Style="text-transform: uppercase"></asp:TextBox>
+                                </label>
+
+                            </div>
                             <div class="box-header with-border">
+
                                 <h3 class="box-title">Información Personal</h3>
                             </div>
                             <div class="row">
@@ -811,6 +821,20 @@
 
                                                     </div>
                                                 </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Estrato</label>
+                                                    <div class="col-sm-9">
+                                                        <asp:DropDownList ID="DropDownListestratocontrato" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListestratocontrato_SelectedIndexChanged">
+                                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                                            <asp:ListItem Value="1">Estrato 1</asp:ListItem>
+                                                            <asp:ListItem Value="2">Estrato 2</asp:ListItem>
+                                                            <asp:ListItem Value="3">Estrato 3</asp:ListItem>
+                                                            <asp:ListItem Value="4">Estrato 4</asp:ListItem>
+                                                            <asp:ListItem Value="5">Estrato 5</asp:ListItem>
+                                                            <asp:ListItem Value="6">Estrato 6</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -836,26 +860,8 @@
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Estrato</label>
-                                                    <div class="col-sm-9">
-                                                        <asp:DropDownList ID="DropDownListestratocontrato" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListestratocontrato_SelectedIndexChanged">
-                                                            <asp:ListItem>Seleccione</asp:ListItem>
-                                                            <asp:ListItem Value="1">Estrato 1</asp:ListItem>
-                                                            <asp:ListItem Value="2">Estrato 2</asp:ListItem>
-                                                            <asp:ListItem Value="3">Estrato 3</asp:ListItem>
-                                                            <asp:ListItem Value="4">Estrato 4</asp:ListItem>
-                                                            <asp:ListItem Value="5">Estrato 5</asp:ListItem>
-                                                            <asp:ListItem Value="6">Estrato 6</asp:ListItem>
-                                                        </asp:DropDownList>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Iva</label>
-                                                    <div class="col-sm-9">
-                                                        <asp:TextBox ID="TextBoxivacontrato" CssClass="form-control" runat="server"></asp:TextBox>
-                                                    </div>
-                                                </div>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -971,7 +977,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <asp:Button ID="Buttoncancelarplanselect" runat="server" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="80px" OnClick="Buttoncancelarplanselect_Click" />
+                                                    <label class="col-sm-12 col-form-label">
+                                                        Fecha de Inicio de permanencia: 
+                                                            <asp:TextBox ID="Textboxfechainiciopermanencia" runat="server" type="date" class="form-control"></asp:TextBox>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -984,44 +993,48 @@
                                             <h3 class="box-title"></h3>
                                             <div class="form-element">
                                                 <div class="box-body">
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-12 col-form-label">
-                                                            Fecha de Inicio de permanencia: 
-                                                            <asp:TextBox ID="Textboxfechainiciopermanencia" runat="server" type="date" class="form-control"></asp:TextBox>
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-12 col-form-label">
-                                                            Fecha de Finalizacion de permanencia:    <asp:TextBox ID="Textbox4" runat="server" type="date" class="form-control"></asp:TextBox>                                                        
-                                                        </label>
-                                                     
-                                                         
-                                                       
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-5 col-form-label">
-                                                            Fecha de activacion del servicio:                                                        
-                                                        </label>
-                                                        <div class="col-sm-5">
-                                                            <asp:TextBox ID="Textbox5" runat="server" type="date" class="form-control"></asp:TextBox>
-                                                        </div>
-                                                    </div>
 
                                                     <div class="form-group row">
-                                                        <label class="col-sm-5 col-form-label">
-                                                            Sub Total:                                                        
+                                                        <label class="col-sm-12 col-form-label">
+                                                            Fecha de Finalizacion de permanencia:   
+                                                            <asp:TextBox ID="Textbox4" runat="server" type="date" class="form-control"></asp:TextBox>
                                                         </label>
-                                                        <div class="col-sm-5">
-                                                            <asp:TextBox ID="Textbox2" runat="server" type="number" class="form-control" placeholder="$"></asp:TextBox>
+
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-12 col-form-label">
+                                                            Fecha de activacion del servicio:
+                                                             <asp:TextBox ID="Textbox5" runat="server" type="date" class="form-control"></asp:TextBox>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Estado</label>
+                                                        <div class="col-sm-9">
+                                                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                                <asp:ListItem>Seleccione</asp:ListItem>
+                                                                <asp:ListItem>Activo</asp:ListItem>
+                                                                <asp:ListItem>Inactivo</asp:ListItem>
+                                                            </asp:DropDownList>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-sm-5 col-form-label">
-                                                            Total:                                                        
-                                                        </label>
-                                                        <div class="col-sm-5">
-                                                            <asp:TextBox ID="Textbox3" runat="server" type="number" class="form-control" placeholder="$"></asp:TextBox>
+                                                        <label class="col-sm-3 col-form-label">Iva</label>
+                                                        <div class="col-sm-9">
+                                                            <asp:TextBox ID="TextBoxivacontrato" CssClass="form-control" runat="server"></asp:TextBox>
                                                         </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-12 col-form-label">
+                                                            Sub Total:     
+                                                            <asp:TextBox ID="Textbox2" runat="server" type="number" class="form-control" placeholder="$"></asp:TextBox>
+                                                        </label>
+
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-12 col-form-label">
+                                                            Total:   
+                                                            <asp:TextBox ID="Textbox3" runat="server" type="number" class="form-control" placeholder="$"></asp:TextBox>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
