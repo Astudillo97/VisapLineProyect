@@ -8,8 +8,10 @@
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
     <div class="box box-body">
-    <asp:GridView AllowPaging="true" PageSize="6" OnPageIndexChanging="gridservicios_PageIndexChanging" AutoGenerateColumns="false" runat="server" ID="gridservicios" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-responsive">
-        <AlternatingRowStyle BackColor="White" />
+    <asp:GridView OnSelectedIndexChanged="gridservicios_SelectedIndexChanged" OnRowDataBound="gridservicios_RowDataBound" AllowPaging="True" PageSize="6" 
+        OnPageIndexChanging="gridservicios_PageIndexChanging" AutoGenerateColumns="False" runat="server" 
+        ID="gridservicios" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-responsive">
+        <AlternatingRowStyle BackColor="white" />
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -27,6 +29,7 @@
             <asp:BoundField HeaderText="ESTADO" DataField="estadocol" />
             <asp:BoundField HeaderText="SERVICIO" DataField="referenciascol" />
             <asp:BoundField HeaderText="EQUIPO" DataField="referenciaequipocol" />
+            <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" />
         </Columns>
     </asp:GridView>
         </div>
