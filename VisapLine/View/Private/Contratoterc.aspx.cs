@@ -27,7 +27,8 @@ namespace VisapLine.View.Private
         static DataTable listtelefonocorpo = new DataTable();
         static DataTable listtelefonoempre = new DataTable();
         Plan pn = new Plan();
-
+        TipoContrato tpoc = new TipoContrato();
+        Sucursal scsal = new Sucursal();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -141,6 +142,11 @@ namespace VisapLine.View.Private
                     DropDownListtiporedenciacontrato.DataTextField = "tiporesidencia";
                     DropDownListtiporedenciacontrato.DataValueField = "idtiporesidencia";
                     DropDownListtiporedenciacontrato.DataBind();
+
+                    DropDownListtipocontrato.DataSource = tpoc.ConsultarTipoContrato();
+                    DropDownListtipocontrato.DataTextField = "tipocontrato";
+                    DropDownListtipocontrato.DataValueField = "idtipocontrato";
+                    DropDownListtipocontrato.DataBind();
 
                 }
             }
@@ -278,6 +284,7 @@ namespace VisapLine.View.Private
                 iddivempresa.Visible = false;
                 tablanatural.Visible = true;
                 cargartabla(datcont["idterceros"].ToString());
+                cargartablasucursal(datcont["idterceros"].ToString());
             }
             catch (Exception ex)
             {
@@ -934,6 +941,14 @@ namespace VisapLine.View.Private
             GridView2.DataSource = dt;
             GridView2.DataBind();
         }
+        protected void cargartablasucursal(string idusuario)
+        {
+            pn.idtercero_idtercero = terc.idterceros;
+            DataTable dt1 = scsal.Consultarsucursal(idusuario);
+            GridViewsucursalcontrato.DataSource = dt1;
+            GridViewsucursalcontrato.DataBind();
+        }
+
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1045,9 +1060,11 @@ namespace VisapLine.View.Private
                       
 
         }
-         
 
+        protected void GridViewsucursalcontrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 
 
