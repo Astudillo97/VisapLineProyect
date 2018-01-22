@@ -42,5 +42,10 @@ namespace VisapLine.Model
         public DataTable consultadeserciciodeplancontratado(int contrato) {
             return data.ConsultarDatos("select * from pr_consultarserviciosdelplancontratado("+ contrato + ")");
         }
+        
+        public DataTable ConsultarContratoidtercero(Contrato cont)
+        {
+            return data.ConsultarDatos("select * from pr_consultarcontratoidall("+cont.terceros_idterceros+")");
+        }
     }
 }
