@@ -19,7 +19,7 @@ namespace VisapLine.View.Private
         Caracteristicas crts = new Caracteristicas();
         PlanSCaract psc = new PlanSCaract();
         static int idpedido;
-
+        static int idsrv;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -178,6 +178,32 @@ namespace VisapLine.View.Private
         {
             gridservicios.PageIndex = e.NewPageIndex;
             cargardtservicio();
+        }
+
+        protected void gridservicios_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.Cells[3].Text == "POR INSTALAR")
+                {
+                    e.Row.BackColor = System.Drawing.Color.FromName("#ffc7ce");
+                }
+                if (e.Row.Cells[3].Text == "INACTIVO")
+                {
+                    e.Row.BackColor = System.Drawing.Color.FromName("#ffeb9c");
+                }
+                if (e.Row.Cells[3].Text == "ACTIVO")
+                {
+                    e.Row.BackColor = System.Drawing.Color.FromName("#c6efce");
+                }
+            }
+        }
+
+        protected void gridservicios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow grvr = gridservicios.SelectedRow;
+            idsrv =int.Parse(grvr.Cells[0].Text);
+            Response.Redirect("detalleservicio.aspx?addds="+ idsrv);
         }
     }
 }
