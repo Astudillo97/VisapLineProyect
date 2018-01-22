@@ -589,15 +589,6 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Button Button8;
         
         /// <summary>
-        /// Control Textboxcodigocontrato.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textboxcodigocontrato;
-        
-        /// <summary>
         /// Control tablanatural.
         /// </summary>
         /// <remarks>
@@ -814,15 +805,6 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListbarriocontrato;
         
         /// <summary>
-        /// Control DropDownListestratocontrato.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListestratocontrato;
-        
-        /// <summary>
         /// Control TextBox1.
         /// </summary>
         /// <remarks>
@@ -841,13 +823,22 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListtiporedenciacontrato;
         
         /// <summary>
-        /// Control Textdetalledireccioncontrato.
+        /// Control DropDownListestratocontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea Textdetalledireccioncontrato;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListestratocontrato;
+        
+        /// <summary>
+        /// Control TextBoxivacontrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxivacontrato;
         
         /// <summary>
         /// Control GridView2.
@@ -938,24 +929,6 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Textbox5;
-        
-        /// <summary>
-        /// Control DropDownList1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-        
-        /// <summary>
-        /// Control TextBoxivacontrato.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxivacontrato;
         
         /// <summary>
         /// Control Textbox2.

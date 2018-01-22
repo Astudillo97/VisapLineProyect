@@ -860,14 +860,7 @@
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">
-                                                        Observacion:
-                                                    </label>
-                                                    <div class="col-sm-12">
-                                                        <textarea id="Textdetalledireccioncontrato" runat="server" data-iconlibrary="fa" rows="5" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 113px;" required data-validation-required-message="This field is required"></textarea>
-                                                    </div>
-                                                </div>
+
 
                                             </div>
                                         </div>
@@ -1024,23 +1017,7 @@
                                                             </asp:DropDownList>
                                                         </div>
                                                     </div>
-                                             
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                    <div class="box box-primary">
-                                        <div class="box-header with-border">
-                                            <h3 class="box-title">Plan seleccionado</h3>
-                                        </div>
-                                        <div class="form-element">
-                                            <div class="box-body">
-                                                       <div class="form-group row">
+                                                    <div class="form-group row">
                                                         <label class="col-sm-3 col-form-label">Iva</label>
                                                         <div class="col-sm-9">
                                                             <asp:TextBox ID="TextBoxivacontrato" CssClass="form-control" runat="server"></asp:TextBox>
@@ -1059,6 +1036,7 @@
                                                             <asp:TextBox ID="Textbox3" runat="server" type="number" class="form-control" placeholder="$"></asp:TextBox>
                                                         </label>
                                                     </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
