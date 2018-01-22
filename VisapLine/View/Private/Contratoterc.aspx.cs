@@ -943,10 +943,12 @@ namespace VisapLine.View.Private
         }
         protected void cargartablasucursal(string idusuario)
         {
-            pn.idtercero_idtercero = terc.idterceros;
-            DataTable dt1 = scsal.Consultarsucursal(idusuario);
-            GridViewsucursalcontrato.DataSource = dt1;
-            GridViewsucursalcontrato.DataBind();
+            scsal.terceros_idterceros= terc.idterceros;         
+            DropDownListsucursalcontrato.DataSource = scsal.Consultarsucursal(idusuario);
+            DropDownListsucursalcontrato.DataTextField = "nombre";
+            DropDownListsucursalcontrato.DataValueField = "idsucursal";
+            DropDownListsucursalcontrato.DataBind();
+           
         }
 
 
@@ -1065,6 +1067,12 @@ namespace VisapLine.View.Private
         {
 
         }
+
+        protected void DropDownListsucursalcontrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+                    
     }
 
 

@@ -15,6 +15,11 @@
         function botonmodalempresa() {
             document.getElementById("botonmodalempre").click();
         }
+        function botonmodalplanes() {
+            document.getElementById("botonmodalplan").click();
+        }
+
+
     </script>
     <style>
         textarea {
@@ -696,7 +701,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">
                                     Codigo: 
-                                    <asp:TextBox ID="TextBox4" CssClass="form-control" runat="server" type="number"></asp:TextBox>
+                                    <asp:TextBox ID="TextBox4" CssClass="form-control" runat="server"></asp:TextBox>
                                 </label>
                             </div>
                             <div class="box-header with-border">
@@ -831,6 +836,14 @@
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Sucursal</label>
+                                                    <div class="col-sm-9">
+                                                        <asp:DropDownList ID="DropDownListsucursalcontrato" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownListsucursalcontrato_SelectedIndexChanged">
+                                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -845,7 +858,7 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Direccion</label>
                                                     <div class="col-sm-9">
-                                                        <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" placeholder="CLL 27 2B-17"></asp:TextBox>
+                                                        <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" Style="text-transform: uppercase" placeholder="CLL 27 2B-17"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -885,44 +898,41 @@
                                         <div class="box-header with-border">
                                             <h3 class="box-title">Planes</h3>
                                         </div>
+                                        <asp:GridView ID="GridView2" runat="server" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="false" OnRowDataBound="GridView2_RowDataBound" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                            <Columns>
+                                                <asp:CommandField ShowSelectButton="true" />
+                                                <asp:BoundField HeaderText="Codg" DataField="idplan" />
+                                                <asp:BoundField HeaderText="Valor" DataField="valor" />
+                                                <asp:BoundField HeaderText="Detalle" DataField="detalle" />
+                                                <asp:CheckBoxField HeaderText="Telefonia" DataField="telefonia" Text=" " ItemStyle-CssClass="filled-in chk-col-green" />
+                                                <asp:CheckBoxField HeaderText="Television" DataField="television" Text=" " />
+                                                <asp:CheckBoxField HeaderText="Internet" DataField="internet" Text=" " />
+                                                <asp:BoundField HeaderText="Subida" DataField="subida" />
+                                                <asp:BoundField HeaderText="Bajada" DataField="bajada" />
+                                                <asp:BoundField HeaderText="Medio Conexion" DataField="medioconexion" />
+                                                <asp:CheckBoxField HeaderText="Wifi" DataField="wifi" Text=" " />
+                                            </Columns>
+                                            <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
-                                        <div class="row" style="overflow-y: scroll">
-                                            <asp:GridView ID="GridView2" runat="server" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" OnRowDataBound="GridView2_RowDataBound" CellPadding="4" ForeColor="#333333" GridLines="None">
-                                                <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-                                                <Columns>
-                                                    <asp:CommandField ShowSelectButton="true" />
-                                                    <asp:BoundField HeaderText="Codigo de Plan" DataField="idplan" />
-                                                    <asp:BoundField HeaderText="Valor" DataField="valor" />
-                                                    <asp:BoundField HeaderText="Detalle" DataField="detalle" />
-                                                    <asp:CheckBoxField HeaderText="Telefonia" DataField="telefonia" Text=" " ItemStyle-CssClass="filled-in chk-col-green" />
-                                                    <asp:CheckBoxField HeaderText="Television" DataField="television" Text=" " />
-                                                    <asp:CheckBoxField HeaderText="Internet" DataField="internet" Text=" " />
-                                                    <asp:BoundField HeaderText="Subida" DataField="subida" />
-                                                    <asp:BoundField HeaderText="Bajada" DataField="bajada" />
-                                                    <asp:BoundField HeaderText="Medio Conexion" DataField="medioconexion" />
-                                                    <asp:CheckBoxField HeaderText="Wifi" DataField="wifi" Text=" " />
-                                                </Columns>
-                                                <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
-                                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+                                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-                                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                                            <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
 
-                                                <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+                                            <RowStyle BackColor="#EFF3FB"></RowStyle>
 
-                                                <RowStyle BackColor="#EFF3FB"></RowStyle>
+                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
 
-                                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+                                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
 
-                                                <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+                                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
 
-                                                <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+                                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
 
-                                                <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
-
-                                                <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
-                                            </asp:GridView>
-                                        </div>
+                                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                                        </asp:GridView>
                                     </div>
 
                                 </div>
@@ -1062,25 +1072,6 @@
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <div class="box box-primary">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">SUCURSAL</h3>
-                                        </div>
-                                        <div class="form-element">
-                                            <div class="box-body">                                              
-                                                <asp:GridView ID="GridViewsucursalcontrato" OnSelectedIndexChanged="GridViewsucursalcontrato_SelectedIndexChanged" AutoGenerateColumns="false" runat="server"  >
-                                                     <Columns>
-                                                          <asp:CommandField ShowSelectButton="true" />
-
-                                                     </Columns>
-
-                                                </asp:GridView>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                    <div class="box box-primary">
-                                        <div class="box-header with-border">
                                             <h3 class="box-title">Total</h3>
                                         </div>
                                         <div class="col-sm-8">
@@ -1114,13 +1105,36 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+
+            <div class="modal" id="modal-plan">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Confirmacion de datos Personales</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="box box-primary bg-transparent">
+                                <div class="form-element">
+                                    <div class="box-body">
+                                        <div class="form-group row">
+                                            <div class="row">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <div class="modal fade" id="modal-natural">
