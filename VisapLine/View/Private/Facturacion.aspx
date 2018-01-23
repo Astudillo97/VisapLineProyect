@@ -69,7 +69,33 @@
                 </Columns>
             </asp:GridView>
         </div>
-
+        <div class="box-body">
+            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" ID="listDetalle" OnRowCommand="listDetalle_RowCommand">
+                <Columns>
+                    <asp:TemplateField HeaderText="ver">
+                        <ItemTemplate>
+                            <asp:Button runat="server" class="btn btn-primary" CommandName="ver" CommandArgument='<%# Eval("iddetalle") %>' Text="Ver" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"></h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-element">
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <a href="#" class="btn btn-primary" runat="server" onserverclick="CrearFactura">Crear Factura</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <%--<div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="box box-primary">
