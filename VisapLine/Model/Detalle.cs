@@ -16,7 +16,12 @@ namespace VisapLine.Model
         public string valor { get; set; }
         public string factura_idfactura { get; set; }
         public string servicios_idservicios { get; set; }
-        public string incidencias_idincidencias { get; set; }
+        public string contrato_idcontrato { get; set; }
         public string cargoadicional_idcargoadicional { get; set; }
+
+        public DataTable ConsultarContratoIdContrato(Detalle det)
+        {
+            return data.ConsultarDatos("select * from pr_consultarfacturaidcontrato(" + det.contrato_idcontrato + ")");
+        }
     }
 }
