@@ -32,5 +32,11 @@ namespace VisapLine.View.Private
             FormView1.PageIndex = e.NewPageIndex;
             cargardatos(int.Parse(Valor));
         }
+
+        protected void FormView1_ModeChanging(object sender, FormViewModeEventArgs e)
+        {
+            FormView1.ChangeMode(e.NewMode);
+            cargardatos(int.Parse(Valor));
+        }
     }
 }
