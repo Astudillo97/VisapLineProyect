@@ -41,7 +41,7 @@ namespace VisapLine.View.Private
             try
             {
                 terc.identificacion = identificacion_.Value;
-                DataRow datos=Validar.Consulta(terc.ConsultarPersonaIdentifall(terc)).Rows[0];
+                DataRow datos = Validar.Consulta(terc.ConsultarPersonaIdentifall(terc)).Rows[0];
                 contrato.terceros_idterceros = datos["idterceros"].ToString();
                 listContrato.DataSource = contrato.ConsultarContratoidtercero(contrato);
                 listContrato.DataBind();
@@ -52,22 +52,17 @@ namespace VisapLine.View.Private
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-                Limpiar();
-                
+                Limpiar(listContrato);
             }
 
         }
-        public void Limpiar()
+        public void Limpiar(GridView list)
         {
-            listContrato.Dispose();
-            listFacturas.Dispose();
-            listFacturas.DataSource = null;
-            listFacturas.DataBind();
-            listContrato.DataSource = null;
-            listContrato.DataBind();
+            list.Dispose();
+            list.DataSource = null;
         }
 
-        
+
 
         protected void listContrato_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -87,7 +82,6 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-            
         }
 
         protected void listFacturas_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -108,18 +102,6 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-        }
-
-        protected void listDetalle_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-
-        }
-
-        protected void CrearFactura(object sender, EventArgs e)
-        {
-            DataTable datEmpresa = empresa.ConsultarEmpresa();
-
-            string name = GenerarNombrePdf("s");
         }
         public string CrearFactura()
         {
@@ -144,6 +126,13 @@ namespace VisapLine.View.Private
         {
             DateTime dateTime = new DateTime();
             return dateTime.Year + dateTime.Month + dateTime.Day + dateTime.Hour + dateTime.Minute + "-" + dat + ".pdf";
+        }
+
+        protected void CrearFactura_(object sender, EventArgs e)
+        {
+            DataTable datEmpresa = empresa.ConsultarEmpresa();
+            DataRow dat = datEmpresa.Rows.Find("nombreempresa");
+            string name = GenerarNombrePdf("s");
         }
     }
 }
