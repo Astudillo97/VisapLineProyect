@@ -1090,6 +1090,7 @@ namespace VisapLine.View.Private
                 contrat.plan_idplan = Validar.validarlleno(idplancontr);
                 contrat.iva = Validar.validarlleno(TextBoxivacontrato.Text);
                 contrat.enviofactura = Validar.validarselected(DropDownList1.SelectedValue);
+                contrat.facturaunica = Validar.validarselected(DropDownListfacturaunicacontrato.SelectedValue);
                 contrat.personal_idpersonal = Validar.validarsession(sesion.ToString());
                 contrat.sucursal_idsucursal = Validar.validarselected(DropDownListsucursalcontrato.SelectedValue);
                 contrat.observaciondirec = Validar.validarlleno(TextArea1.Value);
@@ -1101,7 +1102,7 @@ namespace VisapLine.View.Private
                
               
                
-                contrat.facturaunica = Validar.validarselected(DropDownListfacturaunicacontrato.SelectedValue);
+                
                 contrat.observaciondirec = Validar.validarlleno(TextArea1.Value);
 
 
