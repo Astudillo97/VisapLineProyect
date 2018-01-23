@@ -37,6 +37,7 @@ namespace VisapLine.Model
         public DataTable consultarserivcioid( int i) {
             return data.ConsultarDatos("select * from servicios where idservicios="+i+"");
         }
+
     }
    
 }

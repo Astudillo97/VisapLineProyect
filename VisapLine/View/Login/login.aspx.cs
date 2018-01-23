@@ -13,9 +13,14 @@ namespace VisapLine.View.Login
         Terceros ter = new Terceros();
         Random rnd1 = new Random();
         class_correo cor = new class_correo();
+        Permisos perm = new Permisos();
+        AsignacionRol asg = new AsignacionRol();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["tercero"]!=null && Session["roles"]!=null)
+            {
+                Response.Redirect("../Private/index.aspx");
+            }
         }
 
         protected void Login(object sender, EventArgs e)
@@ -26,10 +31,15 @@ namespace VisapLine.View.Login
             {
                 DataRow data = Validar.Login(usua.ValidarUsuario(usua));
                 ter.idterceros = data["terceros_idterceros"].ToString();
-                DataRow dat=ter.ConsultarPersonaIdentifall(ter).Rows[0];
+                DataRow dat=ter.ConsultarTercerosId(ter).Rows[0];
                 switch (dat["estado"].ToString())
                 {
                     case "Activo":
+                        usua.idusuario = data["idusuario"].ToString();
+                        
+                        DataTable roles=Validar.Consulta(usua.ConsultarUsuarioRol(usua));
+                        Session["roles"] = roles;
+
                         Terceros tercero = new Terceros();
                         tercero.idterceros = dat["idterceros"].ToString();
                         tercero.estrato = dat["estrato"].ToString();
@@ -45,7 +55,8 @@ namespace VisapLine.View.Login
                         tercero.fechanatcimiento = dat["fechexp"].ToString();
                         tercero.tipodoc_idtipodoc = dat["tipodoc_idtipodoc"].ToString();
                         tercero.rh = dat["rh"].ToString();
-
+                        Session["tercero"] = tercero;
+                        ClientScript.RegisterStartupScript(GetType(), "alerta", "redirect();", true);
                         break;
                     case "Inactivo":
                         textError.InnerHtml = "Actualmente se encuentra inactivo";
@@ -64,6 +75,8 @@ namespace VisapLine.View.Login
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
+                Session.Abandon();
+               
             }
         }
 
@@ -82,7 +95,7 @@ namespace VisapLine.View.Login
                 usua.idusuario = ter.identificacion;
                 if (usua.CambiarContraseña(usua))
                 {
-                    DataRow dat = usua.ConsultarUsuarioByUsuario(usua).Rows[0];
+                    DataRow dat = usua.ConsultarUsuarioByUsuarioCed(usua).Rows[0];
                     cor.destinatario = datos["correo"].ToString();
                     cor.asunto = "VisapLine Telecomunicaciones";
                     cor.cuerpo = "Credenciales para acceso:\n Usuario:"+dat["usuario"].ToString()+"\nContraseña:"+usua.usuapassw;
@@ -125,7 +138,7 @@ namespace VisapLine.View.Login
                 usua.usuapassw = Validar.validarpassword(password_cre.Value, password2_cre.Value);
                 usua.datospersonales_iddatospersonales = Validar.validarlleno(nui_cre.Value);
                 usua.idusuario = Validar.validarlleno(nui_cre.Value);
-                if (usua.ConsultarUsuarioByUsuario(usua).Rows.Count>0)
+                if (usua.ConsultarUsuarioByUsuarioCed(usua).Rows.Count>0)
                 {
                     textError.InnerHtml = "Ya se encuentra registrado, intente recuperar la contraseña";
                     Alerta.CssClass = "alert alert-error";
@@ -133,8 +146,56 @@ namespace VisapLine.View.Login
                 }
                 else
                 {
+                    ter.identificacion = nui_cre.Value;
+                    DataTable cargotercero = Validar.Consulta(ter.ConsultarTerceroCargos(ter));
                     if (usua.RegistrarUsuario(usua))
                     {
+                        foreach (DataRow item in cargotercero.Rows)
+                        {
+                            switch (item["tipoterceros"].ToString())
+                            {
+                                case "NATURAL":
+                                    asg.usuario_idusuario = usua.usuauser;
+                                    asg.rol_idrol = "CLIENTE";
+                                    if (asg.RegistrarAsignacionRol(asg))
+                                    {
+
+                                    }
+                                    break;
+                                case "CORPORATIVO":
+                                    asg.usuario_idusuario = usua.usuauser;
+                                    asg.rol_idrol = "CLIENTE";
+                                    if (asg.RegistrarAsignacionRol(asg))
+                                    {
+
+                                    }
+                                    break;
+                                case "EMPRESARIAL":
+                                    asg.usuario_idusuario = usua.usuauser;
+                                    asg.rol_idrol = "CLIENTE";
+                                    if (asg.RegistrarAsignacionRol(asg))
+                                    {
+
+                                    }
+                                    break;
+                                case "FUNCIONARIO":
+                                    asg.usuario_idusuario = usua.usuauser;
+                                    asg.rol_idrol = "FUNCIONARIO";
+                                    if (asg.RegistrarAsignacionRol(asg))
+                                    {
+
+                                    }
+                                    break;
+                                default:
+                                    asg.usuario_idusuario = usua.usuauser;
+                                    asg.rol_idrol = "INDEFINIDO";
+                                    if (asg.RegistrarAsignacionRol(asg))
+                                    {
+
+                                    }
+                                    break;
+                            }
+                        }
                         textError.InnerHtml = "Registrado Correctamente";
                         Alerta.CssClass = "alert alert-success";
                         Alerta.Visible = true;

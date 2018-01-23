@@ -174,7 +174,7 @@ namespace VisapLine.View.Private
                     pers.correo = Validar.validarlleno(correo_.Value);
                     if (usua.RegistrarUsuario(usua))
                     {
-                        DataRow dat = usua.ConsultarUsuarioByUsuario(usua).Rows[0];
+                        DataRow dat = usua.ConsultarUsuarioByUsuarioCed(usua).Rows[0];
                         pers.usuario_idusuario = dat["idusuario"].ToString();
                         if (pers.RegistrarPersonal(pers))
                         {

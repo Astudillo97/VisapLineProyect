@@ -76,7 +76,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Tipo_Plan:</label>
                             <div class="col-sm-10">
-                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" required data-validation-required-message="This field is required" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true" required data-validation-required-message="This field is required" >
                                     <asp:ListItem>Seleccione</asp:ListItem>
                                     <asp:ListItem>PUBLICO</asp:ListItem>
                                     <asp:ListItem>EMPRESARIAL</asp:ListItem>
@@ -156,7 +156,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">Zona:</label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <asp:DropDownList ID="zonaplan" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" required data-validation-required-message="This field is required" OnSelectedIndexChanged="zonaplan_SelectedIndexChanged">
+                                    <asp:DropDownList ID="zonaplan" runat="server" CssClass="form-control" AppendDataBoundItems="true" required data-validation-required-message="This field is required" >
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
@@ -167,7 +167,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">Medio Conexion:</label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <asp:DropDownList ID="DropDownListmedioconexion" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" required data-validation-required-message="This field is required" OnSelectedIndexChanged="zonaplan_SelectedIndexChanged">
+                                    <asp:DropDownList ID="DropDownListmedioconexion" runat="server" CssClass="form-control" AppendDataBoundItems="true" required data-validation-required-message="This field is required" >
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>FIBRA</asp:ListItem>
                                         <asp:ListItem>RADIO</asp:ListItem>
@@ -201,9 +201,11 @@
                 <h2 class="box-title">Planes</h2>
             </div>
             <!-- /.box-header -->
+        
             <div class="box-body" style="">
-                <div class="row"  style="overflow-x: scroll">
-                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                <div class="row"  style="overflow-y: scroll">
+                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                         <Columns>
                             <asp:BoundField HeaderText="Codigo de Plan" DataField="idplan" />
                             <asp:BoundField HeaderText="Valor" DataField="valor" />
@@ -221,6 +223,25 @@
 
                         </Columns>
 
+                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                        <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                     </asp:GridView>
                     <!-- /.row -->
 
@@ -228,6 +249,7 @@
                 <!-- /.box-body -->
 
             </div>
+               
         </div>
 
     </section>

@@ -15,5 +15,15 @@ namespace VisapLine.Model
         public string descripcion { get; set; }
         public string contrato_idcontrato { get; set; }
         public string terceros_idterceros { get; set; }
+
+        public DataTable Consultarsucursal(string scsal)
+        {
+            return data.ConsultarDatos("select * from pr_consultarsucursal('"+scsal+"')  ");
+        }
     }
+
+   
+
+    
+
 }

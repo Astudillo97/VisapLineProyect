@@ -45,6 +45,11 @@
 
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+    <script type="text/javascript">
+        function redirect() {
+            location.href = "../Private/index.aspx";
+        }
+    </script>
 </head>
 <body class="hold-transition login-page">
 
@@ -80,7 +85,7 @@
                     <!-- /.col -->
                 </div>
                 <div class="row fa-align-right">
-                        <a href="#" data-toggle="modal" data-target="#modal-primary"><i class="ion ion-locked"></i>¿Olvido la contraseña?</a><br />
+                    <a href="#" data-toggle="modal" data-target="#modal-primary"><i class="ion ion-locked"></i>¿Olvido la contraseña?</a><br />
                 </div>
 
                 <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="alert alert-error row ">

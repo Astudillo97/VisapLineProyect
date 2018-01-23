@@ -13,7 +13,6 @@ namespace VisapLine.Model
         IData data = new Data();
 
         public string idargotercero { get; set; }
-
         public string tercero_idtercero { get; set; }
         public string identificacion { get; set; }
         public string tipotercero_idtipotercero { get; set; }
@@ -22,6 +21,5 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("select * from pr_insertarcargotercero('"+ cgt.tipotercero_idtipotercero + "','"+cgt.identificacion+"')");
         }
-
     }
 }
