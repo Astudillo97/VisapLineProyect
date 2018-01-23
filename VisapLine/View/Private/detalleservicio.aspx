@@ -15,10 +15,10 @@
             <asp:Label ID="lblservip" runat="server" Text='<%#Eval("direccionip") %>'></asp:Label>
             <asp:Label ID="lblmegas" runat="server" Text="CANTIDAD DE MEGAS"></asp:Label>
             <asp:Label ID="lblservmg" runat="server" Text='<%#Eval("cantidadmegas") %>'></asp:Label>
+            
         </ItemTemplate>
         <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
 
     </asp:FormView>
-
 </asp:Content>
 

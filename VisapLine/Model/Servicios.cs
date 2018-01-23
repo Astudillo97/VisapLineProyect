@@ -26,7 +26,8 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_insertarservicio('"+ip+"','2017-01-01',"+varcanmeg+","+varcontra+" ,'"+varestrato+"' ,'"+varestadp+"','"+varreferenci+"',"+varpuntos+","+varinvern+")");
         }
-        public DataTable crearsertv(string ip, int varcontra, string varestrato, string varestadp, string varreferenci, int varpuntos) {
+        public DataTable crearsertv(string ip, int varcontra, string varestrato, string varestadp, string varreferenci, int varpuntos,string vardireccion,int barrio) {
+            DataTable idpunto = data.ConsultarDatos("select * from pr_insertarpunto("+ vardireccion + ","+ barrio + ")").Rows[0].ToString();
             return data.ConsultarDatos("select * from pr_insertarserviciootro('" + ip + "','2017-01-01'," + varcontra + " ,'" + varestrato + "' ,'" + varestadp + "','" + varreferenci + "'," + varpuntos + ")");
         }
         public DataTable consultaservicioscont(int contrato) {
