@@ -44,7 +44,7 @@ namespace VisapLine.Model
 
         public bool RegistrarContrato(Contrato cont)
         {
-            return data.OperarDatos("select * from pr_insertarcontrato('" + cont.terceros_idterceros+"','"+cont.codigo+"','"+cont.fechacontrato+"','"+cont.fechaactivacion+"','"+cont.fechafacturacion+"','"+cont.tipocontrato_idtipocontrato+"','"+cont.plan_idplan+"','"+cont.iva+"','"+cont.enviofactura+"','"+cont.facturaunica+"','"+cont.personal_idpersonal+"','"+cont.sucursal_idsucursal+"','"+cont.observaciondirec+"','"+cont.direccionenviofact+"','"+cont.barrio_idbarrio+"')");
+            return data.OperarDatos("select * from pr_insertarcontrato('" + cont.terceros_idterceros+"','"+cont.codigo+"','"+cont.fechacontrato+"','"+cont.fechaactivacion+"','"+cont.fechafacturacion+ "','" + cont.estado + "','" + cont.tipocontrato_idtipocontrato+"','"+cont.plan_idplan+"','"+cont.iva+"','"+cont.enviofactura+"','"+cont.facturaunica+"','"+cont.personal_idpersonal+"','"+cont.sucursal_idsucursal+"','"+cont.observaciondirec+"','"+cont.direccionenviofact+"','"+cont.barrio_idbarrio+"')");
         }
 
         public DataTable consultadeserciciodeplancontratado(int contrato) {

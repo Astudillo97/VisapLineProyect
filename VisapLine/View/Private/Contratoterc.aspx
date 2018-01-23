@@ -15,9 +15,7 @@
         function botonmodalempresa() {
             document.getElementById("botonmodalempre").click();
         }
-        function botonmodalplanes() {
-            document.getElementById("botonmodalplan").click();
-        }
+      
 
 
     </script>
@@ -841,6 +839,7 @@
                                                     <div class="col-sm-9">
                                                         <asp:DropDownList ID="DropDownListsucursalcontrato" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownListsucursalcontrato_SelectedIndexChanged">
                                                             <asp:ListItem>Seleccione</asp:ListItem>
+                                                           
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
@@ -874,8 +873,8 @@
                                                     <div class="col-sm-12">
                                                         <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                             <asp:ListItem>Seleccione</asp:ListItem>
-                                                            <asp:ListItem>POR CORREO</asp:ListItem>
-                                                            <asp:ListItem>AL DOMICILIO</asp:ListItem>
+                                                            <asp:ListItem>CORREO</asp:ListItem>
+                                                            <asp:ListItem>DOMICILIO</asp:ListItem>
                                                             <asp:ListItem>AMBOS</asp:ListItem>
                                                         </asp:DropDownList>
                                                     </div>
