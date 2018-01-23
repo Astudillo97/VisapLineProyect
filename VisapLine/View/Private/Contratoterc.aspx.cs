@@ -1078,19 +1078,29 @@ namespace VisapLine.View.Private
         {
             try
             {
+                int sesion =90 ;
                 DataRow datcontcorpo = Validar.Consulta(terc.ConsultarPersonaIdenti(Labelcedulacontrato.Text)).Rows[0];
                 contrat.terceros_idterceros = Validar.validarlleno(datcontcorpo["idterceros"].ToString());
                 contrat.codigo = Validar.validarlleno(TextBox4.Text);
                 contrat.fechacontrato = Validar.validarlleno(Textboxfechainiciopermanencia.Text);
                 contrat.fechaactivacion = Validar.validarlleno(Textboxfechaactivacionservicio.Text);
-                //contrat.fechafacturacion = Validar.validarlleno();
-                contrat.barrio_idbarrio = Validar.validarselected(DropDownListbarriocontrato.SelectedValue);
-                contrat.sucursal_idsucursal = Validar.validarselected(DropDownListsucursalcontrato.SelectedValue);
-                contrat.direccionenviofact = Validar.validarlleno(TextBox1.Text);
-                contrat.plan_idplan = Validar.validarlleno(idplancontr);
-                contrat.enviofactura = Validar.validarselected(DropDownList1.SelectedValue);
+                contrat.fechafacturacion = Validar.validarlleno(Textboxfechafacturacion.Text);
+                contrat.estado = Validar.validarselected(DropDownListestadocontrato.Text);
                 contrat.tipocontrato_idtipocontrato = Validar.validarselected(DropDownListtipocontrato.SelectedValue);
+                contrat.plan_idplan = Validar.validarlleno(idplancontr);
                 contrat.iva = Validar.validarlleno(TextBoxivacontrato.Text);
+                contrat.enviofactura = Validar.validarselected(DropDownList1.SelectedValue);
+                contrat.personal_idpersonal = Validar.validarsession(sesion.ToString());
+                contrat.sucursal_idsucursal = Validar.validarselected(DropDownListsucursalcontrato.SelectedValue);
+                contrat.observaciondirec = Validar.validarlleno(TextArea1.Value);
+                contrat.direccionenviofact = Validar.validarlleno(TextBox1.Text);
+                contrat.barrio_idbarrio = Validar.validarselected(DropDownListbarriocontrato.SelectedValue);
+               
+             
+               
+               
+              
+               
                 contrat.facturaunica = Validar.validarselected(DropDownListfacturaunicacontrato.SelectedValue);
                 contrat.observaciondirec = Validar.validarlleno(TextArea1.Value);
 

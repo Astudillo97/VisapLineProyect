@@ -15,7 +15,7 @@
         function botonmodalempresa() {
             document.getElementById("botonmodalempre").click();
         }
-      
+
 
 
     </script>
@@ -839,7 +839,7 @@
                                                     <div class="col-sm-9">
                                                         <asp:DropDownList ID="DropDownListsucursalcontrato" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownListsucursalcontrato_SelectedIndexChanged">
                                                             <asp:ListItem>Seleccione</asp:ListItem>
-                                                           
+
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
@@ -870,7 +870,7 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Envio de Factura</label>
-                                                    <div class="col-sm-12">
+                                                    <div class="col-sm-9">
                                                         <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                             <asp:ListItem>Seleccione</asp:ListItem>
                                                             <asp:ListItem>CORREO</asp:ListItem>
@@ -880,11 +880,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-sm-6 col-form-label">
-                                                        Observacion:
+                                                    <label class="col-sm-3 col-form-label">
+                                                        Observacion:                                                       
+                                                    </label>
+                                                    <div class="col-sm-9">
                                                         <textarea id="TextArea1" cols="20" runat="server" rows="5" resize="none" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 118px;"></textarea>
 
-                                                    </label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -965,6 +967,12 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <label class="col-sm-8 col-form-label">
+                                                        Valor: 
+                                                        <asp:Label ID="Labelvaloriva" runat="server" Text="0"></asp:Label>$
+                                                    </label>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-8 col-form-label">
                                                         Detalle:<textarea id="TextArea1detalleplan" runat="server" data-iconlibrary="fa" rows="5" readonly="true" resize="none" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 118px;" required data-validation-required-message="This field is required"></textarea>
 
                                                     </label>
@@ -982,12 +990,7 @@
                                         <div class="form-element">
                                             <div class="box-body">
 
-                                                <div class="form-group row">
-                                                    <label class="col-sm-8 col-form-label">
-                                                        Valor: 
-                                                        <asp:Label ID="Labelvaloriva" runat="server" Text="0"></asp:Label>$
-                                                    </label>
-                                                </div>
+
 
                                                 <div class="form-group row">
                                                     <label class="col-sm-5 col-form-label">
@@ -1009,6 +1012,12 @@
                                                             <asp:TextBox ID="Textboxfechafinalizacionpermanencia" runat="server" type="date" class="form-control"></asp:TextBox>
                                                     </label>
                                                 </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12 col-form-label">
+                                                        Fecha de activacion del servicio:    
+                                                            <asp:TextBox ID="Textboxfechaactivacionservicio" runat="server" type="date" class="form-control"></asp:TextBox>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1020,11 +1029,10 @@
                                             <h3 class="box-title"></h3>
                                             <div class="form-element">
                                                 <div class="box-body">
-
                                                     <div class="form-group row">
                                                         <label class="col-sm-12 col-form-label">
-                                                            Fecha de activacion del servicio:    
-                                                            <asp:TextBox ID="Textboxfechaactivacionservicio" runat="server" type="date" class="form-control"></asp:TextBox>
+                                                            Fecha de Facturacion:    
+                                                            <asp:TextBox ID="Textboxfechafacturacion" runat="server" type="date" class="form-control"></asp:TextBox>
                                                         </label>
                                                     </div>
                                                     <div class="form-group row">
@@ -1059,6 +1067,12 @@
                                                             </asp:DropDownList>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Iva</label>
+                                                        <div class="col-sm-9">
+                                                            <asp:TextBox ID="TextBoxivacontrato" CssClass="form-control" runat="server"></asp:TextBox>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1073,12 +1087,7 @@
                                             <h3 class="box-title">Total</h3>
                                         </div>
                                         <div class="col-sm-8">
-                                            <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Iva</label>
-                                                <div class="col-sm-9">
-                                                    <asp:TextBox ID="TextBoxivacontrato" CssClass="form-control" runat="server"></asp:TextBox>
-                                                </div>
-                                            </div>
+
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">
                                                     Sub Total:                 
