@@ -3,36 +3,80 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
     <div class="box box-body">
-    <asp:GridView OnSelectedIndexChanged="gridservicios_SelectedIndexChanged" OnRowDataBound="gridservicios_RowDataBound" AllowPaging="True" PageSize="6" 
-        OnPageIndexChanging="gridservicios_PageIndexChanging" AutoGenerateColumns="False" runat="server" 
-        ID="gridservicios" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-responsive">
-        <AlternatingRowStyle BackColor="white" />
-        <EditRowStyle BackColor="#2461BF" />
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#EFF3FB" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-        <SortedDescendingHeaderStyle BackColor="#4870BE" />
-        <Columns>
-            <asp:BoundField HeaderText="REFEERENCIA" DataField="id" />
-            <asp:BoundField HeaderText="FECHA DE INICIO" DataField="fechainiciocol" />
-            <asp:BoundField HeaderText="MEGAS" DataField="cantidadmegascol" />
-            <asp:BoundField HeaderText="ESTADO" DataField="estadocol" />
-            <asp:BoundField HeaderText="SERVICIO" DataField="referenciascol" />
-            <asp:BoundField HeaderText="EQUIPO" DataField="referenciaequipocol" />
-            <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" />
-        </Columns>
-    </asp:GridView>
+        <asp:GridView OnSelectedIndexChanged="gridservicios_SelectedIndexChanged" OnRowDataBound="gridservicios_RowDataBound" AllowPaging="True" PageSize="6"
+            OnPageIndexChanging="gridservicios_PageIndexChanging" AutoGenerateColumns="False" runat="server"
+            ID="gridservicios" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-responsive col-md-4">
+            <AlternatingRowStyle BackColor="white" />
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            <Columns>
+                <asp:BoundField HeaderText="REFEERENCIA" DataField="id" />
+                <asp:BoundField HeaderText="FECHA DE INICIO" DataField="fechainiciocol" />
+                <asp:BoundField HeaderText="MEGAS" DataField="cantidadmegascol" />
+                <asp:BoundField HeaderText="ESTADO" DataField="estadocol" />
+                <asp:BoundField HeaderText="SERVICIO" DataField="referenciascol" />
+                <asp:BoundField HeaderText="EQUIPO" DataField="referenciaequipocol" />
+                <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" />
+            </Columns>
+        </asp:GridView>
+    </div>
+    <div class="box box-default">
+        <div class="box-body col-md-6">
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Pais</label>
+            <div class="col-sm-9">
+                <asp:DropDownList ID="DropDownListpais" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownListpais_SelectedIndexChanged" AutoPostBack="True">
+                    <asp:ListItem>Seleccione</asp:ListItem>
+                </asp:DropDownList>
+            </div>
         </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Departamento</label>
+            <div class="col-sm-9">
+                <asp:DropDownList ID="DropDownListdepartamento" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListdepartamento_SelectedIndexChanged">
+                    <asp:ListItem>Seleccione</asp:ListItem>
+                </asp:DropDownList>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Municipio</label>
+            <div class="col-sm-9">
+                <asp:DropDownList ID="DropDownListmunicipio" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListmunicipio_SelectedIndexChanged">
+                    <asp:ListItem>Seleccione</asp:ListItem>
+                </asp:DropDownList>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Barrio</label>
+            <div class="col-sm-9">
+                <asp:DropDownList ID="DropDownListbarrio" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                    <asp:ListItem>Seleccione</asp:ListItem>
+                </asp:DropDownList>
+
+            </div>
+        </div>
+        </div>
+        <div class="box-body col-md-6">
+            <label class="col-sm-4 col-form-label">Direccion</label>
+            <div class="col-sm-8">
+                <asp:TextBox ID="TextBoxdireccion" Style="text-transform: uppercase" class="form-control" placeholder="Dirección" runat="server"></asp:TextBox>
+            </div>
+        </div>
+    </div>
     <div class="box box-default" id="divinternet" runat="server" visible="false">
         <div class="box-header with-border">
             <h3 class="box-title">INTERNET</h3>
@@ -134,7 +178,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">                   
+                <div class="col-6">
                     <asp:Button runat="server" ID="creartev" Text="CREAR SERVICIO" OnClick="creartev_Click" CssClass="btn btn-success btn-lg" />
                 </div>
                 <!-- /.col -->
@@ -170,7 +214,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">                   
+                <div class="col-6">
                     <asp:Button runat="server" ID="ceartl" Text="CREAR SERVICIO" OnClick="ceartl_Click" CssClass="btn btn-success btn-lg" />
                 </div>
                 <!-- /.col -->

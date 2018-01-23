@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using VisapLine.Exeption;
 using VisapLine.Model;
 
 namespace VisapLine.View.Private
@@ -12,7 +13,18 @@ namespace VisapLine.View.Private
    
     public partial class servicio : System.Web.UI.Page
     {
-       
+
+        Terceros terc = new Terceros();
+        TipoTercero ttr = new TipoTercero();
+        Pais pais = new Pais();
+        Departamento depart = new Departamento();
+        Municipio munic = new Municipio();
+        Barrios barr = new Barrios();
+        TipoFactura tpfact = new TipoFactura();
+        TipoResidencia tpres = new TipoResidencia();
+        TipoDoc tpdoc = new TipoDoc();
+        Telefono tlf = new Telefono();
+        CargoTercero ctg = new CargoTercero();
         Contrato ctt = new Contrato();
         Servicios srv = new Servicios();
         Inventario invt = new Inventario();
@@ -28,6 +40,11 @@ namespace VisapLine.View.Private
             
             if (!IsPostBack)
             {
+                DropDownListpais.DataSource = pais.ConsultarPais();
+                DropDownListpais.DataTextField = "pais";
+                DropDownListpais.DataValueField = "idpais";
+                DropDownListpais.DataBind();
+
                 DataTable dpcdt = ctt.consultadeserciciodeplancontratado(8);
                 cargardtservicio();
                 DataRow rdt = dpcdt.Rows[0];
@@ -52,6 +69,74 @@ namespace VisapLine.View.Private
                 }
 
             }
+
+        }
+
+        protected void DropDownListpais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                DropDownListdepartamento.Items.Clear();
+                DropDownListdepartamento.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                depart.pais_idpais = Validar.validarselected(DropDownListpais.SelectedValue);
+                DropDownListdepartamento.DataSource = Validar.Consulta(depart.ConsultarDepartamentoIdPais(depart));
+                DropDownListdepartamento.DataTextField = "departamento";
+                DropDownListdepartamento.DataValueField = "iddepartamento";
+                DropDownListdepartamento.DataBind();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+
+            }
+
+        }
+        protected void DropDownListdepartamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                DropDownListmunicipio.Items.Clear();
+                DropDownListmunicipio.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                munic.departamento_iddepartamento = Validar.validarselected(DropDownListdepartamento.SelectedValue);
+                DropDownListmunicipio.DataSource = Validar.Consulta(munic.ConsultarMunicipioIdDepartamento(munic));
+                DropDownListmunicipio.DataTextField = "municipio";
+                DropDownListmunicipio.DataValueField = "idmunicipio";
+                DropDownListmunicipio.DataBind();
+
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+
+        }
+        protected void DropDownListmunicipio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DropDownListbarrio.Items.Clear();
+                DropDownListbarrio.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                barr.muninicio_idmunicipio = Validar.validarselected(DropDownListmunicipio.SelectedValue);
+                DropDownListbarrio.DataSource = Validar.Consulta(barr.ConsultarBarriosIdMunicipio(barr));
+                DropDownListbarrio.DataTextField = "barrios";
+                DropDownListbarrio.DataValueField = "idbarrios";
+                DropDownListbarrio.DataBind();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
 
         }
 
