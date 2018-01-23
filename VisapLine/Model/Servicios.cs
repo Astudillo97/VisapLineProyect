@@ -22,13 +22,14 @@ namespace VisapLine.Model
         public string planservicios_idplanservicios { get; set; }
         public string inventario_idinventarios { get; set; }
 
-        public DataTable crearservicio(string ip,int varcanmeg , int varcontra ,string varestrato ,string varestadp,string varreferenci ,int varpuntos ,int  varinvern )
+        public DataTable crearservicio(string ip,int varcanmeg , int varcontra ,string varestrato ,string varestadp,string varreferenci ,int  varinvern, string vardireccion, int barrio)
         {
-            return data.ConsultarDatos("select * from pr_insertarservicio('"+ip+"','2017-01-01',"+varcanmeg+","+varcontra+" ,'"+varestrato+"' ,'"+varestadp+"','"+varreferenci+"',"+varpuntos+","+varinvern+")");
+            string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('" + vardireccion + "'," + barrio + ")").Rows[0][0].ToString();
+            return data.ConsultarDatos("select * from pr_insertarservicio('"+ip+"','2017-01-01',"+varcanmeg+","+varcontra+" ,'"+varestrato+"' ,'"+varestadp+"','"+varreferenci+"',"+ idpunto + ","+varinvern+")");
         }
-        public DataTable crearsertv(string ip, int varcontra, string varestrato, string varestadp, string varreferenci, int varpuntos,string vardireccion,int barrio) {
-            string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('"+ vardireccion + "',"+ barrio + ")").Rows[0].ToString();
-            return data.ConsultarDatos("select * from pr_insertarserviciootro('" + ip + "','2017-01-01'," + varcontra + " ,'" + varestrato + "' ,'" + varestadp + "','" + varreferenci + "'," + varpuntos + ")");
+        public DataTable crearsertv(string ip, int varcontra, string varestrato, string varestadp, string varreferenci,string vardireccion,int barrio) {
+            string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('"+ vardireccion + "',"+ barrio + ")").Rows[0][0].ToString();
+            return data.ConsultarDatos("select * from pr_insertarserviciootro('" + ip + "','2017-01-01'," + varcontra + " ,'" + varestrato + "' ,'" + varestadp + "','" + varreferenci + "'," + idpunto + ")");
         }
         public DataTable consultaservicioscont(int contrato) {
             return data.ConsultarDatos("select * from pr_consultarservicios("+ contrato + ")");
