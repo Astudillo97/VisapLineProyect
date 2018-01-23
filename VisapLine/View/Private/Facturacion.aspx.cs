@@ -14,8 +14,14 @@ namespace VisapLine.View.Private
     {
         Contrato contrato = new Contrato();
         Terceros terc = new Terceros();
+        Factura fact = new Factura();
         class_pdf pdf = new class_pdf();
         Detalle det = new Detalle();
+        Empresa empresa = new Empresa();
+        DataTable tablepersona = new DataTable();
+        DataTable tablecontrato = new DataTable();
+        DataTable tabledactura = new DataTable();
+        DataTable tabledetalle = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -61,30 +67,7 @@ namespace VisapLine.View.Private
             listContrato.DataBind();
         }
 
-        protected void tipodoc__SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public string CrearFactura()
-        {
-            try
-            {
-                String rootPath = Server.MapPath("~");
-                string urlpdf = rootPath + "Archivos\\mipdf.pdf";
-                string imagen = rootPath + "Archivos\\imgvisap.png";
-                //pdf.CrearPdf(urlpdf);
-                pdf.CrearFactura(urlpdf, imagen);
-                return "";
-            }
-            catch (Exception ex)
-            {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
-            }
-                return "";
-        }
+        
 
         protected void listContrato_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -93,8 +76,8 @@ namespace VisapLine.View.Private
                 if (e.CommandName.ToString() == "ver")
                 {
                     string dat = e.CommandArgument.ToString();
-                    det.contrato_idcontrato = dat;
-                    listFacturas.DataSource = Validar.Consulta(det.ConsultarContratoIdContrato(det));
+                    fact.contrato_idcontrato = dat;
+                    listFacturas.DataSource = Validar.Consulta(fact.ConsultarFacturaIdContrato(fact));
                     listFacturas.DataBind();
                 }
             }
@@ -114,8 +97,8 @@ namespace VisapLine.View.Private
                 if (e.CommandName.ToString() == "ver")
                 {
                     string dat = e.CommandArgument.ToString();
-                    det.contrato_idcontrato = dat;
-                    listFacturas.DataSource = Validar.Consulta(det.ConsultarContratoIdContrato(det));
+                    det.factura_idfactura = dat;
+                    listFacturas.DataSource = Validar.Consulta(det.ConsultarDetalleIdFactura(det));
                     listFacturas.DataBind();
                 }
             }
@@ -125,6 +108,42 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
+        }
+
+        protected void listDetalle_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
+
+        protected void CrearFactura(object sender, EventArgs e)
+        {
+            DataTable datEmpresa = empresa.ConsultarEmpresa();
+
+            string name = GenerarNombrePdf("s");
+        }
+        public string CrearFactura()
+        {
+            try
+            {
+                String rootPath = Server.MapPath("~");
+                string urlpdf = rootPath + "Archivos\\mipdf.pdf";
+                string imagen = rootPath + "Archivos\\imgvisap.png";
+                //pdf.CrearPdf(urlpdf);
+                pdf.CrearFactura(urlpdf, imagen);
+                return "";
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+            return "";
+        }
+        public static string GenerarNombrePdf(string dat)
+        {
+            DateTime dateTime = new DateTime();
+            return dateTime.Year + dateTime.Month + dateTime.Day + dateTime.Hour + dateTime.Minute + "-" + dat + ".pdf";
         }
     }
 }
