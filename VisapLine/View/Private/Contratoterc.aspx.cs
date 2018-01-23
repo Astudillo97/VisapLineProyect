@@ -1072,7 +1072,24 @@ namespace VisapLine.View.Private
         {
 
         }
-                    
+
+        protected void Buttonguardarcontrato_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+
+            }
+        }
     }
 
 

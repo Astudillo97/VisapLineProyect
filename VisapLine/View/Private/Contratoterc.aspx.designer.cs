@@ -913,15 +913,6 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea1detalleplan;
         
         /// <summary>
-        /// Control Textboxfechafinalizacionpermanencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textboxfechafinalizacionpermanencia;
-        
-        /// <summary>
         /// Control Labelvaloriva.
         /// </summary>
         /// <remarks>
@@ -947,6 +938,15 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Textboxfechainiciopermanencia;
+        
+        /// <summary>
+        /// Control Textboxfechafinalizacionpermanencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Textboxfechafinalizacionpermanencia;
         
         /// <summary>
         /// Control Textboxfechaactivacionservicio.
@@ -1012,13 +1012,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
         
         /// <summary>
-        /// Control Button4.
+        /// Control Buttonguardarcontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.WebControls.Button Buttonguardarcontrato;
         
         /// <summary>
         /// Control labelnaturaltipopersona.

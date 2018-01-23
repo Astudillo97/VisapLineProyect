@@ -26,6 +26,14 @@ namespace VisapLine.Model
         public string facturaunica { get; set; }
         public string personal_idpersonal { get; set; }
 
+        public string sucursal_idsucursal { get; set; }
+
+        public string observaciondirec { get; set; }
+
+        public string direccionenviofact { get; set; }
+
+        public string barrio_idbarrio { get; set; }
+
         public DataTable estratoymegas(int contrato){
             return data.ConsultarDatos("select plan.subida,terceros.estrato from contrato inner join terceros on terceros_idterceros_cont=idterceros inner join plan on plan_idplan = idplan where idcontrato="+ contrato + "");
         }
@@ -36,7 +44,7 @@ namespace VisapLine.Model
 
         public bool RegistrarContrato(Contrato cont)
         {
-            return data.OperarDatos("");
+            return data.OperarDatos("select * from pr_insertarcontrato('" + cont.terceros_idterceros+"','"+cont.codigo+"','"+cont.fechacontrato+"','"+cont.fechaactivacion+"','"+cont.fechafacturacion+"','"+cont.tipocontrato_idtipocontrato+"','"+cont.plan_idplan+"','"+cont.iva+"','"+cont.enviofactura+"','"+cont.facturaunica+"','"+cont.personal_idpersonal+"','"+cont.sucursal_idsucursal+"','"+cont.observaciondirec+"','"+cont.direccionenviofact+"','"+cont.barrio_idbarrio+"')");
         }
 
         public DataTable consultadeserciciodeplancontratado(int contrato) {

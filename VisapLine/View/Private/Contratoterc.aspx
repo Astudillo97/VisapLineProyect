@@ -982,12 +982,6 @@
                                         </div>
                                         <div class="form-element">
                                             <div class="box-body">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-12 col-form-label">
-                                                        Fecha de Finalizacion de permanencia:   
-                                                            <asp:TextBox ID="Textboxfechafinalizacionpermanencia" runat="server" type="date" class="form-control"></asp:TextBox>
-                                                    </label>
-                                                </div>
 
                                                 <div class="form-group row">
                                                     <label class="col-sm-8 col-form-label">
@@ -1010,7 +1004,12 @@
                                                             <asp:TextBox ID="Textboxfechainiciopermanencia" runat="server" type="date" class="form-control"></asp:TextBox>
                                                     </label>
                                                 </div>
-
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12 col-form-label">
+                                                        Fecha de Finalizacion de permanencia:   
+                                                            <asp:TextBox ID="Textboxfechafinalizacionpermanencia" runat="server" type="date" class="form-control"></asp:TextBox>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1099,7 +1098,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-sm-9">
-                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button4" Text="Crear Contrato" Width="146px" OnClick="Button1_Click" />
+                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonguardarcontrato" Text="Crear Contrato" Width="146px" OnClick="Buttonguardarcontrato_Click" />
                                                 </div>
                                             </div>
                                         </div>
