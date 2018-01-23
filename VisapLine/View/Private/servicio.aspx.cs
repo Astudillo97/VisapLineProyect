@@ -210,10 +210,10 @@ namespace VisapLine.View.Private
         {
             if (!txbdiptv.Text.Equals(""))
             {
-                if (txbptv.Text.Equals(""))
+                if (!txbptv.Text.Equals(""))
                 {
                     DataRow dtrs = ctt.estratoymegas(8).Rows[0];
-                    DataTable dtid = srv.crearsertv(txbdiptv.Text, 8, dtrs[1].ToString(), "POR INSTALAR", "TELEVISION", 1);
+                    DataTable dtid = srv.crearsertv(txbdiptv.Text, 8, dtrs[1].ToString(), "POR INSTALAR", "TELEVISION", 1, TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
                     int idservi = int.Parse(dtid.Rows[0][0].ToString());
                     psc.registrarpuertos(idservi, int.Parse(txbptv.Text));
                     divtv.Visible = false;
@@ -239,7 +239,7 @@ namespace VisapLine.View.Private
             {
                 if (!TextBox2.Text.Equals("")) {
                     DataRow dtrs = ctt.estratoymegas(8).Rows[0];
-                    DataTable dtid = srv.crearsertv(TextBox1.Text, 8, dtrs[1].ToString(), "POR INSTALAR", "TELEFONIA", 1);
+                    DataTable dtid = srv.crearsertv(TextBox1.Text, 8, dtrs[1].ToString(), "POR INSTALAR", "TELEFONIA", 1, TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
                     int idservi = int.Parse(dtid.Rows[0][0].ToString());
                     psc.registrarpuertos(idservi, int.Parse(TextBox2.Text));
                     divtelefono.Visible = false;
