@@ -28,7 +28,7 @@ namespace VisapLine.Exeption
             }
             else
             {
-                throw new ValidarExeption("No se encontro ningun registro");
+                throw new ValidarExeption("No se encontro ningun registro "+data.TableName);
             }
         }
         public static string ConvertVarchar(string cad)

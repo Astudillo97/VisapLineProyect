@@ -26,14 +26,51 @@
                             <input type="text" class="form-control" id="identificacion_" runat="server" placeholder="Nit o Identificación">
                         </div>
                         <div class="col-sm-2">
-                            <button class="btn btn-primary float-right" runat="server" onserverclick="GenerarFactura">Consultar</button>
+                            <button class="btn btn-primary float-right" runat="server" onserverclick="ConsultarbyCedula">Consultar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="box-body">
+            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" OnRowCommand="listContrato_RowCommand" AutoGenerateColumns="false" ID="listContrato">
+                <Columns>
+                    <asp:BoundField DataField="codigo" HeaderText="Codigo"></asp:BoundField>
+                    <asp:TemplateField HeaderText="Direccion">
+                        <ItemTemplate>
+                            <label runat="server"><%#Eval("sucur_direccion") %> <%#Eval("nombre") %></label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="detalle" HeaderText="Plan"></asp:BoundField>
+                    <asp:BoundField DataField="valor" HeaderText="Valor"></asp:BoundField>
+                    <asp:BoundField DataField="estadoc" HeaderText="Estado"></asp:BoundField>
+                    <asp:BoundField DataField="facturaunica" HeaderText="Factruación"></asp:BoundField>
+                    <asp:TemplateField HeaderText="Factura">
+                        <ItemTemplate>
+                            <asp:Button runat="server" class="btn btn-primary" CommandName="ver" CommandArgument='<%# Eval("idcontrato") %>' Text="Ver" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
+        <div class="box-body">
+            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" ID="listFacturas" OnRowCommand="listFacturas_RowCommand" AutoGenerateColumns="False">
+                <Columns>
+                    <asp:BoundField DataField="facturaventa" HeaderText="Factura"></asp:BoundField>
+                    <asp:BoundField DataField="fechaemision" HeaderText="Emisi&#243;n"></asp:BoundField>
+                    <asp:BoundField DataField="fechavencimiento" HeaderText="Vencimiento"></asp:BoundField>
+                    <asp:BoundField DataField="fechacorte" HeaderText="Corte"></asp:BoundField>
+                    <asp:BoundField DataField="estado" HeaderText="Estado"></asp:BoundField>
+                    <asp:TemplateField HeaderText="ver">
+                        <ItemTemplate>
+                            <asp:Button runat="server" class="btn btn-primary" CommandName="ver" CommandArgument='<%# Eval("idfactura") %>' Text="Ver" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
 
+        <%--<div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
@@ -119,6 +156,6 @@
                 </div>
             </div>
 
-        </div>
+        </div>--%>
     </section>
 </asp:Content>
