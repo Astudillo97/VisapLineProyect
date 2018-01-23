@@ -1095,15 +1095,13 @@ namespace VisapLine.View.Private
                 contrat.sucursal_idsucursal = Validar.validarselected(DropDownListsucursalcontrato.SelectedValue);
                 contrat.observaciondirec = Validar.validarlleno(TextArea1.Value);
                 contrat.direccionenviofact = Validar.validarlleno(TextBox1.Text);
-                contrat.barrio_idbarrio = Validar.validarselected(DropDownListbarriocontrato.SelectedValue);
-               
+                contrat.barrio_idbarrio = Validar.validarselected(DropDownListbarriocontrato.SelectedValue);        
              
                
                
               
                
                 
-                contrat.observaciondirec = Validar.validarlleno(TextArea1.Value);
 
 
 

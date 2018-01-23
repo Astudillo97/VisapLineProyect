@@ -460,6 +460,7 @@
     <Content Include="View\Private\pagplan.aspx" />
     <Content Include="View\Private\pagzona.aspx" />
     <Content Include="View\Private\Personal.aspx" />
+    <Content Include="View\Private\servicio.aspx" />
     <Content Include="View\Private\Tipofact.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
     <Content Include="Web.config" />
@@ -472,7 +473,6 @@
     <Compile Include="Model\CargoTercero.cs" />
     <Compile Include="Model\class_pdf.cs" />
     <Compile Include="Model\DetalleCompra.cs" />
-    <Compile Include="Model\Empresa.cs" />
     <Compile Include="Model\Garantia.cs" />
     <Compile Include="Model\Historico.cs" />
     <Compile Include="Model\Modelo.cs" />
@@ -605,6 +605,12 @@
     </Compile>
     <Compile Include="View\Private\Personal.aspx.designer.cs">
       <DependentUpon>Personal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\servicio.aspx.cs">
+      <DependentUpon>servicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\servicio.aspx.designer.cs">
+      <DependentUpon>servicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Tipofact.aspx.cs">
       <DependentUpon>Tipofact.aspx</DependentUpon>
