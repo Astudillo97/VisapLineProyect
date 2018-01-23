@@ -470,6 +470,7 @@
     <Compile Include="Model\CargoTercero.cs" />
     <Compile Include="Model\class_pdf.cs" />
     <Compile Include="Model\DetalleCompra.cs" />
+    <Compile Include="Model\Empresa.cs" />
     <Compile Include="Model\Garantia.cs" />
     <Compile Include="Model\Historico.cs" />
     <Compile Include="Model\Modelo.cs" />

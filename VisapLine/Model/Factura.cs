@@ -19,14 +19,15 @@ namespace VisapLine.Model
         public string facturaventa { get; set; }
         public string estado { get; set; }
         public string cuotas { get; set; }
+        public string contrato_idcontrato { get; set; }
         public DataTable ConsultarFacturaIdContrato(Factura fac)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from pr_consultarfacturaidcontrato(" + fac.contrato_idcontrato + ")");
         }
 
         public bool RegistrarFactura(Factura fac)
         {
-            return data.OperarDatos("select * from pr_insertarfactura(0001212121283,'"+fac.fechaemision+"','"+fac.fechavencimiento+"','"+fac.fechacorte+"',"+fac.ConsultarsecueniciaContrato()+",'"+fac.estado+"','"+fac.cuotas+"')");
+            return data.OperarDatos("select * from pr_insertarfactura(0001212121283,'"+fac.fechaemision+"','"+fac.fechavencimiento+"','"+fac.fechacorte+"',"+fac.ConsultarsecueniciaContrato()+",'"+fac.estado+"','"+fac.cuotas+"',"+fac.contrato_idcontrato+")");
         }
 
         public int ConsultarsecueniciaContrato()
