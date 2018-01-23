@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -35,20 +36,34 @@ namespace VisapLine.Model
             doc.Add(table);
             doc.Close();
         }
-        public void CrearFactura(string destino, string dirimagen)
+
+        private static string Descripcion(DataTable data, string key)
+        {
+            DataRow dat = data.Rows.Find(key);
+            return dat["dato1"].ToString();
+        }
+
+        public static string GenerarNombrePdf(string dat)
+        {
+            DateTime dateTime = DateTime.Now;
+            return dateTime.Year + "" + dateTime.Month + "" + dateTime.Day + "" + dateTime.Hour + "" + dateTime.Minute + "-" + dat + ".pdf";
+        }
+
+        public string CrearFactura(DataTable empresa,DataRow tercero, DataRow facture, DataTable detalle)
         {
             //Redireccion a la carpeta del proyecto
             string path = HttpContext.Current.Server.MapPath("~");
             string FONT = path + "Archivos\\FreeSans.ttf";
-
+            string dir = "Archivos\\";
+            string name = GenerarNombrePdf("s");
             //creacion del documento pdf
-            PdfDocument documento = new PdfDocument(new PdfWriter(destino));
+            PdfDocument documento = new PdfDocument(new PdfWriter(dir+name));
             Document doc = new Document(documento, PageSize.LETTER);
 
 
             ////Definicion del encabezado
             Table header = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(iText.Layout.Borders.Border.NO_BORDER);
-            Image imagen = new Image(ImageDataFactory.Create(dirimagen)).SetWidth(UnitValue.CreatePercentValue(100));
+            Image imagen = new Image(ImageDataFactory.Create(path+Descripcion(empresa,"logo"))).SetWidth(UnitValue.CreatePercentValue(100));
 
             ////Celda hizaquierda de la factura
             Cell logo = new Cell().SetBorder(iText.Layout.Borders.Border.NO_BORDER).SetWidth(UnitValue.CreatePercentValue(25));
@@ -57,12 +72,12 @@ namespace VisapLine.Model
             ////Celda central de la factura
             Cell descripcion = new Cell().SetWidth(UnitValue.CreatePercentValue(30)).SetBorder(iText.Layout.Borders.Border.NO_BORDER); ;
             PdfFont font = PdfFontFactory.CreateFont(FONT, "Cp1251", true);
-            Paragraph empresanombre = new Paragraph("C & C VISION SAS.").SetFont(font).SetFontSize(11f).SetMarginTop(-4);
-            Paragraph empresanit = new Paragraph("NIT: 846.000.339-0").SetFontSize(8f).SetMarginTop(-4);
-            Paragraph empresadireccion = new Paragraph("Carrera 10 N°15-60 Edificio Pioneros").SetFontSize(8f).SetMarginTop(-4);
-            Paragraph empresalineanacional = new Paragraph("Linea Nacional 018000952240").SetFontSize(8f).SetMarginTop(-4);
-            Paragraph empresatelefonos = new Paragraph("4351949 - 3184903427").SetFontSize(8f).SetMarginTop(-4);
-            Paragraph empresaweb = new Paragraph("wwww.visapline.com").SetFontSize(8f).SetMarginTop(-4);
+            Paragraph empresanombre = new Paragraph(Descripcion(empresa, "nombrejuridico")).SetFont(font).SetFontSize(11f).SetMarginTop(-4);
+            Paragraph empresanit = new Paragraph("NIT: "+Descripcion(empresa,"nit")).SetFontSize(8f).SetMarginTop(-4);
+            Paragraph empresadireccion = new Paragraph(Descripcion(empresa,"direccion")).SetFontSize(8f).SetMarginTop(-4);
+            Paragraph empresalineanacional = new Paragraph("Linea Nacional "+Descripcion(empresa,"lineanacional")).SetFontSize(8f).SetMarginTop(-4);
+            Paragraph empresatelefonos = new Paragraph(Descripcion(empresa,"telefono1")+" - "+Descripcion(empresa,"telefono2")).SetFontSize(8f).SetMarginTop(-4);
+            Paragraph empresaweb = new Paragraph(Descripcion(empresa,"web")).SetFontSize(8f).SetMarginTop(-4);
 
             //Adicciones a la cell descripcion
             descripcion.Add(empresanombre);
@@ -123,7 +138,7 @@ namespace VisapLine.Model
 
             encHiz.Add(codigobarra);
             Cell imagenpublic = new Cell().SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
-            Image publicidad = new Image(ImageDataFactory.Create(dirimagen)).SetWidth(UnitValue.CreatePercentValue(100));
+            Image publicidad = new Image(ImageDataFactory.Create(Descripcion(empresa,"publicidad"))).SetWidth(UnitValue.CreatePercentValue(100));
             imagenpublic.Add(publicidad);
             encHiz.Add(imagenpublic);
 
@@ -188,7 +203,7 @@ namespace VisapLine.Model
             totales1.AddCell(new Cell().Add(new Paragraph("SALDO ACTUAL"))).AddCell(new Cell().Add(new Paragraph("0,00")));
             cel1.Add(totales1);
             cel1.Add(new Cell().Add(new Paragraph("SEÑOR USUARIO LE RECORDAMOS QUE LA SUSPENCIÓN DEL SERVICIO POR NO PAGO "+
-                "NO PAGO GENERA COBRO DE RECONEXIÓN, PARA EL SERVICIO DE BANDA ANCHA TENDRA UN VALOR DE $11.900 MÁS IVA, "+
+                "GENERA COBRO DE RECONEXIÓN, PARA EL SERVICIO DE BANDA ANCHA TENDRA UN VALOR DE $11.900 MÁS IVA, "+
                 " LO INVITAMOS A REALIZAR EL PAGO OPORTUNO DE SU FACTURA.").SetFontSize(8)).SetWidth(UnitValue.CreatePercentValue(100)));
             Cell cel2 = new Cell().SetWidth(UnitValue.CreatePercentValue(34)).SetBorder(Border.NO_BORDER);
             Table totales2 = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(9);
@@ -212,6 +227,7 @@ namespace VisapLine.Model
             doc.Add(normativa);
             doc.SetLineThrough();
             doc.Close();
+            return name;
         }
     }
 }

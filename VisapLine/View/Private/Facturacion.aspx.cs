@@ -92,8 +92,8 @@ namespace VisapLine.View.Private
                 {
                     string dat = e.CommandArgument.ToString();
                     det.factura_idfactura = dat;
-                    listFacturas.DataSource = Validar.Consulta(det.ConsultarDetalleIdFactura(det));
-                    listFacturas.DataBind();
+                    listDetalle.DataSource = Validar.Consulta(det.ConsultarDetalleIdFactura(det));
+                    listDetalle.DataBind();
                 }
             }
             catch (Exception ex)
@@ -103,16 +103,21 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
-        public string CrearFactura()
+        public static string GenerarNombrePdf(string dat)
+        {
+            DateTime dateTime = DateTime.Now;
+            return dateTime.Year +""+ dateTime.Month +""+ dateTime.Day +""+ dateTime.Hour +""+ dateTime.Minute + "-" + dat + ".pdf";
+        }
+
+        protected void CrearFactura_(object sender, EventArgs e)
         {
             try
             {
-                String rootPath = Server.MapPath("~");
-                string urlpdf = rootPath + "Archivos\\mipdf.pdf";
-                string imagen = rootPath + "Archivos\\imgvisap.png";
-                //pdf.CrearPdf(urlpdf);
-                pdf.CrearFactura(urlpdf, imagen);
-                return "";
+                DataTable datEmpresa = empresa.ConsultarEmpresa();
+                datEmpresa.PrimaryKey = new DataColumn[] { datEmpresa.Columns["descripcion"] };
+
+                
+                //pdf.CrearFactura(datEmpresa,datpersona,datfactura,datdetalle);
             }
             catch (Exception ex)
             {
@@ -120,19 +125,68 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-            return "";
-        }
-        public static string GenerarNombrePdf(string dat)
-        {
-            DateTime dateTime = new DateTime();
-            return dateTime.Year + dateTime.Month + dateTime.Day + dateTime.Hour + dateTime.Minute + "-" + dat + ".pdf";
         }
 
-        protected void CrearFactura_(object sender, EventArgs e)
+        public void ConsultarTecercero(string cedula)
         {
-            DataTable datEmpresa = empresa.ConsultarEmpresa();
-            DataRow dat = datEmpresa.Rows.Find("nombreempresa");
-            string name = GenerarNombrePdf("s");
+            terc.identificacion = cedula;
+            DataTable datpersona = terc.ConsultarTerceroDos(terc);
+            foreach (DataRow item in datpersona.Rows)
+            {
+                switch (item["estado"].ToString())
+                {
+                    case "Activo":
+                        switch (item["tipoterceros"].ToString())
+                        {
+                            case "NATURAL":
+
+                                break;
+                            case "CORPORATIVO":
+
+                                break;
+                            case "EMPRESARIAL":
+
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "Inactivo":
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+        public void ConsultarContrato(DataRow dat)
+        {
+            contrato.terceros_idterceros = dat["idterceros"].ToString();
+            DataTable datcontrato = contrato.ConsultarContratoidtercero(contrato);
+            foreach (DataRow item in datcontrato.Rows)
+            {
+                switch (item["estadoc"].ToString())
+                {
+                    case "Activo":
+                        
+                        break;
+                    case "Inactivo":
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        public void ConsultarFactura(DataRow per,DataRow cont)
+        {
+            fact.contrato_idcontrato = cont["idcontrato"].ToString();
+            DataTable datfactura = fact.ConsultarFacturaIdContrato(fact);
+            datfactura.PrimaryKey = new DataColumn[] { datfactura.Columns["estado"] };
+        }
+        public void ConsultarDetalle(DataRow fac)
+        {
+            det.factura_idfactura = fac["idfactura"].ToString();
+            DataTable datdetalle = Validar.Consulta(det.ConsultarDetalleIdFactura(det));
         }
     }
 }
