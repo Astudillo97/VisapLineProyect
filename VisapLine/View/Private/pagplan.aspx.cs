@@ -92,15 +92,9 @@ namespace VisapLine.View.Private
 
         }
 
-        protected void zonaplan_SelectedIndexChanged(object sender, EventArgs e)
-        {
+    
 
-        }
-
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -119,7 +113,7 @@ namespace VisapLine.View.Private
                     {
                         Validar.validartrue(validarcheck());
                         pn.valor = Validar.validarlleno(TextBox1.Text);
-                        pn.detalle = Validar.validarlleno(texareadetalle.Value);
+                        pn.detalle = Validar.validarlleno(texareadetalle.Value.ToUpper());
                         pn.telefonia = CheckBox2.Checked.ToString();
                         pn.televicion = CheckBox3.Checked.ToString();
                         pn.internet = CheckBox1.Checked.ToString();
@@ -130,6 +124,7 @@ namespace VisapLine.View.Private
                         pn.zona_idzona = Validar.validarselected(municipioplan.SelectedValue);
                         pn.medioconexion= Validar.validarselected(DropDownListmedioconexion.SelectedValue);
                         pn.wifi= CheckBox5.Checked.ToString();
+
 
                         if (pn.RegistrarPlan(pn))
                         {
@@ -147,6 +142,13 @@ namespace VisapLine.View.Private
                             zonaplan.Items.Clear();
                             CheckBox5.Checked = false;
                             DropDownListmedioconexion.SelectedValue = "Seleccione";
+                            DropDownList1.SelectedValue = "Seleccione";
+                            TextBox2.Text = "";
+                            TextBox3.Text = "";
+                            DropDownList2.SelectedValue = "Seleccione";
+
+
+
 
 
                         }
@@ -200,11 +202,7 @@ namespace VisapLine.View.Private
             GridView1.DataBind();
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+    
         
         
     }

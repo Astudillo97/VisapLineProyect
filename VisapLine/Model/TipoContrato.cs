@@ -15,9 +15,9 @@ namespace VisapLine.Model
         public string idtipocontrato { get; set; }
         public string tipocontrato { get; set; }
 
-        public DataTable ConsultarTipoContrato(TipoContrato tc)
+        public DataTable ConsultarTipoContrato()
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from pr_consultartipocontrato()");
         }
 
         public bool RegistrarTipoContrato(TipoContrato rfp)

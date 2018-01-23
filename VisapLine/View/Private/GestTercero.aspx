@@ -20,6 +20,9 @@
         function Corporativo() {
             alert("Coorporativo");
         }
+        function myFunction() {
+
+        }
         function Default() {
             document.getElementById("divtipodoc").style.visibility = 'visible';
             document.getElementById("divtiporesidencia").style.visibility = 'visible';
@@ -151,7 +154,7 @@
                                             <label class="col-sm-4 col-form-label">Tipo Usuario</label>
                                             <div class="col-sm-8">
                                                 <!--onchange="myFunction()"-->
-                                                <asp:DropDownList runat="server" OnSelectedIndexChanged="tipotercero__SelectedIndexChanged" AutoPostBack="true" ID="tipotercero_" CssClass="form-control" AppendDataBoundItems="true">
+                                                <asp:DropDownList runat="server" ID="tipotercero_" onchange="myFunction()" CssClass="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>

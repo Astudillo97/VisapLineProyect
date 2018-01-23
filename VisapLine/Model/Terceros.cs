@@ -27,9 +27,9 @@ namespace VisapLine.Model
         public string barrios_idbarrios { get; set; }
         public string usuario_idusuario { get; set; }
         public string rh { get; set; }
-        public DataTable ConsultarTerceros()
+        public DataTable ConsultarTercerosId(Terceros terc)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("SELECT * from public.pr_consultarterceroidapk("+terc.idterceros+");");
         }
 
         public DataTable ConsultarRecuperacion(Terceros ter)
@@ -37,31 +37,39 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select * from pr_consultarrecuperacion('"+ter.identificacion+"', '"+ter.correo+"');");
         }
 
-        public bool RegistrarTercerocliente(Terceros per)
+        public DataTable ConsultarTerceroCargos(Terceros terc)
         {
-            return data.OperarDatos("SELECT * from public.pr_insertartercerocliente('"+per.estrato+"', '"+per.estado+"', '"+per.tiporesidencia_idtiporesidencia+"', '"+per.tipofactura_idtipofactura+"', '"+per.identificacion+"', '"+per.nombre+"', '"+per.apellido+"','"+per.correo+"', '"+per.direccion+"', '"+per.barrios_idbarrios+"', '"+per.fechanatcimiento+"', '"+per.tipodoc_idtipodoc+"');");
+            return data.ConsultarDatos("select * from pr_consultarcargotercero('"+terc.identificacion+"')");
         }
 
-        public bool RegistrarTerceroempresacliente(Terceros per)
+        public bool RegistrarTerceros(Terceros per)
         {
-            return data.OperarDatos("SELECT * from public.pr_insertarterceroempresacliente('" + per.estrato + "', '" + per.estado + "', '" + per.tiporesidencia_idtiporesidencia + "', '" + per.tipofactura_idtipofactura + "', '" + per.identificacion + "', '" + per.nombre + "', '" + per.correo + "', '" + per.direccion + "', '" + per.barrios_idbarrios + "', '" + per.fechanatcimiento + "', '" + per.tipodoc_idtipodoc + "');");
+            return data.OperarDatos("SELECT * from public.pr_insertartercerocliente('" + per.estrato + "','" + per.estado + "','" + per.tiporesidencia_idtiporesidencia + "','" + per.tipofactura_idtipofactura + "','" + per.identificacion + "','"+per.nombre + "','"+per.apellido+"','" + per.correo+ "','" + per.direccion + "','" + per.barrios_idbarrios + "','" + per.fechanatcimiento + "','" + per.tipodoc_idtipodoc+"');");
+        }
+        public bool RegistrarTercerosempresatercero(Terceros per)
+        {
+            return data.OperarDatos("SELECT * from public.pr_insertarterceroempresacliente('" + per.estrato + "','" + per.estado + "','" + per.tiporesidencia_idtiporesidencia + "','" + per.tipofactura_idtipofactura + "','" + per.identificacion + "','" + per.nombre + "','" + per.correo + "','" + per.direccion + "','" + per.barrios_idbarrios + "','" + per.fechanatcimiento + "','" + per.tipodoc_idtipodoc + "');");
         }
         public DataTable ConsultarPersonaIdentifall(Terceros ter)
         {
-            return data.ConsultarDatos("SELECT * from pr_consultarterceroidall('" + ter.identificacion + "');");
+            return data.ConsultarDatos("SELECT * from pr_consultarterceroidall('"+ter.identificacion+"');");
+        }
+        public DataTable ConsultarPersonaIdenti(string teriden)
+        {
+            return data.ConsultarDatos("SELECT * from pr_consultarterceroidall('" + teriden + "');");
         }
         public bool ActualizarTercero(Terceros ter)
         {
-            return data.OperarDatos("select * from pr_actualizartercero('"+ter.idterceros+"','" + ter.identificacion+"','"+ter.nombre+ "','"+ter.apellido+ "','"+ter.direccion+ "','"+ter.correo+ "','"+ter.estrato+ "','"+ter.estado+ "','"+ter.tipotercero_idtipotercero+ "','"+ter.tipodoc_idtipodoc+ "','"+ter.fechanatcimiento+ "','"+ter.tiporesidencia_idtiporesidencia+ "','"+ter.tipofactura_idtipofactura+ "','"+ter.barrios_idbarrios+"'); ");
+            return data.OperarDatos("select * from pr_actualizartercero('"+ter.idterceros+"','"+ter.identificacion+"','"+ter.nombre+"','"+ter.apellido+"','"+ter.direccion+"','" +ter.correo+"','" +ter.estrato+"','"+ter.estado+"','"+ter.tipotercero_idtipotercero+"','"+ter.tipodoc_idtipodoc+"','"+ter.fechanatcimiento+"','"+ter.tiporesidencia_idtiporesidencia+"','"+ter.tipofactura_idtipofactura+"','"+ter.barrios_idbarrios+"'); ");
         }
 
         public bool RegitrarTerceros2(Terceros per)
         {
-            return data.OperarDatos("SELECT * from public.pr_insertartercero('" + per.identificacion + "','" + per.estrato + "','" + per.estado + "','" + per.tipotercero_idtipotercero + "','" + per.tiporesidencia_idtiporesidencia + "','" + per.tipofactura_idtipofactura + "');");
+            return data.OperarDatos("SELECT * from public.pr_insertartercero('"+per.identificacion+"','"+per.estrato+"','"+per.estado+"','"+per.tipotercero_idtipotercero+"','"+per.tiporesidencia_idtiporesidencia+"','"+per.tipofactura_idtipofactura+"');");
         }
         public bool RegistrarTerceroGeneral(Terceros ter)
         {
-            return data.OperarDatos("select * from pr_insertartercero('"+ter.estrato+"', '"+ter.estado+"',"+ter.tiporesidencia_idtiporesidencia+","+ter.tipofactura_idtipofactura+",'"+ter.identificacion+"','"+ter.nombre+"','"+ter.apellido+"','"+ter.correo+"','"+ter.direccion+"',"+ter.barrios_idbarrios+",'"+ter.fechanatcimiento+"',"+ter.tipodoc_idtipodoc+","+ter.rh+")");
+            return data.OperarDatos("select * from pr_insertartercero("+ter.estrato+", '"+ter.estado+"',"+ter.tiporesidencia_idtiporesidencia+","+ter.tipofactura_idtipofactura+",'"+ter.identificacion+"','"+ter.nombre+"',"+ter.apellido+",'"+ter.correo+"','"+ter.direccion+"',"+ter.barrios_idbarrios+","+ter.fechanatcimiento+","+ter.tipodoc_idtipodoc+","+ter.rh+")");
         }
     }
 }
