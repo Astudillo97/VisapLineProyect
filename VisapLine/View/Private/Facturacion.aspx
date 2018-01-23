@@ -70,14 +70,7 @@
             </asp:GridView>
         </div>
         <div class="box-body">
-            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" ID="listDetalle" OnRowCommand="listDetalle_RowCommand">
-                <Columns>
-                    <asp:TemplateField HeaderText="ver">
-                        <ItemTemplate>
-                            <asp:Button runat="server" class="btn btn-primary" CommandName="ver" CommandArgument='<%# Eval("iddetalle") %>' Text="Ver" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
+            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" ID="listDetalle">
             </asp:GridView>
         </div>
         <div class="row">
@@ -91,97 +84,10 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <a href="#" class="btn btn-primary" runat="server" onserverclick="CrearFactura">Crear Factura</a>
+                        <a href="#" class="btn btn-primary" runat="server" onserverclick="CrearFactura_">Crear Factura</a>
                     </div>
                 </div>
             </div>
         </div>
-        <%--<div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Datos del Tercero</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool">
-                                <i class="fa fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <div class="form-element">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Identificación</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" disabled runat="server" placeholder="Nit o Identificación">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label id="_nombre_" runat="server" class="col-sm-3 col-form-label">Nombre</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" disabled runat="server" placeholder="Nombre">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label id="_apellido_" runat="server" class="col-sm-3 col-form-label">Direccíón</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" disabled runat="server" placeholder="Direccion">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Correo</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" disabled runat="server" placeholder="Correo">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Contrato</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool">
-                                <i class="fa fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <div class="form-element">
-                            <div class="form-group row" id="divtipodoc">
-                                <label class="col-sm-4 col-form-label">Contrato</label>
-                                <div class="col-sm-8">
-                                    <asp:DropDownList runat="server" ID="idcontrato" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="tipodoc__SelectedIndexChanged" AppendDataBoundItems="true">
-                                        <asp:ListItem>Seleccione</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label id="Label1" runat="server" class="col-sm-3 col-form-label">Nombre</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" disabled runat="server" placeholder="Nombre">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label id="Label2" runat="server" class="col-sm-3 col-form-label">Direccíón</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" disabled runat="server" placeholder="Direccion">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Correo</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" disabled runat="server" placeholder="Correo">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>--%>
     </section>
 </asp:Content>
