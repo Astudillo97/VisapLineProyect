@@ -957,7 +957,7 @@ namespace VisapLine.View.Private
         {
             ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
             GridViewRow gridw = GridView2.SelectedRow;
-            idplancontr = gridw.Cells[2].Text;
+            Labeldipalcontra.Text = gridw.Cells[1].Text;
             TextArea1detalleplan.Value = gridw.Cells[3].Text;
             Labelsubidaplancontrato.Text = gridw.Cells[7].Text;
             Labelbajadaplancontrato.Text = gridw.Cells[8].Text;
@@ -1078,7 +1078,8 @@ namespace VisapLine.View.Private
         {
             try
             {
-                int sesion =90 ;
+
+                int sesion = 90;
                 DataRow datcontcorpo = Validar.Consulta(terc.ConsultarPersonaIdenti(Labelcedulacontrato.Text)).Rows[0];
                 contrat.terceros_idterceros = Validar.validarlleno(datcontcorpo["idterceros"].ToString());
                 contrat.codigo = Validar.validarlleno(TextBox4.Text);
@@ -1087,19 +1088,32 @@ namespace VisapLine.View.Private
                 contrat.fechafacturacion = Validar.validarlleno(Textboxfechafacturacion.Text);
                 contrat.estado = Validar.validarselected(DropDownListestadocontrato.Text);
                 contrat.tipocontrato_idtipocontrato = Validar.validarselected(DropDownListtipocontrato.SelectedValue);
-                contrat.plan_idplan = Validar.validarlleno(idplancontr);
+                contrat.plan_idplan = Validar.validarlleno(Labeldipalcontra.Text);
                 contrat.iva = Validar.validarlleno(TextBoxivacontrato.Text);
                 contrat.enviofactura = Validar.validarselected(DropDownList1.SelectedValue);
                 contrat.facturaunica = Validar.validarselected(DropDownListfacturaunicacontrato.SelectedValue);
                 contrat.personal_idpersonal = Validar.validarsession(sesion.ToString());
-                contrat.sucursal_idsucursal = Validar.validarselected(DropDownListsucursalcontrato.SelectedValue);
+                contrat.sucursal_idsucursal = Validar.ConvertNumber(DropDownListsucursalcontrato.SelectedValue);
                 contrat.observaciondirec = Validar.validarlleno(TextArea1.Value);
                 contrat.direccionenviofact = Validar.validarlleno(TextBox1.Text);
                 contrat.barrio_idbarrio = Validar.validarselected(DropDownListbarriocontrato.SelectedValue);
-               
-             
-               
-               
+
+
+
+                if (contrat.RegistrarContrato(contrat))
+                {
+                    textError.InnerHtml = "Se ha registrado con exito";
+                    Alerta.CssClass = "alert alert-success";
+                    Alerta.Visible = true;
+                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                }
+                else
+                {
+                    textError.InnerHtml = "No se ha registrado";
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                }
               
                
                 
@@ -1120,6 +1134,11 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
 
             }
+        }
+
+        protected void Buttonsucursal_Click(object sender, EventArgs e)
+        {
+            divsucursal.Visible = true;
         }
     }
 

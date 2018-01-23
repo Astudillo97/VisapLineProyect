@@ -459,18 +459,61 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="box-footer">
-                                                                <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button6" Text="Verificar" Width="143px" Height="30px" OnClick="Button6_Click" />
-                                                                <a href="#" id="botonmodalcorpo" data-toggle="modal" data-target="#modal-corporativo"></a>
+
+                                                        </div>
+
+                                                        <div class="box-footer">
+                                                            <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button6" Text="Verificar" Width="143px" Height="30px" OnClick="Button6_Click" />
+                                                            <a href="#" id="botonmodalcorpo" data-toggle="modal" data-target="#modal-corporativo"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <div class="box box-default">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title">Sucursal    
+                                                                    <asp:Button runat="server"  class="btn btn-block btn-success btn-lg" ID="Buttonsucursal" Text="+" Width="40px" Height="31px" OnClick="Buttonsucursal_Click" />
+                                                                </h3>                                                             
+                                                            </div>
+                                                            <div class="form-element" id="divsucursal" visible="false" runat="server">
+                                                                <div class="box-body">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label">Nombre:</label>
+                                                                        <div class="col-sm-9">
+                                                                            <asp:TextBox ID="TextBoxnombresucursaltercero" Style="text-transform: uppercase" class="form-control" runat="server" placeholder="Nombre"></asp:TextBox>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label">Descripcion:</label>
+                                                                        <div class="col-sm-9">
+                                                                            <textarea id="TextAreadescripcionsucursal" runat="server" cols="20" rows="2"></textarea>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label">Direccion:</label>
+                                                                        <div class="col-sm-9">
+                                                                            <asp:TextBox ID="TextBoxdireccionsucursal" runat="server" class="form-control" placeholder="Direccion" Style="text-transform: uppercase"></asp:TextBox>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label">Barrio</label>
+                                                                        <div class="col-sm-9">
+                                                                            <asp:DropDownList ID="DropDownListbarriosucursal" CssClass="form-control" runat="server">
+                                                                                <asp:ListItem>Seleccione</asp:ListItem>
+                                                                            </asp:DropDownList>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
-
-
                                         </div>
-
 
                                         <%--EMPRESA--%>
                                         <div class="form-group" id="iddivempresa" visible="false" runat="server">
@@ -948,8 +991,8 @@
                                             <div class="box-body">
                                                 <div class="form-group row">
                                                     <label class="col-sm-8 col-form-label">
-                                                        Subida:
-                                                                <asp:Label ID="Labelsubidaplancontrato" runat="server" Text=" 0"></asp:Label>BM</label>
+                                                        Subida:<asp:Label ID="Labeldipalcontra" runat="server" Text="Label" Visible="false"></asp:Label>
+                                                        <asp:Label ID="Labelsubidaplancontrato" runat="server" Text=" 0"></asp:Label>BM</label>
 
                                                 </div>
                                                 <div class="form-group row">

@@ -64,6 +64,7 @@ namespace VisapLine.Exeption
                 return "'" + cad + "'";
             }
         }
+
         public static DataTable validartelefono(DataTable data)
         {
             if (data != null && data.Rows.Count > 0)
