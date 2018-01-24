@@ -31,5 +31,9 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarttododebarrio('"+bar.idbarrios+"');");
         }
+        public DataTable ConsultarBarriosIdMunicipioint(int bar)
+        {
+            return data.ConsultarDatos("SELECT * FROM public.pr_consultarbarrio('" + bar + "');");
+        }
     }
 }
