@@ -48,12 +48,27 @@ namespace VisapLine.View.Private
 
         protected void FormView1_ModeChanging(object sender, FormViewModeEventArgs e)
         {
-            FormView1.ChangeMode(e.NewMode);         
-            cargardatos(int.Parse(Valor));
-            llenardropmuni((DropDownList)FormView1.FindControl("dropbarrio"));
+            if (e.CancelingEdit) {
+                FormView1.ChangeMode(FormViewMode.ReadOnly);
+                cargardatos(int.Parse(Valor));
+            }
+            else {
+                FormView1.ChangeMode(e.NewMode);
+                cargardatos(int.Parse(Valor));
+                llenardropmuni((DropDownList)FormView1.FindControl("dropbarrio")); }
         }
 
         protected void FormView1_ItemUpdating(object sender, FormViewUpdateEventArgs e)
+        {
+
+        }
+
+        protected void FormView1_ItemCommand(object sender, FormViewCommandEventArgs e)
+        {
+            
+        }
+
+        protected void FormView1_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
         {
 
         }
