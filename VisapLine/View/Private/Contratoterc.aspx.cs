@@ -496,7 +496,9 @@ namespace VisapLine.View.Private
                 iddivcorporativo.Visible = false;
                 iddivempresa.Visible = false;
                 Tablecorporacionempresa.Visible = true;
+                cargartablasucursal(datcontcorpo["idterceros"].ToString());
                 ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+
             }
             catch (Exception ex)
             {
@@ -508,6 +510,7 @@ namespace VisapLine.View.Private
         protected void Buscarcorporativo_Click(object sender, EventArgs e)
         {
             buscardatoscontracorpo(Validar.validarnumero(TextBox1corporativo.Text));
+
         }
 
         protected void DropDownList4paiscorpo_SelectedIndexChanged(object sender, EventArgs e)
@@ -698,6 +701,32 @@ namespace VisapLine.View.Private
                             Alerta.Visible = true;
                         }
                     }
+                    if (listsucursalcorpo.Rows.Count > 0)
+                    {
+                        foreach (DataRow item in listsucursalcorpo.Rows)
+                        {
+                            if (listsucursalcorpo.Rows.Count > 0)
+                            {
+                                scsal.nombre = item["nombre"].ToString();
+                                scsal.descripcion = item["descripcion"].ToString();
+                                scsal.terceros_idterceros = terc.identificacion;
+                                scsal.direccion = item["direccion"].ToString();
+                                scsal.barrios_idbarrios = item["barrio"].ToString();
+                                scsal.Registrarsucursal(scsal);
+
+                                
+                            }
+                            else
+                            {
+                                textError.InnerHtml = "Por favor agregue un telefono a la lista";
+                                Alerta.CssClass = "alert alert-error";
+                                Alerta.Visible = true;
+                            }
+                        }
+
+
+                    }
+                    
                     textError.InnerHtml = "Se ha registrado con exito";
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
@@ -1135,12 +1164,12 @@ namespace VisapLine.View.Private
                     Alerta.Visible = true;
                     ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
                 }
-              
-                       
 
 
 
-        
+
+
+
 
 
 
@@ -1158,14 +1187,15 @@ namespace VisapLine.View.Private
 
         protected void Buttonsucursal_Click(object sender, EventArgs e)
         {
-            
 
-            if (divsucursal.Visible ==false)
+
+            if (divsucursal.Visible == false)
             {
                 divsucursal.Visible = true;
 
             }
-            else {
+            else
+            {
                 divsucursal.Visible = false;
 
             }
