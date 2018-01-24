@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="col-6">
         <asp:FormView
+            OnItemUpdating="FormView1_ItemUpdating"
             OnModeChanging="FormView1_ModeChanging"
             CssClass="box box-body" 
             OnPageIndexChanging="FormView1_PageIndexChanging" 
@@ -56,7 +57,10 @@
                                         <asp:Label CssClass="" ID="Label2" runat="server" Text="DIRECCION"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="Label3" runat="server" ></asp:TextBox>
+                                        <asp:DropDownList runat="server" ID="dropbarrio">
+                                            <asp:ListItem>--SELECCIONAR--</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <br />
                                         <asp:TextBox ID="Label4" runat="server" ></asp:TextBox>
                                     </td>
                                 </tr>
@@ -77,8 +81,8 @@
                                     </td>
                                 </tr>                             
                             </table>
-                             <asp:LinkButton ID="EditButton" CssClass="btn bg-navy margin" runat="server" CausesValidation="False"
-                            CommandName="cambiaraeditar" Text="Editar" />
+                             <asp:LinkButton ID="Cambiar" CssClass="btn bg-navy margin" runat="server" CausesValidation="False"
+                            CommandName="terminar" Text="Actualizar" />
                         </div>                      
                     </div>
                 </div>
