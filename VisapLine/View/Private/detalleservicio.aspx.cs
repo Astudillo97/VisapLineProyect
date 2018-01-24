@@ -15,11 +15,14 @@ namespace VisapLine.View.Private
         Barrios dplb = new Barrios();
         Servicios srv = new Servicios();
         static DataTable btr = new DataTable();
+        PlanSCaract psc = new PlanSCaract();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
                  Valor = Request.QueryString["addds"];
                 cargardatos(int.Parse(Valor));
+                GridViewcaracter.DataSource = psc.ConsultarPlanSCatact(int.Parse(Valor));
+                GridViewcaracter.DataBind();
             }
             
         }
@@ -60,17 +63,22 @@ namespace VisapLine.View.Private
 
         protected void FormView1_ItemUpdating(object sender, FormViewUpdateEventArgs e)
         {
-
+            Label idser =(Label)FormView1.FindControl("lblidup");
+            TextBox referencia =(TextBox)FormView1.FindControl("txbrefup");
+            TextBox direcip=(TextBox)FormView1.FindControl("txbipup");
+            TextBox canmega=(TextBox)FormView1.FindControl("txbcmegup");
+            DropDownList barrio=(DropDownList)FormView1.FindControl("dropbarrio");
+            TextBox direcc=(TextBox)FormView1.FindControl("txbdirecup");
+            TextBox estrato=(TextBox)FormView1.FindControl("txbestratoup");
+            TextBox stado=(TextBox)FormView1.FindControl("txbestadoup");
+            srv.actualizarservicio(int.Parse(idser.Text),direcip.Text,int.Parse(canmega.Text),estrato.Text,stado.Text,referencia.Text,direcc.Text,int.Parse(barrio.SelectedValue));
+            FormView1.ChangeMode(FormViewMode.ReadOnly);
+            cargardatos(int.Parse(Valor));
         }
 
-        protected void FormView1_ItemCommand(object sender, FormViewCommandEventArgs e)
+        protected void volver_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        protected void FormView1_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
-        {
-
+            Response.Redirect("GestContrato.aspx");
         }
     }
 }

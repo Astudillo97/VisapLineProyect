@@ -18,9 +18,9 @@ namespace VisapLine.Model
         public string servicios_idservicios { get; set; }
         public string ordensalida_idordensalida { get; set; }
 
-        public DataTable ConsultarPlanSCatact(PlanSCaract bar)
+        public DataTable ConsultarPlanSCatact(int bar)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select planservicios_has_caracteristicascol,caracteristica,cantidad,unidad from servicios inner join planservicios_has_caracteristicas on servicio_idservicio = idservicios inner join caracteristicas on caracteristicas_idcaracteristicas = idcaracteristicas where idservicios = "+bar+" ");
         }
 
         public bool RegistrarPlanSCatact(int servicios_idservicios, int caracteristicas_idcaracteristicas, int cantidad)
@@ -31,5 +31,6 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("INSERT INTO public.planservicios_has_caracteristicas(caracteristicas_idcaracteristicas,cantidad, servicio_idservicio) VALUES((select idcaracteristicas from caracteristicas where caracteristica = 'PUNTOS'),"+ cantidad + ", "+ servicios_idservicios + ") returning planservicios_has_caracteristicascol; ");
         }
+
     }
 }
