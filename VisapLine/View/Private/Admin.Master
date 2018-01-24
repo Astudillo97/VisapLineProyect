@@ -118,10 +118,10 @@
                                     </li>
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-block btn-primary"><i class="ion ion-locked"></i>Bloquear</a>
+                                            <a href="#" class="btn btn-primary"><i class="ion ion-locked"></i>Bloquear</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" runat="server" onserverclick="Salir" class="btn btn-block btn-danger"><i class="ion ion-power"></i>Salir</a>
+                                            <a href="#" runat="server" onserverclick="Salir" class="btn btn-danger"><i class="ion ion-power"></i>Salir</a>
                                         </div>
                                     </li>
                                 </ul>
