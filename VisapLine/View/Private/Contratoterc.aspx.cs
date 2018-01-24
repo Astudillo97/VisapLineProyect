@@ -26,6 +26,8 @@ namespace VisapLine.View.Private
         static DataTable listtelefono = new DataTable();
         static DataTable listtelefonocorpo = new DataTable();
         static DataTable listtelefonoempre = new DataTable();
+        static DataTable listsucursalcorpo = new DataTable();
+        static DataTable listsucursalempre = new DataTable();
         Plan pn = new Plan();
         TipoContrato tpoc = new TipoContrato();
         Sucursal scsal = new Sucursal();
@@ -101,6 +103,16 @@ namespace VisapLine.View.Private
                     listtelefonocorpo.Columns.Clear();
                     listtelefonocorpo.Columns.Add("idtelefono");
                     listtelefonocorpo.Columns.Add("telefono");
+
+                    listsucursalcorpo.Rows.Clear();
+                    listsucursalcorpo.Dispose();
+                    GridViewsucursalecorpo.Dispose();
+                    listsucursalcorpo.Columns.Clear();
+                    listsucursalcorpo.Columns.Add("idsucursal");
+                    listsucursalcorpo.Columns.Add("nombre");
+                    listsucursalcorpo.Columns.Add("descripcion");
+                    listsucursalcorpo.Columns.Add("direccion");
+                    listsucursalcorpo.Columns.Add("barrio");
 
 
                     //EMPRESARIAL
@@ -256,6 +268,7 @@ namespace VisapLine.View.Private
                 DropDownListbarrio.DataTextField = "barrios";
                 DropDownListbarrio.DataValueField = "idbarrios";
                 DropDownListbarrio.DataBind();
+
             }
             catch (Exception ex)
             {
@@ -554,6 +567,14 @@ namespace VisapLine.View.Private
                 DropDownList7barricorpo.DataTextField = "barrios";
                 DropDownList7barricorpo.DataValueField = "idbarrios";
                 DropDownList7barricorpo.DataBind();
+
+                DropDownListbarriosucursal.Items.Clear();
+                DropDownListbarriosucursal.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                barr.muninicio_idmunicipio = Validar.validarselected(DropDownList6municorpo.SelectedValue);
+                DropDownListbarriosucursal.DataSource = Validar.Consulta(barr.ConsultarBarriosIdMunicipio(barr));
+                DropDownListbarriosucursal.DataTextField = "barrios";
+                DropDownListbarriosucursal.DataValueField = "idbarrios";
+                DropDownListbarriosucursal.DataBind();
             }
             catch (Exception ex)
             {
@@ -1152,16 +1173,59 @@ namespace VisapLine.View.Private
 
         protected void GridViewsucursalecorpo_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            try
+            {
+                TableCell cell = GridViewsucursalecorpo.Rows[e.RowIndex].Cells[0];
+                listsucursalcorpo.Rows.Remove(listsucursalcorpo.Rows[e.RowIndex]);
+                cargarsucursalcorpo();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
 
         }
 
         protected void Buttoncargarsucursal_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                DataRow datcorpo = listsucursalcorpo.NewRow();
+                datcorpo["idsucursal"] = listsucursalcorpo.Rows.Count + 1;
+                datcorpo["nombre"] = Validar.validarlleno(TextBoxnombresucursaltercero.Text);
+                datcorpo["descripcion"] = Validar.validarlleno(TextAreadescripcionsucursal.Value);
+                datcorpo["direccion"] = Validar.validarlleno(TextBoxdireccionsucursal.Text);
+                datcorpo["barrio"] = Validar.validarselected(DropDownListbarriosucursal.SelectedValue);
+                listsucursalcorpo.Rows.Add(datcorpo);
+                cargarsucursalcorpo();
+                TextBoxnombresucursaltercero.Text = "";
+                TextAreadescripcionsucursal.Value = "";
+                TextBoxdireccionsucursal.Text = "";
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
         protected void cargarsucursalcorpo()
         {
+            try
+            {
+                GridViewsucursalecorpo.DataSource = listsucursalcorpo;
+                GridViewsucursalecorpo.DataBind();
 
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
     }
 
