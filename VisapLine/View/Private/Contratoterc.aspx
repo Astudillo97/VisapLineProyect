@@ -360,12 +360,32 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <asp:GridView ID="GridViewtelefonocorpo" OnRowDeleting="telefonocorpo_RowDeleting" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server">
+                                                                        <asp:GridView ID="GridViewtelefonocorpo" OnRowDeleting="telefonocorpo_RowDeleting" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                                                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                                                             <Columns>
                                                                                 <asp:BoundField DataField="idtelefono" HeaderText="Codigo"></asp:BoundField>
                                                                                 <asp:BoundField DataField="telefono" HeaderText="Celular"></asp:BoundField>
                                                                                 <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="p-0"></asp:CommandField>
                                                                             </Columns>
+                                                                            <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                                                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                                                                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                                                            <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                                                                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                                                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                                                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                                                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                                                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                                                                         </asp:GridView>
                                                                     </div>
                                                                 </div>
@@ -462,10 +482,7 @@
 
                                                         </div>
 
-                                                        <div class="box-footer">
-                                                            <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button6" Text="Verificar" Width="143px" Height="30px" OnClick="Button6_Click" />
-                                                            <a href="#" id="botonmodalcorpo" data-toggle="modal" data-target="#modal-corporativo"></a>
-                                                        </div>
+
                                                     </div>
                                                 </div>
 
@@ -474,8 +491,10 @@
                                                         <div class="box box-default">
                                                             <div class="box-header with-border">
                                                                 <h3 class="box-title">Sucursal    
-                                                                    <asp:Button runat="server"  class="btn btn-block btn-success btn-lg" ID="Buttonsucursal" Text="+" Width="40px" Height="31px" OnClick="Buttonsucursal_Click" />
-                                                                </h3>                                                             
+                                                                </h3>
+                                                                <div class="box-tools pull-right">
+                                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonsucursal" Text="+" Width="40px" Height="31px" OnClick="Buttonsucursal_Click" />
+                                                                </div>
                                                             </div>
                                                             <div class="form-element" id="divsucursal" visible="false" runat="server">
                                                                 <div class="box-body">
@@ -506,8 +525,55 @@
                                                                             </asp:DropDownList>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-9">
+                                                                            <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttoncargarsucursal" Text="Cargar" Width="80px" Height="31px" OnClick="Buttoncargarsucursal_Click" />
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <div class="box box-default">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title">Sucursal    
+                                                                </h3>
+                                                            </div>
+                                                            <div class="form-element">
+                                                                <asp:GridView ID="GridViewsucursalecorpo" OnRowDeleting="GridViewsucursalecorpo_RowDeleting" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                                                    <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                                                    <Columns>
+                                                                        <asp:BoundField DataField="idsucursal" HeaderText="Codigo"></asp:BoundField>
+                                                                        <asp:BoundField DataField="nombre" HeaderText="Nombre"></asp:BoundField>
+                                                                        <asp:BoundField DataField="descripcion" HeaderText="Descripcion"></asp:BoundField>
+                                                                        <asp:BoundField DataField="direccion" HeaderText="Direccion"></asp:BoundField>
+                                                                        <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="p-0"></asp:CommandField>
+                                                                    </Columns>
+                                                                    <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                                                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                                                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                                                    <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                                                                    <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                                                    <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                                                    <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                                                    <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                                                    <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                                                                </asp:GridView>
+                                                            </div>
+                                                            <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button6" Text="Verificar" Width="143px" Height="30px" OnClick="Button6_Click" />
+                                                            <a href="#" id="botonmodalcorpo" data-toggle="modal" data-target="#modal-corporativo"></a>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1162,7 +1228,7 @@
             </div>
 
 
-            <div class="modal" id="modal-plan">
+            <div class="modal" id="modal-contrato">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">

@@ -1115,8 +1115,7 @@ namespace VisapLine.View.Private
                     ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
                 }
               
-               
-                
+                       
 
 
 
@@ -1138,7 +1137,31 @@ namespace VisapLine.View.Private
 
         protected void Buttonsucursal_Click(object sender, EventArgs e)
         {
-            divsucursal.Visible = true;
+            
+
+            if (divsucursal.Visible ==false)
+            {
+                divsucursal.Visible = true;
+
+            }
+            else {
+                divsucursal.Visible = false;
+
+            }
+        }
+
+        protected void GridViewsucursalecorpo_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        protected void Buttoncargarsucursal_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void cargarsucursalcorpo()
+        {
+
         }
     }
 
