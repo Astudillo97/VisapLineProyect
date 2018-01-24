@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="col-6">
         <asp:FormView
+            OnItemUpdated="FormView1_ItemUpdated"
             OnItemUpdating="FormView1_ItemUpdating"
             OnModeChanging="FormView1_ModeChanging"
             CssClass="box box-body" 
@@ -33,7 +34,7 @@
                                     </td>
                                     <td>
                                         <asp:Label ID="lblserv1" runat="server" Text='<%#Eval("idservicios") %>'></asp:Label>
-                                        <asp:TextBox ID="Label1" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="Label1" runat="server" Text='<%#Eval("referencias")%>'></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -41,7 +42,7 @@
                                         <asp:Label CssClass="" ID="lblip" runat="server" Text="DIRECCION IP:"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="lblservip" runat="server" ></asp:TextBox>
+                                        <asp:TextBox ID="lblservip" runat="server" Text='<%#Eval("direccionip") %>' ></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -49,7 +50,7 @@
                                         <asp:Label CssClass="" ID="lblmegas" runat="server" Text="CANTIDAD DE MEGAS"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="lblservmg" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="lblservmg" runat="server" Text='<%#Eval("cantidadmegas") %>'></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -57,11 +58,9 @@
                                         <asp:Label CssClass="" ID="Label2" runat="server" Text="DIRECCION"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:DropDownList runat="server" ID="dropbarrio">
-                                            <asp:ListItem>--SELECCIONAR--</asp:ListItem>
-                                        </asp:DropDownList>
+                                        <asp:DropDownList runat="server" ID="dropbarrio"></asp:DropDownList>
                                         <br />
-                                        <asp:TextBox ID="Label4" runat="server" ></asp:TextBox>
+                                        <asp:TextBox ID="Label4" runat="server"  Text='<%#Eval("barrios") %> ' ></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -69,7 +68,7 @@
                                         <asp:Label CssClass="" ID="Label5" runat="server" Text="ESTRATO:"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="Label6" runat="server" ></asp:TextBox>
+                                        <asp:TextBox ID="Label6" runat="server"  Text='<%#Eval("estrato") %>'></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -77,12 +76,14 @@
                                         <asp:Label CssClass="" ID="Label7" runat="server" Text="ESTADO DE SERVICIO"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="Label8" runat="server" ></asp:TextBox>
+                                        <asp:TextBox ID="Label8" runat="server" Text='<%#Eval("estado") %>' ></asp:TextBox>
                                     </td>
                                 </tr>                             
                             </table>
                              <asp:LinkButton ID="Cambiar" CssClass="btn bg-navy margin" runat="server" CausesValidation="False"
                             CommandName="terminar" Text="Actualizar" />
+                            <asp:LinkButton ID="cancel" CssClass="btn bg-navy margin" runat="server" CausesValidation="false"
+                                CommandName="Cancel" Text="Cancelar"></asp:LinkButton>
                         </div>                      
                     </div>
                 </div>
