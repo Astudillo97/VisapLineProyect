@@ -38,6 +38,12 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select * from servicios inner join puntos on puntos.idpuntos = puntos_idpuntos INNER JOIN barrios on barrios_idbarrios = barrios.idbarrios inner join municipio on municipio_idmunicipio = municipio.idmunicipio where idservicios = "+i+"");
         }
 
+        public bool actualizarservicio(int id,string ip, int varcanmeg, string varestrato, string varestadp, string varreferenci, string vardireccion, int barrio)
+        {
+            string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('" + vardireccion + "'," + barrio + ")").Rows[0][0].ToString();
+            return data.OperarDatos("select * from pr_actualizarservicio("+id+","+ varcanmeg + ",'"+ varestrato + "','"+ varestadp + "','"+ varreferenci + "',"+ idpunto + ",'"+ ip + "')");
+        }
+
     }
    
 }
