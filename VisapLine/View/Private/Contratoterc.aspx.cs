@@ -1176,6 +1176,7 @@ namespace VisapLine.View.Private
             {
 
                 int sesion = 90;
+
                 DataRow datcontcorpo = Validar.Consulta(terc.ConsultarPersonaIdenti(Labelcedulacontrato.Text)).Rows[0];
                 contrat.terceros_idterceros = Validar.validarlleno(datcontcorpo["idterceros"].ToString());
                 contrat.codigo = Validar.validarlleno(TextBox4.Text);
