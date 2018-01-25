@@ -18,10 +18,14 @@ namespace VisapLine.View.Private
         class_pdf pdf = new class_pdf();
         Detalle det = new Detalle();
         Empresa empresa = new Empresa();
+        CargoAdicional ca = new CargoAdicional();
         DataTable tablepersona = new DataTable();
         DataTable tablecontrato = new DataTable();
         DataTable tabledactura = new DataTable();
         DataTable tabledetalle = new DataTable();
+        static string terceroselected;
+        static string contratoselected;
+        static string facturaselected;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -41,18 +45,18 @@ namespace VisapLine.View.Private
             try
             {
                 terc.identificacion = identificacion_.Value;
-                DataRow datos = Validar.Consulta(terc.ConsultarPersonaIdentifall(terc)).Rows[0];
-                contrato.terceros_idterceros = datos["idterceros"].ToString();
+                DataRow tercerose = Validar.Consulta(terc.ConsultarPersonaIdentifall(terc)).Rows[0];
+                contrato.terceros_idterceros = tercerose["idterceros"].ToString();
+                terceroselected= tercerose["idterceros"].ToString();
+                //Consulta de Contratos por id de tercero
                 listContrato.DataSource = contrato.ConsultarContratoidtercero(contrato);
                 listContrato.DataBind();
                 Alerta.Visible = false;
             }
             catch (Exception ex)
             {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
                 Limpiar(listContrato);
+                Limpiar(listFacturas);
             }
 
         }
@@ -71,16 +75,16 @@ namespace VisapLine.View.Private
                 if (e.CommandName.ToString() == "ver")
                 {
                     string dat = e.CommandArgument.ToString();
+                    contratoselected = dat;
                     fact.contrato_idcontrato = dat;
                     listFacturas.DataSource = Validar.Consulta(fact.ConsultarFacturaIdContrato(fact));
                     listFacturas.DataBind();
+
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
+                Limpiar(listFacturas);
             }
         }
 
@@ -91,22 +95,16 @@ namespace VisapLine.View.Private
                 if (e.CommandName.ToString() == "ver")
                 {
                     string dat = e.CommandArgument.ToString();
+                    facturaselected = dat;
                     det.factura_idfactura = dat;
                     listDetalle.DataSource = Validar.Consulta(det.ConsultarDetalleIdFactura(det));
                     listDetalle.DataBind();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
+                
             }
-        }
-        public static string GenerarNombrePdf(string dat)
-        {
-            DateTime dateTime = DateTime.Now;
-            return dateTime.Year +""+ dateTime.Month +""+ dateTime.Day +""+ dateTime.Hour +""+ dateTime.Minute + "-" + dat + ".pdf";
         }
 
         protected void CrearFactura_(object sender, EventArgs e)
@@ -114,10 +112,16 @@ namespace VisapLine.View.Private
             try
             {
                 DataTable datEmpresa = empresa.ConsultarEmpresa();
-                datEmpresa.PrimaryKey = new DataColumn[] { datEmpresa.Columns["descripcion"] };
+                terc.identificacion = identificacion_.Value;
+                DataRow tercerose= Validar.Consulta(terc.ConsultarPersonaIdentifall(terc)).Rows[0];
+                contrato.idcontrato = contratoselected;
+                DataRow contrat = contrato.ConsultarContratoidcontrato(contrato).Rows[0];
+                fact.contrato_idcontrato = facturaselected;
+                DataRow datfactura= Validar.Consulta(fact.ConsultarFacturaIdContrato(fact)).Rows[0];
+                ca.contrato_idcontrato_cargo = contrat["idcontrato"].ToString();
+                DataTable datdetalle = ca.ConsultarCargosIdContrato(ca);
 
-                
-                //pdf.CrearFactura(datEmpresa,datpersona,datfactura,datdetalle);
+                pdf.CrearFactura(datEmpresa,tercerose,contrat,datfactura,datdetalle);
             }
             catch (Exception ex)
             {
@@ -125,68 +129,6 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-        }
-
-        public void ConsultarTecercero(string cedula)
-        {
-            terc.identificacion = cedula;
-            DataTable datpersona = terc.ConsultarTerceroDos(terc);
-            foreach (DataRow item in datpersona.Rows)
-            {
-                switch (item["estado"].ToString())
-                {
-                    case "Activo":
-                        switch (item["tipoterceros"].ToString())
-                        {
-                            case "NATURAL":
-
-                                break;
-                            case "CORPORATIVO":
-
-                                break;
-                            case "EMPRESARIAL":
-
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case "Inactivo":
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-        }
-        public void ConsultarContrato(DataRow dat)
-        {
-            contrato.terceros_idterceros = dat["idterceros"].ToString();
-            DataTable datcontrato = contrato.ConsultarContratoidtercero(contrato);
-            foreach (DataRow item in datcontrato.Rows)
-            {
-                switch (item["estadoc"].ToString())
-                {
-                    case "Activo":
-                        
-                        break;
-                    case "Inactivo":
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-        public void ConsultarFactura(DataRow per,DataRow cont)
-        {
-            fact.contrato_idcontrato = cont["idcontrato"].ToString();
-            DataTable datfactura = fact.ConsultarFacturaIdContrato(fact);
-            datfactura.PrimaryKey = new DataColumn[] { datfactura.Columns["estado"] };
-        }
-        public void ConsultarDetalle(DataRow fac)
-        {
-            det.factura_idfactura = fac["idfactura"].ToString();
-            DataTable datdetalle = Validar.Consulta(det.ConsultarDetalleIdFactura(det));
         }
     }
 }
