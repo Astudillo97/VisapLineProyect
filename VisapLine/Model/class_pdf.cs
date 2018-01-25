@@ -39,6 +39,7 @@ namespace VisapLine.Model
 
         private static string Descripcion(DataTable data, string key)
         {
+            data.PrimaryKey = new DataColumn[] { data.Columns["descripcion"] };
             DataRow dat = data.Rows.Find(key);
             return dat["dato1"].ToString();
         }
@@ -49,7 +50,7 @@ namespace VisapLine.Model
             return dateTime.Year + "" + dateTime.Month + "" + dateTime.Day + "" + dateTime.Hour + "" + dateTime.Minute + "-" + dat + ".pdf";
         }
 
-        public string CrearFactura(DataTable empresa,DataRow tercero, DataRow facture, DataTable detalle)
+        public string CrearFactura(DataTable empresa,DataRow tercero,DataRow contrat, DataRow facture, DataTable detalle)
         {
             //Redireccion a la carpeta del proyecto
             string path = HttpContext.Current.Server.MapPath("~");
@@ -57,7 +58,7 @@ namespace VisapLine.Model
             string dir = "Archivos\\";
             string name = GenerarNombrePdf("s");
             //creacion del documento pdf
-            PdfDocument documento = new PdfDocument(new PdfWriter(dir+name));
+            PdfDocument documento = new PdfDocument(new PdfWriter(path+dir+name));
             Document doc = new Document(documento, PageSize.LETTER);
 
 

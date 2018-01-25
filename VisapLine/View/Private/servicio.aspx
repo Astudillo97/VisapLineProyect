@@ -66,7 +66,6 @@
                 <asp:DropDownList ID="DropDownListbarrio" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                     <asp:ListItem>Seleccione</asp:ListItem>
                 </asp:DropDownList>
-
             </div>
         </div>
         </div>
