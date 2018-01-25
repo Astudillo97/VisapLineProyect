@@ -144,6 +144,16 @@ namespace VisapLine.View.Private
                     listtelefonoempre.Columns.Add("idtelefono");
                     listtelefonoempre.Columns.Add("telefono");
 
+                    listsucursalempre.Rows.Clear();
+                    listsucursalempre.Dispose();
+                    GridViewsucursalempre.Dispose();
+                    listsucursalempre.Columns.Clear();
+                    listsucursalempre.Columns.Add("idsucursal");
+                    listsucursalempre.Columns.Add("nombre");
+                    listsucursalempre.Columns.Add("descripcion");
+                    listsucursalempre.Columns.Add("direccion");
+                    listsucursalempre.Columns.Add("barrio");
+
                     //CONTRATO
 
                     DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
@@ -714,7 +724,7 @@ namespace VisapLine.View.Private
                                 scsal.barrios_idbarrios = item["barrio"].ToString();
                                 scsal.Registrarsucursal(scsal);
 
-                                
+
                             }
                             else
                             {
@@ -723,10 +733,8 @@ namespace VisapLine.View.Private
                                 Alerta.Visible = true;
                             }
                         }
-
-
                     }
-                    
+
                     textError.InnerHtml = "Se ha registrado con exito";
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
@@ -836,12 +844,21 @@ namespace VisapLine.View.Private
             try
             {
                 DropDownListbarrioempresa.Items.Clear();
-                DropDownList7barricorpo.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                DropDownListbarrioempresa.Items.Add(new ListItem("Seleccione", "Seleccione"));
                 barr.muninicio_idmunicipio = Validar.validarselected(DropDownListmunicipioempresa.SelectedValue);
                 DropDownListbarrioempresa.DataSource = Validar.Consulta(barr.ConsultarBarriosIdMunicipio(barr));
                 DropDownListbarrioempresa.DataTextField = "barrios";
                 DropDownListbarrioempresa.DataValueField = "idbarrios";
                 DropDownListbarrioempresa.DataBind();
+
+                DropDownListbarriosucursalempre.Items.Clear();
+                DropDownListbarriosucursalempre.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                barr.muninicio_idmunicipio = Validar.validarselected(DropDownListmunicipioempresa.SelectedValue);
+                DropDownListbarriosucursalempre.DataSource = Validar.Consulta(barr.ConsultarBarriosIdMunicipio(barr));
+                DropDownListbarriosucursalempre.DataTextField = "barrios";
+                DropDownListbarriosucursalempre.DataValueField = "idbarrios";
+                DropDownListbarriosucursalempre.DataBind();
+
             }
             catch (Exception ex)
             {
@@ -960,7 +977,34 @@ namespace VisapLine.View.Private
                             Alerta.CssClass = "alert alert-error";
                             Alerta.Visible = true;
                         }
+
                     }
+                    if (listsucursalempre.Rows.Count > 0)
+                    {
+                        foreach (DataRow item in listsucursalempre.Rows)
+                        {
+                            if (listsucursalempre.Rows.Count > 0)
+                            {
+                                scsal.nombre = item["nombre"].ToString();
+                                scsal.descripcion = item["descripcion"].ToString();
+                                scsal.terceros_idterceros = terc.identificacion;
+                                scsal.direccion = item["direccion"].ToString();
+                                scsal.barrios_idbarrios = item["barrio"].ToString();
+                                scsal.Registrarsucursal(scsal);
+
+
+                            }
+                            else
+                            {
+                                textError.InnerHtml = "Por favor agregue un telefono a la lista";
+                                Alerta.CssClass = "alert alert-error";
+                                Alerta.Visible = true;
+                            }
+                        }
+                    }
+
+
+
                     textError.InnerHtml = "Se ha registrado con exito";
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
@@ -1083,6 +1127,8 @@ namespace VisapLine.View.Private
                 DropDownListbarriocontrato.DataTextField = "barrios";
                 DropDownListbarriocontrato.DataValueField = "idbarrios";
                 DropDownListbarriocontrato.DataBind();
+
+       
                 ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
             }
             catch (Exception ex)
@@ -1164,15 +1210,6 @@ namespace VisapLine.View.Private
                     Alerta.Visible = true;
                     ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
                 }
-
-
-
-
-
-
-
-
-
 
             }
             catch (Exception ex)
@@ -1257,15 +1294,88 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
+
+
+        //SUCURSAL EMPRESA
+        protected void Buttoncargarsucursalempre_Click(object sender, EventArgs e)
+        {
+            if (divsucursalempre.Visible == false)
+            {
+                divsucursalempre.Visible = true;
+            }
+            else
+            {
+                divsucursalempre.Visible = false;
+
+            }
+        }
+
+        protected void Buttoncargarsucursalempresatbla_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataRow datempre = listsucursalempre.NewRow();
+                datempre["idsucursal"] = listsucursalempre.Rows.Count + 1;
+                datempre["nombre"] = Validar.validarlleno(TextBoxnombresucursalempre.Text);
+                datempre["descripcion"] = Validar.validarlleno(TextAreadescripcionsucursalempre.Value);
+                datempre["direccion"] = Validar.validarlleno(TextBoxdireccionsucursalempre.Text);
+                datempre["barrio"] = Validar.validarselected(DropDownListbarriosucursalempre.SelectedValue);
+                listsucursalempre.Rows.Add(datempre);
+                cargarsucursalempre();
+                TextBoxnombresucursalempre.Text = "";
+                TextAreadescripcionsucursalempre.Value = "";
+                TextBoxdireccionsucursalempre.Text = "";
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void GridViewsucursalempre_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                TableCell cell = GridViewsucursalempre.Rows[e.RowIndex].Cells[0];
+                listsucursalempre.Rows.Remove(listsucursalempre.Rows[e.RowIndex]);
+                cargarsucursalempre();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+
+        }
+        protected void cargarsucursalempre()
+        {
+            try
+            {
+                GridViewsucursalempre.DataSource = listsucursalempre;
+                GridViewsucursalempre.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+        }
+
+
+
+
+
+
+
+
     }
-
-
-
-
-
-
-
-
 }
 
 

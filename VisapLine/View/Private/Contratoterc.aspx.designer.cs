@@ -652,6 +652,78 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListestadoempresa;
         
         /// <summary>
+        /// Control Buttoncargarsucursalempre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Buttoncargarsucursalempre;
+        
+        /// <summary>
+        /// Control divsucursalempre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divsucursalempre;
+        
+        /// <summary>
+        /// Control TextBoxnombresucursalempre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxnombresucursalempre;
+        
+        /// <summary>
+        /// Control TextAreadescripcionsucursalempre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextAreadescripcionsucursalempre;
+        
+        /// <summary>
+        /// Control TextBoxdireccionsucursalempre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxdireccionsucursalempre;
+        
+        /// <summary>
+        /// Control DropDownListbarriosucursalempre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListbarriosucursalempre;
+        
+        /// <summary>
+        /// Control Buttoncargarsucursalempresatbla.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Buttoncargarsucursalempresatbla;
+        
+        /// <summary>
+        /// Control GridViewsucursalempre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewsucursalempre;
+        
+        /// <summary>
         /// Control Button8.
         /// </summary>
         /// <remarks>

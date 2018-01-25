@@ -637,8 +637,6 @@
                                                             </div>
                                                             <div class="form-element">
                                                                 <div class="box-body">
-
-
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label">Nombre</label>
                                                                         <div class="col-sm-9">
@@ -672,12 +670,32 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <asp:GridView ID="GridViewtelefonoempresa" OnRowDeleting="telefonoempresa_RowDeleting" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server">
+                                                                        <asp:GridView ID="GridViewtelefonoempresa" OnRowDeleting="telefonoempresa_RowDeleting" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                                                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                                                             <Columns>
                                                                                 <asp:BoundField DataField="idtelefono" HeaderText="Codigo"></asp:BoundField>
                                                                                 <asp:BoundField DataField="telefono" HeaderText="Celular"></asp:BoundField>
                                                                                 <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="p-0"></asp:CommandField>
                                                                             </Columns>
+                                                                            <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                                                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                                                                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                                                            <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                                                                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                                                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                                                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                                                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                                                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                                                                         </asp:GridView>
                                                                     </div>
                                                                 </div>
@@ -761,7 +779,7 @@
                                                                     </div>
 
                                                                     <div class="form-group row">
-                                                                        <label class="col-sm-3 col-form-label">Estado</label>modal-empresarial
+                                                                        <label class="col-sm-3 col-form-label">Estado</label>
                                                                         <div class="col-sm-9">
                                                                             <asp:DropDownList ID="DropDownListestadoempresa" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                                                 <asp:ListItem>Seleccione</asp:ListItem>
@@ -772,10 +790,97 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="box-footer">
-                                                                <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button8" Text="Verificar" Width="146px" OnClick="Button8_Click" />
-                                                                <a href="#" id="botonmodalempre" data-toggle="modal" data-target="#modal-empresarial"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <div class="box box-default">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title">Sucursal    
+                                                                </h3>
+                                                                <div class="box-tools pull-right">
+                                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttoncargarsucursalempre" Text="+" Width="40px" Height="31px" OnClick="Buttoncargarsucursalempre_Click" />
+                                                                </div>
                                                             </div>
+                                                            <div class="form-element" id="divsucursalempre" visible="false" runat="server">
+                                                                <div class="box-body">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label">Nombre:</label>
+                                                                        <div class="col-sm-9">
+                                                                            <asp:TextBox ID="TextBoxnombresucursalempre" Style="text-transform: uppercase" class="form-control" runat="server" placeholder="Nombre"></asp:TextBox>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label">Descripcion:</label>
+                                                                        <div class="col-sm-9">
+                                                                            <textarea id="TextAreadescripcionsucursalempre" runat="server" cols="20" rows="2"></textarea>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label">Direccion:</label>
+                                                                        <div class="col-sm-9">
+                                                                            <asp:TextBox ID="TextBoxdireccionsucursalempre" runat="server" class="form-control" placeholder="Direccion" Style="text-transform: uppercase"></asp:TextBox>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label">Barrio</label>
+                                                                        <div class="col-sm-9">
+                                                                            <asp:DropDownList ID="DropDownListbarriosucursalempre" CssClass="form-control" runat="server">
+                                                                                <asp:ListItem>Seleccione</asp:ListItem>
+                                                                            </asp:DropDownList>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-9">
+                                                                            <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttoncargarsucursalempresatbla" Text="Cargar" Width="80px" Height="31px" OnClick="Buttoncargarsucursalempresatbla_Click" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <div class="box box-default">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title">Sucursal    
+                                                                </h3>
+                                                            </div>
+                                                            <div class="form-element">
+                                                                <asp:GridView ID="GridViewsucursalempre" OnRowDeleting="GridViewsucursalempre_RowDeleting" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                                                    <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                                                    <Columns>
+                                                                        <asp:BoundField DataField="idsucursal" HeaderText="Codigo"></asp:BoundField>
+                                                                        <asp:BoundField DataField="nombre" HeaderText="Nombre"></asp:BoundField>
+                                                                        <asp:BoundField DataField="descripcion" HeaderText="Descripcion"></asp:BoundField>
+                                                                        <asp:BoundField DataField="direccion" HeaderText="Direccion"></asp:BoundField>
+                                                                        <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="p-0"></asp:CommandField>
+                                                                    </Columns>
+                                                                    <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                                                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                                                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                                                    <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                                                                    <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                                                    <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                                                    <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                                                    <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                                                    <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                                                                </asp:GridView>
+                                                            </div>
+                                                            <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button8" Text="Verificar" Width="146px" OnClick="Button8_Click" />
+                                                            <a href="#" id="botonmodalempre" data-toggle="modal" data-target="#modal-empresarial"></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -866,20 +971,37 @@
                                                             <th></th>
                                                             <th></th>
                                                             <th></th>
+                                                            <th></th>
+                                                            <th></th>
+                                                            <th></th>
+
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <asp:Label ID="Label6" runat="server" Text="Nombre: "></asp:Label><asp:Label ID="Label7" runat="server" Text=""></asp:Label></td>
+                                                                <asp:Label ID="Label6" runat="server" Text="Nombre: "></asp:Label></td>
                                                             <td>
-                                                                <asp:Label ID="Label10" runat="server" Text="Nit: "></asp:Label><asp:Label ID="Label11" runat="server" Text=""></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <asp:Label ID="Label12" runat="server" Text="Correo: "></asp:Label><asp:Label ID="Label13" runat="server" Text=""></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <asp:Label ID="Label14" runat="server" Text="Direccion:"></asp:Label><asp:Label ID="Label15" runat="server" Text=""></asp:Label>
-                                                            </td>
+                                                                <asp:Label ID="Label7" runat="server" Text=""></asp:Label>
 
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label ID="Label10" runat="server" Text="Nit: "></asp:Label>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label ID="Label11" runat="server" Text=""></asp:Label>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label ID="Label12" runat="server" Text="Correo: "></asp:Label>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label ID="Label13" runat="server" Text=""></asp:Label>
+
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label ID="Label14" runat="server" Text="Direccion:"></asp:Label>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label ID="Label15" runat="server" Text=""></asp:Label>
+                                                            </td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -1241,6 +1363,7 @@
                                 <div class="form-element">
                                     <div class="box-body">
                                         <div class="form-group row">
+
                                             <div class="row">
                                             </div>
                                         </div>
