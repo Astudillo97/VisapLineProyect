@@ -11,10 +11,18 @@ namespace VisapLine.Model
     {
         IData data = new Data();
         public string idcargoadicional { get; set; }
-        public string cantidad { get; set; }
+        public string descripcion { get; set; }
         public string valor { get; set; }
         public string fecha { get; set; }
         public string inventario_idinventario { get; set; }
-        public string personal_idpersonal { get; set; }
+        public string incidensias_idincidensias { get; set; }
+        public string terceros_idterceroregistra { get; set; }
+        public string contrato_idcontrato_cargo { get; set; }
+        public string estadoca { get; set; }
+
+        public DataTable ConsultarCargosIdContrato(CargoAdicional ca)
+        {
+            return data.ConsultarDatos("select * from pr_consultarcargoadicional("+ca.contrato_idcontrato_cargo+")");
+        }
     }
 }

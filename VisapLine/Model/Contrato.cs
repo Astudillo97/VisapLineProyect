@@ -53,7 +53,11 @@ namespace VisapLine.Model
         
         public DataTable ConsultarContratoidtercero(Contrato cont)
         {
-            return data.ConsultarDatos("select * from pr_consultarcontratoidall("+cont.terceros_idterceros+")");
+            return data.ConsultarDatos("select * from pr_consultarcontratoidallter("+cont.terceros_idterceros+")");
+        }
+        public DataTable ConsultarContratoidcontrato(Contrato cont)
+        {
+            return data.ConsultarDatos("select * from pr_consultarcontratoidall(" + cont.idcontrato + ")");
         }
     }
 }
