@@ -1176,8 +1176,19 @@ namespace VisapLine.View.Private
             {
 
                 int sesion = 90;
-
-                DataRow datcontcorpo = Validar.Consulta(terc.ConsultarPersonaIdenti(Labelcedulacontrato.Text)).Rows[0];
+                string dni = "";
+                if (Labelcedulacontrato.Text !="")
+                {
+                    dni = Labelcedulacontrato.Text;
+                }
+                else
+                {
+                    if (Label11.Text!="")
+                    {
+                        dni = Label11.Text;
+                    }
+                }
+                DataRow datcontcorpo = Validar.Consulta(terc.ConsultarPersonaIdenti(dni)).Rows[0];
                 contrat.terceros_idterceros = Validar.validarlleno(datcontcorpo["idterceros"].ToString());
                 contrat.codigo = Validar.validarlleno(TextBox4.Text);
                 contrat.fechacontrato = Validar.validarlleno(Textboxfechainiciopermanencia.Text);
