@@ -16,6 +16,10 @@
             document.getElementById("botonmodalempre").click();
         }
 
+        function botonmodalcontrato() {
+            document.getElementById("botonmodalcontr").click();
+        }
+
 
 
     </script>
@@ -1220,9 +1224,6 @@
                                         </div>
                                         <div class="form-element">
                                             <div class="box-body">
-
-
-
                                                 <div class="form-group row">
                                                     <label class="col-sm-5 col-form-label">
                                                         Valor instalacion:                                                        
@@ -1318,17 +1319,6 @@
                                             <h3 class="box-title">Total</h3>
                                         </div>
                                         <div class="col-sm-8">
-
-                                            <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">
-                                                    Sub Total:                 
-                                                          
-                                                </label>
-                                                <div class="col-sm-9">
-                                                    <asp:TextBox ID="Textbox2" runat="server" type="number" class="form-control" placeholder="$"></asp:TextBox>
-                                                </div>
-
-                                            </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Total</label>
                                                 <div class="col-sm-9">
@@ -1337,7 +1327,10 @@
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-sm-9">
-                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonguardarcontrato" Text="Crear Contrato" Width="146px" OnClick="Buttonguardarcontrato_Click" />
+
+                                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button4cargarmodalcontrato" Text="Guardar" OnClick="Button4cargarmodalcontrato_Click" Width="146px" />
+                                                    <a href="#" id="botonmodalcontr" data-toggle="modal" data-target="#modal-contrato"></a>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -1351,24 +1344,24 @@
 
 
             <div class="modal" id="modal-contrato">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Confirmacion de datos Personales</h4>
+                            <h4 class="modal-title">¿Esta seguro que quiere guardar el contrato?</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
                             <div class="box box-primary bg-transparent">
-                                <div class="form-element">
-                                    <div class="box-body">
-                                        <div class="form-group row">
-
-                                            <div class="row">
-                                            </div>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-sm-6">    
+                                         <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Buttonguardarcontrato" Text="Crear Contrato" Width="146px" OnClick="Buttonguardarcontrato_Click" />
+                                     </div>
+                                    <div class="col-sm-6">
+                                        <asp:Button ID="Button4" runat="server" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="146px" data-dismiss="modal" />
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

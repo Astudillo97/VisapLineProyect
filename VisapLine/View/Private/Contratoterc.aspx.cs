@@ -1057,8 +1057,7 @@ namespace VisapLine.View.Private
             Labelbajadaplancontrato.Text = gridw.Cells[8].Text;
             Labelvaloriva.Text = gridw.Cells[2].Text;
             Labelmedioconexionplancontrato.Text = gridw.Cells[9].Text;
-
-
+          
         }
 
 
@@ -1212,8 +1211,9 @@ namespace VisapLine.View.Private
                 {
                     textError.InnerHtml = "Se ha registrado con exito";
                     Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;
+                    Alerta.Visible = true;                  
                     ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                    Response.Redirect("Contratoterc.aspx");
                 }
                 else
                 {
@@ -1380,13 +1380,10 @@ namespace VisapLine.View.Private
 
         }
 
-
-
-
-
-
-
-
+        protected void Button4cargarmodalcontrato_Click(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "", "botonmodalcontrato();", true);
+        }
     }
 }
 

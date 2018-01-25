@@ -24,5 +24,8 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarcargoadicional("+ca.contrato_idcontrato_cargo+")");
         }
+
+
+
     }
 }

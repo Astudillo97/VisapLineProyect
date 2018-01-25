@@ -10,7 +10,6 @@
     <section class="content-header">
         <h3>Tipo Factura</h3>
     </section>
-
     <section class="content">
         <div class="box box-default collapsed-box">
             <div class="box-header with-border">
@@ -28,36 +27,25 @@
                             <div class="col-sm-10">
                                 <asp:TextBox runat="server" type="text" class="form-control" ID="texboxtipofactura" Style="text-transform: uppercase"></asp:TextBox>
                             </div>
-
-
                         </div>
                     </div>
-
                     <div class="col-md-6 col-12">
                         <div class="form-group row">
                             <div class="col-sm-10">
                                 <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button1" Text="Guardar" OnClick="Button1_Click" Width="146px" />
                             </div>
                         </div>
-
                     </div>
-
                 </div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
         </div>
-        <!-- /.box-body -->
-
-
         <div class="box box-default">
             <div class="box-header with-border">
                 <h3 class="box-title">Tipos de factura</h3>
-
-
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-
                 </div>
             </div>
             <!-- /.box-header -->
