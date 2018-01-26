@@ -19,13 +19,14 @@ namespace VisapLine.View.Private
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                 Valor = Request.QueryString["addds"];
+                Valor = Request.QueryString["addds"];
                 cargardatos(int.Parse(Valor));
                 GridViewcaracter.DataSource = psc.ConsultarPlanSCatact(int.Parse(Valor));
                 GridViewcaracter.DataBind();
             }
-            
+
         }
+        
         protected void cargardatos(int id) {
             DataTable dtbsrv= srv.consultarserivcioid(id);
             dplb.muninicio_idmunicipio = dtbsrv.Rows[0][17].ToString();
