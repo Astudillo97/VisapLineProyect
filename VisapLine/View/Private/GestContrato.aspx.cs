@@ -45,9 +45,11 @@ namespace VisapLine.View.Private
 
 
             DataRow dat = Validar.Consulta(terc.ConsultarPersonaIdenti(texboxdni.Text)).Rows[0];
-            DataRow datcont = Validar.Consulta(terc.ConsultarPersonaIdenti(dat["idterceros"].ToString())).Rows[0];
+            contrat.terceros_idterceros= dat["idterceros"].ToString();
 
-   
+            DataTable datcont = Validar.Consulta(contrat.ConsultarContratoidtercero(contrat));
+            GridView1.DataSource = datcont;
+            GridView1.DataBind();
 
         }
 

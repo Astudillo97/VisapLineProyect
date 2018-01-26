@@ -16,12 +16,9 @@
         </ol>
     </section>
     <section class="content">
-        <div class="box box-default collapsed-box">
+        <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Buscar Contrato</h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                </div>
+                <h3 class="box-title">Buscar Contrato</h3>                
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -37,52 +34,57 @@
                     <div class="col-md-6 col-12">
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button1" Text="Guardar" OnClick="Button1_Click" Width="146px" />
+                                <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button1" Text="Consultar" OnClick="Button1_Click" Width="146px" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- /.col -->
             </div>
-            <div class="row">
-                <div class="col-md-6 col-12">
-                    <div class="form-group row">
-                        <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" class="table table-bordered table-striped" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="false" CellPadding="4" ForeColor="#333333" GridLines="None">
-                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-                            <Columns>
-                                <asp:CommandField ShowSelectButton="true" />
-                                <asp:BoundField HeaderText="Codg" DataField="idcontrato" />
-                                <asp:BoundField HeaderText="nombre" DataField="Nombre" />
-                                <asp:BoundField HeaderText="plan" DataField="Plan" />
-                                <asp:BoundField HeaderText="precio" DataField="precio" />
-                                <asp:BoundField HeaderText="direccion" DataField="Direccion" />
-                                <asp:BoundField HeaderText="tipo" DataField="Tipo" />
-                            </Columns>
-                            <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+        </div>
+        <!-- /.row -->
 
-                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
-                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="form-group row">
+                    <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped" OnRowDataBound="GridView1_RowDataBound" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="true" />
+                            <asp:BoundField HeaderText="Codg" DataField="codigo" />
+                            <asp:BoundField HeaderText="Fecha" DataField="fechacontrato" />
+                            <asp:BoundField HeaderText="Estado" DataField="estadoc" />
+                            <asp:BoundField HeaderText="Direccion" DataField="direnviofactura" />
+                            <asp:BoundField HeaderText="Envio Factura" DataField="enviofactura" />
+                            <asp:BoundField HeaderText="Observacion" DataField="observacion" />
 
-                            <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
 
-                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+                        </Columns>
+                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
-                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
-                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
 
-                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+                        <RowStyle BackColor="#EFF3FB"></RowStyle>
 
-                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
-                        </asp:GridView>
-                    </div>
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                    </asp:GridView>
                 </div>
             </div>
-            <!-- /.row -->
         </div>
+
     </section>
 
 </asp:Content>
