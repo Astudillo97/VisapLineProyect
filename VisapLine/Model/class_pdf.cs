@@ -63,15 +63,15 @@ namespace VisapLine.Model
 
 
             ////Definicion del encabezado
-            Table header = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+            Table header = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
             Image imagen = new Image(ImageDataFactory.Create(path+Descripcion(empresa,"logo"))).SetWidth(UnitValue.CreatePercentValue(100));
 
             ////Celda hizaquierda de la factura
-            Cell logo = new Cell().SetBorder(iText.Layout.Borders.Border.NO_BORDER).SetWidth(UnitValue.CreatePercentValue(25));
+            Cell logo = new Cell().SetBorder(Border.NO_BORDER).SetWidth(UnitValue.CreatePercentValue(25));
             logo.Add(imagen);
 
             ////Celda central de la factura
-            Cell descripcion = new Cell().SetWidth(UnitValue.CreatePercentValue(30)).SetBorder(iText.Layout.Borders.Border.NO_BORDER); ;
+            Cell descripcion = new Cell().SetWidth(UnitValue.CreatePercentValue(30)).SetBorder(Border.NO_BORDER); ;
             PdfFont font = PdfFontFactory.CreateFont(FONT, "Cp1251", true);
             Paragraph empresanombre = new Paragraph(Descripcion(empresa, "nombrejuridico")).SetFont(font).SetFontSize(11f).SetMarginTop(-4);
             Paragraph empresanit = new Paragraph("NIT: "+Descripcion(empresa,"nit")).SetFontSize(8f).SetMarginTop(-4);
