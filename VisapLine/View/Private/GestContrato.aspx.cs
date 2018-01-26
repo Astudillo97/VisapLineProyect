@@ -37,13 +37,17 @@ namespace VisapLine.View.Private
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            DataRow dat = Validar.Consulta(terc.ConsultarPersonaIdenti(texboxdni.Text)).Rows[0];
 
+            //for (int i = 0; i < 10000; i++)
+            //{
+            //    contrat.insertpruebaconexion();
+            //}
+
+
+            DataRow dat = Validar.Consulta(terc.ConsultarPersonaIdenti(texboxdni.Text)).Rows[0];
             DataRow datcont = Validar.Consulta(terc.ConsultarPersonaIdenti(dat["idterceros"].ToString())).Rows[0];
 
-
-
-
+   
 
         }
 
@@ -53,6 +57,11 @@ namespace VisapLine.View.Private
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cargartabla()
         {
 
         }
