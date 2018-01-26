@@ -39,7 +39,7 @@ namespace VisapLine.Model
         }
         public DataTable ConsultarContratoIdTercero(Contrato bar)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from pr_consultarcontratoidallter('"+bar.terceros_idterceros+"')");
         }
 
         public bool RegistrarContrato(Contrato cont)

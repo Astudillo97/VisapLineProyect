@@ -301,14 +301,14 @@ namespace VisapLine.View.Private
                 Labelcedulacontrato.Text = datcont["identificacion"].ToString();
                 Labelcorreocontrato.Text = datcont["correo"].ToString();
                 Labeldireccioncontrato.Text = datcont["direccion"].ToString();
-                Alerta.Visible = false;
-                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                Alerta.Visible = false;            
                 iddivnatural.Visible = false;
                 iddivcorporativo.Visible = false;
                 iddivempresa.Visible = false;
                 tablanatural.Visible = true;
                 cargartabla(datcont["idterceros"].ToString());
                 cargartablasucursal(datcont["idterceros"].ToString());
+                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
             }
             catch (Exception ex)
             {

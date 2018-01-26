@@ -69,7 +69,6 @@ namespace VisapLine.View.Private
         {
             try
             {
-
                 zonaplan.Items.Clear();
                 zonaplan.Items.Add(new ListItem("Seleccione", "Seleccione"));
                 zn.municipio_idmunicipio = Validar.validarselected(municipioplan.SelectedValue);
@@ -202,8 +201,10 @@ namespace VisapLine.View.Private
             GridView1.DataBind();
         }
 
-    
-        
-        
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            cargartabla();
+        }
     }
 }
