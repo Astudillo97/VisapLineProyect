@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="GestContrato.aspx.cs" Inherits="VisapLine.View.Private.GestContrato" %>
+﻿<%@ Page Title="" Language="C#" MaintainScrollPositionOnPostback="true" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="GestContrato.aspx.cs" Inherits="VisapLine.View.Private.GestContrato" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -18,7 +18,7 @@
     <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Buscar Contrato</h3>                
+                <h3 class="box-title">Buscar Contrato</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -44,47 +44,69 @@
         </div>
         <!-- /.row -->
 
+        <!-- /.box-header -->
+        <div class="row" id="divtablagestcontr" runat="server" visible="false">
+            <div class="box box-primary">
+                <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" OnRowDataBound="GridView1_RowDataBound" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                    <Columns>
+                        <asp:CommandField ShowSelectButton="true" />
+                        <asp:BoundField HeaderText="Codg" DataField="codigo" />
+                        <asp:BoundField HeaderText="Nombre" DataField="nombreter" />
+                        <asp:BoundField HeaderText="Fecha" DataFormatString="{0:d}" DataField="fechacontrato" />
+                        <asp:BoundField HeaderText="Estado" DataField="estadoc" />
+                        <asp:BoundField HeaderText="Direccion" DataField="direnviofactura" />
+                        <asp:BoundField HeaderText="Envio Factura" DataField="enviofactura" />
+                        <asp:BoundField HeaderText="Observacion" DataField="observacion" />
+                        <asp:BoundField HeaderText="Valor" DataField="valor" />
+                    </Columns>
+                    <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
-        <div class="row">
-            <div class="col-md-6 col-12">
-                <div class="form-group row">
-                    <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped" OnRowDataBound="GridView1_RowDataBound" CellPadding="4" ForeColor="#333333" GridLines="None">
-                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-                        <Columns>
-                            <asp:CommandField ShowSelectButton="true" />
-                            <asp:BoundField HeaderText="Codg" DataField="codigo" />
-                            <asp:BoundField HeaderText="Fecha" DataField="fechacontrato" />
-                            <asp:BoundField HeaderText="Estado" DataField="estadoc" />
-                            <asp:BoundField HeaderText="Direccion" DataField="direnviofactura" />
-                            <asp:BoundField HeaderText="Envio Factura" DataField="enviofactura" />
-                            <asp:BoundField HeaderText="Observacion" DataField="observacion" />
+                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
+                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-                        </Columns>
-                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+                    <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
 
-                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+                    <RowStyle BackColor="#EFF3FB"></RowStyle>
 
-                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
 
-                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+                    <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
 
-                        <RowStyle BackColor="#EFF3FB"></RowStyle>
+                    <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
 
-                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+                    <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
 
-                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
-
-                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
-
-                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
-
-                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
-                    </asp:GridView>
-                </div>
+                    <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                </asp:GridView>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Contrato</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="form-group row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-sm-4 col-form-label">Nombre:</label>
+                                        <div class="col-sm-9">
+                                            <asp:TextBox ID="TextBoxnombrecontra" runat="server" class="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+        </div>
     </section>
 
 </asp:Content>

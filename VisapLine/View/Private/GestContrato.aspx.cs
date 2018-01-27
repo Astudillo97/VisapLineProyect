@@ -27,7 +27,6 @@ namespace VisapLine.View.Private
         Sucursal scsal = new Sucursal();
         Contrato contrat = new Contrato();
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -37,20 +36,27 @@ namespace VisapLine.View.Private
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
             //for (int i = 0; i < 10000; i++)
             //{
             //    contrat.insertpruebaconexion();
             //}
+            try
+            {
 
+                DataRow dat = Validar.Consulta(terc.ConsultarPersonaIdenti(texboxdni.Text)).Rows[0];
+                contrat.terceros_idterceros = dat["idterceros"].ToString();
+                DataTable datcont = Validar.Consulta(contrat.ConsultarContratoIdTercero(contrat));
+                GridView1.DataSource = datcont;
+                GridView1.DataBind();
+                divtablagestcontr.Visible = true;
 
-            DataRow dat = Validar.Consulta(terc.ConsultarPersonaIdenti(texboxdni.Text)).Rows[0];
-            contrat.terceros_idterceros= dat["idterceros"].ToString();
-
-            DataTable datcont = Validar.Consulta(contrat.ConsultarContratoidtercero(contrat));
-            GridView1.DataSource = datcont;
-            GridView1.DataBind();
-
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
