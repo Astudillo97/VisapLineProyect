@@ -397,7 +397,6 @@
         <script src="../../Contenido/assets/vendor_plugins/weather-icons/WeatherIcon.js"></script>
 
 
-        <script src="../../Contenido/assets/vendor_components/jquery/dist/jquery.min.js"></script>
 
         <!-- Nuevos Insersiones -->
         <!-- DataTables -->

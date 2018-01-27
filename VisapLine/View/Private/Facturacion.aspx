@@ -4,12 +4,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
-        <h2>Facturación Individual
+        <h2>Facturación
         </h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
             <li class="breadcrumb-item"><a href="#">Facturación</a></li>
-            <li class="breadcrumb-item active">Individual</li>
+            <li class="breadcrumb-item active">Vistas</li>
         </ol>
     </section>
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success">
@@ -17,42 +17,87 @@
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
     <section class="content">
-        <div class="row">
-            <div class="col-12">
-                <div class="form-element">
-                    <div class="form-group row" id="dividentificacion">
-                        <label class="col-sm-2 col-form-label">Identificación</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="identificacion_" runat="server" placeholder="Nit o Identificación">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li><a class="active" id="pan1" href="#Resultado" data-toggle="tab">Facuración</a></li>
+                <li><a id="pan2" href="#Individual" data-toggle="tab">Facuración</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="active tab-pane" id="Resultado">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Facturas</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-group row" id="divnacimiento">
+                                        <label class="col-sm-1 col-form-label">Desde</label>
+                                        <div class="col-sm-3">
+                                            <input type="date" class="form-control" id="fecnac_" runat="server" placeholder="Apellido">
+                                        </div>
+                                        <label class="col-sm-1 col-form-label">Desde</label>
+                                        <div class="col-sm-3">
+                                            <input type="date" class="form-control" id="Date1" runat="server" placeholder="Apellido">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <button class="btn btn-success btn-lg">Buscar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary float-right" runat="server" onserverclick="ConsultarbyCedula">Consultar</button>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="Individual">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Facturas</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-group row" id="dividentificacion">
+                                        <label class="col-sm-2 col-form-label">Identificación</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="identificacion_" runat="server" placeholder="Nit o Identificación">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <button class="btn btn-primary float-right" runat="server" onserverclick="ConsultarbyCedula">Consultar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="box-body">
-            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" OnRowCommand="listContrato_RowCommand" AutoGenerateColumns="false" ID="listContrato">
-                <Columns>
-                    <asp:BoundField DataField="codigo" HeaderText="Codigo"></asp:BoundField>
-                    <asp:TemplateField HeaderText="Direccion">
-                        <ItemTemplate>
-                            <label runat="server"><%#Eval("sucur_direccion") %> <%#Eval("nombre") %></label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="detalle" HeaderText="Plan"></asp:BoundField>
-                    <asp:BoundField DataField="valor" HeaderText="Valor"></asp:BoundField>
-                    <asp:BoundField DataField="estadoc" HeaderText="Estado"></asp:BoundField>
-                    <asp:BoundField DataField="facturaunica" HeaderText="Factruación"></asp:BoundField>
-                    <asp:TemplateField HeaderText="Factura">
-                        <ItemTemplate>
-                            <asp:Button runat="server" class="btn btn-primary" CommandName="ver" CommandArgument='<%# Eval("idcontrato") %>' Text="Ver" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
+        <div class="tab-pane">
+            <div class="box box-primary">
+                <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" OnRowCommand="listContrato_RowCommand" AutoGenerateColumns="false" ID="listContrato">
+                    <Columns>
+                        <asp:BoundField DataField="codigo" HeaderText="Codigo"></asp:BoundField>
+                        <asp:TemplateField HeaderText="Direccion">
+                            <ItemTemplate>
+                                <label runat="server"><%#Eval("sucur_direccion") %> <%#Eval("nombre") %></label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="detalle" HeaderText="Plan"></asp:BoundField>
+                        <asp:BoundField DataField="valor" HeaderText="Valor"></asp:BoundField>
+                        <asp:BoundField DataField="estadoc" HeaderText="Estado"></asp:BoundField>
+                        <asp:BoundField DataField="facturaunica" HeaderText="Factruación"></asp:BoundField>
+                        <asp:TemplateField HeaderText="Factura">
+                            <ItemTemplate>
+                                <asp:Button runat="server" class="btn btn-primary" CommandName="ver" CommandArgument='<%# Eval("idcontrato") %>' Text="Ver" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
         </div>
+
         <div class="box-body">
             <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" ID="listFacturas" OnRowCommand="listFacturas_RowCommand" AutoGenerateColumns="False">
                 <Columns>
