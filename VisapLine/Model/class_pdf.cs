@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -41,7 +42,7 @@ namespace VisapLine.Model
         {
             data.PrimaryKey = new DataColumn[] { data.Columns["descripcion"] };
             DataRow dat = data.Rows.Find(key);
-            return dat["dato1"].ToString();
+            return dat["valor1"].ToString();
         }
 
         public static string GenerarNombrePdf(string dat)
@@ -50,13 +51,13 @@ namespace VisapLine.Model
             return dateTime.Year + "" + dateTime.Month + "" + dateTime.Day + "" + dateTime.Hour + "" + dateTime.Minute + "-" + dat + ".pdf";
         }
 
-        public string CrearFactura(DataTable empresa,DataRow tercero,DataRow contrat, DataRow facture, DataTable detalle)
+        public string CrearFactura(DataTable empresa,DataRow datos)
         {
             //Redireccion a la carpeta del proyecto
             string path = HttpContext.Current.Server.MapPath("~");
             string FONT = path + "Archivos\\FreeSans.ttf";
             string dir = "Archivos\\";
-            string name = GenerarNombrePdf("s");
+            string name = GenerarNombrePdf(datos["facturaventa"].ToString());
             //creacion del documento pdf
             PdfDocument documento = new PdfDocument(new PdfWriter(path+dir+name));
             Document doc = new Document(documento, PageSize.LETTER);
@@ -64,7 +65,7 @@ namespace VisapLine.Model
 
             ////Definicion del encabezado
             Table header = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
-            Image imagen = new Image(ImageDataFactory.Create(path+Descripcion(empresa,"logo"))).SetWidth(UnitValue.CreatePercentValue(100));
+            Image imagen = new Image(ImageDataFactory.Create(path+dir+Descripcion(empresa,"logo"))).SetWidth(UnitValue.CreatePercentValue(100));
 
             ////Celda hizaquierda de la factura
             Cell logo = new Cell().SetBorder(Border.NO_BORDER).SetWidth(UnitValue.CreatePercentValue(25));
@@ -103,9 +104,9 @@ namespace VisapLine.Model
             subfactura.AddCell(subfacizq);
 
             Cell subfacder = new Cell().SetWidth(UnitValue.CreatePercentValue(45)).SetTextAlignment(TextAlignment.RIGHT).SetBorder(Border.NO_BORDER);
-            Paragraph facturadeventavalue = new Paragraph("FS-11478").SetFontSize(10f);
-            Paragraph fechaemisionvalue = new Paragraph("01/09/2017").SetFontSize(10f);
-            Paragraph periodovalue = new Paragraph("SEPTIEMBRE 2017").SetFontSize(10f);
+            Paragraph facturadeventavalue = new Paragraph("FS-"+ datos["facturaventa"].ToString()).SetFontSize(10f);
+            Paragraph fechaemisionvalue = new Paragraph(datos["fechaemision"].ToString()).SetFontSize(10f);
+            Paragraph periodovalue = new Paragraph(Convert.ToDateTime( datos["fechavencimiento"].ToString()).ToString("Y",CultureInfo.CreateSpecificCulture("es-co"))).SetFontSize(10f);
             subfacder.Add(facturadeventavalue);
             subfacder.Add(fechaemisionvalue);
             subfacder.Add(periodovalue);
@@ -129,25 +130,27 @@ namespace VisapLine.Model
             Cell encHiz = new Cell().SetWidth(UnitValue.CreatePercentValue(37)).SetBorder(Border.NO_BORDER);
             Cell codigobarra = new Cell().SetWidth(UnitValue.CreatePercentValue(100)).SetHeight(50);
 
-            String code = "00174-FS-11748";
+            String code = "00"+datos["idterceros"].ToString()+"-FS-" +datos["facturaventa"].ToString();
             Barcode128 code128 = new Barcode128(documento);
             code128.SetCode(code);
+            code128.SetSize(9);
             code128.SetTextAlignment(10);
             code128.SetCodeType(Barcode128.CODE128);
-            Image code128Image = new Image(code128.CreateFormXObject(documento)).SetWidth(UnitValue.CreatePercentValue(100));
+            Image code128Image = new Image(code128.CreateFormXObject(documento)).SetWidth(UnitValue.CreatePercentValue(100)).SetHeight(50);
             codigobarra.Add(code128Image);
 
             encHiz.Add(codigobarra);
             Cell imagenpublic = new Cell().SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
-            Image publicidad = new Image(ImageDataFactory.Create(Descripcion(empresa,"publicidad"))).SetWidth(UnitValue.CreatePercentValue(100));
+            Image publicidad = new Image(ImageDataFactory.Create(path + dir + Descripcion(empresa,"publicidad"))).SetWidth(UnitValue.CreatePercentValue(100));
             imagenpublic.Add(publicidad);
             encHiz.Add(imagenpublic);
 
             ////Tabla de informacion del tercero
             Cell encDer = new Cell().SetWidth(UnitValue.CreatePercentValue(63)).SetFontSize(8f).SetBorder(Border.NO_BORDER);
             Cell informtercero = new Cell().SetWidth(UnitValue.CreatePercentValue(100));
-            Paragraph terceronombre = new Paragraph("CENTRAL ADMINISTRATIVA Y CONTABLE CENAC - BRIGADA XII CONTRATO2");
-            Paragraph terceroidentficacion = new Paragraph("C.C./NIT: 8080134212-1");
+            Paragraph terceronombre = new Paragraph(datos["nombre"].ToString()+" "+ datos["apellido"].ToString());
+            Paragraph terceroidentficacion = new Paragraph("NIT/CC:"+datos["identificacion"].ToString());
+
             Paragraph tercerodireccion = new Paragraph("CL 15 CR 16-92 BARRIO EL CENTRO");
             Paragraph tercerotelefono = new Paragraph("TELEFONOS: 32134441232");
             informtercero.Add(terceronombre).Add(terceroidentficacion).Add(tercerodireccion).Add(tercerotelefono);

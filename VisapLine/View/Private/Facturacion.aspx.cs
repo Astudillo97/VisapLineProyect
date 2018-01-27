@@ -21,7 +21,7 @@ namespace VisapLine.View.Private
         CargoAdicional ca = new CargoAdicional();
         DataTable tablepersona = new DataTable();
         DataTable tablecontrato = new DataTable();
-        DataTable tabledactura = new DataTable();
+        DataTable tablefactura = new DataTable();
         DataTable tabledetalle = new DataTable();
         static string terceroselected;
         static string contratoselected;
@@ -30,7 +30,9 @@ namespace VisapLine.View.Private
         {
             try
             {
-
+                tablefactura= fact.ConsultarFacturas("null::date", "null::date", "null::character varying", "null::integer", "10");
+                allfactura.DataSource = tablefactura;
+                allfactura.DataBind();
             }
             catch (Exception ex)
             {
@@ -53,7 +55,7 @@ namespace VisapLine.View.Private
                 listContrato.DataBind();
                 Alerta.Visible = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Limpiar(listContrato);
                 Limpiar(listFacturas);
@@ -66,69 +68,11 @@ namespace VisapLine.View.Private
             list.DataSource = null;
         }
 
-
-
-        protected void listContrato_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void allfactura_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            try
-            {
-                if (e.CommandName.ToString() == "ver")
-                {
-                    string dat = e.CommandArgument.ToString();
-                    contratoselected = dat;
-                    fact.contrato_idcontrato = dat;
-                    listFacturas.DataSource = Validar.Consulta(fact.ConsultarFacturaIdContrato(fact));
-                    listFacturas.DataBind();
-
-                }
-            }
-            catch (Exception)
-            {
-                Limpiar(listFacturas);
-            }
-        }
-
-        protected void listFacturas_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            try
-            {
-                if (e.CommandName.ToString() == "ver")
-                {
-                    string dat = e.CommandArgument.ToString();
-                    facturaselected = dat;
-                    det.factura_idfactura = dat;
-                    listDetalle.DataSource = Validar.Consulta(det.ConsultarDetalleIdFactura(det));
-                    listDetalle.DataBind();
-                }
-            }
-            catch (Exception)
-            {
-                
-            }
-        }
-
-        protected void CrearFactura_(object sender, EventArgs e)
-        {
-            try
-            {
-                DataTable datEmpresa = empresa.ConsultarEmpresa();
-                terc.identificacion = identificacion_.Value;
-                DataRow tercerose= Validar.Consulta(terc.ConsultarPersonaIdentifall(terc)).Rows[0];
-                contrato.idcontrato = contratoselected;
-                DataRow contrat = contrato.ConsultarContratoidcontrato(contrato).Rows[0];
-                fact.contrato_idcontrato = facturaselected;
-                DataRow datfactura= Validar.Consulta(fact.ConsultarFacturaIdContrato(fact)).Rows[0];
-                ca.contrato_idcontrato_cargo = contrat["idcontrato"].ToString();
-                DataTable datdetalle = ca.ConsultarCargosIdContrato(ca);
-
-                pdf.CrearFactura(datEmpresa,tercerose,contrat,datfactura,datdetalle);
-            }
-            catch (Exception ex)
-            {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
-            }
+            DataRow dat = tablefactura.Rows[e.RowIndex];
+            string referen= pdf.CrearFactura(empresa.ConsultarEmpresa(), dat);
+            Response.Redirect("../../Archivos/"+referen);
         }
     }
 }

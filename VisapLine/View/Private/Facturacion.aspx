@@ -19,8 +19,8 @@
     <section class="content">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li><a class="active" id="pan1" href="#Resultado" data-toggle="tab">Facuración</a></li>
-                <li><a id="pan2" href="#Individual" data-toggle="tab">Facuración</a></li>
+                <li><a class="active" id="pan1" href="#Resultado" data-toggle="tab">FACTURACION DEL MES</a></li>
+                <li><a id="pan2" href="#Individual" data-toggle="tab">BUSQUEDA</a></li>
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="Resultado">
@@ -32,23 +32,22 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="form-group row" id="divnacimiento">
-                                        <label class="col-sm-1 col-form-label">Desde</label>
+                                        <label class="col-sm-1 col-form-label">Desde: </label>
                                         <div class="col-sm-3">
-                                            <input type="date" class="form-control" id="fecnac_" runat="server" placeholder="Apellido">
+                                            <input type="date" class="form-control" id="fecinicio_" runat="server" placeholder="">
                                         </div>
-                                        <label class="col-sm-1 col-form-label">Desde</label>
+                                        <label class="col-sm-1 col-form-label">Hasta: </label>
                                         <div class="col-sm-3">
-                                            <input type="date" class="form-control" id="Date1" runat="server" placeholder="Apellido">
+                                            <input type="date" class="form-control" id="fecfin_" runat="server" placeholder="">
                                         </div>
                                         <div class="col-sm-4">
-                                            <button class="btn btn-success btn-lg">Buscar</button>
+                                            <button class="btn btn-success btn-lg">Buscar en rango de fechas</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="tab-pane" id="Individual">
                     <div class="row">
@@ -59,12 +58,16 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="form-group row" id="dividentificacion">
-                                        <label class="col-sm-2 col-form-label">Identificación</label>
-                                        <div class="col-sm-8">
+                                        <label class="col-sm-2 col-form-label">IDENTIFICACIÓN</label>
+                                        <div class="col-sm-3">
                                             <input type="text" class="form-control" id="identificacion_" runat="server" placeholder="Nit o Identificación">
                                         </div>
+                                        <label class="col-sm-2 col-form-label">FS-CODIGO</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="codigofact_" runat="server" placeholder="Codigo de factura">
+                                        </div>
                                         <div class="col-sm-2">
-                                            <button class="btn btn-primary float-right" runat="server" onserverclick="ConsultarbyCedula">Consultar</button>
+                                            <button class="btn btn-success btn-lg" runat="server" onserverclick="ConsultarbyCedula">BUSCAR FACTURA</button>
                                         </div>
                                     </div>
                                 </div>
@@ -74,9 +77,30 @@
                 </div>
             </div>
         </div>
+         <div class="tab-pane">
+            <div class="box box-primary">
+                <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" OnRowDeleting="allfactura_RowDeleting"  AutoGenerateColumns="False" ID="allfactura">
+                    <Columns>
+                        <asp:BoundField DataField="codigo" HeaderText="Contrato"></asp:BoundField>
+                        <asp:BoundField DataField="identificacion" HeaderText="NIT/IDENTIF"></asp:BoundField>
+                        <asp:TemplateField HeaderText="Tercero">
+                            <ItemTemplate>
+                                <label runat="server"><%#Eval("nombre") %> <%#Eval("apellido") %></label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="correo" HeaderText="Correo"></asp:BoundField>
+                        <asp:BoundField DataField="fechaemision" DataFormatString="{0:d}" HeaderText="Emision"></asp:BoundField>
+                        <asp:BoundField DataField="estadof" HeaderText="Estado"></asp:BoundField>
+                        <asp:BoundField DataField="totalfac" HeaderText="Valor"></asp:BoundField>
+                        <asp:CommandField ShowDeleteButton="True" InsertImageUrl="~/Contenido/images/icons/eliminar.png"></asp:CommandField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+
         <div class="tab-pane">
             <div class="box box-primary">
-                <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" OnRowCommand="listContrato_RowCommand" AutoGenerateColumns="false" ID="listContrato">
+                <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" ID="listContrato">
                     <Columns>
                         <asp:BoundField DataField="codigo" HeaderText="Codigo"></asp:BoundField>
                         <asp:TemplateField HeaderText="Direccion">
@@ -99,7 +123,7 @@
         </div>
 
         <div class="box-body">
-            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" ID="listFacturas" OnRowCommand="listFacturas_RowCommand" AutoGenerateColumns="False">
+            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" ID="listFacturas" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField DataField="facturaventa" HeaderText="Factura"></asp:BoundField>
                     <asp:BoundField DataField="fechaemision" HeaderText="Emisi&#243;n"></asp:BoundField>
@@ -129,7 +153,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <a href="#" class="btn btn-primary" runat="server" onserverclick="CrearFactura_">Crear Factura</a>
+                        <a href="#" class="btn btn-primary" runat="server">Crear Factura</a>
                     </div>
                 </div>
             </div>

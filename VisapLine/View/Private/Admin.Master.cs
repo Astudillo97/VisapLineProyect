@@ -38,6 +38,10 @@ namespace VisapLine.View.Private
                     }
                     CargarMenu(Session["idrol"].ToString());
                 }
+                else
+                {
+                    Response.Redirect("../Login/login.aspx");
+                }
             }
             catch (Exception ex)
             {
