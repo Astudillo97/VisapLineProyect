@@ -18,5 +18,15 @@ namespace VisapLine.Model
         public string personal_idpersonal_registra { get; set; }
         public string personal_idpersonal_atiende { get; set; }
         public string servicios_idservicios { get; set; }
+        public DataTable Consultarorden(string id) {
+            return data.ConsultarDatos("select * from pr_consultarcrdenvista('"+ id + "')"); ;
+        }
+        public DataTable cosnutlarlefonosorden(string id) {
+            return data.ConsultarDatos("select telefono from telefono where terceros_idterceros="+ id + "");
+        }
+        public DataTable Consultardetalleordesali(string id) {
+            return data.ConsultarDatos("SELECT * from public.pr_consultardetalleordensa('"+ id + "');");
+        }
+ 
     }
 }
