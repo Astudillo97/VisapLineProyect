@@ -16,5 +16,8 @@ namespace VisapLine.Model
         public string estado { get; set; }
         public string ordensalida_idordensalida { get; set; }
         public string inventario_idinventario { get; set; }
+        public DataTable insertardetallesalida(string cant,string inven, string orden) {
+            return data.ConsultarDatos("select * from pr_insertardetallesalida("+cant+",'"+ orden + "',"+ inven + ")"); 
+        }
     }
 }
