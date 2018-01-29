@@ -24,8 +24,6 @@ namespace VisapLine.View.Private
         DataTable tablefactura = new DataTable();
         DataTable tabledetalle = new DataTable();
         static string terceroselected;
-        static string contratoselected;
-        static string facturaselected;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -70,9 +68,19 @@ namespace VisapLine.View.Private
 
         protected void allfactura_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            DataRow dat = tablefactura.Rows[e.RowIndex];
-            string referen= pdf.CrearFactura(empresa.ConsultarEmpresa(), dat);
-            Response.Redirect("../../Archivos/"+referen);
+            try
+            {
+                DataRow dat = tablefactura.Rows[e.RowIndex];
+                string referen = pdf.CrearFactura(empresa.ConsultarEmpresa(), dat);
+                Response.Redirect("../../Archivos/" + referen);
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+            
         }
     }
 }
