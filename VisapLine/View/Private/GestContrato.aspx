@@ -82,120 +82,145 @@
                 </asp:GridView>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 col-12">
-                <div class="box box-default">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Contrato</h3>
-                    </div>
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-6 col-12">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Nombre:</label>
-                                    <div class="col-sm-8">
-                                        <div class="form-group row">
-                                            <asp:TextBox ID="TextBox1identificacion" class="form-control" Style="text-transform: uppercase" runat="server"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Estado:</label>
-                                    <div class="col-sm-8">
-                                        <div class="form-group row">
-                                            <asp:DropDownList ID="DropDownListestadocontrato" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem>Seleccione</asp:ListItem>
-                                                <asp:ListItem>Activo</asp:ListItem>
-                                                <asp:ListItem>Inactivo</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Plan:</label>
-                                    <div class="col-sm-8">
-                                        <div class="form-group row">
-                                            <asp:DropDownList ID="DropDownListplancontrato" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem>Seleccione</asp:ListItem>
-                                                <asp:ListItem>Activo</asp:ListItem>
-                                                <asp:ListItem>Inactivo</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Tipo Contrato:</label>
-                                    <div class="col-sm-8">
-                                        <div class="form-group row">
-                                            <asp:DropDownList ID="DropDownListtipocontrato" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem>Seleccione</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Iva:</label>
-                                    <div class="col-sm-8">
-                                        <div class="form-group row">
-                                            <asp:TextBox ID="TextBoxivacontrato" class="form-control" Style="text-transform: uppercase" runat="server"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Direccion de Envio:</label>
-                                    <div class="col-sm-8">
-                                        <div class="form-group row">
-                                            <asp:TextBox ID="TextBoxdirreccionenvio" class="form-control" Style="text-transform: uppercase" runat="server"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Envio Factura:</label>
-                                    <div class="col-sm-8">
-                                        <div class="form-group row">
-                                            <asp:DropDownList ID="DropDownListenviofactura" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem>Seleccione</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Factura:</label>
-                                    <div class="col-sm-8">
-                                        <div class="form-group row">
-                                            <asp:DropDownList ID="DropDownList1facuracuni" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem>Seleccione</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Sucursal:</label>
-                                    <div class="col-sm-8">
-                                        <div class="form-group row">
-                                            <asp:DropDownList ID="Sucursal" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem>Seleccione</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">barrio:</label>
-                                    <div class="col-sm-8">
-                                        <div class="form-group row">
-                                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem>Seleccione</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+        <div class="box box-default " id="ideditarcontrat" runat="server" visible="false">
+            <div class="box-header with-border">
+                <h2 class="box-title">Contrato</h2>
+                <div class="box-tools pull-right">
                 </div>
             </div>
 
+            <!-- /.box-header -->
+            <div class="box-body" style="">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Nombre:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <asp:TextBox ID="TextBox1identificacion" Enabled="false" class="form-control" Style="text-transform: uppercase" runat="server"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Estado:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <asp:DropDownList ID="DropDownListestadocontrato" Enabled="false" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem>Seleccione</asp:ListItem>
+                                        <asp:ListItem>Activo</asp:ListItem>
+                                        <asp:ListItem>Inactivo</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Plan:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <asp:DropDownList ID="DropDownListplancontrato" Enabled="false" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem>Seleccione</asp:ListItem>
+                                        <asp:ListItem>Activo</asp:ListItem>
+                                        <asp:ListItem>Inactivo</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Tipo Contrato:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <asp:DropDownList ID="DropDownListtipocontrato" Enabled="false" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem>Seleccione</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Direccion de Envio:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <asp:TextBox ID="TextBoxdirreccionenvio" Enabled="false" class="form-control" Style="text-transform: uppercase" runat="server"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 col-12">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Envio Factura:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <asp:DropDownList ID="DropDownListenviofactura" Enabled="false" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem>Seleccione</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Factura:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <asp:DropDownList ID="DropDownList1facuracuni" Enabled="false" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem>Seleccione</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Sucursal:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <asp:DropDownList ID="Sucursal" runat="server" Enabled="false" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem>Seleccione</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">barrio:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <asp:DropDownList ID="DropDownList1" runat="server" Enabled="false" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem>Seleccione</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Iva:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <asp:TextBox ID="TextBoxivacontrato" class="form-control" Enabled="false" Style="text-transform: uppercase" runat="server"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
+
+        <center>
+            <table>
+                <tr>
+                    <th>
+                        <asp:Button ID="Buttoneditar" runat="server" Visible="false" Text="Editar" class="btn btn-block btn-info btn-lg" Width="143px" Height="30px" /></th>
+                    <th>
+                        <asp:Button ID="ButtonGuardar" runat="server" Visible="false" Enabled="false" Text="Guardar" class="btn btn-block btn-success btn-lg" Width="143px" Height="30px" /></th>
+                    <th>
+                        <asp:Button ID="Buttoncancelar" runat="server" Visible="false" Enabled="false" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="143px" Height="30px" /></th>
+                </tr>
+
+            </table>
+ 
+</center>
+
     </section>
 
 </asp:Content>

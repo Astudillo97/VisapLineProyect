@@ -36,6 +36,8 @@ namespace VisapLine.View.Private
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+
+
             //for (int i = 0; i < 10000; i++)
             //{
             //    contrat.insertpruebaconexion();
@@ -49,7 +51,7 @@ namespace VisapLine.View.Private
                 GridView1.DataSource = datcont;
                 GridView1.DataBind();
                 divtablagestcontr.Visible = true;
-
+             
             }
             catch (Exception ex)
             {
@@ -66,6 +68,14 @@ namespace VisapLine.View.Private
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ideditarcontrat.Visible = true;
+            Buttoneditar.Visible = true;
+            Buttoncancelar.Visible = true;
+            ButtonGuardar.Visible = true;
+            GridViewRow gridw = GridView1.SelectedRow;
+
+
+
 
         }
 
