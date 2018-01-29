@@ -65,5 +65,9 @@ namespace VisapLine.Model
             return data.OperarDatos("select * from pr_insertarpruebaconexion('varaaaada','aedewdqw',123122)");
 
         }
+        public DataTable ConsultarContratocodigo(Contrato cont)
+        {
+            return data.ConsultarDatos("select * from pr_consultarcontratocod(" + cont.codigo + ")");
+        }
     }
 }

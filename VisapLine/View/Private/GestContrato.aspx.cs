@@ -73,6 +73,11 @@ namespace VisapLine.View.Private
             Buttoncancelar.Visible = true;
             ButtonGuardar.Visible = true;
             GridViewRow gridw = GridView1.SelectedRow;
+            TextBox1identificacion.Text = gridw.Cells[2].Text;
+            contrat.codigo = gridw.Cells[1].Text;
+            DataRow dt= Validar.Consulta(contrat.ConsultarContratocodigo(contrat)).Rows[0];
+
+
 
 
 
