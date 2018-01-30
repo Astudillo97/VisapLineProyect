@@ -13,73 +13,93 @@
         <h2>ORDENES DE SERVICIO</h2>
     </section>
     <section class="content">
-        <div class="box box-body">
-
-
-
-            <div class="form-group container-fluid">
-                <div class="row col-">
-                    <asp:FormView ID="formordenes" runat="server">
-                        <ItemTemplate>
-                            <asp:TextBox ID="idserve" runat="server" Visible="false"></asp:TextBox>
-                            <table class="table table-bordered">
-                                <tr>
-                                    <td>
-                                        <asp:Label ID="lblcodserv" runat="server" Text="CODIGO: "></asp:Label>
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txbcodserv" runat="server" Text="" ReadOnly="true"></asp:TextBox>
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lblfrserv" runat="server" Text="FECHA REGISTRO: "></asp:Label>
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txbfrserv" runat="server" Text="" ReadOnly="true"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Label ID="lbldrccserv" runat="server" Text="DIRECCION : "></asp:Label>
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txbdrccserv" runat="server" Text="" ReadOnly="true"></asp:TextBox>
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lblbrrserv" runat="server" Text="BARRIO : "></asp:Label>
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txbbrrserv" runat="server" Text="" ReadOnly="true"></asp:TextBox>
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lblmnpserv" runat="server" Text="MUNICIPIO : "></asp:Label>
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txbmnpserv" runat="server" Text="" ReadOnly="true"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Label ID="lblcrrserv" runat="server" Text="CORREO : "></asp:Label>
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txbcrrserv" runat="server" Text="" ReadOnly="true"></asp:TextBox>
-                                    </td>
-                                </tr>
-                            </table>
-
-                        </ItemTemplate>
-                    </asp:FormView>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <asp:GridView CssClass="table table-bordered" ID="gridtelefono" runat="server"></asp:GridView>
-                    </div>
-                </div>
+        <div class="form-group container-fluid box box-body">
+            <div class="row col">
+                <asp:Label ID="lbl12" Text="CODIGO DE SERVICIO" runat="server"></asp:Label>
+                <asp:TextBox ID="Borden" CssClass="form-control col-3 border-left-0 border-top-0 border-right-0" runat="server"></asp:TextBox>
+                <asp:Button ID="btnconsultar" CssClass="btn btn-success" runat="server" Text="CONSULTAR" OnClick="btnconsultar_Click" />
             </div>
         </div>
+        <div id="divconten" runat="server" class="box box-body">
+            <div class="form-group container-fluid">
+                <table class="table table-responsive no-border" border="0">
+                    <tr>
+                        <td colspan="10">
+                    <div class="row col-">
+                        <asp:FormView ID="formordenes" runat="server">
+                            <ItemTemplate>
+                                <asp:TextBox ID="idserve" runat="server" Visible="false"></asp:TextBox>
+                                <table class="table" border="0">
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="lblcodserv" runat="server" Text="CODIGO "></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txbcodserv" CssClass="form-control no-border" runat="server" Text='<%#valosal %>' ReadOnly="true"></asp:TextBox>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblfrserv" runat="server" Text="FECHA REGISTRO "></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txbfrserv" CssClass="form-control no-border" runat="server" Text='<%# DateTime.Parse(Eval("fecha_registroval").ToString()).ToShortDateString() %>' ReadOnly="true"></asp:TextBox>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="Label1" runat="server" Text="SOLICITANTE "></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control no-border" Text='<%#Eval("nombreval") %>' ReadOnly="true"></asp:TextBox>
+                                            <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control no-border" Text='<%#Eval("apellidoval") %>' ReadOnly="true"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="lbldrccserv" runat="server" Text="DIRECCION  "></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txbdrccserv" runat="server" CssClass="form-control no-border" Text='<%#Eval("direccionval") %>' ReadOnly="true"></asp:TextBox>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblbrrserv" runat="server" Text="BARRIO  "></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txbbrrserv" runat="server" CssClass="form-control no-border" Text='<%#Eval("barrioval") %>' ReadOnly="true"></asp:TextBox>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblmnpserv" runat="server" Text="MUNICIPIO  "></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txbmnpserv" runat="server" CssClass="form-control no-border" Text='<%#Eval("municipiovl") %>' ReadOnly="true"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="lblcrrserv" runat="server" Text="CORREO  "></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txbcrrserv" runat="server" CssClass="form-control no-border" Text='<%#Eval("correoval") %>' ReadOnly="true"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </ItemTemplate>
+                        </asp:FormView>
+                    </div>
+                            </td>
+                        <td>
+                    <div class="row">
+                        <div class="form-group">
+                            <asp:GridView CssClass="table no-border" BorderColor="White" ID="gridtelefono" runat="server"></asp:GridView>
+                        </div>
+                    </div>
+                            </td>
+                        </tr>
+                </table>
+            </div>
+
+        
         <div class="box box-body">
             <button type="button" id="but" class="btn btn-primary" data-toggle="modal" data-target="#mymodal">
-                +
+               AGREGAR PRODUCTO +
             </button>
             <div class="modal fade" id="mymodal" data-backdrop="”static”">
                 <div class="modal-dialog" role="document">
@@ -90,23 +110,23 @@
                                 <span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
-                            <asp:DropDownList ID="droptiporduc" runat="server" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="droptiporduc_SelectedIndexChanged"></asp:DropDownList>
-                            <asp:GridView AutoGenerateColumns="false" ID="inventariogrid" runat="server">
+                            <asp:DropDownList CssClass="form-control dropdown-toggle" ID="droptiporduc" runat="server" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="droptiporduc_SelectedIndexChanged"></asp:DropDownList>
+                            <asp:GridView CssClass="table no-border" AutoGenerateColumns="false" ID="inventariogrid" runat="server">
                                 <Columns>
                                     <asp:BoundField HeaderText="CODIGO" DataField="idinventario" />
                                     <asp:BoundField HeaderText="DESCRIPCION" DataField="descripcion" />
                                     <asp:TemplateField HeaderText="CANTIDAD">
                                         <ItemTemplate>
-                                            <asp:TextBox ID="txbcanti" runat="server"></asp:TextBox>
+                                            <asp:TextBox TextMode="Number" CssClass="form-control border-left-0 border-top-0 border-right-0" ID="txbcanti" runat="server"></asp:TextBox>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
-                            <asp:Button ID="addinvent" runat="server" OnClick="addinvent_Click" />
-                        </div>
+                           </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
-                            <button type="button" class="btn btn-primary float-right">AGREGAR</button>
+                             <asp:Button ID="addinvent" runat="server" class="btn btn-primary float-right" OnClick="addinvent_Click" Text="AGREGAR" />
+                        
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -121,7 +141,7 @@
                 </Columns>
             </asp:GridView>
         </div>
-
+</div>
     </section>
 
 </asp:Content>

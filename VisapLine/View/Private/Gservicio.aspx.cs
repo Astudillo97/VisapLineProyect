@@ -13,15 +13,11 @@ namespace VisapLine.View.Private
         OrdenSalida ord = new OrdenSalida();
         DetalleSalida dsord = new DetalleSalida();
         TipoProducto tp = new TipoProducto();
+        public static string valosal;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                DataTable consulta = ord.Consultarorden("INS-22412018");
-                formordenes.DataSource = consulta;
-                formordenes.DataBind();
-                Llenargrid(consulta.Rows[0][7].ToString());
-                llenardetalle();
-                Llenardrop();
+                
             }
         }
         protected void Llenargrid(string dato) {
@@ -30,7 +26,7 @@ namespace VisapLine.View.Private
         }
         protected void llenardetalle()
         {
-            GridViewdeta.DataSource = ord.Consultardetalleordesali("INS-22412018");
+            GridViewdeta.DataSource = ord.Consultardetalleordesali(valosal);
             GridViewdeta.DataBind();
         }
         protected void Llenardrop(){
@@ -50,8 +46,19 @@ namespace VisapLine.View.Private
         protected void addinvent_Click(object sender, EventArgs e)
         {
             TextBox tcant = (TextBox)inventariogrid.Rows[0].Cells[2].FindControl("txbcanti");     
-            dsord.insertardetallesalida(tcant.Text, inventariogrid.Rows[0].Cells[0].Text, "INS-22412018");
+            dsord.insertardetallesalida(tcant.Text, inventariogrid.Rows[0].Cells[0].Text, valosal);
             llenardetalle();
+        }
+
+        protected void btnconsultar_Click(object sender, EventArgs e)
+        {
+            valosal = Borden.Text;
+            DataTable consulta = ord.Consultarorden(valosal);
+            formordenes.DataSource = consulta;
+            formordenes.DataBind();
+            Llenargrid(consulta.Rows[0][7].ToString());
+            llenardetalle();
+            Llenardrop();
         }
     }
 }
