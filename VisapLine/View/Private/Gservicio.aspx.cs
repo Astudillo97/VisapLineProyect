@@ -51,7 +51,7 @@ namespace VisapLine.View.Private
         {
             TextBox tcant = (TextBox)inventariogrid.Rows[0].Cells[2].FindControl("txbcanti");     
             dsord.insertardetallesalida(tcant.Text, inventariogrid.Rows[0].Cells[0].Text, "INS-22412018");
-            llenardetalle()
+            llenardetalle();
         }
     }
 }

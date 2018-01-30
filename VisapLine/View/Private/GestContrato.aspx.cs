@@ -76,8 +76,15 @@ namespace VisapLine.View.Private
             TextBox1identificacion.Text = gridw.Cells[2].Text;
             contrat.codigo = gridw.Cells[1].Text;
             DataRow dt= Validar.Consulta(contrat.ConsultarContratocodigo(contrat)).Rows[0];
-
-
+            DropDownListestadocontrato.Text = dt["estadoc"].ToString();
+            DropDownListplancontrato.SelectedValue = dt["detalle"].ToString();
+            DropDownListtipocontrato.Text= dt["tipocontrato"].ToString();
+            TextBoxdirreccionenvio.Text = dt["direnviofactura"].ToString();
+            DropDownListenviofactura.Text = dt["enviofactura"].ToString();
+            DropDownList1facuracuni.Text = dt["facturaunica"].ToString();
+            Sucursal.Text = dt["nombresucur"].ToString();
+            DropDownList1.Text= dt["barrio_fac_idbarrio"].ToString();
+            TextBoxivacontrato.Text = dt["iva"].ToString();
 
 
 
