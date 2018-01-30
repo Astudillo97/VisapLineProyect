@@ -108,8 +108,8 @@
                                 <div class="form-group row">
                                     <asp:DropDownList ID="DropDownListestadocontrato" Enabled="false" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                         <asp:ListItem>Seleccione</asp:ListItem>
-                                        <asp:ListItem>Activo</asp:ListItem>
-                                        <asp:ListItem>Inactivo</asp:ListItem>
+                                        <asp:ListItem>ACTIVO</asp:ListItem>
+                                        <asp:ListItem>INACTIVO</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -119,9 +119,7 @@
                             <div class="col-sm-8">
                                 <div class="form-group row">
                                     <asp:DropDownList ID="DropDownListplancontrato" Enabled="false" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                        <asp:ListItem>Seleccione</asp:ListItem>
-                                        <asp:ListItem>Activo</asp:ListItem>
-                                        <asp:ListItem>Inactivo</asp:ListItem>
+                                        <asp:ListItem>Seleccione</asp:ListItem>                                     
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -155,6 +153,8 @@
                                 <div class="form-group row">
                                     <asp:DropDownList ID="DropDownListenviofactura" Enabled="false" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                         <asp:ListItem>Seleccione</asp:ListItem>
+                                       <asp:ListItem>CORREO</asp:ListItem>
+                                            <asp:ListItem>DOMICILIO</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -165,6 +165,8 @@
                                 <div class="form-group row">
                                     <asp:DropDownList ID="DropDownList1facuracuni" Enabled="false" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                         <asp:ListItem>Seleccione</asp:ListItem>
+                                          <asp:ListItem>UNICA</asp:ListItem>
+                                            <asp:ListItem>GRUPAL</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -210,16 +212,15 @@
             <table>
                 <tr>
                     <th>
-                        <asp:Button ID="Buttoneditar" runat="server" Visible="false" Text="Editar" class="btn btn-block btn-info btn-lg" Width="143px" Height="30px" /></th>
+                        <asp:Button ID="Buttoneditar" runat="server" Visible="false" Text="Editar" class="btn btn-block btn-info btn-lg" Width="143px" Height="30px" OnClick="Buttoneditar_Click" /></th>
                     <th>
-                        <asp:Button ID="ButtonGuardar" runat="server" Visible="false" Enabled="false" Text="Guardar" class="btn btn-block btn-success btn-lg" Width="143px" Height="30px" /></th>
+                        <asp:Button ID="ButtonGuardar" runat="server" Visible="false" Enabled="false" Text="Guardar" class="btn btn-block btn-success btn-lg" Width="143px" Height="30px" OnClick="ButtonGuardar_Click" /></th>
                     <th>
-                        <asp:Button ID="Buttoncancelar" runat="server" Visible="false" Enabled="false" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="143px" Height="30px" /></th>
+                        <asp:Button ID="Buttoncancelar" runat="server" Visible="false" Enabled="false" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="143px" Height="30px" OnClick="Buttoncancelar_Click" /></th>
                 </tr>
 
-            </table>
- 
-</center>
+            </table> 
+      </center>
 
     </section>
 

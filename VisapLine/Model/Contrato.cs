@@ -69,5 +69,13 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarcontratoidallcodigo(" + cont.codigo + ")");
         }
+
+        public bool updatecontrato(Contrato cont)
+        {
+            return data.OperarDatos("Select * from pr_actualizarcontrato('"+cont.idcontrato+"','"+cont.estado+"','"+cont.tipocontrato_idtipocontrato+"','"+cont.plan_idplan+"','"+cont.iva+"','"+cont.direccionenviofact+"','"+cont.enviofactura+"','"+cont.facturaunica+"','"+cont.barrio_idbarrio+"','"+cont.sucursal_idsucursal+"')");
+        }
+
+
+
     }
 }

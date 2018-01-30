@@ -26,7 +26,9 @@ namespace VisapLine.View.Private
         TipoContrato tpoc = new TipoContrato();
         Sucursal scsal = new Sucursal();
         Contrato contrat = new Contrato();
-
+        TipoContrato tpcont = new TipoContrato();
+        DataRow dt;
+        string Idcontrato;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -51,7 +53,7 @@ namespace VisapLine.View.Private
                 GridView1.DataSource = datcont;
                 GridView1.DataBind();
                 divtablagestcontr.Visible = true;
-             
+
             }
             catch (Exception ex)
             {
@@ -75,15 +77,46 @@ namespace VisapLine.View.Private
             GridViewRow gridw = GridView1.SelectedRow;
             TextBox1identificacion.Text = gridw.Cells[2].Text;
             contrat.codigo = gridw.Cells[1].Text;
-            DataRow dt= Validar.Consulta(contrat.ConsultarContratocodigo(contrat)).Rows[0];
+            dt = Validar.Consulta(contrat.ConsultarContratocodigo(contrat)).Rows[0];
             DropDownListestadocontrato.Text = dt["estadoc"].ToString();
-            DropDownListplancontrato.SelectedValue = dt["detalle"].ToString();
-            DropDownListtipocontrato.Text= dt["tipocontrato"].ToString();
+
+            Idcontrato = dt["idcontrato"].ToString();
+
+            DropDownListplancontrato.DataSource = pn.ConsultarPlan();
+            DropDownListplancontrato.DataTextField = "detalle";
+            DropDownListplancontrato.DataValueField = "idplan";
+            DropDownListplancontrato.DataBind();
+
+
+            DropDownListtipocontrato.DataSource = tpcont.ConsultarTipoContrato();
+            DropDownListtipocontrato.DataTextField = "Tipocontrato";
+            DropDownListtipocontrato.DataValueField = "idtipocontrato";
+            DropDownListtipocontrato.DataBind();
+
+            Sucursal.DataSource = scsal.Consultarsucursal(dt["terceros_idterceros_cont"].ToString());
+            Sucursal.DataTextField = "nombre";
+            Sucursal.DataValueField = "idsucursal";
+            Sucursal.DataBind();
+
+
+
+
+            barr.idbarrios = dt["idbarrios"].ToString();
+            DataRow barri = Validar.Consulta(barr.ConsultarTodoporBarrio(barr)).Rows[0];
+            barr.muninicio_idmunicipio = barri["municipio_idmunicipio"].ToString();
+
+            DropDownList1.DataSource = Validar.Consulta(barr.ConsultarBarriosIdMunicipio(barr));
+            DropDownList1.DataTextField = "barrios";
+            DropDownList1.DataValueField = "idbarrios";
+            DropDownList1.DataBind();
+
+            DropDownListplancontrato.SelectedValue = dt["idplan"].ToString();
+            DropDownListtipocontrato.Text = dt["idtipocontrato"].ToString();
             TextBoxdirreccionenvio.Text = dt["direnviofactura"].ToString();
             DropDownListenviofactura.Text = dt["enviofactura"].ToString();
             DropDownList1facuracuni.Text = dt["facturaunica"].ToString();
-            Sucursal.Text = dt["nombresucur"].ToString();
-            DropDownList1.Text= dt["barrio_fac_idbarrio"].ToString();
+            Sucursal.SelectedValue = dt["idsucursal"].ToString();
+            DropDownList1.Text = dt["idbarrios"].ToString();
             TextBoxivacontrato.Text = dt["iva"].ToString();
 
 
@@ -91,9 +124,58 @@ namespace VisapLine.View.Private
 
         }
 
-        protected void cargartabla()
-        {
 
+        protected void ButtonGuardar_Click(object sender, EventArgs e)
+        {
+            contrat.idcontrato = Idcontrato;
+            contrat.estado = DropDownListestadocontrato.Text;
+            contrat.plan_idplan = DropDownListplancontrato.SelectedValue;
+            contrat.tipocontrato_idtipocontrato = DropDownListtipocontrato.SelectedValue;
+            contrat.direccionenviofact = TextBoxdirreccionenvio.Text;
+            contrat.enviofactura = DropDownListenviofactura.Text;
+            contrat.facturaunica = DropDownList1facuracuni.Text;
+            contrat.sucursal_idsucursal = Sucursal.SelectedValue;
+            contrat.barrio_idbarrio = DropDownList1.SelectedValue;
+            contrat.iva = TextBoxivacontrato.Text;
+            contrat.updatecontrato(contrat);
+
+        }
+
+        protected void Buttoneditar_Click(object sender, EventArgs e)
+        {
+            DropDownListplancontrato.Enabled = true;
+            DropDownListtipocontrato.Enabled = true;
+            TextBoxdirreccionenvio.Enabled = true;
+            DropDownListenviofactura.Enabled = true;
+            DropDownList1facuracuni.Enabled = true;
+            Sucursal.Enabled = true;
+            DropDownList1.Enabled = true;
+            TextBoxivacontrato.Enabled = true;
+            Buttoncancelar.Enabled = true;
+            Buttoneditar.Enabled = false;
+            ButtonGuardar.Enabled = true;
+            DropDownListestadocontrato.Enabled = true;
+
+
+       
+
+
+        }
+
+        protected void Buttoncancelar_Click(object sender, EventArgs e)
+        {
+            DropDownListplancontrato.Enabled = false;
+            DropDownListtipocontrato.Enabled = false;
+            TextBoxdirreccionenvio.Enabled = false;
+            DropDownListenviofactura.Enabled = false;
+            DropDownList1facuracuni.Enabled = false;
+            Sucursal.Enabled = false;
+            DropDownList1.Enabled = false;
+            TextBoxivacontrato.Enabled = false;
+            Buttoncancelar.Enabled = false;
+            Buttoneditar.Enabled = true;
+            ButtonGuardar.Enabled = false;
+            DropDownListestadocontrato.Enabled = false;
         }
     }
 }
