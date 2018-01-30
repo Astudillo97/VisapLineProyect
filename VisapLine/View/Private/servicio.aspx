@@ -3,11 +3,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <section class="content-header">
+        <h1>Servicios</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
+            <li class="breadcrumb-item"><a href="#">Clientes</a></li>
+            <li class="breadcrumb-item active">Servicios</li>
+        </ol>
+    </section>
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
+     <section class="content">
     <div class="box box-body">
         <asp:GridView OnSelectedIndexChanged="gridservicios_SelectedIndexChanged" OnRowDataBound="gridservicios_RowDataBound" AllowPaging="True" PageSize="6"
             OnPageIndexChanging="gridservicios_PageIndexChanging" AutoGenerateColumns="False" runat="server"
@@ -36,38 +44,38 @@
     </div>
     <div class="box box-default">
         <div class="box-body col-md-6">
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Pais</label>
-            <div class="col-sm-9">
-                <asp:DropDownList ID="DropDownListpais" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownListpais_SelectedIndexChanged" AutoPostBack="True">
-                    <asp:ListItem>Seleccione</asp:ListItem>
-                </asp:DropDownList>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Pais</label>
+                <div class="col-sm-9">
+                    <asp:DropDownList ID="DropDownListpais" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownListpais_SelectedIndexChanged" AutoPostBack="True">
+                        <asp:ListItem>Seleccione</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Departamento</label>
-            <div class="col-sm-9">
-                <asp:DropDownList ID="DropDownListdepartamento" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListdepartamento_SelectedIndexChanged">
-                    <asp:ListItem>Seleccione</asp:ListItem>
-                </asp:DropDownList>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Departamento</label>
+                <div class="col-sm-9">
+                    <asp:DropDownList ID="DropDownListdepartamento" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListdepartamento_SelectedIndexChanged">
+                        <asp:ListItem>Seleccione</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Municipio</label>
-            <div class="col-sm-9">
-                <asp:DropDownList ID="DropDownListmunicipio" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListmunicipio_SelectedIndexChanged">
-                    <asp:ListItem>Seleccione</asp:ListItem>
-                </asp:DropDownList>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Municipio</label>
+                <div class="col-sm-9">
+                    <asp:DropDownList ID="DropDownListmunicipio" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListmunicipio_SelectedIndexChanged">
+                        <asp:ListItem>Seleccione</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Barrio</label>
-            <div class="col-sm-9">
-                <asp:DropDownList ID="DropDownListbarrio" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                    <asp:ListItem>Seleccione</asp:ListItem>
-                </asp:DropDownList>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Barrio</label>
+                <div class="col-sm-9">
+                    <asp:DropDownList ID="DropDownListbarrio" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                        <asp:ListItem>Seleccione</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
             </div>
-        </div>
         </div>
         <div class="box-body col-md-6">
             <label class="col-sm-4 col-form-label">Direccion</label>
@@ -222,4 +230,5 @@
         </div>
         <!-- /.box-body -->
     </div>
+         </section>
 </asp:Content>

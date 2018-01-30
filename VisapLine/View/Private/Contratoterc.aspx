@@ -254,8 +254,8 @@
                                                                     <div class="col-sm-9">
                                                                         <asp:DropDownList ID="DropDownListestado" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                                             <asp:ListItem>Seleccione</asp:ListItem>
-                                                                            <asp:ListItem>Activo</asp:ListItem>
-                                                                            <asp:ListItem>Inactivo</asp:ListItem>
+                                                                            <asp:ListItem>ACTIVO</asp:ListItem>
+                                                                            <asp:ListItem>INACTIVO</asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </div>
                                                                 </div>
@@ -476,8 +476,8 @@
                                                                         <div class="col-sm-9">
                                                                             <asp:DropDownList ID="DropDownList10estadocorpo" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                                                 <asp:ListItem>Seleccione</asp:ListItem>
-                                                                                <asp:ListItem>Activo</asp:ListItem>
-                                                                                <asp:ListItem>Inactivo</asp:ListItem>
+                                                                                <asp:ListItem>ACTIVO</asp:ListItem>
+                                                                                <asp:ListItem>INACTIVO</asp:ListItem>
                                                                             </asp:DropDownList>
                                                                         </div>
                                                                     </div>
@@ -787,8 +787,8 @@
                                                                         <div class="col-sm-9">
                                                                             <asp:DropDownList ID="DropDownListestadoempresa" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                                                 <asp:ListItem>Seleccione</asp:ListItem>
-                                                                                <asp:ListItem>Activo</asp:ListItem>
-                                                                                <asp:ListItem>Inactivo</asp:ListItem>
+                                                                                <asp:ListItem>ACTIVO</asp:ListItem>
+                                                                                <asp:ListItem>INACTIVO</asp:ListItem>
                                                                             </asp:DropDownList>
                                                                         </div>
                                                                     </div>
@@ -1294,8 +1294,8 @@
                                                         <div class="col-sm-9">
                                                             <asp:DropDownList ID="DropDownListestadocontrato" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                                 <asp:ListItem>Seleccione</asp:ListItem>
-                                                                <asp:ListItem>Activo</asp:ListItem>
-                                                                <asp:ListItem>Inactivo</asp:ListItem>
+                                                                <asp:ListItem>ACTIVO</asp:ListItem>
+                                                                <asp:ListItem>INACTIVO</asp:ListItem>
                                                             </asp:DropDownList>
                                                         </div>
                                                     </div>

@@ -154,10 +154,7 @@ namespace VisapLine.View.Private
             Buttoncancelar.Enabled = true;
             Buttoneditar.Enabled = false;
             ButtonGuardar.Enabled = true;
-            DropDownListestadocontrato.Enabled = true;
-
-
-       
+            DropDownListestadocontrato.Enabled = true;               
 
 
         }
