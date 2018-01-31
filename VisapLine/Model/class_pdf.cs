@@ -161,7 +161,7 @@ namespace VisapLine.Model
                 string vartelef = "";
                 foreach (DataRow item in dattel.Rows)
                 {
-                    vartelef += " - " + item["telefono"].ToString();
+                    vartelef += " " + item["telefono"].ToString();
                 }
                 Paragraph tercerotelefono = new Paragraph("TELEFONOS: " + vartelef);
                 informtercero.Add(terceronombre).Add(terceroidentficacion).Add(tercerodireccion).Add(tercerotelefono);
@@ -179,7 +179,7 @@ namespace VisapLine.Model
                 Paragraph limitepagovalue = new Paragraph(Convert.ToDateTime(datos["fechavencimiento"].ToString()).ToString("dd/MM/yyyy")).SetFontSize(10f);
                 Paragraph suspencionvalue = new Paragraph(Convert.ToDateTime(datos["fechacorte"].ToString()).ToString("dd/MM/yyyy")).SetFontSize(10f);
                 Paragraph referenciavalue = new Paragraph(datos["referenciapago"].ToString()).SetFontSize(10f);
-                Paragraph codigovalue = new Paragraph("FS-" + datos["facturaventa"].ToString()).SetFontSize(10f);
+                Paragraph codigovalue = new Paragraph(datos["identificacion"].ToString()).SetFontSize(10f);
                 informfacturavalue.Add(limitepagovalue).Add(suspencionvalue).Add(referenciavalue).Add(codigovalue);
 
                 tableinformacionfactura.AddCell(informfactura).AddCell(informfacturavalue);
@@ -190,7 +190,7 @@ namespace VisapLine.Model
                 doc.Add(encabezado);
                 //-------------Contenido de la Factura: Descripcion de la facturación------------------------ 
                 //-------------------------------------------------------------------------------------------
-                Table tableDescripcion = new Table(4).SetMarginTop(8f).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8).SetBorder(new SolidBorder(1));
+                Table tableDescripcion = new Table(4).SetMarginTop(8f).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8).SetBorder(new SolidBorder(1)).SetHeight(86);
                 Cell descrpcion = new Cell().Add(new Paragraph("DESCRIPCIÓN")).SetWidth(UnitValue.CreatePercentValue(50));
                 Cell cantidad = new Cell().Add(new Paragraph("CANTIDAD")).SetWidth(UnitValue.CreatePercentValue(16));
                 Cell valorunitario = new Cell().Add(new Paragraph("VALOR UNITARIO")).SetWidth(UnitValue.CreatePercentValue(17));
@@ -203,33 +203,32 @@ namespace VisapLine.Model
                 foreach (DataRow item in tabledetalle.Rows)
                 {
                     Cell descrpcionval = new Cell().Add(new Paragraph(item["descripcion"].ToString())).SetWidth(UnitValue.CreatePercentValue(50)).SetBorder(Border.NO_BORDER);
-                    Cell cantidadval = new Cell().Add(new Paragraph(item["cantidad"].ToString())).SetWidth(UnitValue.CreatePercentValue(16)).SetBorder(Border.NO_BORDER);
-                    Cell valorunitarioval = new Cell().Add(new Paragraph(item["valor"].ToString())).SetWidth(UnitValue.CreatePercentValue(17)).SetBorder(Border.NO_BORDER);
-                    Cell totalval = new Cell().Add(new Paragraph(Convert.ToString( Convert.ToInt32(item["valor"].ToString())* Convert.ToInt32(item["cantidad"].ToString())))).SetWidth(UnitValue.CreatePercentValue(17)).SetBorder(Border.NO_BORDER);
+                    Cell cantidadval = new Cell().Add(new Paragraph(item["cantidad"].ToString())).SetWidth(UnitValue.CreatePercentValue(16)).SetBorder(Border.NO_BORDER).SetTextAlignment(TextAlignment.CENTER);
+                    Cell valorunitarioval = new Cell().Add(new Paragraph(Convert.ToDouble( item["valor"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetWidth(UnitValue.CreatePercentValue(17)).SetBorder(Border.NO_BORDER).SetTextAlignment(TextAlignment.RIGHT);
+                    Cell totalval = new Cell().Add(new Paragraph(Convert.ToString( Convert.ToDouble( Convert.ToDouble(item["valor"].ToString())* Convert.ToDouble(item["cantidad"].ToString())).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO"))))).SetWidth(UnitValue.CreatePercentValue(17)).SetBorder(Border.NO_BORDER).SetTextAlignment(TextAlignment.RIGHT);
                     tableDescripcion.AddCell(descrpcionval).AddCell(cantidadval).AddCell(valorunitarioval).AddCell(totalval);
                 }
 
                 doc.Add(tableDescripcion);
                 //Generacion de subtotales
-                Table totales = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8f).SetBorder(Border.NO_BORDER);
+                Table totales = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8f).SetBorder(Border.NO_BORDER).SetTextAlignment(TextAlignment.RIGHT);
 
                 Cell cel1 = new Cell().SetWidth(UnitValue.CreatePercentValue(66)).SetBorder(Border.NO_BORDER);
-                Table totales1 = new Table(2).SetWidth(UnitValue.CreatePercentValue(60)).SetBorder(new SolidBorder(1));
-                totales1.AddCell(new Cell().Add(new Paragraph("Total Factura"))).AddCell(new Cell().Add(new Paragraph(datos["valorfac"].ToString())));
-                totales1.AddCell(new Cell().Add(new Paragraph("Saldo Anterior"))).AddCell(new Cell().Add(new Paragraph(datos["saldofac"].ToString())));
-                totales1.AddCell(new Cell().Add(new Paragraph("SALDO ACTUAL"))).AddCell(new Cell().Add(new Paragraph(datos["totalfac"].ToString())));
+                Table totales1 = new Table(2).SetWidth(UnitValue.CreatePercentValue(60)).SetBorder(new SolidBorder(1)).SetTextAlignment(TextAlignment.RIGHT);
+                totales1.AddCell(new Cell().Add(new Paragraph("Total Factura")).SetWidth(UnitValue.CreatePercentValue(50))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(Convert.ToDouble(datos["valorfac"].ToString()) + Convert.ToDouble(datos["ivafac"].ToString())).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
+                totales1.AddCell(new Cell().Add(new Paragraph("Saldo Anterior"))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble( datos["saldofac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
+                totales1.AddCell(new Cell().Add(new Paragraph("SALDO ACTUAL"))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble( datos["totalfac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
                 cel1.Add(totales1);
                 cel1.Add(new Cell().Add(new Paragraph("SEÑOR USUARIO LE RECORDAMOS QUE LA SUSPENCIÓN DEL SERVICIO POR NO PAGO " +
                     "GENERA COBRO DE RECONEXIÓN, PARA EL SERVICIO DE BANDA ANCHA TENDRA UN VALOR DE $11.900 MÁS IVA, " +
-                    " LO INVITAMOS A REALIZAR EL PAGO OPORTUNO DE SU FACTURA.").SetFontSize(7)).SetWidth(UnitValue.CreatePercentValue(100)));
+                    " LO INVITAMOS A REALIZAR EL PAGO OPORTUNO DE SU FACTURA.").SetFontSize(6)).SetWidth(UnitValue.CreatePercentValue(100))).SetTextAlignment(TextAlignment.CENTER);
                 Cell cel2 = new Cell().SetWidth(UnitValue.CreatePercentValue(34)).SetBorder(Border.NO_BORDER);
-                Table totales2 = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(9);
-                totales2.AddCell(new Cell().Add(new Paragraph("Exento")).SetWidth(UnitValue.CreatePercentValue(50))).AddCell(new Cell().Add(new Paragraph("0,00")));
-                totales2.AddCell(new Cell().Add(new Paragraph("subtotal"))).AddCell(new Cell().Add(new Paragraph(datos["valor"].ToString())));
-                totales2.AddCell(new Cell().Add(new Paragraph("IVA"))).AddCell(new Cell().Add(new Paragraph(datos["ivafac"].ToString())));
-                totales2.AddCell(new Cell().Add(new Paragraph("TOTAL FACTURA").SetFontSize(10))).AddCell(new Cell().Add(new Paragraph(datos["valorfac"].ToString()).SetItalic().SetFontSize(10)));
+                Table totales2 = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(9).SetTextAlignment(TextAlignment.RIGHT);
+                totales2.AddCell(new Cell().Add(new Paragraph("subtotal")).SetWidth(UnitValue.CreatePercentValue(50))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble( datos["valorfac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
+                totales2.AddCell(new Cell().Add(new Paragraph("IVA("+ datos["iva"].ToString() + "%)"))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos["ivafac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
+                totales2.AddCell(new Cell().Add(new Paragraph("TOTAL FACTURA").SetFontSize(10))).AddCell(new Cell().Add(new Paragraph(Convert.ToString(Convert.ToDouble( Convert.ToDouble(datos["valorfac"].ToString())+ Convert.ToDouble(datos["ivafac"].ToString())).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBold().SetFontSize(10)));
                 cel2.Add(totales2);
-                cel2.Add(new Paragraph(Validar.enletras(datos["valorfac"].ToString())).SetFontSize(10).SetBorder(Border.NO_BORDER).SetFontSize(8));
+                cel2.Add(new Paragraph(Validar.enletras(Convert.ToString(Convert.ToDouble(datos["valorfac"].ToString()) + Convert.ToDouble(datos["ivafac"].ToString())))).SetFontSize(10).SetBorder(Border.NO_BORDER).SetFontSize(8));
                 totales.AddCell(cel1).AddCell(cel2);
                 doc.Add(totales);
                 Table normativa = new Table(1).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8);
@@ -242,7 +241,44 @@ namespace VisapLine.Model
                     " Dian 18762001688490 autoriza en 2016-12-28 prefijo FS desde el número 10001 al 20000 Regimen Común - Actividad Económica Tarifa.").SetBold());
                 normativa.AddCell(norm);
                 doc.Add(normativa);
-                doc.SetLineThrough();
+
+                ////Pie de pagina
+                Table linea = new Table(1).SetBorderTop(new SolidBorder(1)).SetWidth(UnitValue.CreatePercentValue(100)).SetMarginBottom(20).SetMarginTop(15);
+                doc.Add(linea);
+
+                //Inicio de la parte baja de la factura
+                doc.Add(header);
+                Table encabezado2 = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
+                encabezado2.SetMarginTop(10f);
+
+                Cell encHiz1 = new Cell().SetWidth(UnitValue.CreatePercentValue(37)).SetBorder(Border.NO_BORDER);
+                encHiz1.Add(codigobarra).Add(totales1.SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8));
+                Cell encDer1 = new Cell().SetWidth(UnitValue.CreatePercentValue(63)).SetFontSize(8f).SetBorder(Border.NO_BORDER);
+                Cell part1 = new Cell().SetWidth(UnitValue.CreatePercentValue(100));
+                part1.Add(terceronombre).Add(terceroidentficacion);
+
+
+                Table tableinformacionfactura1 = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetBold().SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+
+                Cell informfactura1 = new Cell().SetWidth(UnitValue.CreatePercentValue(50)).SetBorder(Border.NO_BORDER);
+                Paragraph limitepago1 = new Paragraph("Fecha Limite de pago:").SetFontSize(10f);
+                Paragraph suspencion1 = new Paragraph("Fecha de suspención del servicio:").SetFontSize(10f);
+                informfactura1.Add(limitepago1).Add(suspencion1);
+
+                Cell informfacturavalue1 = new Cell().SetWidth(UnitValue.CreatePercentValue(50)).SetBorder(Border.NO_BORDER);
+                Paragraph limitepagovalue1 = new Paragraph(Convert.ToDateTime(datos["fechavencimiento"].ToString()).ToString("dd/MM/yyyy")).SetFontSize(10f);
+                Paragraph suspencionvalue1 = new Paragraph(Convert.ToDateTime(datos["fechacorte"].ToString()).ToString("dd/MM/yyyy")).SetFontSize(10f);
+                
+                informfacturavalue1.Add(limitepagovalue1).Add(suspencionvalue1);
+
+                tableinformacionfactura1.AddCell(informfactura1).AddCell(informfacturavalue1);
+
+                encDer1.Add(part1).Add(tableinformacionfactura1);
+                encDer1.Add(new Cell().Add(new Paragraph("SEÑOR USUARIO LE RECORDAMOS QUE LA SUSPENCIÓN DEL SERVICIO POR NO PAGO " +
+                   "GENERA COBRO DE RECONEXIÓN, PARA EL SERVICIO DE BANDA ANCHA TENDRA UN VALOR DE $11.900 MÁS IVA, " +
+                   " LO INVITAMOS A REALIZAR EL PAGO OPORTUNO DE SU FACTURA.").SetFontSize(6)).SetWidth(UnitValue.CreatePercentValue(100)).SetTextAlignment(TextAlignment.CENTER));
+                encabezado2.AddCell(encHiz1).AddCell(encDer1);
+                doc.Add(encabezado2);
                 doc.Close();
                 return name;
             }

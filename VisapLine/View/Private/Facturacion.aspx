@@ -41,7 +41,7 @@
                                             <input type="date" class="form-control" id="fecfin_" runat="server" placeholder="">
                                         </div>
                                         <div class="col-sm-4">
-                                            <button class="btn btn-success btn-lg">Buscar en rango de fechas</button>
+                                            <button class="btn btn-success btn-lg" runat="server" onserverclick="ConsultarByFecha">Buscar en rango de fechas</button>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +79,9 @@
         </div>
          <div class="tab-pane">
             <div class="box box-primary">
-                <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" OnRowDeleting="allfactura_RowDeleting"  AutoGenerateColumns="False" ID="allfactura">
+                <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" AllowPaging="True" PageSize="5" OnPageIndexChanging="allfactura_PageIndexChanging" OnRowDeleting="allfactura_RowDeleting"  AutoGenerateColumns="False" ID="allfactura">
+                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Wrap="true"/>
                     <Columns>
                         <asp:BoundField DataField="codigo" HeaderText="Contrato"></asp:BoundField>
                         <asp:BoundField DataField="identificacion" HeaderText="NIT/IDENTIF"></asp:BoundField>
@@ -92,7 +94,7 @@
                         <asp:BoundField DataField="fechaemision" DataFormatString="{0:d}" HeaderText="Emision"></asp:BoundField>
                         <asp:BoundField DataField="estadof" HeaderText="Estado"></asp:BoundField>
                         <asp:BoundField DataField="totalfac" HeaderText="Valor"></asp:BoundField>
-                        <asp:CommandField ShowDeleteButton="True" InsertImageUrl="~/Contenido/images/icons/eliminar.png"></asp:CommandField>
+                        <asp:CommandField ShowDeleteButton="True" DeleteText="" ControlStyle-CssClass="glyphicon glyphicon-copy" ></asp:CommandField>
                     </Columns>
                 </asp:GridView>
             </div>
