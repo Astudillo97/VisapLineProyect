@@ -18,6 +18,23 @@
                 <asp:Label ID="lbl12" Text="CODIGO DE SERVICIO" runat="server"></asp:Label>
                 <asp:TextBox ID="Borden" CssClass="form-control col-3 border-left-0 border-top-0 border-right-0" runat="server"></asp:TextBox>
                 <asp:Button ID="btnconsultar" CssClass="btn btn-success" runat="server" Text="CONSULTAR" OnClick="btnconsultar_Click" />
+                <asp:Button ID="Button1" CssClass="btn btn-success" runat="server" Text="CREAR ORDEN" OnClick="Button1_Click"/>
+            </div>
+        </div>
+        <div id="divcreator" runat="server" class="box box-body">
+            <div class="form-group container-fluid">
+                <div class="row col-">
+                    <asp:Label ID="lbldetalle" runat="server" Text="DETALLE"></asp:Label>
+                    <asp:TextBox ID="txtdetalle" CssClass="form-control col-3 border-left-0 border-top-0 border-right-0" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblobservacion" runat="server" Text="OBSERVACION"></asp:Label>
+                    <asp:TextBox ID="txtobservacion" CssClass="form-control col-3 border-left-0 border-top-0 border-right-0" runat="server"></asp:TextBox>
+                    <asp:Label ID="lbltipoorden" runat="server" CssClass="col-1" Text="TIPO ORDEN"></asp:Label>
+                    <asp:DropDownList ID="ddltipoorden" CssClass="form-control col-2" runat="server">
+                        <asp:ListItem>VIABILIDAD</asp:ListItem>
+                        <asp:ListItem>TRABAJO</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:Button ID="btnsuccessorde" CssClass="btn btn-success" runat="server" Text="CREAR" OnClick="btnsuccessorde_Click" />
+                </div> 
             </div>
         </div>
         <div id="divconten" runat="server" class="box box-body">

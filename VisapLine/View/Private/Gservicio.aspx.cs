@@ -14,10 +14,12 @@ namespace VisapLine.View.Private
         DetalleSalida dsord = new DetalleSalida();
         TipoProducto tp = new TipoProducto();
         public static string valosal;
+        Empresa emp = new Empresa();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                
+                divconten.Visible = false;
+                divcreator.Visible = false;
             }
         }
         protected void Llenargrid(string dato) {
@@ -59,6 +61,95 @@ namespace VisapLine.View.Private
             Llenargrid(consulta.Rows[0][7].ToString());
             llenardetalle();
             Llenardrop();
+            divconten.Visible = true;
+            divcreator.Visible = false;
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            
+            divconten.Visible = false;
+            divcreator.Visible = true;
+            
+
+        }
+
+        protected void immprimir() {
+            DataTable dt = emp.ConsultarEmpresa();
+            string Nomb = "", Nit = "", Direcion = "", nomjuri = "", telefonos = "";
+            impresorabix ticket = new impresorabix();
+            //Ya podemos usar todos sus metodos
+            foreach (DataRow fila in dt.Rows)
+            {
+                if (fila[1].ToString().Equals("nombreempresa"))
+                {
+                    Nomb = fila[2].ToString();
+                }
+                if (fila[1].ToString().Equals("nombrejuridico"))
+                {
+                    nomjuri = fila[2].ToString();
+                }
+                if (fila[1].ToString().Equals("nit"))
+                {
+                    Nit = "NIT : " + fila[2].ToString();
+                }
+                if (fila[1].ToString().Equals("direccion"))
+                {
+                    Direcion = fila[2].ToString();
+                }
+                if (fila[1].ToString().Equals("lineanacional") || fila[1].ToString().Equals("telefono1") || fila[1].ToString().Equals("telefono2"))
+                {
+                    telefonos += " " + fila[2].ToString() + " ";
+                }
+            }
+            //De aqui en adelante pueden formar su ticket a su gusto... Les muestro un ejemplo
+
+            //Datos de la cabecera del Ticket.
+
+            ticket.TextoCentro(Nomb);
+            ticket.TextoCentro(nomjuri);
+            ticket.TextoCentro(Nit);
+            ticket.TextoCentro(Direcion);
+            ticket.TextoCentro(telefonos);
+
+            ticket.TextoIzquierdo("");
+            ticket.TextoIzquierdo("Ticket # 002-0000006");
+            ticket.lineasAsteriscos();
+
+            //Sub cabecera.
+            ticket.TextoIzquierdo("");
+            ticket.TextoIzquierdo("ATENDIÓ: VENDEDOR");
+            ticket.TextoIzquierdo("CLIENTE: PUBLICO EN GENERAL");
+            ticket.TextoIzquierdo("");
+            ticket.TextoExtermos("FECHA: " + DateTime.Now.ToShortDateString(), "HORA: " + DateTime.Now.ToShortTimeString());
+            ticket.lineasAsteriscos();
+
+            //Articulos a vender.
+            ticket.EncabezadoArticulos();//NOMBRE DEL ARTICULO, CANT, PRECIO, IMPORTE
+            ticket.lineasAsteriscos();
+            //Si tiene una DataGridView donde estan sus articulos a vender pueden usar esta manera para agregarlos al ticket.
+            //foreach (DataGridViewRow fila in dgvLista.Rows)//dgvLista es el nombre del datagridview
+            //{
+            //ticket.AgregaArticulo(fila.Cells[2].Value.ToString(), int.Parse(fila.Cells[5].Value.ToString()),
+            //decimal.Parse(fila.Cells[4].Value.ToString()), decimal.Parse(fila.Cells[6].Value.ToString()));
+            //}
+            ticket.AgregarArticulo("Articulo A", 2);
+            ticket.lineasIgual();
+
+
+            //Texto final del Ticket.
+            ticket.TextoIzquierdo("");
+            ticket.TextoIzquierdo("ARTICULOS A ENTREGAR: ");
+            ticket.TextoIzquierdo("");
+            ticket.TextoCentro("¡FIRME AQUI!");
+            ticket.Cortartiket();
+            ticket.ImprimirTiket("BIXOLON SRP-350plus");//Nombre de la impresora ticketera
+            ticket.Cortartiket();
+        }
+
+        protected void btnsuccessorde_Click(object sender, EventArgs e)
+        {
+            ord.Insertar(txtdetalle.Text, txtobservacion.Text, ddltipoorden.SelectedItem.Text,90);
         }
     }
 }
