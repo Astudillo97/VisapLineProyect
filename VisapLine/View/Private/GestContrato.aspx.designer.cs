@@ -121,6 +121,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox TextBoxdirreccionenvio;
         
         /// <summary>
+        /// Control Labelidcontrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Labelidcontrato;
+        
+        /// <summary>
         /// Control DropDownListenviofactura.
         /// </summary>
         /// <remarks>
@@ -175,13 +184,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Button Buttoneditar;
         
         /// <summary>
-        /// Control ButtonGuardar.
+        /// Control Buttonmodal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonGuardar;
+        protected global::System.Web.UI.WebControls.Button Buttonmodal;
         
         /// <summary>
         /// Control Buttoncancelar.
@@ -191,5 +200,23 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Buttoncancelar;
+        
+        /// <summary>
+        /// Control ButtonGuardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonGuardar;
+        
+        /// <summary>
+        /// Control Button4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button4;
     }
 }

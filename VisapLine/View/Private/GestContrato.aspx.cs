@@ -28,18 +28,16 @@ namespace VisapLine.View.Private
         Contrato contrat = new Contrato();
         TipoContrato tpcont = new TipoContrato();
         DataRow dt;
-        string Idcontrato;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
-
+           
         }
+
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
-
             //for (int i = 0; i < 10000; i++)
             //{
             //    contrat.insertpruebaconexion();
@@ -73,14 +71,14 @@ namespace VisapLine.View.Private
             ideditarcontrat.Visible = true;
             Buttoneditar.Visible = true;
             Buttoncancelar.Visible = true;
-            ButtonGuardar.Visible = true;
+            Buttonmodal.Visible = true;
             GridViewRow gridw = GridView1.SelectedRow;
             TextBox1identificacion.Text = gridw.Cells[2].Text;
             contrat.codigo = gridw.Cells[1].Text;
             dt = Validar.Consulta(contrat.ConsultarContratocodigo(contrat)).Rows[0];
             DropDownListestadocontrato.Text = dt["estadoc"].ToString();
 
-            Idcontrato = dt["idcontrato"].ToString();
+            Labelidcontrato.Text = dt["idcontrato"].ToString();
 
             DropDownListplancontrato.DataSource = pn.ConsultarPlan();
             DropDownListplancontrato.DataTextField = "detalle";
@@ -127,17 +125,29 @@ namespace VisapLine.View.Private
 
         protected void ButtonGuardar_Click(object sender, EventArgs e)
         {
-            contrat.idcontrato = Idcontrato;
-            contrat.estado = DropDownListestadocontrato.Text;
-            contrat.plan_idplan = DropDownListplancontrato.SelectedValue;
-            contrat.tipocontrato_idtipocontrato = DropDownListtipocontrato.SelectedValue;
-            contrat.direccionenviofact = TextBoxdirreccionenvio.Text;
-            contrat.enviofactura = DropDownListenviofactura.Text;
-            contrat.facturaunica = DropDownList1facuracuni.Text;
-            contrat.sucursal_idsucursal = Sucursal.SelectedValue;
-            contrat.barrio_idbarrio = DropDownList1.SelectedValue;
-            contrat.iva = TextBoxivacontrato.Text;
-            contrat.updatecontrato(contrat);
+
+            try
+            {
+                contrat.idcontrato = Labelidcontrato.Text;
+                contrat.estado = DropDownListestadocontrato.Text;
+                contrat.plan_idplan = DropDownListplancontrato.SelectedValue;
+                contrat.tipocontrato_idtipocontrato = DropDownListtipocontrato.SelectedValue;
+                contrat.direccionenviofact = TextBoxdirreccionenvio.Text.ToUpper();
+                contrat.enviofactura = DropDownListenviofactura.Text;
+                contrat.facturaunica = DropDownList1facuracuni.Text;
+                contrat.sucursal_idsucursal = Sucursal.SelectedValue;
+                contrat.barrio_idbarrio = DropDownList1.SelectedValue;
+                contrat.iva = TextBoxivacontrato.Text;
+                Validar.validartrue(contrat.updatecontrato(contrat));
+                Response.Redirect("GestContrato.aspx");
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
 
         }
 
@@ -153,9 +163,9 @@ namespace VisapLine.View.Private
             TextBoxivacontrato.Enabled = true;
             Buttoncancelar.Enabled = true;
             Buttoneditar.Enabled = false;
-            ButtonGuardar.Enabled = true;
-            DropDownListestadocontrato.Enabled = true;               
-
+            Buttonmodal.Enabled = true;
+            DropDownListestadocontrato.Enabled = true;
+         
 
         }
 
@@ -173,6 +183,17 @@ namespace VisapLine.View.Private
             Buttoneditar.Enabled = true;
             ButtonGuardar.Enabled = false;
             DropDownListestadocontrato.Enabled = false;
+
+            
         }
+
+
+
+        protected void Buttonmodal_Click(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "", "botonmodalgesti();", true);
+        }
+
+
     }
 }
