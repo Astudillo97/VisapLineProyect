@@ -98,8 +98,11 @@
                 </div>
                 <!-- /.col -->
             </div>
-                  <asp:Button ID="ButtonGuardar" runat="server" Text="Registrar" class="btn btn-block btn-success btn-lg" Width="100px" Height="30px" OnClick="ButtonGuardar_Click"/>
-                               
+            <center>
+                    <asp:Button ID="ButtonGuardar" runat="server" Text="Registrar" class="btn btn-block btn-success btn-lg" Width="143px" Height="30px" OnClick="ButtonGuardar_Click"/>
+              
+            </center>
+
         </div>
     </section>
 </asp:Content>
