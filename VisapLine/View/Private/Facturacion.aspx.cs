@@ -21,16 +21,19 @@ namespace VisapLine.View.Private
         CargoAdicional ca = new CargoAdicional();
         DataTable tablepersona = new DataTable();
         DataTable tablecontrato = new DataTable();
-        DataTable tablefactura = new DataTable();
+        static DataTable tablefactura = new DataTable();
         DataTable tabledetalle = new DataTable();
-        static string terceroselected;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                tablefactura= fact.ConsultarFacturas("null::date", "null::date", "null::character varying", "null::integer", "10");
-                allfactura.DataSource = tablefactura;
-                allfactura.DataBind();
+                if (!IsPostBack)
+                {
+                    tablefactura = fact.ConsultarFacturas("null::date", "null::date", "null::character varying", "null::integer", "4");
+                    allfactura.DataSource = tablefactura;
+                    allfactura.DataBind();
+                }
+
             }
             catch (Exception ex)
             {
@@ -44,13 +47,21 @@ namespace VisapLine.View.Private
         {
             try
             {
-                terc.identificacion = identificacion_.Value;
-                DataRow tercerose = Validar.Consulta(terc.ConsultarPersonaIdentifall(terc)).Rows[0];
-                contrato.terceros_idterceros = tercerose["idterceros"].ToString();
-                terceroselected= tercerose["idterceros"].ToString();
-                //Consulta de Contratos por id de tercero
-                listContrato.DataSource = contrato.ConsultarContratoidtercero(contrato);
-                listContrato.DataBind();
+                if (!identificacion_.Value.Equals(""))
+                {
+                    tablefactura = fact.ConsultarFacturas("null::date", "null::date", "'" + identificacion_.Value + "'", "null::integer", "2");
+                    allfactura.DataSource = tablefactura; 
+                    allfactura.DataBind();
+                    Alerta.Visible = false;
+                }
+                else
+                {
+                    tablefactura= fact.ConsultarFacturas("null::date", "null::date", "null::character varying", codigofact_.Value, "3");
+                    allfactura.DataSource = tablefactura;
+                    Alerta.Visible = false;
+                    allfactura.DataBind();
+                }
+
                 Alerta.Visible = false;
             }
             catch (Exception)
@@ -80,7 +91,40 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-            
+
+        }
+
+        protected void allfactura_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                allfactura.PageIndex = e.NewPageIndex;
+                allfactura.DataSource = tablefactura;
+                allfactura.DataBind();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+        }
+
+        protected void ConsultarByFecha(object sender, EventArgs e)
+        {
+            try
+            {
+                allfactura.DataSource = fact.ConsultarFacturas("'"+fecinicio_.Value+"'", "'"+fecfin_.Value+"'", "null::character varying", "null::integer", "1");
+                allfactura.DataBind();
+                Alerta.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
     }
 }
