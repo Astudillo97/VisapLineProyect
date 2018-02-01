@@ -24,6 +24,10 @@ namespace VisapLine.Model
         public DataTable Consultarorden(string id) {
             return data.ConsultarDatos("select * from pr_consultarcrdenvista('"+ id + "')"); ;
         }
+        public DataTable Consultarordentrab(string id)
+        {
+            return data.ConsultarDatos("select * from pr_consultarcrdenvistatrab('" + id + "')"); ;
+        }
         public DataTable cosnutlarlefonosorden(string id) {
             return data.ConsultarDatos("select telefono from telefono where terceros_idterceros="+ id + "");
         }
