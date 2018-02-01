@@ -17,11 +17,14 @@ namespace VisapLine.View.Private
         Empresa emp = new Empresa();
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack) {
                 divconten.Visible = false;
                 divcreator.Visible = false;
             }
         }
+
+
         protected void Llenargrid(string dato) {
             gridtelefono.DataSource = ord.cosnutlarlefonosorden(dato);
             gridtelefono.DataBind();
@@ -54,15 +57,28 @@ namespace VisapLine.View.Private
 
         protected void btnconsultar_Click(object sender, EventArgs e)
         {
-            valosal = Borden.Text;
-            DataTable consulta = ord.Consultarorden(valosal);
-            formordenes.DataSource = consulta;
-            formordenes.DataBind();
-            Llenargrid(consulta.Rows[0][7].ToString());
-            llenardetalle();
-            Llenardrop();
-            divconten.Visible = true;
-            divcreator.Visible = false;
+            valosal = Borden2.Text;
+            if (valosal.Contains("INS"))
+            {
+                DataTable consulta = ord.Consultarorden(valosal);
+                formordenes.DataSource = consulta;
+                formordenes.DataBind();
+                Llenargrid(consulta.Rows[0][7].ToString());
+                llenardetalle();
+                Llenardrop();
+                divconten.Visible = true;
+                divcreator.Visible = false;
+            }
+            else {
+                DataTable consulta = ord.Consultarordentrab(valosal);
+                Formtrabajos.DataSource = consulta;
+                Formtrabajos.DataBind();
+                divconten.Visible = true;
+                divcreator.Visible = false;
+                llenardetalle();
+                Llenardrop();
+            }
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -149,7 +165,14 @@ namespace VisapLine.View.Private
 
         protected void btnsuccessorde_Click(object sender, EventArgs e)
         {
-            ord.Insertar(txtdetalle.Text, txtobservacion.Text, ddltipoorden.SelectedItem.Text,90);
+            DataTable dt = ord.Insertar(txtdetalle.Text, txtobservacion.Text, ddltipoorden.SelectedItem.Text,90);
+            if (dt.Rows.Count > 0)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+            }
+            else {
+
+            }
         }
     }
 }
