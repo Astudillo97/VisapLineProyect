@@ -1,11 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MaintainScrollPositionOnPostback="true" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="GestContrato.aspx.cs" Inherits="VisapLine.View.Private.GestContrato" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
     <script type="text/javascript">
 
         function botonmodalgesti() {
             document.getElementById("botonmodalcontr").click();
         }
+
+     
 
 
     </script>
@@ -36,7 +39,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
                             <div class="col-sm-9">
-                                <asp:TextBox runat="server" type="number" class="form-control" ID="texboxdni" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" type="number" CssClass="form-control"  ID="texboxdni" Style="text-transform: uppercase"></asp:TextBox>
 
                             </div>
                         </div>

@@ -31,8 +31,8 @@ namespace VisapLine.View.Private
 
         protected void Page_Load(object sender, EventArgs e)
         {
+       
 
-           
         }
 
 
@@ -165,7 +165,7 @@ namespace VisapLine.View.Private
             Buttoneditar.Enabled = false;
             Buttonmodal.Enabled = true;
             DropDownListestadocontrato.Enabled = true;
-         
+
 
         }
 
@@ -184,7 +184,7 @@ namespace VisapLine.View.Private
             ButtonGuardar.Enabled = false;
             DropDownListestadocontrato.Enabled = false;
 
-            
+
         }
 
 

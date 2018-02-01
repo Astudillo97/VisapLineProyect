@@ -9,6 +9,7 @@
             $('#mymodal').modal('show');
         }
     </script>
+
     <section class="content-header">
         <h2>ORDENES DE SERVICIO</h2>
     </section>
