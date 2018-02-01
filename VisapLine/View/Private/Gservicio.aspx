@@ -28,7 +28,7 @@
         <div class="form-group container-fluid box box-body">
             <div class="row col">
                 <asp:Label ID="lbl12" Text="CODIGO DE SERVICIO" runat="server"></asp:Label>
-                <asp:TextBox ID="Borden2" CssClass="form-control col-3 border-left-0 border-top-0 border-right-0 "  runat="server"></asp:TextBox>
+                <asp:TextBox ID="Borden2" CssClass="form-control col-3 border-left-0 border-top-0 border-right-0 " runat="server"></asp:TextBox>
                 <asp:Button ID="btnconsultar" CssClass="btn btn-success" runat="server" Text="CONSULTAR" OnClick="btnconsultar_Click" />
                 <asp:Button ID="Button1" CssClass="btn btn-success" runat="server" Text="CREAR ORDEN" OnClick="Button1_Click"/>
             </div>
