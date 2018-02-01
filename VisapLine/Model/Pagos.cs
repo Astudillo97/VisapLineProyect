@@ -14,16 +14,17 @@ namespace VisapLine.Model
         public string idpago { get; set; }
         public string fechapago { get; set; }
         public string factura_idfactura { get; set; }
-        public string personal_idpersonal { get; set; }
+        public string terceros_idterceros { get; set; }
+        public string pagado { get; set; }
 
         public DataTable ConsultarPago(Pagos fac)
         {
             return data.ConsultarDatos("");
         }
 
-        public bool RegistrarPago(Pagos fac)
+        public bool RegistrarPago(Pagos fac,string usuario,string ipregistro)
         {
-            return data.OperarDatos("");
+            return data.OperarDatos("select * from pr_insertar_pagos('"+usuario+"','"+ipregistro+"','"+fac.factura_idfactura+"','"+fac.terceros_idterceros+"','"+fac.pagado+"')");
         }
     }
 }
