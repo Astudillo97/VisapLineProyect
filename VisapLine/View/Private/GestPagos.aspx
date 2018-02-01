@@ -1,11 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="GestPagos.aspx.cs" Inherits="VisapLine.View.Private.GestPagos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
-        window.onload = function () {
-            document.getElementById("<%=factservicio.ClientID%>").focus();
-        };
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
@@ -48,12 +43,12 @@
                         <div class="box-body">
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">FACTURA DE SERVICIO</label>
-                                <label class="col-sm-4 col-form-label" runat="server" id="cod"></label>
+                                <label class="col-sm-4 col-form-label" runat="server" id="cod">-</label><label class="col-sm-1 col-form-label" runat="server" id="idfactura"></label>
                                 <label class="col-sm-2 col-form-label">ESTADO</label>
                                 <label class="col-sm-4 col-form-label">ACTIVO</label>
                                 <label class="col-sm-2 col-form-label">FECHA</label>
                                 <label class="col-sm-4 col-form-label">2018-12-12</label>
-                                <input type="text"  runat="server" id="textpagado"/>
+                                <asp:TextBox type="text"  runat="server" id="textpagado"/>
                                 <div class="col-sm-2">
                                     <button class="btn btn-success btn-lg" runat="server" onserverclick="btnRegistrarpago">PAGAR</button>
                                 </div>

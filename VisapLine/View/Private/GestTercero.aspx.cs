@@ -85,7 +85,7 @@ namespace VisapLine.View.Private
             {
 
                 textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert-error";
+                Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
 
             }
