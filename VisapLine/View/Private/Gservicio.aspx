@@ -13,8 +13,11 @@
         function openModal2() {
             $('#mymodal2').modal('show');
         }
-        function deletealert() {
-            swal("ORDEN CREADA CON EXITO!", 'Su orden ser creo con el numero <%#valosal%>', "success");              
+        function deletealert(x) {
+            swal("ORDEN CREADA CON EXITO!", "Su orden ser creo con el numero "+x, "success");              
+        }
+        function alerterror() {
+            swal("ORDEN FALLIDA!", "La orden no se pudo crear por favor verifique o contactese con el soporte", "error");
         }
     </script>
 

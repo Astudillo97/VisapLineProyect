@@ -165,13 +165,15 @@ namespace VisapLine.View.Private
 
         protected void btnsuccessorde_Click(object sender, EventArgs e)
         {
+            if (!ddltipoorden.SelectedItem.Text.Equals("----------")) { 
             DataTable dt = ord.Insertar(txtdetalle.Text, txtobservacion.Text, ddltipoorden.SelectedItem.Text,90);
             if (dt.Rows.Count > 0)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert('"+ dt.Rows[0][0].ToString()+"');", true);
+            }
             }
             else {
-
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
             }
         }
     }
