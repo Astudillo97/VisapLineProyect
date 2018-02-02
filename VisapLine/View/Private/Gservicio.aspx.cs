@@ -82,11 +82,9 @@ namespace VisapLine.View.Private
         }
 
         protected void Button1_Click(object sender, EventArgs e)
-        {
-            
+        {           
             divconten.Visible = false;
-            divcreator.Visible = true;
-            
+            divcreator.Visible = true;          
 
         }
 
@@ -170,7 +168,9 @@ namespace VisapLine.View.Private
             if (dt.Rows.Count > 0)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert('"+ dt.Rows[0][0].ToString()+"');", true);
-            }
+                    divconten.Visible = false;
+                    divcreator.Visible = false;
+                }
             }
             else {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
