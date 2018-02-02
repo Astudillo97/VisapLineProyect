@@ -176,5 +176,11 @@ namespace VisapLine.View.Private
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
             }
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            gridbusqueda.DataSource= ord.ConsultarFechas(TextBox4.Text, TextBox5.Text);
+            gridbusqueda.DataBind();
+        }
     }
 }

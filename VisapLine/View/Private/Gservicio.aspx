@@ -14,10 +14,14 @@
         }
         function deletealert(x) {
             swal("ORDEN CREADA CON EXITO!", "Su orden ser creo con el numero " + x, "success");
+          
         }
         function alerterror() {
             swal("ORDEN FALLIDA!", "La orden no se pudo crear por favor verifique o contactese con el soporte", "error");
         }
+        $(document).ready(function (e) {
+            $("input").inputmask();
+        });
     </script>
 
     <section class="content-header">
@@ -30,6 +34,13 @@
                 <asp:TextBox ID="Borden2" CssClass="form-control col-3 border-left-0 border-top-0 border-right-0 " runat="server"></asp:TextBox>
                 <asp:Button ID="btnconsultar" CssClass="btn btn-success" runat="server" Text="CONSULTAR" OnClick="btnconsultar_Click" />
                 <asp:Button ID="Button1" CssClass="btn btn-success" runat="server" Text="CREAR ORDEN" OnClick="Button1_Click" />
+            </div>
+            <div class="row col">
+                <asp:Label ID="Label4" Text="FECHA DE INICIO" runat="server"></asp:Label>
+                <asp:TextBox ID="TextBox4" TextMode="Date" CssClass="calendar form-control col-3 border-left-0 border-top-0 border-right-0 " runat="server"></asp:TextBox>
+                <asp:Label ID="Label5" Text=" HASTA " runat="server"></asp:Label>
+                <asp:TextBox ID="TextBox5" TextMode="Date" CssClass="calendar form-control col-3 border-left-0 border-top-0 border-right-0 " runat="server"></asp:TextBox>
+                <asp:Button ID="Button2" CssClass="btn btn-success" runat="server" Text="CONSULTAR" OnClick="Button2_Click" />
             </div>
         </div>
         <div id="divcreator" runat="server" class="box box-body">
@@ -48,7 +59,21 @@
                     <asp:Button ID="btnsuccessorde" CssClass="btn btn-success" Height="34" Width="60" runat="server" Text="CREAR" OnClick="btnsuccessorde_Click" />
                 </div>
             </div>
-        </div>
+        </div> 
+        <asp:GridView ID="gridbusqueda" CssClass="table no-border" Font-Bold="true" HeaderStyle-CssClass="thead-primary" runat="server" AutoGenerateColumns="false">
+            <Columns>
+                <asp:BoundField HeaderText="CODIGO" DataField="codigocol" /> 
+                <asp:BoundField HeaderText="DETALLE" DataField="detallecol" />
+                <asp:BoundField HeaderText="TIPO" DataField="tipoordencol" />
+                <asp:BoundField HeaderText="FECHA DE REGISTRO" DataField="fecha_registrocol" />
+                <asp:TemplateField HeaderText="ESTADO">
+                    <ItemTemplate>
+                        <asp:CheckBox Text=" " CssClass="filled-in" Checked='<%#Eval("estadocol") %>' ID="chbs" runat="server"  />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField HeaderText="FECHA DE FINALIZACION" DataField="fecha_finalizarcol" NullDisplayText="ESPERANDO" />
+            </Columns>
+        </asp:GridView>
         <div id="divconten" runat="server" class="box box-body">
             <div class="form-group container-fluid">
                 <table class="table table-responsive no-border" border="0">
