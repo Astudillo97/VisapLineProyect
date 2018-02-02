@@ -38,6 +38,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarinventariotipo("+ tipoinv + ")");
         }
+        public DataTable ConsultarFechas(string fhec1,string fech2)
+        {
+            return data.ConsultarDatos("select * from pr_consultarordenfech('"+ fhec1 + "','"+ fech2 + "')");
+        }
  
     }
 }
