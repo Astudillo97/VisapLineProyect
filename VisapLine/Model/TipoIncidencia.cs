@@ -26,6 +26,6 @@ namespace VisapLine.Model
         public bool RegistrarBarrios(Barrios bar)
         {
             return data.OperarDatos("");
-        }
+        }   
     }
 }

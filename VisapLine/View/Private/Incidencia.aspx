@@ -6,8 +6,6 @@
             resize: none;
         }
     </style>
-
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
@@ -19,11 +17,7 @@
         function alerterror() {
             swal("ORDEN FALLIDA!", "La orden no se pudo crear por favor verifique o contactese con el soporte", "error");
         }
-
     </script>
-
-
-
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
@@ -74,7 +68,7 @@
                         <asp:BoundField HeaderText="Estrato" DataField="estratocol" />
                         <asp:BoundField HeaderText="Estado" DataField="estadocol" />
                         <asp:BoundField HeaderText="Direccion" DataField="direccioncol" />
-                        <asp:BoundField HeaderText="Barrio" DataField="barriocol" />                     
+                        <asp:BoundField HeaderText="Barrio" DataField="barriocol" />
                     </Columns>
                     <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
@@ -193,7 +187,6 @@
                 <!-- /.col -->
             </div>
         </div>
-
     </section>
 
 
