@@ -79,7 +79,8 @@
         </div>
          <div class="tab-pane">
             <div class="box box-primary">
-                <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" AllowPaging="True" PageSize="5" OnPageIndexChanging="allfactura_PageIndexChanging" OnRowDeleting="allfactura_RowDeleting"  AutoGenerateColumns="False" ID="allfactura">
+                <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" AllowPaging="True" PageSize="5" OnPageIndexChanging="allfactura_PageIndexChanging" OnRowDeleting="allfactura_RowDeleting" OnSelectedIndexChanging="allfactura_SelectedIndexChanging" OnRowEditing="allfactura_RowEditing"  AutoGenerateColumns="False" ID="allfactura">
+
                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Wrap="true"/>
                     <Columns>
@@ -95,6 +96,8 @@
                         <asp:BoundField DataField="estadof" HeaderText="Estado"></asp:BoundField>
                         <asp:BoundField DataField="totalfac" HeaderText="Valor"></asp:BoundField>
                         <asp:CommandField ShowDeleteButton="True" DeleteText="" ControlStyle-CssClass="glyphicon glyphicon-copy" ></asp:CommandField>
+                        <asp:CommandField ShowSelectButton="True" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-usd" ></asp:CommandField>
+                        <asp:CommandField ShowEditButton="True" EditText="" ControlStyle-CssClass="glyphicon glyphicon-edit" ></asp:CommandField>
                     </Columns>
                 </asp:GridView>
             </div>

@@ -39,5 +39,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarfacturabetwenfechas("+inicio+","+fin+","+identf+","+codigo+","+caso+")");
         }
+
+        public DataTable ConsultarFacturaCodigo(Factura fac)
+        {
+            return data.ConsultarDatos("select * from pr_consultarfacturacodigo(" + fac.facturaventa + ")");
+        }
     }
 }

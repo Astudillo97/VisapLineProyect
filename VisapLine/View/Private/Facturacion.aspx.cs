@@ -77,13 +77,15 @@ namespace VisapLine.View.Private
             list.DataSource = null;
         }
 
-        protected void allfactura_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        
+
+        protected void ConsultarByFecha(object sender, EventArgs e)
         {
             try
             {
-                DataRow dat = tablefactura.Rows[e.RowIndex];
-                string referen = pdf.CrearFactura(empresa.ConsultarEmpresa(), dat);
-                Response.Redirect("../../Archivos/" + referen);
+                allfactura.DataSource = fact.ConsultarFacturas("'"+fecinicio_.Value+"'", "'"+fecfin_.Value+"'", "null::character varying", "null::integer", "1");
+                allfactura.DataBind();
+                Alerta.Visible = false;
             }
             catch (Exception ex)
             {
@@ -91,7 +93,6 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-
         }
 
         protected void allfactura_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -111,13 +112,43 @@ namespace VisapLine.View.Private
 
         }
 
-        protected void ConsultarByFecha(object sender, EventArgs e)
+        protected void allfactura_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             try
             {
-                allfactura.DataSource = fact.ConsultarFacturas("'"+fecinicio_.Value+"'", "'"+fecfin_.Value+"'", "null::character varying", "null::integer", "1");
-                allfactura.DataBind();
-                Alerta.Visible = false;
+                DataRow dat = tablefactura.Rows[e.RowIndex];
+                string referen = pdf.CrearFactura(empresa.ConsultarEmpresa(), dat);
+                Response.Redirect("../../Archivos/" + referen);
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+        }
+
+        protected void allfactura_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            try
+            {
+                DataRow dat = tablefactura.Rows[e.NewSelectedIndex];
+                Response.Redirect("GestPagos.aspx?codigo=" + dat["idfactura"] + "");
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void allfactura_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            try
+            {
+
             }
             catch (Exception ex)
             {
