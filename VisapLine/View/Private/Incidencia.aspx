@@ -6,8 +6,24 @@
             resize: none;
         }
     </style>
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <script type="text/javascript">
+        function deletealert() {
+            swal("ORDEN CREADA CON EXITO!", "Su orden ser creo con el numero ", "success");
+        }
+        function alerterror() {
+            swal("ORDEN FALLIDA!", "La orden no se pudo crear por favor verifique o contactese con el soporte", "error");
+        }
+
+    </script>
+
+
+
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
@@ -31,47 +47,34 @@
                 <div class="row">
                     <div class="col-md-6 col-15">
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
-                            <div class="col-sm-5">
-                                <asp:TextBox runat="server" type="number" CssClass="form-control" ID="texboxdni" Style="text-transform: uppercase"></asp:TextBox>
-                            </div>
-                            <div class="col-sm-4">
-                                <asp:Button runat="server" ID="Button1" CssClass="btn btn-block btn-success btn-lg" Text="Buscar" Width="100px" />
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-15">
-                        <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">Codigo:</label>
                             <div class="col-sm-5">
                                 <asp:TextBox runat="server" type="number" CssClass="form-control" ID="TextBox1" Style="text-transform: uppercase"></asp:TextBox>
                             </div>
                             <div class="col-sm-4">
-                                <asp:Button runat="server" ID="Button2" CssClass="btn btn-block btn-success btn-lg" Text="Buscar" Width="100px" />
+                                <asp:Button runat="server" ID="Buttonbuscarcodg" CssClass="btn btn-block btn-success btn-lg" Text="Buscar" OnClick="Buttonbuscarcodg_Click" Width="100px" />
                             </div>
-
                         </div>
                     </div>
                 </div>
                 <!-- /.col -->
             </div>
         </div>
+        <asp:Label ID="idservicio" runat="server" Visible="false"></asp:Label>
 
         <div class="row" id="divtablagestcontr" runat="server" visible="false">
             <div class="box box-primary">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                     <Columns>
                         <asp:CommandField ShowSelectButton="true" />
-                        <asp:BoundField HeaderText="Codg" DataField="codigo" />
-                        <asp:BoundField HeaderText="Nombre" DataField="nombreter" />
-                        <asp:BoundField HeaderText="Fecha" DataFormatString="{0:d}" DataField="fechacontrato" />
-                        <asp:BoundField HeaderText="Estado" DataField="estadoc" />
-                        <asp:BoundField HeaderText="Direccion" DataField="direnviofactura" />
-                        <asp:BoundField HeaderText="Envio Factura" DataField="enviofactura" />
-                        <asp:BoundField HeaderText="Observacion" DataField="observacion" />
-                        <asp:BoundField HeaderText="Valor" DataField="valor" />
+                        <asp:BoundField HeaderText="Codg" DataField="id" />
+                        <asp:BoundField HeaderText="Fecha" DataFormatString="{0:d}" DataField="fechainiciocol" />
+                        <asp:BoundField HeaderText="Megas" DataField="cantidadmegascol" />
+                        <asp:BoundField HeaderText="Estrato" DataField="estratocol" />
+                        <asp:BoundField HeaderText="Estado" DataField="estadocol" />
+                        <asp:BoundField HeaderText="Direccion" DataField="direccioncol" />
+                        <asp:BoundField HeaderText="Barrio" DataField="barriocol" />                     
                     </Columns>
                     <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
@@ -96,7 +99,7 @@
             </div>
         </div>
 
-        <div class="box box-default">
+        <div class="box box-default" id="divincidencia" visible="false" runat="server">
             <div class="box-header with-border">
                 <h3 class="box-title">Incidencia</h3>
             </div>
@@ -139,6 +142,18 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Tipo Incidencia</label>
+                            <div class="col-sm-8">
+                                <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                    <asp:ListItem>ORDEN DE SERVICIO</asp:ListItem>
+                                    <asp:ListItem>ORDEN DE ADMINISTRATIVA</asp:ListItem>
+                                    <asp:ListItem>ORDEN DE GENERAL</asp:ListItem>
+                                    <asp:ListItem>ORDEN DE RECLAMOS</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-6 col-12">
                         <div class="form-group row">
@@ -168,60 +183,19 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <div class="col-sm-8">
+                                <asp:Button ID="ButtonGuardar" runat="server" Text="Registrar" class="btn btn-block btn-success btn-lg" Width="143px" Height="30px" OnClick="ButtonGuardar_Click" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- /.col -->
             </div>
-            <center>
-                    <asp:Button ID="ButtonGuardar" runat="server" Text="Registrar" class="btn btn-block btn-success btn-lg" Width="143px" Height="30px" OnClick="ButtonGuardar_Click"/>
-              
-            </center>
-
         </div>
 
-
-        <div class="col-lg-3 col-md-6">
-            <div class="box box-primary">
-                <div class="box-header">
-                    <h3 class="box-title">Success Message</h3>
-                    <p class="m-0">(Click on image)</p>
-                </div>
-                <div class="box-body pad res-tb-block">
-                    <img src="../../Contenido/images/search-128.png" alt="alert" class="model_img img-fluid" id="sa-success">
-                </div>
-                <!-- /.box-body -->
-            </div>
-
-            <!-- /.box -->
-        </div>
     </section>
-    
-	<!-- jQuery 3 -->
-	<script src="../../Contenido/assets/vendor_components/jquery/dist/jquery.min.js"></script>
-	
-	<!-- popper -->
-	<script src="../../Contenido/assets/vendor_components/popper/dist/popper.min.js"></script>
 
-	<!-- Bootstrap 4.0-->
-	<script src="../../Contenido/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	
-	<!-- SlimScroll -->
-	<script src="../../Contenido/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-
-	<!-- FastClick -->
-	<script src="../../Contenido/assets/vendor_components/fastclick/lib/fastclick.js"></script>
-   
-    <!-- Sweet-Alert  -->
-    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
-    <script src="../../Contenido/assets/vendor_components/jquery.sweet-alert.custom.js"></script>
-
-	<!-- apro_admin App -->
-	<script src="../../js/template.js"></script>
-
-	<!-- apro_admin for demo purposes -->
-	<script src="../../js/demo.js"></script>
-    <script src="../../Contenido/assets/vendor_components/sweetalert/jquery.sweet-alert.custom.js"></script>
-    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
 
 
 </asp:Content>

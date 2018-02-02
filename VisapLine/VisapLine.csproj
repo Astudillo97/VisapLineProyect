@@ -481,6 +481,7 @@
     <Compile Include="DataAccess\Data\IData.cs" />
     <Compile Include="Model\AsignacionRol.cs" />
     <Compile Include="Model\CargoTercero.cs" />
+    <Compile Include="Model\CategoriaIncidencia.cs" />
     <Compile Include="Model\class_pdf.cs" />
     <Compile Include="Model\DetalleCompra.cs" />
     <Compile Include="Model\Empresa.cs" />
@@ -528,6 +529,7 @@
     <Compile Include="Model\TipoContrato.cs" />
     <Compile Include="Model\TipoDoc.cs" />
     <Compile Include="Model\TipoFactura.cs" />
+    <Compile Include="Model\TipoIncidencia.cs" />
     <Compile Include="Model\TipoProducto.cs" />
     <Compile Include="Model\TipoResidencia.cs" />
     <Compile Include="Model\TipoTercero.cs" />
