@@ -17,13 +17,11 @@ namespace VisapLine.Model
         public string tipoincidencia { get; set; }
         public string categoriaincidencia_idcategoriaindencia { get; set; }
 
-
-
         public DataTable Consultartipoincidencia(TipoIncidencia tpin)
         {
             return data.ConsultarDatos("");
         }
-        public bool RegistrarBarrios(Barrios bar)
+        public bool RegistrarBarrios(TipoIncidencia bar)
         {
             return data.OperarDatos("");
         }   
