@@ -331,8 +331,6 @@ input[type="month"] {
 textarea {
   overflow: auto;
   resize: vertical;
-    height: 66px;
-    width: 271px;
 }
 
 fieldset {
@@ -2494,7 +2492,7 @@ fieldset[disabled] a.btn {
 
 .btn-block {
   display: block;
-  width: 1%;
+  width: 100%;
 }
 
 .btn-block + .btn-block {
@@ -2504,6 +2502,7 @@ fieldset[disabled] a.btn {
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
+  width: 100%;
 }
 
 .fade {

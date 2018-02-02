@@ -15,9 +15,9 @@ namespace VisapLine.Model
         public string idcategoriaincidencia { get; set; }
         public string categoriaincidencia { get; set; }
 
-        public DataTable Consultarcategoriaincidencia(CategoriaIncidencia cateinci)
+        public DataTable Consultarcategoriaincidencia()
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from consultarcaracteristicaincidencia()");
         }
         
 

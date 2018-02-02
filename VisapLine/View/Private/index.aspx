@@ -10,117 +10,7 @@
         </ol>
     </section>
     <section class="content">
-        <div class="col-lg-6">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">FLORENCIA CAQUETÁ, COLOMBIA </h3>
-                </div>
-                <div class="box-body">
-                    <img class="img-fluid" src="../../Contenido/images/florencia2.jpg" alt="..." />
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    <div class="row align-items-center">
-                        <div class="col-lg-4 col-md-5">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div>
-                                        <h1><i class="wi-day-sunny"></i></h1>
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <span class="font-size-40">20°
-							<span class="font-size-30">C</span>
-                                    </span>
-                                    <span class="font-size-18">/</span>
-                                    <span class="font-size-18">7°
-							<span class="font-size-16">C</span>
-                                    </span>
-                                    <p class="font-size-14 mb-0">MONDAY 11.11.2017</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-7">
-                            <div class="row no-space text-center">
-                                <div class="col-2">
-                                    <div class="weather-day vertical-align">
-                                        <div class="vertical-align-middle font-size-16">
-                                            <div class="mb-10">TUE</div>
-                                            <i class="wi-day-sunny font-size-24 mb-10"></i>
-                                            <div>
-                                                24°
-								<span class="font-size-12">C</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="weather-day vertical-align">
-                                        <div class="vertical-align-middle font-size-16">
-                                            <div class="mb-10">WED</div>
-                                            <i class="wi-day-cloudy font-size-24 mb-10"></i>
-                                            <div>
-                                                21°
-								<span class="font-size-12">C</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="weather-day vertical-align">
-                                        <div class="vertical-align-middle font-size-16">
-                                            <div class="mb-10">THU</div>
-                                            <i class="wi-day-sunny font-size-24 mb-10"></i>
-                                            <div>
-                                                25°
-								<span class="font-size-12">C</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="weather-day vertical-align">
-                                        <div class="vertical-align-middle font-size-16">
-                                            <div class="mb-10">FRI</div>
-                                            <i class="wi-day-cloudy-gusts font-size-24 mb-10"></i>
-                                            <div>
-                                                20°
-								<span class="font-size-12">C</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="weather-day vertical-align">
-                                        <div class="vertical-align-middle font-size-16">
-                                            <div class="mb-10">SAT</div>
-                                            <i class="wi-day-lightning font-size-24 mb-10"></i>
-                                            <div>
-                                                18°
-								<span class="font-size-12">C</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="weather-day vertical-align">
-                                        <div class="vertical-align-middle font-size-16">
-                                            <div class="mb-10">SUN</div>
-                                            <i class="wi-day-storm-showers font-size-24 mb-10"></i>
-                                            <div>
-                                                14°
-								<span class="font-size-12">C</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.box-footer-->
-            </div>
-        </div>
+
 
 
         <div class="row">
@@ -266,8 +156,7 @@
         </div>
 
 
-
-
+    
 
 
 

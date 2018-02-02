@@ -19,7 +19,7 @@
 
     //Success Message
     $('#sa-success').click(function(){
-        swal("Se ha registrado con exito!", "Se ha registrado con exito el formulario", "success")
+        swal("Good job!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.", "success")
     });
 
     //Warning Message

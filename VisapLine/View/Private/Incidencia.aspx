@@ -100,7 +100,7 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-6 col-6">
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Fecha inicio</label>
                             <div class="col-sm-8">
@@ -137,19 +137,15 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Tipo Incidencia</label>
+                            <label class="col-sm-4 col-form-label">Caracteristica</label>
                             <div class="col-sm-8">
                                 <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                    <asp:ListItem>Seleccione</asp:ListItem>
-                                    <asp:ListItem>ORDEN DE SERVICIO</asp:ListItem>
-                                    <asp:ListItem>ORDEN DE ADMINISTRATIVA</asp:ListItem>
-                                    <asp:ListItem>ORDEN DE GENERAL</asp:ListItem>
-                                    <asp:ListItem>ORDEN DE RECLAMOS</asp:ListItem>
+                                    <asp:ListItem>Seleccione</asp:ListItem>                                  
                                 </asp:DropDownList>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-6 col-6">
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Fecha Finalizacion</label>
                             <div class="col-sm-8">

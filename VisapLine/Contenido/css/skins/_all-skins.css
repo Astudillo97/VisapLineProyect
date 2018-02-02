@@ -383,13 +383,13 @@ Primary use:	Apro Admin - Responsive Admin Template
   }
 }
 .skin-black .main-header .logo {
-    background-color: #2F62BB;
+    background-color: #1443ea;
     color: #fff;
     border-bottom: 0 solid transparent;
 }
-    .skin-black .main-header .logo:hover {
-        background-color: #2F62BB;
-    }
+.skin-black .main-header .logo:hover {
+  background-color: #805dc8;
+}
 .skin-black .main-header li.user-header {
   background-color: #fff;
 }

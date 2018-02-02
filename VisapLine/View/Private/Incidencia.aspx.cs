@@ -9,14 +9,18 @@ using System.Data;
 using VisapLine.Exeption;
 namespace VisapLine.View.Private
 {
+
+
     public partial class Incidencia : System.Web.UI.Page
     {
 
+        CategoriaIncidencia cinci = new CategoriaIncidencia();
         Servicios serv = new Servicios();
         protected void Page_Load(object sender, EventArgs e)
         {
 
 
+  
 
         }
 
@@ -38,6 +42,11 @@ namespace VisapLine.View.Private
                 GridView1.DataSource = dat;
                 GridView1.DataBind();
                 divtablagestcontr.Visible = true;
+
+                DropDownList3.DataSource = cinci.Consultarcategoriaincidencia();
+                DropDownList3.DataTextField = "categoriaincidencia";
+                DropDownList3.DataValueField = "idcategoriaincidencia";
+                DropDownList3.DataBind();
             }
             catch (Exception ex)
             {

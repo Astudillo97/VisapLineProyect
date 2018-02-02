@@ -2441,7 +2441,6 @@ input[type="color"] {
 .box-body {
     padding: 10px;
     border-radius: 0 0 3px 3px;
-    width: 516px;
 }
 .no-header .box-body {
     border-top-right-radius: 3px;
@@ -5135,7 +5134,7 @@ button.btn.dropdown-toggle::after, .wysihtml5-toolbar .btn.dropdown-toggle::afte
 .btn-success {
     background-color: #46be8a;
     border-color: #12a967;
-    }
+}
 .btn-success.hover, .btn-success:active, .btn-success:hover {
     background-color: #12a967;
 }

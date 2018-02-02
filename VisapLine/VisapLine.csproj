@@ -105,6 +105,12 @@
   <ItemGroup>
     <Content Include="Archivos\data.txt" />
     <Content Include="Archivos\imgvisap.png" />
+    <Content Include="Archivos\Contrato_postpago_FIJOS3.pdf" />
+    <Content Include="Archivos\FreeSans.ttf" />
+    <Content Include="Archivos\2018129710-2.pdf" />
+    <Content Include="Archivos\201812972-2.pdf" />
+    <Content Include="Archivos\20181301639-6.pdf" />
+    <Content Include="Archivos\2018130191-6.pdf" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.eot" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.ttf" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.woff" />
@@ -127,29 +133,7 @@
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regulard41d.eot" />
-    <Content Include="Archivos\Contrato_postpago_FIJOS3.pdf" />
-    <Content Include="Archivos\FreeSans.ttf" />
-    <Content Include="Archivos\2018129710-2.pdf" />
-    <Content Include="Archivos\201812972-2.pdf" />
-    <Content Include="Archivos\20181301639-6.pdf" />
-    <Content Include="Archivos\2018130191-6.pdf" />
     <None Include="packages.config" />
-    <Content Include="Contenido\images\florencia2.jpg" />
-    <Content Include="Contenido\images\florencia.jpg" />
-    <Content Include="Contenido\images\icons\editar.png" />
-    <Content Include="Contenido\images\icons\eliminar.png" />
-    <Content Include="Contenido\images\icons\ver.png" />
-    <Content Include="Contenido\images\search-128.png" />
-    <Content Include="index.html" />
-    <Content Include="View\Private\Admin.Master" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Contenido\assets\vendor_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="Contenido\assets\vendor_components\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
     <Content Include="Contenido\assets\vendor_components\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha.png" />
@@ -346,6 +330,37 @@
     <Content Include="Contenido\assets\vendor_plugins\weather-icons\WeatherIcon.js" />
     <Content Include="Contenido\css\master_style.css" />
     <Content Include="Contenido\css\skins\_all-skins.css" />
+    <Content Include="Contenido\images\florencia2.jpg" />
+    <Content Include="Contenido\images\florencia.jpg" />
+    <Content Include="Contenido\images\icons\editar.png" />
+    <Content Include="Contenido\images\icons\eliminar.png" />
+    <Content Include="Contenido\images\icons\ver.png" />
+    <Content Include="Contenido\images\search-128.png" />
+    <Content Include="Contenido\js\demo.js" />
+    <Content Include="Contenido\js\pages\advanced-form-element.js" />
+    <Content Include="Contenido\js\pages\calendar.js" />
+    <Content Include="Contenido\js\pages\dashboard.js" />
+    <Content Include="Contenido\js\pages\data-table.js" />
+    <Content Include="Contenido\js\pages\editor.js" />
+    <Content Include="Contenido\js\pages\mailbox.js" />
+    <Content Include="Contenido\js\pages\steps.js" />
+    <Content Include="Contenido\js\pages\toastr.js" />
+    <Content Include="Contenido\js\pages\validation.js" />
+    <Content Include="Contenido\js\pages\widget-charts.js" />
+    <Content Include="Contenido\js\pages\widget-flot-charts.js" />
+    <Content Include="Contenido\js\pages\widget-inline-charts.js" />
+    <Content Include="Contenido\js\pages\widget-morris-charts.js" />
+    <Content Include="Contenido\js\template.js" />
+    <Content Include="index.html" />
+    <Content Include="View\Private\Admin.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Contenido\images\1.jpg" />
     <Content Include="Contenido\images\150x100.png" />
     <Content Include="Contenido\images\5.jpg" />
@@ -442,21 +457,6 @@
     <Content Include="Contenido\images\user6-128x128.jpg" />
     <Content Include="Contenido\images\user7-128x128.jpg" />
     <Content Include="Contenido\images\visa.png" />
-    <Content Include="Contenido\js\demo.js" />
-    <Content Include="Contenido\js\pages\advanced-form-element.js" />
-    <Content Include="Contenido\js\pages\calendar.js" />
-    <Content Include="Contenido\js\pages\dashboard.js" />
-    <Content Include="Contenido\js\pages\data-table.js" />
-    <Content Include="Contenido\js\pages\editor.js" />
-    <Content Include="Contenido\js\pages\mailbox.js" />
-    <Content Include="Contenido\js\pages\steps.js" />
-    <Content Include="Contenido\js\pages\toastr.js" />
-    <Content Include="Contenido\js\pages\validation.js" />
-    <Content Include="Contenido\js\pages\widget-charts.js" />
-    <Content Include="Contenido\js\pages\widget-flot-charts.js" />
-    <Content Include="Contenido\js\pages\widget-inline-charts.js" />
-    <Content Include="Contenido\js\pages\widget-morris-charts.js" />
-    <Content Include="Contenido\js\template.js" />
     <Content Include="View\Login\login.aspx" />
     <Content Include="View\Private\Almacen.aspx" />
     <Content Include="View\Private\detalleservicio.aspx" />
