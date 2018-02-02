@@ -6,10 +6,11 @@
             resize: none;
         }
     </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
-    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+
     <script type="text/javascript">
         function deletealert() {
             swal("ORDEN CREADA CON EXITO!", "Su orden ser creo con el numero ", "success");
@@ -18,6 +19,7 @@
             swal("ORDEN FALLIDA!", "La orden no se pudo crear por favor verifique o contactese con el soporte", "error");
         }
     </script>
+
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
@@ -122,7 +124,7 @@
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Detalle</label>
                             <div class="col-sm-8">
-                                <textarea id="TextArea1detalle" runat="server" data-iconlibrary="fa" rows="5" resize="none" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 118px;" required data-validation-required-message="This field is required"></textarea>
+                                <textarea id="TextArea1detalle" class="form-control" runat="server" data-iconlibrary="fa" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 125px;" required data-validation-required-message="This field is required"></textarea>
 
                             </div>
                         </div>
@@ -136,11 +138,12 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Caracteristica</label>
+                            <label class="col-sm-4 col-form-label">Tipo Incidencia</label>
                             <div class="col-sm-8">
-                                <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                    <asp:ListItem>Seleccione</asp:ListItem>                                  
+                                <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                    <asp:ListItem>Seleccione</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -161,18 +164,19 @@
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Observacion</label>
                             <div class="col-sm-8">
-                                <textarea id="TextAreaobservacion" runat="server" data-iconlibrary="fa" rows="5" resize="none" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 118px;" required data-validation-required-message="This field is required"></textarea>
-
+                                <textarea id="TextAreaobservacion" class="form-control" runat="server" data-iconlibrary="fa" rows="5" resize="none" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 118px;" required data-validation-required-message="This field is required"></textarea>
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Tipo Incidencia</label>
+                            <label class="col-sm-4 col-form-label">Caracteristica</label>
                             <div class="col-sm-8">
-                                <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-control" AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
                                     <asp:ListItem>Seleccione</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <div class="col-sm-8">
                                 <asp:Button ID="ButtonGuardar" runat="server" Text="Registrar" class="btn btn-block btn-success btn-lg" Width="143px" Height="30px" OnClick="ButtonGuardar_Click" />

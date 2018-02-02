@@ -15,6 +15,7 @@ namespace VisapLine.View.Private
     {
 
         CategoriaIncidencia cinci = new CategoriaIncidencia();
+        TipoIncidencia tpin = new TipoIncidencia(); 
         Servicios serv = new Servicios();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,10 +27,23 @@ namespace VisapLine.View.Private
 
         protected void ButtonGuardar_Click(object sender, EventArgs e)
         {
+            try
+            {
 
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
 
+            }
+            catch (Exception ex)
+            {
+
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+          
+
+            ClientScript.RegisterStartupScript(GetType(), " swal", "deletealert();", true);
 
         }
 
@@ -62,6 +76,19 @@ namespace VisapLine.View.Private
             idservicio.Text = gridw.Cells[1].Text;
             divincidencia.Visible = true;
 
+     
+
+        }
+
+        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList2.Items.Clear();
+            DropDownList2.Items.Add(new ListItem("Seleccione", "Seleccione"));
+            tpin.categoriaincidencia_idcategoriaindencia = Validar.validarselected(DropDownList3.SelectedValue);
+            DropDownList2.DataSource = Validar.Consulta(tpin.Consultartipoincidencia(tpin));
+            DropDownList2.DataTextField = "tipoincidencia";
+            DropDownList2.DataValueField = "idtipoincidencia";
+            DropDownList2.DataBind();
         }
     }
 }

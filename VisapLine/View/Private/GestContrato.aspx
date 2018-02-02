@@ -7,8 +7,7 @@
         function botonmodalgesti() {
             document.getElementById("botonmodalcontr").click();
         }
-
-     
+           
 
 
     </script>
