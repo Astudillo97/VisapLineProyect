@@ -27,23 +27,11 @@ namespace VisapLine.View.Private
 
         protected void ButtonGuardar_Click(object sender, EventArgs e)
         {
-            try
-            {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+
+            //ClientScript.RegisterStartupScript(GetType(), "", "botonmodalgesti();", true);
 
 
-
-            }
-            catch (Exception ex)
-            {
-
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
-            }
-
-          
-
-            ClientScript.RegisterStartupScript(GetType(), " swal", "deletealert();", true);
 
         }
 
@@ -89,6 +77,24 @@ namespace VisapLine.View.Private
             DropDownList2.DataTextField = "tipoincidencia";
             DropDownList2.DataValueField = "idtipoincidencia";
             DropDownList2.DataBind();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
         }
     }
 }

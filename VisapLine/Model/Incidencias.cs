@@ -28,12 +28,12 @@ namespace VisapLine.Model
         public string tipoincidencia_idtipoincidencia { get; set; }
         public DataTable ConsultarIncidencias(Incidencias ins)
         {
-            return data.ConsultarDatos("select * from public.pr_insertarincedencia('')");
+            return data.ConsultarDatos("");
         }
 
         public bool RegistrarInsidencias(Incidencias bar)
         {
-            return data.OperarDatos("");
+            return data.OperarDatos("select * from public.pr_insertarincedencia('')");
         }
     }
 }
