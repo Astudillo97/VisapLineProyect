@@ -48,10 +48,10 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">Codigo:</label>
                             <div class="col-sm-5">
-                                <asp:TextBox runat="server" type="number" CssClass="form-control" ID="TextBox1" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" type="Text" CssClass="form-control" ID="TextBox1" Style="text-transform: uppercase"></asp:TextBox>
                             </div>
                             <div class="col-sm-4">
-                                <asp:Button runat="server" ID="Buttonbuscarcodg" CssClass="btn btn-block btn-success btn-lg" Text="Buscar" OnClick="Buttonbuscarcodg_Click" Width="100px" />
+                                <asp:Button runat="server" ID="Buttonbuscarcodg" CssClass="btn btn-block btn-success" Text="Buscar" OnClick="Buttonbuscarcodg_Click" Width="100px" />
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
                             <div class="col-sm-5">
-                                <asp:TextBox runat="server" type="number" CssClass="form-control" ID="TextBox2" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" type="Text" CssClass="form-control" ID="TextBox2" Style="text-transform: uppercase"></asp:TextBox>
                             </div>
                             <div class="col-sm-4">
                                 <asp:Button runat="server" ID="Button2" CssClass="btn btn-block btn-success btn-lg" Text="Buscar" OnClick="Buttonbuscarcodg_Click" Width="100px" />
@@ -70,7 +70,7 @@
                 <!-- /.col -->
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="iddatosterceros" runat="server">
             <div class="col-5">
                 <div class="box box-default">
                     <div class="box-header with-border">
@@ -79,18 +79,32 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-2 col-6">
+                            <div class="col-5">
+                                <img src="../../Contenido/images/user2-160x160.jpg" height="135px" width="135px" />
+                            </div>
+                            <div class="col-7">
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label"></label>
+                                    <label class="col-sm-4 col-form-label">Nombre:</label>
                                     <div class="col-sm-8">
-                                        <img src="../../Contenido/images/user2-160x160.jpg" height="135px" width="135px" />
+                                        <asp:Label ID="Label1" runat="server" CssClass="form-control bg-gray" Text=""></asp:Label>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-2 col-6">
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Nombre</label>
-                                    <div class="col-sm-5">
+                                    <label class="col-sm-4 col-form-label">Apellido:</label>
+                                    <div class="col-sm-8">
+                                        <asp:Label ID="Label2" CssClass="form-control bg-gray" runat="server" Text=""></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Telefono:</label>
+                                    <div class="col-sm-8">
+                                        <asp:Label ID="Label3" runat="server" CssClass="form-control bg-gray" Text=""></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Direccion:</label>
+                                    <div class="col-sm-8">
+                                        <asp:Label ID="Label4" runat="server" CssClass="form-control bg-gray" Text=""></asp:Label>
                                     </div>
                                 </div>
                             </div>
@@ -102,17 +116,16 @@
                 <asp:Label ID="idservicio" runat="server" Visible="false"></asp:Label>
                 <div class="row" id="divtablagestcontr" runat="server" visible="false">
                     <div class="box box-primary">
-                        <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <asp:GridView ID="GridView1" runat="server" HorizontalAlign="Center"  OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
-                                <asp:CommandField ShowSelectButton="true" />
-                                <asp:BoundField HeaderText="Codg" DataField="id" />
-                                <asp:BoundField HeaderText="Fecha" DataFormatString="{0:d}" DataField="fechainiciocol" />
-                                <asp:BoundField HeaderText="Megas" DataField="cantidadmegascol" />
-                                <asp:BoundField HeaderText="Estrato" DataField="estratocol" />
-                                <asp:BoundField HeaderText="Estado" DataField="estadocol" />
-                                <asp:BoundField HeaderText="Direccion" DataField="direccioncol" />
-                                <asp:BoundField HeaderText="Barrio" DataField="barriocol" />
+                                <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
+                                <asp:BoundField HeaderText="Codg" HeaderStyle-HorizontalAlign="Center" DataField="id" />
+                                <asp:BoundField HeaderText="Fecha" HeaderStyle-HorizontalAlign="Center" DataFormatString="{0:d}" DataField="fechainiciocol" />
+                                <asp:BoundField HeaderText="Megas" HeaderStyle-HorizontalAlign="Center" DataField="cantidadmegascol" />
+                                <asp:BoundField HeaderText="Estado" HeaderStyle-HorizontalAlign="Center" DataField="estadocol" />
+                                <asp:BoundField HeaderText="Direccion" HeaderStyle-HorizontalAlign="Center" DataField="direccioncol" />
+                                <asp:BoundField HeaderText="Barrio" HeaderStyle-HorizontalAlign="Center" DataField="barriocol" />
                             </Columns>
                             <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 

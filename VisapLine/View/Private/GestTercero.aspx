@@ -118,7 +118,6 @@
                                                         <td><a href="GestTercero.aspx?codigo=<%=item["identificacion"].ToString() %>"><%=item["nombre"].ToString()+" "+item["apellido"].ToString() %></a></td>
                                                         <td><%=item["direccion"].ToString() %></td>
                                                         <td><%=item["correo"].ToString() %></td>
-                                                        <td><%=Convert.ToDateTime(item["fechexp"].ToString()).ToString("yyyy-MM-dd") %></td>
                                                         <td><%=item["estado"].ToString() %></td>
                                                     </tr>
 
