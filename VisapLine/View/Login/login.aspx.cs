@@ -34,7 +34,7 @@ namespace VisapLine.View.Login
                 DataRow dat=ter.ConsultarTercerosId(ter).Rows[0];
                 switch (dat["estado"].ToString())
                 {
-                    case "Activo":
+                    case "ACTIVO":
                         usua.idusuario = data["idusuario"].ToString();
                         
                         DataTable roles=Validar.Consulta(usua.ConsultarUsuarioRol(usua));
@@ -58,7 +58,7 @@ namespace VisapLine.View.Login
                         Session["tercero"] = tercero;
                         ClientScript.RegisterStartupScript(GetType(), "alerta", "redirect();", true);
                         break;
-                    case "Inactivo":
+                    case "ELIMINADO":
                         textError.InnerHtml = "Actualmente se encuentra inactivo";
                         Alerta.CssClass = "alert alert-error";
                         Alerta.Visible = true;
@@ -178,7 +178,7 @@ namespace VisapLine.View.Login
 
                                     }
                                     break;
-                                case "FUNCIONARIO":
+                                case "EMPLEADO":
                                     asg.usuario_idusuario = usua.usuauser;
                                     asg.rol_idrol = "FUNCIONARIO";
                                     if (asg.RegistrarAsignacionRol(asg))
