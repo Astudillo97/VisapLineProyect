@@ -102,7 +102,6 @@
                                                         <th>NOMBRE</th>
                                                         <th>DIRECCION</th>
                                                         <th>CORREO</th>
-                                                        <th>EXPEDICIÓN</th>
                                                         <th>ESTADO</th>
                                                     </tr>
                                                 </thead>
@@ -258,6 +257,12 @@
                                                 <input type="text" class="form-control" id="identificacion_" runat="server" placeholder="Nit o Identificación">
                                             </div>
                                         </div>
+                                        <div class="form-group row" id="divnacimiento">
+                                            <label class="col-sm-3 col-form-label">Expedido</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" class="form-control" id="fecnac_" runat="server" placeholder="Apellido">
+                                            </div>
+                                        </div>
                                         <div class="form-group row" id="divnombre">
                                             <label id="_nombre_" runat="server" class="col-sm-3 col-form-label">Nombre</label>
                                             <div class="col-sm-9">
@@ -270,12 +275,7 @@
                                                 <input type="text" class="form-control" id="apellido_" runat="server" placeholder="Apellido">
                                             </div>
                                         </div>
-                                        <div class="form-group row" id="divnacimiento">
-                                            <label class="col-sm-3 col-form-label">Nacimiento</label>
-                                            <div class="col-sm-9">
-                                                <input type="date" class="form-control" id="fecnac_" runat="server" placeholder="Apellido">
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -367,8 +367,14 @@
                                             <div class="col-sm-9">
                                                 <asp:DropDownList runat="server" ID="estado_" CssClass="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
-                                                    <asp:ListItem>Activo</asp:ListItem>
-                                                    <asp:ListItem>Inactivo</asp:ListItem>
+                                                    <asp:ListItem>ACTIVO</asp:ListItem>
+                                                    <asp:ListItem>INDEFINIDO</asp:ListItem>
+                                                    <asp:ListItem>SUSPENDIDO</asp:ListItem>
+                                                    <asp:ListItem>ELIMINADO</asp:ListItem>
+                                                    <asp:ListItem>EXONERADO</asp:ListItem>
+                                                    <asp:ListItem>CORTADO</asp:ListItem>
+                                                    <asp:ListItem>ANULADO</asp:ListItem>
+                                                    <asp:ListItem>POR INSTALAR</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
