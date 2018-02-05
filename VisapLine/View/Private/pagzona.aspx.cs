@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VisapLine.Model;
 using VisapLine.Exeption;
-
+using System.Data;
 
 namespace VisapLine.View.Private
 {
@@ -31,6 +31,7 @@ namespace VisapLine.View.Private
                     paisbarrio.DataValueField = "idpais";
                     paisbarrio.DataBind();
 
+                    tablabarrios();
 
                     paiszona.DataSource = pais.ConsultarPais();
                     paiszona.DataTextField = "pais";
@@ -259,7 +260,8 @@ namespace VisapLine.View.Private
                     paiszona.SelectedValue = "Seleccione";
                     departamentozona.Items.Clear();
                     municipiozona.Items.Clear();
-                    TextBox1.Text = "";
+                 
+                    TextBox2.Text = "";
 
                 }
                 else
@@ -285,6 +287,50 @@ namespace VisapLine.View.Private
 
 
            
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName.ToString() == "borrar")
+                {
+                    string DeleteRowId = e.CommandArgument.ToString();
+                    barr.eliminar(int.Parse(DeleteRowId));
+                    //Call Procedure here to delete row
+                    Response.Redirect("pagzona.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void tablabarrios()
+        {
+            try
+            {
+                DataTable dt = barr.ConsultarbarriosAll();
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            tablabarrios();
         }
     }
 }

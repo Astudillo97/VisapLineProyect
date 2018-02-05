@@ -54,9 +54,9 @@
                                                                     <div class="col-sm-9">
                                                                         <asp:DropDownList ID="departamentozona" runat="server" CssClass="form-control select2" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="departamentozona_SelectedIndexChanged">
                                                                             <asp:ListItem>Seleccione</asp:ListItem>
-                                                                              <asp:ListItem>PUBLICO</asp:ListItem>
-                                                                              <asp:ListItem>EMPRESARIAL</asp:ListItem>
-                                                                              <asp:ListItem>ESPECIAL</asp:ListItem>
+                                                                            <asp:ListItem>PUBLICO</asp:ListItem>
+                                                                            <asp:ListItem>EMPRESARIAL</asp:ListItem>
+                                                                            <asp:ListItem>ESPECIAL</asp:ListItem>
                                                                         </asp:DropDownList>
 
                                                                     </div>
@@ -101,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-                
+
 
 
                 <div class="tab-pane" id="barrios">
@@ -186,10 +186,53 @@
                             </div>
                         </div>
                     </div>
+                    <div class="box-body">
+                         <div class="box-header with-border">
+                                    <h3 class="box-title">barrios</h3>
+                                </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <asp:GridView ID="GridView1" runat="server" OnPageIndexChanging="GridView1_PageIndexChanging" class="table table-bordered table-striped table-responsive " AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" CellPadding="4" ForeColor="#333333" GridLines="None" AllowCustomPaging="True" PageSize="10">
+                                    <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                    <Columns>
+                                        <asp:BoundField HeaderText="Id Tipo Factura" DataField="idbarrios" />
+                                        <asp:BoundField HeaderText="Tipo Factura" DataField="barrios" />
+                                        <asp:TemplateField HeaderText="Borrar">
+                                            <ItemTemplate>
+                                                <asp:Button ID="hola" runat="server" class="btn btn-danger btn-flat" CommandName="borrar" CommandArgument='<%# Eval("idbarrios") %>' Text="Borrar" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                    <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                    <PagerSettings Mode="NextPreviousFirstLast" />
+
+                                    <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                                    <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                    <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                    <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                    <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                    <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                                </asp:GridView>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
                 </div>
             </div>
         </div>
-        
+
     </section>
 
 

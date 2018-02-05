@@ -21,7 +21,7 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultartipoincidencia('"+tpin.categoriaincidencia_idcategoriaindencia+"') ");
         }
-        public bool RegistrarBarrios(TipoIncidencia bar)
+        public bool RegistrarBarrios(TipoIncidencia tpin)
         {
             return data.OperarDatos("");
         }   
