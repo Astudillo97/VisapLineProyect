@@ -44,18 +44,17 @@ namespace VisapLine.View.Private
 
                 if (tf.RegistrarTipoFactura(tf))
                 {
-                    textError.InnerHtml = "Se ha Registrado correctamente";
-                    Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;
+                    texboxtipofactura.Text = "";
+                    tablatipofactura();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
 
-
+                
                 }
                 else
                 {
-                    textError.InnerHtml = "No se registro";
-                    Alerta.CssClass = "alert alert-error";
-                    Alerta.Visible = true;
-                    texboxtipofactura.Text = "";
+                    tablatipofactura();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+
 
                 }
             }
@@ -83,7 +82,8 @@ namespace VisapLine.View.Private
                     string DeleteRowId = e.CommandArgument.ToString();
                     tf.eliminar(int.Parse(DeleteRowId));
                     //Call Procedure here to delete row
-                    Response.Redirect("Tipofact.aspx");
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "elimalert();", true);
+                    tablatipofactura();
                 }
             }
             catch (Exception ex)

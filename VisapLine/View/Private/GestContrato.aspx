@@ -62,7 +62,7 @@
                 <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" OnRowDataBound="GridView1_RowDataBound" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                     <Columns>
-                        <asp:CommandField ShowSelectButton="true" />
+                        <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit"  />
                         <asp:BoundField HeaderText="Codg" DataField="codigo" />
                         <asp:BoundField HeaderText="Nombre" DataField="nombreter" />
                         <asp:BoundField HeaderText="Fecha" DataFormatString="{0:d}" DataField="fechacontrato" />
@@ -179,16 +179,6 @@
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>UNICA</asp:ListItem>
                                         <asp:ListItem>GRUPAL</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Sucursal:</label>
-                            <div class="col-sm-8">
-                                <div class="form-group row">
-                                    <asp:DropDownList ID="Sucursal" runat="server" Enabled="false" CssClass="form-control" AppendDataBoundItems="true">
-                                        <asp:ListItem>Seleccione</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>

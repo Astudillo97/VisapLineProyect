@@ -31,7 +31,7 @@ namespace VisapLine.View.Private
 
         protected void Page_Load(object sender, EventArgs e)
         {
-       
+
 
         }
 
@@ -91,12 +91,6 @@ namespace VisapLine.View.Private
             DropDownListtipocontrato.DataValueField = "idtipocontrato";
             DropDownListtipocontrato.DataBind();
 
-            Sucursal.DataSource = scsal.Consultarsucursal(dt["terceros_idterceros_cont"].ToString());
-            Sucursal.DataTextField = "nombre";
-            Sucursal.DataValueField = "idsucursal";
-            Sucursal.DataBind();
-
-
 
 
             barr.idbarrios = dt["idbarrios"].ToString();
@@ -113,7 +107,6 @@ namespace VisapLine.View.Private
             TextBoxdirreccionenvio.Text = dt["direnviofactura"].ToString();
             DropDownListenviofactura.Text = dt["enviofactura"].ToString();
             DropDownList1facuracuni.Text = dt["facturaunica"].ToString();
-            Sucursal.SelectedValue = dt["idsucursal"].ToString();
             DropDownList1.Text = dt["idbarrios"].ToString();
             TextBoxivacontrato.Text = dt["iva"].ToString();
 
@@ -135,7 +128,7 @@ namespace VisapLine.View.Private
                 contrat.direccionenviofact = TextBoxdirreccionenvio.Text.ToUpper();
                 contrat.enviofactura = DropDownListenviofactura.Text;
                 contrat.facturaunica = DropDownList1facuracuni.Text;
-                contrat.sucursal_idsucursal = Sucursal.SelectedValue;
+               
                 contrat.barrio_idbarrio = DropDownList1.SelectedValue;
                 contrat.iva = TextBoxivacontrato.Text;
                 Validar.validartrue(contrat.updatecontrato(contrat));
@@ -158,7 +151,6 @@ namespace VisapLine.View.Private
             TextBoxdirreccionenvio.Enabled = true;
             DropDownListenviofactura.Enabled = true;
             DropDownList1facuracuni.Enabled = true;
-            Sucursal.Enabled = true;
             DropDownList1.Enabled = true;
             TextBoxivacontrato.Enabled = true;
             Buttoncancelar.Enabled = true;
@@ -176,13 +168,13 @@ namespace VisapLine.View.Private
             TextBoxdirreccionenvio.Enabled = false;
             DropDownListenviofactura.Enabled = false;
             DropDownList1facuracuni.Enabled = false;
-            Sucursal.Enabled = false;
             DropDownList1.Enabled = false;
             TextBoxivacontrato.Enabled = false;
             Buttoncancelar.Enabled = false;
             Buttoneditar.Enabled = true;
-            ButtonGuardar.Enabled = false;
+            Buttonmodal.Enabled = false;
             DropDownListestadocontrato.Enabled = false;
+
 
 
         }
