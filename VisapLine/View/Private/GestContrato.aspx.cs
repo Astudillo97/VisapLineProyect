@@ -71,7 +71,8 @@ namespace VisapLine.View.Private
             ideditarcontrat.Visible = true;
             Buttoneditar.Visible = true;
             Buttoncancelar.Visible = true;
-            Buttonmodal.Visible = true;
+            ButtonGuardar.Visible = true;
+
             GridViewRow gridw = GridView1.SelectedRow;
             TextBox1identificacion.Text = gridw.Cells[2].Text;
             contrat.codigo = gridw.Cells[1].Text;
@@ -79,12 +80,12 @@ namespace VisapLine.View.Private
             DropDownListestadocontrato.Text = dt["estadoc"].ToString();
 
             Labelidcontrato.Text = dt["idcontrato"].ToString();
-
+            LabelNumcontra.Text = dt["codigo"].ToString();
             DropDownListplancontrato.DataSource = pn.ConsultarPlan();
             DropDownListplancontrato.DataTextField = "detalle";
             DropDownListplancontrato.DataValueField = "idplan";
             DropDownListplancontrato.DataBind();
-
+          
 
             DropDownListtipocontrato.DataSource = tpcont.ConsultarTipoContrato();
             DropDownListtipocontrato.DataTextField = "Tipocontrato";
@@ -104,7 +105,7 @@ namespace VisapLine.View.Private
 
             DropDownListplancontrato.SelectedValue = dt["idplan"].ToString();
             DropDownListtipocontrato.Text = dt["idtipocontrato"].ToString();
-            TextBoxdirreccionenvio.Text = dt["direnviofactura"].ToString();
+            TextArea1.Value = dt["direnviofactura"].ToString();
             DropDownListenviofactura.Text = dt["enviofactura"].ToString();
             DropDownList1facuracuni.Text = dt["facturaunica"].ToString();
             DropDownList1.Text = dt["idbarrios"].ToString();
@@ -125,13 +126,15 @@ namespace VisapLine.View.Private
                 contrat.estado = DropDownListestadocontrato.Text;
                 contrat.plan_idplan = DropDownListplancontrato.SelectedValue;
                 contrat.tipocontrato_idtipocontrato = DropDownListtipocontrato.SelectedValue;
-                contrat.direccionenviofact = TextBoxdirreccionenvio.Text.ToUpper();
+                contrat.direccionenviofact = TextArea1.Value.ToUpper();
                 contrat.enviofactura = DropDownListenviofactura.Text;
                 contrat.facturaunica = DropDownList1facuracuni.Text;
                
                 contrat.barrio_idbarrio = DropDownList1.SelectedValue;
                 contrat.iva = TextBoxivacontrato.Text;
                 Validar.validartrue(contrat.updatecontrato(contrat));
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+
                 Response.Redirect("GestContrato.aspx");
             }
             catch (Exception ex)
@@ -148,16 +151,15 @@ namespace VisapLine.View.Private
         {
             DropDownListplancontrato.Enabled = true;
             DropDownListtipocontrato.Enabled = true;
-            TextBoxdirreccionenvio.Enabled = true;
+            TextArea1.Disabled = false;
             DropDownListenviofactura.Enabled = true;
             DropDownList1facuracuni.Enabled = true;
             DropDownList1.Enabled = true;
             TextBoxivacontrato.Enabled = true;
             Buttoncancelar.Enabled = true;
-            Buttoneditar.Enabled = false;
-            Buttonmodal.Enabled = true;
+            ButtonGuardar.Enabled = true;
             DropDownListestadocontrato.Enabled = true;
-
+            DropDownList2.Enabled = true;
 
         }
 
@@ -165,14 +167,14 @@ namespace VisapLine.View.Private
         {
             DropDownListplancontrato.Enabled = false;
             DropDownListtipocontrato.Enabled = false;
-            TextBoxdirreccionenvio.Enabled = false;
+            TextArea1.Disabled = true;
             DropDownListenviofactura.Enabled = false;
             DropDownList1facuracuni.Enabled = false;
             DropDownList1.Enabled = false;
             TextBoxivacontrato.Enabled = false;
             Buttoncancelar.Enabled = false;
             Buttoneditar.Enabled = true;
-            Buttonmodal.Enabled = false;
+            ButtonGuardar.Enabled = false;
             DropDownListestadocontrato.Enabled = false;
 
 
@@ -181,10 +183,7 @@ namespace VisapLine.View.Private
 
 
 
-        protected void Buttonmodal_Click(object sender, EventArgs e)
-        {
-            ClientScript.RegisterStartupScript(GetType(), "", "botonmodalgesti();", true);
-        }
+        
 
 
     }
