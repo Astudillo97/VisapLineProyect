@@ -15,6 +15,7 @@ namespace VisapLine.View.Private
     public partial class GestTercero : System.Web.UI.Page
     {
         TipoTercero tpter = new TipoTercero();
+        CargoTercero ct = new CargoTercero();
         TipoFactura tpfact = new TipoFactura();
         TipoResidencia tpres = new TipoResidencia();
         TipoDoc tpdoc = new TipoDoc();
@@ -27,6 +28,7 @@ namespace VisapLine.View.Private
         static DataTable listtelefono = new DataTable();
         public static bool activacion = false;
         public DataTable tablacliente = new DataTable();
+        static DataTable tabletipo = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -39,6 +41,13 @@ namespace VisapLine.View.Private
                     listtelefono.Columns.Clear();
                     listtelefono.Columns.Add("idtelefono");
                     listtelefono.Columns.Add("telefono");
+
+                    tabletipo.Rows.Clear();
+                    tabletipo.Dispose();
+                    listTipos.Dispose();
+                    tabletipo.Columns.Clear();
+                    tabletipo.Columns.Add("idtipotercero");
+                    tabletipo.Columns.Add("tipoterceros");
 
                     tipotercero_.DataSource = tpter.ConsultarTipoTercero();
                     tipotercero_.DataTextField = "tipoterceros";
@@ -78,6 +87,7 @@ namespace VisapLine.View.Private
                     }
 
                     CargarTelefono();
+                    CargarTipo();
                 }
                 Alerta.Visible = false;
             }
@@ -121,12 +131,20 @@ namespace VisapLine.View.Private
                 correo_.Value = dat["correo"].ToString();
                 estrato_.SelectedValue = dat["estrato"].ToString();
                 estado_.SelectedValue = dat["estado"].ToString();
-                tipotercero_.SelectedValue = dat["tipotercero_idtipotercero"].ToString();
                 tipodoc_.SelectedValue = dat["tipodoc_idtipodoc"].ToString();
                 tiporesident_.SelectedValue = dat["tiporesidencia_idtiporesidencia"].ToString();
                 tipofact_.SelectedValue = dat["tipofactura_idtipofactura"].ToString();
                 barrio_.SelectedValue = dat["barrio_idbarrio"].ToString();
-                fecnac_.Value = Convert.ToDateTime(dat["fechnac"]).ToString("yyyy-MM-dd");
+                rh_.SelectedValue= dat["rh"].ToString();
+                if (dat["fechexp"]!=null && dat["fechexp"].ToString()!="")
+                {
+                    fecnac_.Value = Convert.ToDateTime(dat["fechexp"]).ToString("yyyy-MM-dd");
+                }
+                tlf.terceros_idterceros = dat["identificacion"].ToString();
+                listtelefono= tlf.ConsultarTelefonosIdTerceros(tlf);
+
+                ct.identificacion = dat["identificacion"].ToString();
+                tabletipo = ct.ConsultarCargoIdentifi(ct);
 
                 activacion = true;
 
@@ -262,32 +280,43 @@ namespace VisapLine.View.Private
 
         protected void RegistrarTercero(object sender, EventArgs e)
         {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
             try
             {
                 if (activacion)//si es true se activa la actualizacion de lo contrario solo registra
                 {
                     terc.idterceros = codigo.InnerHtml;
                     terc.identificacion = Validar.validarlleno(identificacion_.Value);
-                    terc.nombre = Validar.validarlleno(nombre_.Value);
-                    terc.apellido = Validar.ConvertVarchar(apellido_.Value);
-                    terc.direccion = Validar.validarlleno(Direccion_.Value);
-                    terc.correo = Validar.validarlleno(correo_.Value);
-                    terc.estrato = estrato_.SelectedValue;
-                    terc.estado = Validar.validarselected(estado_.SelectedValue);
+                    terc.nombre = Validar.validarlleno(nombre_.Value).ToUpper();
+                    terc.apellido = Validar.ConvertVarchar(apellido_.Value).ToUpper();
+                    terc.direccion = Validar.ConvertVarchar(Direccion_.Value).ToUpper();
+                    terc.correo = Validar.ConvertVarchar(correo_.Value).ToUpper();
+                    terc.estrato = Validar.ConvertVarchar(estrato_.SelectedValue);
+                    terc.estado = Validar.validarselected(estado_.SelectedValue).ToUpper();
                     terc.tipodoc_idtipodoc = Validar.validarselected(tipodoc_.SelectedValue);
-                    terc.tiporesidencia_idtiporesidencia = tiporesident_.SelectedValue;
-                    terc.tipofactura_idtipofactura = tipofact_.SelectedValue;
+                    terc.tiporesidencia_idtiporesidencia =Validar.ConvertNumber( tiporesident_.SelectedValue);
+                    terc.tipofactura_idtipofactura = Validar.ConvertNumber(tipofact_.SelectedValue);
                     terc.barrios_idbarrios = Validar.validarselected(barrio_.SelectedValue);
-                    terc.fechanatcimiento = fecnac_.Value;
-                    terc.rh = Validar.ConvertVarchar(rh_.SelectedValue);
+                    terc.fechanatcimiento =Validar.ConvertDate(fecnac_.Value);
+                    terc.rh = Validar.ConvertVarchar(rh_.SelectedValue).ToUpper();
                     Validar.validartelefono(listtelefono);
                     if (terc.ActualizarTercero(terc))
                     {
+                        tlf.terceros_idterceros = terc.identificacion;
+                        tlf.EliminarTelefono(tlf);
                         foreach (DataRow item in listtelefono.Rows)
                         {
                             tlf.telefono = item["telefono"].ToString();
                             tlf.terceros_idterceros = terc.identificacion;
                             tlf.RegistrarTelefono(tlf);
+                        }
+                        ct.identificacion = terc.identificacion;
+                        ct.EliminarCargoTercero(ct);
+                        foreach (DataRow item in tabletipo.Rows)
+                        {
+                            ct.tercero_idtercero = terc.identificacion;
+                            ct.tipotercero_idtipotercero = item[0].ToString();
+                            ct.Registrarcargotercero(ct);
                         }
                         textError.InnerHtml = "Actualizado correctamente";
                         Alerta.CssClass = "alert alert-success";
@@ -311,20 +340,19 @@ namespace VisapLine.View.Private
                     }
                     else
                     {
-
                         terc.identificacion = Validar.validarlleno(identificacion_.Value);
-                        terc.nombre = Validar.validarlleno(nombre_.Value);
-                        terc.apellido = Validar.ConvertVarchar(apellido_.Value);
-                        terc.direccion = Validar.validarlleno(Direccion_.Value);
-                        terc.correo = Validar.validarlleno(correo_.Value);
+                        terc.nombre = Validar.validarlleno(nombre_.Value).ToUpper();
+                        terc.apellido = Validar.ConvertVarchar(apellido_.Value).ToUpper();
+                        terc.direccion = Validar.validarlleno(Direccion_.Value).ToUpper();
+                        terc.correo = Validar.validarlleno(correo_.Value).ToUpper();
                         terc.estrato =Validar.ConvertVarchar( estrato_.SelectedValue);
-                        terc.estado = Validar.validarselected(estado_.SelectedValue);
+                        terc.estado = Validar.validarselected(estado_.SelectedValue).ToUpper().ToUpper();
                         terc.tipodoc_idtipodoc = Validar.validarselected(tipodoc_.SelectedValue);
                         terc.tiporesidencia_idtiporesidencia =Validar.ConvertNumber( tiporesident_.SelectedValue);
                         terc.tipofactura_idtipofactura = Validar.ConvertNumber(tipofact_.SelectedValue);
                         terc.barrios_idbarrios = Validar.validarselected(barrio_.SelectedValue);
                         terc.fechanatcimiento =Validar.ConvertDate(fecnac_.Value);
-                        terc.rh = Validar.ConvertVarchar(rh_.SelectedValue);
+                        terc.rh = Validar.ConvertVarchar(rh_.SelectedValue).ToUpper();
                         //Validar.validartelefono(listtelefono);
                         if (terc.RegistrarTerceroGeneral(terc))
                         {
@@ -333,6 +361,12 @@ namespace VisapLine.View.Private
                                 tlf.telefono = item["telefono"].ToString();
                                 tlf.terceros_idterceros = terc.identificacion;
                                 tlf.RegistrarTelefono(tlf);
+                            }
+                            foreach (DataRow item in tabletipo.Rows)
+                            {
+                                ct.tercero_idtercero = terc.identificacion;
+                                ct.tipotercero_idtipotercero = item[0].ToString();
+                                ct.Registrarcargotercero(ct);
                             }
                             Limpiar();
                             textError.InnerHtml = "Se ha registrado con exito";
@@ -359,7 +393,7 @@ namespace VisapLine.View.Private
 
         protected void telefonos_RowDeleting1(object sender, GridViewDeleteEventArgs e)
         {
-
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
             try
             {
                 TableCell cell = telefonos.Rows[e.RowIndex].Cells[0];
@@ -380,22 +414,6 @@ namespace VisapLine.View.Private
             {
                 telefonos.DataSource = listtelefono;
                 telefonos.DataBind();
-                telefono_.Value = "";
-            }
-            catch (Exception ex)
-            {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
-            }
-        }
-        protected void CargarTipo()
-        {
-            try
-            {
-                listTipos.DataSource = "";
-                listTipos.DataBind();
-                tipotercero_.SelectedValue = "Seleccione";
             }
             catch (Exception ex)
             {
@@ -407,7 +425,7 @@ namespace VisapLine.View.Private
 
         protected void RegistrarTelefono(object sender, EventArgs e)
         {
-
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel3();", true);
             try
             {
                 DataRow dat = listtelefono.NewRow();
@@ -453,11 +471,9 @@ namespace VisapLine.View.Private
 
         protected void tipotercero__SelectedIndexChanged(object sender, EventArgs e)
         {
-
             try
             {
                 Validar.validarselected(tipotercero_.SelectedValue);
-                
             }
             catch (Exception ex)
             {
@@ -469,11 +485,12 @@ namespace VisapLine.View.Private
 
         protected void listTipos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             try
             {
-                //TableCell cell = listTipos.Rows[e.RowIndex].Cells[0];
-
+                TableCell cell = listTipos.Rows[e.RowIndex].Cells[0];
+                tabletipo.Rows.Remove(tabletipo.Rows[e.RowIndex]);
+                CargarTipo();
             }
             catch (Exception ex)
             {
@@ -481,7 +498,54 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-            
+        }
+
+        protected void CargarTipo()
+        {
+            try
+            {
+                listTipos.DataSource = tabletipo;
+                listTipos.DataBind();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void RegistrarTipo(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+            try
+            {
+                DataRow dat = tabletipo.NewRow();
+                dat[0] = tipotercero_.SelectedValue;
+                dat[1] = tipotercero_.SelectedItem.Text;
+                tabletipo.Rows.Add(dat);
+                CargarTipo();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void ConsulltarTodos(object sender, EventArgs e)
+        {
+            try
+            {
+                tablacliente = Validar.Consulta(terc.Consultartercero());
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
     }
 }

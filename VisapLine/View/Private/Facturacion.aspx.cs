@@ -66,8 +66,6 @@ namespace VisapLine.View.Private
             }
             catch (Exception)
             {
-                Limpiar(listContrato);
-                Limpiar(listFacturas);
             }
 
         }
@@ -148,6 +146,8 @@ namespace VisapLine.View.Private
         {
             try
             {
+                
+                DataTable factura = Validar.Consulta(fact.ConsultarFacturaIdContrato(fact));
 
             }
             catch (Exception ex)
