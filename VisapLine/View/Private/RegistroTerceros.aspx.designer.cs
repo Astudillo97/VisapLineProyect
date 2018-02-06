@@ -10,7 +10,7 @@
 namespace VisapLine.View.Private {
     
     
-    public partial class GestContrato {
+    public partial class RegistroTerceros {
         
         /// <summary>
         /// Control Alerta.
@@ -49,85 +49,49 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// Control divtablagestcontr.
+        /// Control tipopersona.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divtablagestcontr;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tipopersona;
         
         /// <summary>
-        /// Control GridView1.
+        /// Control tipotercero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.DropDownList tipotercero;
         
         /// <summary>
-        /// Control ideditarcontrat.
+        /// Control iddivnatural.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ideditarcontrat;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl iddivnatural;
         
         /// <summary>
-        /// Control LabelNumcontra.
+        /// Control TextBoxdireccion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelNumcontra;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxdireccion;
         
         /// <summary>
-        /// Control TextBox1identificacion.
+        /// Control DropDownListtipodocu.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1identificacion;
-        
-        /// <summary>
-        /// Control DropDownListestadocontrato.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListestadocontrato;
-        
-        /// <summary>
-        /// Control DropDownListplancontrato.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListplancontrato;
-        
-        /// <summary>
-        /// Control DropDownListtipocontrato.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListtipocontrato;
-        
-        /// <summary>
-        /// Control TextArea1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea1;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListtipodocu;
         
         /// <summary>
         /// Control DropDownList2.
@@ -139,102 +103,138 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
         
         /// <summary>
-        /// Control Labelidcontrato.
+        /// Control TextBoxtelefononatu.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labelidcontrato;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxtelefononatu;
         
         /// <summary>
-        /// Control DropDownListenviofactura.
+        /// Control textboxtelefonoplus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListenviofactura;
+        protected global::System.Web.UI.WebControls.Button textboxtelefonoplus;
         
         /// <summary>
-        /// Control DropDownList1facuracuni.
+        /// Control telefonos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1facuracuni;
+        protected global::System.Web.UI.WebControls.GridView telefonos;
         
         /// <summary>
-        /// Control DropDownList1.
+        /// Control TextBoxnombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxnombre;
         
         /// <summary>
-        /// Control TextBoxivacontrato.
+        /// Control TextBox1apellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxivacontrato;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1apellido;
         
         /// <summary>
-        /// Control TextArea2.
+        /// Control TextBox1fecnac.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea2;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1fecnac;
         
         /// <summary>
-        /// Control DropDownList3.
+        /// Control TextBoxcorreo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxcorreo;
         
         /// <summary>
-        /// Control Buttoneditar.
+        /// Control DropDownListpais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Buttoneditar;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListpais;
         
         /// <summary>
-        /// Control ButtonGuardar.
+        /// Control DropDownListdepartamento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonGuardar;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListdepartamento;
         
         /// <summary>
-        /// Control Buttoncancelar.
+        /// Control DropDownListmunicipio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Buttoncancelar;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListmunicipio;
         
         /// <summary>
-        /// Control Buttonservicio.
+        /// Control DropDownListbarrio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Buttonservicio;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListbarrio;
+        
+        /// <summary>
+        /// Control DropDownListtiporesi.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListtiporesi;
+        
+        /// <summary>
+        /// Control DropDownListestrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListestrato;
+        
+        /// <summary>
+        /// Control DropDownListestado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListestado;
+        
+        /// <summary>
+        /// Control Button3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button3;
     }
 }

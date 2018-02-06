@@ -17,6 +17,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         function deletealert() {
@@ -174,7 +175,7 @@
                             <asp:BoundField HeaderText="Tipo de Plan" DataField="tipoplan" />
                             <asp:BoundField HeaderText="Subida" DataField="subida" />
                             <asp:BoundField HeaderText="Bajada" DataField="bajada" />
-                       
+
 
                         </Columns>
 

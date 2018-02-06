@@ -25,8 +25,6 @@
                 title: "SE REGISTRO CON EXITO!",
                 text: "Se ha registrado con exito ",
                 type: "success"
-            }, function () {
-                window.location.href = "GestContrato.aspx";
             });
         }
         function alerterror() {
@@ -381,7 +379,9 @@
                         </th>
                     <th>
                         <asp:Button ID="Buttoncancelar" runat="server" Visible="false" Enabled="false" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="143px" Height="30px" OnClick="Buttoncancelar_Click" /></th>
-                </tr>
+                                <th>
+                        <asp:Button ID="Buttonservicio" runat="server" Visible="false"  Text="Modificar Servicio" class="btn btn-block btn-info btn-lg" Width="143px" Height="30px" OnClick="Buttonservicio_Click" /></th>
+                    </tr>
 
             </table> 
       </center>

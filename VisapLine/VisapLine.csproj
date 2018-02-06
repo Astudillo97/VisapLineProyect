@@ -471,6 +471,7 @@
     <Content Include="View\Private\pagplan.aspx" />
     <Content Include="View\Private\pagzona.aspx" />
     <Content Include="View\Private\Personal.aspx" />
+    <Content Include="View\Private\RegistroTerceros.aspx" />
     <Content Include="View\Private\servicio.aspx" />
     <Content Include="View\Private\Tipofact.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
@@ -641,6 +642,13 @@
     </Compile>
     <Compile Include="View\Private\Personal.aspx.designer.cs">
       <DependentUpon>Personal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\RegistroTerceros.aspx.cs">
+      <DependentUpon>RegistroTerceros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\RegistroTerceros.aspx.designer.cs">
+      <DependentUpon>RegistroTerceros.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\servicio.aspx.cs">
       <DependentUpon>servicio.aspx</DependentUpon>

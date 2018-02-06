@@ -8,7 +8,8 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         function deletealert() {
             swal({
@@ -16,13 +17,13 @@
                 text: "Se ha registrado con exito ",
                 type: "success"
             }, function () {
-                window.location.href="pagzona.aspx";
-                });            
-            
+                window.location.href = "pagzona.aspx";
+            });
+
         }
         function alerterror() {
             swal("NO SE REGISTRO!", "No se registro el formulario", "error");
-        }    
+        }
         function elimalert() {
             swal("EL REGISTRO SE ELIMINO CON EXITO!", "Se ha realizado la operacion con exito ", "success");
         }

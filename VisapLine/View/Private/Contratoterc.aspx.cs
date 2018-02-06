@@ -12,6 +12,7 @@ namespace VisapLine.View.Private
 {
     public partial class Contratoterc : System.Web.UI.Page
     {
+        
         Terceros terc = new Terceros();
         TipoTercero ttr = new TipoTercero();
         Pais pais = new Pais();

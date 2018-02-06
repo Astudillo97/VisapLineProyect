@@ -86,7 +86,7 @@ namespace VisapLine.View.Private
             DropDownListplancontrato.DataTextField = "detalle";
             DropDownListplancontrato.DataValueField = "idplan";
             DropDownListplancontrato.DataBind();
-          
+
 
             DropDownListtipocontrato.DataSource = tpcont.ConsultarTipoContrato();
             DropDownListtipocontrato.DataTextField = "Tipocontrato";
@@ -111,7 +111,20 @@ namespace VisapLine.View.Private
             DropDownList1facuracuni.Text = dt["facturaunica"].ToString();
             DropDownList1.Text = dt["idbarrios"].ToString();
             TextBoxivacontrato.Text = dt["iva"].ToString();
-
+            TextArea2.Value = dt["observacion"].ToString();
+            wifi = dt["wifi"].ToString();
+            if (wifi == "True")
+            {
+                DropDownList3.Text = "SI";
+            }
+            else
+            {
+                if (wifi == "False")
+                {
+                    DropDownList3.Text = "NO";
+                }
+            }
+            DropDownList2.Text = dt["descuento"].ToString();
 
 
 
@@ -123,26 +136,26 @@ namespace VisapLine.View.Private
 
             try
             {
-                contrat.idcontrato =Validar.validarlleno(Labelidcontrato.Text);
-                contrat.estado = Validar.validarlleno( DropDownListestadocontrato.Text);
+                contrat.idcontrato = Validar.validarlleno(Labelidcontrato.Text);
+                contrat.estado = Validar.validarselected(DropDownListestadocontrato.Text);
                 contrat.plan_idplan = Validar.validarselected(DropDownListplancontrato.SelectedValue);
                 contrat.tipocontrato_idtipocontrato = Validar.validarselected(DropDownListtipocontrato.SelectedValue);
-                contrat.direccionenviofact =Validar.validarlleno(TextArea1.Value.ToUpper());
-                contrat.enviofactura = Validar.validarlleno(DropDownListenviofactura.Text);
-                contrat.facturaunica = Validar.validarlleno(DropDownList1facuracuni.Text);
-               
-                contrat.barrio_idbarrio = Validar.validarselected( DropDownList1.SelectedValue);
-                contrat.iva =Validar.validarlleno (TextBoxivacontrato.Text);
-                contrat.observacion =Validar.validarlleno(TextArea2.Value.ToUpper());
-                contrat.descuento = Validar.validarlleno( DropDownList2.Text);
-                Validar.validarlleno(DropDownList3.Text);
+                contrat.direccionenviofact = Validar.validarlleno(TextArea1.Value.ToUpper());
+                contrat.enviofactura = Validar.validarselected(DropDownListenviofactura.Text);
+                contrat.facturaunica = Validar.validarselected(DropDownList1facuracuni.Text);
+
+                contrat.barrio_idbarrio = Validar.validarselected(DropDownList1.SelectedValue);
+                contrat.iva = Validar.validarlleno(TextBoxivacontrato.Text);
+                contrat.observacion = Validar.validarlleno(TextArea2.Value.ToUpper());
+                contrat.descuento = Validar.validarselected(DropDownList2.Text);
+                Validar.validarselected(DropDownList3.Text);
                 if (DropDownList3.Text == "SI")
                 {
-                    wifi ="true";
+                    wifi = "true";
                 }
                 else
                 {
-                    if(DropDownList3.Text == "NO")
+                    if (DropDownList3.Text == "NO")
                     {
                         wifi = "false";
                     }
@@ -150,9 +163,10 @@ namespace VisapLine.View.Private
 
                 contrat.wifi = Validar.validarlleno(wifi);
                 Validar.validartrue(contrat.updatecontrato(contrat));
+
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
 
-              
+
             }
             catch (Exception ex)
             {
@@ -180,7 +194,7 @@ namespace VisapLine.View.Private
             TextArea2.Disabled = false;
             DropDownList3.Enabled = true;
             Buttoneditar.Enabled = false;
-
+            Buttonservicio.Visible = true;
         }
 
         protected void Buttoncancelar_Click(object sender, EventArgs e)
@@ -202,7 +216,10 @@ namespace VisapLine.View.Private
             Buttoneditar.Enabled = true;
         }
 
-
+        protected void Buttonservicio_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("servicio.aspx?key=" + Labelidcontrato.Text);
+        }
 
 
 

@@ -52,7 +52,6 @@
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="informacion">
-
                     <!-- Basic Forms -->
                     <div class="box box-default">
                         <div class="box-header with-border">
