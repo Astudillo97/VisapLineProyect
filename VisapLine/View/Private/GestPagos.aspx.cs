@@ -17,9 +17,9 @@ namespace VisapLine.View.Private
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            factservicio.Focus();
             try
             {
-                factservicio.Focus();
                 string codig = Convert.ToString(Request.QueryString["codigo"]);
                 if (codig != null)
                 {

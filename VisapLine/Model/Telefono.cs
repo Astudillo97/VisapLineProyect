@@ -30,7 +30,7 @@ namespace VisapLine.Model
         }
         public bool EliminarTelefono(Telefono tpt)
         {
-            return data.OperarDatos("SELECT public.pr_borrartelefono('"+tpt.idtelefono+"');");
+            return data.OperarDatos("SELECT public.pr_borrartelefono('"+tpt.terceros_idterceros+"');");
         }
     }
 }

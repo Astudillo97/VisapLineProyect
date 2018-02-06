@@ -67,16 +67,14 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Clientes</h3>
-                                </div>
                                 <div class="form-element">
                                     <div class="box-body">
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Identificación</label>
-                                            <input type="text" class="form-control" runat="server" id="identif_" placeholder="Nit o Identificación">
+                                        <div class="form-group row">
+                                            <label for="exampleInputPassword1" class="col-md-2" >Identificación</label>
+                                            <input type="text" class="form-control col-md-6" runat="server" id="identif_" placeholder="Nit o Identificación">
+                                            <button class="btn btn-primary col-md-2" runat="server" onserverclick="ConsultarIdentif">Consultar</button>
+                                            <button class="btn btn-primary col-md-2" runat="server" onserverclick="ConsulltarTodos" >Consulta Avanzada</button>
                                         </div>
-                                        <button class="btn btn-primary float-right" runat="server" onserverclick="ConsultarIdentif">Consultar</button>
                                     </div>
                                 </div>
                             </div>
@@ -85,14 +83,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title">Listado de clientes</h3>
-                                </div>
                                 <div class="box-body">
-                                    <div class="box">
-                                        <div class="box-header">
-                                            <h3 class="box-title">Clintes</h3>
-                                        </div>
                                         <!-- /.box-header -->
                                         <div class="box-body">
                                             <table id="example1" class="table table-bordered table-striped table-responsive">
@@ -130,7 +121,6 @@
                                         <!-- /.box-body -->
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -150,19 +140,22 @@
                                     <div class="box-body">
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Tipo Usuario</label>
-                                            <div class="col-sm-8">
+                                            <div class="col-sm-6">
                                                 <!--onchange="myFunction()"-->
                                                 <asp:DropDownList runat="server" ID="tipotercero_" onchange="myFunction()" CssClass="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
+                                            <div class="col-sm-2">
+                                                <button runat="server" onserverclick="RegistrarTipo" class="btn btn-pinterest glyphicon glyphicon-plus"></button>
+                                            </div>
                                         </div>
                                         <div class="box-body">
                                             <asp:GridView ID="listTipos" OnRowDeleting="listTipos_RowDeleting" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server">
                                                 <Columns>
-                                                    <asp:BoundField DataField="idpersona" Visible="false" HeaderText="idpersona"></asp:BoundField>
-                                                    <asp:BoundField DataField="Persona" HeaderText="Persona"></asp:BoundField>
-                                                    <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="p-0"></asp:CommandField>
+                                                    <asp:BoundField DataField="idtipotercero" Visible="false" HeaderText="idpersona"></asp:BoundField>
+                                                    <asp:BoundField DataField="tipoterceros" HeaderText="Persona"></asp:BoundField>
+                                                    <asp:CommandField ShowDeleteButton="True" DeleteText="" ControlStyle-CssClass="glyphicon glyphicon-trash"></asp:CommandField>
                                                 </Columns>
                                             </asp:GridView>
                                         </div>

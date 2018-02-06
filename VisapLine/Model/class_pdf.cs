@@ -190,7 +190,7 @@ namespace VisapLine.Model
                 doc.Add(encabezado);
                 //-------------Contenido de la Factura: Descripcion de la facturación------------------------ 
                 //-------------------------------------------------------------------------------------------
-                Table tableDescripcion = new Table(4).SetMarginTop(8f).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8).SetBorder(new SolidBorder(1)).SetHeight(86);
+                Table tableDescripcion = new Table(4).SetMarginTop(8f).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8).SetBorder(new SolidBorder(1));
                 Cell descrpcion = new Cell().Add(new Paragraph("DESCRIPCIÓN")).SetWidth(UnitValue.CreatePercentValue(50));
                 Cell cantidad = new Cell().Add(new Paragraph("CANTIDAD")).SetWidth(UnitValue.CreatePercentValue(16));
                 Cell valorunitario = new Cell().Add(new Paragraph("VALOR UNITARIO")).SetWidth(UnitValue.CreatePercentValue(17));
@@ -198,7 +198,7 @@ namespace VisapLine.Model
                 tableDescripcion.AddCell(descrpcion).AddCell(cantidad).AddCell(valorunitario).AddCell(total);
                 deta.factura_idfactura = datos["idfactura"].ToString();
                 DataTable tabledetalle = deta.ConsultarDetalleIdFactura(deta);
-
+                
                 ////Recorrer una fuente de datos para Cargar
                 foreach (DataRow item in tabledetalle.Rows)
                 {
