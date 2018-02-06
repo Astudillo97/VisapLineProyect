@@ -130,6 +130,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea1;
         
         /// <summary>
+        /// Control DropDownList2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        
+        /// <summary>
         /// Control Labelidcontrato.
         /// </summary>
         /// <remarks>
@@ -175,13 +184,22 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox TextBoxivacontrato;
         
         /// <summary>
-        /// Control DropDownList2.
+        /// Control TextArea2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea2;
+        
+        /// <summary>
+        /// Control DropDownList3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
         
         /// <summary>
         /// Control Buttoneditar.
