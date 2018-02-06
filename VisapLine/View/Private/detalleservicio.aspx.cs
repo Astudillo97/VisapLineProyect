@@ -16,15 +16,25 @@ namespace VisapLine.View.Private
         Servicios srv = new Servicios();
         static DataTable btr = new DataTable();
         PlanSCaract psc = new PlanSCaract();
+        public static DataTable dataeuipo;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
                 Valor = Request.QueryString["addds"];
                 cargardatos(int.Parse(Valor));
-                GridViewcaracter.DataSource = psc.ConsultarPlanSCatact(int.Parse(Valor));
-                GridViewcaracter.DataBind();
+                DataTable caracteristicas = psc.ConsultarPlanSCatact(int.Parse(Valor));
+                if (caracteristicas.Rows.Count>0) {
+                    divcaracteristicas.Visible = true;
+                    GridViewcaracter.DataSource = caracteristicas;
+                    GridViewcaracter.DataBind();
+                }
+                ConsultarEquipo();
             }
+        }
 
+        protected void ConsultarEquipo() {
+            repetidordecolumnar.DataSource = psc.ConsultarEquiposParaintalar();
+            repetidordecolumnar.DataBind();
         }
         
         protected void cargardatos(int id) {
@@ -33,6 +43,8 @@ namespace VisapLine.View.Private
             btr = dplb.ConsultarBarriosIdMunicipio(dplb);
             FormView1.DataSource = dtbsrv;
             FormView1.DataBind();
+            gridequipoasignado.DataSource = srv.consultaequipoasigando(dtbsrv.Rows[0][8].ToString());
+            gridequipoasignado.DataBind();
         }
         protected void llenardropmuni(DropDownList b) {
             DataTable dtbsrv = srv.consultarserivcioid(int.Parse(Valor));
@@ -79,7 +91,7 @@ namespace VisapLine.View.Private
 
         protected void volver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("GestContrato.aspx");
+            Response.Redirect("servicio.aspx");
         }
     }
 }

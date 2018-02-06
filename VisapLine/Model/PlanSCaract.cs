@@ -20,7 +20,7 @@ namespace VisapLine.Model
 
         public DataTable ConsultarPlanSCatact(int bar)
         {
-            return data.ConsultarDatos("select planservicios_has_caracteristicascol,caracteristica,cantidad,unidad from servicios inner join planservicios_has_caracteristicas on servicio_idservicio = idservicios inner join caracteristicas on caracteristicas_idcaracteristicas = idcaracteristicas where idservicios = "+bar+" ");
+            return data.ConsultarDatos("select * from pr_consultarcaracteristicasdetallerorder("+ bar + ")");
         }
 
         public bool RegistrarPlanSCatact(int servicios_idservicios, int caracteristicas_idcaracteristicas, int cantidad)
@@ -29,7 +29,10 @@ namespace VisapLine.Model
         }
         public bool registrarpuertos(int servicios_idservicios, int cantidad)
         {
-            return data.OperarDatos("INSERT INTO public.planservicios_has_caracteristicas(caracteristicas_idcaracteristicas,cantidad, servicio_idservicio) VALUES((select idcaracteristicas from caracteristicas where caracteristica = 'PUNTOS'),"+ cantidad + ", "+ servicios_idservicios + ") returning planservicios_has_caracteristicascol; ");
+            return data.OperarDatos("select * from pr_insertarpuntosalservicio("+ servicios_idservicios + ","+ cantidad + ")");
+        }
+        public DataTable ConsultarEquiposParaintalar() {
+            return data.ConsultarDatos("select idinventario,serial,mac,modelo,fabricante,tipoproducto,wifi from inventario inner join tipoproducto on tipoproducto_idtipoproducto = tipoproducto.idtipoproducto inner join modelo on modelo_idmodelo=modelo.idmodelo inner join fabricante on fabricante_idfabricante = fabricante.idfabricante where estado = 'DISPONIBLE'; ");
         }
 
     }
