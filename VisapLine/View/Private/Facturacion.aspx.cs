@@ -116,7 +116,8 @@ namespace VisapLine.View.Private
             {
                 DataRow dat = tablefactura.Rows[e.RowIndex];
                 string referen = pdf.CrearFactura(empresa.ConsultarEmpresa(), dat);
-                Response.Redirect("../../Archivos/" + referen);
+                string reference = pdf.CrearFacturaGrupal(empresa.ConsultarEmpresa(), dat);
+                Response.Redirect("../../Archivos/" + reference);
             }
             catch (Exception ex)
             {
