@@ -11,7 +11,14 @@
      <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         function deletealert() {
-            swal("SE REGISTRO CON EXITO!", "Se ha registrado con exito ", "success");
+            swal({
+                title: "SE REGISTRO CON EXITO!",
+                text: "Se ha registrado con exito ",
+                type: "success"
+            }, function () {
+                window.location.href="pagzona.aspx";
+                });            
+            
         }
         function alerterror() {
             swal("NO SE REGISTRO!", "No se registro el formulario", "error");

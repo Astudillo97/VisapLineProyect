@@ -28,6 +28,7 @@ namespace VisapLine.View.Private
         Contrato contrat = new Contrato();
         TipoContrato tpcont = new TipoContrato();
         DataRow dt;
+        string wifi;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -122,20 +123,36 @@ namespace VisapLine.View.Private
 
             try
             {
-                contrat.idcontrato = Labelidcontrato.Text;
-                contrat.estado = DropDownListestadocontrato.Text;
-                contrat.plan_idplan = DropDownListplancontrato.SelectedValue;
-                contrat.tipocontrato_idtipocontrato = DropDownListtipocontrato.SelectedValue;
-                contrat.direccionenviofact = TextArea1.Value.ToUpper();
-                contrat.enviofactura = DropDownListenviofactura.Text;
-                contrat.facturaunica = DropDownList1facuracuni.Text;
+                contrat.idcontrato =Validar.validarlleno(Labelidcontrato.Text);
+                contrat.estado = Validar.validarlleno( DropDownListestadocontrato.Text);
+                contrat.plan_idplan = Validar.validarselected(DropDownListplancontrato.SelectedValue);
+                contrat.tipocontrato_idtipocontrato = Validar.validarselected(DropDownListtipocontrato.SelectedValue);
+                contrat.direccionenviofact =Validar.validarlleno(TextArea1.Value.ToUpper());
+                contrat.enviofactura = Validar.validarlleno(DropDownListenviofactura.Text);
+                contrat.facturaunica = Validar.validarlleno(DropDownList1facuracuni.Text);
                
-                contrat.barrio_idbarrio = DropDownList1.SelectedValue;
-                contrat.iva = TextBoxivacontrato.Text;
+                contrat.barrio_idbarrio = Validar.validarselected( DropDownList1.SelectedValue);
+                contrat.iva =Validar.validarlleno (TextBoxivacontrato.Text);
+                contrat.observacion =Validar.validarlleno(TextArea2.Value.ToUpper());
+                contrat.descuento = Validar.validarlleno( DropDownList2.Text);
+                Validar.validarlleno(DropDownList3.Text);
+                if (DropDownList3.Text == "SI")
+                {
+                    wifi ="true";
+                }
+                else
+                {
+                    if(DropDownList3.Text == "NO")
+                    {
+                        wifi = "false";
+                    }
+                }
+
+                contrat.wifi = Validar.validarlleno(wifi);
                 Validar.validartrue(contrat.updatecontrato(contrat));
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
 
-                Response.Redirect("GestContrato.aspx");
+              
             }
             catch (Exception ex)
             {
@@ -160,6 +177,9 @@ namespace VisapLine.View.Private
             ButtonGuardar.Enabled = true;
             DropDownListestadocontrato.Enabled = true;
             DropDownList2.Enabled = true;
+            TextArea2.Disabled = false;
+            DropDownList3.Enabled = true;
+            Buttoneditar.Enabled = false;
 
         }
 
@@ -176,14 +196,15 @@ namespace VisapLine.View.Private
             Buttoneditar.Enabled = true;
             ButtonGuardar.Enabled = false;
             DropDownListestadocontrato.Enabled = false;
-
-
-
+            TextArea2.Disabled = true;
+            DropDownList3.Enabled = false;
+            DropDownList2.Enabled = false;
+            Buttoneditar.Enabled = true;
         }
 
 
 
-        
+
 
 
     }

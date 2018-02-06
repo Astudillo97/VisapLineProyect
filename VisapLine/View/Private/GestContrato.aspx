@@ -21,7 +21,13 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         function deletealert() {
-            swal("SE REGISTRO CON EXITO!", "Se ha registrado con exito ", "success");
+            swal({
+                title: "SE REGISTRO CON EXITO!",
+                text: "Se ha registrado con exito ",
+                type: "success"
+            }, function () {
+                window.location.href = "GestContrato.aspx";
+            });
         }
         function alerterror() {
             swal("NO SE REGISTRO!", "No se registro el formulario", "error");
@@ -112,7 +118,8 @@
 
         <div class="box box-default " id="ideditarcontrat" runat="server" visible="false">
             <div class="box-header with-border">
-                <h2 class="box-title">Contrato  N° <asp:Label ID="LabelNumcontra" runat="server" Text=""></asp:Label></h2>
+                <h2 class="box-title">Contrato  N°
+                    <asp:Label ID="LabelNumcontra" runat="server" Text=""></asp:Label></h2>
                 <div class="box-tools pull-right">
                 </div>
             </div>
@@ -137,6 +144,10 @@
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>ACTIVO</asp:ListItem>
                                         <asp:ListItem>INACTIVO</asp:ListItem>
+                                        <asp:ListItem>ELIMINADO</asp:ListItem>
+                                        <asp:ListItem>SUSPENDIDO</asp:ListItem>
+                                        <asp:ListItem>ANULADO</asp:ListItem>
+                                        <asp:ListItem>EXONERADO</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -334,14 +345,14 @@
                                 </div>
                             </div>
                         </div>
-                          <div class="form-group row">
+                        <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Wifi:</label>
                             <div class="col-sm-8">
                                 <div class="form-group row">
                                     <asp:DropDownList ID="DropDownList3" runat="server" Enabled="false" CssClass="form-control" AppendDataBoundItems="true">
                                         <asp:ListItem>Seleccione</asp:ListItem>
-                                                <asp:ListItem>SI</asp:ListItem>
-                                                <asp:ListItem>NO</asp:ListItem>
+                                        <asp:ListItem>SI</asp:ListItem>
+                                        <asp:ListItem>NO</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
