@@ -6,6 +6,9 @@
 
     <section class="content-header">
         <h1>DETALLE DE SERVICIO</h1>
+        <div>
+            <asp:Button runat="server" CssClass="btn btn-danger" Text="VOLVER" ID="volver" OnClick="volver_Click" />
+        </div>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
             <li class="breadcrumb-item"><a href="#">Clientes</a></li>
@@ -87,6 +90,7 @@
                                         CommandName="Update" Text="Actualizar" />
                                     <asp:LinkButton ID="cancel" CssClass="btn bg-navy margin" runat="server" CausesValidation="false"
                                         CommandName="Cancel" Text="Cancelar"></asp:LinkButton>
+
                                 </div>
                             </div>
                         </div>
@@ -155,9 +159,6 @@
                     </ItemTemplate>
                     <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
                 </asp:FormView>
-                <div class=" box-body col-auto">
-                    <asp:Button runat="server" CssClass="btn btn-danger" Text="VOLVER" ID="volver" OnClick="volver_Click" />
-                </div>
             </div>
             <div id="divcaracteristicas" runat="server" visible="false" class="col-md-12 col-lg-6">
                 <div class="box box-body">
@@ -174,69 +175,96 @@
                 </div>
 
             </div>
-            <div id="div1" runat="server" class="col-md-12 col-lg-6">
+            <div id="equipo" runat="server" visible="true" class="col-md-12 col-lg-5">
                 <div class="box box-body">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mymodal2">
+                        <span class="glyphicon glyphicon-edit"></span>CAMBIAR EQUIPO 
+                    </button>
                     <div class="row col">
-                        <table class="table no-border table-striped table-responsive"id="example1" >
-                            <thead style="background-color:#0198f4; ">
-                                <tr>
-                                    <th><font color="white">SERIAL</font>
-                                    </th>
-                                    <th><font color="white">MAC</font>
-                                    </th>
-                                    <th><font color="white">MARCA</font>
-                                    </th>
-                                    <th><font color="white">MODELO</font>
-                                    </th>
-                                    <th><font color="white">TIPO</font>
-                                    </th>
-                                    <th><font color="white">WIFI</font>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tfoot style="background-color:#0198f4; ">
-                                <tr>
-                                    <th><font color="white">SERIAL</font>
-                                    </th>
-                                    <th><font color="white">MAC</font>
-                                    </th>
-                                    <th><font color="white">MARCA</font>
-                                    </th>
-                                    <th><font color="white">MODELO</font>
-                                    </th>
-                                    <th><font color="white">TIPO</font>
-                                    </th>
-                                    <th><font color="white">WIFI</font>
-                                    </th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                <asp:Repeater ID="repetidordecolumnar" runat="server">
-                                    <ItemTemplate>
-                                        <tr onclick='return alert(<%# Eval("idinventario") %>);'>
-                                    <td><%# Eval("serial") %>s
-                                    </td>
-                                    <td><%# Eval("mac")%>s
-                                    </td>
-                                    <td><%# Eval("fabricante") %>s
-                                    </td>
-                                    <td><%# Eval("modelo") %>s
-                                    </td>
-                                    <td><%# Eval("tipoproducto") %>s
-                                    </td>
-                                    <td><%# Eval("wifi") %>s
-                                    </td>
-                                    </tr>
-                                    </ItemTemplate>
-                                </asp:Repeater>                               
-                            </tbody>
-                        </table>
+                        <asp:GridView AutoGenerateColumns="FALSE" ID="gridequipoasignado" HeaderStyle-ForeColor="White" HeaderStyle-BackColor=" #0198f4" CssClass="table table-responsive no-border" runat="server">
+                            <Columns>
+                                <asp:BoundField HeaderText="SERIAL" DataField="serialcol" />
+                                <asp:BoundField HeaderText="MAC" DataField="maccol" />
+                                <asp:BoundField HeaderText="DESCRIPCION" DataField="descripcioncol" />
+                                <asp:BoundField HeaderText="PRODUCTO" DataField="tipoproductocol" />
+                                <asp:BoundField HeaderText="MODELO" DataField="modelocol" />
+                                <asp:BoundField HeaderText="FABRICANTE" DataField="fabricantecol" />
+                            </Columns>
+                        </asp:GridView>
                     </div>
                 </div>
 
             </div>
+            <div class="modal fade bs-example-modal-lg" id="mymodal2" data-backdrop="”static”">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">SELECCIONAR EQUIPO <span class="glyphicon glyphicon-edit"></span></h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table no-border table-striped table-responsive" id="example1">
+                                <thead style="background-color: #0198f4;">
+                                    <tr>
+                                        <th><font color="white">SERIAL</font>
+                                        </th>
+                                        <th><font color="white">MAC</font>
+                                        </th>
+                                        <th><font color="white">MARCA</font>
+                                        </th>
+                                        <th><font color="white">MODELO</font>
+                                        </th>
+                                        <th><font color="white">TIPO</font>
+                                        </th>
+                                        <th><font color="white">WIFI</font>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tfoot style="background-color: #0198f4;">
+                                    <tr>
+                                        <th><font color="white">SERIAL</font>
+                                        </th>
+                                        <th><font color="white">MAC</font>
+                                        </th>
+                                        <th><font color="white">MARCA</font>
+                                        </th>
+                                        <th><font color="white">MODELO</font>
+                                        </th>
+                                        <th><font color="white">TIPO</font>
+                                        </th>
+                                        <th><font color="white">WIFI</font>
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <asp:Repeater ID="repetidordecolumnar" runat="server">
+                                        <ItemTemplate>
+                                            <tr onclick='return alert(<%# Eval("idinventario") %>);'>
+                                                <td><%# Eval("serial") %>
+                                                </td>
+                                                <td><%# Eval("mac")%>
+                                                </td>
+                                                <td><%# Eval("fabricante") %>
+                                                </td>
+                                                <td><%# Eval("modelo") %>
+                                                </td>
+                                                <td><%# Eval("tipoproducto") %>
+                                                </td>
+                                                <td><%# Eval("wifi") %>
+                                                </td>
+                                            </tr>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
-         </section>
-        
+    </section>
+
 </asp:Content>

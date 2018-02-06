@@ -3,6 +3,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+         <script src="../../Contenido/assets/vendor_components/jquery/dist/jquery.js"></script>
+    <script src="../../Contenido/assets/vendor_components/glyphicons/glyphicon.css"></script>
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+    <asp:ScriptManager ID="scripservicc" runat="server"></asp:ScriptManager>
+    <script type="text/javascript">
+        function alertnoproduc() {
+            swal("ERROR AL ASIGNAR EQUIPO","No hay ningun equipo que se pueda asignar","error");
+        }
+    </script>
     <section class="content-header">
         <h1>Servicios</h1>
         <ol class="breadcrumb">
@@ -38,7 +47,7 @@
                 <asp:BoundField HeaderText="ESTADO" DataField="estadocol" />
                 <asp:BoundField HeaderText="SERVICIO" DataField="referenciascol" />
                 <asp:BoundField HeaderText="EQUIPO" DataField="referenciaequipocol" />
-                <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" />
+                <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" ControlStyle-ForeColor="White" />
             </Columns>
         </asp:GridView>
     </div>

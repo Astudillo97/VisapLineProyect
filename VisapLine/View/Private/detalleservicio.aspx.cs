@@ -43,6 +43,8 @@ namespace VisapLine.View.Private
             btr = dplb.ConsultarBarriosIdMunicipio(dplb);
             FormView1.DataSource = dtbsrv;
             FormView1.DataBind();
+            gridequipoasignado.DataSource = srv.consultaequipoasigando(dtbsrv.Rows[0][8].ToString());
+            gridequipoasignado.DataBind();
         }
         protected void llenardropmuni(DropDownList b) {
             DataTable dtbsrv = srv.consultarserivcioid(int.Parse(Valor));

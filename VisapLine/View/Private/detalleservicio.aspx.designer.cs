@@ -13,6 +13,15 @@ namespace VisapLine.View.Private {
     public partial class detalleservicio {
         
         /// <summary>
+        /// Control volver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button volver;
+        
+        /// <summary>
         /// Control Alerta.
         /// </summary>
         /// <remarks>
@@ -40,15 +49,6 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.FormView FormView1;
         
         /// <summary>
-        /// Control volver.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button volver;
-        
-        /// <summary>
         /// Control divcaracteristicas.
         /// </summary>
         /// <remarks>
@@ -67,13 +67,22 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.GridView GridViewcaracter;
         
         /// <summary>
-        /// Control div1.
+        /// Control equipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl equipo;
+        
+        /// <summary>
+        /// Control gridequipoasignado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridequipoasignado;
         
         /// <summary>
         /// Control repetidordecolumnar.
