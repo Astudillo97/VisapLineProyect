@@ -148,16 +148,23 @@ namespace VisapLine.View.Private
 
         protected void btnequipo_Click(object sender, EventArgs e)
         {
+          
             
-            btnequipo.Visible=false;
             DataTable ivserdt = GetIvserdt();
-            idpedido=int.Parse(ivserdt.Rows[0]["idinventario"].ToString());
-            listequipo.DataSource = ivserdt;
-            listequipo.DataBind();
-            listequipo.Visible = true;
-            Button1.Visible = true;
-            gridcaract.Visible = true;
-            btninser.Visible = true;
+            if (ivserdt.Rows.Count > 0)
+            {
+                idpedido = int.Parse(ivserdt.Rows[0]["idinventario"].ToString());
+                listequipo.DataSource = ivserdt;
+                listequipo.DataBind();
+                listequipo.Visible = true;
+                Button1.Visible = true;
+                gridcaract.Visible = true;
+                btninser.Visible = true;
+                btnequipo.Visible = false;
+            }
+            else {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alertnoproduc();", true);
+            }
         }
 
         private DataTable GetIvserdt()

@@ -22,6 +22,10 @@ namespace VisapLine.Model
         public string planservicios_idplanservicios { get; set; }
         public string inventario_idinventarios { get; set; }
 
+        public DataTable consultaequipoasigando(string idequipo)
+        {
+            return data.ConsultarDatos("select * from pr_consultarinventarioid(" + idequipo + ")");
+        }
         public DataTable crearservicio(string ip,int varcanmeg , int varcontra ,string varestrato ,string varestadp,string varreferenci ,int  varinvern, string vardireccion, int barrio)
         {
             string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('" + vardireccion + "'," + barrio + ")").Rows[0][0].ToString();
