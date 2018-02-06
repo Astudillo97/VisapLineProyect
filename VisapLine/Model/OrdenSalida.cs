@@ -38,9 +38,32 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarinventariotipo("+ tipoinv + ")");
         }
-        public DataTable ConsultarFechas(string fhec1,string fech2)
+        public DataTable ConsultarFechas(string fhec1,string fech2) 
         {
             return data.ConsultarDatos("select * from pr_consultarordenfech('"+ fhec1 + "','"+ fech2 + "')");
+        }
+        public DataTable buscartecnicos() {
+            return data.ConsultarDatos("select * from pr_consultarempleados();");
+        }
+        public bool asignartecnico(string valor,string valor2) {
+            DataTable dt = data.ConsultarDatos("select * from pr_asignartecnicoaorden('"+ valor + "','"+ valor2 + "')");
+            if (int.Parse(dt.Rows[0][0].ToString())>0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        public bool Cerrarorden(string valor)
+        {
+            DataTable dt = data.ConsultarDatos("select * from pr_cerrarorden('" + valor + "')");
+            if (int.Parse(dt.Rows[0][0].ToString()) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
  
     }
