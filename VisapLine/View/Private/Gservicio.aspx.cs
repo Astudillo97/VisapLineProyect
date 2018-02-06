@@ -6,10 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VisapLine.Model;
 using System.Data;
+using System.Web.Services;
+
 namespace VisapLine.View.Private
 {
     public partial class Gservicio : System.Web.UI.Page
     {
+        public static string fecha1="", fecha2="";
         OrdenSalida ord = new OrdenSalida();
         DetalleSalida dsord = new DetalleSalida();
         TipoProducto tp = new TipoProducto();
@@ -21,10 +24,14 @@ namespace VisapLine.View.Private
             if (!IsPostBack) {
                 divconten.Visible = false;
                 divcreator.Visible = false;
+                Llenartecnicos();
             }
         }
 
-
+        protected void Llenartecnicos() {
+            gridtecnicos.DataSource = ord.buscartecnicos();
+            gridtecnicos.DataBind();
+        }
         protected void Llenargrid(string dato) {
             gridtelefono.DataSource = ord.cosnutlarlefonosorden(dato);
             gridtelefono.DataBind();
@@ -43,9 +50,10 @@ namespace VisapLine.View.Private
 
         protected void droptiporduc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "openModal();", true);
             inventariogrid.DataSource = ord.consultarinventario(droptiporduc.SelectedIndex);
             inventariogrid.DataBind();
+    
         }
 
         protected void addinvent_Click(object sender, EventArgs e)
@@ -58,8 +66,15 @@ namespace VisapLine.View.Private
         protected void btnconsultar_Click(object sender, EventArgs e)
         {
             valosal = Borden2.Text;
+            NewMethod(valosal);
+
+        }
+
+        private void NewMethod(string valosal)
+        {
             if (valosal.Contains("INS"))
             {
+                divgrid.Visible = false;
                 DataTable consulta = ord.Consultarorden(valosal);
                 formordenes.DataSource = consulta;
                 formordenes.DataBind();
@@ -69,7 +84,9 @@ namespace VisapLine.View.Private
                 divconten.Visible = true;
                 divcreator.Visible = false;
             }
-            else {
+            else
+            {
+                divgrid.Visible = false;
                 DataTable consulta = ord.Consultarordentrab(valosal);
                 Formtrabajos.DataSource = consulta;
                 Formtrabajos.DataBind();
@@ -78,7 +95,6 @@ namespace VisapLine.View.Private
                 llenardetalle();
                 Llenardrop();
             }
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -179,7 +195,59 @@ namespace VisapLine.View.Private
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            gridbusqueda.DataSource= ord.ConsultarFechas(TextBox4.Text, TextBox5.Text);
+            fecha1 = TextBox4.Text;
+            fecha2 = TextBox5.Text;
+            gridbusqueda.DataSource= ord.ConsultarFechas(fecha1,fecha2);
+            gridbusqueda.DataBind();
+        }
+
+        protected void btncancelar_Click(object sender, EventArgs e)
+        {
+            divcreator.Visible = false;
+            busquedaavansada.Visible = false;
+            principaldiv.Visible = true;
+        }
+
+        protected void divs_ServerClick(object sender, EventArgs e)
+        {
+            busquedaavansada.Visible = true;
+            principaldiv.Visible = false;
+        }
+
+        protected void gridbusqueda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gridbusqueda_SelectedIndexChanging1(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow row =gridbusqueda.Rows[e.NewSelectedIndex];
+            valosal = row.Cells[1].Text;
+            NewMethod(valosal);
+        }
+
+        protected void gridtecnicos_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow row = gridtecnicos.Rows[e.NewSelectedIndex];
+            if (ord.asignartecnico(row.Cells[1].Text,valosal)) {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "asignacionok();", true);
+            } else {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "asignacionfail();", true);
+            }
+            
+        }
+    
+        [WebMethod]
+        public static bool cerrarord_Click()
+        {
+            OrdenSalida ord = new OrdenSalida();
+            return ord.Cerrarorden(valosal);
+        }
+
+        protected void gridbusqueda_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridbusqueda.PageIndex = e.NewPageIndex;
+            gridbusqueda.DataSource = ord.ConsultarFechas(fecha1, fecha2);
             gridbusqueda.DataBind();
         }
     }

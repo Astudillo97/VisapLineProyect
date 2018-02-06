@@ -3,44 +3,77 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+     <script src="../../Contenido/assets/vendor_components/jquery/dist/jquery.js"></script>
+    <script src="../../Contenido/assets/vendor_components/glyphicons/glyphicon.css"></script>
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
-    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager> 
     <script type="text/javascript">
+        function dialog(ctl, event) {
+            event.preventDefault();
+            swal({
+                title: "¡CERRAR ORDEN!",
+                text: "Desea cerrar esta orden?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Aceptar",
+                cancelButtonText: "Cancel",
+                closeOnConfirm: true,
+                closeOnCancel: true
+            }, function () {
+                $.ajax({
+                    type: "POST",
+                    url: "Gservicio.aspx/cerrarord_Click",
+                    data: '{}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                    }
+                }
+                )
+                    .done(function (data) {
+                        swal("ASIGNACION CREADA CON EXITO!", "Se registro correctamente el tecnico", "success");
+                        $('#orders-history').load(document.URL + ' #orders-history');
+                        }).error(function (data) {
+                            swal("ASIGNACION FALLIDA!", "No se pudo realizar la operacion contactese con el soporte", "error");
+                        });
+                })
+                    ;
+        }
         function openModal() {
             $('#mymodal').modal('show');
         }
-        function openModal2() {
-            $('#mymodal2').modal('show');
-        }
         function deletealert(x) {
-            swal("ORDEN CREADA CON EXITO!", "Su orden ser creo con el numero " + x, "success");
-          
+            swal("ORDEN CREADA CON EXITO!", "Su orden ser creo con el numero " + x, "success");         
         }
         function alerterror() {
             swal("ORDEN FALLIDA!", "La orden no se pudo crear por favor verifique o contactese con el soporte", "error");
         }
-        $(document).ready(function (e) {
-            $("input").inputmask();
-        });
     </script>
 
     <section class="content-header">
+       
         <h2>ORDENES DE SERVICIO</h2>
     </section>
     <section class="content">
         <div class="form-group container-fluid box box-body">
-            <div class="row col">
+            <div id="principaldiv" runat="server" class="row col">
                 <asp:Label ID="lbl12" Text="CODIGO DE SERVICIO" runat="server"></asp:Label>
-                <asp:TextBox ID="Borden2" CssClass="form-control col-3 border-left-0 border-top-0 border-right-0 " runat="server"></asp:TextBox>
-                <asp:Button ID="btnconsultar" CssClass="btn btn-success" runat="server" Text="CONSULTAR" OnClick="btnconsultar_Click" />
+                <asp:TextBox ID="Borden2" CssClass="form-control col-3 border-left-0 border-top-0 border-right-0 " runat="server">          
+                </asp:TextBox>
+                <button id="btntconsultar" Class="btn btn-success" runat="server" onserverclick="btnconsultar_Click" >CONSULTAR  <span class=" glyphicon glyphicon-search"></span></></button>                
                 <asp:Button ID="Button1" CssClass="btn btn-success" runat="server" Text="CREAR ORDEN" OnClick="Button1_Click" />
+                <button id="divs" class="btn btn-success" runat="server" onserverclick="divs_ServerClick">
+                    BUSQUEDA AVANSADA <span class=" glyphicon glyphicon-search"></span>
+              </button>
             </div>
-            <div class="row col">
+            <div class="row col" visible="false" runat="server" id="busquedaavansada">
                 <asp:Label ID="Label4" Text="FECHA DE INICIO" runat="server"></asp:Label>
                 <asp:TextBox ID="TextBox4" TextMode="Date" CssClass="calendar form-control col-3 border-left-0 border-top-0 border-right-0 " runat="server"></asp:TextBox>
                 <asp:Label ID="Label5" Text=" HASTA " runat="server"></asp:Label>
                 <asp:TextBox ID="TextBox5" TextMode="Date" CssClass="calendar form-control col-3 border-left-0 border-top-0 border-right-0 " runat="server"></asp:TextBox>
                 <asp:Button ID="Button2" CssClass="btn btn-success" runat="server" Text="CONSULTAR" OnClick="Button2_Click" />
+                <asp:Button ID="Button3" CssClass="btn btn-danger" runat="server" Text="VOLVER ATRAS" OnClick="btncancelar_Click" />
             </div>
         </div>
         <div id="divcreator" runat="server" class="box box-body">
@@ -57,29 +90,44 @@
                         <asp:ListItem>TRABAJO</asp:ListItem>
                     </asp:DropDownList>
                     <asp:Button ID="btnsuccessorde" CssClass="btn btn-success" Height="34" Width="60" runat="server" Text="CREAR" OnClick="btnsuccessorde_Click" />
+                    <asp:Button ID="btncancelar" CssClass="btn btn-success" Height="34" Width="90" runat="server" Text="CANCELAR" OnClick="btncancelar_Click"/>
                 </div>
             </div>
         </div> 
-        <asp:GridView ID="gridbusqueda" CssClass="table no-border" Font-Bold="true" HeaderStyle-CssClass="thead-primary" runat="server" AutoGenerateColumns="false">
+        <div class="box box-body" runat="server" id="divgrid">
+        <asp:GridView AllowPaging="True" PageSize="3" OnPageIndexChanging="gridbusqueda_PageIndexChanging" ID="gridbusqueda" OnSelectedIndexChanged="gridbusqueda_SelectedIndexChanged" OnSelectedIndexChanging="gridbusqueda_SelectedIndexChanging1" CssClass="table no-border" Font-Bold="true" runat="server" AutoGenerateColumns="false">
             <Columns>
-                <asp:BoundField HeaderText="CODIGO" DataField="codigocol" /> 
+                <asp:CommandField SelectText="VER" ShowSelectButton="true" />
+                <asp:BoundField HeaderText="CODIGO" DataField="codigocol"  /> 
                 <asp:BoundField HeaderText="DETALLE" DataField="detallecol" />
                 <asp:BoundField HeaderText="TIPO" DataField="tipoordencol" />
                 <asp:BoundField HeaderText="FECHA DE REGISTRO" DataField="fecha_registrocol" />
                 <asp:TemplateField HeaderText="ESTADO">
                     <ItemTemplate>
-                        <asp:CheckBox Text=" " CssClass="filled-in" Checked='<%#Eval("estadocol") %>' ID="chbs" runat="server"  />
+                        <asp:CheckBox Text=" " CssClass="filled-in" Enabled="false" Checked='<%#Eval("estadocol") %>' ID="chbs" runat="server"  />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="FECHA DE FINALIZACION" DataField="fecha_finalizarcol" NullDisplayText="ESPERANDO" />
             </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#EFF3FB" />
+                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
+            </div>
         <div id="divconten" runat="server" class="box box-body">
             <div class="form-group container-fluid">
                 <table class="table table-responsive no-border" border="0">
                     <tr>
                         <td colspan="10">
                             <div class="row col-">
+                                
                                 <asp:FormView ID="formordenes" runat="server">
                                     <ItemTemplate>
                                         <asp:TextBox ID="idserve" runat="server" Visible="false"></asp:TextBox>
@@ -198,7 +246,7 @@
                                                     <asp:Label ID="lblmnpserv" CssClass="form-control border-left-0 border-top-0 border-right-0" runat="server" Text="OBSERVACIONES"></asp:Label>
                                                 </td>
                                                 <td colspan="12">
-                                                    <asp:TextBox ID="txbmnpserv" TextMode="MultiLine" Rows="5" Columns="50" runat="server" Style="resize: none;" CssClass="form-control no-border" ov Text='<%#Eval("observacionval") %>' ReadOnly="true"></asp:TextBox>
+                                                    <asp:TextBox ID="txbmnpserv" TextMode="MultiLine" Rows="5" Columns="50" runat="server" Style="resize: none;" CssClass="form-control no-border" Text='<%#Eval("observacionval") %>' ReadOnly="true"></asp:TextBox>
 
                                                 </td>
                                             </tr>
@@ -212,25 +260,25 @@
                         <td>
                             <div class="row">
                                 <div class="form-group">
-                                    <asp:GridView CssClass="table no-border" BorderColor="White" ID="gridtelefono" runat="server"></asp:GridView>
+                                    <asp:GridView AutoGenerateColumns="false" CssClass="table no-border" BorderColor="White" ID="gridtelefono" runat="server">
+                                        <Columns>
+                                            <asp:BoundField HeaderText="TELEFONO" ItemStyle-CssClass="bg-gray" DataField="telefono"/>
+                                        </Columns>
+                                    </asp:GridView>                        
                                 </div>
                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
-
+            
 
             <div class="box box-body">
-                <button type="button" id="but" class="btn btn-primary" data-toggle="modal" data-target="#mymodal">
-                    AGREGAR PRODUCTO +</button>
                 <div class="modal fade" id="mymodal" data-backdrop="”static”">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title">AGREGAR EQUIPO</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
                                 <asp:DropDownList CssClass="form-control dropdown-toggle" ID="droptiporduc" runat="server" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="droptiporduc_SelectedIndexChanged"></asp:DropDownList>
@@ -256,34 +304,56 @@
                     </div>
                     <!-- /.modal-dialog -->
                 </div>
-                <asp:GridView ID="GridViewdeta" CssClass="table table-responsive table-bordered" runat="server" AutoGenerateColumns="false">
+                <div class="modal fade" id="mymodal2" data-backdrop="”static”">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">ASIGNAR TECNICO <span class="glyphicon glyphicon-user"></span></h4>
+                            </div>
+                            <div class="modal-body">
+                                <asp:GridView CssClass="table no-border" OnSelectedIndexChanging="gridtecnicos_SelectedIndexChanging" AutoGenerateColumns="false" ID="gridtecnicos" runat="server">
+                                    <Columns>
+                                        <asp:CommandField ShowSelectButton="true" SelectText="ASIGNAR" ControlStyle-CssClass="btn btn-success" />
+                                        <asp:BoundField HeaderText="IDENTIFICACION" DataField="idterceroscol"/>
+                                        <asp:BoundField HeaderText="NOMBRE" DataField="nombrecol"/>
+                                        <asp:BoundField HeaderText="APELLIDO" DataField="apellidocol"/>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>  
+                    <!-- /.modal-dialog -->
+                </div>
+                <asp:Button ID="cerrarord" Text="CERRAR ORDEN" runat="server" CssClass="btn btn-danger" OnClientClick='return dialog(this,event);' />
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mymodal">
+                ASIGNAR INVENTARIO +
+              </button>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mymodal2">
+                ASIGNAR TECNICO +
+              </button>
+                <asp:GridView ID="GridViewdeta" CssClass="table table-responsive no-border" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField HeaderText="DESCRIPCION" DataField="descripcioncol" />
                         <asp:BoundField HeaderText="CANTIDAD" DataField="cantidadcol" />
                         <asp:BoundField HeaderText="ESTADO" DataField="estadocol" />
                     </Columns>
+                    <EditRowStyle BackColor="#2461BF" />
+                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#EFF3FB" />
+                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
             </div>
-        </div>
-        <div class="modal fade" id="mymodal2" data-backdrop="”static”">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">COMPLETADO</h4>
-                        <div></div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">COMPLETAR</button>
-
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
         </div>
     </section>
 
