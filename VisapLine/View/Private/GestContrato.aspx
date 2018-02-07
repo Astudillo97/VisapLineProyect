@@ -30,6 +30,9 @@
         function alerterror() {
             swal("NO SE REGISTRO!", "No se registro el formulario", "error");
         }
+        function nocontro() {
+            swal("NO SE ENCOTRO NINGUN REGISTRO!", "Debe registrar el cliente", "error");
+        }
     </script>
 
 

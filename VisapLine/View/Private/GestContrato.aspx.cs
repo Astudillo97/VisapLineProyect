@@ -56,9 +56,7 @@ namespace VisapLine.View.Private
             }
             catch (Exception ex)
             {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "nocontro();", true);
             }
         }
 

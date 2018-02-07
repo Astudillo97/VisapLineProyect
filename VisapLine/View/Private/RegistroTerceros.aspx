@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="RegistroTerceros.aspx.cs" Inherits="VisapLine.View.Private.RegistroTerceros" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="RegistroTerceros.aspx.cs" Inherits="VisapLine.View.Private.RegistroTerceros" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -27,6 +27,9 @@
         function nocontro() {
             swal("NO SE ENCOTRO NINGUN REGISTRO!", "Debe registrar el cliente", "error");
         }
+        function errorsoft() {
+            swal("SE ENCONTRADO UN ERROR, CONTACTESE CON EL ADMINISTRADOR!", "Debe registrar el cliente", "error");
+        }
     </script>
     <section class="content-header">
         <h1>Registro de Clientes</h1>
@@ -44,7 +47,6 @@
     <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
-                <center><h3 class="card-title">Registro de Cliente</h3></center>
                 <div class="box-tools pull-right">
                 </div>
             </div>
@@ -128,13 +130,39 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <asp:GridView ID="telefonos" OnRowDeleting="telefonos_RowDeleting1" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server">
-                                            <Columns>
-                                                <asp:BoundField DataField="idtelefono" HeaderText="Codigo"></asp:BoundField>
-                                                <asp:BoundField DataField="telefono" HeaderText="Celular"></asp:BoundField>
-                                                <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="p-0"></asp:CommandField>
-                                            </Columns>
-                                        </asp:GridView>
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-form-label"></label>
+                                            <div class="col-sm-8">
+                                                <asp:GridView ID="telefonos" OnRowDeleting="telefonos_RowDeleting" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="false" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                                    <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                                    <Columns>
+                                                        <asp:BoundField DataField="idtelefono" HeaderText="Codigo"></asp:BoundField>
+                                                        <asp:BoundField DataField="telefono" HeaderText="Celular"></asp:BoundField>
+                                                        <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="p-0"></asp:CommandField>
+                                                    </Columns>
+                                                    <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                                    <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                                                    <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                                    <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                                    <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                                    <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                                    <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                                                </asp:GridView>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
