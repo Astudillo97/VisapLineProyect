@@ -44,10 +44,6 @@
 
     <section class="content">
         <div class="box box-default">
-            <div class="box-header with-border">
-                <div class="box-tools pull-right">
-                </div>
-            </div>
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-6 col-12">
