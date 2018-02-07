@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Facturacion.aspx.cs" Inherits="VisapLine.View.Private.Facturacion" %>
+﻿<%@ Page Title="" Language="C#" MaintainScrollPositionOnPostback="true" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Facturacion.aspx.cs" Inherits="VisapLine.View.Private.Facturacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -79,12 +79,12 @@
         </div>
         <div class="tab-pane">
             <div class="box box-primary">
-                <asp:gridview runat="server" cssclass="table table-bordered table-striped table-responsive" OnRowCommand="allfactura_RowCommand" allowpaging="True" pagesize="10" onpageindexchanging="allfactura_PageIndexChanging" onrowdeleting="allfactura_RowDeleting" onselectedindexchanging="allfactura_SelectedIndexChanging" onrowediting="allfactura_RowEditing" autogeneratecolumns="False" id="allfactura">
+                <asp:gridview runat="server" cssclass="table table-bordered table-striped table-responsive" onpageindexchanging="allfactura_PageIndexChanging" OnRowCommand="allfactura_RowCommand" allowpaging="True" pagesize="10"  autogeneratecolumns="False" id="allfactura">
 
                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Wrap="true" />
                     <Columns>
-                        <asp:BoundField DataField="codigo" HeaderText="Contrato"></asp:BoundField>
+                        <asp:BoundField DataField="facturaventa" HeaderText="FS"></asp:BoundField>
                         <asp:BoundField DataField="identificacion" HeaderText="NIT/IDENTIF"></asp:BoundField>
                         <asp:TemplateField HeaderText="Tercero">
                             <ItemTemplate>
@@ -95,12 +95,13 @@
                         <asp:BoundField DataField="fechaemision" DataFormatString="{0:d}" HeaderText="Emision"></asp:BoundField>
                         <asp:BoundField DataField="estadof" HeaderText="Estado"></asp:BoundField>
                         <asp:BoundField DataField="totalfac" HeaderText="Valor"></asp:BoundField>
-                        <asp:CommandField ShowDeleteButton="True" DeleteText="" ControlStyle-CssClass="glyphicon glyphicon-copy"></asp:CommandField>
+<%--  onrowdeleting="allfactura_RowDeleting" onselectedindexchanging="allfactura_SelectedIndexChanging" onrowediting="allfactura_RowEditing"                       
+    <asp:CommandField ShowDeleteButton="True"   DeleteText="" ControlStyle-CssClass="glyphicon glyphicon-copy"></asp:CommandField>
                         <asp:CommandField ShowSelectButton="True" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-usd"></asp:CommandField>
-                        <asp:CommandField ShowEditButton="True" EditText="" ControlStyle-CssClass="glyphicon glyphicon-edit"></asp:CommandField>
-                        <asp:TemplateField HeaderText="Borrar">
+                        <asp:CommandField ShowEditButton="True" EditText="" ControlStyle-CssClass="glyphicon glyphicon-edit"></asp:CommandField>--%>
+                        <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <asp:Button ID="hola" runat="server" class="btn btn-danger btn-flat" CommandName="borrar" CommandArgument='<%# Eval("idtipofactura") %>' Text="Borrar" />
+                                        <asp:Button ID="btn" runat="server"  class="btn glyphicon glyphicon-copy " CommandName="verfactura" CommandArgument='<%# Eval("idfactura") %>' Text="Borrar" />
                                     </ItemTemplate>
                          </asp:TemplateField>
                     </Columns>

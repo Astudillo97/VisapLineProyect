@@ -155,7 +155,17 @@ namespace VisapLine.Model
                 Paragraph terceroidentficacion = new Paragraph("NIT/CC:" + datos["identificacion"].ToString());
                 DataTable db = serv.consultaservicioscont(Convert.ToInt32(datos["idcontrato"].ToString()));
                 DataRow dat = db.Rows[0];
-                Paragraph tercerodireccion = new Paragraph(dat["direccioncol"].ToString());
+                Paragraph tercerodireccion = new Paragraph();
+                try
+                {
+                    tercerodireccion.Add(dat["direccioncol"].ToString());
+                }
+                catch (Exception)
+                {
+
+                    throw new ValidarExeption("El contrato no tiene un servicio");
+                }
+                
                 telef.terceros_idterceros = datos["identificacion"].ToString();
                 DataTable dattel = telef.ConsultarTelefonosIdTerceros(telef);
                 string vartelef = "";

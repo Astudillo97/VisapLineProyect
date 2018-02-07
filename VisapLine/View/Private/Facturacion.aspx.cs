@@ -142,15 +142,17 @@ namespace VisapLine.View.Private
             }
         }
 
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void allfactura_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
             {
-                if (e.CommandName.ToString() == "borrar")
+                if (e.CommandName.ToString() == "verfactura")
                 {
-                    string DeleteRowId = e.CommandArgument.ToString();
-                    //tf.eliminar(int.Parse(DeleteRowId));
-                    //tablatipofactura();
+                    string paramet = e.CommandArgument.ToString();
+                    tablefactura.PrimaryKey = new DataColumn[] { tablefactura.Columns["idfactura"] };
+                    DataRow dat = tablefactura.Rows.Find(paramet);
+                    string referen = pdf.CrearFactura(empresa.ConsultarEmpresa(), dat);
+                    Response.Redirect("../../Archivos/" + referen);
                 }
             }
             catch (Exception ex)
@@ -182,7 +184,6 @@ namespace VisapLine.View.Private
         {
             try
             {
-
                 string reference = pdf.CrearFacturaGrupal(empresa.ConsultarEmpresa(), tablefactura);
                 Response.Redirect("../../Archivos/" + reference);
             }
