@@ -11,8 +11,6 @@
     </section>
     <section class="content">
 
-
-
         <div class="row">
             <div class="col-xl-3 col-md-6 col">
                 <div class="info-box bg-aqua">
@@ -154,12 +152,6 @@
             </div>
             <!-- ./col -->
         </div>
-
-
-    
-
-
-
     </section>
 
 </asp:Content>

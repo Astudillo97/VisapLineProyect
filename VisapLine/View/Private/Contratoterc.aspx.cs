@@ -43,7 +43,9 @@ namespace VisapLine.View.Private
             {
                 if (!IsPostBack)
                 {
-                    
+                    string valor = Convert.ToString(Request.QueryString["key"]);
+
+
                     //CONTRATO
 
                     DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
@@ -224,21 +226,21 @@ namespace VisapLine.View.Private
             try
             {
 
-                int sesion = 90;
-                string dni = "";
-                if (Labelcedulacontrato.Text !="")
-                {
-                    dni = Labelcedulacontrato.Text;
-                }
-                else
-                {
-                    if (Label11.Text!="")
-                    {
-                        dni = Label11.Text;
-                    }
-                }
-                DataRow datcontcorpo = Validar.Consulta(terc.ConsultarPersonaIdenti(dni)).Rows[0];
-                contrat.terceros_idterceros = Validar.validarlleno(datcontcorpo["idterceros"].ToString());
+                //int sesion = 90;
+                //string dni = "";
+                //if (Labelcedulacontrato.Text !="")
+                //{
+                //    dni = Labelcedulacontrato.Text;
+                //}
+                //else
+                //{
+                //    if (Label11.Text!="")
+                //    {
+                //        dni = Label11.Text;
+                //    }
+                //}
+                //DataRow datcontcorpo = Validar.Consulta(terc.ConsultarPersonaIdenti(dni)).Rows[0];
+                //contrat.terceros_idterceros = Validar.validarlleno(datcontcorpo["idterceros"].ToString());
                 contrat.codigo = Validar.validarlleno(TextBox4.Text);
                 contrat.fechacontrato = Validar.validarlleno(Textboxfechainiciopermanencia.Text);
                 contrat.fechaactivacion = Validar.validarlleno(Textboxfechaactivacionservicio.Text);
@@ -249,7 +251,7 @@ namespace VisapLine.View.Private
                 contrat.iva = Validar.validarlleno(TextBoxivacontrato.Text);
                 contrat.enviofactura = Validar.validarselected(DropDownList1.SelectedValue);
                 contrat.facturaunica = Validar.validarselected(DropDownListfacturaunicacontrato.SelectedValue);
-                contrat.personal_idpersonal = Validar.validarsession(sesion.ToString());
+                //contrat.personal_idpersonal = Validar.validarsession(sesion.ToString());
                 contrat.sucursal_idsucursal = Validar.ConvertNumber(DropDownListsucursalcontrato.SelectedValue);
                 contrat.observaciondirec = Validar.validarlleno(TextArea1.Value);
                 contrat.direccionenviofact = Validar.validarlleno(TextBox1.Text);
