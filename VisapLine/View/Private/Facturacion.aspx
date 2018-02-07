@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Facturacion.aspx.cs" Inherits="VisapLine.View.Private.Facturacion" %>
+﻿<%@ Page Title="" Language="C#" MaintainScrollPositionOnPostback="true" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Facturacion.aspx.cs" Inherits="VisapLine.View.Private.Facturacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -12,10 +12,10 @@
             <li class="breadcrumb-item active">Vistas</li>
         </ol>
     </section>
-    <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success">
+    <asp:panel id="Alerta" visible="false" runat="server" cssclass="col-12 alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
-    </asp:Panel>
+    </asp:panel>
     <section class="content">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
@@ -79,12 +79,12 @@
         </div>
         <div class="tab-pane">
             <div class="box box-primary">
-                <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" AllowPaging="True" PageSize="10" OnPageIndexChanging="allfactura_PageIndexChanging" OnRowDeleting="allfactura_RowDeleting" OnSelectedIndexChanging="allfactura_SelectedIndexChanging" OnRowEditing="allfactura_RowEditing" AutoGenerateColumns="False" ID="allfactura">
+                <asp:gridview runat="server" cssclass="table table-bordered table-striped table-responsive" onpageindexchanging="allfactura_PageIndexChanging" OnRowCommand="allfactura_RowCommand" allowpaging="True" pagesize="10"  autogeneratecolumns="False" id="allfactura">
 
                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Wrap="true" />
                     <Columns>
-                        <asp:BoundField DataField="codigo" HeaderText="Contrato"></asp:BoundField>
+                        <asp:BoundField DataField="facturaventa" HeaderText="FS"></asp:BoundField>
                         <asp:BoundField DataField="identificacion" HeaderText="NIT/IDENTIF"></asp:BoundField>
                         <asp:TemplateField HeaderText="Tercero">
                             <ItemTemplate>
@@ -95,25 +95,30 @@
                         <asp:BoundField DataField="fechaemision" DataFormatString="{0:d}" HeaderText="Emision"></asp:BoundField>
                         <asp:BoundField DataField="estadof" HeaderText="Estado"></asp:BoundField>
                         <asp:BoundField DataField="totalfac" HeaderText="Valor"></asp:BoundField>
-                        <asp:CommandField ShowDeleteButton="True" DeleteText="" ControlStyle-CssClass="glyphicon glyphicon-copy"></asp:CommandField>
+<%--  onrowdeleting="allfactura_RowDeleting" onselectedindexchanging="allfactura_SelectedIndexChanging" onrowediting="allfactura_RowEditing"                       
+    <asp:CommandField ShowDeleteButton="True"   DeleteText="" ControlStyle-CssClass="glyphicon glyphicon-copy"></asp:CommandField>
                         <asp:CommandField ShowSelectButton="True" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-usd"></asp:CommandField>
-                        <asp:CommandField ShowEditButton="True" EditText="" ControlStyle-CssClass="glyphicon glyphicon-edit"></asp:CommandField>
+                        <asp:CommandField ShowEditButton="True" EditText="" ControlStyle-CssClass="glyphicon glyphicon-edit"></asp:CommandField>--%>
+                        <asp:TemplateField HeaderText="">
+                                    <ItemTemplate>
+                                        <asp:Button ID="btn" runat="server"  class="btn glyphicon glyphicon-copy " CommandName="verfactura" CommandArgument='<%# Eval("idfactura") %>' Text="Borrar" />
+                                    </ItemTemplate>
+                         </asp:TemplateField>
                     </Columns>
-                </asp:GridView>
+                </asp:gridview>
             </div>
         </div>
         <div class="tab-pane">
             <div class="box box-primary">
                 <div class="form-group row">
-                    <button class="btn btn-primary col-md-4"><span class="glyphicon glyphicon-print"></span> IMPRIMIR TODAS LAS FACTURAS</button>
-                    <button class="btn btn-success col-md-4"><span class="glyphicon glyphicon-inbox"></span> ENVIAR TODAS LAS FACTURAS</button>
-                    <button class="btn btn-success col-md-4"><span class="glyphicon glyphicon-export"> OBTENER XLS PARA SIIGO</span></button>
+                    <button class="btn btn-primary col-md-4" runat="server" onserverclick="Imprimirallfactura"><span class="glyphicon glyphicon-print"></span>IMPRIMIR TODAS LAS FACTURAS</button>
+                    <button class="btn btn-success col-md-4"><span class="glyphicon glyphicon-inbox"></span>ENVIAR TODAS LAS FACTURAS</button>
+                    <button class="btn btn-success col-md-4"><span class="glyphicon glyphicon-export">OBTENER XLS PARA SIIGO</span></button>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane">
-
         </div>
     </section>
 </asp:Content>
