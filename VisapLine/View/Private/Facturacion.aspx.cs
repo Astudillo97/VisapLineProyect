@@ -116,8 +116,7 @@ namespace VisapLine.View.Private
             {
                 DataRow dat = tablefactura.Rows[e.RowIndex];
                 string referen = pdf.CrearFactura(empresa.ConsultarEmpresa(), dat);
-                string reference = pdf.CrearFacturaGrupal(empresa.ConsultarEmpresa(), dat);
-                Response.Redirect("../../Archivos/" + reference);
+                Response.Redirect("../../Archivos/" + referen);
             }
             catch (Exception ex)
             {
@@ -143,6 +142,26 @@ namespace VisapLine.View.Private
             }
         }
 
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName.ToString() == "borrar")
+                {
+                    string DeleteRowId = e.CommandArgument.ToString();
+                    //tf.eliminar(int.Parse(DeleteRowId));
+                    //tablatipofactura();
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+        }
+
         protected void allfactura_RowEditing(object sender, GridViewEditEventArgs e)
         {
             try
@@ -157,6 +176,23 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
+        }
+
+        protected void Imprimirallfactura(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string reference = pdf.CrearFacturaGrupal(empresa.ConsultarEmpresa(), tablefactura);
+                Response.Redirect("../../Archivos/" + reference);
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
         }
     }
 }
