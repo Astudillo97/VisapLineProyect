@@ -101,7 +101,17 @@
                         <asp:CommandField ShowEditButton="True" EditText="" ControlStyle-CssClass="glyphicon glyphicon-edit"></asp:CommandField>--%>
                         <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <asp:Button ID="btn" runat="server"  class="btn glyphicon glyphicon-copy " CommandName="verfactura" CommandArgument='<%# Eval("idfactura") %>' Text="Borrar" />
+                                        <asp:Button ID="btn1" runat="server"  CssClass="btn glyphicon glyphicon-copy "  CommandName="verfactura" CommandArgument='<%# Eval("idfactura") %>' Text="" />
+                                    </ItemTemplate>
+                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="">
+                                    <ItemTemplate>
+                                        <asp:Button ID="btn2" runat="server"  CssClass="btn glyphicon glyphicon-edit " CommandName="editarfactura" CommandArgument='<%# Eval("idfactura") %>' Text="" />
+                                    </ItemTemplate>
+                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="">
+                                    <ItemTemplate>
+                                        <asp:Button ID="btn3" runat="server"  CssClass="btn glyphicon glyphicon-bitcoin " CommandName="pagarfactura" CommandArgument='<%# Eval("facturaventa") %>' Text="" />
                                     </ItemTemplate>
                          </asp:TemplateField>
                     </Columns>
@@ -112,8 +122,8 @@
             <div class="box box-primary">
                 <div class="form-group row">
                     <button class="btn btn-primary col-md-4" runat="server" onserverclick="Imprimirallfactura"><span class="glyphicon glyphicon-print"></span>IMPRIMIR TODAS LAS FACTURAS</button>
-                    <button class="btn btn-success col-md-4"><span class="glyphicon glyphicon-inbox"></span>ENVIAR TODAS LAS FACTURAS</button>
-                    <button class="btn btn-success col-md-4"><span class="glyphicon glyphicon-export">OBTENER XLS PARA SIIGO</span></button>
+                    <button class="btn btn-success col-md-4" runat="server" onserverclick="EnviarAllFactura"><span class="glyphicon glyphicon-inbox"></span>ENVIAR TODAS LAS FACTURAS</button>
+                    <a href="VistadeExporte.aspx" class="btn btn-success col-md-4"><span class="glyphicon glyphicon-export">OBTENER XLS PARA SIIGO</span></a>
                 </div>
             </div>
         </div>
