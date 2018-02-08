@@ -32,6 +32,7 @@ namespace VisapLine.View.Private
         Sucursal scsal = new Sucursal();
         Contrato contrat = new Contrato();
         string idplancontr;
+        string wiifi;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -83,7 +84,7 @@ namespace VisapLine.View.Private
 
                     TextBox1.Text = tercero["direccion"].ToString();
 
-                Labelidtercero.Text =  tercero["idterceros"].ToString();
+                    Labelidtercero.Text = tercero["idterceros"].ToString();
                 }
             }
             catch (Exception ex)
@@ -94,11 +95,11 @@ namespace VisapLine.View.Private
             }
 
             cargartabla(Labelidtercero.Text);
-            
+
         }
 
 
-       
+
         protected void cargartabla(string idusuario)
         {
             pn.idtercero_idtercero = terc.idterceros;
@@ -119,7 +120,7 @@ namespace VisapLine.View.Private
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+
             GridViewRow gridw = GridView2.SelectedRow;
             Labeldipalcontra.Text = gridw.Cells[1].Text;
             TextArea1detalleplan.Value = gridw.Cells[3].Text;
@@ -244,7 +245,20 @@ namespace VisapLine.View.Private
                 contrat.direccionenviofact = Validar.validarlleno(TextBoxenviofactura.Text);
                 contrat.barrio_idbarrio = Validar.validarselected(DropDownListbarriocontrato.SelectedValue);
 
+                Validar.validarselected(DropDownListWIFI.Text);
+                if (DropDownListWIFI.Text == "SI")
+                {
+                    wiifi = "true";
+                }
+                else
+                {
+                    if (DropDownListWIFI.Text == "NO")
+                    {
+                        wiifi = "false";
+                    }
 
+                }
+                contrat.wifi = wiifi;
 
                 if (contrat.RegistrarContrato(contrat))
                 {
@@ -274,6 +288,11 @@ namespace VisapLine.View.Private
         }
 
         protected void Button4ontrato_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
         {
 
         }

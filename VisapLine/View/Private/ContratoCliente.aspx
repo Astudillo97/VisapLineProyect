@@ -152,7 +152,7 @@
                                 <label class="col-sm-3 col-form-label">Direccion de envio factura:</label>
 
                                 <div class="col-sm-9">
-                                    <asp:TextBox ID="TextBoxenviofactura" TextMode="MultiLine" Rows="5" Columns="15" runat="server" placeholder="CLL 27 2B-17" uppercase class="form-control"  Style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 105px;"></asp:TextBox>
+                                    <asp:TextBox ID="TextBoxenviofactura" TextMode="MultiLine" Rows="5" Columns="15" runat="server" placeholder="CLL 27 2B-17" uppercase class="form-control" Style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 105px;"></asp:TextBox>
                                 </div>
                             </div>
 
@@ -435,9 +435,40 @@
             </div>
         </div>
         <center>
-              <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button4ontrato" Text="Guardar" OnClick="Button4ontrato_Click" Width="146px" />
+
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" style='width:143px; height:30px' data-target="#modal-default">
+                GUARDAR
+            </button>
+
         </center>
 
+
+        <div class="modal fade" id="modal-default">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Desea guardar el contrato o guardar el contrato y ir a servicio?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-footer">
+                        <center>
+
+                         <table>
+                             <tr>
+                             <td> <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button4ontrato" Text="Guardar" OnClick="Button4ontrato_Click" Width="146px" /></td>
+                             <td> <asp:Button ID="Button2" class="btn btn-block btn-info btn-lg" OnClick="Button2_Click" runat="server" Text="Button" Width="146px" /></td>
+                        </tr>
+                                 </table>
+                       
+                       </center>
+
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
     </section>
 
 
