@@ -461,6 +461,7 @@
     <Content Include="View\Private\Almacen.aspx" />
     <Content Include="View\Private\detalleservicio.aspx" />
     <Content Include="View\Private\Facturacion.aspx" />
+    <Content Include="View\Private\GestCliente.aspx" />
     <Content Include="View\Private\GestContrato.aspx" />
     <Content Include="View\Private\GestPagos.aspx" />
     <Content Include="View\Private\GestTercero.aspx" />
@@ -572,6 +573,13 @@
     </Compile>
     <Compile Include="View\Private\Facturacion.aspx.designer.cs">
       <DependentUpon>Facturacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\GestCliente.aspx.cs">
+      <DependentUpon>GestCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\GestCliente.aspx.designer.cs">
+      <DependentUpon>GestCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\GestContrato.aspx.cs">
       <DependentUpon>GestContrato.aspx</DependentUpon>
