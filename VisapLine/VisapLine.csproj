@@ -459,13 +459,13 @@
     <Content Include="Contenido\images\visa.png" />
     <Content Include="View\Login\login.aspx" />
     <Content Include="View\Private\Almacen.aspx" />
+    <Content Include="View\Private\ContratoCliente.aspx" />
     <Content Include="View\Private\detalleservicio.aspx" />
     <Content Include="View\Private\Facturacion.aspx" />
     <Content Include="View\Private\GestCliente.aspx" />
     <Content Include="View\Private\GestContrato.aspx" />
     <Content Include="View\Private\GestPagos.aspx" />
     <Content Include="View\Private\GestTercero.aspx" />
-    <Content Include="View\Private\Contratoterc.aspx" />
     <Content Include="View\Private\Gservicio.aspx" />
     <Content Include="View\Private\Incidencia.aspx" />
     <Content Include="View\Private\index.aspx" />
@@ -560,6 +560,13 @@
     <Compile Include="View\Private\Almacen.aspx.designer.cs">
       <DependentUpon>Almacen.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\ContratoCliente.aspx.cs">
+      <DependentUpon>ContratoCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\ContratoCliente.aspx.designer.cs">
+      <DependentUpon>ContratoCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\detalleservicio.aspx.cs">
       <DependentUpon>detalleservicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -601,13 +608,6 @@
     </Compile>
     <Compile Include="View\Private\GestTercero.aspx.designer.cs">
       <DependentUpon>GestTercero.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Private\Contratoterc.aspx.cs">
-      <DependentUpon>Contratoterc.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Private\Contratoterc.aspx.designer.cs">
-      <DependentUpon>Contratoterc.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Gservicio.aspx.cs">
       <DependentUpon>Gservicio.aspx</DependentUpon>

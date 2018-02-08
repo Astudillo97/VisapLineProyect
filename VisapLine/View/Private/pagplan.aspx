@@ -144,7 +144,7 @@
                 </div>
                 <center>
               <asp:Button runat="server" class="btn btn-block btn-success" ID="Button1" Text="Guardar" Width="146px" OnClick="Button1_Click" /></>
-      </center>
+               </center>
                 <!-- /.col -->
             </div>
             <!-- /.row -->

@@ -391,8 +391,7 @@ namespace VisapLine.View.Private
                             Alerta.Visible = true;
                         }
                     }
-
-                    Response.Redirect("Contratoterc.aspx?key=" + texboxdni.Text);
+                    Response.Redirect("ContratoCliente.aspx?key=" + texboxdni.Text);
                 }
                 else
                 {
@@ -688,8 +687,8 @@ namespace VisapLine.View.Private
                         }
                     }
 
-                    Response.Redirect("Contratoterc.aspx?key=" + texboxdni.Text);
-
+           
+                    Response.Redirect("ContratoCliente.aspx?key=" + texboxdni.Text);
 
                 }
                 else
@@ -972,7 +971,7 @@ namespace VisapLine.View.Private
                         }
                     }
 
-                    Response.Redirect("Contratoterc.aspx?key=" + texboxdni.Text);
+                    Response.Redirect("ContratoCliente.aspx?key=" + texboxdni.Text);
 
 
                 }

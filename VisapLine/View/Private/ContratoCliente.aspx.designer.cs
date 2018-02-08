@@ -10,7 +10,16 @@
 namespace VisapLine.View.Private {
     
     
-    public partial class Contratoterc {
+    public partial class ContratoCliente {
+        
+        /// <summary>
+        /// Control respust.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager respust;
         
         /// <summary>
         /// Control Alerta.
@@ -40,6 +49,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox TextBox4;
         
         /// <summary>
+        /// Control Labelidtercero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Labelidtercero;
+        
+        /// <summary>
         /// Control Label1.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,15 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// Control idapellidolabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl idapellidolabel;
         
         /// <summary>
         /// Control Label2.
@@ -58,22 +85,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// Control Label3.
+        /// Control TextBox1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-        
-        /// <summary>
-        /// Control Label4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
         /// Control DropDownListpaiscontrato.
@@ -112,13 +130,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListbarriocontrato;
         
         /// <summary>
-        /// Control TextBox1.
+        /// Control TextBoxenviofactura.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxenviofactura;
         
         /// <summary>
         /// Control TextArea1.
@@ -157,6 +175,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListestratocontrato;
         
         /// <summary>
+        /// Control idsucursallabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl idsucursallabel;
+        
+        /// <summary>
         /// Control DropDownListsucursalcontrato.
         /// </summary>
         /// <remarks>
@@ -193,6 +220,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Label Labelsubidaplancontrato;
         
         /// <summary>
+        /// Control dnitercero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label dnitercero;
+        
+        /// <summary>
         /// Control Labelbajadaplancontrato.
         /// </summary>
         /// <remarks>
@@ -202,13 +238,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Label Labelbajadaplancontrato;
         
         /// <summary>
-        /// Control Labelmedioconexionplancontrato.
+        /// Control DropDownListWIFI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labelmedioconexionplancontrato;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListWIFI;
         
         /// <summary>
         /// Control Labelvaloriva.
@@ -227,15 +263,6 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea1detalleplan;
-        
-        /// <summary>
-        /// Control Textboxvalorinstalacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textboxvalorinstalacion;
         
         /// <summary>
         /// Control Textboxfechainiciopermanencia.
@@ -310,6 +337,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox TextBoxivacontrato;
         
         /// <summary>
+        /// Control Textboxvalorinstalacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Textboxvalorinstalacion;
+        
+        /// <summary>
         /// Control TextBox3.
         /// </summary>
         /// <remarks>
@@ -319,12 +355,12 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
         
         /// <summary>
-        /// Control Button4cargarmodalcontrato.
+        /// Control Button4ontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4cargarmodalcontrato;
+        protected global::System.Web.UI.WebControls.Button Button4ontrato;
     }
 }
