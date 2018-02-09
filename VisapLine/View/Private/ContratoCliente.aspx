@@ -394,7 +394,7 @@
                                     <label class="col-sm-4 col-form-label">
                                         Tipo Contrato:                                                           
                                     </label>
-                                    <asp:DropDownList ID="DropDownListtipocontrato" runat="server" Width="195" CssClass="form-control" AppendDataBoundItems="true">
+                                    <asp:DropDownList ID="DropDownListtipocontrato" runat="server" Width="180" CssClass="form-control" AppendDataBoundItems="true">
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
@@ -417,10 +417,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">
+                                    <label class="col-sm-5 col-form-label">
                                         Valor instalacion:                                                        
                                     </label>
-                                    <asp:TextBox ID="Textboxvalorinstalacion" runat="server" type="number" Width="190px" class="form-control" placeholder="$"></asp:TextBox>
+                                    <asp:TextBox ID="Textboxvalorinstalacion" runat="server" type="number" Width="150px" class="form-control" placeholder="$"></asp:TextBox>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Total</label>
@@ -436,7 +436,7 @@
         </div>
         <center>
 
-            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" style='width:143px; height:30px' data-target="#modal-default">
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" style='width:150px; height:35px' data-target="#modal-default">
                 GUARDAR
             </button>
 
@@ -447,9 +447,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Desea guardar el contrato o guardar el contrato y ir a servicio?</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title align-content-lg-center">¿Desea guardar el contrato y ir a servicio o solo guardar contrato?</h5>               
                     </div>
                     <div class="modal-footer">
                         <center>
@@ -457,7 +455,7 @@
                          <table>
                              <tr>
                              <td> <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button4ontrato" Text="Guardar" OnClick="Button4ontrato_Click" Width="146px" /></td>
-                             <td> <asp:Button ID="Button2" class="btn btn-block btn-info btn-lg" OnClick="Button2_Click" runat="server" Text="Button" Width="146px" /></td>
+                             <td> <asp:Button ID="Button2" class="btn btn-block btn-info btn-lg" OnClick="Button2_Click" runat="server" Text="Ir a Servicio" Width="146px" /></td>
                         </tr>
                                  </table>
                        

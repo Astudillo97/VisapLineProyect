@@ -40,7 +40,7 @@ namespace VisapLine.View.Private
                 }
                 else
                 {
-                    //Response.Redirect("../Login/login.aspx");
+                    Response.Redirect("../Login/login.aspx");
                 }
             }
             catch (Exception ex)

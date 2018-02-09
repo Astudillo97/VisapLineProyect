@@ -37,8 +37,15 @@ namespace VisapLine.View.Private
             try
             {
                 if (!IsPostBack)
-                {
-                    tipotercero.DataSource = ttr.ConsultarTipoTercero();
+
+                {                   
+                    string valor = Convert.ToString(Request.QueryString["key"]);
+                    if (valor=="SI")
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                    }
+
+                    tipotercero.DataSource = ttr.ConsultarTipoTercerofiltrado();
                     tipotercero.DataTextField = "tipoterceros";
                     tipotercero.DataValueField = "idtipotercero";
                     tipotercero.DataBind();
@@ -176,7 +183,7 @@ namespace VisapLine.View.Private
                 else
                 {
 
-                    Response.Redirect("Form2.aspx?key=" + datcont["identificacion"].ToString());
+                    Response.Redirect("ContratoCliente.aspx?key=" + datcont["identificacion"].ToString());
                 }
 
             }

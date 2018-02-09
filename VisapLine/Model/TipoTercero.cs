@@ -19,6 +19,12 @@ namespace VisapLine.Model
             return data.ConsultarDatos("SELECT * FROM public.pr_consultartipotercero();");
         }
 
+        public DataTable ConsultarTipoTercerofiltrado()
+        {
+            return data.ConsultarDatos("SELECT * FROM public.pr_consultartipotercerofiltrado();");
+        }
+
+        
         public bool RegistrarTipoTercero(TipoTercero tpt)
         {
             return data.OperarDatos("");

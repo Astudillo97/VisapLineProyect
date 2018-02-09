@@ -41,8 +41,8 @@ namespace VisapLine.View.Private
                 if (!IsPostBack)
                 {
 
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
-                    string valor = "79846563" /*Convert.ToString(Request.QueryString["key"])*/;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                    string valor = Convert.ToString(Request.QueryString["key"]);
 
                     dnitercero.Text = valor;
 
@@ -78,7 +78,13 @@ namespace VisapLine.View.Private
                         {
                             Label2.Visible = false;
                             idapellidolabel.Visible = false;
+
                             cargartablasucursal(dnitercero.Text);
+
+
+
+
+
                         }
                     }
 
@@ -109,11 +115,19 @@ namespace VisapLine.View.Private
         }
         protected void cargartablasucursal(string idusuario)
         {
-            scsal.terceros_idterceros = terc.idterceros;
-            DropDownListsucursalcontrato.DataSource = scsal.Consultarsucursal(idusuario);
-            DropDownListsucursalcontrato.DataTextField = "nombre";
-            DropDownListsucursalcontrato.DataValueField = "idsucursal";
-            DropDownListsucursalcontrato.DataBind();
+            try
+            {
+                scsal.terceros_idterceros = terc.idterceros;
+                DropDownListsucursalcontrato.DataSource = scsal.Consultarsucursal(idusuario);
+                DropDownListsucursalcontrato.DataTextField = "nombre";
+                DropDownListsucursalcontrato.DataValueField = "idsucursal";
+                DropDownListsucursalcontrato.DataBind();
+            }
+            catch (Exception)
+            {
+                DropDownListsucursalcontrato.Visible = false;
+            }
+
 
         }
 
@@ -141,14 +155,14 @@ namespace VisapLine.View.Private
                 DropDownListdepartamentocontrato.DataTextField = "departamento";
                 DropDownListdepartamentocontrato.DataValueField = "iddepartamento";
                 DropDownListdepartamentocontrato.DataBind();
-                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+
             }
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+
             }
         }
         protected void DropDownListdepartamentocontrato_SelectedIndexChanged(object sender, EventArgs e)
@@ -163,7 +177,7 @@ namespace VisapLine.View.Private
                 DropDownListmunicipiocontrato.DataValueField = "idmunicipio";
                 DropDownListmunicipiocontrato.DataBind();
 
-                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+
 
             }
             catch (Exception ex)
@@ -221,7 +235,8 @@ namespace VisapLine.View.Private
 
         }
 
-        protected void Buttonguardarcontrato_Click(object sender, EventArgs e)
+
+        protected void Button4ontrato_Click(object sender, EventArgs e)
         {
             try
             {
@@ -262,18 +277,12 @@ namespace VisapLine.View.Private
 
                 if (contrat.RegistrarContrato(contrat))
                 {
-                    textError.InnerHtml = "Se ha registrado con exito";
-                    Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;
-                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
-                    Response.Redirect("Contratoterc.aspx");
+                    string guardar = "SI";
+                    Response.Redirect("RegistroTerceros.aspx?key=" + guardar);
                 }
                 else
                 {
-                    textError.InnerHtml = "No se ha registrado";
-                    Alerta.CssClass = "alert alert-error";
-                    Alerta.Visible = true;
-                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
                 }
 
             }
@@ -287,14 +296,66 @@ namespace VisapLine.View.Private
             }
         }
 
-        protected void Button4ontrato_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void Button2_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Terceros ter = (Terceros)Session["tercero"];
 
+                DataRow datcontcorpo = Validar.Consulta(terc.ConsultarPersonaIdenti(dnitercero.Text)).Rows[0];
+                contrat.terceros_idterceros = Validar.validarlleno(datcontcorpo["idterceros"].ToString());
+                contrat.codigo = Validar.validarlleno(TextBox4.Text);
+                contrat.fechacontrato = Validar.validarlleno(Textboxfechainiciopermanencia.Text);
+                contrat.fechaactivacion = Validar.validarlleno(Textboxfechaactivacionservicio.Text);
+                contrat.fechafacturacion = Validar.validarlleno(Textboxfechafacturacion.Text);
+                contrat.estado = Validar.validarselected(DropDownListestadocontrato.Text);
+                contrat.tipocontrato_idtipocontrato = Validar.validarselected(DropDownListtipocontrato.SelectedValue);
+                contrat.plan_idplan = Validar.validarlleno(Labeldipalcontra.Text);
+                contrat.iva = Validar.validarlleno(TextBoxivacontrato.Text);
+                contrat.enviofactura = Validar.validarselected(DropDownList1.SelectedValue);
+                contrat.facturaunica = Validar.validarselected(DropDownListfacturaunicacontrato.SelectedValue);
+                contrat.personal_idpersonal = Validar.validarsession(ter.idterceros);
+                contrat.sucursal_idsucursal = Validar.ConvertNumber(DropDownListsucursalcontrato.SelectedValue);
+                contrat.observaciondirec = Validar.validarlleno(TextArea1.Value);
+                contrat.direccionenviofact = Validar.validarlleno(TextBoxenviofactura.Text);
+                contrat.barrio_idbarrio = Validar.validarselected(DropDownListbarriocontrato.SelectedValue);
+
+                Validar.validarselected(DropDownListWIFI.Text);
+                if (DropDownListWIFI.Text == "SI")
+                {
+                    wiifi = "true";
+                }
+                else
+                {
+                    if (DropDownListWIFI.Text == "NO")
+                    {
+                        wiifi = "false";
+                    }
+
+                }
+                contrat.wifi = wiifi;
+
+                if (contrat.RegistrarContrato(contrat))
+                {
+                    contrat.terceros_idterceros = Labelidtercero.Text;
+                    DataRow te = Validar.Consulta(contrat.ConsultarContratoidtercero(contrat)).Rows[0];
+                    Response.Redirect("RegistroTerceros.aspx?key=" + te["idcontrato"].ToString());
+                }
+                else
+                {
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+
+            }
         }
     }
 }
