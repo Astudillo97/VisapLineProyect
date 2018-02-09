@@ -447,7 +447,7 @@ namespace VisapLine.View.Private
         {
             try
             {
-                terc.identificacion = Validar.validarnumero(identif_.Value);
+                terc.identificacion = Validar.validarlleno(identif_.Value);
                 tablacliente = Validar.Consulta(terc.ConsultarPersonaIdentifall(terc));
             }
             catch (Exception ex)
