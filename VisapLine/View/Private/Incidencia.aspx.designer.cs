@@ -40,13 +40,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl textError;
         
         /// <summary>
-        /// Control TextBox1.
+        /// Control TextBoxcodcontra.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxcodcontra;
         
         /// <summary>
         /// Control Buttonbuscarcodg.
@@ -58,13 +58,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Button Buttonbuscarcodg;
         
         /// <summary>
-        /// Control TextBox2.
+        /// Control TextBoxdni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxdni;
         
         /// <summary>
         /// Control Button2.
@@ -103,22 +103,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// Control Label3.
+        /// Control TextBox1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-        
-        /// <summary>
-        /// Control Label4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
         /// Control idservicio.

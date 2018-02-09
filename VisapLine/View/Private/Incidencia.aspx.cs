@@ -15,47 +15,35 @@ namespace VisapLine.View.Private
     {
 
         CategoriaIncidencia cinci = new CategoriaIncidencia();
-        TipoIncidencia tpin = new TipoIncidencia(); 
+        TipoIncidencia tpin = new TipoIncidencia();
         Servicios serv = new Servicios();
+        Terceros terc = new Terceros();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (!IsPostBack)
+            {
 
-  
+            }
+
 
         }
 
         protected void ButtonGuardar_Click(object sender, EventArgs e)
         {
+
+
+   
+
             ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
-
-            //ClientScript.RegisterStartupScript(GetType(), "", "botonmodalgesti();", true);
-
-
 
         }
 
 
         protected void Buttonbuscarcodg_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DataTable dat = Validar.Consulta(serv.consultaservicioscont1(Validar.validarlleno(TextBox1.Text)));
-                GridView1.DataSource = dat;
-                GridView1.DataBind();
-                divtablagestcontr.Visible = true;
-
-                DropDownList3.DataSource = cinci.Consultarcategoriaincidencia();
-                DropDownList3.DataTextField = "categoriaincidencia";
-                DropDownList3.DataValueField = "idcategoriaincidencia";
-                DropDownList3.DataBind();
-            }
-            catch (Exception ex)
-            {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
-            }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", " alrt();", true);
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,19 +52,32 @@ namespace VisapLine.View.Private
             idservicio.Text = gridw.Cells[1].Text;
             divincidencia.Visible = true;
 
-     
+
 
         }
 
         protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DropDownList2.Items.Clear();
-            DropDownList2.Items.Add(new ListItem("Seleccione", "Seleccione"));
-            tpin.categoriaincidencia_idcategoriaindencia = Validar.validarselected(DropDownList3.SelectedValue);
-            DropDownList2.DataSource = Validar.Consulta(tpin.Consultartipoincidencia(tpin));
-            DropDownList2.DataTextField = "tipoincidencia";
-            DropDownList2.DataValueField = "idtipoincidencia";
-            DropDownList2.DataBind();
+
+            try
+            {
+                DropDownList2.Items.Clear();
+                DropDownList2.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                tpin.categoriaincidencia_idcategoriaindencia = Validar.validarselected(DropDownList3.SelectedValue);
+                DropDownList2.DataSource = Validar.Consulta(tpin.Consultartipoincidencia(tpin));
+                DropDownList2.DataTextField = "tipoincidencia";
+                DropDownList2.DataValueField = "idtipoincidencia";
+                DropDownList2.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -95,6 +96,55 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
 
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dat = Validar.Consulta(serv.consultaservicioscont1(Validar.validarlleno(TextBoxdni.Text)));
+                terc.identificacion = TextBoxdni.Text;
+
+
+
+                GridView1.DataSource = dat;
+                GridView1.DataBind();
+                divtablagestcontr.Visible = true;
+                DataRow te = Validar.Consulta(terc.ConsultarTerceroDos(terc)).Rows[0];
+                Label1.Text = te["nombre"].ToString();
+
+                if (te["apellido"].ToString() == "")
+                {
+                    Label2.Visible = false;
+                }
+                else
+                {
+                    Label2.Text = te["apellido"].ToString();
+                }
+
+                TextBox1.Text = te["direccion"].ToString();
+                try
+                {
+                    DropDownList3.DataSource = cinci.Consultarcategoriaincidencia();
+                    DropDownList3.DataTextField = "categoriaincidencia";
+                    DropDownList3.DataValueField = "idcategoriaincidencia";
+                    DropDownList3.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    textError.InnerHtml = ex.Message;
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
     }
 }

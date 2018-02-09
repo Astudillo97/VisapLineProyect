@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Incidencia.aspx.cs" Inherits="VisapLine.View.Private.Incidencia" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="Incidencia.aspx.cs" Inherits="VisapLine.View.Private.Incidencia" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -17,6 +17,9 @@
         }
         function alerterror() {
             swal("ORDEN FALLIDA!", "La orden no se pudo crear por favor verifique o contactese con el soporte", "error");
+        }
+        function alrt() {
+            swal("ESTA OPCION AUN NO ESTA DISPONIBLE!", "Los super ingnieros estan en proceso de implocion espere", "error");
         }
         function botonmodalgesti() {
             document.getElementById("botonmodalcontr").click();
@@ -48,7 +51,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">Codigo:</label>
                             <div class="col-sm-5">
-                                <asp:TextBox runat="server" type="Text" CssClass="form-control" ID="TextBox1" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" type="Text" CssClass="form-control" ID="TextBoxcodcontra" Style="text-transform: uppercase"></asp:TextBox>
                             </div>
                             <div class="col-sm-4">
                                 <asp:Button runat="server" ID="Buttonbuscarcodg" CssClass="btn btn-block btn-success" Text="Buscar" OnClick="Buttonbuscarcodg_Click" Width="100px" />
@@ -59,10 +62,10 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
                             <div class="col-sm-5">
-                                <asp:TextBox runat="server" type="Text" CssClass="form-control" ID="TextBox2" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" type="Text" CssClass="form-control" ID="TextBoxdni" Style="text-transform: uppercase"></asp:TextBox>
                             </div>
                             <div class="col-sm-4">
-                                <asp:Button runat="server" ID="Button2" CssClass="btn btn-block btn-success btn-lg" Text="Buscar" OnClick="Buttonbuscarcodg_Click" Width="100px" />
+                                <asp:Button runat="server" ID="Button2" CssClass="btn btn-block btn-success btn-lg" Text="Buscar" OnClick="Button2_Click" Width="100px" />
                             </div>
                         </div>
                     </div>
@@ -94,18 +97,12 @@
                                     <div class="col-sm-8">
                                         <asp:Label ID="Label2" CssClass="form-control bg-gray" runat="server" Text=""></asp:Label>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Telefono:</label>
-                                    <div class="col-sm-8">
-                                        <asp:Label ID="Label3" runat="server" CssClass="form-control bg-gray" Text=""></asp:Label>
-                                    </div>
-                                </div>
+                                </div>                               
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Direccion:</label>
                                     <div class="col-sm-8">
-                                        <asp:Label ID="Label4" runat="server" CssClass="form-control bg-gray" Text=""></asp:Label>
-                                    </div>
+                                      <asp:TextBox ID="TextBox1" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="140px" Height="100px"></asp:TextBox>
+                                     </div>
                                 </div>
                             </div>
                         </div>
