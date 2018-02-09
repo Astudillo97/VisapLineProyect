@@ -15,6 +15,10 @@ namespace VisapLine.View.Private
         Terceros tercero = new Terceros();
         Telefono tlf = new Telefono();
         Contrato contrato = new Contrato();
+        Empresa empresa = new Empresa();
+        class_pdf pdf = new class_pdf();
+        Factura fact = new Factura();
+        static DataTable tablefactura = new DataTable();
         static DataTable tercliente = new DataTable();
         static DataTable contcliente = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
@@ -60,11 +64,48 @@ namespace VisapLine.View.Private
             contcliente = Validar.Consulta(contrato.ConsultarContratoIdTercero(contrato));
             consultacontrato.DataSource = contcliente;
             consultacontrato.DataBind();
+
+            
         }
 
         protected void consultacontrato_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-            DataRow row = contcliente.Rows[e.NewSelectedIndex];
+            DataRow row = contcliente.Rows[e.NewSelectedIndex];     
+
+            fact.contrato_idcontrato = row["idcontrato"].ToString();
+            tablefactura = fact.ConsultarFacturabyContrato(fact);
+            allfactura.DataSource = tablefactura;
+            allfactura.DataBind();
+        }
+        protected void allfactura_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName.ToString() == "verfactura")
+                {
+                    string paramet = e.CommandArgument.ToString();
+                    tablefactura.PrimaryKey = new DataColumn[] { tablefactura.Columns["idfactura"] };
+                    DataRow dat = tablefactura.Rows.Find(paramet);
+                    string referen = pdf.CrearFactura(empresa.ConsultarEmpresa(), dat);
+                    Response.Redirect("../../Archivos/" + referen);
+                }
+                if (e.CommandName.ToString() == "editarfactura")
+                {
+                    string paramet = e.CommandArgument.ToString();
+                    Response.Redirect("GestCliente.aspx?fact=" + paramet);
+                }
+                if (e.CommandName.ToString() == "pagarfactura")
+                {
+                    string paramet = e.CommandArgument.ToString();
+                    Response.Redirect("GestPagos.aspx?codigo=" + paramet);
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
     }
 }
