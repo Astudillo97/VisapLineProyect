@@ -44,5 +44,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarfacturacodigo(" + fac.facturaventa + ")");
         }
+
+        public DataTable ConsultarFacturabyContrato(Factura fac)
+        {
+            return data.ConsultarDatos("select * from pr_consultarfacturabycontrato('"+fac.contrato_idcontrato+"')");
+        }
     }
 }
