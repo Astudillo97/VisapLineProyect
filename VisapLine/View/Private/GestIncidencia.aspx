@@ -31,4 +31,59 @@
             <li class="breadcrumb-item active">Gesstion de Incidencias</li>
         </ol>
     </section>
+    
+    <section class="content">
+
+            <div class="row">
+            <div class="box box-default">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Planes</h3>
+                    </div>
+                    <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
+                            <asp:BoundField HeaderText="Codg" DataField="idincidensias" ItemStyle-HorizontalAlign="Center">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Fecha Registro" DataField="fechainicio" ItemStyle-HorizontalAlign="Center">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Estado" DataField="estado" ItemStyle-HorizontalAlign="Center">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Detalle" DataField="detalle"  ItemStyle-HorizontalAlign="Center">
+                                <ControlStyle CssClass="filled-in" />
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                        </Columns>
+                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                        <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                    </asp:GridView>
+                </div>
+
+            </div>
+        </div>
+
+
+        </section>
+
 </asp:Content>

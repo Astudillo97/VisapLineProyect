@@ -26,9 +26,9 @@ namespace VisapLine.Model
 
         public string descuento { get; set; }
         public string tipoincidencia_idtipoincidencia { get; set; }
-        public DataTable ConsultarIncidencias(Incidencias ins)
+        public DataTable ConsultarIncidencias()
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from pr_consultarincidencias()");
         }
 
         public bool RegistrarInsidencias(Incidencias inci)

@@ -12,6 +12,8 @@ namespace VisapLine.View.Private
 {
     public partial class GestIncidencia : System.Web.UI.Page
     {
+        Incidencias inci = new Incidencias();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -34,7 +36,7 @@ namespace VisapLine.View.Private
         protected void cargartabla(string idusuario)
         {
            
-            DataTable dt = pn.ConsultarPlantipoterce(idusuario);
+            DataTable dt = inci.ConsultarIncidencias();
             GridView2.DataSource = dt;
             GridView2.DataBind();
         }

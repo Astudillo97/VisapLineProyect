@@ -47,7 +47,7 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
-                   <%-- <div class="col-md-6 col-12">
+                    <div class="col-md-6 col-12">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
                             <div class="col-sm-5">
@@ -57,8 +57,8 @@
                                 <asp:Button runat="server" ID="Button2" CssClass="btn btn-block btn-success btn-lg" Text="Buscar" OnClick="Button2_Click" Width="100px" />
                             </div>
                         </div>
-                    </div>--%>
-                    <div class="col-md-6 col-15">
+                    </div>
+               <%--     <div class="col-md-6 col-15">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">Codigo:</label>
                             <div class="col-sm-5">
@@ -68,7 +68,7 @@
                                 <asp:Button runat="server" ID="Buttonbuscarcodg" CssClass="btn btn-block btn-success" Text="Buscar" OnClick="Buttonbuscarcodg_Click" Width="100px" />
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <!-- /.col -->
             </div>

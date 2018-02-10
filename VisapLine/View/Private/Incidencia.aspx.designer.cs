@@ -40,22 +40,22 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl textError;
         
         /// <summary>
-        /// Control TextBoxcodcontra.
+        /// Control TextBoxdni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxcodcontra;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxdni;
         
         /// <summary>
-        /// Control Buttonbuscarcodg.
+        /// Control Button2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Buttonbuscarcodg;
+        protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
         /// Control iddatosterceros.
