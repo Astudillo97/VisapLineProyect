@@ -30,6 +30,7 @@ namespace VisapLine.View.Private
         Inventario invt = new Inventario();
         Caracteristicas crts = new Caracteristicas();
         PlanSCaract psc = new PlanSCaract();
+        static int idcontrato;
         static int idpedido;
         static int idsrv;
 
@@ -40,34 +41,39 @@ namespace VisapLine.View.Private
             
             if (!IsPostBack)
             {
-                DropDownListpais.DataSource = pais.ConsultarPais();
-                DropDownListpais.DataTextField = "pais";
-                DropDownListpais.DataValueField = "idpais";
-                DropDownListpais.DataBind();
+                try {
+                    DropDownListpais.DataSource = pais.ConsultarPais();
+                    DropDownListpais.DataTextField = "pais";
+                    DropDownListpais.DataValueField = "idpais";
+                    DropDownListpais.DataBind();
+                    idcontrato = int.Parse(Request.QueryString["key"]);
+                    DataTable dpcdt = ctt.consultadeserciciodeplancontratado(idcontrato);
+                    cargardtservicio();
+                    DataRow rdt = dpcdt.Rows[0];
+                    bool telefoo = bool.Parse(rdt["telef"].ToString());
+                    if (telefoo)
+                    {
+                        divtelefono.Visible = true;
+                    }
+                    bool tv = bool.Parse(rdt["tv"].ToString());
+                    if (tv)
+                    {
+                        divtv.Visible = true;
+                    }
+                    bool internet = bool.Parse(rdt["inter"].ToString());
+                    if (internet)
+                    {
+                        divinternet.Visible = true;
+                        DataTable crtsdt = crts.ConsultarCaracteristicas();
+                        gridcaract.DataSource = crtsdt;
+                        gridcaract.DataBind();
 
-                DataTable dpcdt = ctt.consultadeserciciodeplancontratado(8);
-                cargardtservicio();
-                DataRow rdt = dpcdt.Rows[0];
-                bool telefoo = bool.Parse(rdt["telef"].ToString());
-                if (telefoo)
-                {
-                    divtelefono.Visible = true;
+                    }
                 }
-                bool tv = bool.Parse(rdt["tv"].ToString());
-                if (tv)
-                {
-                    divtv.Visible = true;
+                catch (ArgumentNullException ex) {
+      
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "errorcarga()", true);
                 }
-                bool internet = bool.Parse(rdt["inter"].ToString());
-                if (internet)
-                {
-                    divinternet.Visible = true;
-                    DataTable crtsdt = crts.ConsultarCaracteristicas();
-                    gridcaract.DataSource = crtsdt;
-                    gridcaract.DataBind();
-
-                }
-
             }
 
         }
@@ -142,7 +148,7 @@ namespace VisapLine.View.Private
 
         private void cargardtservicio()
         {
-            gridservicios.DataSource = srv.consultaservicioscont(8);
+            gridservicios.DataSource = srv.consultaservicioscont(idcontrato);
             gridservicios.DataBind();
         }
 
@@ -197,8 +203,8 @@ namespace VisapLine.View.Private
             }
             if (ctrl)
             {
-                DataRow dtrs = ctt.estratoymegas(8).Rows[0];
-                DataTable dtid = srv.crearservicio(ip.Text, int.Parse(dtrs[0].ToString()), 8, dtrs[1].ToString(), "POR INSTALAR", "INTERNET", idpedido ,TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
+                DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
+                DataTable dtid = srv.crearservicio(ip.Text, int.Parse(dtrs[0].ToString()), idcontrato, dtrs[1].ToString(), "POR INSTALAR", "INTERNET", idpedido ,TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
                 int idservi = int.Parse(dtid.Rows[0][0].ToString());
                 for (int i = 0; i < gridcaract.Rows.Count; i++)
                 {
@@ -219,8 +225,8 @@ namespace VisapLine.View.Private
             {
                 if (!txbptv.Text.Equals(""))
                 {
-                    DataRow dtrs = ctt.estratoymegas(8).Rows[0];
-                    DataTable dtid = srv.crearsertv(txbdiptv.Text, 8, dtrs[1].ToString(), "POR INSTALAR", "TELEVISION", TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
+                    DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
+                    DataTable dtid = srv.crearsertv(txbdiptv.Text, idcontrato, dtrs[1].ToString(), "POR INSTALAR", "TELEVISION", TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
                     int idservi = int.Parse(dtid.Rows[0][0].ToString());
                     psc.registrarpuertos(idservi, int.Parse(txbptv.Text));
                     divtv.Visible = false;
@@ -245,8 +251,8 @@ namespace VisapLine.View.Private
             if (!TextBox1.Text.Equals(""))
             {
                 if (!TextBox2.Text.Equals("")) {
-                    DataRow dtrs = ctt.estratoymegas(8).Rows[0];
-                    DataTable dtid = srv.crearsertv(TextBox1.Text, 8, dtrs[1].ToString(), "POR INSTALAR", "TELEFONIA", TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
+                    DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
+                    DataTable dtid = srv.crearsertv(TextBox1.Text, idcontrato, dtrs[1].ToString(), "POR INSTALAR", "TELEFONIA", TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
                     int idservi = int.Parse(dtid.Rows[0][0].ToString());
                     psc.registrarpuertos(idservi, int.Parse(TextBox2.Text));
                     divtelefono.Visible = false;

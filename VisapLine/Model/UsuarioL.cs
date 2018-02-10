@@ -45,5 +45,9 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from public.pr_consultarrol(" + usu.idusuario + ")");
         }
+
+        public DataTable contadordefacturas() {
+            return data.ConsultarDatos("select count(*),estado from factura group by estado");
+        }
     }
 }

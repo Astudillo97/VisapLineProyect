@@ -3,6 +3,31 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+       <script type="text/javascript">
+           function donas() {
+               $.ajax({
+                   type: "POST",
+                   url: "index.aspx/GetChart",
+                   data: "{}",
+                   contentType: "application/json; charset=utf-8",
+                   dataType: "json",
+                   success: function (response) { }
+               }).done(function (response) {
+                   var aData = response.d;
+                   var arr = [];
+                   $.each(aData, function (val) {
+                       var obj = {};
+                       obj.color = val.color;
+                       obj.value = val.value;
+                       obj.label = val.label;
+                       arr.push(obj);
+                   });
+                   var ctx = $("#myChart").get(0).getContext("2d");
+                   var myPieChart = new Chart(ctx).Pie(arr);
+                   }).error(function (response) { });
+               };
+               window.onload = donas;
+    </script>
     <section class="content-header">
         <h1>Dashboard</h1>
         <ol class="breadcrumb">
@@ -90,7 +115,7 @@
             <!-- /.col -->
         </div>
 
-
+        <br/><canvas id="myChart" width="200" height="200"></canvas>
         <div class="row">
             <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
