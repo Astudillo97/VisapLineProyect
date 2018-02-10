@@ -50,7 +50,7 @@ namespace VisapLine.View.Private
                     divincidencia.Visible = false;
                     iddatosterceros.Visible = false;
                     TextBoxdni.Text = "";
-                    TextBoxcodcontra.Text = "";
+                    //TextBoxcodcontra.Text = "";
                     DropDownListestadoinc.Text = "Seleccione";
                     TextArea1detalle.Value = "";
 

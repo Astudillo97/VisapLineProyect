@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="GestIncidencia.aspx.cs" Inherits="VisapLine.View.Private.GestIncidencia" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
@@ -31,29 +36,33 @@
             <li class="breadcrumb-item active">Gesstion de Incidencias</li>
         </ol>
     </section>
-    
+
     <section class="content">
 
-            <div class="row">
+        <div class="row">
             <div class="box box-default">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Planes</h3>
+                        <h3 class="box-title">Incidencias</h3>
                     </div>
-                    <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridView2_PageIndexChanging">
                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                         <Columns>
                             <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
-                            <asp:BoundField HeaderText="Codg" DataField="idincidensias" ItemStyle-HorizontalAlign="Center">
+                            <asp:BoundField HeaderText="Codg" DataField="idincidensia" ItemStyle-HorizontalAlign="Center">
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="Fecha Registro" DataField="fechainicio" ItemStyle-HorizontalAlign="Center">
+                            <asp:BoundField HeaderText="Fecha Registro" DataField="fechainicio" DataFormatString="{0:f}" ItemStyle-HorizontalAlign="Center">
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField HeaderText="Estado" DataField="estado" ItemStyle-HorizontalAlign="Center">
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="Detalle" DataField="detalle"  ItemStyle-HorizontalAlign="Center">
+                            <asp:BoundField HeaderText="Detalle" DataField="detalle" ItemStyle-HorizontalAlign="Center">
+                                <ControlStyle CssClass="filled-in" />
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Tipo de Incidencia" DataField="tipoincidencia" ItemStyle-HorizontalAlign="Center">
                                 <ControlStyle CssClass="filled-in" />
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:BoundField>
@@ -82,8 +91,105 @@
 
             </div>
         </div>
+        <div class="row" id="iddatosterceros" runat="server">
+            <div class="col-6">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Datos del Cliente</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="../../Contenido/images/user2-160x160.jpg" height="135px" width="135px" />
+                            </div>
+                            <div class="col-7">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Nombre:</label>
+                                    <div class="col-sm-8">
+                                        <asp:Label ID="Label1" runat="server" CssClass="form-control bg-gray" Text=""></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Apellido:</label>
+                                    <div class="col-sm-8">
+                                        <asp:Label ID="Label2" CssClass="form-control bg-gray" runat="server" Text=""></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Direccion:</label>
+                                    <div class="col-sm-8">
+                                        <asp:TextBox ID="TextBox1" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="165px" Height="90px"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-6">
+                <div class="box box-default" id="divincidencia" runat="server">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Solucion de incidencia</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-6 col-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Estado</label>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="DropDownListestadoinc" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                            <asp:ListItem>ACTIVO</asp:ListItem>
+                                            <asp:ListItem>INACTIVO</asp:ListItem>
+                                            <asp:ListItem>ESPERA</asp:ListItem>
+                                            <asp:ListItem>SOLUCIONADO</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Detalle</label>
+                                    <div class="col-sm-8">
+                                        <textarea id="TextArea1detalle" class="form-control" runat="server" data-iconlibrary="fa" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 120px;" required data-validation-required-message="This field is required"></textarea>
+                                    </div>
+                                </div>
 
-        </section>
+                            </div>
+                            <div class="col-md-6 col-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Descuento</label>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                            <asp:ListItem>SI</asp:ListItem>
+                                            <asp:ListItem>NO</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Estado</label>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                            <asp:ListItem>ACTIVO</asp:ListItem>
+                                            <asp:ListItem>INACTIVO</asp:ListItem>
+                                            <asp:ListItem>ESPERA</asp:ListItem>
+                                            <asp:ListItem>SOLUCIONADO</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <center>
+        <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="143" Height="30" Text="Guardar" OnClick="Button1_Click" />
+            </center>
+    </section>
 
 </asp:Content>

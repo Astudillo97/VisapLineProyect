@@ -21,6 +21,17 @@ namespace VisapLine.View.Private
             if (!IsPostBack)
             {
 
+                try
+                {
+                    cargartabla();
+                }
+                catch (Exception ex)
+                {
+                    textError.InnerHtml = ex.Message;
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+                }
+               
             }
 
 
@@ -33,12 +44,28 @@ namespace VisapLine.View.Private
         }
 
 
-        protected void cargartabla(string idusuario)
+        protected void cargartabla()
         {
            
             DataTable dt = inci.ConsultarIncidencias();
             GridView2.DataSource = dt;
             GridView2.DataBind();
+        }
+
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            cargartabla();
+        }
+
+        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
