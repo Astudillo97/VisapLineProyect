@@ -109,7 +109,6 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-
         }
 
         protected void allfactura_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -237,6 +236,31 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
 
+        }
+
+        protected void EnviarSMSText(object sender, EventArgs e)
+        {
+            try
+            {
+                Validar.validarselected(estadofactura.SelectedValue);
+                foreach (DataRow item in tablefactura.Rows)
+                {
+                    if (item[""].ToString()== estadofactura.SelectedValue)
+                    {
+                        string msm = "Señor(a) usuario de VisapLine le recordamos que su factura esta proxima a vencerse";
+                        if (item["telefono"].ToString().Length>=10)
+                        {
+                            string celular = item["telefono"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
     }
 }
