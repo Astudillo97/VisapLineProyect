@@ -11,6 +11,16 @@
         function alertnoproduc() {
             swal("ERROR AL ASIGNAR EQUIPO","No hay ningun equipo que se pueda asignar","error");
         }
+        function errorcarga() {
+            swal({
+                title: "UUUUPSSS!!!!",
+                text: "Algo ha ocurrido estamos trabajando para solucionarlo",
+                imageUrl: "../../Contenido/images/monkeyprogramer.jpg",
+                imageSize: '400x250'
+            }, function () {
+                window.location.href = 'index.aspx';
+            })
+        }
     </script>
     <section class="content-header">
         <h1>Servicios</h1>

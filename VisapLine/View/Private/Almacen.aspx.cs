@@ -47,6 +47,9 @@ namespace VisapLine.View.Private
                     modelo_inv.DataTextField = "modelo";
                     modelo_inv.DataBind();
 
+                    repeteidordeinventario.DataSource = invent.consultarinventario();
+                    repeteidordeinventario.DataBind();
+
                     fabricante_inv.DataSource = fab.ConsultarFabricante();
                     fabricante_inv.DataValueField = "idfabricante";
                     fabricante_inv.DataTextField = "fabricante";

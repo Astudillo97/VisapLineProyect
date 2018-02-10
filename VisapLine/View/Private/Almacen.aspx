@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <script src="../../Contenido/assets/vendor_components/jquery/dist/jquery.js"></script>
+    <script src="../../Contenido/assets/vendor_components/jquery/dist/jquery.js"></script>
     <script src="../../Contenido/assets/vendor_components/glyphicons/glyphicon.css"></script>
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <asp:ScriptManager ID="scripservicc" runat="server"></asp:ScriptManager>
@@ -29,7 +29,7 @@
         function openModal() {
             $('#agregardetalle').modal('show');
         }
-        function dialog(ctl, event,cosa) {
+        function dialog(ctl, event, cosa) {
             event.preventDefault();
             swal({
                 title: "¡CUIDADO, LO QUE VA HA HACER PUEDE SER IRREVERSIBLE!",
@@ -269,13 +269,13 @@
                                 <asp:GridView runat="server" ID="tablacompras" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive">
                                     <Columns>
                                         <asp:BoundField HeaderText="PRODUCTO" DataField="tipoproducto" />
-                                        <asp:BoundField HeaderText="DETALLE" DataField="detalle"/>
-                                        <asp:BoundField HeaderText="CANTIDAD" DataField="cantidad"/>
+                                        <asp:BoundField HeaderText="DETALLE" DataField="detalle" />
+                                        <asp:BoundField HeaderText="CANTIDAD" DataField="cantidad" />
                                         <asp:TemplateField HeaderText="">
                                             <ItemTemplate>
                                                 <%----%>
-                                                <a role="button" href="#" onclick='return dialog(this,event,<%# Eval("idcompra")%>);' >
-                                                    <span Class="glyphicon glyphicon-trash"></span>
+                                                <a role="button" href="#" onclick='return dialog(this,event,<%# Eval("idcompra")%>);'>
+                                                    <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             </ItemTemplate>
                                         </asp:TemplateField>
@@ -379,37 +379,50 @@
                                 <div class="box-footer">
                                     <button class="btn btn-primary" runat="server" onserverclick="RegistrarInventario">Guardar</button>
                                 </div>
-                                <div class="box box-default collapsed-box">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Tipos de producto</h3>
-                                        <div class="box-tools pull-right">
-                                            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="box-body">
-                                        <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" OnRowCommand="tablatipoproducto_RowCommand">
-                                            <Columns>
-                                                <asp:BoundField DataField="tipoproducto" HeaderText="Tipo de Producto"></asp:BoundField>
-                                                <asp:TemplateField HeaderText="">
-                                                    <ItemTemplate>
-                                                        <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("idtipoproducto") %>' Text="Borrar" />
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                            </Columns>
-                                        </asp:GridView>
-                                    </div>
-                                    <!-- /.box-body -->
-                                    <div class="box-footer">
-                                    </div>
-                                    <!-- /.box-footer-->
-                                </div>
+                                
                             </div>
+
                         </div>
+                        <div class="box-body col">
+                                    <table class="table table-bordered table-striped table-responsive no-border" id="example">
+                                        <thead>
+                                            <tr>
+                                                <th>DESCIPCION
+                                                </th>
+                                                <th>CANTIDAD
+                                                </th>
+                                                <th>UNIDAD
+                                                </th>
+                                                <th>TIPO PRODUCTO
+                                                </th>
+                                                <th>MODELO
+                                                </th>
+                                                <th>VIDA UTIL
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <asp:Repeater ID="repeteidordeinventario" runat="server">
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <th><label><%#Eval("descripcion") %></label> <label><%# Eval("serial") %></label> <label><%# Eval("mac") %></label>
+                                                        </th>
+                                                        <th><label><%# Eval("cantidad") %></label>
+                                                        </th>
+                                                        <th>UNIDAD
+                                                        </th>
+                                                        <th><label><%# Eval("tipoproducto") %></label>
+                                                        </th>
+                                                        <th><label><%# Eval("fabricante") %></label> <label><%# Eval("modelo") %></label>
+                                                        </th>
+                                                        <th><label><%# Eval("vidautil") %></label>
+                                                        </th>
+                                                    </tr>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                        </tbody>
+                                    </table>
+                                </div>
                     </div>
                 </div>
                 <div class="tab-pane" id="Tipoproduct">
