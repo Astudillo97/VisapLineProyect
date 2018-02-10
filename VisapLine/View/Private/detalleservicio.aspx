@@ -3,7 +3,51 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script src="../../Contenido/assets/vendor_components/jquery/dist/jquery.js"></script>
+    <script src="../../Contenido/assets/vendor_components/glyphicons/glyphicon.css"></script>
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+    <asp:ScriptManager runat="server" ID="scripdatalle"></asp:ScriptManager>
+    <script type="text/javascript">
+        function dialog(ctl, event, cosa) {
+            event.preventDefault();
+            swal({
+                title: "¡CUIDADO, LO QUE VA HA HACER PUEDE SER IRREVERSIBLE!",
+                text: "asignar este equipo?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Aceptar",
+                cancelButtonText: "Cancel",
+                closeOnConfirm: true,
+                closeOnCancel: true
+            }, function () {
+                $.ajax({
+                    type: "POST",
+                    url: "detalleservicio.aspx/Cambiarequipo_Click",
+                    data: '{equipo : ' + cosa + '}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                    }
+                }
+                )
+                    .done(function (data) {
+                        swal({
+                            title: "ASIGNACION CREADA CON EXITO!",
+                            text: "Se registro correctamente el equipo!",
+                            type: "success"
+                        }, function () { location.reload(true); }
+                        );
+                        $('#orders-history').load(document.URL + ' #orders-history');
 
+
+                    }).error(function (data) {
+                        swal("ASIGNACION FALLIDA!", "No se pudo realizar la operacion contactese con el soporte", "error");
+                    });
+            })
+                ;
+        }
+    </script>
     <section class="content-header">
         <h1>DETALLE DE SERVICIO</h1>
         <div>
@@ -39,8 +83,8 @@
                                                 <asp:Label CssClass="" ID="lblserv" runat="server" Text="SERVICIO:"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:Label ID="lblidup" runat="server" Text='<%#Eval("idservicios") %>'></asp:Label>
-                                                <asp:TextBox ID="txbrefup" runat="server" Text='<%#Eval("referencias")%>'></asp:TextBox>
+                                                <asp:Label ID="lblidup" runat="server" Text='<%#Eval("idserviciosserv") %>'></asp:Label>
+                                                <asp:TextBox ID="txbrefup" runat="server" Text='<%#Eval("referenciasserv")%>'></asp:TextBox>
                                             </td>
                                         </tr>
                                         <tr>
@@ -48,7 +92,7 @@
                                                 <asp:Label CssClass="" ID="lblip" runat="server" Text="DIRECCION IP:"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txbipup" runat="server" Text='<%#Eval("direccionip") %>'></asp:TextBox>
+                                                <asp:TextBox ID="txbipup" runat="server" Text='<%#Eval("direccionipserv") %>'></asp:TextBox>
                                             </td>
                                         </tr>
                                         <tr>
@@ -56,7 +100,7 @@
                                                 <asp:Label CssClass="" ID="lblmegas" runat="server" Text="CANTIDAD DE MEGAS"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txbcmegup" runat="server" Text='<%#Eval("cantidadmegas") %>'></asp:TextBox>
+                                                <asp:TextBox ID="txbcmegup" runat="server" Text='<%#Eval("cantidadmegasserv") %>'></asp:TextBox>
                                             </td>
                                         </tr>
                                         <tr>
@@ -66,7 +110,7 @@
                                             <td>
                                                 <asp:DropDownList runat="server" ID="dropbarrio"></asp:DropDownList>
                                                 <br />
-                                                <asp:TextBox ID="txbdirecup" runat="server" Text='<%#Eval("direcion") %> '></asp:TextBox>
+                                                <asp:TextBox ID="txbdirecup" runat="server" Text='<%#Eval("direcionpunt") %> '></asp:TextBox>
                                             </td>
                                         </tr>
                                         <tr>
@@ -74,7 +118,7 @@
                                                 <asp:Label CssClass="" ID="Label5" runat="server" Text="ESTRATO:"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txbestratoup" runat="server" Text='<%#Eval("estrato") %>'></asp:TextBox>
+                                                <asp:TextBox ID="txbestratoup" runat="server" Text='<%#Eval("estratoserv") %>'></asp:TextBox>
                                             </td>
                                         </tr>
                                         <tr>
@@ -82,7 +126,7 @@
                                                 <asp:Label CssClass="" ID="Label7" runat="server" Text="ESTADO DE SERVICIO"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txbestadoup" runat="server" Text='<%#Eval("estado") %>'></asp:TextBox>
+                                                <asp:TextBox ID="txbestadoup" runat="server" Text='<%#Eval("estadoserv") %>'></asp:TextBox>
                                             </td>
                                         </tr>
                                     </table>
@@ -105,8 +149,8 @@
                                                 <asp:Label CssClass="" ID="lblserv" runat="server" Text="SERVICIO:"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:Label ID="lblserv1" runat="server" Text='<%#Eval("idservicios") %>'></asp:Label>
-                                                <asp:Label ID="Label1" runat="server" Text='<%#Eval("referencias")%>'></asp:Label>
+                                                <asp:Label ID="lblserv1" runat="server" Text='<%#Eval("idserviciosserv") %>'></asp:Label>
+                                                <asp:Label ID="Label1" runat="server" Text='<%#Eval("referenciasserv")%>'></asp:Label>
                                             </td>
                                         </tr>
                                         <tr>
@@ -114,7 +158,7 @@
                                                 <asp:Label CssClass="" ID="lblip" runat="server" Text="DIRECCION IP:"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:Label ID="lblservip" runat="server" Text='<%#Eval("direccionip") %>'></asp:Label>
+                                                <asp:Label ID="lblservip" runat="server" Text='<%#Eval("direccionipserv") %>'></asp:Label>
                                             </td>
                                         </tr>
                                         <tr>
@@ -122,7 +166,7 @@
                                                 <asp:Label CssClass="" ID="lblmegas" runat="server" Text="CANTIDAD DE MEGAS"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:Label ID="lblservmg" runat="server" Text='<%#Eval("cantidadmegas") %>'></asp:Label>
+                                                <asp:Label ID="lblservmg" runat="server" Text='<%#Eval("cantidadmegasserv") %>'></asp:Label>
                                             </td>
                                         </tr>
                                         <tr>
@@ -130,8 +174,8 @@
                                                 <asp:Label CssClass="" ID="Label2" runat="server" Text="DIRECCION"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:Label ID="Label3" runat="server" Text='<%#Eval("direcion") %> '></asp:Label>
-                                                <asp:Label ID="Label4" runat="server" Text='<%#Eval("barrios") %> '></asp:Label>
+                                                <asp:Label ID="Label3" runat="server" Text='<%#Eval("direcionpunt") %> '></asp:Label>
+                                                <asp:Label ID="Label4" runat="server" Text='<%#Eval("barriopunt") %> '></asp:Label>
                                             </td>
                                         </tr>
                                         <tr>
@@ -139,7 +183,7 @@
                                                 <asp:Label CssClass="" ID="Label5" runat="server" Text="ESTRATO:"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:Label ID="Label6" runat="server" Text='<%#Eval("estrato") %>'></asp:Label>
+                                                <asp:Label ID="Label6" runat="server" Text='<%#Eval("estratoserv") %>'></asp:Label>
                                             </td>
                                         </tr>
                                         <tr>
@@ -147,7 +191,7 @@
                                                 <asp:Label CssClass="" ID="Label7" runat="server" Text="ESTADO DE SERVICIO"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:Label ID="Label8" runat="server" Text='<%#Eval("estado") %>'></asp:Label>
+                                                <asp:Label ID="Label8" runat="server" Text='<%#Eval("estadoserv") %>'></asp:Label>
                                             </td>
                                         </tr>
                                     </table>
@@ -160,7 +204,7 @@
                     <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
                 </asp:FormView>
             </div>
-            <div id="divcaracteristicas" runat="server" visible="false" class="col-md-12 col-lg-6">
+            <div id="divcaracteristicas" runat="server"  class="col-md-12 col-lg-6">
                 <div class="box box-body">
                     <div class="row">
                         <asp:GridView ID="GridViewcaracter" CssClass="table table-responsive table-bordered" runat="server" AutoGenerateColumns="false">
@@ -175,7 +219,7 @@
                 </div>
 
             </div>
-            <div id="equipo" runat="server" visible="true" class="col-md-12 col-lg-5">
+            <div id="equipo" runat="server" visible="true" class="col-md-12 col-lg-auto">
                 <div class="box box-body">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mymodal2">
                         <span class="glyphicon glyphicon-edit"></span>CAMBIAR EQUIPO 
@@ -238,7 +282,7 @@
                                 <tbody>
                                     <asp:Repeater ID="repetidordecolumnar" runat="server">
                                         <ItemTemplate>
-                                            <tr onclick='return alert(<%# Eval("idinventario") %>);'>
+                                            <tr onclick='return dialog(this,event,<%# Eval("idinventario") %>);'>
                                                 <td><%# Eval("serial") %>
                                                 </td>
                                                 <td><%# Eval("mac")%>

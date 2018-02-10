@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VisapLine.Model;
@@ -33,7 +34,7 @@ namespace VisapLine.View.Private
         }
 
         protected void ConsultarEquipo() {
-            repetidordecolumnar.DataSource = psc.ConsultarEquiposParaintalar();
+            repetidordecolumnar.DataSource = psc.ConsultarEquiposParainstalar();
             repetidordecolumnar.DataBind();
         }
         
@@ -51,8 +52,8 @@ namespace VisapLine.View.Private
             dplb.muninicio_idmunicipio = dtbsrv.Rows[0][17].ToString();
             btr = dplb.ConsultarBarriosIdMunicipio(dplb);
             b.DataSource = btr;
-            b.DataTextField = "barrios";
-            b.DataValueField = "idbarrios";
+            b.DataTextField = "barriosbarr";
+            b.DataValueField = "idbarriosbarr";
             b.DataBind();
         }
 
@@ -88,7 +89,12 @@ namespace VisapLine.View.Private
             FormView1.ChangeMode(FormViewMode.ReadOnly);
             cargardatos(int.Parse(Valor));
         }
-
+        [WebMethod]
+        public static bool Cambiarequipo_Click(string equipo)
+        {
+            Servicios ser = new Servicios();
+            return ser.cambiarequipo(Valor, equipo);
+        }
         protected void volver_Click(object sender, EventArgs e)
         {
             Response.Redirect("servicio.aspx");
