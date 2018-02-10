@@ -21,5 +21,13 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("select * from pr_insertarcargotercero('"+ cgt.tipotercero_idtipotercero + "','"+cgt.identificacion+"')");
         }
+        public DataTable ConsultarCargoIdentifi(CargoTercero ct)
+        {
+            return data.ConsultarDatos("select * from pr_consultarcargotercero('"+ct.identificacion+"')");
+        }
+        public bool EliminarCargoTercero( CargoTercero ct)
+        {
+            return data.OperarDatos("select * from pr_borrarcargotercero('"+ct.identificacion+"')");
+        }
     }
 }

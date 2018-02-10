@@ -38,7 +38,16 @@ namespace VisapLine.Model
 
         public DataTable Consultarbarriosidbarrios(Barrios bar)
         {
-            return data.ConsultarDatos("Select¨* fron pr_consultarbarrioidbarrio('" + bar.idbarrios + "')");
+            return data.ConsultarDatos("Select * from pr_consultarbarrioidbarrio('" + bar.idbarrios + "')");
+        }
+        
+        public DataTable ConsultarbarriosAll()
+        {
+            return data.ConsultarDatos(" select * from pr_consultarbarrio()");
+        }
+        public void eliminar(int x)
+        {
+            data.OperarDatos("select * from pr_borrarbarrios(" + x + ")");
         }
     }
 

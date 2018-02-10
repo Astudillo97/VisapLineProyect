@@ -19,9 +19,9 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("SELECT * from public.pr_consultartelefono('"+tel.terceros_idterceros+"');");
         }
-        public DataTable Consultar(Telefono tel)
+        public DataTable Consultar()
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from telefono");
         }
 
         public bool RegistrarTelefono(Telefono tpt)
@@ -30,7 +30,7 @@ namespace VisapLine.Model
         }
         public bool EliminarTelefono(Telefono tpt)
         {
-            return data.OperarDatos("SELECT public.pr_borrartelefono('"+tpt.idtelefono+"');");
+            return data.OperarDatos("SELECT public.pr_borrartelefono('"+tpt.terceros_idterceros+"');");
         }
     }
 }

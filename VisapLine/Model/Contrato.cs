@@ -33,6 +33,10 @@ namespace VisapLine.Model
         public string direccionenviofact { get; set; }
 
         public string barrio_idbarrio { get; set; }
+        public string observacion { get; set; }
+        public string wifi { get; set; }
+        public string descuento { get; set; }
+
 
         public DataTable estratoymegas(int contrato){
             return data.ConsultarDatos("select plan.subida,terceros.estrato from contrato inner join terceros on terceros_idterceros_cont=idterceros inner join plan on plan_idplan = idplan where idcontrato="+ contrato + "");
@@ -44,7 +48,7 @@ namespace VisapLine.Model
 
         public bool RegistrarContrato(Contrato cont)
         {
-            return data.OperarDatos("select * from pr_insertarcontrato('" + cont.terceros_idterceros+"','"+cont.codigo+"','"+cont.fechacontrato+"','"+cont.fechaactivacion+"','"+cont.fechafacturacion+ "','" + cont.estado + "','" + cont.tipocontrato_idtipocontrato+"','"+cont.plan_idplan+"','"+cont.iva+"','"+cont.enviofactura+"','"+cont.facturaunica+"','"+cont.personal_idpersonal+"','"+cont.sucursal_idsucursal+"','"+cont.observaciondirec+"','"+cont.direccionenviofact+"','"+cont.barrio_idbarrio+"')");
+            return data.OperarDatos("select * from pr_insertarcontrato('" + cont.terceros_idterceros+"','"+cont.codigo+"','"+cont.fechacontrato+"','"+cont.fechaactivacion+"','"+cont.fechafacturacion+ "','" + cont.estado + "','" + cont.tipocontrato_idtipocontrato+"','"+cont.plan_idplan+"','"+cont.iva+"','"+cont.enviofactura+"','"+cont.facturaunica+"','"+cont.personal_idpersonal+"',"+cont.sucursal_idsucursal+",'"+cont.observaciondirec+"','"+cont.direccionenviofact+"','"+cont.barrio_idbarrio+"','"+cont.wifi+"')");
         }
 
         public DataTable consultadeserciciodeplancontratado(int contrato) {
@@ -72,7 +76,7 @@ namespace VisapLine.Model
 
         public bool updatecontrato(Contrato cont)
         {
-            return data.OperarDatos("Select * from pr_actualizarcontrato('"+cont.idcontrato+"','"+cont.estado+"','"+cont.tipocontrato_idtipocontrato+"','"+cont.plan_idplan+"','"+cont.iva+"','"+cont.direccionenviofact+"','"+cont.enviofactura+"','"+cont.facturaunica+"','"+cont.barrio_idbarrio+"','"+cont.sucursal_idsucursal+"')");
+            return data.OperarDatos("Select * from pr_actualizarcontrato('"+cont.idcontrato+"','"+cont.estado+"','"+cont.tipocontrato_idtipocontrato+"','"+cont.plan_idplan+"','"+cont.iva+"','"+cont.direccionenviofact+"','"+cont.enviofactura+"','"+cont.facturaunica+"','"+cont.observacion+"','"+cont.descuento+ "','" + cont.barrio_idbarrio + "','" + cont.wifi + "')");
         }
 
 

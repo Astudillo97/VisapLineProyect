@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VisapLine.Model;
 using VisapLine.Exeption;
-
+using System.Data;
 
 namespace VisapLine.View.Private
 {
@@ -31,6 +31,8 @@ namespace VisapLine.View.Private
                     paisbarrio.DataValueField = "idpais";
                     paisbarrio.DataBind();
 
+                    tablabarrios();
+                    tablazonas();
 
                     paiszona.DataSource = pais.ConsultarPais();
                     paiszona.DataTextField = "pais";
@@ -54,7 +56,7 @@ namespace VisapLine.View.Private
 
             try
             {
-                
+
                 departamentobarrio.Items.Clear();
                 departamentobarrio.Items.Add(new ListItem("Seleccione", "Seleccione"));
                 depart.pais_idpais = Validar.validarselected(paisbarrio.SelectedValue);
@@ -73,7 +75,7 @@ namespace VisapLine.View.Private
                 ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             }
 
-   
+
 
 
 
@@ -145,33 +147,25 @@ namespace VisapLine.View.Private
 
                 if (barr.RegistrarBarrios(barr))
                 {
-
-                    textError.InnerHtml = "Se ha Registrado correctamente";
-                    Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;
-
-                    ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
-
                     paisbarrio.SelectedValue = "Seleccione";
                     departamentobarrio.Items.Clear();
                     municipiobarrio.Items.Clear();
                     zonabarrio.Items.Clear();
                     TextBox1.Text = "";
-
+                    tablabarrios();
+                    ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
                 }
                 else
                 {
-                    textError.InnerHtml = "No se registro";
-                    Alerta.CssClass = "alert alert-error";
-                    Alerta.Visible = true;
                     TextBox1.Text = "";
-                    ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
-
                     paisbarrio.SelectedValue = "Seleccione";
                     departamentobarrio.Items.Clear();
                     municipiobarrio.Items.Clear();
                     zonabarrio.Items.Clear();
                     TextBox1.Text = "";
+                    ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
                 }
             }
             catch (Exception ex)
@@ -182,11 +176,11 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
 
             }
-           
 
 
 
-         
+
+
 
         }
 
@@ -227,7 +221,7 @@ namespace VisapLine.View.Private
                 municipiozona.DataValueField = "idmunicipio";
                 municipiozona.DataBind();
 
-                
+
 
             }
             catch (Exception ex)
@@ -241,7 +235,7 @@ namespace VisapLine.View.Private
         protected void municipiozona_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-           
+
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -253,25 +247,22 @@ namespace VisapLine.View.Private
 
                 if (zn.RegistrarZona(zn))
                 {
-                    textError.InnerHtml = "Se ha Registrado correctamente";
-                    Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;
+
                     paiszona.SelectedValue = "Seleccione";
                     departamentozona.Items.Clear();
                     municipiozona.Items.Clear();
-                    TextBox1.Text = "";
-
+                    TextBox2.Text = "";
+                    tablazonas();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
                 }
                 else
                 {
-                    textError.InnerHtml = "No se registro";
-                    Alerta.CssClass = "alert alert-error";
-                    Alerta.Visible = true;
 
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", " alerterror();", true);
                     paiszona.SelectedValue = "Seleccione";
                     departamentozona.Items.Clear();
                     municipiozona.Items.Clear();
-                    TextBox1.Text = "";
+                    TextBox2.Text = "";
                 }
             }
             catch (Exception ex)
@@ -281,10 +272,104 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
 
             }
-            
+        }
 
 
-           
+
+        protected void tablabarrios()
+        {
+            try
+            {
+                DataTable dt = barr.ConsultarbarriosAll();
+                GridView2.DataSource = dt;
+                GridView2.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+        }
+
+        protected void tablazonas()
+        {
+            try
+            {
+                DataTable d = zn.ConsultarzonasAll();
+                GridView1.DataSource = d;
+                GridView1.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            tablabarrios();
+            ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+
+        }
+
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName.ToString() == "borrar")
+                {
+                    string DeleteRowId = e.CommandArgument.ToString();
+                    barr.eliminar(int.Parse(DeleteRowId));
+                    //Call Procedure here to delete row       
+                    tablabarrios();
+                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "elimalert();", true);
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName.ToString() == "borrar")
+                {
+                    string DeleteRowId = e.CommandArgument.ToString();
+                    zn.eliminar(int.Parse(DeleteRowId));
+                    //Call Procedure here to delete row
+                    tablazonas();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "elimalert();", true);
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            tablazonas();
         }
     }
 }

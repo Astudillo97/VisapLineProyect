@@ -17,6 +17,17 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        function deletealert() {
+            swal("SE REGISTRO CON EXITO!", "Se ha registrado con exito ", "success");
+        }
+        function alerterror() {
+            swal("NO SE REGISTRO!", "No se registro el formulario", "error");
+        }
+    </script>
+
     <section class="content-header">
         <h1>Planes</h1>
     </section>
@@ -76,11 +87,10 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Tipo_Plan:</label>
                             <div class="col-sm-10">
-                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true" required data-validation-required-message="This field is required" >
+                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true" required data-validation-required-message="This field is required">
                                     <asp:ListItem>Seleccione</asp:ListItem>
                                     <asp:ListItem>PUBLICO</asp:ListItem>
                                     <asp:ListItem>EMPRESARIAL</asp:ListItem>
-                                    <asp:ListItem>ESPECIAL</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -90,11 +100,15 @@
                                 <asp:TextBox ID="TextBox2" runat="server" type="number" class="form-control" onkeypress="applyFormatCurrency(this);" required data-validation-required-message="This field is required"></asp:TextBox>
                             </div>
                         </div>
+
+                    </div>
+
+                    <div class="col-md-6 col-12">
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">Bajada:</label>
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Detalle:</label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <asp:TextBox ID="TextBox3" runat="server" type="number" class="form-control" onkeypress="applyFormatCurrency(this);" required data-validation-required-message="This field is required"></asp:TextBox>
+                                    <textarea data-provide="markdown" id="texareadetalle" runat="server" data-iconlibrary="fa" class="form-control" rows="5" resize="none" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 144px;" required data-validation-required-message="This field is required"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -111,84 +125,26 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">Wifi:</label>
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Bajada:</label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <asp:CheckBox ID="CheckBox5" Text=" " runat="server" class="filled-in chk-col-yellow" />
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-12">
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">Detalle:</label>
-                            <div class="col-sm-10 ">
-                                <div class="md-header btn-toolbar">
-                                    <textarea data-provide="markdown" id="texareadetalle" runat="server" data-iconlibrary="fa" class="form-control" rows="5" resize="none" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 144px;" required data-validation-required-message="This field is required"></textarea>
+                                    <asp:TextBox ID="TextBox3" runat="server" type="number" class="form-control" onkeypress="applyFormatCurrency(this);" data-validation-required-message="This field is required"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">Depto:</label>
-                            <div class="col-sm-10 ">
-                                <div class="md-header btn-toolbar">
-                                    <asp:DropDownList ID="departamentoplan" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" required data-validation-required-message="This field is required" OnSelectedIndexChanged="departamentoplan_SelectedIndexChanged">
-                                        <asp:ListItem>Seleccione</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">Municipio:</label>
-                            <div class="col-sm-10 ">
-                                <div class="md-header btn-toolbar">
-                                    <asp:DropDownList ID="municipioplan" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" required data-validation-required-message="This field is required" OnSelectedIndexChanged="municipioplan_SelectedIndexChanged">
-                                        <asp:ListItem>Seleccione</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">Zona:</label>
-                            <div class="col-sm-10 ">
-                                <div class="md-header btn-toolbar">
-                                    <asp:DropDownList ID="zonaplan" runat="server" CssClass="form-control" AppendDataBoundItems="true" required data-validation-required-message="This field is required" >
-                                        <asp:ListItem>Seleccione</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">Medio Conexion:</label>
-                            <div class="col-sm-10 ">
-                                <div class="md-header btn-toolbar">
-                                    <asp:DropDownList ID="DropDownListmedioconexion" runat="server" CssClass="form-control" AppendDataBoundItems="true" required data-validation-required-message="This field is required" >
-                                        <asp:ListItem>Seleccione</asp:ListItem>
-                                        <asp:ListItem>FIBRA</asp:ListItem>
-                                        <asp:ListItem>RADIO</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-
-                            </div>
-                        </div>
-
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button1" Text="Guardar" Width="146px" OnClick="Button1_Click" /></>
                                 </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
-
+                <center>
+              <asp:Button runat="server" class="btn btn-block btn-success" ID="Button1" Text="Guardar" Width="146px" OnClick="Button1_Click" /></>
+               </center>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
@@ -201,25 +157,25 @@
                 <h2 class="box-title">Planes</h2>
             </div>
             <!-- /.box-header -->
-        
+
             <div class="box-body" style="">
-                <div class="row"  style="overflow-y: scroll">
-                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="5">
+                <div class="row">
+                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="10">
                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                         <Columns>
                             <asp:BoundField HeaderText="Codigo de Plan" DataField="idplan" />
                             <asp:BoundField HeaderText="Valor" DataField="valor" />
                             <asp:BoundField HeaderText="Detalle" DataField="detalle" />
-                            <asp:CheckBoxField HeaderText="Telefonia" DataField="telefonia" Text=" " ItemStyle-CssClass="filled-in chk-col-green" />
+                            <asp:CheckBoxField HeaderText="Telefonia" DataField="telefonia" Text=" " ItemStyle-CssClass="filled-in chk-col-green">
+                                <ItemStyle CssClass="filled-in chk-col-green"></ItemStyle>
+                            </asp:CheckBoxField>
                             <asp:CheckBoxField HeaderText="Television" DataField="television" Text=" " />
                             <asp:CheckBoxField HeaderText="Internet" DataField="internet" Text=" " />
                             <asp:BoundField HeaderText="Estado" DataField="estado" />
                             <asp:BoundField HeaderText="Tipo de Plan" DataField="tipoplan" />
                             <asp:BoundField HeaderText="Subida" DataField="subida" />
                             <asp:BoundField HeaderText="Bajada" DataField="bajada" />
-                            <asp:BoundField HeaderText="Zonas" DataField="zonas" />
-                            <asp:BoundField HeaderText="Medio Conexion" DataField="medioconexion" />
-                            <asp:CheckBoxField HeaderText="Wifi" DataField="wifi" Text=" " />
+
 
                         </Columns>
 
@@ -228,6 +184,8 @@
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
                         <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                        <PagerSettings Mode="NextPreviousFirstLast" />
 
                         <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
 
@@ -249,7 +207,7 @@
                 <!-- /.box-body -->
 
             </div>
-               
+
         </div>
 
     </section>

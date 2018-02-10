@@ -147,15 +147,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Usuario</label>
-                                        <input type="email" class="form-control" runat="server" id="usuario_cre" placeholder="Ingrese un usuario" />
+                                        <input type="text" class="form-control" runat="server" id="usuario_cre" placeholder="Ingrese un usuario" />
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Contraseña</label>
-                                        <input type="email" class="form-control" runat="server" id="password_cre" placeholder="Ingrese la contraseña" />
+                                        <input type="password" class="form-control" runat="server" id="password_cre" placeholder="Ingrese la contraseña" />
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Confrime Contraseña</label>
-                                        <input type="email" class="form-control" runat="server" id="password2_cre" placeholder="Vuelva a escribir la contraseña" />
+                                        <input type="password" class="form-control" runat="server" id="password2_cre" placeholder="Vuelva a escribir la contraseña" />
                                     </div>
                                 </div>
                             </div>

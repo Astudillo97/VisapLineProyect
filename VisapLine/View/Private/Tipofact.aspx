@@ -3,6 +3,21 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        function deletealert() {
+            swal("SE REGISTRO CON EXITO!", "Se ha registrado con exito ", "success");
+        }
+        function elimalert() {
+            swal("EL REGISTRO SE ELIMINO CON EXITO!", "Se ha realizado la operacion con exito ", "success");
+        }
+        function alerterror() {
+            swal("NO SE REGISTRO!", "No se registro el formulario", "error");
+        }
+    </script>
+
+
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
@@ -11,12 +26,10 @@
         <h3>Tipo Factura</h3>
     </section>
     <section class="content">
-        <div class="box box-default collapsed-box">
+        <div class="box box-default">
             <div class="box-header with-border">
                 <h3 class="box-title">Crear Tipo Factura</h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                </div>
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">

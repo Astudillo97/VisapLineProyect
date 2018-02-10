@@ -459,18 +459,21 @@
     <Content Include="Contenido\images\visa.png" />
     <Content Include="View\Login\login.aspx" />
     <Content Include="View\Private\Almacen.aspx" />
+    <Content Include="View\Private\ContratoCliente.aspx" />
     <Content Include="View\Private\detalleservicio.aspx" />
     <Content Include="View\Private\Facturacion.aspx" />
+    <Content Include="View\Private\GestCliente.aspx" />
     <Content Include="View\Private\GestContrato.aspx" />
+    <Content Include="View\Private\GestIncidencia.aspx" />
     <Content Include="View\Private\GestPagos.aspx" />
     <Content Include="View\Private\GestTercero.aspx" />
-    <Content Include="View\Private\Contratoterc.aspx" />
     <Content Include="View\Private\Gservicio.aspx" />
     <Content Include="View\Private\Incidencia.aspx" />
     <Content Include="View\Private\index.aspx" />
     <Content Include="View\Private\pagplan.aspx" />
     <Content Include="View\Private\pagzona.aspx" />
     <Content Include="View\Private\Personal.aspx" />
+    <Content Include="View\Private\RegistroTerceros.aspx" />
     <Content Include="View\Private\servicio.aspx" />
     <Content Include="View\Private\Tipofact.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
@@ -490,6 +493,7 @@
     <Compile Include="Model\Historico.cs" />
     <Compile Include="Model\impresorabix.cs" />
     <Compile Include="Model\Modelo.cs" />
+    <Compile Include="Model\Observacion.cs" />
     <Compile Include="Model\Plan.cs" />
     <Compile Include="Exeption\Validar.cs" />
     <Compile Include="Exeption\ValidarExeption.cs" />
@@ -558,6 +562,13 @@
     <Compile Include="View\Private\Almacen.aspx.designer.cs">
       <DependentUpon>Almacen.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\ContratoCliente.aspx.cs">
+      <DependentUpon>ContratoCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\ContratoCliente.aspx.designer.cs">
+      <DependentUpon>ContratoCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\detalleservicio.aspx.cs">
       <DependentUpon>detalleservicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -572,12 +583,26 @@
     <Compile Include="View\Private\Facturacion.aspx.designer.cs">
       <DependentUpon>Facturacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\GestCliente.aspx.cs">
+      <DependentUpon>GestCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\GestCliente.aspx.designer.cs">
+      <DependentUpon>GestCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\GestContrato.aspx.cs">
       <DependentUpon>GestContrato.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Private\GestContrato.aspx.designer.cs">
       <DependentUpon>GestContrato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\GestIncidencia.aspx.cs">
+      <DependentUpon>GestIncidencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\GestIncidencia.aspx.designer.cs">
+      <DependentUpon>GestIncidencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\GestPagos.aspx.cs">
       <DependentUpon>GestPagos.aspx</DependentUpon>
@@ -592,13 +617,6 @@
     </Compile>
     <Compile Include="View\Private\GestTercero.aspx.designer.cs">
       <DependentUpon>GestTercero.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Private\Contratoterc.aspx.cs">
-      <DependentUpon>Contratoterc.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Private\Contratoterc.aspx.designer.cs">
-      <DependentUpon>Contratoterc.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Gservicio.aspx.cs">
       <DependentUpon>Gservicio.aspx</DependentUpon>
@@ -641,6 +659,13 @@
     </Compile>
     <Compile Include="View\Private\Personal.aspx.designer.cs">
       <DependentUpon>Personal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\RegistroTerceros.aspx.cs">
+      <DependentUpon>RegistroTerceros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\RegistroTerceros.aspx.designer.cs">
+      <DependentUpon>RegistroTerceros.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\servicio.aspx.cs">
       <DependentUpon>servicio.aspx</DependentUpon>

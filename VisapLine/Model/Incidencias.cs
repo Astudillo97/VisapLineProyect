@@ -16,18 +16,30 @@ namespace VisapLine.Model
         public string fechafin { get; set; }
         public string estado{ get; set; }
         public string costo { get; set; }
-        public string servicios_idservicios { get; set; }
         public string detalle { get; set; }
-        public string personal_idpersonal { get; set; }
 
-        public DataTable ConsultarIncidencias(Incidencias ins)
+        public string terceros_idterceros { get; set; }
+
+        public string servicios_idservicios { get; set; }
+      
+       public string observacion { get; set; }
+
+        public string descuento { get; set; }
+        public string tipoincidencia_idtipoincidencia { get; set; }
+        public DataTable ConsultarIncidencias()
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from pr_consultarincidencias()");
         }
 
-        public bool RegistrarInsidencias(Incidencias bar)
+        public bool RegistrarInsidencias(Incidencias inci)
         {
-            return data.OperarDatos("");
+            return data.OperarDatos("select * from public.pr_insertarincedencia('"+inci.estado+"','"+inci.detalle+"','"+inci.terceros_idterceros+"','"+inci.servicios_idservicios+"','"+inci.tipoincidencia_idtipoincidencia+"')");
+        }
+
+        public bool updatesolucionincidencia()
+        {
+            return data.OperarDatos("select * from public.pr_insertarincedencia()");
+
         }
     }
 }

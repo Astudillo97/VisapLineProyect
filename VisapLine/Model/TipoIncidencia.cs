@@ -19,9 +19,9 @@ namespace VisapLine.Model
 
         public DataTable Consultartipoincidencia(TipoIncidencia tpin)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from pr_consultartipoincidencia('"+tpin.categoriaincidencia_idcategoriaindencia+"') ");
         }
-        public bool RegistrarBarrios(TipoIncidencia bar)
+        public bool RegistrarBarrios(TipoIncidencia tpin)
         {
             return data.OperarDatos("");
         }   

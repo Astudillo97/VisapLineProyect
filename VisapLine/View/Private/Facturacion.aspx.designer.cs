@@ -76,30 +76,12 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.GridView allfactura;
         
         /// <summary>
-        /// Control listContrato.
+        /// Control estadofactura.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView listContrato;
-        
-        /// <summary>
-        /// Control listFacturas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView listFacturas;
-        
-        /// <summary>
-        /// Control listDetalle.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView listDetalle;
+        protected global::System.Web.UI.WebControls.DropDownList estadofactura;
     }
 }

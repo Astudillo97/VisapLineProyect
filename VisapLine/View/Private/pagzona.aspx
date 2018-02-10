@@ -8,6 +8,26 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        function deletealert() {
+            swal({
+                title: "SE REGISTRO CON EXITO!",
+                text: "Se ha registrado con exito ",
+                type: "success"
+            }, function () {
+                window.location.href = "pagzona.aspx";
+            });
+
+        }
+        function alerterror() {
+            swal("NO SE REGISTRO!", "No se registro el formulario", "error");
+        }
+        function elimalert() {
+            swal("EL REGISTRO SE ELIMINO CON EXITO!", "Se ha realizado la operacion con exito ", "success");
+        }
+    </script>
     <section class="content-header">
         <h2>Zonas y Barrios</h2>
     </section>
@@ -54,9 +74,9 @@
                                                                     <div class="col-sm-9">
                                                                         <asp:DropDownList ID="departamentozona" runat="server" CssClass="form-control select2" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="departamentozona_SelectedIndexChanged">
                                                                             <asp:ListItem>Seleccione</asp:ListItem>
-                                                                              <asp:ListItem>PUBLICO</asp:ListItem>
-                                                                              <asp:ListItem>EMPRESARIAL</asp:ListItem>
-                                                                              <asp:ListItem>ESPECIAL</asp:ListItem>
+                                                                            <asp:ListItem>PUBLICO</asp:ListItem>
+                                                                            <asp:ListItem>EMPRESARIAL</asp:ListItem>
+                                                                            <asp:ListItem>ESPECIAL</asp:ListItem>
                                                                         </asp:DropDownList>
 
                                                                     </div>
@@ -99,9 +119,53 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+
+                    <div class="box-body">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Zonas</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" AllowPaging="True" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" CellPadding="4" ForeColor="#333333" GridLines="None" PagerSettings-Mode="NextPreviousFirstLast">
+                                    <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                    <Columns>
+                                        <asp:BoundField HeaderText="Id zonas" DataField="idzonas" />
+                                        <asp:BoundField HeaderText="Tipo Factura" DataField="zonas" />
+                                        <asp:TemplateField HeaderText="Borrar">
+                                            <ItemTemplate>
+                                                <asp:Button ID="hola" runat="server" class="btn btn-danger btn-flat" CommandName="borrar" CommandArgument='<%# Eval("idzonas") %>' Text="Borrar" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+
+                                    <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                    <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                                    <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                    <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                    <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                    <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                    <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                                </asp:GridView>
+                            </div>
+                        </div>
+                        <!-- /.col -->
                     </div>
                 </div>
-                
+
 
 
                 <div class="tab-pane" id="barrios">
@@ -186,10 +250,52 @@
                             </div>
                         </div>
                     </div>
+                    <div class="box-body">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Barrios</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <asp:GridView ID="GridView2" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" AllowPaging="True" OnRowCommand="GridView2_RowCommand" OnPageIndexChanging="GridView2_PageIndexChanging" CellPadding="4" ForeColor="#333333" GridLines="None" PagerSettings-Mode="NextPreviousFirstLast">
+                                    <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                    <Columns>
+                                        <asp:BoundField HeaderText="Id Tipo Factura" DataField="idbarrios" />
+                                        <asp:BoundField HeaderText="Tipo Factura" DataField="barrios" />
+                                        <asp:TemplateField HeaderText="Borrar">
+                                            <ItemTemplate>
+                                                <asp:Button ID="hola" runat="server" class="btn btn-danger btn-flat" CommandName="borrar" CommandArgument='<%# Eval("idbarrios") %>' Text="Borrar" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+
+                                    <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                    <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                                    <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                    <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                    <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                    <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                    <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                                </asp:GridView>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
                 </div>
             </div>
         </div>
-        
+
     </section>
 
 
