@@ -19,6 +19,7 @@ namespace VisapLine.View.Private
         class_pdf pdf = new class_pdf();
         Detalle det = new Detalle();
         Empresa empresa = new Empresa();
+        Telefono telefon = new Telefono();
         CargoAdicional ca = new CargoAdicional();
         DataTable tablepersona = new DataTable();
         DataTable tablecontrato = new DataTable();
@@ -243,14 +244,19 @@ namespace VisapLine.View.Private
             try
             {
                 Validar.validarselected(estadofactura.SelectedValue);
+                DataTable tef= Validar.Consulta(telefon.Consultar());
+                tef.PrimaryKey = new DataColumn[] { tef.Columns["terceros_idterceros"] };
+                
                 foreach (DataRow item in tablefactura.Rows)
                 {
-                    if (item[""].ToString()== estadofactura.SelectedValue)
+                    if (item["estadof"].ToString()== estadofactura.SelectedValue)
                     {
-                        string msm = "Señor(a) usuario de VisapLine le recordamos que su factura esta proxima a vencerse";
-                        if (item["telefono"].ToString().Length>=10)
+                        string msm = "Estimado usuario de VisapLine le recordamos que su factura esta proxima a vencerse";
+                        DataRow dat = tef.Rows.Find(item["idterceros"]);
+                        if (dat["telefono"].ToString().Length>=10)
                         {
-                            string celular = item["telefono"].ToString();
+                            string celular = dat["telefono"].ToString();
+                            string nombre = item["nombre"].ToString() +" "+ item["apellido"].ToString();
                         }
                     }
                 }
