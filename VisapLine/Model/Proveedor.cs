@@ -19,11 +19,11 @@ namespace VisapLine.Model
 
         public bool RegistrarProveedor(Proveedor prov)
         {
-            return data.OperarDatos("select * from pr_insertarproveedor( '" + prov.nit + "','" + prov.razonsocial + "','" + prov.telefono + "','" + prov.correo + "')");
+            return data.OperarDatos("select * from pr_insertarterceroproveedor( '" + prov.nit + "','" + prov.razonsocial + "','" + prov.correo + "','" + prov.telefono + "')");
         }
         public DataTable ConsultarProveedor()
         {
-            return data.ConsultarDatos("select * from pr_consultarproveedor()");
+            return data.ConsultarDatos("select * from pr_consultarterceroproveedor()");
         }
         public bool EliminarProveedor(Proveedor prov)
         {

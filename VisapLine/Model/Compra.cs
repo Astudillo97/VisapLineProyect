@@ -21,7 +21,7 @@ namespace VisapLine.Model
 
         public DataTable RegistrarCompra( Compra comp)
         {
-            return data.ConsultarDatos("select * from pr_insertarcompra('" + comp.fechapedido + "' ,'" + comp.numeropedido+"','"+comp.fechallegada+ "','" + comp.valor + "','" + comp.proveedor_idproveedor + "','"+comp.personal_idpersonal+"')");
+            return data.ConsultarDatos("select * from pr_insertarcompra('" + comp.fechapedido + "' ,'" + comp.numeropedido+"','"+comp.fechallegada+ "','" + comp.valor + "','" + comp.proveedor_idproveedor + "',"+comp.personal_idpersonal+")");
         }
         public bool ActualizarCompra(Compra comp)
         {

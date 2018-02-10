@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="Almacen.aspx.cs" Inherits="VisapLine.View.Private.Almacen" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+        <script src="../../Contenido/assets/vendor_components/jquery/dist/jquery.js"></script>
+    <script src="../../Contenido/assets/vendor_components/glyphicons/glyphicon.css"></script>
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+    <asp:ScriptManager ID="scripservicc" runat="server"></asp:ScriptManager>
     <script type="text/javascript">
         function panel1() {
             document.getElementById("pan1").click();
@@ -20,9 +26,49 @@
         function panel6() {
             document.getElementById("pan6").click();
         }
+        function openModal() {
+            $('#agregardetalle').modal('show');
+        }
+        function dialog(ctl, event,cosa) {
+            event.preventDefault();
+            swal({
+                title: "¡CUIDADO, LO QUE VA HA HACER PUEDE SER IRREVERSIBLE!",
+                text: "Desea eliminar este rejistro?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Aceptar",
+                cancelButtonText: "Cancel",
+                closeOnConfirm: true,
+                closeOnCancel: true
+            }, function () {
+                $.ajax({
+                    type: "POST",
+                    url: "Almacen.aspx/eliminardetallecompara",
+                    data: '{compra : ' + cosa + '}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                    }
+                }
+                )
+                    .done(function (data) {
+                        swal({
+                            title: "OPERACION REALIZADA EXITO!",
+                            text: "Se elimino el registro!",
+                            type: "success"
+                        }, function () { location.reload(true); }
+                        );
+                        $('#orders-history').load(document.URL + ' #orders-history');
+
+
+                    }).error(function (data) {
+                        swal("ASIGNACION FALLIDA!", "No se pudo realizar la operacion contactese con el soporte", "error");
+                    });
+            })
+                ;
+        }
     </script>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
         <h1>Gestion del Inventario
         </h1>
@@ -102,15 +148,114 @@
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <button class="btn btn-primary float-right" runat="server" onserverclick="RegistrarCompra">Guardar</button>
+                                    <button class="btn btn-success float-right" runat="server" onserverclick="RegistrarCompra">Guardar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregardetalle">REGISTRAR DETALLE</button>
+                    <div class="modal fade" id="agregardetalle" data-backdrop="”static”">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">DETALLE DEL PRODUCTO COMPRADO <span class="glyphicon glyphicon-shopping-cart"></span></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <asp:Label ID="lvldroptipoprod" runat="server">TIPO DE PRODUCTO</asp:Label>
+                                        </div>
+                                        <div class="col-6">
+                                            <asp:DropDownList ID="droptipoproduc" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropmodelo_SelectedIndexChanged"></asp:DropDownList>
+                                        </div>
+                                    </div>
+                                    <div id="divcaracteristicaequipo" runat="server" visible="false">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <asp:Label ID="lbldropmarca" runat="server">FABRICANTE</asp:Label>
+                                            </div>
+                                            <div class="col-6">
+                                                <asp:DropDownList ID="dropmarca" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropmarca_SelectedIndexChanged"></asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <asp:Label ID="lblmodelo" runat="server">MODELO</asp:Label>
+                                            </div>
+                                            <div class="col-6">
+                                                <asp:DropDownList ID="dropmodelo" runat="server" AutoPostBack="true"></asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <asp:Label ID="lblmac" runat="server">MAC</asp:Label>
+                                            </div>
+                                            <div class="col-6">
+                                                <asp:TextBox ID="txtmac" runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <asp:Label ID="lblserial" runat="server">SERIAL</asp:Label>
+                                            </div>
+                                            <div class="col-6">
+                                                <asp:TextBox ID="txtserial" runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <asp:Label ID="lblcantidad" runat="server">CANTIDAD</asp:Label>
+                                            </div>
+                                            <div class="col-6">
+                                                <asp:TextBox ID="txtcantidad" runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <asp:Label ID="lblvidautil" runat="server">VIDA UTIL</asp:Label>
+                                            </div>
+                                            <div class="col-6">
+                                                <asp:TextBox ID="txtvidautil" runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <asp:Label ID="lbldescripcion" runat="server">DESCRIPCION</asp:Label>
+                                            </div>
+                                            <div class="col-6">
+                                                <asp:TextBox ID="txtdescripcion" runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="divocultoinsumos" runat="server" visible="false">
+                                        <asp:GridView CssClass="table table-responsive no-border" OnSelectedIndexChanged="insumos_SelectedIndexChanging" AutoGenerateColumns="false" ID="insumos" runat="server">
+                                            <Columns>
+                                                <asp:BoundField HeaderText="CODIGO" DataField="idinventario" />
+                                                <asp:BoundField HeaderText="DESCRIPCION" DataField="descripcion" />
+                                                <asp:TemplateField HeaderText="CANTIDAD">
+                                                    <ItemTemplate>
+                                                        <asp:TextBox ID="gvtxtcantidad" runat="server"></asp:TextBox>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:CommandField ShowSelectButton="true" ItemStyle-CssClass="btn btn-success" ControlStyle-ForeColor="White" SelectText="AGREGAR" />
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                                    <asp:Button Visible="false" ID="confimarregistro" runat="server" Text="AGREGAR" OnClick="confimarregistro_Click" CssClass="btn btn-success" />
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <div class="row col">
                         <div class="box box-default collapsed-box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Tipos de producto</h3>
+                                <h3 class="box-title">Detalle Compra</h3>
+
                                 <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                                         <i class="fa fa-plus"></i>
@@ -121,11 +266,17 @@
                                 </div>
                             </div>
                             <div class="box-body">
-                                <asp:GridView runat="server" ID="tablacompras" AutoGenerateColumns="true" class="table table-bordered table-striped table-responsive" OnRowCommand="tablatipoproducto_RowCommand">
+                                <asp:GridView runat="server" ID="tablacompras" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive">
                                     <Columns>
+                                        <asp:BoundField HeaderText="PRODUCTO" DataField="tipoproducto" />
+                                        <asp:BoundField HeaderText="DETALLE" DataField="detalle"/>
+                                        <asp:BoundField HeaderText="CANTIDAD" DataField="cantidad"/>
                                         <asp:TemplateField HeaderText="">
                                             <ItemTemplate>
-                                                <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("idcompra") %>' Text="Borrar" />
+                                                <%----%>
+                                                <a role="button" href="#" onclick='return dialog(this,event,<%# Eval("idcompra")%>);' >
+                                                    <span Class="glyphicon glyphicon-trash"></span>
+                                                </a>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -369,13 +520,13 @@
                                 <div class="box-body">
                                     <asp:GridView runat="server" ID="tablaproveedores" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" OnRowCommand="tablaproveedores_RowCommand">
                                         <Columns>
-                                            <asp:BoundField DataField="nit" HeaderText="Identificación"></asp:BoundField>
-                                            <asp:BoundField DataField="razonsocial" HeaderText="Razon Social"></asp:BoundField>
+                                            <asp:BoundField DataField="identificacion" HeaderText="Identificación"></asp:BoundField>
+                                            <asp:BoundField DataField="nombre" HeaderText="Razon Social"></asp:BoundField>
                                             <asp:BoundField DataField="telefono" HeaderText="Telefono"></asp:BoundField>
                                             <asp:BoundField DataField="correo" HeaderText="Correo"></asp:BoundField>
                                             <asp:TemplateField HeaderText="">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("idproveedor") %>' Text="Borrar" />
+                                                    <asp:ImageButton ID="eliminar_btn" runat="server" ImageUrl="../../Contenido/images/icons/eliminar.png" class="btn btn-link" CommandName="Eliminar" CommandArgument='<%# Eval("idterceros") %>' Text="Borrar" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
