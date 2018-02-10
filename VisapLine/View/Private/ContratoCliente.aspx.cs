@@ -38,59 +38,66 @@ namespace VisapLine.View.Private
         {
             try
             {
-                if (!IsPostBack)
+               
+                    if (!IsPostBack)
                 {
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                    
                     string valor = Convert.ToString(Request.QueryString["key"]);
-
-                    dnitercero.Text = valor;
-
-                    DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
-                    DropDownListpaiscontrato.DataTextField = "pais";
-                    DropDownListpaiscontrato.DataValueField = "idpais";
-                    DropDownListpaiscontrato.DataBind();
-
-                    DropDownListtiporedenciacontrato.DataSource = tpres.ConsultarTipoResidencia();
-                    DropDownListtiporedenciacontrato.DataTextField = "tiporesidencia";
-                    DropDownListtiporedenciacontrato.DataValueField = "idtiporesidencia";
-                    DropDownListtiporedenciacontrato.DataBind();
-
-                    DropDownListtipocontrato.DataSource = tpoc.ConsultarTipoContrato();
-                    DropDownListtipocontrato.DataTextField = "tipocontrato";
-                    DropDownListtipocontrato.DataValueField = "idtipocontrato";
-                    DropDownListtipocontrato.DataBind();
-                    terc.identificacion = dnitercero.Text;
-
-                    DataRow tercero = Validar.Consulta(terc.ConsultarTerceroDos(terc)).Rows[0];
-
-                    Label1.Text = tercero["nombre"].ToString();
-
-                    if (tercero["tipoterceros"].ToString() == "NATURAL")
+                    if (valor==null)
                     {
-                        Label2.Text = tercero["apellido"].ToString();
-                        idsucursallabel.Visible = false;
-                        DropDownListsucursalcontrato.Visible = false;
+                        Response.Redirect("RegistroTerceros.aspx");
                     }
                     else
                     {
-                        if (tercero["tipoterceros"].ToString() == "CORPORATIVO" || tercero["tipoterceros"].ToString() == "ESPECIAL")
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                        dnitercero.Text = valor;
+
+                        DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
+                        DropDownListpaiscontrato.DataTextField = "pais";
+                        DropDownListpaiscontrato.DataValueField = "idpais";
+                        DropDownListpaiscontrato.DataBind();
+
+                        DropDownListtiporedenciacontrato.DataSource = tpres.ConsultarTipoResidencia();
+                        DropDownListtiporedenciacontrato.DataTextField = "tiporesidencia";
+                        DropDownListtiporedenciacontrato.DataValueField = "idtiporesidencia";
+                        DropDownListtiporedenciacontrato.DataBind();
+
+                        DropDownListtipocontrato.DataSource = tpoc.ConsultarTipoContrato();
+                        DropDownListtipocontrato.DataTextField = "tipocontrato";
+                        DropDownListtipocontrato.DataValueField = "idtipocontrato";
+                        DropDownListtipocontrato.DataBind();
+                        terc.identificacion = dnitercero.Text;
+
+                        DataRow tercero = Validar.Consulta(terc.ConsultarTerceroDos(terc)).Rows[0];
+
+                        Label1.Text = tercero["nombre"].ToString();
+
+                        if (tercero["tipoterceros"].ToString() == "NATURAL" || tercero["tipoterceros"].ToString() == "EMPLEADO")
                         {
-                            Label2.Visible = false;
-                            idapellidolabel.Visible = false;
-
-                            cargartablasucursal(dnitercero.Text);
-
-
-
-
-
+                            Label2.Text = tercero["apellido"].ToString();
+                            idsucursallabel.Visible = false;
+                            DropDownListsucursalcontrato.Visible = false;
                         }
+                        else
+                        {
+                            if (tercero["tipoterceros"].ToString() == "CORPORATIVO" || tercero["tipoterceros"].ToString() == "ESPECIAL")
+                            {
+                                Label2.Visible = false;
+                                idapellidolabel.Visible = false;
+
+                                cargartablasucursal(dnitercero.Text);
+
+                            }
+                        }
+
+                        TextBox1.Text = tercero["direccion"].ToString();
+
+                        Labelidtercero.Text = tercero["idterceros"].ToString();
+                        cargartabla(Labelidtercero.Text);
                     }
 
-                    TextBox1.Text = tercero["direccion"].ToString();
-
-                    Labelidtercero.Text = tercero["idterceros"].ToString();
+                   
                 }
             }
             catch (Exception ex)
@@ -100,7 +107,7 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
 
-            cargartabla(Labelidtercero.Text);
+           
 
         }
 
@@ -124,6 +131,7 @@ namespace VisapLine.View.Private
                 DropDownListsucursalcontrato.DataBind();
             }
             catch (Exception)
+
             {
                 DropDownListsucursalcontrato.Visible = false;
             }

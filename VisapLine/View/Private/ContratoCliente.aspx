@@ -18,6 +18,15 @@
                 type: "success"
             });
         }
+        function errornocargo() {
+            swal({
+                title: "DEBE REDIRIGIRSE A REGISTRO DE CLIENTE!",
+                text: "NO se a logrado conectarse",
+                type: "error"
+            }, function () {
+                window.location.href = "RegistroTerceros.aspx";
+            });
+        }
         function alerterror() {
             swal("NO SE REGISTRO!", "No se registro el formulario", "error");
         }

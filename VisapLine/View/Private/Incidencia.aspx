@@ -13,10 +13,10 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         function deletealert() {
-            swal("ORDEN CREADA CON EXITO!", "Su orden ser creo con el numero ", "success");
+            swal("LA INCIDENCIA FUE CREADA CON EXITO!", "", "success");
         }
         function alerterror() {
-            swal("ORDEN FALLIDA!", "La orden no se pudo crear por favor verifique o contactese con el soporte", "error");
+            swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
         }
         function alrt() {
             swal("ESTA OPCION AUN NO ESTA DISPONIBLE!", "Los super ingnieros estan en proceso de implocion espere", "error");
@@ -47,6 +47,17 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
+                   <%-- <div class="col-md-6 col-12">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
+                            <div class="col-sm-5">
+                                <asp:TextBox runat="server" type="Text" CssClass="form-control" ID="TextBoxdni" Style="text-transform: uppercase"></asp:TextBox>
+                            </div>
+                            <div class="col-sm-4">
+                                <asp:Button runat="server" ID="Button2" CssClass="btn btn-block btn-success btn-lg" Text="Buscar" OnClick="Button2_Click" Width="100px" />
+                            </div>
+                        </div>
+                    </div>--%>
                     <div class="col-md-6 col-15">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">Codigo:</label>
@@ -58,22 +69,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-12">
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
-                            <div class="col-sm-5">
-                                <asp:TextBox runat="server" type="Text" CssClass="form-control" ID="TextBoxdni" Style="text-transform: uppercase"></asp:TextBox>
-                            </div>
-                            <div class="col-sm-4">
-                                <asp:Button runat="server" ID="Button2" CssClass="btn btn-block btn-success btn-lg" Text="Buscar" OnClick="Button2_Click" Width="100px" />
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.col -->
             </div>
         </div>
-        <div class="row" id="iddatosterceros" runat="server">
+        <div class="row" id="iddatosterceros" visible="false" runat="server">
             <div class="col-5">
                 <div class="box box-default">
                     <div class="box-header with-border">
@@ -97,12 +97,12 @@
                                     <div class="col-sm-8">
                                         <asp:Label ID="Label2" CssClass="form-control bg-gray" runat="server" Text=""></asp:Label>
                                     </div>
-                                </div>                               
+                                </div>
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Direccion:</label>
                                     <div class="col-sm-8">
-                                      <asp:TextBox ID="TextBox1" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="140px" Height="100px"></asp:TextBox>
-                                     </div>
+                                        <asp:TextBox ID="TextBox1" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="140px" Height="100px"></asp:TextBox>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                 <asp:Label ID="idservicio" runat="server" Visible="false"></asp:Label>
                 <div class="row" id="divtablagestcontr" runat="server" visible="false">
                     <div class="box box-primary">
-                        <asp:GridView ID="GridView1" runat="server" HorizontalAlign="Center"  OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <asp:GridView ID="GridView1" runat="server" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                 <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
@@ -182,16 +182,6 @@
                     </div>
                     <div class="col-md-6 col-6">
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Descuento</label>
-                            <div class="col-sm-8">
-                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                    <asp:ListItem>Seleccione</asp:ListItem>
-                                    <asp:ListItem>SI</asp:ListItem>
-                                    <asp:ListItem>NO</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Caracteristica</label>
                             <div class="col-sm-8">
                                 <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-control" AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
@@ -199,8 +189,6 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
-
-
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Tipo Incidencia</label>
                             <div class="col-sm-8">
@@ -213,7 +201,6 @@
                             <label class="col-sm-4 col-form-label"></label>
                             <div class="col-sm-8">
                                 <asp:Button ID="ButtonGuardar" runat="server" Text="Registrar" class="btn btn-block btn-success btn-lg" Width="150px" Height="35px" OnClick="ButtonGuardar_Click" />
-                                <a href="#" id="botonmodalcontr" data-toggle="modal" data-target="#modal-gesti"></a>
                             </div>
                         </div>
                     </div>

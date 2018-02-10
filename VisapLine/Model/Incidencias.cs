@@ -31,9 +31,15 @@ namespace VisapLine.Model
             return data.ConsultarDatos("");
         }
 
-        public bool RegistrarInsidencias(Incidencias bar)
+        public bool RegistrarInsidencias(Incidencias inci)
         {
-            return data.OperarDatos("select * from public.pr_insertarincedencia('')");
+            return data.OperarDatos("select * from public.pr_insertarincedencia('"+inci.estado+"','"+inci.detalle+"','"+inci.terceros_idterceros+"','"+inci.servicios_idservicios+"','"+inci.tipoincidencia_idtipoincidencia+"')");
+        }
+
+        public bool updatesolucionincidencia()
+        {
+            return data.OperarDatos("select * from public.pr_insertarincedencia()");
+
         }
     }
 }

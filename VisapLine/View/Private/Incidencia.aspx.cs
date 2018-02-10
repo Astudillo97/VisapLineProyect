@@ -9,7 +9,7 @@ using System.Data;
 using VisapLine.Exeption;
 namespace VisapLine.View.Private
 {
-
+    
 
     public partial class Incidencia : System.Web.UI.Page
     {
@@ -18,6 +18,7 @@ namespace VisapLine.View.Private
         TipoIncidencia tpin = new TipoIncidencia();
         Servicios serv = new Servicios();
         Terceros terc = new Terceros();
+        Incidencias inci = new Incidencias();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,16 +34,51 @@ namespace VisapLine.View.Private
         protected void ButtonGuardar_Click(object sender, EventArgs e)
         {
 
+            try
+            {
 
-   
+                Terceros ter = (Terceros)Session["tercero"];
+                inci.estado = Validar.validarselected(DropDownListestadoinc.Text);
+                inci.detalle = Validar.validarlleno(TextArea1detalle.Value);
+                inci.terceros_idterceros = Validar.validarlleno(ter.idterceros);
+                inci.servicios_idservicios = Validar.validarlleno(idservicio.Text);
+                inci.tipoincidencia_idtipoincidencia = Validar.validarselected(DropDownList2.SelectedValue);
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                 if(inci.RegistrarInsidencias(inci))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                    divincidencia.Visible = false;
+                    iddatosterceros.Visible = false;
+                    TextBoxdni.Text = "";
+                    TextBoxcodcontra.Text = "";
+                    DropDownListestadoinc.Text = "Seleccione";
+                    TextArea1detalle.Value = "";
+
+
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                }
+
+            
+            }
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+
+            }
+
+
+
 
         }
 
 
         protected void Buttonbuscarcodg_Click(object sender, EventArgs e)
         {
+
+
             ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", " alrt();", true);
         }
 
@@ -121,8 +157,8 @@ namespace VisapLine.View.Private
                 {
                     Label2.Text = te["apellido"].ToString();
                 }
-
                 TextBox1.Text = te["direccion"].ToString();
+                iddatosterceros.Visible = true;
                 try
                 {
                     DropDownList3.DataSource = cinci.Consultarcategoriaincidencia();
