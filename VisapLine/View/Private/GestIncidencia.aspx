@@ -122,6 +122,7 @@
                                         <asp:TextBox ID="TextBox1" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="165px" Height="90px"></asp:TextBox>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -132,6 +133,7 @@
                 <div class="box box-default" id="divincidencia" runat="server">
                     <div class="box-header with-border">
                         <h3 class="box-title">Solucion de incidencia</h3>
+                        <asp:Label ID="idincidencialabel" runat="server" Text="" visible="false"></asp:Label>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -178,6 +180,12 @@
                                             <asp:ListItem>ESPERA</asp:ListItem>
                                             <asp:ListItem>SOLUCIONADO</asp:ListItem>
                                         </asp:DropDownList>
+                                    </div>
+                                </div>
+                                 <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Costo</label>
+                                    <div class="col-sm-8">
+                                        <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" type="number" placeholder="$"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
