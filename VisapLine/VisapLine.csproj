@@ -492,6 +492,7 @@
     <Compile Include="Model\Historico.cs" />
     <Compile Include="Model\impresorabix.cs" />
     <Compile Include="Model\Modelo.cs" />
+    <Compile Include="Model\Observacion.cs" />
     <Compile Include="Model\Plan.cs" />
     <Compile Include="Exeption\Validar.cs" />
     <Compile Include="Exeption\ValidarExeption.cs" />

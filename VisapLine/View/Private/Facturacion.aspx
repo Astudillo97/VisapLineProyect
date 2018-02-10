@@ -80,7 +80,6 @@
         <div class="tab-pane">
             <div class="box box-primary">
                 <asp:gridview runat="server" cssclass="table table-bordered table-striped table-responsive" onpageindexchanging="allfactura_PageIndexChanging" OnRowCommand="allfactura_RowCommand" allowpaging="True" pagesize="10"  autogeneratecolumns="False" id="allfactura">
-
                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Wrap="true" />
                     <Columns>
@@ -95,10 +94,6 @@
                         <asp:BoundField DataField="fechaemision" DataFormatString="{0:d}" HeaderText="Emision"></asp:BoundField>
                         <asp:BoundField DataField="estadof" HeaderText="Estado"></asp:BoundField>
                         <asp:BoundField DataField="totalfac" HeaderText="Valor"></asp:BoundField>
-<%--  onrowdeleting="allfactura_RowDeleting" onselectedindexchanging="allfactura_SelectedIndexChanging" onrowediting="allfactura_RowEditing"                       
-    <asp:CommandField ShowDeleteButton="True"   DeleteText="" ControlStyle-CssClass="glyphicon glyphicon-copy"></asp:CommandField>
-                        <asp:CommandField ShowSelectButton="True" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-usd"></asp:CommandField>
-                        <asp:CommandField ShowEditButton="True" EditText="" ControlStyle-CssClass="glyphicon glyphicon-edit"></asp:CommandField>--%>
                         <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
                                         <asp:Button ID="btn1" runat="server"  CssClass="btn glyphicon glyphicon-copy "  CommandName="verfactura" CommandArgument='<%# Eval("idfactura") %>' Text="" />
@@ -121,9 +116,29 @@
         <div class="tab-pane">
             <div class="box box-primary">
                 <div class="form-group row">
-                    <button class="btn btn-primary col-md-4" runat="server" onserverclick="Imprimirallfactura"><span class="glyphicon glyphicon-print"></span>IMPRIMIR TODAS LAS FACTURAS</button>
-                    <button class="btn btn-success col-md-4" runat="server" onserverclick="EnviarAllFactura"><span class="glyphicon glyphicon-inbox"></span>ENVIAR TODAS LAS FACTURAS</button>
-                    <a href="VistadeExporte.aspx" class="btn btn-success col-md-4"><span class="glyphicon glyphicon-export">OBTENER XLS PARA SIIGO</span></a>
+                    <asp:DropDownList runat="server" class="btn btn-primary col-md-3">
+                        <asp:ListItem Text="text1" />
+                        <asp:ListItem Text="text2" />
+                    </asp:DropDownList>
+                    <asp:DropDownList runat="server" class="btn btn-primary col-md-3">
+                        <asp:ListItem Text="text1" />
+                        <asp:ListItem Text="text2" />
+                    </asp:DropDownList>
+                    <asp:DropDownList runat="server" ID="estadofactura" class="btn btn-primary col-md-3">
+                        <asp:ListItem Text="Seleccione" />
+                        <asp:ListItem Text="Facturado" />
+                        <asp:ListItem Text="Vencido" />
+                    </asp:DropDownList>
+                    <asp:DropDownList runat="server" class="btn btn-primary col-md-3">
+                        <asp:ListItem Text="text1" />
+                        <asp:ListItem Text="text2" />
+                    </asp:DropDownList>
+                </div>
+                <div class="form-group row">
+                    <button class="btn btn-primary col-md-3" runat="server" onserverclick="Imprimirallfactura"><span class="glyphicon glyphicon-print"></span>IMPRIMIR TODAS LAS FACTURAS</button>
+                    <button class="btn btn-success col-md-3" runat="server" onserverclick="EnviarAllFactura"><span class="glyphicon glyphicon-inbox"></span>ENVIAR TODAS LAS FACTURAS</button>
+                    <button class="btn btn-success col-md-3" runat="server" onserverclick="EnviarSMSText"><span class="glyphicon glyphicon-inbox"></span>ENVIAR SMS TEXTO</button>
+                    <a href="VistadeExporte.aspx" class="btn btn-success col-md-3"><span class="glyphicon glyphicon-export">OBTENER XLS PARA SIIGO</span></a>
                 </div>
             </div>
         </div>

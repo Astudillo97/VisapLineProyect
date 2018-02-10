@@ -95,7 +95,7 @@ namespace VisapLine.View.Private
                 if (pago.RegistrarPago(pago, "usuario1111", "ip:192.168.0.1"))
                 {
                     textError.InnerHtml = "Pago registrado correctamente";
-                    Alerta.CssClass = "alert alert-error";
+                    Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
                 }
             }
