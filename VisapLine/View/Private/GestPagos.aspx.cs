@@ -14,6 +14,7 @@ namespace VisapLine.View.Private
     {
         Pagos pago = new Pagos();
         Factura fact = new Factura();
+        Contrato cont = new Contrato();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -72,10 +73,32 @@ namespace VisapLine.View.Private
             try
             {
                 fact.facturaventa = code;
+                
                 DataRow datafact= Validar.Consulta(fact.ConsultarFacturaCodigo(fact)).Rows[0];
-                textpagado.Text = datafact["totalfac"].ToString();
+                cod.InnerHtml = datafact["facturaventa"].ToString();
+                
                 idfactura.InnerHtml= datafact["idfactura"].ToString();
+                emision.InnerHtml= datafact["fechaemision"].ToString();
+                vencimiento.InnerHtml = datafact["fechavencimiento"].ToString();
+                corte.InnerHtml = datafact["fechacorte"].ToString();
+                estado.InnerHtml = datafact["estado"].ToString();
 
+                textpagado.Text = datafact["totalfac"].ToString();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        public void ConsultarTercero( string id)
+        {
+            try
+            {
+                cont.terceros_idterceros = id;
+                cont.ConsultarContratoidtercero(cont);
             }
             catch (Exception ex)
             {

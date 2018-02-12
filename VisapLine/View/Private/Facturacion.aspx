@@ -1,6 +1,31 @@
 ﻿<%@ Page Title="" Language="C#" MaintainScrollPositionOnPostback="true" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Facturacion.aspx.cs" Inherits="VisapLine.View.Private.Facturacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script>
+        function EnviarSMS(mensaje, telefono) {
+            var data = JSON.stringify({
+                "from": "InfoSMS",
+                "to": "" + telefono,
+                "text": "" + mensaje
+            });
+
+            var xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+
+            xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === this.DONE) {
+                    console.log(this.responseText);
+                }
+            });
+
+            xhr.open("POST", "https://apisms.contactomasivo.com/sms/1/text/single");
+            xhr.setRequestHeader("authorization", "Basic Q01wcnVlYmE6S2dOSmRqT0U=");
+            xhr.setRequestHeader("content-type", "application/json");
+            xhr.setRequestHeader("accept", "application/json");
+
+            xhr.send(data);
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
@@ -12,10 +37,11 @@
             <li class="breadcrumb-item active">Vistas</li>
         </ol>
     </section>
-    <asp:panel id="Alerta" visible="false" runat="server" cssclass="col-12 alert alert-success">
+    <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
-    </asp:panel>
+    </asp:Panel>
+
     <section class="content">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
@@ -79,7 +105,7 @@
         </div>
         <div class="tab-pane">
             <div class="box box-primary">
-                <asp:gridview runat="server" cssclass="table table-bordered table-striped table-responsive" onpageindexchanging="allfactura_PageIndexChanging" OnRowCommand="allfactura_RowCommand" allowpaging="True" pagesize="10"  autogeneratecolumns="False" id="allfactura">
+                <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" OnPageIndexChanging="allfactura_PageIndexChanging" OnRowCommand="allfactura_RowCommand" AllowPaging="True" PageSize="10" AutoGenerateColumns="False" ID="allfactura">
                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Wrap="true" />
                     <Columns>
@@ -95,34 +121,38 @@
                         <asp:BoundField DataField="estadof" HeaderText="Estado"></asp:BoundField>
                         <asp:BoundField DataField="totalfac" HeaderText="Valor"></asp:BoundField>
                         <asp:TemplateField HeaderText="">
-                                    <ItemTemplate>
-                                        <asp:Button ID="btn1" runat="server"  CssClass="btn glyphicon glyphicon-copy "  CommandName="verfactura" CommandArgument='<%# Eval("idfactura") %>' Text="" />
-                                    </ItemTemplate>
-                         </asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btn1" runat="server" CssClass="glyphicon glyphicon-copy" CommandName="verfactura" CommandArgument='<%# Eval("idfactura") %>' Text="" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="">
-                                    <ItemTemplate>
-                                        <asp:Button ID="btn2" runat="server"  CssClass="btn glyphicon glyphicon-edit " CommandName="editarfactura" CommandArgument='<%# Eval("idfactura") %>' Text="" />
-                                    </ItemTemplate>
-                         </asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btn2" runat="server" CssClass="glyphicon glyphicon-edit" CommandName="editarfactura" CommandArgument='<%# Eval("idfactura") %>' Text="" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="">
-                                    <ItemTemplate>
-                                        <asp:Button ID="btn3" runat="server"  CssClass="btn glyphicon glyphicon-bitcoin " CommandName="pagarfactura" CommandArgument='<%# Eval("facturaventa") %>' Text="" />
-                                    </ItemTemplate>
-                         </asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btn3" runat="server" CssClass="glyphicon glyphicon-usd" CommandName="pagarfactura" CommandArgument='<%# Eval("facturaventa") %>' Text="" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
-                </asp:gridview>
+                </asp:GridView>
             </div>
         </div>
         <div class="tab-pane">
             <div class="box box-primary">
                 <div class="form-group row">
                     <asp:DropDownList runat="server" class="btn btn-primary col-md-3">
-                        <asp:ListItem Text="text1" />
-                        <asp:ListItem Text="text2" />
+                        <asp:ListItem Text="Seleccione" />
+                        <asp:ListItem Text="CORREO" />
+                        <asp:ListItem Text="DOMICILIO" />
+                        <asp:ListItem Text="AMBOOS" />
                     </asp:DropDownList>
                     <asp:DropDownList runat="server" class="btn btn-primary col-md-3">
-                        <asp:ListItem Text="text1" />
-                        <asp:ListItem Text="text2" />
+                        <asp:ListItem Text="Seleccione" />
+                        <asp:ListItem Text="CORREO" />
+                        <asp:ListItem Text="DOMICILIO" />
+                        <asp:ListItem Text="AMBOOS" />
                     </asp:DropDownList>
                     <asp:DropDownList runat="server" ID="estadofactura" class="btn btn-primary col-md-3">
                         <asp:ListItem Text="Seleccione" />
@@ -130,8 +160,7 @@
                         <asp:ListItem Text="Vencido" />
                     </asp:DropDownList>
                     <asp:DropDownList runat="server" class="btn btn-primary col-md-3">
-                        <asp:ListItem Text="text1" />
-                        <asp:ListItem Text="text2" />
+                        <asp:ListItem Text="TODOS" />
                     </asp:DropDownList>
                 </div>
                 <div class="form-group row">
@@ -144,6 +173,99 @@
         </div>
 
         <div class="tab-pane">
+        </div>
+        <div runat="server" visible="false" id="divcorreo">
+            <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <title>Untitled Document</title>
+            </head>
+            <body>
+
+                <div style="width: 100%;" align="center">
+
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="center" valign="top" style="background-color: #53636e;" bgcolor="#53636e;">
+
+                                <br>
+                                <br>
+                                <table width="583" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#FFFFFF" style="background-color: #FFFFFF;">
+                                            <img src="images/header.jpg" width="583" height="118"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#FFFFFF" style="background-color: #FFFFFF;">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="35" align="left" valign="top">&nbsp;</td>
+                                                    <td align="left" valign="top">
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td align="center" valign="top">
+                                                                    <div style="color: #245da5; font-family: Times New Roman, Times, serif; font-size: 48px;">Newsletter Title</div>
+                                                                    <div style="font-family: Verdana, Geneva, sans-serif; color: #898989; font-size: 12px;">Month Day, Year</div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" valign="top">
+                                                                    <img src="images/pic1.jpg" width="512" height="296" vspace="10"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" valign="top" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #525252;">
+
+                                                                    <div style="color: #3482ad; font-size: 19px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum magna enim, volutpat venenatis eros.</div>
+                                                                    <br>
+                                                                    Aliquam sed velit vitae nibh pulvinar iaculis. Aenean hendrerit, lorem eu luctus cursus.
+sapien justo auctor ligula id bibendum lorem leo quis leo. Suspendisse sit amet aliquam orci. Aliquam erat volutpat. Aliquam erat volutpat. Nunc ac justo enim. Morbi eleifend feugiat turpis non placerat. Etiam sed tellus ac lectus lacinia molestie nec eu nisl. Pellentesque mattis luctus ultrices. Suspendisse pretium feugiat ipsum nec dapibus. Aenean bibendum vestibulum scelerisque. Curabitur tempus pharetra mollis. Pellentesque rhoncus euismod pellentesque. Nam vulputate purus et neque rutrum dignissim. Duis aliquam erat massa, vel gravida orci. Aenean consectetur, libero non sodales consequat, lorem leo ultrices eros, in porta erat arcu at ante.<br>
+                                                                    <br>
+                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td width="13%"><b>
+                                                                                <img src="images/tweet.gif" alt="" width="24" height="23">
+                                                                                <img src="images/facebook.gif" alt="" width="24" height="23"></b></td>
+                                                                            <td width="87%" style="font-size: 11px; color: #525252; font-family: Arial, Helvetica, sans-serif;"><b>Hours: Mon-Fri 9:30-5:30, Sat. 9:30-3:00, Sun. Closed
+                                                                                <br>
+                                                                                Customer Support: support@companyname.com</b></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" valign="top" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #525252;">&nbsp;</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td width="35" align="left" valign="top">&nbsp;</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#3d90bd" style="background-color: #3d90bd;">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="35">&nbsp;</td>
+                                                    <td height="50" valign="middle" style="color: #FFFFFF; font-size: 11px; font-family: Arial, Helvetica, sans-serif;"><b>Company Address:</b><br>
+                                                        123 James Street,  Suite100, Long Beach CA, 90000, (000) 123  4567 </td>
+                                                    <td width="35">&nbsp;</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br>
+                                <br>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </body>
+            </html>
+
         </div>
     </section>
 </asp:Content>

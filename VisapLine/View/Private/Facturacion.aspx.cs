@@ -8,6 +8,9 @@ using VisapLine.Model;
 using VisapLine.Exeption;
 using System.Data;
 using System.Globalization;
+using RestSharp;
+using System.Web.Script.Serialization;
+using System.Net;
 
 namespace VisapLine.View.Private
 {
@@ -208,8 +211,7 @@ namespace VisapLine.View.Private
 
         protected void EnviarAllFactura(object sender, EventArgs e)
         {
-            string html = "Estimado usuario, ahora podras ver las facturas en nuestro sitio web: http://www.visapline.com/ \n " +
-                "Tambien recibiras la factura por este medio.";
+            string html = divcorreo.InnerHtml;
             string path = HttpContext.Current.Server.MapPath("~");
             string dir = "Archivos\\";
             DataTable basic;
@@ -225,8 +227,10 @@ namespace VisapLine.View.Private
                         //correo.destinatario= item["correo"].ToString();
                         correo.destinatario = "jab291214@gmail.com";
                         correo.cuerpo= html;
+                        correo.html = true;
                         correo.archivo= path+dir+ referen;
                         correo.EnviarMensaje();
+                        break;
                     }
                 }
             }
@@ -255,8 +259,9 @@ namespace VisapLine.View.Private
                         DataRow dat = tef.Rows.Find(item["idterceros"]);
                         if (dat["telefono"].ToString().Length>=10)
                         {
-                            string celular = dat["telefono"].ToString();
+                            string celular = dat["telefono"].ToString();// dat["telefono"].ToString();
                             string nombre = item["nombre"].ToString() +" "+ item["apellido"].ToString();
+                            ClientScript.RegisterStartupScript(GetType(), "msm", "EnviarSMS('" + msm+"','"+celular+"');", true);
                         }
                     }
                 }

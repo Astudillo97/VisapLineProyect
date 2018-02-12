@@ -26,30 +26,33 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarinventarioid(" + idequipo + ")");
         }
-        public DataTable crearservicio(string ip,int varcanmeg , int varcontra ,string varestrato ,string varestadp,string varreferenci ,int  varinvern, string vardireccion, int barrio)
+        public DataTable crearservicio(string ip, int varcanmeg, int varcontra, string varestrato, string varestadp, string varreferenci, int varinvern, string vardireccion, int barrio)
         {
             string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('" + vardireccion + "'," + barrio + ")").Rows[0][0].ToString();
-            return data.ConsultarDatos("select * from pr_insertarservicio('"+ip+"','2017-01-01',"+varcanmeg+","+varcontra+" ,'"+varestrato+"' ,'"+varestadp+"','"+varreferenci+"',"+ idpunto + ","+varinvern+")");
+            return data.ConsultarDatos("select * from pr_insertarservicio('" + ip + "','2017-01-01'," + varcanmeg + "," + varcontra + " ,'" + varestrato + "' ,'" + varestadp + "','" + varreferenci + "'," + idpunto + "," + varinvern + ")");
         }
-        public DataTable crearsertv(string ip, int varcontra, string varestrato, string varestadp, string varreferenci,string vardireccion,int barrio) {
-            string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('"+ vardireccion + "',"+ barrio + ")").Rows[0][0].ToString();
+        public DataTable crearsertv(string ip, int varcontra, string varestrato, string varestadp, string varreferenci, string vardireccion, int barrio) {
+            string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('" + vardireccion + "'," + barrio + ")").Rows[0][0].ToString();
             return data.ConsultarDatos("select * from pr_insertarserviciootro('" + ip + "','2017-01-01'," + varcontra + " ,'" + varestrato + "' ,'" + varestadp + "','" + varreferenci + "'," + idpunto + ")");
         }
         public DataTable consultaservicioscont(int contrato) {
-            return data.ConsultarDatos("select * from pr_consultarservicios("+ contrato + ")");
+            return data.ConsultarDatos("select * from pr_consultarservicios(" + contrato + ")");
         }
         public DataTable consultaservicioscont1(string contrato)
         {
             return data.ConsultarDatos("select * from pr_consultarservicios(" + contrato + ")");
         }
-        public DataTable consultarserivcioid( int i) {
-            return data.ConsultarDatos("select * from servicios inner join puntos on puntos.idpuntos = puntos_idpuntos INNER JOIN barrios on barrios_idbarrios = barrios.idbarrios inner join municipio on municipio_idmunicipio = municipio.idmunicipio where idservicios = "+i+"");
+        public DataTable consultarserivcioid(int i) {
+            return data.ConsultarDatos("select * from pr_consultartodoservicio(" + i + ")");
         }
 
-        public bool actualizarservicio(int id,string ip, int varcanmeg, string varestrato, string varestadp, string varreferenci, string vardireccion, int barrio)
+        public bool actualizarservicio(int id, string ip, int varcanmeg, string varestrato, string varestadp, string varreferenci, string vardireccion, int barrio)
         {
             string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('" + vardireccion + "'," + barrio + ")").Rows[0][0].ToString();
-            return data.OperarDatos("select * from pr_actualizarservicio("+id+","+ varcanmeg + ",'"+ varestrato + "','"+ varestadp + "','"+ varreferenci + "',"+ idpunto + ",'"+ ip + "')");
+            return data.OperarDatos("select * from pr_actualizarservicio(" + id + "," + varcanmeg + ",'" + varestrato + "','" + varestadp + "','" + varreferenci + "'," + idpunto + ",'" + ip + "')");
+        }
+        public bool cambiarequipo(string valorservi,string valorequipo){
+            return data.OperarDatos("select * from pr_cambiarequiposervicio("+valorservi+","+valorequipo+")");
         }
 
     }

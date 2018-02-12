@@ -243,6 +243,7 @@ namespace VisapLine.View.Private
             OrdenSalida ord = new OrdenSalida();
             return ord.Cerrarorden(valosal);
         }
+        
 
         protected void gridbusqueda_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

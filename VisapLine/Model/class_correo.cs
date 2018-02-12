@@ -5,6 +5,7 @@ using System.Net.Mime;
 using System.Threading;
 using System.ComponentModel;
 using VisapLine.Exeption;
+using GoEmail;
 
 namespace VisapLine.Model
 {
@@ -15,6 +16,7 @@ namespace VisapLine.Model
         public string asunto { get; set; }
         public string cuerpo { get; set; }
         public string archivo { get; set; }
+        public bool html { get; set; }
 
         public void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
         {
@@ -39,6 +41,7 @@ namespace VisapLine.Model
         {
             class_correo correo = new class_correo();
             SmtpClient client = new SmtpClient();
+            GoEmailv2 x = new GoEmailv2();
             client.Credentials = new System.Net.NetworkCredential("jab291214@gmail.com", "Jab.1997");
             MailAddress from = new MailAddress("jab291214@gmail.com","VisapLine Telecomunicaciones", System.Text.Encoding.UTF8);
             MailAddress to = new MailAddress(destinatario);
@@ -66,7 +69,23 @@ namespace VisapLine.Model
 
             try
             {
-                client.Send(message);
+                if (html)
+                {
+                    if (file==null)
+                    {
+                        x.Enviar(destinatario, asunto, cuerpo, "VisapLine Telecomunicaciones", "jab291214@gmail.com", "Jab.1997", html);
+                    }
+                    else
+                    {
+                        string[] arch = new string[1];
+                        arch[0] = file;
+                        x.EnviarConArchivos(destinatario, asunto, cuerpo, "VisapLine Telecomunicaciones", "jab291214@gmail.com", "Jab.1997", html,arch);
+                    }
+                }
+                else
+                {
+                    client.Send(message);
+                }
                 message.Dispose();
                 return true;
             }
