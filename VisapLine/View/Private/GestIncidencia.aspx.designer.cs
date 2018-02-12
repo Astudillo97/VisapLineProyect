@@ -94,13 +94,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divincidencia;
         
         /// <summary>
-        /// Control idincidencialabel.
+        /// Control Labelidincidencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label idincidencialabel;
+        protected global::System.Web.UI.WebControls.Label Labelidincidencia;
         
         /// <summary>
         /// Control DropDownListestadoinc.
@@ -130,13 +130,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
         
         /// <summary>
-        /// Control DropDownList2.
+        /// Control costodescuento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl costodescuento;
         
         /// <summary>
         /// Control TextBox2.

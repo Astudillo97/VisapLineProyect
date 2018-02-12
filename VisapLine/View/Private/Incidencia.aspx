@@ -164,17 +164,14 @@
                             <div class="col-sm-8">
                                 <asp:DropDownList ID="DropDownListestadoinc" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                     <asp:ListItem>Seleccione</asp:ListItem>
-                                    <asp:ListItem>ACTIVO</asp:ListItem>
-                                    <asp:ListItem>INACTIVO</asp:ListItem>
-                                    <asp:ListItem>ESPERA</asp:ListItem>
-                                    <asp:ListItem>SOLUCIONADO</asp:ListItem>
+                                      <asp:ListItem>ABIERTO</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Detalle</label>
                             <div class="col-sm-8">
-                                <textarea id="TextArea1detalle" class="form-control" runat="server" data-iconlibrary="fa" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 139px;" required data-validation-required-message="This field is required"></textarea>
+                                <textarea id="TextArea1detalle" class="form-control" runat="server" data-iconlibrary="fa" data-hidden-buttons="cmdBold" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 139px;" required data-validation-required-message="This field is required"></textarea>
 
                             </div>
                         </div>

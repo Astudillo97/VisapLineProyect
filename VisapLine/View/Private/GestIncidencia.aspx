@@ -91,7 +91,9 @@
 
             </div>
         </div>
-        <div class="row" id="iddatosterceros" runat="server">
+
+
+        <div class="row" id="iddatosterceros" runat="server" visible="false">
             <div class="col-6">
                 <div class="box box-default">
                     <div class="box-header with-border">
@@ -128,12 +130,11 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-6">
                 <div class="box box-default" id="divincidencia" runat="server">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Solucion de incidencia</h3>
-                        <asp:Label ID="idincidencialabel" runat="server" Text="" visible="false"></asp:Label>
+                        <h3 class="box-title">Solucion de incidencia N°
+                            <asp:Label ID="Labelidincidencia" runat="server"></asp:Label></h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -144,17 +145,15 @@
                                     <div class="col-sm-8">
                                         <asp:DropDownList ID="DropDownListestadoinc" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                             <asp:ListItem>Seleccione</asp:ListItem>
-                                            <asp:ListItem>ACTIVO</asp:ListItem>
-                                            <asp:ListItem>INACTIVO</asp:ListItem>
+                                            <asp:ListItem>CERRADO</asp:ListItem>
                                             <asp:ListItem>ESPERA</asp:ListItem>
-                                            <asp:ListItem>SOLUCIONADO</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Detalle</label>
                                     <div class="col-sm-8">
-                                        <textarea id="TextArea1detalle" class="form-control" runat="server" data-iconlibrary="fa" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 120px;" required data-validation-required-message="This field is required"></textarea>
+                                        <textarea id="TextArea1detalle" class="form-control" runat="server" data-iconlibrary="fa" data-hidden-buttons="cmdBold" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 120px;" required data-validation-required-message="This field is required"></textarea>
                                     </div>
                                 </div>
 
@@ -163,26 +162,15 @@
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Descuento</label>
                                     <div class="col-sm-8">
-                                        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AppendDataBoundItems="true">
                                             <asp:ListItem>Seleccione</asp:ListItem>
                                             <asp:ListItem>SI</asp:ListItem>
                                             <asp:ListItem>NO</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Estado</label>
-                                    <div class="col-sm-8">
-                                        <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                            <asp:ListItem>Seleccione</asp:ListItem>
-                                            <asp:ListItem>ACTIVO</asp:ListItem>
-                                            <asp:ListItem>INACTIVO</asp:ListItem>
-                                            <asp:ListItem>ESPERA</asp:ListItem>
-                                            <asp:ListItem>SOLUCIONADO</asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                                 <div class="form-group row">
+
+                                <div class="form-group row" id="costodescuento" runat="server" visible="false">
                                     <label class="col-sm-4 col-form-label">Costo</label>
                                     <div class="col-sm-8">
                                         <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" type="number" placeholder="$"></asp:TextBox>
@@ -193,11 +181,12 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <center>
+            <center>
         <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="143" Height="30" Text="Guardar" OnClick="Button1_Click" />
             </center>
+        </div>
+
+
     </section>
 
 </asp:Content>

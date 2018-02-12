@@ -30,6 +30,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarincidencias()");
         }
+        public DataTable ConsultarIncidencias(string varid)
+        {
+            return data.ConsultarDatos("select * from pr_consultarincidenciaid('"+varid+"')");
+        }
 
         public bool RegistrarInsidencias(Incidencias inci)
         {
@@ -41,5 +45,7 @@ namespace VisapLine.Model
             return data.OperarDatos("select * from public.pr_insertarincedencia()");
 
         }
+
+
     }
 }

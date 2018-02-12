@@ -13,7 +13,9 @@ namespace VisapLine.View.Private
     public partial class GestIncidencia : System.Web.UI.Page
     {
         Incidencias inci = new Incidencias();
-
+        Servicios serv = new Servicios();
+        Contrato cont = new Contrato();
+        Terceros terc = new Terceros();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -40,7 +42,19 @@ namespace VisapLine.View.Private
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            GridViewRow gridw = GridView2.SelectedRow;
+            Labelidincidencia.Text = gridw.Cells[1].Text;
+            Labelidincidencia.Visible = true;
+            DataRow indat= inci.ConsultarIncidencias(Labelidincidencia.Text).Rows[0];
+            DataRow ser = serv.consultaserviciosid(indat["servicios_idservicios"].ToString()).Rows[0];
+            cont.idcontrato = ser["contrato_idcontrato"].ToString();
+            DataRow con = cont.ConsultarContratoidcontrato(cont).Rows[0];
+            terc.idterceros = con["terceros_idterceros_cont"].ToString();
+            DataRow ter = terc.ConsultarTercerosId(terc).Rows[0];
+            Label1.Text = ter["nombre"].ToString();
+            Label2.Text = ter["apellido"].ToString();
+            TextBox1.Text = ter["direccion"].ToString();
+            iddatosterceros.Visible = true;
         }
 
 
@@ -58,13 +72,17 @@ namespace VisapLine.View.Private
             cargartabla();
         }
 
-        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (DropDownList1.Text == "SI")
+            {
+                costodescuento.Visible = true;
+            }
 
         }
     }

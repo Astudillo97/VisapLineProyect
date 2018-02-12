@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Archivos\data.txt" />
+    <Content Include="Archivos\GoEmail.dll" />
     <Content Include="Archivos\imgvisap.png" />
     <Content Include="Archivos\Contrato_postpago_FIJOS3.pdf" />
     <Content Include="Archivos\FreeSans.ttf" />
@@ -486,6 +487,7 @@
     <Content Include="View\Private\RegistroTerceros.aspx" />
     <Content Include="View\Private\servicio.aspx" />
     <Content Include="View\Private\Tipofact.aspx" />
+    <Content Include="View\Private\VistadeExporte.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -499,6 +501,7 @@
     <Compile Include="Model\class_pdf.cs" />
     <Compile Include="Model\DetalleCompra.cs" />
     <Compile Include="Model\Empresa.cs" />
+    <Compile Include="Model\excel.cs" />
     <Compile Include="Model\Garantia.cs" />
     <Compile Include="Model\Historico.cs" />
     <Compile Include="Model\impresorabix.cs" />
@@ -698,6 +701,12 @@
     <Compile Include="View\Private\Tipofact.aspx.designer.cs">
       <DependentUpon>Tipofact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\VistadeExporte.aspx.cs">
+      <DependentUpon>VistadeExporte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\VistadeExporte.aspx.designer.cs">
+      <DependentUpon>VistadeExporte.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -707,6 +716,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="View\Private\Nueva carpeta\" />
     <Folder Include="View\Public\" />
   </ItemGroup>
   <PropertyGroup>
