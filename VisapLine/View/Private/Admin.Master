@@ -426,6 +426,16 @@
             WeatherIcon.add('icon3', WeatherIcon.LIGHTRAINTHUNDER, { stroke: false, shadow: false, animated: true });
 
         </script>
+
+
+
+
+
+
+
+
+
+
     </form>
 </body>
 </html>

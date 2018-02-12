@@ -12,7 +12,7 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         function deletealert() {
-            swal("LA INCIDENCIA FUE CREADA CON EXITO!", "", "success");
+            swal("LA INCIDENCIA FUE SOLUCIONADA CON EXITO!", "", "success");
         }
         function alerterror() {
             swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
@@ -181,10 +181,11 @@
                     </div>
                 </div>
             </div>
-            <center>
-        <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="143" Height="30" Text="Guardar" OnClick="Button1_Click" />
-            </center>
+            
         </div>
+        <center>
+                 <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="143" Height="30" Visible="false" Text="Guardar" OnClick="Button1_Click" />
+            </center>
 
 
     </section>

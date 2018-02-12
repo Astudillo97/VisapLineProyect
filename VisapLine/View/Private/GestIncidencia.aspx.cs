@@ -55,6 +55,7 @@ namespace VisapLine.View.Private
             Label2.Text = ter["apellido"].ToString();
             TextBox1.Text = ter["direccion"].ToString();
             iddatosterceros.Visible = true;
+            Button1.Visible = true;
         }
 
 
@@ -74,7 +75,54 @@ namespace VisapLine.View.Private
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Terceros ter = (Terceros)Session["tercero"];
+                inci.terceros_idterceros = terc.idterceros;
+                inci.terceros_idterceros = Validar.validarlleno(ter.idterceros);
+                inci.idincidencias = Validar.validarlleno(Labelidincidencia.Text);
+                inci.estado = Validar.validarselected(DropDownListestadoinc.Text);
+                inci.detalle = Validar.validarlleno(TextArea1detalle.Value.ToUpper());
+                Validar.validarselected(DropDownList1.Text);
+                if (DropDownList1.Text == "SI")
+                {
+                    inci.descuento = "true";
+                }
+                else
+                {
+                    if (DropDownList1.Text == "NO")
+                    {
+                        TextBox2.Text = "0";
+                        inci.descuento = "false";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        
 
+            inci.costo = TextBox2.Text;
+
+           if(inci.updatesolucionincidencia(inci))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                cargartabla();
+                iddatosterceros.Visible = false;
+                DropDownListestadoinc.Text = "Seleccione";
+                TextBox2.Text = "";
+                TextArea1detalle.Value = "";
+                Button1.Visible = false;
+
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+            }
+           
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -82,6 +130,13 @@ namespace VisapLine.View.Private
             if (DropDownList1.Text == "SI")
             {
                 costodescuento.Visible = true;
+            }
+            else
+            {
+                if (DropDownList1.Text == "NO")
+                {
+                    costodescuento.Visible = false;
+                }
             }
 
         }
