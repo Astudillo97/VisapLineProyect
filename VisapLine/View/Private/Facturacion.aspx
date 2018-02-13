@@ -22,7 +22,6 @@
             xhr.setRequestHeader("authorization", "Basic Q01wcnVlYmE6S2dOSmRqT0U=");
             xhr.setRequestHeader("content-type", "application/json");
             xhr.setRequestHeader("accept", "application/json");
-
             xhr.send(data);
         }
     </script>

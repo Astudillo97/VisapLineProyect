@@ -7,18 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace VisapLine.View.Private
 {
-    public partial class Caja : System.Web.UI.Page
+    public partial class ReporteCaja : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
- 
     }
 }

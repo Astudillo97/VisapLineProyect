@@ -484,6 +484,7 @@
     <Content Include="View\Private\pagzona.aspx" />
     <Content Include="View\Private\Personal.aspx" />
     <Content Include="View\Private\RegistroTerceros.aspx" />
+    <Content Include="View\Private\ReporteCaja.aspx" />
     <Content Include="View\Private\servicio.aspx" />
     <Content Include="View\Private\Tipofact.aspx" />
     <Content Include="View\Private\VistadeExporte.aspx" />
@@ -495,6 +496,7 @@
     <Compile Include="DataAccess\Connection\Data.cs" />
     <Compile Include="DataAccess\Data\IData.cs" />
     <Compile Include="Model\AsignacionRol.cs" />
+    <Compile Include="Model\Caja.cs" />
     <Compile Include="Model\CargoTercero.cs" />
     <Compile Include="Model\CategoriaIncidencia.cs" />
     <Compile Include="Model\class_pdf.cs" />
@@ -699,6 +701,13 @@
     </Compile>
     <Compile Include="View\Private\RegistroTerceros.aspx.designer.cs">
       <DependentUpon>RegistroTerceros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\ReporteCaja.aspx.cs">
+      <DependentUpon>ReporteCaja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\ReporteCaja.aspx.designer.cs">
+      <DependentUpon>ReporteCaja.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\servicio.aspx.cs">
       <DependentUpon>servicio.aspx</DependentUpon>
