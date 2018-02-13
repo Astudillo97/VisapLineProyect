@@ -67,13 +67,7 @@
 <body class="hold-transition skin-black sidebar-mini">
 
     <form id="form1" runat="server">
-        <asp:ScriptManager ID="scripservicc" runat="server"></asp:ScriptManager>
-        <script type="text/javascript">
-            function modal() {
-                document.getElementById("aloginmodal").click();
-            }
 
-        </script>
         <div class="wrapper">
             <header class="main-header">
                 <a href="index.aspx" class="logo">
