@@ -4,6 +4,7 @@
 
 <html>
 <head runat="server">
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,8 +63,17 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
+
 <body class="hold-transition skin-black sidebar-mini">
+
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="scripservicc" runat="server"></asp:ScriptManager>
+        <script type="text/javascript">
+            function modal() {
+                document.getElementById("aloginmodal").click();
+            }
+
+        </script>
         <div class="wrapper">
             <header class="main-header">
                 <a href="index.aspx" class="logo">
@@ -427,8 +437,48 @@
 
         </script>
 
-
-
+        <a href="#" data-controls-modal="aloginmodal" data-backdrop="static" data-toggle="modal" data-target="#login"></a>
+        <div class="modal fade" id="login">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Obtención de credenciales</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box box-primary bg-transparent">
+                            <div class="form-element">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Numero Unico de identificación</label>
+                                        <input type="text" class="form-control" runat="server" id="nui_cre" placeholder="Ingrese su Numero unico" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Usuario</label>
+                                        <input type="text" class="form-control" runat="server" id="usuario_cre" placeholder="Ingrese un usuario" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Contraseña</label>
+                                        <input type="password" class="form-control" runat="server" id="password_cre" placeholder="Ingrese la contraseña" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Confrime Contraseña</label>
+                                        <input type="password" class="form-control" runat="server" id="password2_cre" placeholder="Vuelva a escribir la contraseña" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <%-- <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary float-right" runat="server" onserverclick="CrearUsuario">Gurdar Cambios</button>--%>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
 
 
 
