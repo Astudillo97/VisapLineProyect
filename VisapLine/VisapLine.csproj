@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Archivos\data.txt" />
+    <Content Include="Archivos\GoEmail.dll" />
     <Content Include="Archivos\imgvisap.png" />
     <Content Include="Archivos\Contrato_postpago_FIJOS3.pdf" />
     <Content Include="Archivos\FreeSans.ttf" />
@@ -465,10 +466,12 @@
     <Content Include="Contenido\images\visa.png" />
     <Content Include="View\Login\login.aspx" />
     <Content Include="View\Private\Almacen.aspx" />
+    <Content Include="View\Private\Caja.aspx" />
     <Content Include="View\Private\ContratoCliente.aspx" />
     <Content Include="View\Private\detalleservicio.aspx" />
     <Content Include="View\Private\EditarFactura.aspx" />
     <Content Include="View\Private\Facturacion.aspx" />
+    <Content Include="View\Private\GestCaja.aspx" />
     <Content Include="View\Private\GestCliente.aspx" />
     <Content Include="View\Private\GestContrato.aspx" />
     <Content Include="View\Private\GestIncidencia.aspx" />
@@ -483,6 +486,7 @@
     <Content Include="View\Private\RegistroTerceros.aspx" />
     <Content Include="View\Private\servicio.aspx" />
     <Content Include="View\Private\Tipofact.aspx" />
+    <Content Include="View\Private\VistadeExporte.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -496,6 +500,7 @@
     <Compile Include="Model\class_pdf.cs" />
     <Compile Include="Model\DetalleCompra.cs" />
     <Compile Include="Model\Empresa.cs" />
+    <Compile Include="Model\excel.cs" />
     <Compile Include="Model\Garantia.cs" />
     <Compile Include="Model\Historico.cs" />
     <Compile Include="Model\impresorabix.cs" />
@@ -569,6 +574,13 @@
     <Compile Include="View\Private\Almacen.aspx.designer.cs">
       <DependentUpon>Almacen.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\Caja.aspx.cs">
+      <DependentUpon>Caja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Caja.aspx.designer.cs">
+      <DependentUpon>Caja.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\ContratoCliente.aspx.cs">
       <DependentUpon>ContratoCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -596,6 +608,13 @@
     </Compile>
     <Compile Include="View\Private\Facturacion.aspx.designer.cs">
       <DependentUpon>Facturacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\GestCaja.aspx.cs">
+      <DependentUpon>GestCaja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\GestCaja.aspx.designer.cs">
+      <DependentUpon>GestCaja.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\GestCliente.aspx.cs">
       <DependentUpon>GestCliente.aspx</DependentUpon>
@@ -694,6 +713,12 @@
     </Compile>
     <Compile Include="View\Private\Tipofact.aspx.designer.cs">
       <DependentUpon>Tipofact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\VistadeExporte.aspx.cs">
+      <DependentUpon>VistadeExporte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\VistadeExporte.aspx.designer.cs">
+      <DependentUpon>VistadeExporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

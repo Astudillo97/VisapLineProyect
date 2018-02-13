@@ -7,7 +7,8 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using VisapLine.Model;
-
+using System.Web.Script.Serialization;
+using System.Web.Services;
 namespace VisapLine.View.Private
 {
     public partial class Admin : System.Web.UI.MasterPage
@@ -28,13 +29,16 @@ namespace VisapLine.View.Private
                         listRoles.DataValueField = "idrol";
                         listRoles.DataTextField = "rol";
                         listRoles.DataBind();
-
+                        
                         if (Session["idrol"] == null)
                         {
                             listRoles.SelectedIndex = 0;
                             Session["idrol"] = listRoles.SelectedValue;
                         }
                         listRoles.SelectedValue = Session["idrol"].ToString();
+               
+
+                       
                     }
                     CargarMenu(Session["idrol"].ToString());
                 }
@@ -131,5 +135,6 @@ namespace VisapLine.View.Private
 
             }
         }
+     
     }
 }

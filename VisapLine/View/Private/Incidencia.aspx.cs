@@ -39,7 +39,7 @@ namespace VisapLine.View.Private
 
                 Terceros ter = (Terceros)Session["tercero"];
                 inci.estado = Validar.validarselected(DropDownListestadoinc.Text);
-                inci.detalle = Validar.validarlleno(TextArea1detalle.Value);
+                inci.detalle = Validar.validarlleno(TextArea1detalle.Value.ToUpper());
                 inci.terceros_idterceros = Validar.validarlleno(ter.idterceros);
                 inci.servicios_idservicios = Validar.validarlleno(idservicio.Text);
                 inci.tipoincidencia_idtipoincidencia = Validar.validarselected(DropDownList2.SelectedValue);

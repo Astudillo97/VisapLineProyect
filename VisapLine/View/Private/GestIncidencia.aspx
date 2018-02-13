@@ -12,7 +12,7 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         function deletealert() {
-            swal("LA INCIDENCIA FUE CREADA CON EXITO!", "", "success");
+            swal("LA INCIDENCIA FUE SOLUCIONADA CON EXITO!", "", "success");
         }
         function alerterror() {
             swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
@@ -91,7 +91,9 @@
 
             </div>
         </div>
-        <div class="row" id="iddatosterceros" runat="server">
+
+
+        <div class="row" id="iddatosterceros" runat="server" visible="false">
             <div class="col-6">
                 <div class="box box-default">
                     <div class="box-header with-border">
@@ -122,16 +124,17 @@
                                         <asp:TextBox ID="TextBox1" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="165px" Height="90px"></asp:TextBox>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="col-6">
                 <div class="box box-default" id="divincidencia" runat="server">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Solucion de incidencia</h3>
+                        <h3 class="box-title">Solucion de incidencia N°
+                            <asp:Label ID="Labelidincidencia" runat="server"></asp:Label></h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -142,17 +145,15 @@
                                     <div class="col-sm-8">
                                         <asp:DropDownList ID="DropDownListestadoinc" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                             <asp:ListItem>Seleccione</asp:ListItem>
-                                            <asp:ListItem>ACTIVO</asp:ListItem>
-                                            <asp:ListItem>INACTIVO</asp:ListItem>
+                                            <asp:ListItem>CERRADO</asp:ListItem>
                                             <asp:ListItem>ESPERA</asp:ListItem>
-                                            <asp:ListItem>SOLUCIONADO</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Detalle</label>
                                     <div class="col-sm-8">
-                                        <textarea id="TextArea1detalle" class="form-control" runat="server" data-iconlibrary="fa" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 120px;" required data-validation-required-message="This field is required"></textarea>
+                                        <textarea id="TextArea1detalle" class="form-control" runat="server" data-iconlibrary="fa" data-hidden-buttons="cmdBold" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 120px;" required data-validation-required-message="This field is required"></textarea>
                                     </div>
                                 </div>
 
@@ -161,23 +162,18 @@
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Descuento</label>
                                     <div class="col-sm-8">
-                                        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AppendDataBoundItems="true">
                                             <asp:ListItem>Seleccione</asp:ListItem>
                                             <asp:ListItem>SI</asp:ListItem>
                                             <asp:ListItem>NO</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Estado</label>
+
+                                <div class="form-group row" id="costodescuento" runat="server" visible="false">
+                                    <label class="col-sm-4 col-form-label">Costo</label>
                                     <div class="col-sm-8">
-                                        <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                            <asp:ListItem>Seleccione</asp:ListItem>
-                                            <asp:ListItem>ACTIVO</asp:ListItem>
-                                            <asp:ListItem>INACTIVO</asp:ListItem>
-                                            <asp:ListItem>ESPERA</asp:ListItem>
-                                            <asp:ListItem>SOLUCIONADO</asp:ListItem>
-                                        </asp:DropDownList>
+                                        <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" type="number" placeholder="$"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -185,11 +181,13 @@
                     </div>
                 </div>
             </div>
+            
         </div>
-
         <center>
-        <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="143" Height="30" Text="Guardar" OnClick="Button1_Click" />
+                 <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="143" Height="30" Visible="false" Text="Guardar" OnClick="Button1_Click" />
             </center>
+
+
     </section>
 
 </asp:Content>

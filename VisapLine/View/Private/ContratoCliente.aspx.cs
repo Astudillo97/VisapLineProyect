@@ -193,7 +193,7 @@ namespace VisapLine.View.Private
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+             
 
             }
 
@@ -212,14 +212,14 @@ namespace VisapLine.View.Private
                 DropDownListbarriocontrato.DataBind();
 
 
-                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+               
             }
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+      
             }
         }
 
@@ -228,14 +228,14 @@ namespace VisapLine.View.Private
             if (DropDownListestratocontrato.Text == "1" || DropDownListestratocontrato.Text == "2" || DropDownListestratocontrato.Text == "3")
             {
                 TextBoxivacontrato.Text = "0";
-                ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+            
             }
             else
             {
                 if (DropDownListestratocontrato.Text == "4" || DropDownListestratocontrato.Text == "5" || DropDownListestratocontrato.Text == "6")
                 {
                     TextBoxivacontrato.Text = "0.19";
-                    ClientScript.RegisterStartupScript(GetType(), "", "panel2();", true);
+                    
                 }
 
             }
@@ -252,7 +252,7 @@ namespace VisapLine.View.Private
 
                 DataRow datcontcorpo = Validar.Consulta(terc.ConsultarPersonaIdenti(dnitercero.Text)).Rows[0];
                 contrat.terceros_idterceros = Validar.validarlleno(datcontcorpo["idterceros"].ToString());
-                contrat.codigo = Validar.validarlleno(TextBox4.Text);
+                contrat.codigo = Validar.validarlleno(TextBox4.Text.ToUpper());
                 contrat.fechacontrato = Validar.validarlleno(Textboxfechainiciopermanencia.Text);
                 contrat.fechaactivacion = Validar.validarlleno(Textboxfechaactivacionservicio.Text);
                 contrat.fechafacturacion = Validar.validarlleno(Textboxfechafacturacion.Text);
@@ -264,8 +264,8 @@ namespace VisapLine.View.Private
                 contrat.facturaunica = Validar.validarselected(DropDownListfacturaunicacontrato.SelectedValue);
                 contrat.personal_idpersonal = Validar.validarsession(ter.idterceros);
                 contrat.sucursal_idsucursal = Validar.ConvertNumber(DropDownListsucursalcontrato.SelectedValue);
-                contrat.observaciondirec = Validar.validarlleno(TextArea1.Value);
-                contrat.direccionenviofact = Validar.validarlleno(TextBoxenviofactura.Text);
+                contrat.observaciondirec = Validar.validarlleno(TextArea1.Value.ToUpper());
+                contrat.direccionenviofact = Validar.validarlleno(TextBoxenviofactura.Text.ToUpper());
                 contrat.barrio_idbarrio = Validar.validarselected(DropDownListbarriocontrato.SelectedValue);
 
                 Validar.validarselected(DropDownListWIFI.Text);
@@ -324,8 +324,8 @@ namespace VisapLine.View.Private
                 contrat.facturaunica = Validar.validarselected(DropDownListfacturaunicacontrato.SelectedValue);
                 contrat.personal_idpersonal = Validar.validarsession(ter.idterceros);
                 contrat.sucursal_idsucursal = Validar.ConvertNumber(DropDownListsucursalcontrato.SelectedValue);
-                contrat.observaciondirec = Validar.validarlleno(TextArea1.Value);
-                contrat.direccionenviofact = Validar.validarlleno(TextBoxenviofactura.Text);
+                contrat.observaciondirec = Validar.validarlleno(TextArea1.Value.ToUpper());
+                contrat.direccionenviofact = Validar.validarlleno(TextBoxenviofactura.Text.ToUpper());
                 contrat.barrio_idbarrio = Validar.validarselected(DropDownListbarriocontrato.SelectedValue);
 
                 Validar.validarselected(DropDownListWIFI.Text);

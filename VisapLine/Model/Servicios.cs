@@ -51,10 +51,18 @@ namespace VisapLine.Model
             string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('" + vardireccion + "'," + barrio + ")").Rows[0][0].ToString();
             return data.OperarDatos("select * from pr_actualizarservicio(" + id + "," + varcanmeg + ",'" + varestrato + "','" + varestadp + "','" + varreferenci + "'," + idpunto + ",'" + ip + "')");
         }
-        public bool cambiarequipo(string valorservi,string valorequipo){
-            return data.OperarDatos("select * from pr_cambiarequiposervicio("+valorservi+","+valorequipo+")");
+        public bool cambiarequipo(string valorservi, string valorequipo) {
+            return data.OperarDatos("select * from pr_cambiarequiposervicio(" + valorservi + "," + valorequipo + ")");
         }
 
+
+        public DataTable consultaserviciosid(string id)
+        {
+            return data.ConsultarDatos("select * from pr_consultarservicioid('"+id+"')");
+
+        }
+
+
     }
-   
+
 }

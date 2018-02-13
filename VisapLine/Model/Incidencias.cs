@@ -30,16 +30,21 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarincidencias()");
         }
+        public DataTable ConsultarIncidencias(string varid)
+        {
+            return data.ConsultarDatos("select * from pr_consultarincidenciaid('"+varid+"')");
+        }
 
         public bool RegistrarInsidencias(Incidencias inci)
         {
             return data.OperarDatos("select * from public.pr_insertarincedencia('"+inci.estado+"','"+inci.detalle+"','"+inci.terceros_idterceros+"','"+inci.servicios_idservicios+"','"+inci.tipoincidencia_idtipoincidencia+"')");
         }
 
-        public bool updatesolucionincidencia()
+        public bool updatesolucionincidencia(Incidencias inci)
         {
-            return data.OperarDatos("select * from public.pr_insertarincedencia()");
+            return data.OperarDatos("select * from public.pr_actualizarindencia('"+inci.idincidencias+"','"+inci.terceros_idterceros+"','"+inci.estado+"','"+inci.detalle+"','"+inci.descuento+"','"+inci.costo+"')");
 
         }
+
     }
 }
