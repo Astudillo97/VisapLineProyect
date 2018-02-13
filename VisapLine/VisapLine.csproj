@@ -116,10 +116,6 @@
     <Content Include="Archivos\imgvisap.png" />
     <Content Include="Archivos\Contrato_postpago_FIJOS3.pdf" />
     <Content Include="Archivos\FreeSans.ttf" />
-    <Content Include="Archivos\2018129710-2.pdf" />
-    <Content Include="Archivos\201812972-2.pdf" />
-    <Content Include="Archivos\20181301639-6.pdf" />
-    <Content Include="Archivos\2018130191-6.pdf" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.eot" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.ttf" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.woff" />
@@ -362,6 +358,7 @@
     <Content Include="Contenido\js\template.js" />
     <Content Include="index.html" />
     <Content Include="View\Private\Admin.Master" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
