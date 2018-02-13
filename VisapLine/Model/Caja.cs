@@ -11,6 +11,24 @@ namespace VisapLine.Model
     {
         IData data = new Data();
 
+        public string idcaja { get; set; }
+        public string apertura { get; set; }
+        public string cierre { get; set; }
+        public string estado { get; set; }
+        public string ingresos { get; set; }
+        public string egreso { get; set; }
+        public string terceros_idterceros_reg_caj { get; set; }
+
+        public DataTable RegistrarCaja(Compra comp)
+        {
+            return data.ConsultarDatos("");
+        }
+
+        public DataTable ConsultarCaja()
+        {
+            return data.ConsultarDatos("");
+        }
+
 
 
 
