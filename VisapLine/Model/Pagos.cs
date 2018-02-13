@@ -26,5 +26,10 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("select * from pr_insertar_pagos('"+usuario+"','"+ipregistro+"','"+fac.factura_idfactura+"','"+fac.terceros_idterceros+"','"+fac.pagado+"')");
         }
+
+        public DataTable ConsultarPagoByIdFact(Pagos pag)
+        {
+            return data.ConsultarDatos("select * from pr_consultapagosidfact("+pag.factura_idfactura+")");
+        }
     }
 }

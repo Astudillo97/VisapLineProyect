@@ -23,7 +23,7 @@
                     <div class="box box-primary">
                         <div class="box-body">
                             <div class="form-group row" id="dividentificacion">
-                                <label class="col-sm-2 col-form-label">FACTURA DE SERVICIO</label>
+                                <label class="col-sm-3 col-form-label">FACTURA DE SERVICIO</label>
                                 <div class="col-sm-3">
                                     <asp:TextBox type="text" class="form-control" ID="factservicio" runat="server" />
                                 </div>
@@ -36,80 +36,51 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane" id="panel">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="box box-primary">
-                        <div class="box-body">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">FACTURA DE SERVICIO:</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="cod"></label>
-                                <label class="col-sm-3 col-form-label">ID DE FACTURA:</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="idfactura"></label>
-                                <label class="col-sm-3 col-form-label">ESTADO</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="estado"></label>
-                                <label class="col-sm-3 col-form-label">FECHA DE EMISION</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="emision"></label>
-                                <label class="col-sm-3 col-form-label">FECHA DE VENCIMIENTO</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="vencimiento"></label>
-                                <label class="col-sm-3 col-form-label">FECHA DE CORTE</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="corte"></label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane" id="panel2">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="box box-primary">
-                        <div class="box-body">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">FACTURA DE SERVICIO:</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label1"></label>
-                                <label class="col-sm-3 col-form-label">ID DE FACTURA:</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label2"></label>
-                                <label class="col-sm-3 col-form-label">ESTADO</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label3"></label>
-                                <label class="col-sm-3 col-form-label">FECHA DE EMISION</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label4"></label>
-                                <label class="col-sm-3 col-form-label">FECHA DE VENCIMIENTO</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label5"></label>
-                                <label class="col-sm-3 col-form-label">FECHA DE CORTE</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label6"></label>
-
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane" id="panel3">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="box box-primary">
-                        <div class="box-body">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">FACTURA DE SERVICIO:</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label7"></label>
-                                <label class="col-sm-3 col-form-label">ID DE FACTURA:</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label8"></label>
-                                <label class="col-sm-3 col-form-label">ESTADO</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label9"></label>
-                                <label class="col-sm-3 col-form-label">FECHA DE EMISION</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label10"></label>
-                                <label class="col-sm-3 col-form-label">FECHA DE VENCIMIENTO</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label11"></label>
-                                <label class="col-sm-3 col-form-label">FECHA DE CORTE</label>
-                                <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label12"></label>
-
-                                <div class="col-sm-3 ">
-                                    <asp:TextBox type="text" class="col-form-label text-bold" runat="server" ID="textpagado" />
+        <div class="row">
+            <div class="col-8">
+                <div class="tab-pane" id="panel">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">NUMERO FACTURA:</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="cod"></label>
+                                        <label class="col-sm-3 col-form-label">ID DE FACTURA:</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="idfactura"></label>
+                                        <label class="col-sm-3 col-form-label">ESTADO</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="estado"></label>
+                                        <label class="col-sm-3 col-form-label">EMITIDA</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="emision"></label>
+                                        <label class="col-sm-3 col-form-label">VENCE</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="vencimiento"></label>
+                                        <label class="col-sm-3 col-form-label">CORTE</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="corte"></label>
+                                    </div>
                                 </div>
-                                <div class="col-sm-3">
-                                    <button class="btn btn-success btn-lg" runat="server" onserverclick="btnRegistrarpago">PAGAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="tab-pane" id="panel4">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-sm-12 ">
+                                            <h2 class="text-center"><label class="col-form-label text-bold"  runat="server" id="estado2"></label></h2>
+                                        </div>
+                                        <div class="col-sm-12 ">
+                                            <asp:TextBox type="text" class="form-control text-center text-bold" runat="server" ID="textpagado" />
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success form-control btn-lg" id="btnpago" runat="server" onserverclick="btnRegistrarpago">PAGAR</button>
+                                            <button class="btn btn-secondary form-control btn-lg" id="btnimprimir" runat="server" onserverclick="btnimprimir_ServerClick">IMPRIMIR</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -117,5 +88,63 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="tab-pane" id="panel2">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">CLIENTE:</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label1"></label>
+                                        <label class="col-sm-3 col-form-label">CC/NIT:</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label2"></label>
+                                        <label class="col-sm-3 col-form-label">ESTADO</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label3"></label>
+                                        <label class="col-sm-3 col-form-label">FECHA DE EMISION</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label4"></label>
+                                        <label class="col-sm-3 col-form-label">FECHA DE VENCIMIENTO</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label5"></label>
+                                        <label class="col-sm-3 col-form-label">FECHA DE CORTE</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label6"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="tab-pane" id="panel3">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">FACTURA DE SERVICIO:</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label7"></label>
+                                        <label class="col-sm-3 col-form-label">ID DE FACTURA:</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label8"></label>
+                                        <label class="col-sm-3 col-form-label">ESTADO</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label9"></label>
+                                        <label class="col-sm-3 col-form-label">FECHA DE EMISION</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label10"></label>
+                                        <label class="col-sm-3 col-form-label">FECHA DE VENCIMIENTO</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label11"></label>
+                                        <label class="col-sm-3 col-form-label">FECHA DE CORTE</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label12"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </section>
 </asp:Content>
