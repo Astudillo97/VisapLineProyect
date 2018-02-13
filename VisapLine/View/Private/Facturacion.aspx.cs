@@ -225,7 +225,7 @@ namespace VisapLine.View.Private
                         string referen = pdf.CrearFactura(basic, item);
                         correo.asunto = "VISAPLINE - FACTURA " + item["facturaventa"].ToString()+ " "+Convert.ToDateTime(item["fechavencimiento"].ToString()).ToString("Y", CultureInfo.CreateSpecificCulture("es-co"));
                         //correo.destinatario= item["correo"].ToString();
-                        correo.destinatario = "jab291214@gmail.com";
+                        correo.destinatario = "gerencia@gmail.com";
                         correo.cuerpo= html;
                         correo.html = true;
                         correo.archivo= path+dir+ referen;
