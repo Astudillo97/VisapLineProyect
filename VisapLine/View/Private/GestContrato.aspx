@@ -8,13 +8,34 @@
             document.getElementById("botonmodalcontr").click();
         }
 
-     
 
 
     </script>
-
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        function deletealert() {
+            swal({
+                title: "SE REGISTRO CON EXITO!",
+                text: "Se ha registrado con exito ",
+                type: "success"
+            });
+        }
+        function alerterror() {
+            swal("NO SE REGISTRO!", "No se registro el formulario", "error");
+        }
+        function nocontro() {
+            swal("NO SE ENCOTRO NINGUN REGISTRO!", "Debe registrar el cliente", "error");
+        }
+    </script>
+
+
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
@@ -39,7 +60,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
                             <div class="col-sm-9">
-                                <asp:TextBox runat="server" type="number" CssClass="form-control"  ID="texboxdni" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" type="number" CssClass="form-control" ID="texboxdni" Style="text-transform: uppercase"></asp:TextBox>
 
                             </div>
                         </div>
@@ -63,7 +84,7 @@
                 <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" OnRowDataBound="GridView1_RowDataBound" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                     <Columns>
-                        <asp:CommandField ShowSelectButton="true" />
+                        <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
                         <asp:BoundField HeaderText="Codg" DataField="codigo" />
                         <asp:BoundField HeaderText="Nombre" DataField="nombreter" />
                         <asp:BoundField HeaderText="Fecha" DataFormatString="{0:d}" DataField="fechacontrato" />
@@ -98,7 +119,8 @@
 
         <div class="box box-default " id="ideditarcontrat" runat="server" visible="false">
             <div class="box-header with-border">
-                <h2 class="box-title">Contrato</h2>
+                <h2 class="box-title">Contrato  N°
+                    <asp:Label ID="LabelNumcontra" runat="server" Text=""></asp:Label></h2>
                 <div class="box-tools pull-right">
                 </div>
             </div>
@@ -123,6 +145,10 @@
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>ACTIVO</asp:ListItem>
                                         <asp:ListItem>INACTIVO</asp:ListItem>
+                                        <asp:ListItem>ELIMINADO</asp:ListItem>
+                                        <asp:ListItem>SUSPENDIDO</asp:ListItem>
+                                        <asp:ListItem>ANULADO</asp:ListItem>
+                                        <asp:ListItem>EXONERADO</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -152,11 +178,120 @@
                             <label class="col-sm-4 col-form-label">Direccion de Envio:</label>
                             <div class="col-sm-8">
                                 <div class="form-group row">
-                                    <asp:TextBox ID="TextBoxdirreccionenvio" Enabled="false" class="form-control" Style="text-transform: uppercase" runat="server"></asp:TextBox>
+                                    <textarea id="TextArea1" cols="20" rows="2" disabled class="form-control" runat="server" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 122px;"></textarea>
                                 </div>
                             </div>
                         </div>
-
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Descuento:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <asp:DropDownList ID="DropDownList2" runat="server" Enabled="false" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem>Seleccione</asp:ListItem>
+                                        <asp:ListItem>1</asp:ListItem>
+                                        <asp:ListItem>2</asp:ListItem>
+                                        <asp:ListItem>3</asp:ListItem>
+                                        <asp:ListItem>4</asp:ListItem>
+                                        <asp:ListItem>5</asp:ListItem>
+                                        <asp:ListItem>6</asp:ListItem>
+                                        <asp:ListItem>7</asp:ListItem>
+                                        <asp:ListItem>8</asp:ListItem>
+                                        <asp:ListItem>9</asp:ListItem>
+                                        <asp:ListItem>10</asp:ListItem>
+                                        <asp:ListItem>11</asp:ListItem>
+                                        <asp:ListItem>12</asp:ListItem>
+                                        <asp:ListItem>13</asp:ListItem>
+                                        <asp:ListItem>14</asp:ListItem>
+                                        <asp:ListItem>15</asp:ListItem>
+                                        <asp:ListItem>16</asp:ListItem>
+                                        <asp:ListItem>17</asp:ListItem>
+                                        <asp:ListItem>18</asp:ListItem>
+                                        <asp:ListItem>19</asp:ListItem>
+                                        <asp:ListItem>20</asp:ListItem>
+                                        <asp:ListItem>21</asp:ListItem>
+                                        <asp:ListItem>22</asp:ListItem>
+                                        <asp:ListItem>23</asp:ListItem>
+                                        <asp:ListItem>24</asp:ListItem>
+                                        <asp:ListItem>25</asp:ListItem>
+                                        <asp:ListItem>26</asp:ListItem>
+                                        <asp:ListItem>27</asp:ListItem>
+                                        <asp:ListItem>28</asp:ListItem>
+                                        <asp:ListItem>29</asp:ListItem>
+                                        <asp:ListItem>30</asp:ListItem>
+                                        <asp:ListItem>31</asp:ListItem>
+                                        <asp:ListItem>32</asp:ListItem>
+                                        <asp:ListItem>33</asp:ListItem>
+                                        <asp:ListItem>34</asp:ListItem>
+                                        <asp:ListItem>35</asp:ListItem>
+                                        <asp:ListItem>36</asp:ListItem>
+                                        <asp:ListItem>37</asp:ListItem>
+                                        <asp:ListItem>38</asp:ListItem>
+                                        <asp:ListItem>39</asp:ListItem>
+                                        <asp:ListItem>40</asp:ListItem>
+                                        <asp:ListItem>41</asp:ListItem>
+                                        <asp:ListItem>42</asp:ListItem>
+                                        <asp:ListItem>43</asp:ListItem>
+                                        <asp:ListItem>44</asp:ListItem>
+                                        <asp:ListItem>45</asp:ListItem>
+                                        <asp:ListItem>46</asp:ListItem>
+                                        <asp:ListItem>47</asp:ListItem>
+                                        <asp:ListItem>48</asp:ListItem>
+                                        <asp:ListItem>49</asp:ListItem>
+                                        <asp:ListItem>50</asp:ListItem>
+                                        <asp:ListItem>51</asp:ListItem>
+                                        <asp:ListItem>52</asp:ListItem>
+                                        <asp:ListItem>53</asp:ListItem>
+                                        <asp:ListItem>54</asp:ListItem>
+                                        <asp:ListItem>55</asp:ListItem>
+                                        <asp:ListItem>56</asp:ListItem>
+                                        <asp:ListItem>57</asp:ListItem>
+                                        <asp:ListItem>58</asp:ListItem>
+                                        <asp:ListItem>59</asp:ListItem>
+                                        <asp:ListItem>60</asp:ListItem>
+                                        <asp:ListItem>61</asp:ListItem>
+                                        <asp:ListItem>62</asp:ListItem>
+                                        <asp:ListItem>63</asp:ListItem>
+                                        <asp:ListItem>64</asp:ListItem>
+                                        <asp:ListItem>65</asp:ListItem>
+                                        <asp:ListItem>66</asp:ListItem>
+                                        <asp:ListItem>67</asp:ListItem>
+                                        <asp:ListItem>68</asp:ListItem>
+                                        <asp:ListItem>69</asp:ListItem>
+                                        <asp:ListItem>70</asp:ListItem>
+                                        <asp:ListItem>71</asp:ListItem>
+                                        <asp:ListItem>72</asp:ListItem>
+                                        <asp:ListItem>73</asp:ListItem>
+                                        <asp:ListItem>74</asp:ListItem>
+                                        <asp:ListItem>75</asp:ListItem>
+                                        <asp:ListItem>76</asp:ListItem>
+                                        <asp:ListItem>77</asp:ListItem>
+                                        <asp:ListItem>78</asp:ListItem>
+                                        <asp:ListItem>79</asp:ListItem>
+                                        <asp:ListItem>80</asp:ListItem>
+                                        <asp:ListItem>81</asp:ListItem>
+                                        <asp:ListItem>82</asp:ListItem>
+                                        <asp:ListItem>83</asp:ListItem>
+                                        <asp:ListItem>84</asp:ListItem>
+                                        <asp:ListItem>85</asp:ListItem>
+                                        <asp:ListItem>86</asp:ListItem>
+                                        <asp:ListItem>87</asp:ListItem>
+                                        <asp:ListItem>88</asp:ListItem>
+                                        <asp:ListItem>89</asp:ListItem>
+                                        <asp:ListItem>90</asp:ListItem>
+                                        <asp:ListItem>91</asp:ListItem>
+                                        <asp:ListItem>92</asp:ListItem>
+                                        <asp:ListItem>93</asp:ListItem>
+                                        <asp:ListItem>94</asp:ListItem>
+                                        <asp:ListItem>95</asp:ListItem>
+                                        <asp:ListItem>96</asp:ListItem>
+                                        <asp:ListItem>97</asp:ListItem>
+                                        <asp:ListItem>98</asp:ListItem>
+                                        <asp:ListItem>99</asp:ListItem>
+                                        <asp:ListItem>100</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <asp:Label ID="Labelidcontrato" runat="server" Visible="false" Text="Label"></asp:Label>
                     <div class="col-md-6 col-12">
@@ -185,16 +320,6 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Sucursal:</label>
-                            <div class="col-sm-8">
-                                <div class="form-group row">
-                                    <asp:DropDownList ID="Sucursal" runat="server" Enabled="false" CssClass="form-control" AppendDataBoundItems="true">
-                                        <asp:ListItem>Seleccione</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label class="col-sm-4 col-form-label">barrio:</label>
                             <div class="col-sm-8">
                                 <div class="form-group row">
@@ -213,6 +338,28 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Observacion:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <textarea id="TextArea2" cols="20" rows="2" disabled class="form-control" runat="server" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 122px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Wifi:</label>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <asp:DropDownList ID="DropDownList3" runat="server" Enabled="false" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem>Seleccione</asp:ListItem>
+                                        <asp:ListItem>SI</asp:ListItem>
+                                        <asp:ListItem>NO</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
 
                 </div>
@@ -228,50 +375,21 @@
                           <asp:Button ID="Buttoneditar" runat="server" Visible="false" Text="Editar" class="btn btn-block btn-info btn-lg" Width="143px" Height="30px" OnClick="Buttoneditar_Click" /></th>
                 
                     <th>
-                         <asp:Button ID="Buttonmodal" runat="server"  Visible="false" Enabled="false" Text="Guardar" class="btn btn-block btn-success btn-lg" Width="143px" Height="30px" onclick="Buttonmodal_Click"></asp:Button>
-                         <a href="#" id="botonmodalcontr"  data-toggle="modal" data-target="#modal-gesti"></a>
+                        
+                        <asp:Button ID="ButtonGuardar" runat="server" Text="Guardar" Visible="false" Enabled="false" class="btn btn-block btn-success btn-lg" Width="143px" Height="30px" OnClick="ButtonGuardar_Click" />
+                           
                   
                         </th>
                     <th>
                         <asp:Button ID="Buttoncancelar" runat="server" Visible="false" Enabled="false" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="143px" Height="30px" OnClick="Buttoncancelar_Click" /></th>
-                </tr>
+                                <th>
+                        <asp:Button ID="Buttonservicio" runat="server" Visible="false"  Text="Modificar Servicio" class="btn btn-block btn-info btn-lg" Width="143px" Height="30px" OnClick="Buttonservicio_Click" /></th>
+                    </tr>
 
             </table> 
       </center>
 
 
-
-
-
-        <div class="modal" id="modal-gesti">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-
-                        <h6 class="modal-title">¿Esta seguro que quiere editar el contrato?</h6>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="box box-primary bg-transparent">
-                            <div class="sa-icon sa-warning pulseWarning" style="display: block;">
-                                <span class="sa-body pulseWarningIns"></span>
-                                <span class="sa-dot pulseWarningIns"></span>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <asp:Button ID="ButtonGuardar" runat="server" Text="Guardar" class="btn btn-block btn-success btn-lg" Width="100px" Height="30px" OnClick="ButtonGuardar_Click" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <asp:Button ID="Button4" runat="server" Text="Cancelar" class="btn btn-block btn-danger btn-lg" Width="100px" Height="30px" data-dismiss="modal" />
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
 </asp:Content>

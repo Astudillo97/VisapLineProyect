@@ -10,7 +10,16 @@
 namespace VisapLine.View.Private {
     
     
-    public partial class GestTercero {
+    public partial class ContratoCliente {
+        
+        /// <summary>
+        /// Control respust.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager respust;
         
         /// <summary>
         /// Control Alerta.
@@ -31,237 +40,336 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl textError;
         
         /// <summary>
-        /// Control identif_.
+        /// Control TextBox4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText identif_;
+        protected global::System.Web.UI.WebControls.TextBox TextBox4;
         
         /// <summary>
-        /// Control viewedicion.
+        /// Control Labelidtercero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel viewedicion;
+        protected global::System.Web.UI.WebControls.Label Labelidtercero;
         
         /// <summary>
-        /// Control textediccion.
+        /// Control Label1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl textediccion;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// Control codigo.
+        /// Control idapellidolabel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl codigo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl idapellidolabel;
         
         /// <summary>
-        /// Control tipotercero_.
+        /// Control Label2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList tipotercero_;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// Control listTipos.
+        /// Control TextBox1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView listTipos;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// Control tipodoc_.
+        /// Control DropDownListpaiscontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList tipodoc_;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListpaiscontrato;
         
         /// <summary>
-        /// Control tiporesident_.
+        /// Control DropDownListdepartamentocontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList tiporesident_;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListdepartamentocontrato;
         
         /// <summary>
-        /// Control tipofact_.
+        /// Control DropDownListmunicipiocontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList tipofact_;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListmunicipiocontrato;
         
         /// <summary>
-        /// Control pais_.
+        /// Control DropDownListbarriocontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList pais_;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListbarriocontrato;
         
         /// <summary>
-        /// Control departamento_.
+        /// Control TextBoxenviofactura.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList departamento_;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxenviofactura;
         
         /// <summary>
-        /// Control municipio_.
+        /// Control TextArea1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList municipio_;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea1;
         
         /// <summary>
-        /// Control barrio_.
+        /// Control DropDownList1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList barrio_;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
         
         /// <summary>
-        /// Control identificacion_.
+        /// Control DropDownListtiporedenciacontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText identificacion_;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListtiporedenciacontrato;
         
         /// <summary>
-        /// Control fecnac_.
+        /// Control DropDownListestratocontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl fecnac_;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListestratocontrato;
         
         /// <summary>
-        /// Control _nombre_.
+        /// Control idsucursallabel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _nombre_;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl idsucursallabel;
         
         /// <summary>
-        /// Control nombre_.
+        /// Control DropDownListsucursalcontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nombre_;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListsucursalcontrato;
         
         /// <summary>
-        /// Control _apellido_.
+        /// Control GridView2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _apellido_;
+        protected global::System.Web.UI.WebControls.GridView GridView2;
         
         /// <summary>
-        /// Control apellido_.
+        /// Control Labeldipalcontra.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText apellido_;
+        protected global::System.Web.UI.WebControls.Label Labeldipalcontra;
         
         /// <summary>
-        /// Control telefono_.
+        /// Control Labelsubidaplancontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText telefono_;
+        protected global::System.Web.UI.WebControls.Label Labelsubidaplancontrato;
         
         /// <summary>
-        /// Control telefonos.
+        /// Control dnitercero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView telefonos;
+        protected global::System.Web.UI.WebControls.Label dnitercero;
         
         /// <summary>
-        /// Control correo_.
+        /// Control Labelbajadaplancontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl correo_;
+        protected global::System.Web.UI.WebControls.Label Labelbajadaplancontrato;
         
         /// <summary>
-        /// Control Direccion_.
+        /// Control DropDownListWIFI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Direccion_;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListWIFI;
         
         /// <summary>
-        /// Control estrato_.
+        /// Control Labelvaloriva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList estrato_;
+        protected global::System.Web.UI.WebControls.Label Labelvaloriva;
         
         /// <summary>
-        /// Control estado_.
+        /// Control TextArea1detalleplan.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList estado_;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea1detalleplan;
         
         /// <summary>
-        /// Control rh_.
+        /// Control Textboxfechainiciopermanencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList rh_;
+        protected global::System.Web.UI.WebControls.TextBox Textboxfechainiciopermanencia;
+        
+        /// <summary>
+        /// Control Textboxfechafinalizacionpermanencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Textboxfechafinalizacionpermanencia;
+        
+        /// <summary>
+        /// Control Textboxfechaactivacionservicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Textboxfechaactivacionservicio;
+        
+        /// <summary>
+        /// Control Textboxfechafacturacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Textboxfechafacturacion;
+        
+        /// <summary>
+        /// Control DropDownListfacturaunicacontrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListfacturaunicacontrato;
+        
+        /// <summary>
+        /// Control DropDownListtipocontrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListtipocontrato;
+        
+        /// <summary>
+        /// Control DropDownListestadocontrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListestadocontrato;
+        
+        /// <summary>
+        /// Control TextBoxivacontrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxivacontrato;
+        
+        /// <summary>
+        /// Control Textboxvalorinstalacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Textboxvalorinstalacion;
+        
+        /// <summary>
+        /// Control TextBox3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        
+        /// <summary>
+        /// Control Button4ontrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button4ontrato;
+        
+        /// <summary>
+        /// Control Button2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

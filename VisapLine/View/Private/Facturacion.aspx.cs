@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using VisapLine.Model;
 using VisapLine.Exeption;
 using System.Data;
+using System.Globalization;
 
 namespace VisapLine.View.Private
 {
@@ -18,11 +19,13 @@ namespace VisapLine.View.Private
         class_pdf pdf = new class_pdf();
         Detalle det = new Detalle();
         Empresa empresa = new Empresa();
+        Telefono telefon = new Telefono();
         CargoAdicional ca = new CargoAdicional();
         DataTable tablepersona = new DataTable();
         DataTable tablecontrato = new DataTable();
         static DataTable tablefactura = new DataTable();
         DataTable tabledetalle = new DataTable();
+        class_correo correo = new class_correo();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -66,8 +69,6 @@ namespace VisapLine.View.Private
             }
             catch (Exception)
             {
-                Limpiar(listContrato);
-                Limpiar(listFacturas);
             }
 
         }
@@ -109,7 +110,6 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-
         }
 
         protected void allfactura_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -144,11 +144,122 @@ namespace VisapLine.View.Private
             }
         }
 
+        protected void allfactura_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName.ToString() == "verfactura")
+                {
+                    string paramet = e.CommandArgument.ToString();
+                    tablefactura.PrimaryKey = new DataColumn[] { tablefactura.Columns["idfactura"] };
+                    DataRow dat = tablefactura.Rows.Find(paramet);
+                    string referen = pdf.CrearFactura(empresa.ConsultarEmpresa(), dat);
+                    Response.Redirect("../../Archivos/" + referen);
+                }
+                if (e.CommandName.ToString() == "editarfactura")
+                {
+                    string paramet = e.CommandArgument.ToString();
+                    Response.Redirect("GestCliente.aspx?fact=" + paramet);
+                }
+                if (e.CommandName.ToString() == "pagarfactura")
+                {
+                    string paramet = e.CommandArgument.ToString();
+                    Response.Redirect("GestPagos.aspx?codigo=" + paramet);
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
         protected void allfactura_RowEditing(object sender, GridViewEditEventArgs e)
         {
             try
             {
+                
+                DataTable factura = Validar.Consulta(fact.ConsultarFacturaIdContrato(fact));
 
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void Imprimirallfactura(object sender, EventArgs e)
+        {
+            try
+            {
+                string reference = pdf.CrearFacturaGrupal(empresa.ConsultarEmpresa(), tablefactura);
+                Response.Redirect("../../Archivos/" + reference);
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void EnviarAllFactura(object sender, EventArgs e)
+        {
+            string html = "Estimado usuario, ahora podras ver las facturas en nuestro sitio web: http://www.visapline.com/ \n " +
+                "Tambien recibiras la factura por este medio.";
+            string path = HttpContext.Current.Server.MapPath("~");
+            string dir = "Archivos\\";
+            DataTable basic;
+            try
+            {
+                basic = empresa.ConsultarEmpresa();
+                foreach (DataRow item in tablefactura.Rows )
+                {
+                    if (item["enviofactura"].ToString()=="CORREO")
+                    {
+                        string referen = pdf.CrearFactura(basic, item);
+                        correo.asunto = "VISAPLINE - FACTURA " + item["facturaventa"].ToString()+ " "+Convert.ToDateTime(item["fechavencimiento"].ToString()).ToString("Y", CultureInfo.CreateSpecificCulture("es-co"));
+                        //correo.destinatario= item["correo"].ToString();
+                        correo.destinatario = "jab291214@gmail.com";
+                        correo.cuerpo= html;
+                        correo.archivo= path+dir+ referen;
+                        correo.EnviarMensaje();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+        }
+
+        protected void EnviarSMSText(object sender, EventArgs e)
+        {
+            try
+            {
+                Validar.validarselected(estadofactura.SelectedValue);
+                DataTable tef= Validar.Consulta(telefon.Consultar());
+                tef.PrimaryKey = new DataColumn[] { tef.Columns["terceros_idterceros"] };
+                
+                foreach (DataRow item in tablefactura.Rows)
+                {
+                    if (item["estadof"].ToString()== estadofactura.SelectedValue)
+                    {
+                        string msm = "Estimado usuario de VisapLine le recordamos que su factura esta proxima a vencerse";
+                        DataRow dat = tef.Rows.Find(item["idterceros"]);
+                        if (dat["telefono"].ToString().Length>=10)
+                        {
+                            string celular = dat["telefono"].ToString();
+                            string nombre = item["nombre"].ToString() +" "+ item["apellido"].ToString();
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {

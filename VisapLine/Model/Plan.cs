@@ -36,7 +36,7 @@ namespace VisapLine.Model
 
         public bool RegistrarPlan(Plan pln)
         {
-            return data.OperarDatos("select * from pr_insertarplan('"+pln.valor+"','"+pln.detalle+"','"+pln.telefonia+"','"+pln.televicion+"','"+pln.internet+"','"+pln.estado+"','"+pln.tipoplan+"','"+pln.subida+"','"+pln.bajada+"','"+pln.zona_idzona+ "','" + pln.medioconexion + "','" + pln.wifi + "')");
+            return data.OperarDatos("select * from pr_insertarplan('"+pln.valor+"','"+pln.detalle+"','"+pln.telefonia+"','"+pln.televicion+"','"+pln.internet+"','"+pln.estado+"','"+pln.tipoplan+"','"+pln.subida+"','"+pln.bajada+"')");
         }
 
 
