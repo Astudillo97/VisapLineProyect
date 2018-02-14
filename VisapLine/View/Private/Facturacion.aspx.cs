@@ -208,16 +208,28 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
+        private static string Descripcion(DataTable data, string key)
+        {
+            data.PrimaryKey = new DataColumn[] { data.Columns["descripcion"] };
+            DataRow dat = data.Rows.Find(key);
+            return dat["valor1"].ToString();
+        }
 
         protected void EnviarAllFactura(object sender, EventArgs e)
         {
-            string html = divcorreo.InnerHtml;
+            
             string path = HttpContext.Current.Server.MapPath("~");
+            
             string dir = "Archivos\\";
+            
             DataTable basic;
+            
             try
             {
                 basic = empresa.ConsultarEmpresa();
+                img1.Src = path + dir + Descripcion(basic,"img1correo");
+                img2.Src = path + dir + Descripcion(basic, "img2correo");
+                string html = divcorreo.InnerHtml;
                 foreach (DataRow item in tablefactura.Rows )
                 {
                     if (item["enviofactura"].ToString()=="CORREO")
@@ -225,7 +237,7 @@ namespace VisapLine.View.Private
                         string referen = pdf.CrearFactura(basic, item);
                         correo.asunto = "VISAPLINE - FACTURA " + item["facturaventa"].ToString()+ " "+Convert.ToDateTime(item["fechavencimiento"].ToString()).ToString("Y", CultureInfo.CreateSpecificCulture("es-co"));
                         //correo.destinatario= item["correo"].ToString();
-                        correo.destinatario = "gerencia@gmail.com";
+                        correo.destinatario = "jab291214@gmail.com";
                         correo.cuerpo= html;
                         correo.html = true;
                         correo.archivo= path+dir+ referen;

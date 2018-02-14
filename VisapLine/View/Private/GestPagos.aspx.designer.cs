@@ -130,111 +130,111 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlButton btnimprimir;
         
         /// <summary>
-        /// Control Label1.
+        /// Control nombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nombre;
         
         /// <summary>
-        /// Control Label2.
+        /// Control identif.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl identif;
         
         /// <summary>
-        /// Control Label3.
+        /// Control estadocliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl estadocliente;
         
         /// <summary>
-        /// Control Label4.
+        /// Control dirrecion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dirrecion;
         
         /// <summary>
-        /// Control Label5.
+        /// Control correo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label5;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl correo;
         
         /// <summary>
-        /// Control Label6.
+        /// Control telefono.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label6;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl telefono;
         
         /// <summary>
-        /// Control Label7.
+        /// Control fechacontrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label7;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fechacontrato;
         
         /// <summary>
-        /// Control Label8.
+        /// Control fechaactivacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label8;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fechaactivacion;
         
         /// <summary>
-        /// Control Label9.
+        /// Control estadoc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label9;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl estadoc;
         
         /// <summary>
-        /// Control Label10.
+        /// Control codigo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label10;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl codigo;
         
         /// <summary>
-        /// Control Label11.
+        /// Control fechafinalizacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label11;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fechafinalizacion;
         
         /// <summary>
-        /// Control Label12.
+        /// Control descuento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label12;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl descuento;
     }
 }
