@@ -13,13 +13,13 @@
                    dataType: "json",
                    success: function (response) { }
                }).done(function (response) {
-                   var aData = response.d;
+                   var aData = [{ text: 'Mes Gratuito', value: 503, color: '#CB4E00' }, { text: 'Pagado', value: 1, color: '#2F3D41' }, { text: 'Facturado', value: 491, color: '#BD0F87' }];
                    var arr = [];
                    $.each(aData, function (val) {
                        var obj = {};
-                       obj.color = val.color;
+                       obj.name = val.name;
                        obj.value = val.value;
-                       obj.label = val.label;
+                       obj.color = val.color;
                        arr.push(obj);
                    });
                    var ctx = $("#myChart").get(0).getContext("2d");

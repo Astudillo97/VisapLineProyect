@@ -115,9 +115,46 @@
         <div class="box-body">
             <div class="row">
                 <div class="col- col-6">
-                    <asp:Button runat="server" ID="btnequipo" class="btn  btn-success btn-lg" Text="ASIGNAR EQUIPO" OnClick="btnequipo_Click" />
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mymodal">ASIGNAR INVENTARIO +</button>
                     <asp:Button runat="server" ID="Button1" Text="CANCELAR" OnClick="Button1_Click" CssClass="btn  btn-danger btn-lg" />
                     <asp:Button runat="server" ID="btninser" Text="CREAR SERVICIO" OnClick="btninser_Click" CssClass="btn btn-success btn-lg" Visible="false" />
+                </div>
+                <div class="modal fade" id="mymodal" data-backdrop="”static”">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">AGREGAR EQUIPO</h4>
+                            </div>
+                            <div class="modal-body">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                SERIAL
+                                            </th>
+                                            <th>
+                                                MAC
+                                            </th>
+                                            <th>
+                                                WIFI
+                                            </th>
+                                            <th>
+                                                FABRICANTE
+                                            </th>
+                                            <th>
+                                                MODELO
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
                 </div>
                 <div class="col-6">
                     <div class="form-group row">

@@ -152,27 +152,6 @@ namespace VisapLine.View.Private
             gridservicios.DataBind();
         }
 
-        protected void btnequipo_Click(object sender, EventArgs e)
-        {
-          
-            
-            DataTable ivserdt = GetIvserdt();
-            if (ivserdt.Rows.Count > 0)
-            {
-                idpedido = int.Parse(ivserdt.Rows[0]["idinventario"].ToString());
-                listequipo.DataSource = ivserdt;
-                listequipo.DataBind();
-                listequipo.Visible = true;
-                Button1.Visible = true;
-                gridcaract.Visible = true;
-                btninser.Visible = true;
-                btnequipo.Visible = false;
-            }
-            else {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alertnoproduc();", true);
-            }
-        }
-
         private DataTable GetIvserdt()
         {
             return invt.selecionarinventarioparaservicio();
@@ -183,7 +162,6 @@ namespace VisapLine.View.Private
             Button1.Visible = false;
             invt.cancelarselecioninventarion(idpedido);
             listequipo.Visible=false;
-            btnequipo.Visible = true;
             gridcaract.Visible = false;
             btninser.Visible = false;
         }
