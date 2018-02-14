@@ -6,7 +6,7 @@
      <script src="../../Contenido/assets/vendor_components/jquery/dist/jquery.js"></script>
     <script src="../../Contenido/assets/vendor_components/glyphicons/glyphicon.css"></script>
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
-    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager> 
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager> <a href="http://localhost:58054/View/Private/">http://localhost:58054/View/Private/</a>
     <script type="text/javascript">
         function dialog(ctl, event) {
             event.preventDefault();
@@ -51,8 +51,7 @@
         }
     </script>
 
-    <section class="content-header">
-       
+    <section class="content-header">       
         <h2>ORDENES DE SERVICIO</h2>
     </section>
     <section class="content">
