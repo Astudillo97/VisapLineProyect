@@ -108,7 +108,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">Detalle:</label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <textarea data-provide="markdown" id="texareadetalle" runat="server" data-iconlibrary="fa" class="form-control" rows="5" resize="none" data-hidden-buttons="cmdBold" style="margin-top: 0px; margin-bottom: 0px; height: 144px;" required data-validation-required-message="This field is required"></textarea>
+                                    <textarea data-provide="markdown" id="texareadetalle" runat="server" data-iconlibrary="fa"  class="form-control" rows="5" resize="none" data-hidden-buttons="cmdBold" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 144px;" required data-validation-required-message="This field is required"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">Estado:</label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" required data-validation-required-message="This field is required">
+                                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control" AppendDataBoundItems="true"  required data-validation-required-message="This field is required">
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>ACTIVO</asp:ListItem>
                                         <asp:ListItem>INACTIVO</asp:ListItem>

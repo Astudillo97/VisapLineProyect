@@ -22,8 +22,8 @@
                <table>
                 <tr>
                         <th>
-                          <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="146px" OnClick="Button1_Click" Text="ABRIR CAJA" />
-                            </th>
+                          <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="146px" Height="45px" OnClick="Button1_Click" Text="ABRIR CAJA" />
+                        </th>
                     <th>
                     
                     </tr>

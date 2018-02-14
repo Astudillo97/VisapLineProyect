@@ -19,7 +19,7 @@ namespace VisapLine.View.Private
         Servicios serv = new Servicios();
         Terceros terc = new Terceros();
         Incidencias inci = new Incidencias();
-
+        Contrato contr = new Contrato();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -138,15 +138,19 @@ namespace VisapLine.View.Private
         {
             try
             {
-                DataTable dat = Validar.Consulta(serv.consultaservicioscont1(Validar.validarlleno(TextBoxdni.Text)));
+               
                 terc.identificacion = TextBoxdni.Text;
+                DataRow te = Validar.Consulta(terc.ConsultarTerceroDos(terc)).Rows[0];
+                contr.terceros_idterceros = te["idterceros"].ToString();
+                DataRow cont = Validar.Consulta(contr.ConsultarContratoIdTercero(contr)).Rows[0];
 
+                DataTable dat = Validar.Consulta(serv.consultaservicioscont1(cont["idcontrato"].ToString()));
 
 
                 GridView1.DataSource = dat;
                 GridView1.DataBind();
                 divtablagestcontr.Visible = true;
-                DataRow te = Validar.Consulta(terc.ConsultarTerceroDos(terc)).Rows[0];
+             
                 Label1.Text = te["nombre"].ToString();
 
                 if (te["apellido"].ToString() == "")

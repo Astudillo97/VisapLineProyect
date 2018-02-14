@@ -41,9 +41,9 @@ namespace VisapLine.Model
         public DataTable estratoymegas(int contrato){
             return data.ConsultarDatos("select plan.subida,terceros.estrato from contrato inner join terceros on terceros_idterceros_cont=idterceros inner join plan on plan_idplan = idplan where idcontrato="+ contrato + "");
         }
-        public DataTable ConsultarContratoIdTercero(Contrato bar)
+        public DataTable ConsultarContratoIdTercero(Contrato cont)
         {
-            return data.ConsultarDatos("select * from pr_consultarcontratoidallter('"+bar.terceros_idterceros+"')");
+            return data.ConsultarDatos("select * from pr_consultarcontratoidallter('"+cont.terceros_idterceros+"')");
         }
 
         public bool RegistrarContrato(Contrato cont)

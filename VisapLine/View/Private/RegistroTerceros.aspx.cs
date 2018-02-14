@@ -166,7 +166,7 @@ namespace VisapLine.View.Private
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "nocontro();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
 
             }
         }
