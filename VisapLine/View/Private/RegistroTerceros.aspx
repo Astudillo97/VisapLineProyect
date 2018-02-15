@@ -221,7 +221,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Departamento</label>
+                                    <label class="col-sm-3 col-form-label">Depart</label>
                                     <div class="col-sm-9">
                                         <asp:DropDownList ID="DropDownListdepartamento" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListdepartamento_SelectedIndexChanged">
                                             <asp:ListItem>Seleccione</asp:ListItem>
@@ -432,7 +432,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Departamento</label>
+                                        <label class="col-sm-3 col-form-label">Depart</label>
                                         <div class="col-sm-9">
                                             <asp:DropDownList ID="DropDownList5departcorpo" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownList5departcorpo_SelectedIndexChanged">
                                                 <asp:ListItem>Seleccione</asp:ListItem>

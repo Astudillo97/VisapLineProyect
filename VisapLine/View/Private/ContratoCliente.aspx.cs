@@ -86,8 +86,8 @@ namespace VisapLine.View.Private
                                 Label2.Visible = false;
                                 idapellidolabel.Visible = false;
 
-                                cargartablasucursal(dnitercero.Text);
-
+                                cargartablasucursal(tercero["idterceros"].ToString());
+                            
                             }
                         }
 

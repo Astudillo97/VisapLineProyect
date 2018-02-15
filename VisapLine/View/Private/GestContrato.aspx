@@ -31,7 +31,10 @@
             swal("NO SE REGISTRO!", "No se registro el formulario", "error");
         }
         function nocontro() {
-            swal("NO SE ENCOTRO NINGUN REGISTRO!", "Debe registrar el cliente", "error");
+            swal("NO SE ENCONTRO NINGUN REGISTRO!", "Debe registrar el cliente", "error");
+        }
+        function nocontro() {
+            swal("NO SE REALIZO LA OPERACION!", "La operacion no fue posible", "error");
         }
     </script>
 
@@ -303,6 +306,7 @@
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>CORREO</asp:ListItem>
                                         <asp:ListItem>DOMICILIO</asp:ListItem>
+                                             <asp:ListItem>AMBOS</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>

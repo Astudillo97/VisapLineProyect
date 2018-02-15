@@ -122,7 +122,15 @@ namespace VisapLine.View.Private
                     DropDownList3.Text = "NO";
                 }
             }
-            DropDownList2.Text = dt["descuento"].ToString();
+            try
+            {
+                DropDownList2.Text = dt["descuento"].ToString();
+            }
+            catch (Exception)
+            {
+
+            }
+
 
 
 
@@ -160,10 +168,19 @@ namespace VisapLine.View.Private
                 }
 
                 contrat.wifi = Validar.validarlleno(wifi);
-                Validar.validartrue(contrat.updatecontrato(contrat));
+          
+                if (Validar.validartrue(contrat.updatecontrato(contrat)))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+  
+                }
+                else
+                {
+                       ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "nocontro();", true);
 
+
+                }
 
             }
             catch (Exception ex)
@@ -216,6 +233,9 @@ namespace VisapLine.View.Private
 
         protected void Buttonservicio_Click(object sender, EventArgs e)
         {
+
+
+
             Response.Redirect("servicio.aspx?key=" + Labelidcontrato.Text);
         }
 
