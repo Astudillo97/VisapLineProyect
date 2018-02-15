@@ -198,7 +198,8 @@ namespace VisapLine.View.Private
         {
             try
             {
-                string reference = pdf.CrearFacturaGrupal(empresa.ConsultarEmpresa(), tablefactura);
+                string facimpr = Validar.validarselected(metodoimpresion.SelectedValue);
+                string reference = pdf.CrearFacturaGrupal(empresa.ConsultarEmpresa(), tablefactura,facimpr);
                 Response.Redirect("../../Archivos/" + reference);
             }
             catch (Exception ex)
@@ -208,24 +209,34 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
+        private static string Descripcion(DataTable data, string key)
+        {
+            data.PrimaryKey = new DataColumn[] { data.Columns["descripcion"] };
+            DataRow dat = data.Rows.Find(key);
+            return dat["valor1"].ToString();
+        }
 
         protected void EnviarAllFactura(object sender, EventArgs e)
         {
-            string html = divcorreo.InnerHtml;
+            
             string path = HttpContext.Current.Server.MapPath("~");
+            
             string dir = "Archivos\\";
+            
             DataTable basic;
+            basic = empresa.ConsultarEmpresa();
             try
             {
-                basic = empresa.ConsultarEmpresa();
+                string html = divcorreo.InnerHtml;
+                string meto=Validar.validarselected(method.SelectedValue);
                 foreach (DataRow item in tablefactura.Rows )
                 {
-                    if (item["enviofactura"].ToString()=="CORREO")
+                    if (item["enviofactura"].ToString()==meto)
                     {
                         string referen = pdf.CrearFactura(basic, item);
                         correo.asunto = "VISAPLINE - FACTURA " + item["facturaventa"].ToString()+ " "+Convert.ToDateTime(item["fechavencimiento"].ToString()).ToString("Y", CultureInfo.CreateSpecificCulture("es-co"));
                         //correo.destinatario= item["correo"].ToString();
-                        correo.destinatario = "gerencia@gmail.com";
+                        correo.destinatario = "jab291214@gmail.com";
                         correo.cuerpo= html;
                         correo.html = true;
                         correo.archivo= path+dir+ referen;

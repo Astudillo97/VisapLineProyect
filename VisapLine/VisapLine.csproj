@@ -336,6 +336,7 @@
     <Content Include="Contenido\assets\vendor_plugins\weather-icons\WeatherIcon.js" />
     <Content Include="Contenido\css\master_style.css" />
     <Content Include="Contenido\css\skins\_all-skins.css" />
+    <Content Include="Contenido\facturaelectronica.jpg" />
     <Content Include="Contenido\images\florencia2.jpg" />
     <Content Include="Contenido\images\florencia.jpg" />
     <Content Include="Contenido\images\icons\editar.png" />
@@ -357,6 +358,7 @@
     <Content Include="Contenido\js\pages\widget-inline-charts.js" />
     <Content Include="Contenido\js\pages\widget-morris-charts.js" />
     <Content Include="Contenido\js\template.js" />
+    <Content Include="Contenido\nuestra-empresa.jpg" />
     <Content Include="index.html" />
     <Content Include="View\Private\Admin.Master" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />

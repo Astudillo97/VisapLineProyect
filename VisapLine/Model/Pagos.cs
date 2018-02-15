@@ -5,6 +5,7 @@ using System.Web;
 using VisapLine.DataAccess.Data;
 using VisapLine.DataAccess.Connection;
 using System.Data;
+using VisapLine.Exeption;
 
 namespace VisapLine.Model
 {
@@ -16,20 +17,30 @@ namespace VisapLine.Model
         public string factura_idfactura { get; set; }
         public string terceros_idterceros { get; set; }
         public string pagado { get; set; }
+        public string caja_idcaja_ingr { get; set; }
 
         public DataTable ConsultarPago(Pagos fac)
         {
             return data.ConsultarDatos("");
         }
 
-        public bool RegistrarPago(Pagos fac,string usuario,string ipregistro)
+        public bool RegistrarPago(Pagos fac, string usuario, string ipregistro)
         {
-            return data.OperarDatos("select * from pr_insertar_pagos('"+usuario+"','"+ipregistro+"','"+fac.factura_idfactura+"','"+fac.terceros_idterceros+"','"+fac.pagado+"')");
+            return data.OperarDatos("select * from pr_insertar_pagos('" + usuario + "','" + ipregistro + "','" + fac.factura_idfactura + "','" + fac.terceros_idterceros + "','" + fac.pagado + "','" + obtenercaja() + "')");
         }
 
         public DataTable ConsultarPagoByIdFact(Pagos pag)
         {
-            return data.ConsultarDatos("select * from pr_consultapagosidfact("+pag.factura_idfactura+")");
+            return data.ConsultarDatos("select * from pr_consultapagosidfact(" + pag.factura_idfactura + ")");
+        }
+        string obtenercaja()
+        {
+            DataRow dat = data.ConsultarDatos("select * from pr_consultarcaja()").Rows[0];
+            if (dat["estado"].ToString() == "True")
+            {
+                return dat["idcaja"].ToString();
+            }
+            throw new ValidarExeption("No hay cajas activas");
         }
     }
 }

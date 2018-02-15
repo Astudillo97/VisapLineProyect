@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
-        <h1>CAJA
+        <h1>INGRESO
         </h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
@@ -77,8 +77,8 @@
                                             <asp:TextBox type="text" class="form-control text-center text-bold" runat="server" ID="textpagado" />
                                         </div>
                                         <div class="col-sm-12">
-                                            <button class="btn btn-success form-control btn-lg" id="btnpago" runat="server" onserverclick="btnRegistrarpago">PAGAR</button>
-                                            <button class="btn btn-secondary form-control btn-lg" id="btnimprimir" runat="server" onserverclick="btnimprimir_ServerClick">IMPRIMIR</button>
+                                            <button class="btn btn-success form-control btn-lg" visible="false" id="btnpago" runat="server" onserverclick="btnRegistrarpago">PAGAR</button>
+                                            <button class="btn btn-secondary form-control btn-lg" visible="false" id="btnimprimir" runat="server" onserverclick="btnimprimir_ServerClick">IMPRIMIR</button>
                                         </div>
                                     </div>
                                 </div>
@@ -97,18 +97,18 @@
                             <div class="box box-primary">
                                 <div class="box-body">
                                     <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">CLIENTE:</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label1"></label>
-                                        <label class="col-sm-3 col-form-label">CC/NIT:</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label2"></label>
-                                        <label class="col-sm-3 col-form-label">ESTADO</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label3"></label>
-                                        <label class="col-sm-3 col-form-label">FECHA DE EMISION</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label4"></label>
-                                        <label class="col-sm-3 col-form-label">FECHA DE VENCIMIENTO</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label5"></label>
-                                        <label class="col-sm-3 col-form-label">FECHA DE CORTE</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label6"></label>
+                                        <label class="col-sm-2 col-form-label">CLIENTE:</label>
+                                        <label class="col-sm-10 col-form-label text-bold" runat="server" id="nombre"></label>
+                                        <label class="col-sm-2 col-form-label">CC/NIT:</label>
+                                        <label class="col-sm-4 col-form-label text-bold" runat="server" id="identif"></label>
+                                        <label class="col-sm-2 col-form-label">ESTADO:</label>
+                                        <label class="col-sm-4 col-form-label text-bold" runat="server" id="estadocliente"></label>
+                                        <label class="col-sm-2 col-form-label">DIRECCION:</label>
+                                        <label class="col-sm-10 col-form-label text-bold" runat="server" id="dirrecion"></label>
+                                        <label class="col-sm-2 col-form-label">CORREO:</label>
+                                        <label class="col-sm-10 col-form-label text-bold" runat="server" id="correo"></label>
+                                        <label class="col-sm-2 col-form-label">TELEFONO:</label>
+                                        <label class="col-sm-10 col-form-label text-bold" runat="server" id="telefono"></label>
                                     </div>
                                 </div>
                             </div>
@@ -123,18 +123,18 @@
                             <div class="box box-primary">
                                 <div class="box-body">
                                     <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">FACTURA DE SERVICIO:</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label7"></label>
-                                        <label class="col-sm-3 col-form-label">ID DE FACTURA:</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label8"></label>
+                                        <label class="col-sm-3 col-form-label">FECHA CONTRATO</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="fechacontrato"></label>
+                                        <label class="col-sm-3 col-form-label">ACTIVACION</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="fechaactivacion"></label>
                                         <label class="col-sm-3 col-form-label">ESTADO</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label9"></label>
-                                        <label class="col-sm-3 col-form-label">FECHA DE EMISION</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label10"></label>
-                                        <label class="col-sm-3 col-form-label">FECHA DE VENCIMIENTO</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label11"></label>
-                                        <label class="col-sm-3 col-form-label">FECHA DE CORTE</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="Label12"></label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="estadoc"></label>
+                                        <label class="col-sm-3 col-form-label">CODIGO</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="codigo"></label>
+                                        <label class="col-sm-3 col-form-label">FINALIZACION</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="fechafinalizacion"></label>
+                                        <label class="col-sm-3 col-form-label">ADICIONAL</label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="descuento"></label>
                                     </div>
                                 </div>
                             </div>
@@ -143,8 +143,5 @@
                 </div>
             </div>
         </div>
-
-
-
     </section>
 </asp:Content>

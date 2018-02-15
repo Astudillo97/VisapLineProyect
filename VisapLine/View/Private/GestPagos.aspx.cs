@@ -96,8 +96,20 @@ namespace VisapLine.View.Private
                     btnpago.Visible = false;
                     btnimprimir.Visible = true;
                 }
-
                 textpagado.Text = datafact["totalfac"].ToString();
+                nombre.InnerText= datafact["nombre"].ToString()+" "+ datafact["apellido"].ToString();
+                identif.InnerText = datafact["identificacion"].ToString();
+                estadocliente.InnerText = datafact["estadop"].ToString();
+                correo.InnerText = datafact["correo"].ToString();
+                dirrecion.InnerText = datafact["direccion"].ToString();
+                telefono.InnerText = "";
+
+                fechacontrato.InnerHtml = datafact["fechacontrato"].ToString();
+                fechaactivacion.InnerHtml = datafact["fechaactivacion"].ToString();
+                estadoc.InnerHtml = datafact["estadoc"].ToString();
+                codigo.InnerHtml= datafact["codigo"].ToString();
+                fechafinalizacion.InnerHtml = datafact["fechafinalizacion"].ToString();
+                descuento.InnerHtml = datafact["fechafinalizacion"].ToString();
             }
             catch (Exception ex)
             {
@@ -165,7 +177,6 @@ namespace VisapLine.View.Private
 
         public string GetPublicIPAddress()
         {
-
             return this.Request.UserHostAddress.ToString();
         }
 

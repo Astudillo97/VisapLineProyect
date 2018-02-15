@@ -313,7 +313,7 @@ namespace VisapLine.Model
 
         }
 
-        public string CrearFacturaGrupal(DataTable empresa, DataTable datos)
+        public string CrearFacturaGrupal(DataTable empresa, DataTable datos,string condicion)
         {
             try
             {
@@ -325,7 +325,7 @@ namespace VisapLine.Model
                 Document doc = new Document(documento, PageSize.LETTER);
                 for (int j = 0; j < datos.Rows.Count; j++)
                 {
-                    if (datos.Rows[j]["enviofactura"].ToString() == "DOMICILIO")
+                    if (datos.Rows[j]["enviofactura"].ToString() == condicion && (datos.Rows[j]["estadof"].ToString()=="Facturado"|| datos.Rows[j]["estadof"].ToString() == "Prorateo" || datos.Rows[j]["estadof"].ToString() == "Abonado"))
                     {
 
 
@@ -338,7 +338,7 @@ namespace VisapLine.Model
                         logo.Add(imagen);
 
                         ////Celda central de la factura
-                        Cell descripcion = new Cell().SetWidth(UnitValue.CreatePercentValue(30)).SetBorder(Border.NO_BORDER); ;
+                        Cell descripcion = new Cell().SetWidth(UnitValue.CreatePercentValue(30)).SetBorder(Border.NO_BORDER);
                         PdfFont font = PdfFontFactory.CreateFont(FONT, "Cp1251", true);
                         Paragraph empresanombre = new Paragraph(Descripcion(empresa, "nombrejuridico")).SetFont(font).SetFontSize(11f).SetMarginTop(-4);
                         Paragraph empresanit = new Paragraph("NIT: " + Descripcion(empresa, "nit")).SetFontSize(8f).SetMarginTop(-4);
