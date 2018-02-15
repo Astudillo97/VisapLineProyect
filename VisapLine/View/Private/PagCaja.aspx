@@ -46,11 +46,29 @@
         <div class="box box-default">
             <div class="box-header with-border">
                 <h3 class="box-title">CAJA    
-                    <asp:Label CssClass="form-control-label" ID="Labelestado"  ForeColor="Green" runat="server" Text="ACTIVO"></asp:Label></h3>
+                    <asp:Label CssClass="form-control-label" ID="Labelestado" ForeColor="Green" runat="server" Text="ACTIVO"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label1" runat="server" Text="Valor de Ingresos: ">
+                        <asp:Label ID="Labelingresos" runat="server" ForeColor="Green" Text="label"></asp:Label></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label3" runat="server" Text="Valor de Egresos: ">
+                        <asp:Label ID="Labelegresos" runat="server" ForeColor="Red" Text="Label"></asp:Label></asp:Label>
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Labeltime" runat="server" Text="Label"></asp:Label>
+                    <asp:Timer ID="Timer1" OnLoad="Timer1_Load" runat="server" Interval="30000"></asp:Timer>
+      
+                </h3>
             </div>
             <div class="row">
                 <div class="col-6">
-                    <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="146px" Height="35px" OnClick="Button1_Click" Text="ABRIR CAJA 1" />
+                    <div class="row">
+                        <div class="col-6">
+                            <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="146px" Height="35px" OnClick="Button1_Click" Text="ABRIR CAJA 1" />
+                        </div>
+                        <div class="col-6">
+
+                        </div>
+                    </div>
                 </div>
                 <div class="col-6">
                     <div class="row">
@@ -66,62 +84,54 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="box box-default">
             <div class="box-header with-border">
-                <h2 class="box-title">Cajas</h2>
+                <h2 class="box-title">Registro de Cajas</h2>
             </div>
             <!-- /.box-header -->
 
-            <div class="box-body" style="">
-                <div class="row">
-                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="10">
-                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-                        <Columns>
-                            <asp:BoundField HeaderText="Codigo de Plan" DataField="idplan" />
-                            <asp:BoundField HeaderText="Valor" DataField="valor" />
-                            <asp:BoundField HeaderText="Detalle" DataField="detalle" />
-                            <asp:CheckBoxField HeaderText="Telefonia" DataField="telefonia" Text=" " ItemStyle-CssClass="filled-in chk-col-green">
-                                <ItemStyle CssClass="filled-in chk-col-green"></ItemStyle>
-                            </asp:CheckBoxField>
-                            <asp:CheckBoxField HeaderText="Television" DataField="television" Text=" " />
-                            <asp:CheckBoxField HeaderText="Internet" DataField="internet" Text=" " />
-                            <asp:BoundField HeaderText="Estado" DataField="estado" />
-                            <asp:BoundField HeaderText="Tipo de Plan" DataField="tipoplan" />
-                            <asp:BoundField HeaderText="Subida" DataField="subida" />
-                            <asp:BoundField HeaderText="Bajada" DataField="bajada" />
+            <div class="box-body">
 
+                <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="5">
+                    <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                    <Columns>
+                        <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
+                        <asp:BoundField HeaderText="Codigo de Caja" DataField="idcaja" />
+                        <asp:BoundField HeaderText="Fecha de Apertura" DataField="apertura" />
+                        <asp:BoundField HeaderText="Fecha Cierre" DataField="cierre" />
+                        <asp:BoundField HeaderText="Valor Inicial" DataField="valorinicial" />
+                        <asp:BoundField HeaderText="Valor Cierre" DataField="valorfinal" />
+                        <asp:BoundField HeaderText="Ingresos" DataField="ingresos" />
+                        <asp:BoundField HeaderText="Egresos" DataField="egresos" />
+                    </Columns>
 
-                        </Columns>
+                    <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
-                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
-                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                    <PagerSettings Mode="NextPreviousFirstLast" />
 
-                        <PagerSettings Mode="NextPreviousFirstLast" />
+                    <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
 
-                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+                    <RowStyle BackColor="#EFF3FB"></RowStyle>
 
-                        <RowStyle BackColor="#EFF3FB"></RowStyle>
+                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
 
-                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+                    <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
 
-                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+                    <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
 
-                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+                    <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
 
-                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
-
-                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
-                    </asp:GridView>
-                    <!-- /.row -->
-
-                </div>
-                <!-- /.box-body -->
+                    <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                </asp:GridView>
+                <!-- /.row -->
 
             </div>
-
+            <!-- /.box-body -->
+        </div>
     </section>
 </asp:Content>

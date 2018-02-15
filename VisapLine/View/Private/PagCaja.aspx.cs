@@ -14,16 +14,20 @@ namespace VisapLine.View.Private
     {
 
         Caja cj = new Caja();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                 DataRow dt=Validar.Consulta(cj.ConsultarCaja()).Rows[0];
+                DataRow dt = Validar.Consulta(cj.ConsultarCaja()).Rows[0];
                 cargarestado();
-            
+                cargartabla();
+                Timer1.Enabled = true;
+
+
             }
 
-           
+
 
         }
 
@@ -53,6 +57,12 @@ namespace VisapLine.View.Private
 
             }
         }
+        protected void cargartabla()
+        {
+            DataTable dt = cj.ConsultarCaja();
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+        }
         public void cargarestado()
         {
             DataRow dt = Validar.Consulta(cj.ConsultarCaja()).Rows[0];
@@ -70,6 +80,9 @@ namespace VisapLine.View.Private
                     Labelestado.ForeColor = Color.Red;
                 }
             }
+            Labelingresos.Text = dt["ingresos"].ToString();
+            Labelegresos.Text = dt["egresos"].ToString();
+
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
@@ -89,8 +102,27 @@ namespace VisapLine.View.Private
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
-
             }
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            cargartabla();
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow gridw = GridView1.SelectedRow;
+
+            Response.Redirect("gestcaja.aspx?key=" + gridw.Cells[1].Text);
+        }
+
+
+        protected void Timer1_Load(object sender, EventArgs e)
+        {
+         
+            Labeltime.Text = DateTime.Now.ToShortTimeString();
         }
     }
 }

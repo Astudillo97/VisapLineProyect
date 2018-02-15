@@ -11,7 +11,19 @@ namespace VisapLine.View.Private
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                string valor = Convert.ToString(Request.QueryString["key"]);
+                if (valor == null)
+                {
+                    Response.Redirect("pagcaja.aspx");
+                }
+                else
+                {
 
+                }
+
+            }
         }
     }
 }
