@@ -142,13 +142,13 @@
         <div class="tab-pane">
             <div class="box box-primary">
                 <div class="form-group row">
-                    <asp:DropDownList runat="server" class="btn btn-primary col-md-3">
+                    <asp:DropDownList id="metodoimpresion" runat="server" class="btn btn-primary col-md-3">
                         <asp:ListItem Text="Seleccione" />
                         <asp:ListItem Text="CORREO" />
                         <asp:ListItem Text="DOMICILIO" />
                         <asp:ListItem Text="AMBOOS" />
                     </asp:DropDownList>
-                    <asp:DropDownList runat="server" class="btn btn-primary col-md-3">
+                    <asp:DropDownList ID="method" runat="server" class="btn btn-primary col-md-3">
                         <asp:ListItem Text="Seleccione" />
                         <asp:ListItem Text="CORREO" />
                         <asp:ListItem Text="DOMICILIO" />
@@ -183,34 +183,33 @@
             <body>
 
                 <div style="width: 100%;" align="center">
-
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                             <td align="center" valign="top" style="background-color: #ffffff;" bgcolor="#53636e;">
                                 <table width="583" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <td align="center" valign="top" bgcolor="#FFFFFF" style="background-color: #ffffff;" id="titulo1" runat="server">C & C VISION -VISAPLINE</td>
+                                        <td align="center" valign="top" bgcolor="#FFFFFF" style="background-color: #ffffff;">C & C VISION -VISAPLINE</td>
                                     </tr>
                                     <tr>
                                         <td align="center" valign="top" bgcolor="#FFFFFF" style="background-color: #FFFFFF;">
-                                            <br>
-                                                <img runat="server" id="img1" src="../../Contenido/nuestra-empresa.jpg" width="583" vspace="10">
-                                            </br>
+                                            <p>
+                                                <img id="img1" src="#" width="583"/>
+                                            </p>
 
-                                            <br runat="server" id="encabezadoprincipal">C&C Visión Ltda. 
+                                            <p id="text1">C&C Visión Ltda. 
 				Desarrolla efectivamente servicios en Tecnología de la Información y las Comunicaciones, permanentes y de alto impacto a través de redes Inalámbricas, Fibra óptica, Satelital, Microondas. 
 				Hasta el usuario final, con responsabilidad social y sostenibilidad ambiental, buscando la eficiencia, eficacia en los procesos de comunicación de usuarios y empresas con el mundo. 
-                                            </br>
+                                            </p>
                                             <p>&nbsp;</p>
                                             <table width="583" border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
                                                     <td align="center" width="40%" valign="top" bgcolor="#FFFFFF" style="background-color: #ffffff;">
-                                                        <h3 runat="server" id="titulo2">Facturación Electronica</h3>
-                                                        <p><a href="http://191.102.85.252:30000/demo" type="button" style="color: #FFFFFF; background-color: #2F62BB; width: 100%; border-radius: 7px; padding: 10px; border: solid 1px black; font-size: 13px; font-family: Arial, Helvetica, sans-serif;">Ver mis facturas</a></p>
-                                                        <p runat="server" id="encabezadosegundario">Señor usuario, con el fin de proteger nuestro medio ambiente le recomendamos no imprimir su factura si no es necesario.</p>
+                                                        <h3>Facturación Electronica</h3>
+                                                        <p id="text2"><a href="http://191.102.85.252:30000/demo" type="button" style="color: #FFFFFF; background-color: #2F62BB; width: 100%; border-radius: 7px; padding: 10px; border: solid 1px black; font-size: 13px; font-family: Arial, Helvetica, sans-serif;">Ver Factura</a></p>
+                                                        <p>Señor usuario, con el fin de proteger nuestro medio ambiente le recomendamos no imprimir su factura si no es necesario.</p>
                                                     </td>
                                                     <td align="center" width="60%" valign="top" bgcolor="#FFFFFF" style="background-color: #ffffff;">
-                                                        <img runat="server" id="img2" src="../../Contenido/facturaelectronica.jpg" vspace="10">
+                                                        <img id="img2" src="#" vspace="10"/>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -222,9 +221,9 @@
                                                 <tr>
                                                     <td width="35">&nbsp;</td>
                                                     <td height="50" valign="middle" style="color: #FFFFFF; font-size: 11px; font-family: Arial, Helvetica, sans-serif;">
-                                                        <br runat="server" id="pie1">Dirección:	
+                                                        <br>Dirección:	
 			Carrera 10 # 15-60 Barrio Centro Edificio Pioneros 2do piso Oficina 4 Florencia-Caquetá </br>
-                                                        <br runat="server" id="pie2">Linea Nacional: 018000 952240 - Celulares:  (+57) 318 490 3427 - (+57) 321 206 5866
+                                                        <br>Linea Nacional: 018000 952240 - Celulares:  (+57) 318 490 3427 - (+57) 321 206 5866
                                                         </br>
                                                     </td>
                                                     <td width="35">&nbsp;</td>

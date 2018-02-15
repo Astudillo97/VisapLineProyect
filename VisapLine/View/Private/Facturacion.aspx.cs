@@ -198,7 +198,8 @@ namespace VisapLine.View.Private
         {
             try
             {
-                string reference = pdf.CrearFacturaGrupal(empresa.ConsultarEmpresa(), tablefactura);
+                string facimpr = Validar.validarselected(metodoimpresion.SelectedValue);
+                string reference = pdf.CrearFacturaGrupal(empresa.ConsultarEmpresa(), tablefactura,facimpr);
                 Response.Redirect("../../Archivos/" + reference);
             }
             catch (Exception ex)
@@ -223,16 +224,14 @@ namespace VisapLine.View.Private
             string dir = "Archivos\\";
             
             DataTable basic;
-            
+            basic = empresa.ConsultarEmpresa();
             try
             {
-                basic = empresa.ConsultarEmpresa();
-                img1.Src = path + dir + Descripcion(basic,"img1correo");
-                img2.Src = path + dir + Descripcion(basic, "img2correo");
                 string html = divcorreo.InnerHtml;
+                string meto=Validar.validarselected(method.SelectedValue);
                 foreach (DataRow item in tablefactura.Rows )
                 {
-                    if (item["enviofactura"].ToString()=="CORREO")
+                    if (item["enviofactura"].ToString()==meto)
                     {
                         string referen = pdf.CrearFactura(basic, item);
                         correo.asunto = "VISAPLINE - FACTURA " + item["facturaventa"].ToString()+ " "+Convert.ToDateTime(item["fechavencimiento"].ToString()).ToString("Y", CultureInfo.CreateSpecificCulture("es-co"));
