@@ -468,7 +468,6 @@
     <Content Include="Contenido\images\visa.png" />
     <Content Include="View\Login\login.aspx" />
     <Content Include="View\Private\Almacen.aspx" />
-    <Content Include="View\Private\Caja.aspx" />
     <Content Include="View\Private\ContratoCliente.aspx" />
     <Content Include="View\Private\detalleservicio.aspx" />
     <Content Include="View\Private\EditarFactura.aspx" />
@@ -482,6 +481,7 @@
     <Content Include="View\Private\Gservicio.aspx" />
     <Content Include="View\Private\Incidencia.aspx" />
     <Content Include="View\Private\index.aspx" />
+    <Content Include="View\Private\PagCaja.aspx" />
     <Content Include="View\Private\pagplan.aspx" />
     <Content Include="View\Private\pagzona.aspx" />
     <Content Include="View\Private\Personal.aspx" />
@@ -580,13 +580,6 @@
     <Compile Include="View\Private\Almacen.aspx.designer.cs">
       <DependentUpon>Almacen.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Private\Caja.aspx.cs">
-      <DependentUpon>Caja.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Private\Caja.aspx.designer.cs">
-      <DependentUpon>Caja.aspx</DependentUpon>
-    </Compile>
     <Compile Include="View\Private\ContratoCliente.aspx.cs">
       <DependentUpon>ContratoCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -677,6 +670,13 @@
     </Compile>
     <Compile Include="View\Private\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\PagCaja.aspx.cs">
+      <DependentUpon>PagCaja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\PagCaja.aspx.designer.cs">
+      <DependentUpon>PagCaja.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\pagplan.aspx.cs">
       <DependentUpon>pagplan.aspx</DependentUpon>

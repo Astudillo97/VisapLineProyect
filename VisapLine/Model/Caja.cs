@@ -26,7 +26,18 @@ namespace VisapLine.Model
 
         public DataTable ConsultarCaja()
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from public.pr_consultarcaja()");
+        }
+
+
+        public bool AbrirCaja(Caja cj)
+        {
+            return data.OperarDatos("select * from  pr_insertarcaja('"+cj.terceros_idterceros_reg_caj+"')");
+        }
+
+        public bool CerrarCaja()
+        {
+            return data.OperarDatos("select * from pr_actualizarcajacerrar()");
         }
 
 

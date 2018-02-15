@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MaintainScrollPositionOnPostback="true" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="pagplan.aspx.cs" Inherits="VisapLine.View.Private.pagplan" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
     <script type="text/javascript">
         function applyFormatCurrency(sender) {
             $(sender).formatCurrency({
