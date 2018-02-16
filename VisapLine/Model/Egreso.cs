@@ -22,10 +22,16 @@ namespace VisapLine.Model
         public string observacion { get; set; }
         public string caja_idcaja_egre { get; set; }
 
-        public DataTable Registraregreso(Compra comp)
+        public DataTable Registraregreso(Egreso eg)
         {
             return data.ConsultarDatos("");
         }
+        public DataTable consultaregresos(Egreso eg)
+        {
+            return data.ConsultarDatos("select * from  pr_consultaringresos('"+eg.caja_idcaja_egre+"')");
+        }
+
+       
     }
 
 
