@@ -3,6 +3,40 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        function deletealert() {
+            swal({
+                title: "SE REGISTRO CON EXITO!",
+                text: "Se ha registrado con exito ",
+                type: "success"
+            }, function () {
+                window.location.href = "pagzona.aspx";
+            });
+
+        }
+        function alerterror() {
+            swal("SE HA DETECTADO UN ERROR!", "Informe ha soporte tecnico del error", "error");
+        }
+        function activarcajalert() {
+            swal("LA CAJA SE HA ACTIVADO CON EXITO!", "La activacion se ha realizado con exito", "success");
+        }
+        function elimalert() {
+            swal("SE HA CERRADO LA CAJA CON EXITO!", "Se ha realizado la operacion con exito ", "success");
+        }
+        function elimalertCAJA() {
+            swal("LA CAJA YA ESTA ABIERTA!", "Se ha realizado la operacion con exito ", "error");
+        }
+        function elimalertcerrado() {
+            swal("LA CAJA YA ESTA CERRADA!", "Se ha realizado la operacion con exito ", "error");
+        }
+    </script>
+
+
+
+
+
 
     <section class="content-header">
         <h1>Registro de Movimientos de la CAJA</h1>
@@ -13,7 +47,7 @@
         </ol>
     </section>
 
-    <section class="content">        
+    <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
                 <h2 class="box-title">Registro de ingresos de la Caja</h2>
@@ -22,17 +56,14 @@
 
             <div class="box-body">
 
-                <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="5">
+                <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="5">
                     <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                     <Columns>
-                        <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
-                        <asp:BoundField HeaderText="Codigo de Caja" DataField="idcaja" />
-                        <asp:BoundField HeaderText="Fecha de Apertura" DataField="apertura" />
-                        <asp:BoundField HeaderText="Fecha Cierre" DataField="cierre" />
-                        <asp:BoundField HeaderText="Valor Inicial" DataField="valorinicial" />
-                        <asp:BoundField HeaderText="Valor Cierre" DataField="valorfinal" />
-                        <asp:BoundField HeaderText="Ingresos" DataField="ingresos" />
-                        <asp:BoundField HeaderText="Egresos" DataField="egresos" />
+                        <asp:BoundField HeaderText="Codigo" DataField="idpagos" />
+                        <asp:BoundField HeaderText="Fecha de pago" DataField="apertura" />
+                        <asp:BoundField HeaderText="N° Factura" DataField="factura_idfactura" />
+                        <asp:BoundField HeaderText="Pago" DataField="pagado" />
+                        <asp:BoundField HeaderText="Total" DataField="totalfac" />
                     </Columns>
 
                     <EditRowStyle BackColor="#2461BF"></EditRowStyle>
@@ -63,7 +94,7 @@
             <!-- /.box-body -->
         </div>
 
-        
+
 
 
         <div class="box box-default">
@@ -74,17 +105,14 @@
 
             <div class="box-body">
 
-                <asp:GridView ID="GridView2" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="5">
+                <asp:GridView ID="GridView2" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="5">
                     <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                     <Columns>
-                        <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
-                        <asp:BoundField HeaderText="Codigo de Caja" DataField="idcaja" />
-                        <asp:BoundField HeaderText="Fecha de Apertura" DataField="apertura" />
-                        <asp:BoundField HeaderText="Fecha Cierre" DataField="cierre" />
-                        <asp:BoundField HeaderText="Valor Inicial" DataField="valorinicial" />
-                        <asp:BoundField HeaderText="Valor Cierre" DataField="valorfinal" />
-                        <asp:BoundField HeaderText="Ingresos" DataField="ingresos" />
-                        <asp:BoundField HeaderText="Egresos" DataField="egresos" />
+                        <asp:BoundField HeaderText="Codigo" DataField="idegresos" />
+                        <asp:BoundField HeaderText="Fecha de pago" DataField="fechaegreso" />
+                        <asp:BoundField HeaderText="Detalle" DataField="observacion" />
+                        <asp:BoundField HeaderText="Motivo" DataField="motivo" />
+                        <asp:BoundField HeaderText="Total" DataField="valoregreso" />
                     </Columns>
 
                     <EditRowStyle BackColor="#2461BF"></EditRowStyle>

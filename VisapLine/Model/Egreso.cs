@@ -13,7 +13,6 @@ namespace VisapLine.Model
     public class Egreso
     {
         IData data = new Data();
-
         public string idegresos { get; set; }
         public string valoregreso { get; set; }
         public string fechaegreso { get; set; }
@@ -28,10 +27,10 @@ namespace VisapLine.Model
         }
         public DataTable consultaregresos(Egreso eg)
         {
-            return data.ConsultarDatos("select * from  pr_consultaringresos('"+eg.caja_idcaja_egre+"')");
+            return data.ConsultarDatos("select * from pr_consultaregresos('"+eg.caja_idcaja_egre+"')");
         }
 
-       
+
     }
 
 

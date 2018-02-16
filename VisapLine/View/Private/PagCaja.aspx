@@ -128,10 +128,7 @@
 
                     <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                 </asp:GridView>
-                <!-- /.row -->
-
             </div>
-            <!-- /.box-body -->
         </div>
     </section>
 </asp:Content>

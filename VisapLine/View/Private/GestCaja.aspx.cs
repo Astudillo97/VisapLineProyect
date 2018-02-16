@@ -4,11 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using VisapLine.Model;
+using VisapLine.Exeption;
+using System.Data;
 
 namespace VisapLine.View.Private
 {
     public partial class GestCaja : System.Web.UI.Page
     {
+        Egreso eg = new Egreso();
+        Ingreso ig = new Ingreso();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,10 +26,34 @@ namespace VisapLine.View.Private
                 }
                 else
                 {
-
+                    try
+                    {
+                        ig.caja_idcaja_egre = valor;
+                        DataTable dtig= Validar.Consulta(ig.consultaringresos(ig));
+                        GridView1.DataSource = dtig;
+                        GridView1.DataBind();
+                        eg.caja_idcaja_egre = valor;
+                        DataTable dteg = Validar.Consulta(eg.consultaregresos(eg));
+                        GridView2.DataSource = dteg;
+                        GridView2.DataBind();
+                    }
+                    catch (Exception)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                    }
                 }
 
             }
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
         }
     }
 }
