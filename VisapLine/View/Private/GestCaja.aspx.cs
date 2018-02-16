@@ -29,9 +29,17 @@ namespace VisapLine.View.Private
                     try
                     {
                         ig.caja_idcaja_egre = valor;
-                        DataTable dtig= Validar.Consulta(ig.consultaringresos(ig));
+                        DataTable dtig = Validar.Consulta(ig.consultaringresos(ig));
                         GridView1.DataSource = dtig;
                         GridView1.DataBind();
+                    }
+                    catch (Exception )
+                    {                        
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                    }
+
+                    try
+                    {
                         eg.caja_idcaja_egre = valor;
                         DataTable dteg = Validar.Consulta(eg.consultaregresos(eg));
                         GridView2.DataSource = dteg;
@@ -39,8 +47,10 @@ namespace VisapLine.View.Private
                     }
                     catch (Exception)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                      
                     }
+
+
                 }
 
             }

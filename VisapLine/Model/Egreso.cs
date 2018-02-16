@@ -5,7 +5,7 @@ using System.Web;
 using VisapLine.DataAccess.Data;
 using VisapLine.DataAccess.Connection;
 using System.Data;
-
+using VisapLine.Exeption;
 
 namespace VisapLine.Model
 {
@@ -28,6 +28,15 @@ namespace VisapLine.Model
         public DataTable consultaregresos(Egreso eg)
         {
             return data.ConsultarDatos("select * from pr_consultaregresos('"+eg.caja_idcaja_egre+"')");
+        }
+        string obtenercaja()
+        {
+            DataRow dat = data.ConsultarDatos("select * from pr_consultarcaja()").Rows[0];
+            if (dat["estado"].ToString() == "True")
+            {
+                return dat["idcaja"].ToString();
+            }
+            throw new ValidarExeption("No hay cajas activas");
         }
 
 

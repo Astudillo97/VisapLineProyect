@@ -45,18 +45,32 @@
 
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">CAJA    
+                <h3 class="box-title">CAJA     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+                    <asp:Label ID="Labeltime" runat="server" Text="Label"></asp:Label><br />
+                    <br />
                     <asp:Label CssClass="form-control-label" ID="Labelestado" ForeColor="Green" runat="server" Text="ACTIVO"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label2" runat="server" Text="Valor Inicio:"></asp:Label>
+                    <asp:Label ID="Labelvalorinicial" runat="server" ForeColor="Green" Text=""></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <asp:Label ID="Label6" runat="server" Text="Saldo Caja:"></asp:Label>
+                    <asp:Label ID="Labelvaloractual" runat="server" Text="Label"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Label ID="Label1" runat="server" Text="Valor de Ingresos: ">
                         <asp:Label ID="Labelingresos" runat="server" ForeColor="Green" Text="label"></asp:Label></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Label ID="Label3" runat="server" Text="Valor de Egresos: ">
                         <asp:Label ID="Labelegresos" runat="server" ForeColor="Red" Text="Label"></asp:Label></asp:Label>
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Label ID="Labeltime" runat="server" Text="Label"></asp:Label>
-                    <asp:Timer ID="Timer1" OnLoad="Timer1_Load" runat="server" Interval="30000"></asp:Timer>
-      
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           
+               
                 </h3>
             </div>
             <div class="row">
@@ -65,8 +79,7 @@
                         <div class="col-6">
                             <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="146px" Height="35px" OnClick="Button1_Click" Text="ABRIR CAJA 1" />
                         </div>
-                        <div class="col-6">
-
+                        <div class="col-6">                       
                         </div>
                     </div>
                 </div>
@@ -93,7 +106,7 @@
 
             <div class="box-body">
 
-                <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="5">
+                <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="10">
                     <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                     <Columns>
                         <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
