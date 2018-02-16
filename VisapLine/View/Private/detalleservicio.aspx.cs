@@ -97,7 +97,7 @@ namespace VisapLine.View.Private
         }
         protected void volver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("servicio.aspx");
+            Response.Redirect("servicio.aspx?key="+ Valor);
         }
     }
 }

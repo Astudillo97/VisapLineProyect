@@ -21,11 +21,13 @@ namespace VisapLine.Model
 
         public DataTable RegistrarCompra( Compra comp)
         {
+            //funciona
             return data.ConsultarDatos("select * from pr_insertarcompra('" + comp.fechapedido + "' ,'" + comp.numeropedido+"','"+comp.fechallegada+ "','" + comp.valor + "','" + comp.proveedor_idproveedor + "',"+comp.personal_idpersonal+")");
         }
-        public bool ActualizarCompra(Compra comp)
+        public bool ActualizarCompra(Compra comp)// cambiar el metodo
         {
-            return data.OperarDatos("select * from pr_actualizarrcompra('" + comp.idcompra + "', '" + comp.fechapedido + "','" + comp.numeropedido + "','" + comp.fechallegada + "','" + comp.valor + "','" + comp.personal_idpersonal + "')");
+            return false;
+          //  return data.OperarDatos("select * from pr_actualizarrcompra('" + comp.idcompra + "', '" + comp.fechapedido + "','" + comp.numeropedido + "','" + comp.fechallegada + "','" + comp.valor + "','" + comp.personal_idpersonal + "')");
         }
         public bool EliminarCompra(Compra comp)
         {
@@ -45,6 +47,7 @@ namespace VisapLine.Model
         }
         public DataTable ConsultarComprar()
         {
+            // funciona
             return data.ConsultarDatos("select * from pr_consultarrcompra()");
         }
     }
