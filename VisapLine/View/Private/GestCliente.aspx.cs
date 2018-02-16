@@ -31,7 +31,7 @@ namespace VisapLine.View.Private
             try
             {
                 tercero.identificacion = Validar.validarlleno(identif_.Value);
-                tercliente =Validar.Consulta(tercero.ConsultarTerceroDos(tercero));
+                tercliente =Validar.Consulta(tercero.ConsultarTerceroAvanzado(tercero));
                 consultacliente.DataSource = tercliente;
                 consultacliente.DataBind();
                 Alerta.Visible = false;

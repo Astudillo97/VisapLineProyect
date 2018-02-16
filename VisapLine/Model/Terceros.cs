@@ -85,5 +85,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultartercerodos('"+identificacion+"')");
         }
+
+        public DataTable ConsultarTerceroAvanzado(Terceros ter)
+        {
+            return data.ConsultarDatos("select * from pr_consultarterceroavanzado('" + identificacion.ToUpper() + "')");
+        }
     }
 }

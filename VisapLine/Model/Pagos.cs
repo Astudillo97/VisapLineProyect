@@ -24,12 +24,16 @@ namespace VisapLine.Model
             return data.ConsultarDatos("");
         }
 
-        public bool RegistrarPago(Pagos fac, string usuario, string ipregistro)
+        public DataTable RegistrarPago(Pagos fac, string usuario, string ipregistro)
         {
-            return data.OperarDatos("select * from pr_insertar_pagos('" + usuario + "','" + ipregistro + "','" + fac.factura_idfactura + "','" + fac.terceros_idterceros + "','" + fac.pagado + "','" + obtenercaja() + "')");
+            return data.ConsultarDatos("select * from pr_insertar_pagos('" + usuario + "','" + ipregistro + "','" + fac.factura_idfactura + "','" + fac.terceros_idterceros + "','" + fac.pagado + "','" + obtenercaja() + "')");
         }
 
         public DataTable ConsultarPagoByIdFact(Pagos pag)
+        {
+            return data.ConsultarDatos("select * from pr_consultapagosidfact(" + pag.factura_idfactura + ")");
+        }
+        public DataTable ConsultarPagoByIdPago(Pagos pag)
         {
             return data.ConsultarDatos("select * from pr_consultapagosidfact(" + pag.factura_idfactura + ")");
         }
