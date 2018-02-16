@@ -234,8 +234,6 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
-    height: 119px;
-    width: 122px;
 }
 
 svg:not(:root) {
@@ -721,8 +719,6 @@ pre code {
   -ms-flex: 0 0 50%;
       flex: 0 0 50%;
   max-width: 50%;
-    top: -161px;
-    left: -240px;
 }
 
 .col-7 {
