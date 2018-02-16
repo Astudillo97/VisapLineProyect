@@ -79,6 +79,7 @@
                                         <div class="col-sm-12">
                                             <button class="btn btn-success form-control btn-lg" visible="false" id="btnpago" runat="server" onserverclick="btnRegistrarpago">PAGAR</button>
                                             <button class="btn btn-secondary form-control btn-lg" visible="false" id="btnimprimir" runat="server" onserverclick="btnimprimir_ServerClick">IMPRIMIR</button>
+                                            <label runat="server" id="idpago" visible="false"></label>
                                         </div>
                                     </div>
                                 </div>

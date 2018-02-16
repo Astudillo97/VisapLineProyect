@@ -50,6 +50,11 @@ namespace VisapLine.Model
             linea.AppendLine("INVENTARIO                    | CANT");
         }
 
+        public void EncabezadoFactura()
+        {
+            linea.AppendLine("DESCRIPCION                    | VALOR");
+        }
+
         public void TextoIzquierdo(string texto)
         {
             if (texto.Length > maxCar)
