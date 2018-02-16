@@ -65,6 +65,7 @@ namespace VisapLine.View.Private
 
         protected void btnconsultar_Click(object sender, EventArgs e)
         {
+            formordenes.Dispose();
             valosal = Borden2.Text;
             NewMethod(valosal);
 
@@ -83,6 +84,7 @@ namespace VisapLine.View.Private
                 Llenardrop();
                 divconten.Visible = true;
                 divcreator.Visible = false;
+                Formtrabajos.Visible = false;
             }
             else
             {
@@ -94,6 +96,7 @@ namespace VisapLine.View.Private
                 divcreator.Visible = false;
                 llenardetalle();
                 Llenardrop();
+                formordenes.Visible = false;
             }
         }
 
@@ -206,6 +209,7 @@ namespace VisapLine.View.Private
             divcreator.Visible = false;
             busquedaavansada.Visible = false;
             principaldiv.Visible = true;
+
         }
 
         protected void divs_ServerClick(object sender, EventArgs e)

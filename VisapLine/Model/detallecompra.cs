@@ -15,22 +15,28 @@ namespace VisapLine.Model
         public string compra_idocompra { get; set; }
         public string personal_idepersonal { get; set; }
         public bool registrarproducto(string serial,string descripcion,string tipoproducto,string vidautil,string modeloequipo,string mac,string cantidad,string compra) {
+            //sirve
             string producto = data.ConsultarDatos("select * from pr_insertarinventario('"+ serial+"','"+descripcion+"',"+tipoproducto+",'"+vidautil+"','DISPONIBLE',"+ modeloequipo+",'"+ mac+"')").Rows[0][0].ToString();
+            //sirve
             return data.OperarDatos("select * from pr_insertardetallecompra("+ producto + ","+ compra + ","+ cantidad + ")");
         }
         public bool resgistrarinsumo(string compra,string producto,string cantidad) {
+            //sirve
             return data.OperarDatos("select * from pr_insertardetallecompra("+producto+","+compra+","+cantidad+")");
         }
         public DataTable cosultarequipoararegistro(string idtipo)
         {
+            //sirve
             return data.ConsultarDatos("SELECT * from public.pr_consultarinventariotipo("+ idtipo + ")");
         }
         public DataTable cosultardetalle(string idtipo)
         {
+            //sirve
             return data.ConsultarDatos("SELECT * from public.pr_consultardetallecomra(" + idtipo + ")");
         }
         public bool eliminardetalle (string idtipo)
         {
+            //sirve
             return data.OperarDatos("SELECT * from public.pr_borrardetallecompra(" + idtipo + ")");
         }
 
