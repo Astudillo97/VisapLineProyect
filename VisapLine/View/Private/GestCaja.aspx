@@ -68,7 +68,7 @@
 
         <div class="box box-default">
             <div class="box-header with-border">
-                <h2 class="box-title">Registro de egresos de la caja</h2>
+                <h2 class="box-title">Registro de Egresos de la Caja</h2>
             </div>
             <!-- /.box-header -->
 
