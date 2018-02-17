@@ -186,6 +186,16 @@ namespace VisapLine.View.Private
             listtelefono.Dispose();
             listtelefono.Rows.Clear();
             rh_.SelectedValue = "Seleccione";
+
+            tabletipo.Rows.Clear();
+            tabletipo.Dispose();
+            listTipos.Dispose();
+            tabletipo.Columns.Clear();
+
+            listtelefono.Rows.Clear();
+            listtelefono.Dispose();
+            telefonos.Dispose();
+            listtelefono.Columns.Clear();
         }
 
         private void cargarDepartamentos(string dat)
@@ -364,7 +374,7 @@ namespace VisapLine.View.Private
                             }
                             foreach (DataRow item in tabletipo.Rows)
                             {
-                                ct.tercero_idtercero = terc.identificacion;
+                                ct.tercero_idtercero = identificacion_.Value;
                                 ct.tipotercero_idtipotercero = item[0].ToString();
                                 ct.Registrarcargotercero(ct);
                             }
