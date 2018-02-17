@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VisapLine.Exeption;
@@ -25,7 +26,7 @@ namespace VisapLine.View.Private
         TipoDoc tpdoc = new TipoDoc();
         Telefono tlf = new Telefono();
         CargoTercero ctg = new CargoTercero();
-        Contrato ctt = new Contrato();
+        static Contrato ctt = new Contrato();
         Servicios srv = new Servicios();
         Inventario invt = new Inventario();
         Caracteristicas crts = new Caracteristicas();
@@ -37,11 +38,12 @@ namespace VisapLine.View.Private
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            
+
+
             if (!IsPostBack)
             {
-                try {
+                try
+                {
                     DropDownListpais.DataSource = pais.ConsultarPais();
                     DropDownListpais.DataTextField = "pais";
                     DropDownListpais.DataValueField = "idpais";
@@ -70,10 +72,14 @@ namespace VisapLine.View.Private
 
                     }
                 }
-                catch (ArgumentNullException ex) {
-      
+                catch (ArgumentNullException ex)
+                {
+
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "errorcarga()", true);
                 }
+            }
+            else {
+                cargardtservicio();
             }
 
         }
@@ -163,39 +169,39 @@ namespace VisapLine.View.Private
             invt.cancelarselecioninventarion(idpedido);
             listequipo.Visible=false;
             gridcaract.Visible = false;
-            btninser.Visible = false;
+            //btninser.Visible = false;
         }
 
-        protected void btninser_Click(object sender, EventArgs e)
-        {
-            bool ctrl = true;
-            if (ip.Text.Equals("")){
-                ctrl = false;
-            }
-            for (int i = 0; i < gridcaract.Rows.Count && ctrl; i++)
-            {
-                TextBox texto = (TextBox)gridcaract.Rows[i].Cells[2].FindControl("cantida");
-                if (texto.Text.Equals("")) {
-                    ctrl = false;
-                }
-            }
-            if (ctrl)
-            {
-                DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
-                DataTable dtid = srv.crearservicio(ip.Text, int.Parse(dtrs[0].ToString()), idcontrato, dtrs[1].ToString(), "POR INSTALAR", "INTERNET", idpedido ,TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
-                int idservi = int.Parse(dtid.Rows[0][0].ToString());
-                for (int i = 0; i < gridcaract.Rows.Count; i++)
-                {
-                    TextBox texto = (TextBox)gridcaract.Rows[i].Cells[2].FindControl("cantida");
-                    psc.RegistrarPlanSCatact(idservi, int.Parse(gridcaract.Rows[i].Cells[0].Text), int.Parse(texto.Text));
-                }
-            }
-            else {
-                textError.InnerHtml = "POR FAVOR DIGITE TODOS LOS CAMPOS";
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
-            }
-        }
+        //protected void btninser_Click(object sender, EventArgs e)
+        //{
+        //    bool ctrl = true;
+        //    if (ip.Text.Equals("")){
+        //        ctrl = false;
+        //    }
+        //    for (int i = 0; i < gridcaract.Rows.Count && ctrl; i++)
+        //    {
+        //        TextBox texto = (TextBox)gridcaract.Rows[i].Cells[2].FindControl("cantida");
+        //        if (texto.Text.Equals("")) {
+        //            ctrl = false;
+        //        }
+        //    }
+        //    if (ctrl)
+        //    {
+        //        DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
+        //        DataTable dtid = srv.crearservicio(ip.Text, int.Parse(dtrs[0].ToString()), idcontrato, dtrs[1].ToString(), "POR INSTALAR", "INTERNET", idpedido ,TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
+        //        int idservi = int.Parse(dtid.Rows[0][0].ToString());
+        //        for (int i = 0; i < gridcaract.Rows.Count; i++)
+        //        {
+        //            TextBox texto = (TextBox)gridcaract.Rows[i].Cells[2].FindControl("cantida");
+        //            psc.RegistrarPlanSCatact(idservi, int.Parse(gridcaract.Rows[i].Cells[0].Text), int.Parse(texto.Text));
+        //        }
+        //    }
+        //    else {
+        //        textError.InnerHtml = "POR FAVOR DIGITE TODOS LOS CAMPOS";
+        //        Alerta.CssClass = "alert alert-error";
+        //        Alerta.Visible = true;
+        //    }
+        //}
 
         protected void creartev_Click(object sender, EventArgs e)
         {
@@ -275,6 +281,29 @@ namespace VisapLine.View.Private
             }
         }
 
+        protected void asignarequipo(object sender, EventArgs e)
+        {
+            Servicios serve = new Servicios();
+            if (serve.vaalidarmegas(txtmegasasignar.Text, idcontrato))
+            {
+                DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
+                DataTable dtid = serve.crearservicio(ip.Text, int.Parse(txtmegasasignar.Text), idcontrato, dtrs[1].ToString(), "POR INSTALAR", "INTERNET", txtseralasignar.Text, TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
+                if (dtid.Rows.Count > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this,typeof(Page), "alerta", "successasignation()", true);
+                    cargardtservicio();
+                }
+                else {
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "errorasignation()", true);
+                    cargardtservicio();
+                }
+                
+            }
+            else {
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "errorasignation()", true);
+                cargardtservicio();
+            }
+        }
         protected void gridservicios_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow grvr = gridservicios.SelectedRow;
