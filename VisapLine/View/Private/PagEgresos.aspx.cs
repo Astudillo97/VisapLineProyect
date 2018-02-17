@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using VisapLine.Model;
 using VisapLine.Exeption;
 using System.Data;
+using System.Net;
+using System.Net.Sockets;
 namespace VisapLine.View.Private
 {
     public partial class PagEgresos : System.Web.UI.Page
@@ -15,6 +17,7 @@ namespace VisapLine.View.Private
         Egreso eg = new Egreso();
         Motivo mo = new Motivo();
         Empresa emp = new Empresa();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -31,7 +34,7 @@ namespace VisapLine.View.Private
             catch (Exception)
             {
                 throw;
-            }     
+            }
 
 
         }
@@ -52,7 +55,7 @@ namespace VisapLine.View.Private
                     Div1.Visible = true;
                     Label1.Text = datcont["nombre"].ToString();
                     Label2.Text = datcont["apellido"].ToString();
-                    TextBox1.Text= datcont["direccion"].ToString();
+                    TextBox1.Text = datcont["direccion"].ToString();
                 }
 
             }
@@ -69,16 +72,44 @@ namespace VisapLine.View.Private
 
         }
 
-     
-
+        public string GetPublicIPAddress()
+        {
+            return this.Request.UserHostAddress.ToString();
+        }
+        public string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new ValidarExeption("No network adapters with an IPv4 address in the system!");
+        }
         protected void Buttonguarimpri_Click(object sender, EventArgs e)
         {
-            imprimir();
+            try
+            {
+                Terceros ter = (Terceros)Session["tercero"];
+                DataRow datcont = Validar.Consulta(terc.ConsultarPersonaIdenti(texboxdni.Text)).Rows[0];
+                string ipprivada = GetLocalIPAddress();
+                string ippublica = GetPublicIPAddress();
+                eg.observacion =  Validar.validarlleno(TextBox2.Text);
+                eg.valoregreso = Validar.validarlleno(TextBox3.Text);
+                eg.motivo_idtercero_egre = Validar.validarselected(DropDownList2.SelectedValue);
+                eg.tercero_idtercero_egre = datcont["idterceros"].ToString();
+                eg.tercero_idtercero_reg = ter.idterceros;
+                eg.Registraregreso(ter.identificacion + ": " + ter.nombre + " " + ter.apellido, GetLocalIPAddress() + "-" + Dns.GetHostName() + "-" + GetPublicIPAddress());
+            }
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", " errorsoft();", true);               
+            }
 
 
-
-
-
+            //imprimir();
 
 
         }
@@ -114,7 +145,7 @@ namespace VisapLine.View.Private
                 }
             }
             //De aqui en adelante pueden formar su ticket a su gusto... Les muestro un ejemplo
-            
+
             Terceros ter = (Terceros)Session["tercero"];
 
             DataRow datcont = Validar.Consulta(terc.ConsultarPersonaIdenti(texboxdni.Text)).Rows[0];
@@ -125,6 +156,7 @@ namespace VisapLine.View.Private
             ticket.TextoCentro(Nit);
             ticket.TextoCentro(Direcion);
             ticket.TextoCentro(telefonos);
+            ticket.TextoCentro("EGRESO");
 
             ticket.TextoIzquierdo("");
             ticket.TextoExtermos("FECHA: " + DateTime.Now.ToShortDateString(), DateTime.Now.ToShortTimeString());
@@ -133,7 +165,7 @@ namespace VisapLine.View.Private
             //Sub cabecera.
             ticket.TextoIzquierdo("");
             ticket.TextoIzquierdo("ATENDIO: " + ter.nombre + " " + ter.apellido);
-            ticket.TextoIzquierdo("CLIENTE: " + datcont["nombre"].ToString() +" "+ datcont["apellido"].ToString());
+            ticket.TextoIzquierdo("CLIENTE: " + datcont["nombre"].ToString() + " " + datcont["apellido"].ToString());
             ticket.TextoIzquierdo("NIT:" + datcont["identificacion"].ToString());
             ticket.TextoIzquierdo("DIRECCION: " + datcont["direccion"].ToString());
 
@@ -142,9 +174,9 @@ namespace VisapLine.View.Private
             ticket.EncabezadoFactura();//NOMBRE DEL ARTICULO, CANT, PRECIO, IMPORTE
             ticket.lineasAsteriscos();
 
-            
+
             ticket.AgregarArticulo(TextBox2.Text, Convert.ToInt32(TextBox3.Text));
-            
+
 
             ticket.lineasIgual();
             ticket.TextoIzquierdo("TOTAL A CANCELAR:" + TextBox3.Text);

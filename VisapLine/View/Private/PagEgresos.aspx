@@ -51,6 +51,11 @@
             <li class="breadcrumb-item active">Egresos</li>
         </ol>
     </section>
+    <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <label class="text-center" runat="server" id="textError"></label>
+    </asp:Panel>
+
     <section class="content">
         <div class="box box-default">
             <div class="box-body">
@@ -183,13 +188,13 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Valor Egreso</label>
                                             <div class="col-sm-9">
-                                                <asp:TextBox ID="TextBox3" runat="server" type="number" CssClass="form-control" Style="text-transform: uppercase"></asp:TextBox>                                     
+                                                <asp:TextBox ID="TextBox3" runat="server" type="number" CssClass="form-control" Style="text-transform: uppercase"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Observacion</label>
                                             <div class="col-sm-9">
-                                                <asp:TextBox ID="TextBox2" TextMode="MultiLine" Style="text-transform: uppercase"  Rows="5" Columns="15" runat="server" class="form-control" Height="100px"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox2" TextMode="MultiLine" Style="text-transform: uppercase" Rows="5" Columns="15" runat="server" class="form-control" Height="100px"></asp:TextBox>
                                             </div>
                                         </div>
                                         <center>
@@ -202,5 +207,6 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 </asp:Content>

@@ -22,9 +22,9 @@ namespace VisapLine.Model
         public string observacion { get; set; }
         public string caja_idcaja_egre { get; set; }
 
-        public DataTable Registraregreso(Egreso eg,string usuario, string ipregistro)
+        public DataTable Registraregreso(string usuario, string ipregistro)
         {
-            return data.ConsultarDatos("select * from public.pr_insertar_egresos('"+usuario+"','"+ipregistro+"','"+eg.motivo_idtercero_egre+"','"+eg.tercero_idtercero_reg+"','"+eg.tercero_idtercero_egre+"','"+eg.observacion+"','"+eg.valoregreso+"','"+ obtenercaja() + "')");
+            return data.ConsultarDatos("select * from public.pr_insertar_egresos('"+usuario+"','"+ipregistro+"','"+this.motivo_idtercero_egre+"','"+this.tercero_idtercero_reg+"','"+this.tercero_idtercero_egre+"','"+this.observacion+"','"+this.valoregreso+"','"+ obtenercaja() + "')");
         }
         public DataTable consultaregresos(Egreso eg)
         {
