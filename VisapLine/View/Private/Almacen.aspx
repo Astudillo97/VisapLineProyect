@@ -8,6 +8,13 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <asp:ScriptManager ID="scripservicc" runat="server"></asp:ScriptManager>
     <script type="text/javascript">
+        function nointro() {
+            window.addEventListener("keypress", function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                }
+            }, false);
+        }
         function panel1() {
             document.getElementById("pan1").click();
         }
@@ -67,7 +74,12 @@
                     });
             })
                 ;
+
+            
         }
+        function nodata() {
+            swal("ALGO HA OCURRIDO!", "No se encontraron registros", "error");
+        };
     </script>
     <section class="content-header">
         <h1>Gestion del Inventario
@@ -94,7 +106,7 @@
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="Comprass">
-                    <div class="row">
+                    <div class="row" id="rowinsertar" runat="server">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
@@ -105,8 +117,8 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Numero de pedido</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="numeropedido_" runat="server" placeholder="Serial">
-                                            </div>
+                                                <input type="text" class="form-control col-10" id="numeropedido_" runat="server" placeholder="Serial">
+                                                <button class="btn btn-success col-1" id="consultarcompra" runat="server" onserverclick="consltarcompra"><span class="glyphicon glyphicon-search"></span></button>                                            </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Valor</label>
@@ -153,6 +165,66 @@
                             </div>
                         </div>
                     </div>
+                    <asp:FormView ID="formcompra" CssClass="col-12" runat="server">
+                             <ItemTemplate>
+                     <div class="row" id="rowcosnultar" runat="server">
+                         
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Compras</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-element">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Numero de pedido</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="Text1" runat="server" value='<%#Eval("numeropedido") %>'>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Valor</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="Text2" runat="server" value='<%#Eval("valor") %>'>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Proveedor</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="Text3" runat="server" value='<%#Eval("prov") %>'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"></h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-element">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Fecha de Pedido</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="Text4" runat="server" value='<%#Eval("fechapedido") %>'>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Fecha de Llegada</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="Text5" runat="server" value='<%#Eval("fechallegada") %>'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                
+                    </div>
+                                  </ItemTemplate>
+                         </asp:FormView>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregardetalle">REGISTRAR DETALLE</button>
                     <div class="modal fade" id="agregardetalle" data-backdrop="”static”">
                         <div class="modal-dialog" role="document">
@@ -183,7 +255,7 @@
                                                 <asp:Label ID="lblmodelo" runat="server">MODELO</asp:Label>
                                             </div>
                                             <div class="col-6">
-                                                <asp:DropDownList ID="dropmodelo" runat="server" AutoPostBack="true"></asp:DropDownList>
+                                                <asp:DropDownList ID="dropmodelo" runat="server"></asp:DropDownList>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -252,18 +324,9 @@
                         <!-- /.modal-dialog -->
                     </div>
                     <div class="row col">
-                        <div class="box box-default collapsed-box">
+                        <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Detalle Compra</h3>
-
-                                <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </div>
                             </div>
                             <div class="box-body">
                                 <asp:GridView runat="server" ID="tablacompras" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive">
@@ -490,13 +553,13 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Nit Proveedor</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="nit_" runat="server" placeholder="Telefono o celular">
+                                                <input type="text" class="form-control" id="nit_" runat="server" placeholder="XXXXXXXXXXXXX-X">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Razón Social</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="razonsocail_" runat="server" placeholder="Telefono o celular">
+                                                <input type="text" class="form-control" id="razonsocail_" runat="server" placeholder="example S.A">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -508,7 +571,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Correo</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="correo_" runat="server" placeholder="Telefono o celular">
+                                                <input type="text" class="form-control" id="correo_" runat="server" placeholder="Example@empresa.com">
                                             </div>
                                         </div>
                                     </div>
@@ -563,7 +626,7 @@
                                 <div class="box-body">
                                     <div class="form-element">
                                         <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Nit Proveedor</label>
+                                            <label class="col-sm-3 col-form-label">Fabricante</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="fabricante_" runat="server" placeholder="Fabricante">
                                             </div>
@@ -623,11 +686,18 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Tipo Factura</label>
+                                            <label class="col-sm-3 col-form-label">Fabricante</label>
                                             <div class="col-sm-9">
                                                 <asp:DropDownList runat="server" ID="listfabricante" CssClass="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
                                                 </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Wifi</label>
+                                            <div class="col-sm-9">
+                                                <asp:CheckBox ID="checkwifi" runat="server" Text=" ">
+                                                </asp:CheckBox>
                                             </div>
                                         </div>
                                     </div>
