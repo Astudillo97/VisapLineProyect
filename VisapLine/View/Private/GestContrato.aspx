@@ -7,9 +7,6 @@
         function botonmodalgesti() {
             document.getElementById("botonmodalcontr").click();
         }
-
-
-
     </script>
     <style>
         textarea {
@@ -35,6 +32,9 @@
         }
         function nocontro() {
             swal("NO SE REALIZO LA OPERACION!", "La operacion no fue posible", "error");
+        }
+        function errordatos() {
+            swal("NO SE REALIZO LA OPERACION!", "La operacion no fue posible, consulte con soporte tecnico", "error");
         }
     </script>
 
@@ -63,7 +63,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
                             <div class="col-sm-9">
-                                <asp:TextBox runat="server" type="number" CssClass="form-control" ID="texboxdni" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server"  CssClass="form-control" ID="texboxdni" Style="text-transform: uppercase"></asp:TextBox>
 
                             </div>
                         </div>
@@ -306,7 +306,7 @@
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>CORREO</asp:ListItem>
                                         <asp:ListItem>DOMICILIO</asp:ListItem>
-                                             <asp:ListItem>AMBOS</asp:ListItem>
+                                        <asp:ListItem>AMBOS</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>

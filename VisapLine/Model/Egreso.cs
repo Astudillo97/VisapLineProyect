@@ -17,13 +17,14 @@ namespace VisapLine.Model
         public string valoregreso { get; set; }
         public string fechaegreso { get; set; }
         public string tercero_idtercero_reg { get; set; }
+        public string tercero_idtercero_egre { get; set; }
         public string motivo_idtercero_egre { get; set; }
         public string observacion { get; set; }
         public string caja_idcaja_egre { get; set; }
 
-        public DataTable Registraregreso(Egreso eg)
+        public DataTable Registraregreso(Egreso eg,string usuario, string ipregistro)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from public.pr_insertar_egresos('"+usuario+"','"+ipregistro+"','"+eg.motivo_idtercero_egre+"','"+eg.tercero_idtercero_reg+"','"+eg.tercero_idtercero_egre+"','"+eg.observacion+"','"+eg.valoregreso+"','"+ obtenercaja() + "')");
         }
         public DataTable consultaregresos(Egreso eg)
         {
@@ -38,6 +39,8 @@ namespace VisapLine.Model
             }
             throw new ValidarExeption("No hay cajas activas");
         }
+
+
 
 
     }

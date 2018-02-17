@@ -51,7 +51,6 @@
                             <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
                             <div class="col-sm-9">
                                 <asp:TextBox runat="server" type="number" CssClass="form-control" ID="texboxdni" Style="text-transform: uppercase"></asp:TextBox>
-
                             </div>
                         </div>
                     </div>
@@ -836,7 +835,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Barrio</label>
                                         <div class="col-sm-9">
-                                            <asp:DropDownList ID="DropDownListbarriosucursalempre" CssClass="form-control" runat="server">
+                                            <asp:DropDownList ID="DropDownListbarriosucursalempre" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                                 <asp:ListItem>Seleccione</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
