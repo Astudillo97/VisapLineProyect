@@ -18,6 +18,7 @@ namespace VisapLine.View.Private
         Empresa empresa = new Empresa();
         class_pdf pdf = new class_pdf();
         Factura fact = new Factura();
+        Observacion observac = new Observacion();
         static DataTable tablefactura = new DataTable();
         static DataTable tercliente = new DataTable();
         static DataTable contcliente = new DataTable();
@@ -35,6 +36,7 @@ namespace VisapLine.View.Private
                 consultacliente.DataSource = tercliente;
                 consultacliente.DataBind();
                 Alerta.Visible = false;
+                ClientScript.RegisterStartupScript(GetType(), "alerta", "panelbutton();", true);
             }
             catch (Exception ex)
             {
@@ -126,6 +128,28 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
+        }
+
+        protected void Unnamed_ServerClick(object sender, EventArgs e)
+        {
+            try
+            {
+                observac.observacion = "";
+                observac.factura_idfactura_obs = "1";
+                if (observac.RegistrarObservacion(observac))
+                {
+                    textError.InnerHtml = "Solicitud Enviada Correctamente";
+                    Alerta.CssClass = "alert alert-success";
+                    Alerta.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
         }
     }
 }
