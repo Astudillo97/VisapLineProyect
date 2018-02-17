@@ -23,7 +23,7 @@ namespace VisapLine.Model
 
         public bool RegistrarInventario(Inventario inv)
         {
-            return data.OperarDatos("select * from pr_insertarinventario('"+inv.serial+ "','" + inv.descripcion + "','" + inv.tipoproducto_idtipoproducto + "','" + inv.vidautil + "','" + inv.estado + "','" + inv.modelo_idmodelo + "','" + inv.mac + "','" + inv.compra_idcompra + "')");
+            return data.OperarDatos("select * from pr_insertarinventario('"+inv.serial+ "','" + inv.descripcion + "','" + inv.tipoproducto_idtipoproducto + "','" + inv.vidautil + "','" + inv.estado + "','" + inv.modelo_idmodelo + "','" + inv.mac + "')");
         }
 
         public DataTable selecionarinventarioparaservicio() {
