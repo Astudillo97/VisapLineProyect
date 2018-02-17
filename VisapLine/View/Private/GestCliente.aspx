@@ -11,7 +11,8 @@
             document.getElementById('idbusqueda').click();
         }
         function cargarIdfactura(vari) {
-            document.getElementById('numero').innerHTML = vari;
+            document.getElementById('<%=numero.ClientID%>').value=vari;
+            document.getElementById('edicion').click();
         }
     </script>
 </asp:Content>
@@ -134,12 +135,12 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <a href="#" data-toggle="modal" data-target="#modal-primary"><i class="glyphicon glyphicon-edit"></i></a>
+                                        <asp:LinkButton ID="btn" Text="" CommandName="editarfactura" CommandArgument='<%# Eval("facturaventa") %>' CssClass="glyphicon glyphicon-edit" runat="server" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <a href="#" data-toggle="modal" class="glyphicon glyphicon-cog" onclick="cargarIdfactura('<%# Eval("idfactura")%>');" data-target="#modal-primary"></a>
+                                        <asp:LinkButton ID="btn2" runat="server" CssClass="glyphicon glyphicon-cog" CommandName="correccion" CommandArgument='<%# Eval("idfactura") %>' Text="" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">
@@ -158,6 +159,7 @@
                 </div>
             </div>
         </div>
+        <a data-toggle="modal" style="display:none" id="edicion" class="glyphicon glyphicon-cog"  href="#" data-target="#modal-primary">content</a>
         <div class="modal fade" id="modal-primary">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -171,8 +173,8 @@
                             <div class="form-element">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Registro de la Observacion</label>
-                                        <label for="exampleInputEmail1">#</label><label id="numero" for="exampleInputEmail1"></label>
+                                        <label for="exampleInputEmail1">#</label>
+                                        <asp:TextBox ID="numero" runat="server" Enabled="false"  CssClass="form-control-label"></asp:TextBox>
                                         <asp:TextBox TextMode="MultiLine" class="form-control" runat="server" Rows="5" ID="observacion_" placeholder="Observacion" />
                                     </div>
                                 </div>

@@ -120,6 +120,16 @@ namespace VisapLine.View.Private
                     string paramet = e.CommandArgument.ToString();
                     Response.Redirect("GestPagos.aspx?codigo=" + paramet);
                 }
+                if (e.CommandName.ToString() == "correccion")
+                {
+                    string paramet = e.CommandArgument.ToString();
+                    ClientScript.RegisterStartupScript(GetType(), "mod", "cargarIdfactura('"+paramet+"');", true);
+                }
+                if (e.CommandName.ToString() == "editarfactura")
+                {
+                    string paramet = e.CommandArgument.ToString();
+                    Response.Redirect("EditarFactura.aspx?key="+paramet);
+                }
                 Alerta.Visible = false;
             }
             catch (Exception ex)
@@ -134,8 +144,8 @@ namespace VisapLine.View.Private
         {
             try
             {
-                observac.observacion = "";
-                observac.factura_idfactura_obs = "1";
+                observac.observacion =  Validar.validarlleno(observacion_.Text);
+                observac.factura_idfactura_obs = numero.Text;
                 if (observac.RegistrarObservacion(observac))
                 {
                     textError.InnerHtml = "Solicitud Enviada Correctamente";

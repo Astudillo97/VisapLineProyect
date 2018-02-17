@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="EditarFactura.aspx.cs" Inherits="VisapLine.View.Private.EditarFactura" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <section class="content-header">
+    <section class="content-header">
         <h2>Gestion del Cliente
         </h2>
         <ol class="breadcrumb">
@@ -24,19 +25,40 @@
                             <div class="box box-primary">
                                 <div class="box-body">
                                     <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">NUMERO FACTURA:</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="cod"></label>
-                                        <label class="col-sm-3 col-form-label">ID DE FACTURA:</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="idfactura"></label>
-                                        <label class="col-sm-3 col-form-label">ESTADO</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="estado"></label>
+                                        <label style="display:none" class="col-sm-3 col-form-label">ID DE FACTURA:</label>
+                                        <asp:TextBox Visible="false" class="col-sm-3" runat="server" ID="idfact" />
+
                                         <label class="col-sm-3 col-form-label">EMITIDA</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="emision"></label>
+                                        <asp:TextBox TextMode="Date" format="dd/mm/yyyy" class="col-sm-3 col-form-label text-bold" runat="server" ID="emisio" />
                                         <label class="col-sm-3 col-form-label">VENCE</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="vencimiento"></label>
+                                        <asp:TextBox class="col-sm-3 col-form-label text-bold" runat="server" ID="vencimient" />
                                         <label class="col-sm-3 col-form-label">CORTE</label>
-                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="corte"></label>
+                                        <asp:TextBox class="col-sm-3 col-form-label text-bold" runat="server" id="cort"/>
+
+                                        <label class="col-sm-3 col-form-label">ESTADO</label>
+                                        <asp:TextBox class="col-sm-3 col-form-label text-bold" runat="server" ID="estad" />
+
+                                        <label class="col-sm-3 col-form-label">CUOTAS:</label>
+                                        <asp:TextBox CssClass="col-sm-3 col-form-label text-bold" runat="server" ID="cuotas" />
+
+                                        <label class="col-sm-3 col-form-label">NUMERO FACTURA:</label>
+                                        <asp:TextBox Enabled="false" CssClass="col-sm-3 col-form-label text-bold" runat="server" ID="facturaventa" />
+
+                                        <label class="col-sm-3 col-form-label">VALOR FACTURA:</label>
+                                        <asp:TextBox CssClass="col-sm-3 col-form-label text-bold" runat="server" ID="valorfac" />
+
+                                        <label class="col-sm-3 col-form-label">SALDO FACTURA:</label>
+                                        <asp:TextBox CssClass="col-sm-3 col-form-label text-bold" runat="server" ID="saldofact" />
+
+                                        <label class="col-sm-3 col-form-label">IVA FACTURA:</label>
+                                        <asp:TextBox CssClass="col-sm-3 col-form-label text-bold" runat="server" ID="ivafact" />
+
+                                        <label class="col-sm-3 col-form-label">TOTAL FACTURA:</label>
+                                        <asp:TextBox CssClass="col-sm-3 col-form-label text-bold" runat="server" ID="totalfact" />
+
+                                        
                                     </div>
+                                    <asp:Button CssClass="col-sm-3 btn-success text-bold" Text="Actualizar" OnClick="btnActualizar_Click" runat="server" ID="btnActualizar" />
                                 </div>
                             </div>
                         </div>
@@ -51,7 +73,9 @@
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-sm-12 ">
-                                            <h2 class="text-center"><label class="col-form-label text-bold"  runat="server" id="estado2"></label></h2>
+                                            <h2 class="text-center">
+                                                
+                                            </h2>
                                         </div>
                                         <div class="col-sm-12 ">
                                             <asp:TextBox type="text" class="form-control text-center text-bold" runat="server" ID="textpagado" />
