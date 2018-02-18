@@ -25,18 +25,25 @@
                             <div class="box box-primary">
                                 <div class="box-body">
                                     <div class="form-group row">
-                                        <label style="display:none" class="col-sm-3 col-form-label">ID DE FACTURA:</label>
+                                        <label style="display: none" class="col-sm-3 col-form-label">ID DE FACTURA:</label>
                                         <asp:TextBox Visible="false" class="col-sm-3" runat="server" ID="idfact" />
-
                                         <label class="col-sm-3 col-form-label">EMITIDA</label>
-                                        <asp:TextBox TextMode="Date" format="dd/mm/yyyy" class="col-sm-3 col-form-label text-bold" runat="server" ID="emisio" />
+                                        <asp:TextBox TextMode="Date" class="col-sm-3 col-form-label text-bold" runat="server" ID="emisio" />
                                         <label class="col-sm-3 col-form-label">VENCE</label>
-                                        <asp:TextBox class="col-sm-3 col-form-label text-bold" runat="server" ID="vencimient" />
+                                        <asp:TextBox TextMode="Date" class="col-sm-3 col-form-label text-bold" runat="server" ID="vencimient" />
                                         <label class="col-sm-3 col-form-label">CORTE</label>
-                                        <asp:TextBox class="col-sm-3 col-form-label text-bold" runat="server" id="cort"/>
+                                        <asp:TextBox TextMode="Date" class="col-sm-3 col-form-label text-bold" runat="server" ID="cort" />
 
                                         <label class="col-sm-3 col-form-label">ESTADO</label>
-                                        <asp:TextBox class="col-sm-3 col-form-label text-bold" runat="server" ID="estad" />
+                                        <asp:DropDownList class="col-sm-3 col-form-label text-bold" runat="server" ID="estado">
+                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                            <asp:ListItem>Prorateo</asp:ListItem>
+                                            <asp:ListItem>Mes Gratuito</asp:ListItem>
+                                            <asp:ListItem>Vencido</asp:ListItem>
+                                            <asp:ListItem>Pagado</asp:ListItem>
+                                            <asp:ListItem>Facturado</asp:ListItem>
+                                            <asp:ListItem>Revision</asp:ListItem>
+                                        </asp:DropDownList>
 
                                         <label class="col-sm-3 col-form-label">CUOTAS:</label>
                                         <asp:TextBox CssClass="col-sm-3 col-form-label text-bold" runat="server" ID="cuotas" />
@@ -55,10 +62,10 @@
 
                                         <label class="col-sm-3 col-form-label">TOTAL FACTURA:</label>
                                         <asp:TextBox CssClass="col-sm-3 col-form-label text-bold" runat="server" ID="totalfact" />
-
-                                        
                                     </div>
-                                    <asp:Button CssClass="col-sm-3 btn-success text-bold" Text="Actualizar" OnClick="btnActualizar_Click" runat="server" ID="btnActualizar" />
+                                    <div>
+                                        <asp:Button CssClass=" btn btn-success float-right" Text="Actualizar" OnClick="btnActualizar_Click" runat="server" ID="btnActualizar" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -73,12 +80,11 @@
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-sm-12 ">
-                                            <h2 class="text-center">
-                                                
+                                            <h2 class="text-center">NOTA
                                             </h2>
                                         </div>
                                         <div class="col-sm-12 ">
-                                            <asp:TextBox type="text" class="form-control text-center text-bold" runat="server" ID="textpagado" />
+                                            <asp:TextBox type="text" TextMode="MultiLine" Rows="6" class="form-control text-center text-bold" runat="server" ID="observacion" />
                                         </div>
                                         <%--<div class="col-sm-12">
                                             <button class="btn btn-success form-control btn-lg" visible="false" id="btnpago" runat="server" onserverclick="btnRegistrarpago">PAGAR</button>

@@ -18,5 +18,9 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("select * from pr_insertarobservacion("+ob.factura_idfactura_obs+",'"+ob.observacion+"');");
         }
+        public bool RegistrarObservaciondos(Observacion ob)
+        {
+            return data.OperarDatos("select * from pr_insertarobservaciondos(" + ob.factura_idfactura_obs + ",'" + ob.observacion + "');");
+        }
     }
 }

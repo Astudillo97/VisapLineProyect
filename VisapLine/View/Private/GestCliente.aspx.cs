@@ -19,6 +19,7 @@ namespace VisapLine.View.Private
         class_pdf pdf = new class_pdf();
         Factura fact = new Factura();
         Observacion observac = new Observacion();
+        Incidencias inci = new Incidencias();
         static DataTable tablefactura = new DataTable();
         static DataTable tercliente = new DataTable();
         static DataTable contcliente = new DataTable();
@@ -36,6 +37,9 @@ namespace VisapLine.View.Private
                 consultacliente.DataSource = tercliente;
                 consultacliente.DataBind();
                 Alerta.Visible = false;
+                allfactura.DataSource = null;
+                allfactura.DataBind();
+                consultacontrato.Dispose();
                 ClientScript.RegisterStartupScript(GetType(), "alerta", "panelbutton();", true);
             }
             catch (Exception ex)
@@ -66,7 +70,7 @@ namespace VisapLine.View.Private
                 }
                 _telefono_.Value = telef;
                 contrato.terceros_idterceros = row["idterceros"].ToString();
-                contcliente = Validar.Consulta(contrato.ConsultarContratoIdTercero(contrato));
+                contcliente = contrato.ConsultarContratoIdTercero(contrato);
                 consultacontrato.DataSource = contcliente;
                 consultacontrato.DataBind();
                 paneldedatosterceros.Visible = true;
@@ -92,6 +96,7 @@ namespace VisapLine.View.Private
                 tablefactura = fact.ConsultarFacturabyContrato(fact);
                 allfactura.DataSource = tablefactura;
                 allfactura.DataBind();
+                allfactura.Dispose();
                 Alerta.Visible = false;
             }
             catch (Exception ex)
@@ -160,6 +165,13 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
 
+        }
+        protected void cargartabla(string idterceros)
+        {
+
+            DataTable dt = inci.ConsultarIncidencias();
+            GridView2.DataSource = dt;
+            GridView2.DataBind();
         }
     }
 }

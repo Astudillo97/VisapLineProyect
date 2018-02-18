@@ -60,7 +60,7 @@ namespace VisapLine.Model
         }
         public bool ActualizarFactura(Factura fac)
         {
-            return data.OperarDatos("UPDATE public.factura SET fechaemision='"+fac.fechaemision+"', fechavencimiento='"+fac.fechavencimiento+"', fechacorte='"+fac.fechacorte+"', estado='"+fac.estado+"', cuotas='"+fac.cuotas+"', facturaventa='"+fac.facturaventa+"', valorfac='"+fac.valor+"', saldofac='"+fac.saldo+"', ivafac='"+fac.iva+"', totalfac='"+fac.total+"' WHERE idfactura='"+fac.idfactura+"'");
+            return data.OperarDatos("select * from pr_actualizarfactura('" + fac.fechaemision+"', '"+fac.fechavencimiento+"', '"+fac.fechacorte+"', '"+fac.estado+"', '"+fac.cuotas+"', '"+fac.facturaventa+"', '"+fac.valor+"', '"+fac.saldo+"', '"+fac.iva+"', '"+fac.total+"','"+fac.idfactura+"')");
         }
     }
 }
