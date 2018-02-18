@@ -54,20 +54,24 @@ namespace VisapLine.View.Private
         {
             try
             {
-                DataRow datcont = Validar.Consulta(terc.ConsultarPersonaIdenti(texboxdni.Text)).Rows[0];
+                DataRow datcont = terc.ConsultarPersonaIdenti(texboxdni.Text).Rows[0];
                 if (datcont["nombre"].ToString() == "")
                 {
-
+                 
 
                 }
                 else
-                {
+                {                    
                     datosterceros.Visible = true;
                     Div1.Visible = true;
                     Label1.Text = datcont["nombre"].ToString();
                     Label2.Text = datcont["apellido"].ToString();
                     TextBox1.Text = datcont["direccion"].ToString();
                     Buttonguarimpri.Visible = true;
+
+
+                    Proveedors.Visible = false;                                 
+                    Buttonguar2.Visible = false;
                 }
 
             }
@@ -75,9 +79,12 @@ namespace VisapLine.View.Private
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "nocontro();", true);
                 Proveedors.Visible = true;
-                Div1.Visible = true;
-                Buttonguarimpri.Visible = false;
+                Div1.Visible = true;             
                 Buttonguar2.Visible = true;
+
+                Buttonguarimpri.Visible = false;
+                datosterceros.Visible = false;
+               
 
             }
         }
@@ -177,7 +184,7 @@ namespace VisapLine.View.Private
             //Sub cabecera.
             ticket.TextoIzquierdo("");
             ticket.TextoIzquierdo("ATENDIO: " + ter.nombre + " " + ter.apellido);
-            ticket.TextoIzquierdo("CLIENTE: " + datcont["nombre"].ToString() + " " + datcont["apellido"].ToString());
+            ticket.TextoIzquierdo("TERCERO: " + datcont["nombre"].ToString() + " " + datcont["apellido"].ToString());
             ticket.TextoIzquierdo("NIT:" + datcont["identificacion"].ToString());
             ticket.TextoIzquierdo("DIRECCION: " + datcont["direccion"].ToString());
 
@@ -191,7 +198,7 @@ namespace VisapLine.View.Private
 
 
             ticket.lineasIgual();
-            ticket.TextoIzquierdo("TOTAL A CANCELAR:" + TextBox3.Text);
+            ticket.TextoIzquierdo("VALOR CANCELADO:" + TextBox3.Text);
             ticket.TextoIzquierdo("TOTAL CANCELADO:" + TextBox3.Text);
             ticket.TextoIzquierdo("SALDO: 0");
             //Texto final del Ticket.
@@ -203,8 +210,40 @@ namespace VisapLine.View.Private
 
         protected void Buttonguar2_Click(object sender, EventArgs e)
         {
-          
 
+            try
+            {
+                Terceros ter = (Terceros)Session["tercero"];
+                string ipprivada = GetLocalIPAddress();
+                string ippublica = GetPublicIPAddress();
+                terc.tipotercero_idtipotercero = Validar.validarselected(DropDownList1.SelectedValue);
+                terc.tipodoc_idtipodoc = Validar.validarselected(DropDownListtipodocu.SelectedValue);
+                terc.nombre = Validar.validarlleno(TextBox5.Text);
+                terc.telefono = Validar.validarlleno(TextBox6.Text);
+                terc.correo = Validar.validarlleno(TextBox7.Text);
+                terc.identificacion = texboxdni.Text;
+                if (terc.RegitrarTerceroegreso(terc))
+                {
+                    DataRow datcont = Validar.Consulta(terc.ConsultarPersonaIdenti(texboxdni.Text)).Rows[0];
+                    eg.observacion = Validar.validarlleno(TextBox2.Text).ToUpper();
+                    eg.valoregreso = Validar.validarlleno(TextBox3.Text);
+                    eg.motivo_idtercero_egre = Validar.validarselected(DropDownList2.SelectedValue);
+                    eg.tercero_idtercero_egre = datcont["idterceros"].ToString();
+                    eg.tercero_idtercero_reg = ter.idterceros;
+                    eg.Registraregreso(ter.identificacion + ": " + ter.nombre + " " + ter.apellido, GetLocalIPAddress() + "-" + Dns.GetHostName() + "-" + GetPublicIPAddress());
+                    imprimir();
+                }
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", " errorsoft();", true);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
 
 
 

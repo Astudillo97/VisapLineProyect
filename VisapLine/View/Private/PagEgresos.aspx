@@ -124,7 +124,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Correo</label>
                                             <div class="col-sm-9">
-                                                <asp:TextBox ID="TextBox7" runat="server" class="form-control" Style="text-transform: uppercase"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox7" runat="server" class="form-control" ></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
