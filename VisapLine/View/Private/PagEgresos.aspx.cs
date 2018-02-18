@@ -17,6 +17,10 @@ namespace VisapLine.View.Private
         Egreso eg = new Egreso();
         Motivo mo = new Motivo();
         Empresa emp = new Empresa();
+        TipoTercero tt = new TipoTercero();
+        Proveedor prov = new Proveedor();
+        TipoDoc tpdoc = new TipoDoc();
+        Telefono tlf = new Telefono();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,14 +33,22 @@ namespace VisapLine.View.Private
                     DropDownList2.DataTextField = "motivo";
                     DropDownList2.DataValueField = "idmotivo";
                     DropDownList2.DataBind();
+
+                    DropDownList1.DataSource = tt.Consultartipotercerofiltradoegreso();
+                    DropDownList1.DataTextField = "tipoterceros";
+                    DropDownList1.DataValueField = "idtipotercero";
+                    DropDownList1.DataBind();
+
+                    DropDownListtipodocu.DataSource = tpdoc.ConsultarTipoDoc();
+                    DropDownListtipodocu.DataTextField = "tipodoc";
+                    DropDownListtipodocu.DataValueField = "idtipodoc";
+                    DropDownListtipodocu.DataBind();
                 }
             }
             catch (Exception)
             {
                 throw;
             }
-
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -56,6 +68,7 @@ namespace VisapLine.View.Private
                     Label1.Text = datcont["nombre"].ToString();
                     Label2.Text = datcont["apellido"].ToString();
                     TextBox1.Text = datcont["direccion"].ToString();
+                    Buttonguarimpri.Visible = true;
                 }
 
             }
@@ -64,6 +77,9 @@ namespace VisapLine.View.Private
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "nocontro();", true);
                 Proveedors.Visible = true;
                 Div1.Visible = true;
+                Buttonguarimpri.Visible = false;
+                Buttonguar2.Visible = true;
+
             }
         }
 
@@ -96,22 +112,19 @@ namespace VisapLine.View.Private
                 DataRow datcont = Validar.Consulta(terc.ConsultarPersonaIdenti(texboxdni.Text)).Rows[0];
                 string ipprivada = GetLocalIPAddress();
                 string ippublica = GetPublicIPAddress();
-                eg.observacion =  Validar.validarlleno(TextBox2.Text);
+                eg.observacion =  Validar.validarlleno(TextBox2.Text).ToUpper();
                 eg.valoregreso = Validar.validarlleno(TextBox3.Text);
                 eg.motivo_idtercero_egre = Validar.validarselected(DropDownList2.SelectedValue);
                 eg.tercero_idtercero_egre = datcont["idterceros"].ToString();
                 eg.tercero_idtercero_reg = ter.idterceros;
                 eg.Registraregreso(ter.identificacion + ": " + ter.nombre + " " + ter.apellido, GetLocalIPAddress() + "-" + Dns.GetHostName() + "-" + GetPublicIPAddress());
+                imprimir();
             }
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", " errorsoft();", true);               
             }
-
-
-            //imprimir();
-
-
+          
         }
 
 
@@ -187,6 +200,15 @@ namespace VisapLine.View.Private
             ticket.Cortartiket();
             ticket.ImprimirTiket("BIXOLON SRP-350plus");//Nombre de la impresora ticketera
             ticket.Cortartiket();
+        }
+
+        protected void Buttonguar2_Click(object sender, EventArgs e)
+        {
+          
+
+
+
+
         }
     }
 }

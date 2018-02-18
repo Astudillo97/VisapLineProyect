@@ -96,36 +96,37 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Tipo Tercero</label>
                                             <div class="col-sm-9">
-                                                <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server">
+                                                <asp:DropDownList ID="DropDownList1" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Nit o CC Proveedor</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="nit_" runat="server" placeholder="">
+                                            <label class="col-sm-4 col-form-label">Tipo Documento</label>
+                                            <div class="col-sm-8">
+                                                <asp:DropDownList ID="DropDownListtipodocu" CssClass="form-control" AppendDataBoundItems="true" runat="server">
+                                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                                </asp:DropDownList>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Razón Social</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="razonsocail_" runat="server" placeholder="">
+                                                <asp:TextBox ID="TextBox5" class="form-control" Style="text-transform: uppercase" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Telefono</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="telefono_" runat="server" placeholder="">
+                                                <asp:TextBox ID="TextBox6" Style="text-transform: uppercase" class="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Correo</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="correo_" runat="server" placeholder="">
+                                                <asp:TextBox ID="TextBox7" runat="server" class="form-control" Style="text-transform: uppercase"></asp:TextBox>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -198,8 +199,9 @@
                                             </div>
                                         </div>
                                         <center>
-                                             <asp:Button ID="Buttonguarimpri" class="btn btn-block btn-success btn-lg" Width="143" Height="30" runat="server" OnClick="Buttonguarimpri_Click" Text="Guardar" />
-                                        </center>
+                                             <asp:Button ID="Buttonguarimpri" class="btn btn-block btn-success btn-lg" Width="143" Height="30" runat="server" Visible="false" OnClick="Buttonguarimpri_Click" Text="Guardar" />
+                                             <asp:Button ID="Buttonguar2" class="btn btn-block btn-success btn-lg" Width="143" Height="30" OnClick="Buttonguar2_Click" Visible="false" runat="server" Text="Guardar"></asp:Button>
+                                            </center>
                                     </div>
                                 </div>
                             </div>
