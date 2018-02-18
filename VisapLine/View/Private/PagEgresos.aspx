@@ -102,8 +102,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Tipo Documento</label>
-                                            <div class="col-sm-8">
+                                            <label class="col-sm-3 col-form-label">Tipo Documento</label>
+                                            <div class="col-sm-9">
                                                 <asp:DropDownList ID="DropDownListtipodocu" CssClass="form-control" AppendDataBoundItems="true" runat="server">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
                                                 </asp:DropDownList>
