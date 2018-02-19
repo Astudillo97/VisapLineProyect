@@ -485,6 +485,7 @@
     <Content Include="View\Private\PagCaja.aspx" />
     <Content Include="View\Private\PagEgresos.aspx" />
     <Content Include="View\Private\pagplan.aspx" />
+    <Content Include="View\Private\pagsoporteclien.aspx" />
     <Content Include="View\Private\pagzona.aspx" />
     <Content Include="View\Private\Personal.aspx" />
     <Content Include="View\Private\RegistroTerceros.aspx" />
@@ -702,6 +703,13 @@
     <Compile Include="View\Private\pagplan.aspx.designer.cs">
       <DependentUpon>pagplan.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\pagsoporteclien.aspx.cs">
+      <DependentUpon>pagsoporteclien.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\pagsoporteclien.aspx.designer.cs">
+      <DependentUpon>pagsoporteclien.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\pagzona.aspx.cs">
       <DependentUpon>pagzona.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -746,6 +754,7 @@
     </Compile>
     <Compile Include="View\Private\VistadeExporte.aspx.cs">
       <DependentUpon>VistadeExporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Private\VistadeExporte.aspx.designer.cs">
       <DependentUpon>VistadeExporte.aspx</DependentUpon>

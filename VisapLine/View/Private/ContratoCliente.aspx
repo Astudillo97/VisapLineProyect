@@ -73,7 +73,7 @@
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-4">
-                                        <img src="../../Contenido/images/user2-160x160.jpg" />
+                                        <img src="../../Contenido/images/user2-160x160.jpg" height="125px" width="125px" />
                                     </div>
                                     <div class="col-7">
                                         <div class="form-group row">
@@ -161,7 +161,7 @@
                                 <label class="col-sm-3 col-form-label">Direccion de envio factura:</label>
 
                                 <div class="col-sm-9">
-                                    <asp:TextBox ID="TextBoxenviofactura" TextMode="MultiLine" Rows="5" Columns="15" runat="server" placeholder="CLL 27 2B-17"  class="form-control" Style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 105px;"></asp:TextBox>
+                                    <asp:TextBox ID="TextBoxenviofactura" TextMode="MultiLine" Rows="5" Columns="15" runat="server" placeholder="CLL 27 2B-17" class="form-control" Style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 105px;"></asp:TextBox>
                                 </div>
                             </div>
 
@@ -338,8 +338,7 @@
                                 </label>
                                 <textarea id="TextArea1detalleplan" runat="server" readonly="false" rows="5" resize="none" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; width: 210px; height: 115px;" required data-validation-required-message="This field is required"></textarea>
 
-                            </div>
-
+                            </div>                     
                         </div>
                     </div>
                 </div>
@@ -456,7 +455,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title align-content-lg-center">¿Desea guardar el contrato y ir a servicio o solo guardar contrato?</h5>               
+                        <h5 class="modal-title align-content-lg-center">¿Desea guardar el contrato y ir a servicio o solo guardar contrato?</h5>
                     </div>
                     <div class="modal-footer">
                         <center>

@@ -38,13 +38,13 @@ namespace VisapLine.View.Private
         {
             try
             {
-               
-                    if (!IsPostBack)
+
+                if (!IsPostBack)
                 {
 
-                    
+
                     string valor = Convert.ToString(Request.QueryString["key"]);
-                    if (valor==null)
+                    if (valor == null)
                     {
                         Response.Redirect("RegistroTerceros.aspx");
                     }
@@ -87,7 +87,7 @@ namespace VisapLine.View.Private
                                 idapellidolabel.Visible = false;
 
                                 cargartablasucursal(tercero["idterceros"].ToString());
-                            
+
                             }
                         }
 
@@ -97,7 +97,6 @@ namespace VisapLine.View.Private
                         cargartabla(Labelidtercero.Text);
                     }
 
-                   
                 }
             }
             catch (Exception ex)
@@ -107,7 +106,7 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
 
-           
+
 
         }
 
@@ -193,7 +192,7 @@ namespace VisapLine.View.Private
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-             
+
 
             }
 
@@ -212,14 +211,14 @@ namespace VisapLine.View.Private
                 DropDownListbarriocontrato.DataBind();
 
 
-               
+
             }
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-      
+
             }
         }
 
@@ -228,14 +227,14 @@ namespace VisapLine.View.Private
             if (DropDownListestratocontrato.Text == "1" || DropDownListestratocontrato.Text == "2" || DropDownListestratocontrato.Text == "3")
             {
                 TextBoxivacontrato.Text = "0";
-            
+
             }
             else
             {
                 if (DropDownListestratocontrato.Text == "4" || DropDownListestratocontrato.Text == "5" || DropDownListestratocontrato.Text == "6")
                 {
                     TextBoxivacontrato.Text = "0.19";
-                    
+
                 }
 
             }
