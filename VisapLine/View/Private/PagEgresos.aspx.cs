@@ -21,12 +21,15 @@ namespace VisapLine.View.Private
         Proveedor prov = new Proveedor();
         TipoDoc tpdoc = new TipoDoc();
         Telefono tlf = new Telefono();
-
+        Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                if (!IsPostBack)
+                string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+                if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
+                {
+                    if (!IsPostBack)
                 {
                     DropDownList2.DataSource = mo.Consultarmotivo();
                     DropDownList2.DataTextField = "motivo";
@@ -42,6 +45,11 @@ namespace VisapLine.View.Private
                     DropDownListtipodocu.DataTextField = "tipodoc";
                     DropDownListtipodocu.DataValueField = "idtipodoc";
                     DropDownListtipodocu.DataBind();
+                }
+                }
+                else
+                {
+                    Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
                 }
             }
             catch (Exception)
