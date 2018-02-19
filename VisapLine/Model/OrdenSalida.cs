@@ -18,47 +18,62 @@ namespace VisapLine.Model
         public string personal_idpersonal_registra { get; set; }
         public string personal_idpersonal_atiende { get; set; }
         public string servicios_idservicios { get; set; }
-        public DataTable Insertar(string detalle, string observacion, string tipoorden,int tercereg) {
+        public DataTable Insertar(string detalle, string observacion, string tipoorden, int tercereg)
+        {
             //sirve
-            return data.ConsultarDatos("select * from pr_insertarordenldiff('"+ detalle + "','"+ observacion + "',"+ tercereg + ",'"+ tipoorden + "')");
+            return data.ConsultarDatos("select * from pr_insertarordenldiff('" + detalle + "','" + observacion + "'," + tercereg + ",'" + tipoorden + "')");
         }
-        public DataTable Consultarorden(string id) {
+        public DataTable Consultarorden(string id)
+        {
             //sirve
-            return data.ConsultarDatos("select * from pr_consultarcrdenvista('"+ id + "')"); ;
+            return data.ConsultarDatos("select * from pr_consultarcrdenvista('" + id + "')"); ;
         }
         public DataTable Consultarordentrab(string id)
         {
             //sirve
             return data.ConsultarDatos("select * from pr_consultarcrdenvistatrab('" + id + "')"); ;
         }
-        public DataTable cosnutlarlefonosorden(string id) {
+        public DataTable cosnutlarlefonosorden(string id)
+        {
             //sirve
-            return data.ConsultarDatos("select telefono from telefono where terceros_idterceros="+ id + "");
+            return data.ConsultarDatos("select telefono from telefono where terceros_idterceros=" + id + "");
         }
-        public DataTable Consultardetalleordesali(string id) {
+        public DataTable Consultardetalleordesali(string id)
+        {
             //sirve
-            return data.ConsultarDatos("SELECT * from public.pr_consultardetalleordensa('"+ id + "');");
+            return data.ConsultarDatos("SELECT * from public.pr_consultardetalleordensa('" + id + "');");
         }
         public DataTable consultarinventario(int tipoinv)
         {
             //sirve
-            return data.ConsultarDatos("select * from pr_consultarinventariotipo("+ tipoinv + ")");
+            return data.ConsultarDatos("select * from pr_consultarinventariotipo(" + tipoinv + ")");
         }
-        public DataTable ConsultarFechas(string fhec1,string fech2) 
+        public DataTable ConsultarFechas(string fhec1, string fech2, bool estado)
         {
             //sirve
-            return data.ConsultarDatos("select * from pr_consultarordenfech('"+ fhec1 + "','"+ fech2 + "')");
+            return data.ConsultarDatos("select * from pr_consultarordenfech('" + fhec1 + "','" + fech2 + "'," + estado + ")");
         }
-        public DataTable buscartecnicos() {
+
+        public DataTable ConsultarEstado(bool estado)
+        {
+            //sirve
+            return data.ConsultarDatos("select * from pr_consultarordenestado(" + estado + ")");
+        }
+        public DataTable buscartecnicos()
+        {
             //sirve
             return data.ConsultarDatos("select * from pr_consultarempleados();");
         }
-        public bool asignartecnico(string valor,string valor2) {
+        public bool asignartecnico(string valor, string valor2)
+        {
             //sirve
-            DataTable dt = data.ConsultarDatos("select * from pr_asignartecnicoaorden('"+ valor + "','"+ valor2 + "')");
-            if (int.Parse(dt.Rows[0][0].ToString())>0) {
+            DataTable dt = data.ConsultarDatos("select * from pr_asignartecnicoaorden('" + valor + "','" + valor2 + "')");
+            if (int.Parse(dt.Rows[0][0].ToString()) > 0)
+            {
                 return true;
-            } else {
+            }
+            else
+            {
                 return false;
             }
         }
@@ -75,6 +90,6 @@ namespace VisapLine.Model
                 return false;
             }
         }
- 
+
     }
 }

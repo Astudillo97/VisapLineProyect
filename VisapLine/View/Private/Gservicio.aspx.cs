@@ -25,12 +25,16 @@ namespace VisapLine.View.Private
                 divconten.Visible = false;
                 divcreator.Visible = false;
                 Llenartecnicos();
+                gridbusqueda.DataSource = ord.ConsultarEstado(false);
+                gridbusqueda.DataBind();
             }
         }
 
         protected void Llenartecnicos() {
             gridtecnicos.DataSource = ord.buscartecnicos();
             gridtecnicos.DataBind();
+            gridbusqueda.DataSource = ord.ConsultarEstado(false);
+            gridbusqueda.DataBind();
         }
         protected void Llenargrid(string dato) {
             gridtelefono.DataSource = ord.cosnutlarlefonosorden(dato);
@@ -200,7 +204,7 @@ namespace VisapLine.View.Private
         {
             fecha1 = TextBox4.Text;
             fecha2 = TextBox5.Text;
-            gridbusqueda.DataSource= ord.ConsultarFechas(fecha1,fecha2);
+            gridbusqueda.DataSource= ord.ConsultarFechas(fecha1,fecha2,estaadoorden.Checked);
             gridbusqueda.DataBind();
         }
 
@@ -215,6 +219,8 @@ namespace VisapLine.View.Private
         protected void divs_ServerClick(object sender, EventArgs e)
         {
             busquedaavansada.Visible = true;
+            gridbusqueda.DataSource = ord.ConsultarEstado(false);
+            gridbusqueda.DataBind();
             principaldiv.Visible = false;
         }
 
@@ -252,7 +258,7 @@ namespace VisapLine.View.Private
         protected void gridbusqueda_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gridbusqueda.PageIndex = e.NewPageIndex;
-            gridbusqueda.DataSource = ord.ConsultarFechas(fecha1, fecha2);
+            gridbusqueda.DataSource = ord.ConsultarFechas(fecha1, fecha2,estaadoorden.Checked);
             gridbusqueda.DataBind();
         }
     }
