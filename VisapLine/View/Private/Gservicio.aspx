@@ -76,8 +76,9 @@
                 <asp:TextBox ID="TextBox4" TextMode="Date" CssClass="calendar form-control col-3 border-left-0 border-top-0 border-right-0 " runat="server"></asp:TextBox>
                 <asp:Label ID="Label5" Text=" HASTA " runat="server"></asp:Label>
                 <asp:TextBox ID="TextBox5" TextMode="Date" CssClass="calendar form-control col-3 border-left-0 border-top-0 border-right-0 " runat="server"></asp:TextBox>
+                <asp:CheckBox CssClass="checkbox-inline" ID="estaadoorden" runat="server" Text=" FINALIZADA " />
                 <asp:Button ID="Button2" CssClass="btn btn-success" runat="server" Text="CONSULTAR" OnClick="Button2_Click" />
-                <asp:Button ID="Button3" CssClass="btn btn-danger" runat="server" Text="VOLVER ATRAS" OnClick="btncancelar_Click" />
+                <asp:Button ID="Button3" CssClass="btn btn-danger" runat="server" Text="VOLVER ATRAS" OnClick="btncancelar_Click" />               
             </div>
         </div>
         <div id="divcreator" runat="server" class="box box-body">
