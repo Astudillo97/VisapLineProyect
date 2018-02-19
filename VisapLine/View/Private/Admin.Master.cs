@@ -71,8 +71,7 @@ namespace VisapLine.View.Private
             try
             {
 
-                perm.rol_idrol = idrol;
-                DataTable permisos = perm.ConsultarRolPermisos(perm);
+                DataTable permisos = perm.ConsultarRolPermisos(idrol);
                 foreach (DataRow item in permisos.Rows)
                 {
                     HtmlGenericControl li = new HtmlGenericControl("li");

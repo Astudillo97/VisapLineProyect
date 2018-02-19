@@ -471,6 +471,7 @@
     <Content Include="View\Private\ContratoCliente.aspx" />
     <Content Include="View\Private\detalleservicio.aspx" />
     <Content Include="View\Private\EditarFactura.aspx" />
+    <Content Include="View\Private\Error.aspx" />
     <Content Include="View\Private\FactRevision.aspx" />
     <Content Include="View\Private\Facturacion.aspx" />
     <Content Include="View\Private\GestCaja.aspx" />
@@ -604,6 +605,13 @@
     </Compile>
     <Compile Include="View\Private\EditarFactura.aspx.designer.cs">
       <DependentUpon>EditarFactura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\FactRevision.aspx.cs">
       <DependentUpon>FactRevision.aspx</DependentUpon>
