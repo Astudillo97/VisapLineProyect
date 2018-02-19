@@ -514,6 +514,7 @@
     <Compile Include="Model\impresorabix.cs" />
     <Compile Include="Model\Ingreso.cs" />
     <Compile Include="Model\Modelo.cs" />
+    <Compile Include="Model\Motivo.cs" />
     <Compile Include="Model\Observacion.cs" />
     <Compile Include="Model\Plan.cs" />
     <Compile Include="Exeption\Validar.cs" />

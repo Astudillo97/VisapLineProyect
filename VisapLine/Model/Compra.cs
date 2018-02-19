@@ -33,9 +33,9 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("");
         }
-        public DataTable ConsultarCompraByNumero(Compra comp)
+        public DataTable ConsultarCompraByNumero(string comp)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from pr_consultarrcompra('"+ comp + "')");
         }
         public DataTable ConsultarCompraById(Compra comp)
         {

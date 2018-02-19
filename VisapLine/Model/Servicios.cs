@@ -26,10 +26,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarinventarioid(" + idequipo + ")");
         }
-        public DataTable crearservicio(string ip, int varcanmeg, int varcontra, string varestrato, string varestadp, string varreferenci, int varinvern, string vardireccion, int barrio)
+        public DataTable crearservicio(string ip, int varcanmeg, int varcontra, string varestrato, string varestadp, string varreferenci, string varinvern, string vardireccion, int barrio)
         {
             string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('" + vardireccion + "'," + barrio + ")").Rows[0][0].ToString();
-            return data.ConsultarDatos("select * from pr_insertarservicio('" + ip + "','2017-01-01'," + varcanmeg + "," + varcontra + " ,'" + varestrato + "' ,'" + varestadp + "','" + varreferenci + "'," + idpunto + "," + varinvern + ")");
+            return data.ConsultarDatos("select * from pr_insertarservicio('" + ip + "','2017-01-01'," + varcanmeg + "," + varcontra + " ,'" + varestrato + "' ,'" + varestadp + "','" + varreferenci + "'," + idpunto + ",'" + varinvern + "')");
         }
         public DataTable crearsertv(string ip, int varcontra, string varestrato, string varestadp, string varreferenci, string vardireccion, int barrio) {
             string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('" + vardireccion + "'," + barrio + ")").Rows[0][0].ToString();
@@ -55,7 +55,12 @@ namespace VisapLine.Model
             return data.OperarDatos("select * from pr_cambiarequiposervicio(" + valorservi + "," + valorequipo + ")");
         }
 
-
+        public bool vaalidarmegas(string megas,int contrato) {
+            return data.OperarDatos("select * from pr_calcularmegas("+ megas + ","+ contrato + ")");
+        }
+        public DataTable asignarequipo(string equipo) {
+            return data.ConsultarDatos("select * from pr_consultarinventarioproce('"+ equipo + "')");
+        }
         public DataTable consultaserviciosid(string id)
         {
             return data.ConsultarDatos("select * from pr_consultarservicioid('"+id+"')");

@@ -15,9 +15,9 @@ namespace VisapLine.Model
         public string modelo { get; set; }
         public string fabricante_idfabricante { get; set; }
 
-        public bool RegistrarModelo(Modelo mod)
+        public bool RegistrarModelo(Modelo mod,bool wifi)
         {
-            return data.OperarDatos("select * from pr_insertarmodelo('" + mod.modelo + "', '" + mod.fabricante_idfabricante + "')");
+            return data.OperarDatos("select * from pr_insertarmodelo('" + mod.modelo + "', '" + mod.fabricante_idfabricante + "','"+wifi+"')");
         }
         public bool EliminarModelo(Modelo mod)
         {
@@ -29,7 +29,7 @@ namespace VisapLine.Model
         }
         public DataTable ConsultarModelo(string id)
         {
-            return data.ConsultarDatos(" select* from modelo where fabricante_idfabricante = " + id + "");
+            return data.ConsultarDatos("select * from modelo where fabricante_idfabricante = " + id + "");
         }
     }   
     

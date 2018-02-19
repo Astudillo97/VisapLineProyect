@@ -19,10 +19,19 @@ namespace VisapLine.View.Private
         {
             if (!IsPostBack)
             {
-                DataRow dt = Validar.Consulta(cj.ConsultarCaja()).Rows[0];
-                cargarestado();
-                cargartabla();
                 Labeltime.Text = DateTime.Now.ToLongDateString();
+                try
+                {
+                    DataRow dt = Validar.Consulta(cj.ConsultarCaja()).Rows[0];
+                    cargarestado();
+                    cargartabla();
+                   
+                }
+                catch (Exception)
+                {
+
+                }
+               
                 
 
 

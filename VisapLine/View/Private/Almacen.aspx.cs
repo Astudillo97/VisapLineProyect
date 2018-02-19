@@ -27,50 +27,8 @@ namespace VisapLine.View.Private
             {
                 if (!IsPostBack)
                 {
-                    listfabricante.DataSource = fab.ConsultarFabricante();
-                    listfabricante.DataValueField = "idfabricante";
-                    listfabricante.DataTextField = "fabricante";
-                    listfabricante.DataBind();
-
-                    dropmarca.DataSource = fab.ConsultarFabricante();
-                    dropmarca.DataValueField = "idfabricante";
-                    dropmarca.DataTextField = "fabricante";
-                    dropmarca.DataBind();
-
-                    listProveedor_.DataSource = prov.ConsultarProveedor();
-                    listProveedor_.DataValueField = "Identificacion";
-                    listProveedor_.DataTextField = "nombre";
-                    listProveedor_.DataBind();
-
-                    modelo_inv.DataSource = mod.ConsultarModelo();
-                    modelo_inv.DataValueField = "idmodelo";
-                    modelo_inv.DataTextField = "modelo";
-                    modelo_inv.DataBind();
-
-                    repeteidordeinventario.DataSource = invent.consultarinventario();
-                    repeteidordeinventario.DataBind();
-
-                    fabricante_inv.DataSource = fab.ConsultarFabricante();
-                    fabricante_inv.DataValueField = "idfabricante";
-                    fabricante_inv.DataTextField = "fabricante";
-                    fabricante_inv.DataBind();
-
-                    tipoproducto_inv.DataSource = tipopro.ConsultarTipoProducto();
-                    tipoproducto_inv.DataValueField = "idtipoproducto";
-                    tipoproducto_inv.DataTextField = "tipoproducto";
-                    tipoproducto_inv.DataBind();
-
-                    droptipoproduc.DataSource = tipopro.ConsultarTipoProducto();
-                    droptipoproduc.DataValueField = "idtipoproducto";
-                    droptipoproduc.DataTextField = "tipoproducto";
-                    droptipoproduc.DataBind();
-
-                    estado_.SelectedValue = "Disponible";
-
-                    CargarTableFabricante();
-                    CargarTableModelo();
-                    CargarTableProveedor();
-                    CargarTabletipoProducto();
+                    
+                    cargardatosqueseusanentodolado();
                 }
             }
             catch (Exception ex)
@@ -79,6 +37,74 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
+        }
+
+        private void cargardatosqueseusanentodolado()
+        {
+            txtmac.Attributes.Add("onkeypress", "nointro()");
+            txtserial.Attributes.Add("onkeypress", "nointro()");
+            txtserial.Attributes.Add("onkeypress", "nointro()");
+            mac_.Attributes.Add("onkeypress", "nointro()");
+            serial_.Attributes.Add("onkeypress", "nointro()");
+
+            listfabricante.Items.Clear();
+            listfabricante.Items.Add("Seleccionar");
+            listfabricante.DataSource = fab.ConsultarFabricante();
+            listfabricante.DataValueField = "idfabricante";
+            listfabricante.DataTextField = "fabricante";
+            listfabricante.DataBind();
+
+            dropmarca.Items.Clear();
+            dropmarca.Items.Add("Seleccionar");
+            dropmarca.DataSource = fab.ConsultarFabricante();           
+            dropmarca.DataValueField = "idfabricante";
+            dropmarca.DataTextField = "fabricante";
+            dropmarca.DataBind();
+
+            fabricante_inv.Items.Clear();
+            fabricante_inv.Items.Add("Seleccionar");
+            fabricante_inv.DataSource = fab.ConsultarFabricante();           
+            fabricante_inv.DataValueField = "idfabricante";
+            fabricante_inv.DataTextField = "fabricante";
+            fabricante_inv.DataBind();
+
+            listProveedor_.Items.Clear();
+            listProveedor_.Items.Add("Seleccionar");
+            listProveedor_.DataSource = prov.ConsultarProveedor();
+            listProveedor_.DataValueField = "Identificacion";
+            listProveedor_.DataTextField = "nombre";
+            listProveedor_.DataBind();
+
+            modelo_inv.Items.Clear();
+            modelo_inv.Items.Add("Seleccionar");
+            modelo_inv.DataSource = mod.ConsultarModelo();
+            modelo_inv.DataValueField = "idmodelo";
+            modelo_inv.DataTextField = "modelo";
+            modelo_inv.DataBind();
+
+            repeteidordeinventario.DataSource = invent.consultarinventario();
+            repeteidordeinventario.DataBind();
+
+            tipoproducto_inv.Items.Clear();
+            tipoproducto_inv.Items.Add("Seleccionar");
+            tipoproducto_inv.DataSource = tipopro.ConsultarTipoProducto();
+            tipoproducto_inv.DataValueField = "idtipoproducto";
+            tipoproducto_inv.DataTextField = "tipoproducto";
+            tipoproducto_inv.DataBind();
+
+            droptipoproduc.Items.Clear();
+            droptipoproduc.Items.Add("Seleccionar");
+            droptipoproduc.DataSource = tipopro.ConsultarTipoProducto();
+            droptipoproduc.DataValueField = "idtipoproducto";
+            droptipoproduc.DataTextField = "tipoproducto";
+            droptipoproduc.DataBind();
+
+            estado_.SelectedValue = "Disponible";
+
+            CargarTableFabricante();
+            CargarTableModelo();
+            CargarTableProveedor();
+            CargarTabletipoProducto();
         }
 
         protected void RegistrarProveedor(object sender, EventArgs e)
@@ -97,6 +123,7 @@ namespace VisapLine.View.Private
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
                     CargarTableProveedor();
+                    cargardatosqueseusanentodolado();
                 }
                 else
                 {
@@ -199,6 +226,7 @@ namespace VisapLine.View.Private
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
                     CargarTabletipoProducto();
+                    cargardatosqueseusanentodolado();
                 }
                 else
                 {
@@ -227,6 +255,7 @@ namespace VisapLine.View.Private
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
                     CargarTableFabricante();
+                    cargardatosqueseusanentodolado();
                 }
                 else
                 {
@@ -250,12 +279,13 @@ namespace VisapLine.View.Private
             {
                 mod.modelo = modelo_.Value;
                 mod.fabricante_idfabricante = listfabricante.SelectedValue;
-                if (mod.RegistrarModelo(mod))
+                if (mod.RegistrarModelo(mod,checkwifi.Checked))
                 {
                     textError.InnerHtml = "Modelo Registrado correctamente";
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
                     CargarTableModelo();
+                    cargardatosqueseusanentodolado();
                 }
                 else
                 {
@@ -407,8 +437,7 @@ namespace VisapLine.View.Private
                 comp.personal_idpersonal = "0";// Validar.validarsession("2");
                 DataRow dat = Validar.Consulta(comp.RegistrarCompra(comp)).Rows[0];
                 codigoCompra.InnerHtml = dat[0].ToString();
-                tablacompras.DataSource = dtc.cosultardetalle(codigoCompra.InnerHtml);
-                tablacompras.DataBind();
+                datosdeldetalle();
 
             }
             catch (Exception ex)
@@ -419,24 +448,30 @@ namespace VisapLine.View.Private
             }
         }
 
+        private void datosdeldetalle()
+        {
+            tablacompras.DataSource = dtc.cosultardetalle(codigoCompra.InnerHtml);
+            tablacompras.DataBind();
+        }
+
         protected void RegistrarInventario(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             try
             {
-                invent.serial = Validar.validarlleno(serial_.Value);
                 invent.descripcion = Validar.validarlleno(descripcion_.Value);
                 invent.tipoproducto_idtipoproducto = Validar.validarselected(tipoproducto_inv.SelectedValue);
                 invent.vidautil = Validar.validarlleno(vidautil_.Value);
                 invent.estado = Validar.validarselected(estado_.SelectedValue);
                 invent.modelo_idmodelo = Validar.validarselected(modelo_inv.SelectedValue);
-                invent.mac = Validar.validarlleno(mac_.Value);
                 invent.compra_idcompra = codigoCompra.InnerHtml;
                 if (invent.RegistrarInventario(invent))
                 {
                     textError.InnerHtml = "Elemento registrado correctamente";
                     Alerta.CssClass = "alert alert-success";
                     Alerta.Visible = true;
+                    cargardatosqueseusanentodolado();
+                    datosdeldetalle();
                 }
                 else
                 {
@@ -487,6 +522,8 @@ namespace VisapLine.View.Private
             if (droptipoproduc.SelectedItem.Text.Equals("RADIO") || droptipoproduc.SelectedItem.Text.Equals("ONU") || droptipoproduc.SelectedItem.Text.Equals("ROUTER"))
             {
                 dtc.registrarproducto(txtserial.Text, txtdescripcion.Text, droptipoproduc.SelectedValue, txtvidautil.Text, dropmodelo.SelectedValue, txtmac.Text, txtcantidad.Text, codigoCompra.InnerHtml);
+                cargardatosqueseusanentodolado();
+                datosdeldetalle();
             }
         }
 
@@ -495,6 +532,26 @@ namespace VisapLine.View.Private
             GridViewRow gvr = insumos.SelectedRow;
             TextBox textcantidad = (TextBox)gvr.FindControl("gvtxtcantidad");
             dtc.resgistrarinsumo(codigoCompra.InnerHtml, gvr.Cells[0].Text,  textcantidad.Text);
+            datosdeldetalle();
+            cargardatosqueseusanentodolado();
+        }
+
+        protected void consltarcompra(object sender, EventArgs e)
+        {
+            string numeropedido = Validar.validarlleno(numeropedido_.Value);
+            DataTable dt = comp.ConsultarCompraByNumero(numeropedido);
+            if (dt.Rows.Count >0) {
+                rowinsertar.Visible = false;
+                codigoCompra.InnerHtml = dt.Rows[0][0].ToString();
+                formcompra.DataSource = dt;
+                formcompra.DataBind();
+                datosdeldetalle();
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "nodata()", true);
+            }
+            
         }
     }
 }
