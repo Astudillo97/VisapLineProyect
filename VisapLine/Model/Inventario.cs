@@ -34,6 +34,12 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select * from pr_consultarinventario()");
         }
 
+        public DataTable consultarinventario(string id)
+        {
+            return data.ConsultarDatos("select * from pr_consultarequipo('"+ id + "')");
+        }
+
+
         public bool cancelarselecioninventarion(int datoacancelar) {
             return data.OperarDatos("select * from pr_calcelarinventarioproce("+ datoacancelar + ")");
         }

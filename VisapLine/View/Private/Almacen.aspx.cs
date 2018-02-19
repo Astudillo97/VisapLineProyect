@@ -26,8 +26,7 @@ namespace VisapLine.View.Private
             try
             {
                 if (!IsPostBack)
-                {
-                    
+                {                  
                     cargardatosqueseusanentodolado();
                 }
             }
