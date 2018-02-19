@@ -11,7 +11,8 @@
             document.getElementById('idbusqueda').click();
         }
         function cargarIdfactura(vari) {
-            document.getElementById('numero').innerHTML = vari;
+            document.getElementById('<%=numero.ClientID%>').value=vari;
+            document.getElementById('edicion').click();
         }
     </script>
 </asp:Content>
@@ -134,12 +135,12 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <a href="#" data-toggle="modal" data-target="#modal-primary"><i class="glyphicon glyphicon-edit"></i></a>
+                                        <asp:LinkButton ID="btn" Text="" CommandName="editarfactura" CommandArgument='<%# Eval("facturaventa") %>' CssClass="glyphicon glyphicon-edit" runat="server" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <a href="#" data-toggle="modal" class="glyphicon glyphicon-cog" onclick="cargarIdfactura('<%# Eval("idfactura")%>');" data-target="#modal-primary"></a>
+                                        <asp:LinkButton ID="btn2" runat="server" CssClass="glyphicon glyphicon-cog" CommandName="correccion" CommandArgument='<%# Eval("idfactura") %>' Text="" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">
@@ -150,7 +151,50 @@
                             </Columns>
                         </asp:GridView>
                     </div>
-                    <div class="active tab-pane" id="insidencias"></div>
+                    <div class="active tab-pane" id="insidencias">
+                        <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" ForeColor="#333333" GridLines="None" >
+                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
+                            <asp:BoundField HeaderText="Codg" DataField="idincidensia" ItemStyle-HorizontalAlign="Center">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Fecha Registro" DataField="fechainicio" DataFormatString="{0:f}" ItemStyle-HorizontalAlign="Center">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Estado" DataField="estado" ItemStyle-HorizontalAlign="Center">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Detalle" DataField="detalle" ItemStyle-HorizontalAlign="Center">
+                                <ControlStyle CssClass="filled-in" />
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Tipo de Incidencia" DataField="tipoincidencia" ItemStyle-HorizontalAlign="Center">
+                                <ControlStyle CssClass="filled-in" />
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                        </Columns>
+                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                        <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                    </asp:GridView>
+                    </div>
                     <div class="active tab-pane" id="ordenes"></div>
                     <div class="active tab-pane" id="aprovisionamiento"></div>
                     <div class="active tab-pane" id="elementos"></div>
@@ -158,6 +202,7 @@
                 </div>
             </div>
         </div>
+        <a data-toggle="modal" style="display:none" id="edicion" class="glyphicon glyphicon-cog"  href="#" data-target="#modal-primary">content</a>
         <div class="modal fade" id="modal-primary">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -171,8 +216,8 @@
                             <div class="form-element">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Registro de la Observacion</label>
-                                        <label for="exampleInputEmail1">#</label><label id="numero" for="exampleInputEmail1"></label>
+                                        <label for="exampleInputEmail1">#</label>
+                                        <asp:TextBox ID="numero" runat="server" Enabled="false"  CssClass="form-control-label"></asp:TextBox>
                                         <asp:TextBox TextMode="MultiLine" class="form-control" runat="server" Rows="5" ID="observacion_" placeholder="Observacion" />
                                     </div>
                                 </div>

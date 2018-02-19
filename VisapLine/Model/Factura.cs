@@ -20,6 +20,10 @@ namespace VisapLine.Model
         public string estado { get; set; }
         public string cuotas { get; set; }
         public string contrato_idcontrato { get; set; }
+        public string valor { get; set; }
+        public string iva { get; set; }
+        public string saldo { get; set; }
+        public string total { get; set; }
         public DataTable ConsultarFacturaIdContrato(Factura fac)
         {
             return data.ConsultarDatos("select * from pr_consultarfacturaidcontrato(" + fac.contrato_idcontrato + ")");
@@ -48,6 +52,15 @@ namespace VisapLine.Model
         public DataTable ConsultarFacturabyContrato(Factura fac)
         {
             return data.ConsultarDatos("select * from pr_consultarfacturabycontrato('"+fac.contrato_idcontrato+"')");
+        }
+
+        public DataTable ConsultarFacturasRevision()
+        {
+            return data.ConsultarDatos("select * from factura where estado='Revision'; ");
+        }
+        public bool ActualizarFactura(Factura fac)
+        {
+            return data.OperarDatos("select * from pr_actualizarfactura('" + fac.fechaemision+"', '"+fac.fechavencimiento+"', '"+fac.fechacorte+"', '"+fac.estado+"', '"+fac.cuotas+"', '"+fac.facturaventa+"', '"+fac.valor+"', '"+fac.saldo+"', '"+fac.iva+"', '"+fac.total+"','"+fac.idfactura+"')");
         }
     }
 }
