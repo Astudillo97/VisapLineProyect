@@ -32,11 +32,12 @@ namespace VisapLine.Model
 
         public bool ValidarPermisos(string url, DataTable entrada)
         {
-            bool ret = false;
-            DataTable dat = ConsultarRolPermisos(entrada.Rows[0]["idrol"].ToString());
+            return ValidacionPagina(entrada.Rows[0]["idrol"].ToString(), url);
+        }
+        public bool ValidacionPagina(string rol, string url)
+        {
 
-
-            for (int i = 0; i < dat.Rows.Count && ret == false; i++)
+            if(data.ConsultarDatos("select * from permisos p inner join menu m on p.menu_idmenu=m.idmenu inner join menu sm on sm.menu_idmenusub=m.idmenu where p.rol_idrol="+rol+" and m.href='" + url + "' or  sm.href='" + url+"'").Rows.Count>0)
             {
                 men.menu_idmenusub = dat.Rows[i]["idmenu"].ToString();
                 DataTable sub = men.ConsultarMenuSubmenu(men);
@@ -48,7 +49,7 @@ namespace VisapLine.Model
                     }
                 }
             }
-            return ret;
+
         }
     }
 }

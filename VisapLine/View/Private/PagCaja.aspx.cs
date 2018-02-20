@@ -36,14 +36,14 @@ namespace VisapLine.View.Private
 
                     }
                 }
-                else
+                
+
+
+
+            }else
                 {
                     Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
                 }
-
-
-
-            }
 
 
 
