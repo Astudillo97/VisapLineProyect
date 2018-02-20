@@ -336,6 +336,10 @@
     <Content Include="Contenido\assets\vendor_plugins\weather-icons\WeatherIcon.js" />
     <Content Include="Contenido\css\master_style.css" />
     <Content Include="Contenido\css\skins\_all-skins.css" />
+    <Content Include="Contenido\data\barrios_0.js" />
+    <Content Include="Contenido\data\Google.js" />
+    <Content Include="Contenido\data\lineaurbana_1.js" />
+    <Content Include="Contenido\data\servicio_2.js" />
     <Content Include="Contenido\facturaelectronica.jpg" />
     <Content Include="Contenido\images\florencia2.jpg" />
     <Content Include="Contenido\images\florencia.jpg" />
@@ -488,6 +492,7 @@
     <Content Include="View\Private\pagplan.aspx" />
     <Content Include="View\Private\pagzona.aspx" />
     <Content Include="View\Private\Personal.aspx" />
+    <Content Include="View\Private\Point.aspx" />
     <Content Include="View\Private\RegistroTerceros.aspx" />
     <Content Include="View\Private\ReporteCaja.aspx" />
     <Content Include="View\Private\servicio.aspx" />
@@ -723,6 +728,13 @@
     </Compile>
     <Compile Include="View\Private\Personal.aspx.designer.cs">
       <DependentUpon>Personal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Point.aspx.cs">
+      <DependentUpon>Point.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Point.aspx.designer.cs">
+      <DependentUpon>Point.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\RegistroTerceros.aspx.cs">
       <DependentUpon>RegistroTerceros.aspx</DependentUpon>
