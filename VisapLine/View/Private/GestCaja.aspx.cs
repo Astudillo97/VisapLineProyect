@@ -14,45 +14,50 @@ namespace VisapLine.View.Private
     {
         Egreso eg = new Egreso();
         Ingreso ig = new Ingreso();
-
+        Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
             {
-                string valor = Convert.ToString(Request.QueryString["key"]);
-                if (valor == null)
+                if (!IsPostBack)
                 {
-                    Response.Redirect("pagcaja.aspx");
+                    string valor = Convert.ToString(Request.QueryString["key"]);
+                    if (valor == null)
+                    {
+                        Response.Redirect("pagcaja.aspx");
+                    }
+                    else
+                    {
+                        try
+                        {
+                            ig.caja_idcaja_egre = valor;
+                            DataTable dtig = Validar.Consulta(ig.consultaringresos(ig));
+                            GridView1.DataSource = dtig;
+                            GridView1.DataBind();
+                        }
+                        catch (Exception)
+                        {
+                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                        }
+
+                        try
+                        {
+                            eg.caja_idcaja_egre = valor;
+                            DataTable dteg = Validar.Consulta(eg.consultaregresos(eg));
+                            GridView2.DataSource = dteg;
+                            GridView2.DataBind();
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    }
                 }
-                else
-                {
-                    try
-                    {
-                        ig.caja_idcaja_egre = valor;
-                        DataTable dtig = Validar.Consulta(ig.consultaringresos(ig));
-                        GridView1.DataSource = dtig;
-                        GridView1.DataBind();
-                    }
-                    catch (Exception )
-                    {                        
-                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
-                    }
-
-                    try
-                    {
-                        eg.caja_idcaja_egre = valor;
-                        DataTable dteg = Validar.Consulta(eg.consultaregresos(eg));
-                        GridView2.DataSource = dteg;
-                        GridView2.DataBind();
-                    }
-                    catch (Exception)
-                    {
-                      
-                    }
-
-
-                }
-
+            }
+            else
+            {
+                Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
             }
         }
 

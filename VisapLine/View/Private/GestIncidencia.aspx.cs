@@ -16,24 +16,32 @@ namespace VisapLine.View.Private
         Servicios serv = new Servicios();
         Contrato cont = new Contrato();
         Terceros terc = new Terceros();
+        Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
-            if (!IsPostBack)
+            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
             {
+                if (!IsPostBack)
+                {
 
-                try
-                {
-                    cargartabla();
+                    try
+                    {
+                        cargartabla();
+                    }
+                    catch (Exception ex)
+                    {
+                        textError.InnerHtml = ex.Message;
+                        Alerta.CssClass = "alert alert-error";
+                        Alerta.Visible = true;
+                    }
+
                 }
-                catch (Exception ex)
-                {
-                    textError.InnerHtml = ex.Message;
-                    Alerta.CssClass = "alert alert-error";
-                    Alerta.Visible = true;
-                }
-               
+            }
+            else
+            {
+                Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
             }
 
 
@@ -45,7 +53,7 @@ namespace VisapLine.View.Private
             GridViewRow gridw = GridView2.SelectedRow;
             Labelidincidencia.Text = gridw.Cells[1].Text;
             Labelidincidencia.Visible = true;
-            DataRow indat= inci.ConsultarIncidencias(Labelidincidencia.Text).Rows[0];
+            DataRow indat = inci.ConsultarIncidencias(Labelidincidencia.Text).Rows[0];
             DataRow ser = serv.consultaserviciosid(indat["servicios_idservicios"].ToString()).Rows[0];
             cont.idcontrato = ser["contrato_idcontrato"].ToString();
             DataRow con = cont.ConsultarContratoidcontrato(cont).Rows[0];
@@ -61,7 +69,7 @@ namespace VisapLine.View.Private
 
         protected void cargartabla()
         {
-           
+
             DataTable dt = inci.ConsultarIncidencias();
             GridView2.DataSource = dt;
             GridView2.DataBind();
@@ -103,11 +111,11 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-        
+
 
             inci.costo = TextBox2.Text;
 
-           if(inci.updatesolucionincidencia(inci))
+            if (inci.updatesolucionincidencia(inci))
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
                 cargartabla();
@@ -122,7 +130,7 @@ namespace VisapLine.View.Private
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
             }
-           
+
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)

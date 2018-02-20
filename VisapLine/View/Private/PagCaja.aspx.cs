@@ -12,27 +12,34 @@ namespace VisapLine.View.Private
 {
     public partial class PagCaja : System.Web.UI.Page
     {
-        int valoringre, valoregre, valorini,valoractualcaja;
+        int valoringre, valoregre, valorini, valoractualcaja;
         Caja cj = new Caja();
+        Permisos per = new Permisos();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
             {
-                Labeltime.Text = DateTime.Now.ToLongDateString();
-                try
+                if (!IsPostBack)
                 {
-                    DataRow dt = Validar.Consulta(cj.ConsultarCaja()).Rows[0];
-                    cargarestado();
-                    cargartabla();
-                   
-                }
-                catch (Exception)
-                {
+                    Labeltime.Text = DateTime.Now.ToLongDateString();
+                    try
+                    {
+                        DataRow dt = Validar.Consulta(cj.ConsultarCaja()).Rows[0];
+                        cargarestado();
+                        cargartabla();
+                    }
+                    catch (Exception)
+                    {
 
+                    }
                 }
-               
-                
+                else
+                {
+                    Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
+                }
+
 
 
             }
@@ -95,7 +102,7 @@ namespace VisapLine.View.Private
             valoringre = Convert.ToInt32(Labelingresos.Text);
             valoregre = Convert.ToInt32(Labelegresos.Text);
             valorini = Convert.ToInt32(Labelvalorinicial.Text);
-            if (valorini>0)
+            if (valorini > 0)
             {
                 Labelvalorinicial.ForeColor = Color.Green;
             }
@@ -105,7 +112,7 @@ namespace VisapLine.View.Private
             }
 
             valoractualcaja = (valoringre + valorini) - valoregre;
-            if (valoractualcaja>0)
+            if (valoractualcaja > 0)
             {
                 Labelvaloractual.Text = valoractualcaja.ToString();
                 Labelvaloractual.ForeColor = Color.Green;
@@ -156,6 +163,6 @@ namespace VisapLine.View.Private
         }
 
 
-       
+
     }
 }

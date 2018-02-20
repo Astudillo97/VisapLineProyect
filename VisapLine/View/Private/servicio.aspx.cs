@@ -11,7 +11,7 @@ using VisapLine.Model;
 
 namespace VisapLine.View.Private
 {
-   
+
     public partial class servicio : System.Web.UI.Page
     {
 
@@ -78,7 +78,8 @@ namespace VisapLine.View.Private
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "errorcarga()", true);
                 }
             }
-            else {
+            else
+            {
                 cargardtservicio();
             }
 
@@ -167,7 +168,7 @@ namespace VisapLine.View.Private
         {
             Button1.Visible = false;
             invt.cancelarselecioninventarion(idpedido);
-            listequipo.Visible=false;
+            listequipo.Visible = false;
             gridcaract.Visible = false;
             //btninser.Visible = false;
         }
@@ -215,45 +216,50 @@ namespace VisapLine.View.Private
                     psc.registrarpuertos(idservi, int.Parse(txbptv.Text));
                     divtv.Visible = false;
                 }
-                else {
+                else
+                {
                     textError.InnerHtml = "POR FAVOR DIGITE TODOS LOS PUERTOS";
                     Alerta.CssClass = "alert alert-error";
                     Alerta.Visible = true;
                 }
-                
+
             }
-            else {
+            else
+            {
                 textError.InnerHtml = "POR FAVOR DIGITE LA DIRECCION IP";
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-            
+
         }
 
         protected void ceartl_Click(object sender, EventArgs e)
         {
             if (!TextBox1.Text.Equals(""))
             {
-                if (!TextBox2.Text.Equals("")) {
+                if (!TextBox2.Text.Equals(""))
+                {
                     DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
                     DataTable dtid = srv.crearsertv(TextBox1.Text, idcontrato, dtrs[1].ToString(), "POR INSTALAR", "TELEFONIA", TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
                     int idservi = int.Parse(dtid.Rows[0][0].ToString());
                     psc.registrarpuertos(idservi, int.Parse(TextBox2.Text));
                     divtelefono.Visible = false;
                 }
-                else {
+                else
+                {
                     textError.InnerHtml = "POR FAVOR DIGITE TODOS LOS PUERTOS";
                     Alerta.CssClass = "alert alert-error";
                     Alerta.Visible = true;
                 }
-                
+
             }
-            else {
+            else
+            {
                 textError.InnerHtml = "POR FAVOR DIGITE LA DIRECCION IP";
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-            
+
         }
 
         protected void gridservicios_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -290,16 +296,18 @@ namespace VisapLine.View.Private
                 DataTable dtid = serve.crearservicio(ip.Text, int.Parse(txtmegasasignar.Text), idcontrato, dtrs[1].ToString(), "POR INSTALAR", "INTERNET", txtseralasignar.Text, TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
                 if (dtid.Rows.Count > 0)
                 {
-                    ScriptManager.RegisterStartupScript(this,typeof(Page), "alerta", "successasignation()", true);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "successasignation()", true);
                     cargardtservicio();
                 }
-                else {
+                else
+                {
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "errorasignation()", true);
                     cargardtservicio();
                 }
-                
+
             }
-            else {
+            else
+            {
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "errorasignation()", true);
                 cargardtservicio();
             }
@@ -307,8 +315,23 @@ namespace VisapLine.View.Private
         protected void gridservicios_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow grvr = gridservicios.SelectedRow;
-            idsrv =int.Parse(grvr.Cells[0].Text);
-            Response.Redirect("detalleservicio.aspx?addds="+ idsrv);
+            idsrv = int.Parse(grvr.Cells[0].Text);
+            Response.Redirect("detalleservicio.aspx?addds=" + idsrv);
+        }
+
+        protected void txtseralasignar_TextChanged(object sender, EventArgs e)
+        {
+            string dato = txtseralasignar.Text;
+            DataTable dt = invt.consultarinventario(dato);
+            if (dt.Rows[0][1].ToString().Equals("MAC")) {
+                identificacion.Text = dt.Rows[0][0].ToString();
+            }
+            else {
+                txtseralasignar.Text= dt.Rows[0][0].ToString(); 
+                identificacion.Text = dato;
+            }
+            ScriptManager.RegisterStartupScript(this, this.GetType(),"pop", "openmodal()",true);
+            
         }
     }
 }

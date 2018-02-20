@@ -17,9 +17,9 @@ namespace VisapLine.Model
         public string contrato_idcontrato { get; set; }
 
 
-        public DataTable ConsultarSoportes(Soportes sop)
+        public DataTable ConsultarSoportes()
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from pr_consultarsoportescont()");
         }
 
         public bool RegistrarSoportes(Soportes sop)

@@ -8,6 +8,9 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <asp:ScriptManager ID="scripservicc" runat="server"></asp:ScriptManager>
     <script type="text/javascript">
+        function openmodal() {
+            $('#mymodal').modal('show');
+        }
         function successasignation() {
             swal("EXITO AL CREAR EL SERVICIO", "La operacion se realizo con exito", "success");
         }
@@ -121,9 +124,9 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col- col-6">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mymodal">ASIGNAR INVENTARIO +</button>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mymodal">ASIGNAR SERVICIO +</button>
                         <asp:Button runat="server" ID="Button1" Text="CANCELAR" OnClick="Button1_Click" CssClass="btn  btn-danger btn-lg" />
-                       <%-- <asp:Button runat="server" ID="btninser" Text="CREAR SERVICIO" OnClick="btninser_Click" CssClass="btn btn-success btn-lg" Visible="false" />--%>
+                        <%-- <asp:Button runat="server" ID="btninser" Text="CREAR SERVICIO" OnClick="btninser_Click" CssClass="btn btn-success btn-lg" Visible="false" />--%>
                     </div>
                     <div class="modal fade" id="mymodal" data-backdrop="”static”">
                         <div class="modal-dialog" role="document">
@@ -132,11 +135,25 @@
                                     <h4 class="modal-title">AGREGAR EQUIPO</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <asp:Label ID="lvlserialasignar" runat="server" Text="SERIAL"></asp:Label>
-                                    <asp:TextBox ID="txtseralasignar" runat="server"></asp:TextBox>
-                                    <asp:Label ID="lvlmegasasignar" runat="server" Text="MEGAS"></asp:Label>
-                                    <asp:TextBox ID="txtmegasasignar" runat="server"></asp:TextBox>
-                                    <asp:button ID="btncrearinternet" runat="server" OnClientClick="return alert('ESTA SEGRUO DE REALIZAR ESTA ACCION');" onclick="asignarequipo" Text="CREAR SERVICIO" CssClass="btn btn-success"/>
+                                    <div class="form-group row col">
+                                        <asp:Label ID="lvlserialasignar" runat="server" Text="EQUIPO"></asp:Label>
+                                        <asp:TextBox ID="txtseralasignar" CssClass="form-control" runat="server" OnTextChanged="txtseralasignar_TextChanged"></asp:TextBox>
+                                        <br />
+                                    </div>
+                                    <div class="form-group row col">
+                                        <asp:Label type="text" ID="Label1" runat="server" Text="EQUIPO" />
+                                        <asp:Label type="text" ID="identificacion" CssClass="form-control" runat="server" />
+                                        <br />
+                                    </div>
+                                    <div class="form-group row col">
+                                        <asp:Label ID="lvlmegasasignar" runat="server" Text="MEGAS"></asp:Label>
+                                        <asp:TextBox ID="txtmegasasignar" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <br />
+                                    </div>
+                                    <div class="form-group row col">
+
+                                        <asp:Button ID="btncrearinternet" runat="server" OnClientClick="return alert('ESTA SEGRUO DE REALIZAR ESTA ACCION');" OnClick="asignarequipo" Text="CREAR SERVICIO" CssClass="btn btn-success" />
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
@@ -182,7 +199,7 @@
                             </asp:ListView>
                         </div>
                     </div>
-                    <div class="col-6  ">
+                    <div class="col-6">
                         <div class="box box-primary">
                             <asp:GridView Visible="false" runat="server" ID="gridcaract" AutoGenerateColumns="false" CssClass="table table-bordered table-responsive">
                                 <Columns>

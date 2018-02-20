@@ -33,86 +33,81 @@ namespace VisapLine.View.Private
         Contrato contrat = new Contrato();
         string idplancontr;
         string wiifi;
-
+        Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
             {
-               
-                    if (!IsPostBack)
+
+                try
                 {
 
-                    
-                    string valor = Convert.ToString(Request.QueryString["key"]);
-                    if (valor==null)
+                    if (!IsPostBack)
                     {
-                        Response.Redirect("RegistroTerceros.aspx");
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
-                        dnitercero.Text = valor;
 
-                        DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
-                        DropDownListpaiscontrato.DataTextField = "pais";
-                        DropDownListpaiscontrato.DataValueField = "idpais";
-                        DropDownListpaiscontrato.DataBind();
 
-                        DropDownListtiporedenciacontrato.DataSource = tpres.ConsultarTipoResidencia();
-                        DropDownListtiporedenciacontrato.DataTextField = "tiporesidencia";
-                        DropDownListtiporedenciacontrato.DataValueField = "idtiporesidencia";
-                        DropDownListtiporedenciacontrato.DataBind();
-
-                        DropDownListtipocontrato.DataSource = tpoc.ConsultarTipoContrato();
-                        DropDownListtipocontrato.DataTextField = "tipocontrato";
-                        DropDownListtipocontrato.DataValueField = "idtipocontrato";
-                        DropDownListtipocontrato.DataBind();
-                        terc.identificacion = dnitercero.Text;
-
-                        DataRow tercero = Validar.Consulta(terc.ConsultarTerceroDos(terc)).Rows[0];
-
-                        Label1.Text = tercero["nombre"].ToString();
-
-                        if (tercero["tipoterceros"].ToString() == "NATURAL" || tercero["tipoterceros"].ToString() == "EMPLEADO")
+                        string valor = Convert.ToString(Request.QueryString["key"]);
+                        if (valor == null)
                         {
-                            Label2.Text = tercero["apellido"].ToString();
-                            idsucursallabel.Visible = false;
-                            DropDownListsucursalcontrato.Visible = false;
+                            Response.Redirect("RegistroTerceros.aspx");
                         }
                         else
                         {
-                            if (tercero["tipoterceros"].ToString() == "CORPORATIVO" || tercero["tipoterceros"].ToString() == "ESPECIAL")
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                            dnitercero.Text = valor;
+
+                            DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
+                            DropDownListpaiscontrato.DataTextField = "pais";
+                            DropDownListpaiscontrato.DataValueField = "idpais";
+                            DropDownListpaiscontrato.DataBind();
+                            DropDownListtiporedenciacontrato.DataSource = tpres.ConsultarTipoResidencia();
+                            DropDownListtiporedenciacontrato.DataTextField = "tiporesidencia";
+                            DropDownListtiporedenciacontrato.DataValueField = "idtiporesidencia";
+                            DropDownListtiporedenciacontrato.DataBind();
+                            DropDownListtipocontrato.DataSource = tpoc.ConsultarTipoContrato();
+                            DropDownListtipocontrato.DataTextField = "tipocontrato";
+                            DropDownListtipocontrato.DataValueField = "idtipocontrato";
+                            DropDownListtipocontrato.DataBind();
+                            terc.identificacion = dnitercero.Text;
+                            DataRow tercero = Validar.Consulta(terc.ConsultarTerceroDos(terc)).Rows[0];
+                            Label1.Text = tercero["nombre"].ToString();
+
+                            if (tercero["tipoterceros"].ToString() == "NATURAL" || tercero["tipoterceros"].ToString() == "EMPLEADO")
                             {
-                                Label2.Visible = false;
-                                idapellidolabel.Visible = false;
-
-                                cargartablasucursal(tercero["idterceros"].ToString());
-                            
+                                Label2.Text = tercero["apellido"].ToString();
+                                idsucursallabel.Visible = false;
+                                DropDownListsucursalcontrato.Visible = false;
                             }
+                            else
+                            {
+                                if (tercero["tipoterceros"].ToString() == "CORPORATIVO" || tercero["tipoterceros"].ToString() == "ESPECIAL")
+                                {
+                                    Label2.Visible = false;
+                                    idapellidolabel.Visible = false;
+
+                                    cargartablasucursal(tercero["idterceros"].ToString());
+
+                                }
+                            }
+                            TextBox1.Text = tercero["direccion"].ToString();
+                            Labelidtercero.Text = tercero["idterceros"].ToString();
+                            cargartabla(Labelidtercero.Text);
                         }
-
-                        TextBox1.Text = tercero["direccion"].ToString();
-
-                        Labelidtercero.Text = tercero["idterceros"].ToString();
-                        cargartabla(Labelidtercero.Text);
                     }
-
-                   
+                }
+                catch (Exception ex)
+                {
+                    textError.InnerHtml = ex.Message;
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
                 }
             }
-            catch (Exception ex)
+            else
             {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
+                Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
             }
-
-           
-
         }
-
-
-
         protected void cargartabla(string idusuario)
         {
             pn.idtercero_idtercero = terc.idterceros;
@@ -193,7 +188,7 @@ namespace VisapLine.View.Private
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-             
+
 
             }
 
@@ -212,14 +207,14 @@ namespace VisapLine.View.Private
                 DropDownListbarriocontrato.DataBind();
 
 
-               
+
             }
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
-      
+
             }
         }
 
@@ -228,14 +223,14 @@ namespace VisapLine.View.Private
             if (DropDownListestratocontrato.Text == "1" || DropDownListestratocontrato.Text == "2" || DropDownListestratocontrato.Text == "3")
             {
                 TextBoxivacontrato.Text = "0";
-            
+
             }
             else
             {
                 if (DropDownListestratocontrato.Text == "4" || DropDownListestratocontrato.Text == "5" || DropDownListestratocontrato.Text == "6")
                 {
                     TextBoxivacontrato.Text = "0.19";
-                    
+
                 }
 
             }

@@ -29,10 +29,22 @@ namespace VisapLine.View.Private
         TipoContrato tpcont = new TipoContrato();
         DataRow dt;
         string wifi;
+        Permisos per = new Permisos();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
+            {
+                if (!IsPostBack)
+                {                 
 
+                }
+            }
+            else
+            {
+                Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
+            }
 
         }
 
