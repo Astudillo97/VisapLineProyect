@@ -19,7 +19,8 @@ namespace VisapLine.View.Private
         protected void Page_Load(object sender, EventArgs e)
         {
             string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
-            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
+            DataTable dat = (DataTable)Session["roles"];
+            if (per.ValidarPermisos(url,dat))
             {
                 if (!IsPostBack)
                 {
@@ -35,14 +36,14 @@ namespace VisapLine.View.Private
 
                     }
                 }
-                else
+                
+
+
+
+            }else
                 {
                     Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
                 }
-
-
-
-            }
 
 
 
