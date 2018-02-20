@@ -360,5 +360,11 @@ namespace VisapLine.View.Private
 
             }
         }
+
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            cargartabla(Labelidtercero.Text);
+        }
     }
 }

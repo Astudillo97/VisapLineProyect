@@ -45,7 +45,6 @@ namespace VisapLine.Model
                     if (dat.Rows[i]["href"].ToString().Equals(url))
                     {
                         ret = true;
-                        break;
                     }
                 }
             }

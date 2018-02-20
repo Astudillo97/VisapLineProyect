@@ -48,10 +48,13 @@
                         <asp:Label ID="idservicio" runat="server"></asp:Label>
                         <div class="row" id="divtablagestcontr" runat="server" visible="false">
                             <div class="box box-primary">
-                                <asp:GridView ID="GridView1" runat="server" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                <asp:GridView ID="GridView1" runat="server" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="10">
                                     <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                     <Columns>
-
+                                        <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
+                                        <asp:BoundField HeaderText="Codg" DataField="idcontrato" ItemStyle-HorizontalAlign="Center">
+                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        </asp:BoundField>
                                     </Columns>
                                     <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
