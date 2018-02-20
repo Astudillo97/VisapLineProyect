@@ -32,7 +32,15 @@ namespace VisapLine.Model
 
         public bool ValidarPermisos(string url, DataTable entrada)
         {
-            return ValidacionPagina(entrada.Rows[0]["idrol"].ToString(), url);
+            try
+            {
+                return ValidacionPagina(entrada.Rows[0]["idrol"].ToString(), url);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
         public bool ValidacionPagina(string rol, string url)
         {

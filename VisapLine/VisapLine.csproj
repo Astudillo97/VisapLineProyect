@@ -788,6 +788,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="soportes\" />
     <Folder Include="View\Public\" />
   </ItemGroup>
   <PropertyGroup>

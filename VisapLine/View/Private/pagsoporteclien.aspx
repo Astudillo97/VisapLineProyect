@@ -39,28 +39,54 @@
     <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title"></h3>
+                <h3 class="box-title">Contratos</h3>
             </div>
-            <!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
-                    <div class="col-6">
-                        <asp:Label ID="idservicio" runat="server"></asp:Label>
-                        <div class="row" id="divtablagestcontr" runat="server" visible="false">
+                    <div class="col-12">
+                        <asp:Label ID="Label2" runat="server" Text="Label">Existen  
+                            <asp:Label ID="contarcontratosopor" runat="server"></asp:Label>
+                            Contratos por subir soportes.</asp:Label>
+
+                        <div class="row" id="divtablagestcontr" runat="server">
                             <div class="box box-primary">
-                                <asp:GridView ID="GridView1" runat="server" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="10">
+                                <asp:GridView ID="GridView1" runat="server" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" class="table table-bordered table-striped table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="10" AllowPaging="True">
                                     <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                     <Columns>
-                                        <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
-                                        <asp:BoundField HeaderText="Codg" DataField="idcontrato" ItemStyle-HorizontalAlign="Center">
+                                        <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit">
+                                            <ControlStyle CssClass="glyphicon glyphicon-edit"></ControlStyle>
+                                        </asp:CommandField>
+                                        <asp:BoundField HeaderText="Codg" DataField="codigo" ItemStyle-HorizontalAlign="Center">
                                             <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                         </asp:BoundField>
+                                        <asp:BoundField HeaderText="Identificacion" DataField="identificacion" ItemStyle-HorizontalAlign="Center">
+                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        </asp:BoundField>
+                                        <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center">
+                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        </asp:BoundField>
+                                        <asp:BoundField HeaderText="Apellido" DataField="apellido" ItemStyle-HorizontalAlign="Center">
+                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        </asp:BoundField>
+                                        <asp:BoundField HeaderText="Estado" DataField="estadoc" ItemStyle-HorizontalAlign="Center">
+                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        </asp:BoundField>
+                                        <asp:BoundField HeaderText="Direcccion" DataField="direnviofactura" ItemStyle-HorizontalAlign="Center">
+                                            <ItemStyle HorizontalAlign="Justify"></ItemStyle>
+                                        </asp:BoundField>
+                                        <asp:BoundField HeaderText="Plan" DataField="detalle" ItemStyle-HorizontalAlign="Center">
+                                            <ItemStyle HorizontalAlign="Justify"></ItemStyle>
+                                        </asp:BoundField>
+
                                     </Columns>
+
                                     <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
                                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                    <PagerSettings Mode="NextPreviousFirstLast" />
 
                                     <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
 
@@ -82,6 +108,43 @@
                 </div>
             </div>
         </div>
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">Soportes</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-12">
+                        <asp:Label ID="Label1" runat="server"></asp:Label>
+                        <div class="row" id="div1" runat="server">
+                            <div class="box box-primary">
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Cedula</label>
+                                    <div class="col-sm-10">
+                                        <asp:FileUpload ID="FileUploadControl" runat="server" />
+                                        <asp:Button runat="server" ID="UploadButton" Text="Upload" OnClick="UploadButton_Click" />
+                                        <br />
+                                        <br />
+                                        <asp:Label runat="server" ID="StatusLabel" Text="Upload status: " />
+
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
     </section>
 
 
