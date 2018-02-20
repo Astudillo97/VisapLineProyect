@@ -39,16 +39,13 @@ namespace VisapLine.Model
 
             if(data.ConsultarDatos("select * from permisos p inner join menu m on p.menu_idmenu=m.idmenu inner join menu sm on sm.menu_idmenusub=m.idmenu where p.rol_idrol="+rol+" and m.href='" + url + "' or  sm.href='" + url+"'").Rows.Count>0)
             {
-                men.menu_idmenusub = dat.Rows[i]["idmenu"].ToString();
-                DataTable sub = men.ConsultarMenuSubmenu(men);
-                for (int j = 0; j < sub.Rows.Count && ret == false; j++)
-                {
-                    if (dat.Rows[i]["href"].ToString().Equals(url))
-                    {
-                        ret = true;
-                    }
-                }
+                return true;
             }
+            else
+            {
+                return false;
+            }
+           
 
         }
     }
