@@ -130,15 +130,30 @@
 
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Contrato</label>
+                                    <div class="col-sm-10">
+                                        <asp:FileUpload ID="FileUpload1" runat="server" />
+                                        <asp:Button runat="server" ID="Button1" Text="Upload" OnClick="UploadButton_Click" />
+                                        <br />
+                                        <br />
+                                        <asp:Label runat="server" ID="Label3" Text="Upload status: " />
 
-
-
-
-
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Recibo</label>
+                                    <div class="col-sm-10">
+                                        <asp:FileUpload ID="FileUpload2" runat="server" />
+                                        <asp:Button runat="server" ID="Button2" Text="Upload" OnClick="UploadButton_Click" />
+                                        <br />
+                                        <br />
+                                        <asp:Label runat="server" ID="Label4" Text="Upload status: " />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

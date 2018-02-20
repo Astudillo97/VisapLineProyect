@@ -59,7 +59,7 @@ namespace VisapLine.View.Private
                 try
                 {
                     string filename = Path.GetFileName(FileUploadControl.FileName);                  
-                    FileUploadControl.SaveAs(Server.MapPath("../../Archivos/") + filename);
+                    FileUploadControl.SaveAs(Server.MapPath("../../soportes/") + filename);
                     StatusLabel.Text = "Upload status: File uploaded!";
                 }
                 catch (Exception ex)
