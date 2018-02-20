@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="content"><div  style="width:100%; height:100%;" id="map" ></div></div>
+    <div class="content"><div  style="width:100%; height:100%; position:absolute;" id="map" ></div></div>
     
     <script>
 
