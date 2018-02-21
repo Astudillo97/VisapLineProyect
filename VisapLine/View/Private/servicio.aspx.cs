@@ -72,11 +72,9 @@ namespace VisapLine.View.Private
 
                     }
                 }
-                catch (ArgumentNullException ex)
+                catch (Exception ex)
                 {
-
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "errorcarga()", true);
-                }
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title: 'UUUUPSSS!!!!', text: 'Algo ha ocurrido estamos trabajando para solucionarlo',imageUrl: '../../Contenido/images/monkeyprogramer.jpg',imageSize: '400x250'}, function() { window.location.href = 'index.aspx'; })", true);}
             }
             else
             {
