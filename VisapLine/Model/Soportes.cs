@@ -15,6 +15,7 @@ namespace VisapLine.Model
         public string idsoporte { get; set; }
         public string soportes { get; set; }
         public string contrato_idcontrato { get; set; }
+        public string tiposoporte_idtiposoporte { get; set; }
 
 
         public DataTable ConsultarSoportes()
@@ -24,7 +25,7 @@ namespace VisapLine.Model
 
         public bool RegistrarSoportes(Soportes sop)
         {
-            return data.OperarDatos("");
+            return data.OperarDatos("select * from public.pr_insertarsoporte('"+sop.soportes+"','"+sop.contrato_idcontrato+"','"+sop.tiposoporte_idtiposoporte+"')");
         }
 
     }

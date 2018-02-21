@@ -36,6 +36,20 @@ namespace VisapLine.View.Private
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                GridViewRow gridw = GridView1.SelectedRow;
+                Label3.Text = gridw.Cells[4].Text;
+                Label4.Text = gridw.Cells[5].Text;
+                TextBox1.Text = gridw.Cells[7].Text;
+                Label5.Text = gridw.Cells[3].Text;
+                Label6.Text = gridw.Cells[1].Text;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
 
         }
         protected void cargartabla()
@@ -52,22 +66,68 @@ namespace VisapLine.View.Private
             cargartabla();
         }
 
-        protected void UploadButton_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            if (FileUploadControl.HasFile)
+
+            try
             {
-                try
+                if (FileUploadControl.HasFile)
                 {
-                    string filename = Path.GetFileName(FileUploadControl.FileName);                  
-                    FileUploadControl.SaveAs(Server.MapPath("../../soportes/") + filename);
-                    StatusLabel.Text = "Upload status: File uploaded!";
+                    try
+                    {
+                        string filename = Path.GetFileName(FileUploadControl.FileName);
+                        sp.soportes = Validar.validarlleno(filename);
+                        sp.contrato_idcontrato = Validar.validarlleno(Label6.Text);
+                        sp.tiposoporte_idtiposoporte = Validar.validarlleno("1");
+                        sp.RegistrarSoportes(sp);
+                        FileUploadControl.SaveAs(Server.MapPath("../../soportes/") + filename);
+
+                    }
+                    catch (Exception)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                    }
                 }
-                catch (Exception ex)
+                if (FileUpload1.HasFile)
                 {
-                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                    try
+                    {
+                        string filename = Path.GetFileName(FileUpload1.FileName);
+                        sp.soportes = Validar.validarlleno(filename);
+                        sp.contrato_idcontrato = Validar.validarlleno(Label6.Text);
+                        sp.tiposoporte_idtiposoporte = Validar.validarlleno("3");
+                        sp.RegistrarSoportes(sp);
+                        FileUpload1.SaveAs(Server.MapPath("../../soportes/") + filename);
+
+                    }
+                    catch (Exception)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                    }
+                }
+                if (FileUpload2.HasFile)
+                {
+                    try
+                    {
+                        string filename = Path.GetFileName(FileUpload2.FileName);
+                        sp.soportes = Validar.validarlleno(filename);
+                        sp.contrato_idcontrato = Validar.validarlleno(Label6.Text);
+                        sp.tiposoporte_idtiposoporte = Validar.validarlleno("2");
+                        sp.RegistrarSoportes(sp);
+                        FileUpload2.SaveAs(Server.MapPath("../../soportes/") + filename);
+
+                    }
+                    catch (Exception)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                    }
                 }
             }
-        }
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
 
+            }
+        }
     }
 }
