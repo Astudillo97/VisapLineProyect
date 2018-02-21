@@ -75,7 +75,7 @@
             })
                 ;
 
-            
+
         }
         function nodata() {
             swal("ALGO HA OCURRIDO!", "No se encontraron registros", "error");
@@ -118,7 +118,8 @@
                                             <label class="col-sm-3 col-form-label">Numero de pedido</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control col-10" id="numeropedido_" runat="server" placeholder="Serial">
-                                                <button class="btn btn-success col-1" id="consultarcompra" runat="server" onserverclick="consltarcompra"><span class="glyphicon glyphicon-search"></span></button>                                            </div>
+                                                <button class="btn btn-success col-1" id="consultarcompra" runat="server" onserverclick="consltarcompra"><span class="glyphicon glyphicon-search"></span></button>
+                                            </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Valor</label>
@@ -166,65 +167,65 @@
                         </div>
                     </div>
                     <asp:FormView ID="formcompra" CssClass="col-12" runat="server">
-                             <ItemTemplate>
-                     <div class="row" id="rowcosnultar" runat="server">
-                         
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Compras</h3>
-                                </div>
-                                <div class="box-body">
-                                    <div class="form-element">
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Numero de pedido</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="Text1" runat="server" value='<%#Eval("numeropedido") %>'>
-                                            </div>
+                        <ItemTemplate>
+                            <div class="row" id="rowcosnultar" runat="server">
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="box box-primary">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Compras</h3>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Valor</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="Text2" runat="server" value='<%#Eval("valor") %>'>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Proveedor</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="Text3" runat="server" value='<%#Eval("prov") %>'>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title"></h3>
-                                </div>
-                                <div class="box-body">
-                                    <div class="form-element">
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Fecha de Pedido</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="Text4" runat="server" value='<%#Eval("fechapedido") %>'>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Fecha de Llegada</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="Text5" runat="server" value='<%#Eval("fechallegada") %>'>
+                                        <div class="box-body">
+                                            <div class="form-element">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Numero de pedido</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="Text1" runat="server" value='<%#Eval("numeropedido") %>'>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Valor</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="Text2" runat="server" value='<%#Eval("valor") %>'>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Proveedor</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="Text3" runat="server" value='<%#Eval("prov") %>'>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="box box-primary">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title"></h3>
+                                        </div>
+                                        <div class="box-body">
+                                            <div class="form-element">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Fecha de Pedido</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="Text4" runat="server" value='<%#Eval("fechapedido") %>'>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Fecha de Llegada</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="Text5" runat="server" value='<%#Eval("fechallegada") %>'>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
-                                
-                    </div>
-                                  </ItemTemplate>
-                         </asp:FormView>
+                        </ItemTemplate>
+                    </asp:FormView>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregardetalle">REGISTRAR DETALLE</button>
                     <div class="modal fade" id="agregardetalle" data-backdrop="”static”">
                         <div class="modal-dialog" role="document">
@@ -442,50 +443,58 @@
                                 <div class="box-footer">
                                     <button class="btn btn-primary" runat="server" onserverclick="RegistrarInventario">Guardar</button>
                                 </div>
-                                
+
                             </div>
 
                         </div>
                         <div class="box-body col">
-                                    <table class="table table-bordered table-striped table-responsive no-border" id="example">
-                                        <thead>
+                            <table class="table table-bordered table-striped table-responsive no-border" id="example">
+                                <thead>
+                                    <tr>
+                                        <th>DESCIPCION
+                                        </th>
+                                        <th>CANTIDAD
+                                        </th>
+                                        <th>UNIDAD
+                                        </th>
+                                        <th>TIPO PRODUCTO
+                                        </th>
+                                        <th>MODELO
+                                        </th>
+                                        <th>VIDA UTIL
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <asp:Repeater ID="repeteidordeinventario" runat="server">
+                                        <ItemTemplate>
                                             <tr>
-                                                <th>DESCIPCION
+                                                <th>
+                                                    <label><%#Eval("descripcion") %></label>
+                                                    <label><%# Eval("serial") %></label>
+                                                    <label><%# Eval("mac") %></label>
                                                 </th>
-                                                <th>CANTIDAD
+                                                <th>
+                                                    <label><%# Eval("cantidad") %></label>
                                                 </th>
                                                 <th>UNIDAD
                                                 </th>
-                                                <th>TIPO PRODUCTO
+                                                <th>
+                                                    <label><%# Eval("tipoproducto") %></label>
                                                 </th>
-                                                <th>MODELO
+                                                <th>
+                                                    <label><%# Eval("fabricante") %></label>
+                                                    <label><%# Eval("modelo") %></label>
                                                 </th>
-                                                <th>VIDA UTIL
+                                                <th>
+                                                    <label><%# Eval("vidautil") %></label>
                                                 </th>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            <asp:Repeater ID="repeteidordeinventario" runat="server">
-                                                <ItemTemplate>
-                                                    <tr>
-                                                        <th><label><%#Eval("descripcion") %></label> <label><%# Eval("serial") %></label> <label><%# Eval("mac") %></label>
-                                                        </th>
-                                                        <th><label><%# Eval("cantidad") %></label>
-                                                        </th>
-                                                        <th>UNIDAD
-                                                        </th>
-                                                        <th><label><%# Eval("tipoproducto") %></label>
-                                                        </th>
-                                                        <th><label><%# Eval("fabricante") %></label> <label><%# Eval("modelo") %></label>
-                                                        </th>
-                                                        <th><label><%# Eval("vidautil") %></label>
-                                                        </th>
-                                                    </tr>
-                                                </ItemTemplate>
-                                            </asp:Repeater>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane" id="Tipoproduct">
@@ -696,8 +705,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Wifi</label>
                                             <div class="col-sm-9">
-                                                <asp:CheckBox ID="checkwifi" runat="server" Text=" ">
-                                                </asp:CheckBox>
+                                                <asp:CheckBox ID="checkwifi" runat="server" Text=" "></asp:CheckBox>
                                             </div>
                                         </div>
                                     </div>

@@ -8,6 +8,9 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <asp:ScriptManager ID="scripservicc" runat="server"></asp:ScriptManager>
     <script type="text/javascript">
+        function redireciona(cosa) {
+            window.location = 'solicitudes.aspx?key='+cosa;
+        }
         function openmodal() {
             $('#mymodal').modal('show');
         }
@@ -19,16 +22,6 @@
         }
         function alertnoproduc() {
             swal("ERROR AL ASIGNAR EQUIPO", "No hay ningun equipo que se pueda asignar", "error");
-        }
-        function errorcarga() {
-            swal({
-                title: "UUUUPSSS!!!!",
-                text: "Algo ha ocurrido estamos trabajando para solucionarlo",
-                imageUrl: "../../Contenido/images/monkeyprogramer.jpg",
-                imageSize: '400x250'
-            }, function () {
-                window.location.href = 'index.aspx';
-            })
         }
     </script>
     <section class="content-header">
@@ -58,7 +51,7 @@
                 <SortedAscendingCellStyle BackColor="#F5F7FB" />
                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />  
                 <Columns>
                     <asp:BoundField HeaderText="REFEERENCIA" DataField="id" />
                     <asp:BoundField HeaderText="FECHA DE INICIO" DataField="fechainiciocol" />
@@ -66,7 +59,12 @@
                     <asp:BoundField HeaderText="ESTADO" DataField="estadocol" />
                     <asp:BoundField HeaderText="SERVICIO" DataField="referenciascol" />
                     <asp:BoundField HeaderText="EQUIPO" DataField="referenciaequipocol" />
-                    <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" ControlStyle-ForeColor="White" />
+                    <asp:TemplateField ItemStyle-CssClass="btn btn-success btn-lg">
+                        <ItemTemplate>
+                            <a onclick='redireciona(<%# Eval("id") %>)'>Solicitud</a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" ControlStyle-ForeColor="White" />                   
                 </Columns>
             </asp:GridView>
         </div>
