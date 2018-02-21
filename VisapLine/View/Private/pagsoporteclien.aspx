@@ -12,7 +12,7 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         function deletealert() {
-            swal("LA INCIDENCIA FUE CREADA CON EXITO!", "", "success");
+            swal("EL SOPORTE FUE CARGADO CON EXITO!", "", "success");
         }
         function alerterror() {
             swal("EL REGISTRO NO SE PUDO COMPLETAR EL CARGUE!", "Verifique la informacion ingresada y vuelva intentar", "error");
@@ -110,7 +110,7 @@
                 </div>
             </div>
         </div>     
-        <div class="box box-default">
+        <div class="box box-default"  id="soporteformulario" runat="server" visible="false">
             <div class="box-header with-border">
                 <h3 class="box-title">Soportes</h3>
             </div>
@@ -126,26 +126,26 @@
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-5">
                                         <img src="../../Contenido/images/user2-160x160.jpg" height="135px" width="135px" />
                                     </div>
                                     <div class="col-7">
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Nombre:</label>
-                                            <div class="col-sm-8">
+                                            <div class="col-sm-10">
                                                 <asp:Label ID="Label3" runat="server" CssClass="form-control bg-gray" Text=""></asp:Label>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Apellido:</label>
-                                            <div class="col-sm-8">
+                                            <div class="col-sm-10">
                                                 <asp:Label ID="Label4" CssClass="form-control bg-gray" runat="server" Text=""></asp:Label>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Direccion:</label>
-                                            <div class="col-sm-8">
-                                                <asp:TextBox ID="TextBox1" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="165px" Height="90px"></asp:TextBox>
+                                            <div class="col-sm-10">
+                                                <asp:TextBox ID="TextBox1" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="200px" Height="90px"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>

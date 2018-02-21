@@ -44,6 +44,7 @@ namespace VisapLine.View.Private
                 TextBox1.Text = gridw.Cells[7].Text;
                 Label5.Text = gridw.Cells[3].Text;
                 Label6.Text = gridw.Cells[1].Text;
+                soporteformulario.Visible = true;
             }
             catch (Exception)
             {
@@ -71,7 +72,7 @@ namespace VisapLine.View.Private
 
             try
             {
-                if (FileUploadControl.HasFile)
+                if (FileUploadControl.HasFile == true)
                 {
                     try
                     {
@@ -82,52 +83,73 @@ namespace VisapLine.View.Private
                         sp.RegistrarSoportes(sp);
                         FileUploadControl.SaveAs(Server.MapPath("../../soportes/") + filename);
 
-                    }
-                    catch (Exception)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
-                    }
-                }
-                if (FileUpload1.HasFile)
-                {
-                    try
-                    {
-                        string filename = Path.GetFileName(FileUpload1.FileName);
-                        sp.soportes = Validar.validarlleno(filename);
-                        sp.contrato_idcontrato = Validar.validarlleno(Label6.Text);
-                        sp.tiposoporte_idtiposoporte = Validar.validarlleno("3");
-                        sp.RegistrarSoportes(sp);
-                        FileUpload1.SaveAs(Server.MapPath("../../soportes/") + filename);
+                        if (FileUpload1.HasFile == true)
+                        {
+                            try
+                            {
+                                string filename1 = Path.GetFileName(FileUpload1.FileName);
+                                sp.soportes = Validar.validarlleno(filename1);
+                                sp.contrato_idcontrato = Validar.validarlleno(Label6.Text);
+                                sp.tiposoporte_idtiposoporte = Validar.validarlleno("3");
+                                sp.RegistrarSoportes(sp);
+                                FileUpload1.SaveAs(Server.MapPath("../../soportes/") + filename1);
 
-                    }
-                    catch (Exception)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
-                    }
-                }
-                if (FileUpload2.HasFile)
-                {
-                    try
-                    {
-                        string filename = Path.GetFileName(FileUpload2.FileName);
-                        sp.soportes = Validar.validarlleno(filename);
-                        sp.contrato_idcontrato = Validar.validarlleno(Label6.Text);
-                        sp.tiposoporte_idtiposoporte = Validar.validarlleno("2");
-                        sp.RegistrarSoportes(sp);
-                        FileUpload2.SaveAs(Server.MapPath("../../soportes/") + filename);
+                                if (FileUpload2.HasFile == true)
+                                {
+                                    try
+                                    {
+                                        string filename2 = Path.GetFileName(FileUpload2.FileName);
+                                        sp.soportes = Validar.validarlleno(filename2);
+                                        sp.contrato_idcontrato = Validar.validarlleno(Label6.Text);
+                                        sp.tiposoporte_idtiposoporte = Validar.validarlleno("2");
+                                        sp.RegistrarSoportes(sp);
+                                        FileUpload2.SaveAs(Server.MapPath("../../soportes/") + filename2);
 
+                                        cargartabla();
+                                        soporteformulario.Visible = false;
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+
+                                    }
+                                    catch (Exception)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                                    }
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                            }
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+
+                        }
                     }
                     catch (Exception)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
                     }
                 }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+
+                }
+
             }
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
 
             }
+
+
         }
     }
 }
