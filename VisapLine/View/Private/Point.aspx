@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content">
         <section class="content-header">
-        <h1>ACTIVOS: <label id="activos"></label></h1> Latitud: <asp:TextBox type="text" runat="server" id="latitud" value="" /> longitud: <asp:TextBox type="text" runat="server" id="longitud" value="" />
+        <h1>ACTIVOS : <label id="activos"></label></h1> Latitud: <asp:TextBox type="text" runat="server" id="latitud" value="" /> longitud: <asp:TextBox type="text" runat="server" id="longitud" value="" />
     </section>
         <div style="position: absolute; width: 80%; height: 700px;" id="map"></div>
     </div>
