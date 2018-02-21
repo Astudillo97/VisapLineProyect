@@ -85,51 +85,60 @@ namespace VisapLine.View.Private
         {
             try
             {
-                Terceros ter = (Terceros)Session["tercero"];
-                inci.terceros_idterceros = terc.idterceros;
-                inci.terceros_idterceros = Validar.validarlleno(ter.idterceros);
-                inci.idincidencias = Validar.validarlleno(Labelidincidencia.Text);
-                inci.estado = Validar.validarselected(DropDownListestadoinc.Text);
-                inci.detalle = Validar.validarlleno(TextArea1detalle.Value.ToUpper());
-                Validar.validarselected(DropDownList1.Text);
-                if (DropDownList1.Text == "SI")
+                try
                 {
-                    inci.descuento = "true";
+                    Terceros ter = (Terceros)Session["tercero"];
+                    inci.terceros_idterceros = terc.idterceros;
+                    inci.terceros_idterceros = Validar.validarlleno(ter.idterceros);
+                    inci.idincidencias = Validar.validarlleno(Labelidincidencia.Text);
+                    inci.estado = Validar.validarselected(DropDownListestadoinc.Text);
+                    inci.detalle = Validar.validarlleno(TextArea1detalle.Value.ToUpper());
+                    Validar.validarselected(DropDownList1.Text);
+                    if (DropDownList1.Text == "SI")
+                    {
+                        inci.descuento = "true";
+                    }
+                    else
+                    {
+                        if (DropDownList1.Text == "NO")
+                        {
+                            TextBox2.Text = "0";
+                            inci.descuento = "false";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    textError.InnerHtml = ex.Message;
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+                }
+
+
+                inci.costo = TextBox2.Text;
+
+                if (inci.updatesolucionincidencia(inci))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                    cargartabla();
+                    iddatosterceros.Visible = false;
+                    DropDownListestadoinc.Text = "Seleccione";
+                    TextBox2.Text = "";
+                    TextArea1detalle.Value = "";
+                    Button1.Visible = false;
+
                 }
                 else
                 {
-                    if (DropDownList1.Text == "NO")
-                    {
-                        TextBox2.Text = "0";
-                        inci.descuento = "false";
-                    }
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
+
+                throw;
             }
-
-
-            inci.costo = TextBox2.Text;
-
-            if (inci.updatesolucionincidencia(inci))
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
-                cargartabla();
-                iddatosterceros.Visible = false;
-                DropDownListestadoinc.Text = "Seleccione";
-                TextBox2.Text = "";
-                TextArea1detalle.Value = "";
-                Button1.Visible = false;
-
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
-            }
+          
 
         }
 
