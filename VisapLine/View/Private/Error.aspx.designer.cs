@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace VisaPlane.visapline.Private {
+namespace VisapLine.View.Private {
     
     
-    public partial class Error1 {
+    public partial class Error {
         
         /// <summary>
         /// Control error_s.
