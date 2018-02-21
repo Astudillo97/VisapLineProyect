@@ -107,7 +107,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">Detalle:</label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <textarea data-provide="markdown" id="texareadetalle" runat="server" data-iconlibrary="fa"  class="form-control" rows="5" resize="none" data-hidden-buttons="cmdBold" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 144px;" required data-validation-required-message="This field is required"></textarea>
+                                    <textarea data-provide="markdown" id="texareadetalle" runat="server" data-iconlibrary="fa" class="form-control" rows="5" resize="none" data-hidden-buttons="cmdBold" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 144px;" required data-validation-required-message="This field is required"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">Estado:</label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control" AppendDataBoundItems="true"  required data-validation-required-message="This field is required">
+                                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control" AppendDataBoundItems="true" required data-validation-required-message="This field is required">
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>ACTIVO</asp:ListItem>
                                         <asp:ListItem>INACTIVO</asp:ListItem>
@@ -157,56 +157,107 @@
             </div>
             <!-- /.box-header -->
 
-            <div class="box-body" style="">
-                <div class="row">
-                    <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="10">
-                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-                        <Columns>
-                            <asp:BoundField HeaderText="Codigo de Plan" DataField="idplan" />
-                            <asp:BoundField HeaderText="Valor" DataField="valor" />
-                            <asp:BoundField HeaderText="Detalle" DataField="detalle" />
-                            <asp:CheckBoxField HeaderText="Telefonia" DataField="telefonia" Text=" " ItemStyle-CssClass="filled-in chk-col-green">
-                                <ItemStyle CssClass="filled-in chk-col-green"></ItemStyle>
-                            </asp:CheckBoxField>
-                            <asp:CheckBoxField HeaderText="Television" DataField="television" Text=" " />
-                            <asp:CheckBoxField HeaderText="Internet" DataField="internet" Text=" " />
-                            <asp:BoundField HeaderText="Estado" DataField="estado" />
-                            <asp:BoundField HeaderText="Tipo de Plan" DataField="tipoplan" />
-                            <asp:BoundField HeaderText="Subida" DataField="subida" />
-                            <asp:BoundField HeaderText="Bajada" DataField="bajada" />
+            <div class="box-body col">
+                <table class="table table-hover table-responsive" id="example">
+                    <thead style="background-color: #507CD1">
+                        <tr>
+                            <th style="color: white">Codigo Plan
+                            </th>
+                            <th style="color: white">Valor
+                            </th>
+                            <th style="color: white">Detalle
+                            </th>
+                            <th style="color: white">Telefonia
+                            </th>
+                            <th style="color: white">Television
+                            </th>
+                            <th style="color: white">Internet
+                            </th>
+                            <th style="color: white">Estado
+                            </th>
+                            <th style="color: white">Tipo plan
+                            </th>
+                            <th style="color: white">Subida 
+                            </th>
+                            <th style="color: white">Bajada
+                            </th>
+                            <th style="color: white">Modificar
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <asp:Repeater ID="repeteidordeinventario" runat="server">
+                            <ItemTemplate>
+
+                                <tr>
+                                    <th>
+                                        <label><%#Eval("idplan") %></label>
+                                    </th>
+                                    <th>
+                                        <label><%#Eval("valor") %></label>
+                                    </th>
+                                    <th>
+                                        <label><%#Eval("detalle") %></label>
+                                    </th>
+                                    <th>
+                                        <asp:CheckBox ID="chek" runat="server" Enabled="false" Checked='<%#Eval("telefonia") %>' Text=" " />
+
+                                    </th>
+                                    <th>
+                                        <asp:CheckBox ID="CheckBox4" runat="server" Enabled="false" Checked='<%#Eval("television") %>' Text=" " />
+                                    </th>
+                                    <th>
+                                        <asp:CheckBox ID="CheckBox5" runat="server" Enabled="false" Checked='<%#Eval("internet") %>' Text=" " />
+                                    </th>
+                                    <th>
+                                        <label><%#Eval("estado") %></label>
+                                    </th>
+                                    <th>
+                                        <label><%#Eval("tipoplan") %></label>
+                                    </th>
+                                    <th>
+                                        <label><%#Eval("subida") %></label>
+                                    </th>
+                                    <th>
+                                        <label><%#Eval("bajada") %></label>
+                                    </th>
+                                    <th>
+                                        <a href="Gestplanes.aspx?key=<%#Eval("idplan")%>" class="glyphicon glyphicon-edit"></a>
+
+                                    </th>
 
 
-                        </Columns>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </tbody>
+                    <tfoot style="background-color: #507CD1">
+                        <tr>
+                            <th style="color: white">Codigo Plan
+                            </th>
+                            <th style="color: white">Valor
+                            </th>
+                            <th style="color: white">Detalle
+                            </th>
+                            <th style="color: white">Telefonia
+                            </th>
+                            <th style="color: white">Television
+                            </th>
+                            <th style="color: white">Internet
+                            </th>
+                            <th style="color: white">Estado
+                            </th>
+                            <th style="color: white">Tipo plan
+                            </th>
+                            <th style="color: white">Subida 
+                            </th>
+                            <th style="color: white">Bajada
+                            </th>
+                        </tr>
+                    </tfoot>
 
-                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
-
-                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
-
-                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
-
-                        <PagerSettings Mode="NextPreviousFirstLast" />
-
-                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
-
-                        <RowStyle BackColor="#EFF3FB"></RowStyle>
-
-                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
-
-                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
-
-                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
-
-                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
-
-                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
-                    </asp:GridView>
-                    <!-- /.row -->
-
-                </div>
-                <!-- /.box-body -->
-
+                </table>
             </div>
-
         </div>
 
     </section>

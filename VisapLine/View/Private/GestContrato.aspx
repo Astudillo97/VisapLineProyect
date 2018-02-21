@@ -136,7 +136,7 @@
                             <label class="col-sm-4 col-form-label">Nombre:</label>
                             <div class="col-sm-8">
                                 <div class="form-group row">
-                                    <asp:TextBox ID="TextBox1identificacion" Enabled="false" class="form-control" Style="text-transform: uppercase" runat="server"></asp:TextBox>
+                                    <asp:Label ID="TextBox1identificacion" Enabled="false" class="form-control" Style="text-transform: uppercase" runat="server" Text=""></asp:Label>
                                 </div>
                             </div>
                         </div>

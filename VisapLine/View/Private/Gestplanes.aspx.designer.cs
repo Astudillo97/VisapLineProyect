@@ -10,7 +10,7 @@
 namespace VisapLine.View.Private {
     
     
-    public partial class pagplan {
+    public partial class Gestplanes {
         
         /// <summary>
         /// Control respust.
@@ -38,6 +38,15 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl textError;
+        
+        /// <summary>
+        /// Control Label1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
         /// Control TextBox1.
@@ -121,6 +130,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
         
         /// <summary>
+        /// Control Button3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button3;
+        
+        /// <summary>
         /// Control Button1.
         /// </summary>
         /// <remarks>
@@ -130,12 +148,12 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// Control repeteidordeinventario.
+        /// Control Button2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeteidordeinventario;
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

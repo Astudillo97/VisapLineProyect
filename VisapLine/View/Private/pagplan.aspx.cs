@@ -139,15 +139,17 @@ namespace VisapLine.View.Private
         }
         protected void cargartabla()
         {
-            DataTable dt = pn.ConsultarPlan();
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            try { 
+            repeteidordeinventario.DataSource = pn.ConsultarPlan();
+            repeteidordeinventario.DataBind();
+
+            DataTable dt = pn.ConsultarPlan();         
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            cargartabla();
-        }
     }
 }

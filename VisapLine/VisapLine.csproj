@@ -483,6 +483,7 @@
     <Content Include="View\Private\GestContrato.aspx" />
     <Content Include="View\Private\GestIncidencia.aspx" />
     <Content Include="View\Private\GestPagos.aspx" />
+    <Content Include="View\Private\Gestplanes.aspx" />
     <Content Include="View\Private\GestTercero.aspx" />
     <Content Include="View\Private\Gservicio.aspx" />
     <Content Include="View\Private\Incidencia.aspx" />
@@ -498,6 +499,7 @@
     <Content Include="View\Private\RegistroTerceros.aspx" />
     <Content Include="View\Private\ReporteCaja.aspx" />
     <Content Include="View\Private\servicio.aspx" />
+    <Content Include="View\Private\solicitudes.aspx" />
     <Content Include="View\Private\Tipofact.aspx" />
     <Content Include="View\Private\VistadeExporte.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
@@ -668,6 +670,13 @@
     <Compile Include="View\Private\GestPagos.aspx.designer.cs">
       <DependentUpon>GestPagos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\Gestplanes.aspx.cs">
+      <DependentUpon>Gestplanes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Gestplanes.aspx.designer.cs">
+      <DependentUpon>Gestplanes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\GestTercero.aspx.cs">
       <DependentUpon>GestTercero.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -772,6 +781,13 @@
     </Compile>
     <Compile Include="View\Private\servicio.aspx.designer.cs">
       <DependentUpon>servicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\solicitudes.aspx.cs">
+      <DependentUpon>solicitudes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\solicitudes.aspx.designer.cs">
+      <DependentUpon>solicitudes.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Tipofact.aspx.cs">
       <DependentUpon>Tipofact.aspx</DependentUpon>
