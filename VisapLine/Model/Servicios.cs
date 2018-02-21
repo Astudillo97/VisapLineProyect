@@ -66,6 +66,9 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select * from pr_consultarservicioid('"+id+"')");
 
         }
+        public DataTable consultarsolicitudes() {
+            return data.ConsultarDatos("select * from pr_consultarsolicitudes()");
+        }
 
 
     }
