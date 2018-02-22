@@ -64,7 +64,7 @@ namespace VisapLine.View.Private
 
         protected void btnguardar_Click(object sender, EventArgs e)
         {
-            ord.crearsolicitudes(dropdownTSoli.SelectedIndex,TextBox1.Text,fechIni_.Value,fechFin_.Value,dropdownMSoli.SelectedIndex,Solicitanteidenti.Text,Solicitantenombre.Text,Solicitanteapellido.Text,idsrv, empleado,true);
+            ord.crearsolicitudes(dropdownTSoli.SelectedValue,TextBox1.Text,fechIni_.Value,fechFin_.Value,dropdownMSoli.SelectedValue,Solicitanteidenti.Text,Solicitantenombre.Text,Solicitanteapellido.Text,idsrv, empleado,true);
         }
 
         protected void dropsolicitante_TextChanged(object sender, EventArgs e)

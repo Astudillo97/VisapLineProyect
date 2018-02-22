@@ -96,9 +96,9 @@ namespace VisapLine.Model
             }
         }
 
-        public DataTable crearsolicitudes(int vartiposolicitud ,string vardetalle ,string varfechainicio ,string varfechafin ,int varmediodesolicitud ,string  vardocumento ,string varnombresolic ,string varapellidosolic ,int varservicio ,string varterceros ,bool  varrestado)
+        public DataTable crearsolicitudes(string vartiposolicitud ,string vardetalle ,string varfechainicio ,string varfechafin ,string varmediodesolicitud ,string  vardocumento ,string varnombresolic ,string varapellidosolic ,int varservicio ,string varterceros ,bool  varrestado)
         {
-            return data.ConsultarDatos("select * from pr_insertarsolicitud("+ vartiposolicitud + ",'"+ vardetalle + "','"+ varfechainicio + "','"+ varfechafin + "','"+ varfechadesolicitud + "',"+ varmediodesolicitud + ",'"+ vardocumento + "','"+ varnombresolic + "','"+ varapellidosolic + "',"+ varservicio + ",'"+ varterceros + "','"+ varrestado + "')");
+            return data.ConsultarDatos("select * from pr_insertarsolicitud("+ vartiposolicitud + ",'"+ vardetalle + "','"+ varfechainicio + "','"+ varfechafin + "',current_date," + varmediodesolicitud + ",'"+ vardocumento + "','"+ varnombresolic + "','"+ varapellidosolic + "',"+ varservicio + ",'"+ varterceros + "','"+ varrestado + "')");
         }
 
     }
