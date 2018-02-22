@@ -52,8 +52,8 @@ namespace VisapLine.View.Private
             dplb.muninicio_idmunicipio = dtbsrv.Rows[0][18].ToString();
             btr = dplb.ConsultarBarriosIdMunicipio(dplb);
             b.DataSource = btr;
-            b.DataTextField = "barriosbarr";
-            b.DataValueField = "idbarriosbarr";
+            b.DataTextField = "barrios";
+            b.DataValueField = "idbarrios";
             b.DataBind();
         }
 

@@ -4,22 +4,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content">
-        <section class="content-header">
-        <h1>ACTIVOS : <label id="activos"></label></h1> Latitud: <asp:TextBox type="text" runat="server" id="latitud" value="" /> longitud: <asp:TextBox type="text" runat="server" id="longitud" value="" />
-    </section>
         <div style="position: absolute; width: 80%; height: 700px;" id="map"></div>
     </div>
     <script>
-        var markers;
         var map;
-        function addMarker(location) {
-            markers = new google.maps.Marker({
-                position: location,
-                map: map
-            });
-            document.getElementById('<%=latitud.ClientID%>').value = this.getPosition().toString();
-            document.getElementById('<%=longitud.ClientID%>').value = markers.lng;
-        }
 
         function initMap() {
             var myLatLng = { lat: 1.620249416453961, lng: -75.61037882799843 };
@@ -29,12 +17,18 @@
                 mapTypeId: 'satellite',
                 center: myLatLng
             });
-            document.getElementById('activos').innerHTML = '<%=punt.Rows.Count.ToString()%>';
 
-
-            map.addListener('click', function (event) {
-                addMarker(event.latLng);
-            });
+            var icons = {
+                Radio: {
+                    icon: '../../Contenido/radio.png'
+                },
+                Fibra: {
+                    icon: '../../Contenido/fibra.png'
+                },
+                Indefinido: {
+                    icon: '../../Contenido/indefinido.png'
+                }
+            };
 
 
             var marker = [
@@ -48,10 +42,10 @@
                 new google.maps.Marker({
                     position: { lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> },
                     map: map,
-                    icon: image,
+                    icon: icons['<%=item["tipo"].ToString()%>'].icon,
                     title: '<%=item["nombre"].ToString()%>'<%cot++;%>
                 }).addListener('click', function () {
-                    map.setZoom(15);
+                    map.setZoom(18);
                     map.setCenter({ lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> });
                 }) <%if (cot == cont) { Response.Write(""); } else { Response.Write(","); }%>               
                 <%
