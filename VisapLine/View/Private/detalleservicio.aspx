@@ -175,7 +175,7 @@
                                             </td>
                                             <td>
                                                 <asp:Label ID="Label3" runat="server" Text='<%#Eval("direcionpunt") %> '></asp:Label>
-                                                <asp:Label ID="Label4" runat="server" Text='<%#Eval("barriopunt") %> '></asp:Label>
+                                                <asp:Label ID="Label4" runat="server" Text='<%#Eval("barriosbarr") %> '></asp:Label>
                                             </td>
                                         </tr>
                                         <tr>
