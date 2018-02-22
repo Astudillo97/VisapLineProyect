@@ -300,7 +300,7 @@ namespace VisapLine.View.Private
             if (serve.vaalidarmegas(txtmegasasignar.Text, idcontrato))
             {
                 DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
-                DataTable dtid = serve.crearservicio(ip.Text, int.Parse(txtmegasasignar.Text), idcontrato, dtrs[1].ToString(), "POR INSTALAR", "INTERNET", txtseralasignar.Text, TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
+                DataTable dtid = serve.crearservicio(ip.Text, int.Parse(txtmegasasignar.Text), idcontrato, dtrs[1].ToString(), "POR INSTALAR", "INTERNET", txtseralasignar.Text, TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue),Validar.validarselected(tipo_.SelectedValue), latitud.Text,longitud.Text);
                 if (dtid.Rows.Count > 0)
                 {
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "successasignation()", true);
