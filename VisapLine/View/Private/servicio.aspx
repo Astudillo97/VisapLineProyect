@@ -121,6 +121,16 @@
                                 <asp:TextBox CssClass="form-control" runat="server" ID="longitud" />
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Tipo</label>
+                            <div class="col-sm-9">
+                                <asp:DropDownList ID="tipo_" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                    <asp:ListItem>Fibra</asp:ListItem>
+                                    <asp:ListItem>Radio</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

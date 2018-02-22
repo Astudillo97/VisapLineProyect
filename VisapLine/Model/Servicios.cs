@@ -26,10 +26,9 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarinventarioid(" + idequipo + ")");
         }
-        public DataTable crearservicio(string ip, int varcanmeg, int varcontra, string varestrato, string varestadp, string varreferenci, string varinvern, string vardireccion, int barrio)
+        public DataTable crearservicio(string ip, int varcanmeg, int varcontra, string varestrato, string varestadp, string varreferenci, string varinvern, string vardireccion, int barrio,string tipo,string latit, string longt)
         {
-            string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('" + vardireccion + "'," + barrio + ")").Rows[0][0].ToString();
-            return data.ConsultarDatos("select * from pr_insertarservicio('" + ip + "','2017-01-01'," + varcanmeg + "," + varcontra + " ,'" + varestrato + "' ,'" + varestadp + "','" + varreferenci + "'," + idpunto + ",'" + varinvern + "')");
+            return data.ConsultarDatos("select * from pr_insertarservicio('" + ip + "','2017-01-01'," + varcanmeg + "," + varcontra + " ,'" + varestrato + "' ,'" + varestadp + "','" + varreferenci + "', (select * from pr_insertarpunto('ACTIVO', '"+vardireccion+"', '"+latit+"', '"+longt+"', "+barrio+", '"+tipo+"')),'" + varinvern + "')");
         }
         public DataTable crearsertv(string ip, int varcontra, string varestrato, string varestadp, string varreferenci, string vardireccion, int barrio) {
             string idpunto = data.ConsultarDatos("select * from pr_insertarpunto('" + vardireccion + "'," + barrio + ")").Rows[0][0].ToString();
