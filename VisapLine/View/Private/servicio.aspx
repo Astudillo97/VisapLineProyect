@@ -104,21 +104,28 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
-                    </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Direccion</label>
+                            <div class="col-sm-9">
+                                <asp:TextBox ID="TextBoxdireccion" Style="text-transform: uppercase" class="form-control" placeholder="Dirección" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
 
-                    <div class="box-body col-md-6">
-                        <label class="col-sm-4 col-form-label">Direccion</label>
-                        <div class="col-sm-8">
-                            <asp:TextBox ID="TextBoxdireccion" Style="text-transform: uppercase" class="form-control" placeholder="Dirección" runat="server"></asp:TextBox>
+                        <div class="form-group row" id="divcoordenada">
+                            <label class="col-sm-1 col-form-label">Lat.</label>
+                            <div class="col-sm-5">
+                                <asp:TextBox CssClass="form-control" runat="server" ID="latitud" />
+                            </div>
+                            <label class="col-sm-1 col-form-label">Lon.</label>
+                            <div class="col-sm-5">
+                                <asp:TextBox CssClass="form-control" runat="server" ID="longitud" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="tab-pane">
-                    <asp:TextBox runat="server" ID="latitud" />
-                    <asp:TextBox runat="server" ID="longitud" />
-                </div>
+            <div class="col-sm-6">
+
                 <div style="position: absolute; width: 80%; height: 330px;" id="map"></div>
             </div>
         </div>
@@ -314,7 +321,7 @@
 
             function addMarker(location) {
 
-                zomm= map.getZoom();
+                zomm = map.getZoom();
                 myLatLng = location;
                 initMap();
                 markers = new google.maps.Marker({
@@ -340,7 +347,7 @@
                 });
                 var icons = {
                     Radio: {
-                        icon:'../../Contenido/radio.png'
+                        icon: '../../Contenido/radio.png'
                     },
                     Fibra: {
                         icon: '../../Contenido/fibra.png'
@@ -349,7 +356,7 @@
                         icon: '../../Contenido/indefinido.png'
                     }
                 };
-                
+
 
                 map.addListener('click', function (event) {
                     addMarker(event.latLng);
@@ -363,20 +370,20 @@
                 foreach (System.Data.DataRow item in punt.Rows)
                 {
                 %>
-                new google.maps.Marker({
-                    position: { lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> },
-                    map: map,
-                    icon: icons['<%=item["tipo"].ToString()%>'].icon,
-                    title: '<%=item["nombre"].ToString()%>'<%cot++;%>
-                }).addListener('click', function () {
-                    map.setZoom(15);
-                    map.setCenter({ lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> });
-                    }) <%if (cot == cont) { Response.Write(""); } else { Response.Write(","); }%>               
+                    new google.maps.Marker({
+                        position: { lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> },
+                        map: map,
+                        icon: icons['<%=item["tipo"].ToString()%>'].icon,
+                        title: '<%=item["nombre"].ToString()%>'<%cot++;%>
+                    }).addListener('click', function () {
+                        map.setZoom(15);
+                        map.setCenter({ lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> });
+                        }) <%if (cot == cont) { Response.Write(""); } else { Response.Write(","); }%>               
                 <%
                 }
             }
                   %>
-            ];
+                ];
             }
         </script>
         <script async defer

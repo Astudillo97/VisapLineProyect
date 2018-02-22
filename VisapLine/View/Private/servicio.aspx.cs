@@ -39,7 +39,15 @@ namespace VisapLine.View.Private
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            punt = punto.ConsultarPuntosllenos();
+            try
+            {
+                punt = punto.ConsultarPuntosllenos();
+            }
+            catch (Exception)
+            {
+                
+            }
+            
 
             if (!IsPostBack)
             {
@@ -73,7 +81,7 @@ namespace VisapLine.View.Private
 
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title: 'UUUUPSSS!!!!', text: 'Algo ha ocurrido estamos trabajando para solucionarlo',imageUrl: '../../Contenido/images/monkeyprogramer.jpg',imageSize: '400x250'}, function() { window.location.href = 'index.aspx'; })", true);}
             }
