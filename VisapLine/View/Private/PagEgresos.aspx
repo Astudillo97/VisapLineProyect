@@ -30,8 +30,8 @@
         function alerterror() {
             swal("SE HA DETECTADO UN ERROR!", "Informe ha soporte tecnico del error", "error");
         }
-        function activarcajalert() {
-            swal("LA CAJA SE HA ACTIVADO CON EXITO!", "La activacion se ha realizado con exito", "success");
+        function guardo() {
+            swal("SE REGISTRO CON EXITO!", "La operacion se realizo con exito", "success");
         }
         function elimalert() {
             swal("SE HA CERRADO LA CAJA CON EXITO!", "Se ha realizado la operacion con exito ", "success");

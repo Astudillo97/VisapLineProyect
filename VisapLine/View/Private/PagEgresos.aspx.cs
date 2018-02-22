@@ -31,7 +31,13 @@ namespace VisapLine.View.Private
                 {
                     if (!IsPostBack)
                 {
-                    DropDownList2.DataSource = mo.Consultarmotivo();
+                        string valor = Convert.ToString(Request.QueryString["key"]);
+                        if (valor == "SI")
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "guardo();", true);
+                            valor = "";
+                        }
+                        DropDownList2.DataSource = mo.Consultarmotivo();
                     DropDownList2.DataTextField = "motivo";
                     DropDownList2.DataValueField = "idmotivo";
                     DropDownList2.DataBind();
@@ -133,6 +139,9 @@ namespace VisapLine.View.Private
                 eg.tercero_idtercero_reg = ter.idterceros;
                 eg.Registraregreso(ter.identificacion + ": " + ter.nombre + " " + ter.apellido, GetLocalIPAddress() + "-" + Dns.GetHostName() + "-" + GetPublicIPAddress());
                 imprimir();
+                string guardar = "SI";
+                Response.Redirect("pagegresos.aspx?key=" + guardar);
+
             }
             catch (Exception)
             {
@@ -240,8 +249,12 @@ namespace VisapLine.View.Private
                     eg.tercero_idtercero_reg = ter.idterceros;
                     eg.Registraregreso(ter.identificacion + ": " + ter.nombre + " " + ter.apellido, GetLocalIPAddress() + "-" + Dns.GetHostName() + "-" + GetPublicIPAddress());
                     imprimir();
+                    string guardar = "SI";
+                    Response.Redirect("pagegresos.aspx?key=" + guardar);
+
                 }
                 {
+
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", " errorsoft();", true);
 
                 }
