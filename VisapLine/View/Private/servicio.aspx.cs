@@ -34,11 +34,12 @@ namespace VisapLine.View.Private
         static int idcontrato;
         static int idpedido;
         static int idsrv;
-
+        Puntos punto = new Puntos();
+        public DataTable punt = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            punt = punto.ConsultarPuntosllenos();
 
             if (!IsPostBack)
             {

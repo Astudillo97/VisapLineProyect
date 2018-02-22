@@ -173,5 +173,10 @@ namespace VisapLine.View.Private
             GridView2.DataSource = dt;
             GridView2.DataBind();
         }
+
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
