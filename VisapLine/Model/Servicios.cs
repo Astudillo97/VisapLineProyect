@@ -63,8 +63,18 @@ namespace VisapLine.Model
         }
         public DataTable consultaserviciosid(string id)
         {
-            return data.ConsultarDatos("select * from pr_consultarservicioid('"+id+"')");
-
+            return data.ConsultarDatos("select * from pr_consultarservicioid('"+id+"')");           
+        }
+        public DataTable datosdeldueniodelseervicio(int idservicio)
+        {
+            return data.ConsultarDatos("select terceros.identificacion,terceros.nombre,terceros.apellido from servicios inner join contrato on contrato.idcontrato = servicios.idservicios inner join terceros on contrato.terceros_idterceros_cont = terceros.idterceros where servicios.idservicios = " + idservicio + "");
+        }
+        public DataTable mediosolicitud()
+        {
+            return data.ConsultarDatos("select* from mediodesolicitud");
+        }
+        public DataTable tsolicitud() {
+            return data.ConsultarDatos("select * from tiposolicitud");
         }
         public DataTable consultarsolicitudes() {
             return data.ConsultarDatos("select * from pr_consultarsolicitudes()");

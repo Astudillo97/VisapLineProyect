@@ -40,7 +40,7 @@ namespace VisapLine.View.Private
         
         protected void cargardatos(int id) {
             DataTable dtbsrv= srv.consultarserivcioid(id);
-            dplb.muninicio_idmunicipio = dtbsrv.Rows[0][17].ToString();
+            dplb.muninicio_idmunicipio = dtbsrv.Rows[0][18].ToString();
             btr = dplb.ConsultarBarriosIdMunicipio(dplb);
             FormView1.DataSource = dtbsrv;
             FormView1.DataBind();
@@ -49,7 +49,7 @@ namespace VisapLine.View.Private
         }
         protected void llenardropmuni(DropDownList b) {
             DataTable dtbsrv = srv.consultarserivcioid(int.Parse(Valor));
-            dplb.muninicio_idmunicipio = dtbsrv.Rows[0][17].ToString();
+            dplb.muninicio_idmunicipio = dtbsrv.Rows[0][18].ToString();
             btr = dplb.ConsultarBarriosIdMunicipio(dplb);
             b.DataSource = btr;
             b.DataTextField = "barriosbarr";
