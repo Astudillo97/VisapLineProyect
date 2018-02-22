@@ -13,9 +13,9 @@ namespace VisapLine.Model
         IData data = new Data();
         public string idpermisos { get; set; }
         public string rol_idrol { get; set; }
-        public string permisos{ get; set; }
+        public string permisos { get; set; }
         public string menu_idmenu { get; set; }
-
+        Menu men = new Menu();
         public DataTable ConsultarPermisos()
         {
             return data.ConsultarDatos("");
@@ -23,11 +23,38 @@ namespace VisapLine.Model
 
         public bool RegistrarPermisos(Permisos per)
         {
-            return data.OperarDatos("select * from public.pr_insertarpermiso("+per.rol_idrol+",'"+per.permisos+"',"+per.menu_idmenu+")");
+            return data.OperarDatos("select * from public.pr_insertarpermiso(" + per.rol_idrol + ",'" + per.permisos + "'," + per.menu_idmenu + ")");
         }
-        public DataTable ConsultarRolPermisos(Permisos per)
+        public DataTable ConsultarRolPermisos(string rol)
         {
-            return data.ConsultarDatos("select * from pr_consularmenu(" + per.rol_idrol + ")");
+            return data.ConsultarDatos("select * from pr_consularmenu(" + rol + ")");
+        }
+
+        public bool ValidarPermisos(string url, DataTable entrada)
+        {
+            try
+            {
+                return ValidacionPagina(entrada.Rows[0]["idrol"].ToString(), url);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+        public bool ValidacionPagina(string rol, string url)
+        {
+
+            if(data.ConsultarDatos("select * from permisos p inner join menu m on p.menu_idmenu=m.idmenu inner join menu sm on sm.menu_idmenusub=m.idmenu where p.rol_idrol="+rol+" and m.href='" + url + "' or  sm.href='" + url+"'").Rows.Count>0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+           
+
         }
     }
 }

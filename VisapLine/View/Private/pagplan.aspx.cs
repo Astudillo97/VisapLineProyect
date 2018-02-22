@@ -17,17 +17,41 @@ namespace VisapLine.View.Private
         Zonas zn = new Zonas();
         Departamento depto = new Departamento();
         Municipio mpio = new Municipio();
-
+        Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
 
             try
             {
-                if (!IsPostBack)
-                {
+                string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
 
-                    cargartabla();
+                if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
+                {
+                    if (!IsPostBack)
+                {
+                        string valor = Convert.ToString(Request.QueryString["key"]);
+                        if (valor == "SI")
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "gestdeletealert();", true);
+                            valor = "";
+                        }
+
+                        try
+                        {
+                            cargartabla();
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+             
                  
+                }
+                }
+                else
+                {
+                    Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
                 }
             }
             catch (Exception ex)
@@ -131,15 +155,16 @@ namespace VisapLine.View.Private
         }
         protected void cargartabla()
         {
-            DataTable dt = pn.ConsultarPlan();
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            try { 
+            repeteidordeinventario.DataSource = pn.ConsultarPlan();
+            repeteidordeinventario.DataBind();
+   
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            cargartabla();
-        }
     }
 }

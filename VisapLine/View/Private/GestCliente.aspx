@@ -7,6 +7,13 @@
                 document.getElementById("<%=Alerta.ClientID%>").style.display = 'none';
             }, 5000);
         }
+        function panelbutton() {
+            document.getElementById('idbusqueda').click();
+        }
+        function cargarIdfactura(vari) {
+            document.getElementById('<%=numero.ClientID%>').value=vari;
+            document.getElementById('edicion').click();
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -31,25 +38,6 @@
                 <button class="btn btn-primary col-md-2" runat="server" onserverclick="ConsultarIdentif">Consultar</button>
             </div>
         </div>
-        <div class="tab-pane" runat="server" id="panelconsulta">
-            <div class="box box-primary" style="overflow-x: auto">
-                <asp:GridView runat="server" ID="consultacliente" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="consultacliente_SelectedIndexChanging" AutoGenerateColumns="False">
-                    <Columns>
-                        <asp:BoundField DataField="identificacion" HeaderText="CC/NIT"></asp:BoundField>
-                        <asp:TemplateField HeaderText="USUARIO">
-                            <ItemTemplate>
-                                <label runat="server"><%#Eval("nombre") %> <%#Eval("apellido") %></label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
-                        <asp:BoundField DataField="direccion" HeaderText="DIRECCION"></asp:BoundField>
-                        <asp:BoundField DataField="tipoterceros" HeaderText="PERSONA"></asp:BoundField>
-                        <asp:CommandField SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search" ShowSelectButton="True"></asp:CommandField>
-                    </Columns>
-                </asp:GridView>
-            </div>
-        </div>
-
         <div class="tab-pane" runat="server" id="paneldatos">
             <div class="row">
                 <div class="col-lg-6 col-md-12">
@@ -110,7 +98,6 @@
                         </asp:GridView>
                     </div>
                     <div class="box box-primary">
-
                     </div>
                 </div>
             </div>
@@ -148,12 +135,12 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <a href="#" data-toggle="modal" data-target="#modal-primary"><i class="glyphicon glyphicon-edit"></i></a>
+                                        <asp:LinkButton ID="btn" Text="" CommandName="editarfactura" CommandArgument='<%# Eval("facturaventa") %>' CssClass="glyphicon glyphicon-edit" runat="server" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                 <asp:TemplateField HeaderText="">
+                                <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <a href="#" data-toggle="modal" runat="server" class="glyphicon glyphicon-cog" data-target="#modal-primary"></a>
+                                        <asp:LinkButton ID="btn2" runat="server" CssClass="glyphicon glyphicon-cog" CommandName="correccion" CommandArgument='<%# Eval("idfactura") %>' Text="" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">
@@ -164,7 +151,50 @@
                             </Columns>
                         </asp:GridView>
                     </div>
-                    <div class="active tab-pane" id="insidencias"></div>
+                    <div class="active tab-pane" id="insidencias">
+                        <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" ForeColor="#333333" GridLines="None" >
+                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
+                            <asp:BoundField HeaderText="Codg" DataField="idincidensia" ItemStyle-HorizontalAlign="Center">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Fecha Registro" DataField="fechainicio" DataFormatString="{0:f}" ItemStyle-HorizontalAlign="Center">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Estado" DataField="estado" ItemStyle-HorizontalAlign="Center">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Detalle" DataField="detalle" ItemStyle-HorizontalAlign="Center">
+                                <ControlStyle CssClass="filled-in" />
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Tipo de Incidencia" DataField="tipoincidencia" ItemStyle-HorizontalAlign="Center">
+                                <ControlStyle CssClass="filled-in" />
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                        </Columns>
+                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                        <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                    </asp:GridView>
+                    </div>
                     <div class="active tab-pane" id="ordenes"></div>
                     <div class="active tab-pane" id="aprovisionamiento"></div>
                     <div class="active tab-pane" id="elementos"></div>
@@ -172,6 +202,7 @@
                 </div>
             </div>
         </div>
+        <a data-toggle="modal" style="display:none" id="edicion" class="glyphicon glyphicon-cog"  href="#" data-target="#modal-primary">content</a>
         <div class="modal fade" id="modal-primary">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -185,7 +216,8 @@
                             <div class="form-element">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Registro de la Observacion</label>
+                                        <label for="exampleInputEmail1">#</label>
+                                        <asp:TextBox ID="numero" runat="server" Enabled="false"  CssClass="form-control-label"></asp:TextBox>
                                         <asp:TextBox TextMode="MultiLine" class="form-control" runat="server" Rows="5" ID="observacion_" placeholder="Observacion" />
                                     </div>
                                 </div>
@@ -194,7 +226,43 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary float-right" runat="server">Gurdar Cambios</button>
+                        <button type="button" class="btn btn-primary float-right" runat="server" onserverclick="Unnamed_ServerClick">Guardar Cambios</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <a href="#panelbusqueda" id="idbusqueda" class="row" data-target=".bs-example-modal-lg" data-toggle="modal"></a>
+        <div class="modal fade bs-example-modal-lg" runat="server" id="panelbusqueda" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">Resultados</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-pane" runat="server" id="panelconsulta">
+                            <div class="box box-primary" style="overflow-x: auto">
+                                <asp:GridView runat="server" ID="consultacliente" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="consultacliente_SelectedIndexChanging" AutoGenerateColumns="False">
+                                    <Columns>
+                                        <asp:BoundField DataField="identificacion" HeaderText="CC/NIT"></asp:BoundField>
+                                        <asp:TemplateField HeaderText="USUARIO">
+                                            <ItemTemplate>
+                                                <label runat="server"><%#Eval("nombre") %> <%#Eval("apellido") %></label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
+                                        <asp:BoundField DataField="direccion" HeaderText="DIRECCION"></asp:BoundField>
+                                        <asp:BoundField DataField="tipoterceros" HeaderText="PERSONA"></asp:BoundField>
+                                        <asp:CommandField SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search" ShowSelectButton="True"></asp:CommandField>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->

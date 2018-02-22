@@ -9,7 +9,7 @@ using System.Data;
 using VisapLine.Exeption;
 namespace VisapLine.View.Private
 {
-    
+
 
     public partial class Incidencia : System.Web.UI.Page
     {
@@ -20,12 +20,20 @@ namespace VisapLine.View.Private
         Terceros terc = new Terceros();
         Incidencias inci = new Incidencias();
         Contrato contr = new Contrato();
+        Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!IsPostBack)
+            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
             {
+                if (!IsPostBack)
+                {
 
+                }
+            }
+            else
+            {
+                Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
             }
 
 
@@ -44,7 +52,7 @@ namespace VisapLine.View.Private
                 inci.servicios_idservicios = Validar.validarlleno(idservicio.Text);
                 inci.tipoincidencia_idtipoincidencia = Validar.validarselected(DropDownList2.SelectedValue);
 
-                 if(inci.RegistrarInsidencias(inci))
+                if (inci.RegistrarInsidencias(inci))
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
                     divincidencia.Visible = false;
@@ -61,7 +69,7 @@ namespace VisapLine.View.Private
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
                 }
 
-            
+
             }
             catch (Exception)
             {
@@ -138,7 +146,7 @@ namespace VisapLine.View.Private
         {
             try
             {
-               
+
                 terc.identificacion = TextBoxdni.Text;
                 DataRow te = Validar.Consulta(terc.ConsultarTerceroDos(terc)).Rows[0];
                 contr.terceros_idterceros = te["idterceros"].ToString();
@@ -150,7 +158,7 @@ namespace VisapLine.View.Private
                 GridView1.DataSource = dat;
                 GridView1.DataBind();
                 divtablagestcontr.Visible = true;
-             
+
                 Label1.Text = te["nombre"].ToString();
 
                 if (te["apellido"].ToString() == "")

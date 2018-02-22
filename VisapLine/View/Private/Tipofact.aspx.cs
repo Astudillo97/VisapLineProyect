@@ -14,16 +14,25 @@ namespace VisapLine.View.Private
     {
 
         TipoFactura tf = new TipoFactura();
+        Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
 
 
             try
             {
-                if (!IsPostBack)
+                string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+                if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
                 {
-                    texboxtipofactura.Text = "";
-                    tablatipofactura();
+                    if (!IsPostBack)
+                    {
+                        texboxtipofactura.Text = "";
+                        tablatipofactura();
+                    }
+                }
+                else
+                {
+                    Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
                 }
             }
             catch (Exception ex)

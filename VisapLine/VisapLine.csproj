@@ -336,6 +336,10 @@
     <Content Include="Contenido\assets\vendor_plugins\weather-icons\WeatherIcon.js" />
     <Content Include="Contenido\css\master_style.css" />
     <Content Include="Contenido\css\skins\_all-skins.css" />
+    <Content Include="Contenido\data\barrios_0.js" />
+    <Content Include="Contenido\data\Google.js" />
+    <Content Include="Contenido\data\lineaurbana_1.js" />
+    <Content Include="Contenido\data\servicio_2.js" />
     <Content Include="Contenido\facturaelectronica.jpg" />
     <Content Include="Contenido\images\florencia2.jpg" />
     <Content Include="Contenido\images\florencia.jpg" />
@@ -471,23 +475,31 @@
     <Content Include="View\Private\ContratoCliente.aspx" />
     <Content Include="View\Private\detalleservicio.aspx" />
     <Content Include="View\Private\EditarFactura.aspx" />
+    <Content Include="View\Private\Error.aspx" />
+    <Content Include="View\Private\FactRevision.aspx" />
     <Content Include="View\Private\Facturacion.aspx" />
     <Content Include="View\Private\GestCaja.aspx" />
     <Content Include="View\Private\GestCliente.aspx" />
     <Content Include="View\Private\GestContrato.aspx" />
     <Content Include="View\Private\GestIncidencia.aspx" />
     <Content Include="View\Private\GestPagos.aspx" />
+    <Content Include="View\Private\Gestplanes.aspx" />
     <Content Include="View\Private\GestTercero.aspx" />
     <Content Include="View\Private\Gservicio.aspx" />
     <Content Include="View\Private\Incidencia.aspx" />
     <Content Include="View\Private\index.aspx" />
     <Content Include="View\Private\PagCaja.aspx" />
+    <Content Include="View\Private\PagContrato.aspx" />
+    <Content Include="View\Private\PagEgresos.aspx" />
     <Content Include="View\Private\pagplan.aspx" />
+    <Content Include="View\Private\pagsoporteclien.aspx" />
     <Content Include="View\Private\pagzona.aspx" />
     <Content Include="View\Private\Personal.aspx" />
+    <Content Include="View\Private\Point.aspx" />
     <Content Include="View\Private\RegistroTerceros.aspx" />
     <Content Include="View\Private\ReporteCaja.aspx" />
     <Content Include="View\Private\servicio.aspx" />
+    <Content Include="View\Private\solicitudes.aspx" />
     <Content Include="View\Private\Tipofact.aspx" />
     <Content Include="View\Private\VistadeExporte.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
@@ -511,6 +523,7 @@
     <Compile Include="Model\impresorabix.cs" />
     <Compile Include="Model\Ingreso.cs" />
     <Compile Include="Model\Modelo.cs" />
+    <Compile Include="Model\Motivo.cs" />
     <Compile Include="Model\Observacion.cs" />
     <Compile Include="Model\Plan.cs" />
     <Compile Include="Exeption\Validar.cs" />
@@ -601,6 +614,20 @@
     <Compile Include="View\Private\EditarFactura.aspx.designer.cs">
       <DependentUpon>EditarFactura.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\FactRevision.aspx.cs">
+      <DependentUpon>FactRevision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\FactRevision.aspx.designer.cs">
+      <DependentUpon>FactRevision.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\Facturacion.aspx.cs">
       <DependentUpon>Facturacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -643,6 +670,13 @@
     <Compile Include="View\Private\GestPagos.aspx.designer.cs">
       <DependentUpon>GestPagos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\Gestplanes.aspx.cs">
+      <DependentUpon>Gestplanes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Gestplanes.aspx.designer.cs">
+      <DependentUpon>Gestplanes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\GestTercero.aspx.cs">
       <DependentUpon>GestTercero.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -678,12 +712,33 @@
     <Compile Include="View\Private\PagCaja.aspx.designer.cs">
       <DependentUpon>PagCaja.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\PagContrato.aspx.cs">
+      <DependentUpon>PagContrato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\PagContrato.aspx.designer.cs">
+      <DependentUpon>PagContrato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\PagEgresos.aspx.cs">
+      <DependentUpon>PagEgresos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\PagEgresos.aspx.designer.cs">
+      <DependentUpon>PagEgresos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\pagplan.aspx.cs">
       <DependentUpon>pagplan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Private\pagplan.aspx.designer.cs">
       <DependentUpon>pagplan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\pagsoporteclien.aspx.cs">
+      <DependentUpon>pagsoporteclien.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\pagsoporteclien.aspx.designer.cs">
+      <DependentUpon>pagsoporteclien.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\pagzona.aspx.cs">
       <DependentUpon>pagzona.aspx</DependentUpon>
@@ -698,6 +753,13 @@
     </Compile>
     <Compile Include="View\Private\Personal.aspx.designer.cs">
       <DependentUpon>Personal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Point.aspx.cs">
+      <DependentUpon>Point.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Point.aspx.designer.cs">
+      <DependentUpon>Point.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\RegistroTerceros.aspx.cs">
       <DependentUpon>RegistroTerceros.aspx</DependentUpon>
@@ -720,6 +782,13 @@
     <Compile Include="View\Private\servicio.aspx.designer.cs">
       <DependentUpon>servicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\solicitudes.aspx.cs">
+      <DependentUpon>solicitudes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\solicitudes.aspx.designer.cs">
+      <DependentUpon>solicitudes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\Tipofact.aspx.cs">
       <DependentUpon>Tipofact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -729,6 +798,7 @@
     </Compile>
     <Compile Include="View\Private\VistadeExporte.aspx.cs">
       <DependentUpon>VistadeExporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Private\VistadeExporte.aspx.designer.cs">
       <DependentUpon>VistadeExporte.aspx</DependentUpon>
@@ -742,6 +812,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="soportes\" />
     <Folder Include="View\Public\" />
   </ItemGroup>
   <PropertyGroup>

@@ -73,7 +73,7 @@
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-4">
-                                        <img src="../../Contenido/images/user2-160x160.jpg" />
+                                        <img src="../../Contenido/images/user2-160x160.jpg" height="125px" width="125px" />
                                     </div>
                                     <div class="col-7">
                                         <div class="form-group row">
@@ -161,7 +161,7 @@
                                 <label class="col-sm-3 col-form-label">Direccion de envio factura:</label>
 
                                 <div class="col-sm-9">
-                                    <asp:TextBox ID="TextBoxenviofactura" TextMode="MultiLine" Rows="5" Columns="15" runat="server" placeholder="CLL 27 2B-17"  class="form-control" Style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 105px;"></asp:TextBox>
+                                    <asp:TextBox ID="TextBoxenviofactura" TextMode="MultiLine" Rows="5" Columns="15" runat="server" placeholder="CLL 27 2B-17" class="form-control" Style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 105px;"></asp:TextBox>
                                 </div>
                             </div>
 
@@ -238,10 +238,12 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Planes</h3>
                     </div>
-                    <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="10" AllowPaging="True">
                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                         <Columns>
-                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
+                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" >
+<ControlStyle CssClass="glyphicon glyphicon-edit"></ControlStyle>
+                            </asp:CommandField>
                             <asp:BoundField HeaderText="Codg" DataField="idplan" ItemStyle-HorizontalAlign="Center">
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:BoundField>
@@ -273,6 +275,8 @@
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
                         <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                        <PagerSettings Mode="NextPreviousFirstLast" />
 
                         <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
 
@@ -338,8 +342,7 @@
                                 </label>
                                 <textarea id="TextArea1detalleplan" runat="server" readonly="false" rows="5" resize="none" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; width: 210px; height: 115px;" required data-validation-required-message="This field is required"></textarea>
 
-                            </div>
-
+                            </div>                     
                         </div>
                     </div>
                 </div>
@@ -456,7 +459,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title align-content-lg-center">¿Desea guardar el contrato y ir a servicio o solo guardar contrato?</h5>               
+                        <h5 class="modal-title align-content-lg-center">¿Desea guardar el contrato y ir a servicio o solo guardar contrato?</h5>
                     </div>
                     <div class="modal-footer">
                         <center>

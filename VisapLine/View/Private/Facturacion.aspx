@@ -44,11 +44,11 @@
     <section class="content">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li><a class="active" id="pan1" href="#Resultado" data-toggle="tab">FACTURACION DEL MES</a></li>
-                <li><a id="pan2" href="#Individual" data-toggle="tab">BUSQUEDA</a></li>
+                <li><a  id="pan1" href="#Resultado" data-toggle="tab">FACTURACION DEL MES</a></li>
+                <li><a class="active" id="pan2" href="#Individual" data-toggle="tab">BUSQUEDA</a></li>
             </ul>
             <div class="tab-content">
-                <div class="active tab-pane" id="Resultado">
+                <div class="tab-pane" id="Resultado">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="box box-primary">
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="Individual">
+                <div class="tab-pane active" id="Individual">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="box box-primary">
@@ -126,7 +126,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="">
                             <ItemTemplate>
-                                <asp:LinkButton ID="btn2" runat="server" CssClass="glyphicon glyphicon-edit" CommandName="editarfactura" CommandArgument='<%# Eval("idfactura") %>' Text="" />
+                                <asp:LinkButton ID="btn2" runat="server" CssClass="glyphicon glyphicon-edit" CommandName="editarfactura" CommandArgument='<%# Eval("facturaventa") %>' Text="" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="">

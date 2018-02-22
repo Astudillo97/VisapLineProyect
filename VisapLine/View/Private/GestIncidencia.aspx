@@ -163,9 +163,9 @@
                                     <label class="col-sm-4 col-form-label">Descuento</label>
                                     <div class="col-sm-8">
                                         <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AppendDataBoundItems="true">
-                                            <asp:ListItem>Seleccione</asp:ListItem>
-                                            <asp:ListItem>SI</asp:ListItem>
                                             <asp:ListItem>NO</asp:ListItem>
+                                            <asp:ListItem>SI</asp:ListItem>
+                                    
                                         </asp:DropDownList>
                                     </div>
                                 </div>

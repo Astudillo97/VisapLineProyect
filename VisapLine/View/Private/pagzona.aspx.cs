@@ -18,26 +18,34 @@ namespace VisapLine.View.Private
         Departamento depart = new Departamento();
         Municipio munic = new Municipio();
         Zonas zn = new Zonas();
-
+        Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
 
             try
             {
-                if (!IsPostBack)
+                string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+                if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
                 {
-                    paisbarrio.DataSource = pais.ConsultarPais();
-                    paisbarrio.DataTextField = "pais";
-                    paisbarrio.DataValueField = "idpais";
-                    paisbarrio.DataBind();
+                    if (!IsPostBack)
+                    {
+                        paisbarrio.DataSource = pais.ConsultarPais();
+                        paisbarrio.DataTextField = "pais";
+                        paisbarrio.DataValueField = "idpais";
+                        paisbarrio.DataBind();
 
-                    tablabarrios();
-                    tablazonas();
+                        tablabarrios();
+                        tablazonas();
 
-                    paiszona.DataSource = pais.ConsultarPais();
-                    paiszona.DataTextField = "pais";
-                    paiszona.DataValueField = "idpais";
-                    paiszona.DataBind();
+                        paiszona.DataSource = pais.ConsultarPais();
+                        paiszona.DataTextField = "pais";
+                        paiszona.DataValueField = "idpais";
+                        paiszona.DataBind();
+                    }
+                }
+                else
+                {
+                    Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
                 }
             }
             catch (Exception ex)
