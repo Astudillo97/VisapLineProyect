@@ -9,7 +9,7 @@
     <asp:ScriptManager ID="scripservicc" runat="server"></asp:ScriptManager>
     <script type="text/javascript">
         function redireciona(cosa) {
-            window.location = 'solicitudes.aspx?key='+cosa;
+            window.location = 'solicitudes.aspx?key=' + cosa;
         }
         function openmodal() {
             $('#mymodal').modal('show');
@@ -37,7 +37,7 @@
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
     <section class="content">
-        <div class="box box-body">
+        <div class="row">
             <asp:GridView OnSelectedIndexChanged="gridservicios_SelectedIndexChanged" OnRowDataBound="gridservicios_RowDataBound" AllowPaging="True" PageSize="6"
                 OnPageIndexChanging="gridservicios_PageIndexChanging" AutoGenerateColumns="False" runat="server"
                 ID="gridservicios" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-responsive col-md-4">
@@ -51,7 +51,7 @@
                 <SortedAscendingCellStyle BackColor="#F5F7FB" />
                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                <SortedDescendingHeaderStyle BackColor="#4870BE" />  
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 <Columns>
                     <asp:BoundField HeaderText="REFEERENCIA" DataField="id" />
                     <asp:BoundField HeaderText="FECHA DE INICIO" DataField="fechainiciocol" />
@@ -64,52 +64,73 @@
                             <a onclick='redireciona(<%# Eval("id") %>)'>Solicitud</a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" ControlStyle-ForeColor="White" />                   
+                    <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" ControlStyle-ForeColor="White" />
                 </Columns>
             </asp:GridView>
         </div>
-        <div class="box box-default">
-            <div class="box-body col-md-6">
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Pais</label>
-                    <div class="col-sm-9">
-                        <asp:DropDownList ID="DropDownListpais" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownListpais_SelectedIndexChanged" AutoPostBack="True">
-                            <asp:ListItem>Seleccione</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Departamento</label>
-                    <div class="col-sm-9">
-                        <asp:DropDownList ID="DropDownListdepartamento" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListdepartamento_SelectedIndexChanged">
-                            <asp:ListItem>Seleccione</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Municipio</label>
-                    <div class="col-sm-9">
-                        <asp:DropDownList ID="DropDownListmunicipio" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListmunicipio_SelectedIndexChanged">
-                            <asp:ListItem>Seleccione</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Barrio</label>
-                    <div class="col-sm-9">
-                        <asp:DropDownList ID="DropDownListbarrio" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                            <asp:ListItem>Seleccione</asp:ListItem>
-                        </asp:DropDownList>
+        <div class="row">
+            <div class="col-6">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Pais</label>
+                            <div class="col-sm-9">
+                                <asp:DropDownList ID="DropDownListpais" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownListpais_SelectedIndexChanged" AutoPostBack="True">
+                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Departamento</label>
+                            <div class="col-sm-9">
+                                <asp:DropDownList ID="DropDownListdepartamento" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListdepartamento_SelectedIndexChanged">
+                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Municipio</label>
+                            <div class="col-sm-9">
+                                <asp:DropDownList ID="DropDownListmunicipio" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListmunicipio_SelectedIndexChanged">
+                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Barrio</label>
+                            <div class="col-sm-9">
+                                <asp:DropDownList ID="DropDownListbarrio" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                    <asp:ListItem>Seleccione</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Direccion</label>
+                            <div class="col-sm-9">
+                                <asp:TextBox ID="TextBoxdireccion" Style="text-transform: uppercase" class="form-control" placeholder="Dirección" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" id="divcoordenada">
+                            <label class="col-sm-1 col-form-label">Lat.</label>
+                            <div class="col-sm-5">
+                                <asp:TextBox CssClass="form-control" runat="server" ID="latitud" />
+                            </div>
+                            <label class="col-sm-1 col-form-label">Lon.</label>
+                            <div class="col-sm-5">
+                                <asp:TextBox CssClass="form-control" runat="server" ID="longitud" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="box-body col-md-6">
-                <label class="col-sm-4 col-form-label">Direccion</label>
-                <div class="col-sm-8">
-                    <asp:TextBox ID="TextBoxdireccion" Style="text-transform: uppercase" class="form-control" placeholder="Dirección" runat="server"></asp:TextBox>
-                </div>
+            <div class="col-sm-6">
+
+                <div style="position: absolute; width: 80%; height: 330px;" id="map"></div>
             </div>
         </div>
+
+
         <div class="box box-default" id="divinternet" runat="server" visible="false">
             <div class="box-header with-border">
                 <h3 class="box-title">INTERNET</h3>
@@ -291,5 +312,82 @@
             </div>
             <!-- /.box-body -->
         </div>
+
+        <script>
+            var markers;
+            var map;
+            var zomm = 8;
+            var myLatLng = { lat: 1.620249416453961, lng: -75.61037882799843 };
+
+            function addMarker(location) {
+
+                zomm = map.getZoom();
+                myLatLng = location;
+                initMap();
+                markers = new google.maps.Marker({
+                    position: location,
+                    draggable: true,
+                    map: map
+                });
+                document.getElementById('<%=latitud.ClientID%>').value = markers.getPosition().lat();
+                document.getElementById('<%=longitud.ClientID%>').value = markers.getPosition().lng();
+
+                markers.addListener('dragend', function () {
+                    document.getElementById('<%=latitud.ClientID%>').value = markers.getPosition().lat();
+                    document.getElementById('<%=longitud.ClientID%>').value = markers.getPosition().lng();
+                });
+            }
+
+            function initMap() {
+                var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: zomm,
+                    mapTypeId: 'satellite',
+                    center: myLatLng
+                });
+                var icons = {
+                    Radio: {
+                        icon: '../../Contenido/radio.png'
+                    },
+                    Fibra: {
+                        icon: '../../Contenido/fibra.png'
+                    },
+                    Indefinido: {
+                        icon: '../../Contenido/indefinido.png'
+                    }
+                };
+
+
+                map.addListener('click', function (event) {
+                    addMarker(event.latLng);
+                });
+
+                var marker = [
+                <%if (punt != null)
+            {
+                int cont = punt.Rows.Count;
+                int cot = 0;
+                foreach (System.Data.DataRow item in punt.Rows)
+                {
+                %>
+                    new google.maps.Marker({
+                        position: { lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> },
+                        map: map,
+                        icon: icons['<%=item["tipo"].ToString()%>'].icon,
+                        title: '<%=item["nombre"].ToString()%>'<%cot++;%>
+                    }).addListener('click', function () {
+                        map.setZoom(15);
+                        map.setCenter({ lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> });
+                        }) <%if (cot == cont) { Response.Write(""); } else { Response.Write(","); }%>               
+                <%
+                }
+            }
+                  %>
+                ];
+            }
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcz4b9tiKDFIuSFnaGlU7YpsBpfzPu7to&callback=initMap">
+        </script>
     </section>
 </asp:Content>
