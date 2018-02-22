@@ -55,7 +55,7 @@
                                         <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit">
                                             <ControlStyle CssClass="glyphicon glyphicon-edit"></ControlStyle>
                                         </asp:CommandField>
-                                        <asp:BoundField HeaderText="Contrato" DataField="idcontrato"  ItemStyle-HorizontalAlign="Center">
+                                        <asp:BoundField HeaderText="Contrato" DataField="idcontrato" ItemStyle-HorizontalAlign="Center">
                                             <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                         </asp:BoundField>
                                         <asp:BoundField HeaderText="Codg" DataField="codigo" ItemStyle-HorizontalAlign="Center">
@@ -109,8 +109,8 @@
                     </div>
                 </div>
             </div>
-        </div>     
-        <div class="box box-default"  id="soporteformulario" runat="server" visible="false">
+        </div>
+        <div class="box box-default" id="soporteformulario" runat="server" visible="false">
             <div class="box-header with-border">
                 <h3 class="box-title">Soportes</h3>
             </div>
@@ -120,7 +120,8 @@
                     <div class="col-6">
                         <div class="box box-default">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Datos del Cliente  N°: <asp:Label ID="Label5" runat="server" Text=""></asp:Label></h3>
+                                <h3 class="box-title">Datos del Cliente  N°:
+                                    <asp:Label ID="Label5" runat="server" Text=""></asp:Label></h3>
                                 <asp:Label ID="Label6" runat="server" Visible="false" Text=""></asp:Label>
                             </div>
                             <!-- /.box-header -->

@@ -11,6 +11,8 @@ namespace VisapLine.View.Private
 {
     public partial class PagContrato : System.Web.UI.Page
     {
+
+
         Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
