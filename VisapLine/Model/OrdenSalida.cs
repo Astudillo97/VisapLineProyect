@@ -62,7 +62,12 @@ namespace VisapLine.Model
         public DataTable buscartecnicos()
         {
             //sirve
-            return data.ConsultarDatos("select * from pr_consultarempleados();");
+            return data.ConsultarDatos("select * from pr_consultarempleados()");
+        }
+        public DataTable buscartempleados()
+        {
+            //sirve
+            return data.ConsultarDatos("select * from pr_consultaremple()");
         }
         public bool asignartecnico(string valor, string valor2)
         {
@@ -89,6 +94,11 @@ namespace VisapLine.Model
             {
                 return false;
             }
+        }
+
+        public DataTable crearsolicitudes(int vartiposolicitud ,string vardetalle ,string varfechainicio ,string varfechafin ,int varmediodesolicitud ,string  vardocumento ,string varnombresolic ,string varapellidosolic ,int varservicio ,string varterceros ,bool  varrestado)
+        {
+            return data.ConsultarDatos("select * from pr_insertarsolicitud("+ vartiposolicitud + ",'"+ vardetalle + "','"+ varfechainicio + "','"+ varfechafin + "','"+ varfechadesolicitud + "',"+ varmediodesolicitud + ",'"+ vardocumento + "','"+ varnombresolic + "','"+ varapellidosolic + "',"+ varservicio + ",'"+ varterceros + "','"+ varrestado + "')");
         }
 
     }

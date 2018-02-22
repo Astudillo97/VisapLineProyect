@@ -8,8 +8,10 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <asp:ScriptManager ID="scripservicc" runat="server"></asp:ScriptManager>
     <script type="text/javascript">
-
-</script>
+        function openmodal() {
+            $('#mymodal').modal('show');
+        }
+    </script>
     <section class="content-header">
         <h1>Crear Solicitudes</h1>
         <ol class="breadcrumb">
@@ -18,11 +20,35 @@
             <li class="breadcrumb-item active">Servicios</li>
         </ol>
     </section>
+    <div class="modal fade" id="mymodal" data-backdrop="”static”">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">ASIGNAR TECNICO <span class="glyphicon glyphicon-user"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <asp:GridView CssClass="table no-border" OnSelectedIndexChanging="gridtecnicos_SelectedIndexChanging" AutoGenerateColumns="false" ID="gridtecnicos" runat="server">
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="true" SelectText="ASIGNAR" ControlStyle-CssClass="btn btn-success" />
+                            <asp:BoundField HeaderText="IDENTIFICACION" DataField="idterceroscol" />
+                            <asp:BoundField HeaderText="NOMBRE" DataField="nombrecol" />
+                            <asp:BoundField HeaderText="APELLIDO" DataField="apellidocol" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
     <section class="content">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li><a href="#Creacion" runat="server" id="pan1" class="active" data-toggle="tab">Crear Solicitud</a></li>
-                <li><a href="#Solicitudes" runat="server" id="pan2" data-toggle="tab">Ver Solicitudes</a></li>
+                <li><a href="#ContentPlaceHolder1_Creacion" runat="server" id="pan1" data-toggle="tab">Crear Solicitud</a></li>
+                <li><a href="#ContentPlaceHolder1_Solicitudes" runat="server" id="pan2" data-toggle="tab">Ver Solicitudes</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane" id="Creacion" runat="server">
@@ -41,22 +67,18 @@
                                         <div class="form-group row">
                                             <asp:Label CssClass="col-sm-3 col-form-label" ID="lbl2CSolicitud" runat="server" Text="Tipo Solicitud:"></asp:Label>
                                             <asp:DropDownList ID="dropdownTSoli" runat="server" CssClass="custom-select form-control col-sm-9">
-                                                <asp:ListItem>
-                                                    SELECIONE
-                                                </asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="form-group row">
                                             <asp:Label CssClass="col-sm-3 col-form-label" ID="lbl3CSolicitud" runat="server" Text="Medio Solicitud :"></asp:Label>
                                             <asp:DropDownList ID="dropdownMSoli" runat="server" CssClass="custom-select form-control col-sm-9">
-                                                <asp:ListItem>
-                                                    SELECIONE
-                                                </asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="form-group row">
                                             <asp:Label CssClass="col-sm-3 col-form-label" ID="lbl4CSolicitud" runat="server" Text="Atiende :"></asp:Label>
-                                            <button class="btn btn-success" onclick=""><span class="glyphicon glyphicon-search"></span></button>
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mymodal">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </button>
                                             <asp:Label CssClass="form-control col-sm-8" ID="lblatendio" runat="server"></asp:Label>
                                         </div>
                                         <div class="form-group row">
@@ -82,6 +104,20 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="form-group row">
+                                        <asp:Label CssClass="col-sm-3 col-form-label" ID="Label4" runat="server" Text="Solicitante"></asp:Label>
+                                        <asp:DropDownList AutoPostBack="true" ID="dropsolicitante" OnSelectedIndexChanged="dropsolicitante_TextChanged" runat="server" CssClass="custom-select form-control col-sm-9">
+                                            <asp:ListItem>
+                                                SELECIONAR
+                                            </asp:ListItem>
+                                            <asp:ListItem>
+                                                TITULAR
+                                            </asp:ListItem>
+                                            <asp:ListItem>
+                                                OTRO
+                                            </asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group row">
                                         <asp:Label CssClass="col-sm-3 col-form-label" ID="Label1" runat="server" Text="Identificacion del Solicitante"></asp:Label>
                                         <asp:TextBox ID="Solicitanteidenti" runat="server" CssClass="form-control col-sm-9 border-right-0 border-top-0 border-left-0"></asp:TextBox>
                                     </div>
@@ -93,13 +129,17 @@
                                         <asp:Label CssClass="col-sm-3 col-form-label" ID="Label3" runat="server" Text="Apellido del Solicitante"></asp:Label>
                                         <asp:TextBox ID="Solicitanteapellido" runat="server" CssClass="form-control col-sm-9 border-right-0 border-top-0 border-left-0"></asp:TextBox>
                                     </div>
+                                    <div class="form-group row">
+                                        <asp:Label CssClass="col-sm-3 col-form-label" ID="Label7" runat="server" Text="Detalle:"></asp:Label>
+                                        <asp:TextBox TextMode="MultiLine" Rows="5" Columns="50" ID="TextBox1" runat="server" CssClass="form-control col-sm-9 border-right-0 border-top-0 border-left-0"></asp:TextBox>
+                                    </div>
                                     <asp:Button ID="btnguardar" CssClass="btn btn-success" runat="server" OnClick="btnguardar_Click" Text="CREAR" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="Solicitudes">
+                <div class="tab-pane" id="Solicitudes" runat="server">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="box box-primary">
@@ -132,7 +172,7 @@
                                             <asp:Repeater runat="server" ID="repetidorsolicitudes">
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%#Eval("titularcol") %>
+                                                        <td><%#Eval("titularcol") %><span class="glyphicon glyphicon-blackboard"></span>
                                                         </td>
                                                         <td><%#Eval("tiposolicitudcol") %>
                                                         </td>
@@ -168,8 +208,8 @@
                                                 </td>
                                                 <td style="color: white">FECHA FINALIZACION
                                                 </td>
-                                                <tD style="color: white">FECHA INSCRIPCION
-                                                </tD>
+                                                <td style="color: white">FECHA INSCRIPCION
+                                                </td>
                                             </tr>
                                         </tfoot>
                                     </table>
