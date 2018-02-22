@@ -27,13 +27,13 @@ namespace VisapLine.View.Private
                     cargar();
                     repetidorsolicitudes.DataSource = serv.consultarsolicitudes();
                     repetidorsolicitudes.DataBind();
-                    DataTable dt =serv.datosdeldueniodelseervicio(idsrv);
-                    servicio.Text=dt.Rows[0][0].ToString()+" "+dt.Rows[0][1].ToString()+" "+dt.Rows[0][2].ToString();
-                    dropdownTSoli.DataSource=serv.tsolicitud();
+                    DataTable dt = serv.datosdeldueniodelseervicio(idsrv);
+                    servicio.Text = dt.Rows[0][0].ToString() + " " + dt.Rows[0][1].ToString() + " " + dt.Rows[0][2].ToString();
+                    dropdownTSoli.DataSource = serv.tsolicitud();
                     dropdownTSoli.DataValueField = "idtiposolicitud";
                     dropdownTSoli.DataTextField = "tiposolicitudcol";
                     dropdownTSoli.DataBind();
-                    dropdownMSoli.DataSource=serv.mediosolicitud();
+                    dropdownMSoli.DataSource = serv.mediosolicitud();
                     dropdownMSoli.DataValueField = "idmediodesolicitud";
                     dropdownMSoli.DataTextField = "mediodesolicitudcol";
                     dropdownMSoli.DataBind();
@@ -56,7 +56,7 @@ namespace VisapLine.View.Private
         {
             pan1.Visible = false;
             Creacion.Attributes.Add("class", "tab-pane");
-            pan2.Attributes.Add("class","active");
+            pan2.Attributes.Add("class", "active");
             Solicitudes.Attributes.Add("class", "active tab-pane");
             repetidorsolicitudes.DataSource = serv.consultarsolicitudes();
             repetidorsolicitudes.DataBind();
@@ -64,21 +64,25 @@ namespace VisapLine.View.Private
 
         protected void btnguardar_Click(object sender, EventArgs e)
         {
+
             ord.crearsolicitudes(dropdownTSoli.SelectedValue,TextBox1.Text,fechIni_.Value,fechFin_.Value,dropdownMSoli.SelectedValue,Solicitanteidenti.Text,Solicitantenombre.Text,Solicitanteapellido.Text,idsrv, empleado,true);
+
         }
 
         protected void dropsolicitante_TextChanged(object sender, EventArgs e)
         {
             DataTable dt = serv.datosdeldueniodelseervicio(idsrv);
-            if (dropsolicitante.SelectedIndex==1) {
-                Solicitanteidenti.Text= dt.Rows[0][0].ToString();
+            if (dropsolicitante.SelectedIndex == 1)
+            {
+                Solicitanteidenti.Text = dt.Rows[0][0].ToString();
                 Solicitantenombre.Text = dt.Rows[0][1].ToString();
                 Solicitanteapellido.Text = dt.Rows[0][2].ToString();
             }
-            else {
-                Solicitanteidenti.Text="";
-                Solicitantenombre.Text="";
-                Solicitanteapellido.Text="";
+            else
+            {
+                Solicitanteidenti.Text = "";
+                Solicitantenombre.Text = "";
+                Solicitanteapellido.Text = "";
             }
         }
 
@@ -86,7 +90,7 @@ namespace VisapLine.View.Private
         {
             GridViewRow row = gridtecnicos.Rows[e.NewSelectedIndex];
             empleado = row.Cells[1].Text;
-            lblatendio.Text = row.Cells[1].Text + " "+ row.Cells[2].Text + " "+ row.Cells[3].Text + " ";
+            lblatendio.Text = row.Cells[1].Text + " " + row.Cells[2].Text + " " + row.Cells[3].Text + " ";
         }
     }
 }

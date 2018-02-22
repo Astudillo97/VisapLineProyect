@@ -45,10 +45,21 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select * from pr_consultarplanestipoter('"+plnt+"')");
         }
 
+        public DataTable ConsultarPlanid(string plnt)
+        {
+            return data.ConsultarDatos("select * from pr_consultarplan('" + plnt + "')");
+        }
+
+        public bool updaplan(Plan pl)
+        {
+            return data.OperarDatos("Select * from public.pr_actualizarplan('"+pl.idplan+"','"+pl.valor+"','"+pl.detalle+"','"+pl.telefonia+"','"+pl.televicion+"','"+pl.internet+"','"+pl.estado+"','"+pl.tipoplan+"','"+pl.subida+"','"+pl.bajada+"')");
+        }
+
+
     }
 
 
-  
+
 
 
 }

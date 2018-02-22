@@ -162,7 +162,7 @@ namespace VisapLine.View.Private
                 if (e.CommandName.ToString() == "editarfactura")
                 {
                     string paramet = e.CommandArgument.ToString();
-                    Response.Redirect("GestCliente.aspx?fact=" + paramet);
+                    Response.Redirect("EditarFactura.aspx?key=" + paramet);
                 }
                 if (e.CommandName.ToString() == "pagarfactura")
                 {

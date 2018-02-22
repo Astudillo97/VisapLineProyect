@@ -32,142 +32,152 @@ namespace VisapLine.View.Private
         Sucursal scsal = new Sucursal();
         Contrato contrat = new Contrato();
         string idplancontr;
+        Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
             {
-                if (!IsPostBack)
+                try
+                {
+                    if (!IsPostBack)
 
-                {                   
-                    string valor = Convert.ToString(Request.QueryString["key"]);
-                    if (valor=="SI")
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                        string valor = Convert.ToString(Request.QueryString["key"]);
+                        if (valor == "SI")
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                            valor = "";
+                        }
+
+                        tipotercero.DataSource = ttr.ConsultarTipoTercerofiltrado();
+                        tipotercero.DataTextField = "tipoterceros";
+                        tipotercero.DataValueField = "idtipotercero";
+                        tipotercero.DataBind();
+
+                        listtelefono.Rows.Clear();
+                        listtelefono.Dispose();
+                        telefonos.Dispose();
+                        listtelefono.Columns.Clear();
+                        listtelefono.Columns.Add("idtelefono");
+                        listtelefono.Columns.Add("telefono");
+
+
+                        DropDownListpais.DataSource = pais.ConsultarPais();
+                        DropDownListpais.DataTextField = "pais";
+                        DropDownListpais.DataValueField = "idpais";
+                        DropDownListpais.DataBind();
+
+
+                        DropDownList2.DataSource = tpfact.ConsultarTipoFactura();
+                        DropDownList2.DataTextField = "tipofactura";
+                        DropDownList2.DataValueField = "idtipofactura";
+                        DropDownList2.DataBind();
+
+                        DropDownListtiporesi.DataSource = tpres.ConsultarTipoResidencia();
+                        DropDownListtiporesi.DataTextField = "tiporesidencia";
+                        DropDownListtiporesi.DataValueField = "idtiporesidencia";
+                        DropDownListtiporesi.DataBind();
+
+                        DropDownListtipodocu.DataSource = tpdoc.ConsultarTipoDoc();
+                        DropDownListtipodocu.DataTextField = "tipodoc";
+                        DropDownListtipodocu.DataValueField = "idtipodoc";
+                        DropDownListtipodocu.DataBind();
+
+
+
+
+                        //CORPORATIVO
+                        DropDownList1tipodocucorpo.DataSource = tpdoc.ConsultarTipoDoc();
+                        DropDownList1tipodocucorpo.DataTextField = "tipodoc";
+                        DropDownList1tipodocucorpo.DataValueField = "idtipodoc";
+                        DropDownList1tipodocucorpo.DataBind();
+
+                        DropDownListresidenciacorpo.DataSource = tpres.ConsultarTipoResidencia();
+                        DropDownListresidenciacorpo.DataTextField = "tiporesidencia";
+                        DropDownListresidenciacorpo.DataValueField = "idtiporesidencia";
+                        DropDownListresidenciacorpo.DataBind();
+
+                        DropDownList3tipofactucorpo.DataSource = tpfact.ConsultarTipoFactura();
+                        DropDownList3tipofactucorpo.DataTextField = "tipofactura";
+                        DropDownList3tipofactucorpo.DataValueField = "idtipofactura";
+                        DropDownList3tipofactucorpo.DataBind();
+
+                        DropDownList4paiscorpo.DataSource = pais.ConsultarPais();
+                        DropDownList4paiscorpo.DataTextField = "pais";
+                        DropDownList4paiscorpo.DataValueField = "idpais";
+                        DropDownList4paiscorpo.DataBind();
+
+
+                        listtelefonocorpo.Rows.Clear();
+                        listtelefonocorpo.Dispose();
+                        GridViewtelefonocorpo.Dispose();
+                        listtelefonocorpo.Columns.Clear();
+                        listtelefonocorpo.Columns.Add("idtelefono");
+                        listtelefonocorpo.Columns.Add("telefono");
+
+                        listsucursalcorpo.Rows.Clear();
+                        listsucursalcorpo.Dispose();
+                        GridViewsucursalecorpo.Dispose();
+                        listsucursalcorpo.Columns.Clear();
+                        listsucursalcorpo.Columns.Add("idsucursal");
+                        listsucursalcorpo.Columns.Add("nombre");
+                        listsucursalcorpo.Columns.Add("descripcion");
+                        listsucursalcorpo.Columns.Add("direccion");
+                        listsucursalcorpo.Columns.Add("barrio");
+
+
+
+                        //EMPRESARIAL
+                        DropDownListtipodocumentoempresa.DataSource = tpdoc.ConsultarTipoDoc();
+                        DropDownListtipodocumentoempresa.DataTextField = "tipodoc";
+                        DropDownListtipodocumentoempresa.DataValueField = "idtipodoc";
+                        DropDownListtipodocumentoempresa.DataBind();
+
+
+                        DropDownListtiporeidenciaempresa.DataSource = tpres.ConsultarTipoResidencia();
+                        DropDownListtiporeidenciaempresa.DataTextField = "tiporesidencia";
+                        DropDownListtiporeidenciaempresa.DataValueField = "idtiporesidencia";
+                        DropDownListtiporeidenciaempresa.DataBind();
+
+                        DropDownListtipofacturaempresa.DataSource = tpfact.ConsultarTipoFactura();
+                        DropDownListtipofacturaempresa.DataTextField = "tipofactura";
+                        DropDownListtipofacturaempresa.DataValueField = "idtipofactura";
+                        DropDownListtipofacturaempresa.DataBind();
+
+                        DropDownListpaisempresa.DataSource = pais.ConsultarPais();
+                        DropDownListpaisempresa.DataTextField = "pais";
+                        DropDownListpaisempresa.DataValueField = "idpais";
+                        DropDownListpaisempresa.DataBind();
+
+                        listtelefonoempre.Rows.Clear();
+                        listtelefonoempre.Dispose();
+                        GridViewtelefonoempresa.Dispose();
+                        listtelefonoempre.Columns.Clear();
+                        listtelefonoempre.Columns.Add("idtelefono");
+                        listtelefonoempre.Columns.Add("telefono");
+
+                        listsucursalempre.Rows.Clear();
+                        listsucursalempre.Dispose();
+                        GridViewsucursalempre.Dispose();
+                        listsucursalempre.Columns.Clear();
+                        listsucursalempre.Columns.Add("idsucursal");
+                        listsucursalempre.Columns.Add("nombre");
+                        listsucursalempre.Columns.Add("descripcion");
+                        listsucursalempre.Columns.Add("direccion");
+                        listsucursalempre.Columns.Add("barrio");
+
                     }
-
-                    tipotercero.DataSource = ttr.ConsultarTipoTercerofiltrado();
-                    tipotercero.DataTextField = "tipoterceros";
-                    tipotercero.DataValueField = "idtipotercero";
-                    tipotercero.DataBind();
-
-                    listtelefono.Rows.Clear();
-                    listtelefono.Dispose();
-                    telefonos.Dispose();
-                    listtelefono.Columns.Clear();
-                    listtelefono.Columns.Add("idtelefono");
-                    listtelefono.Columns.Add("telefono");
-
-
-                    DropDownListpais.DataSource = pais.ConsultarPais();
-                    DropDownListpais.DataTextField = "pais";
-                    DropDownListpais.DataValueField = "idpais";
-                    DropDownListpais.DataBind();
-
-
-                    DropDownList2.DataSource = tpfact.ConsultarTipoFactura();
-                    DropDownList2.DataTextField = "tipofactura";
-                    DropDownList2.DataValueField = "idtipofactura";
-                    DropDownList2.DataBind();
-
-                    DropDownListtiporesi.DataSource = tpres.ConsultarTipoResidencia();
-                    DropDownListtiporesi.DataTextField = "tiporesidencia";
-                    DropDownListtiporesi.DataValueField = "idtiporesidencia";
-                    DropDownListtiporesi.DataBind();
-
-                    DropDownListtipodocu.DataSource = tpdoc.ConsultarTipoDoc();
-                    DropDownListtipodocu.DataTextField = "tipodoc";
-                    DropDownListtipodocu.DataValueField = "idtipodoc";
-                    DropDownListtipodocu.DataBind();
-
-
-
-
-                    //CORPORATIVO
-                    DropDownList1tipodocucorpo.DataSource = tpdoc.ConsultarTipoDoc();
-                    DropDownList1tipodocucorpo.DataTextField = "tipodoc";
-                    DropDownList1tipodocucorpo.DataValueField = "idtipodoc";
-                    DropDownList1tipodocucorpo.DataBind();
-
-                    DropDownListresidenciacorpo.DataSource = tpres.ConsultarTipoResidencia();
-                    DropDownListresidenciacorpo.DataTextField = "tiporesidencia";
-                    DropDownListresidenciacorpo.DataValueField = "idtiporesidencia";
-                    DropDownListresidenciacorpo.DataBind();
-
-                    DropDownList3tipofactucorpo.DataSource = tpfact.ConsultarTipoFactura();
-                    DropDownList3tipofactucorpo.DataTextField = "tipofactura";
-                    DropDownList3tipofactucorpo.DataValueField = "idtipofactura";
-                    DropDownList3tipofactucorpo.DataBind();
-
-                    DropDownList4paiscorpo.DataSource = pais.ConsultarPais();
-                    DropDownList4paiscorpo.DataTextField = "pais";
-                    DropDownList4paiscorpo.DataValueField = "idpais";
-                    DropDownList4paiscorpo.DataBind();
-
-
-                    listtelefonocorpo.Rows.Clear();
-                    listtelefonocorpo.Dispose();
-                    GridViewtelefonocorpo.Dispose();
-                    listtelefonocorpo.Columns.Clear();
-                    listtelefonocorpo.Columns.Add("idtelefono");
-                    listtelefonocorpo.Columns.Add("telefono");
-
-                    listsucursalcorpo.Rows.Clear();
-                    listsucursalcorpo.Dispose();
-                    GridViewsucursalecorpo.Dispose();
-                    listsucursalcorpo.Columns.Clear();
-                    listsucursalcorpo.Columns.Add("idsucursal");
-                    listsucursalcorpo.Columns.Add("nombre");
-                    listsucursalcorpo.Columns.Add("descripcion");
-                    listsucursalcorpo.Columns.Add("direccion");
-                    listsucursalcorpo.Columns.Add("barrio");
-
-
-
-                    //EMPRESARIAL
-                    DropDownListtipodocumentoempresa.DataSource = tpdoc.ConsultarTipoDoc();
-                    DropDownListtipodocumentoempresa.DataTextField = "tipodoc";
-                    DropDownListtipodocumentoempresa.DataValueField = "idtipodoc";
-                    DropDownListtipodocumentoempresa.DataBind();
-
-
-                    DropDownListtiporeidenciaempresa.DataSource = tpres.ConsultarTipoResidencia();
-                    DropDownListtiporeidenciaempresa.DataTextField = "tiporesidencia";
-                    DropDownListtiporeidenciaempresa.DataValueField = "idtiporesidencia";
-                    DropDownListtiporeidenciaempresa.DataBind();
-
-                    DropDownListtipofacturaempresa.DataSource = tpfact.ConsultarTipoFactura();
-                    DropDownListtipofacturaempresa.DataTextField = "tipofactura";
-                    DropDownListtipofacturaempresa.DataValueField = "idtipofactura";
-                    DropDownListtipofacturaempresa.DataBind();
-
-                    DropDownListpaisempresa.DataSource = pais.ConsultarPais();
-                    DropDownListpaisempresa.DataTextField = "pais";
-                    DropDownListpaisempresa.DataValueField = "idpais";
-                    DropDownListpaisempresa.DataBind();
-
-                    listtelefonoempre.Rows.Clear();
-                    listtelefonoempre.Dispose();
-                    GridViewtelefonoempresa.Dispose();
-                    listtelefonoempre.Columns.Clear();
-                    listtelefonoempre.Columns.Add("idtelefono");
-                    listtelefonoempre.Columns.Add("telefono");
-
-                    listsucursalempre.Rows.Clear();
-                    listsucursalempre.Dispose();
-                    GridViewsucursalempre.Dispose();
-                    listsucursalempre.Columns.Clear();
-                    listsucursalempre.Columns.Add("idsucursal");
-                    listsucursalempre.Columns.Add("nombre");
-                    listsucursalempre.Columns.Add("descripcion");
-                    listsucursalempre.Columns.Add("direccion");
-                    listsucursalempre.Columns.Add("barrio");
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
 
                 }
             }
-            catch (Exception ex)
+            else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
-
+                Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
             }
         }
         protected void Button1_Click(object sender, EventArgs e)
@@ -694,7 +704,7 @@ namespace VisapLine.View.Private
                         }
                     }
 
-           
+
                     Response.Redirect("ContratoCliente.aspx?key=" + texboxdni.Text);
 
                 }

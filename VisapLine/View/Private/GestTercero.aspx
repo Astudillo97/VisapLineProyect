@@ -276,7 +276,7 @@
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Telefono</h3>
                                     <div class="box-tools pull-right">
-                                        <button type="button" data-toggle="modal" data-target="#modal-primary" class="btn btn-box-tool">
+                                        <button type="button" data-toggle="modal" data-target="#modal-primary" class="btn btn-box-tool btn-pinterest glyphicon glyphicon-plus">
                                             <i class="glyphicon glyphicon-earphone"></i>
                                         </button>
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">

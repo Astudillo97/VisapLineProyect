@@ -12,20 +12,38 @@ namespace VisapLine.View.Private
 {
     public partial class PagCaja : System.Web.UI.Page
     {
-
+        int valoringre, valoregre, valorini, valoractualcaja;
         Caja cj = new Caja();
+        Permisos per = new Permisos();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+            DataTable se= (DataTable)Session["roles"];
+            if (per.ValidarPermisos(url, se))
             {
-                DataRow dt = Validar.Consulta(cj.ConsultarCaja()).Rows[0];
-                cargarestado();
-                cargartabla();
-                Timer1.Enabled = true;
+                if (!IsPostBack)
+                {
+                    Labeltime.Text = DateTime.Now.ToLongDateString();
+                    try
+                    {
+                        DataRow dt = Validar.Consulta(cj.ConsultarCaja()).Rows[0];
+                        cargarestado();
+                        cargartabla();
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+                
 
 
-            }
+
+            }else
+                {
+                    Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
+                }
 
 
 
@@ -40,21 +58,19 @@ namespace VisapLine.View.Private
                 if (cj.AbrirCaja(cj))
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "activarcajalert();", true);
-
-
+                    cargartabla();
                     cargarestado();
                 }
                 else
                 {
-
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "elimalertCAJA();", true);
                     cargarestado();
+                    cargartabla();
                 }
             }
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
-
             }
         }
         protected void cargartabla()
@@ -82,6 +98,34 @@ namespace VisapLine.View.Private
             }
             Labelingresos.Text = dt["ingresos"].ToString();
             Labelegresos.Text = dt["egresos"].ToString();
+            Labelvalorinicial.Text = dt["valorinicial"].ToString();
+
+            valoringre = Convert.ToInt32(Labelingresos.Text);
+            valoregre = Convert.ToInt32(Labelegresos.Text);
+            valorini = Convert.ToInt32(Labelvalorinicial.Text);
+            if (valorini > 0)
+            {
+                Labelvalorinicial.ForeColor = Color.Green;
+            }
+            else
+            {
+                Labelvalorinicial.ForeColor = Color.Red;
+            }
+
+            valoractualcaja = (valoringre + valorini) - valoregre;
+            if (valoractualcaja > 0)
+            {
+                Labelvaloractual.Text = valoractualcaja.ToString();
+                Labelvaloractual.ForeColor = Color.Green;
+            }
+            else
+            {
+                Labelvaloractual.Text = valoractualcaja.ToString();
+                Labelvaloractual.ForeColor = Color.Red;
+
+            }
+
+
 
         }
         protected void Button2_Click(object sender, EventArgs e)
@@ -92,11 +136,13 @@ namespace VisapLine.View.Private
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "elimalert();", true);
                     cargarestado();
+                    cargartabla();
                 }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "elimalertcerrado();", true);
                     cargarestado();
+                    cargartabla();
                 }
             }
             catch (Exception)
@@ -114,15 +160,10 @@ namespace VisapLine.View.Private
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow gridw = GridView1.SelectedRow;
-
             Response.Redirect("gestcaja.aspx?key=" + gridw.Cells[1].Text);
         }
 
 
-        protected void Timer1_Load(object sender, EventArgs e)
-        {
-         
-            Labeltime.Text = DateTime.Now.ToShortTimeString();
-        }
+
     }
 }

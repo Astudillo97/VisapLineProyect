@@ -5,7 +5,7 @@ using System.Web;
 using VisapLine.DataAccess.Data;
 using VisapLine.DataAccess.Connection;
 using System.Data;
-
+using VisapLine.Exeption;
 
 namespace VisapLine.Model
 {
@@ -17,18 +17,30 @@ namespace VisapLine.Model
         public string valoregreso { get; set; }
         public string fechaegreso { get; set; }
         public string tercero_idtercero_reg { get; set; }
+        public string tercero_idtercero_egre { get; set; }
         public string motivo_idtercero_egre { get; set; }
         public string observacion { get; set; }
         public string caja_idcaja_egre { get; set; }
 
-        public DataTable Registraregreso(Egreso eg)
+        public DataTable Registraregreso(string usuario, string ipregistro)
         {
-            return data.ConsultarDatos("");
+            return data.ConsultarDatos("select * from public.pr_insertar_egresos('"+usuario+"','"+ipregistro+"','"+this.motivo_idtercero_egre+"','"+this.tercero_idtercero_reg+"','"+this.tercero_idtercero_egre+"','"+this.observacion+"','"+this.valoregreso+"','"+ obtenercaja() + "')");
         }
         public DataTable consultaregresos(Egreso eg)
         {
             return data.ConsultarDatos("select * from pr_consultaregresos('"+eg.caja_idcaja_egre+"')");
         }
+        string obtenercaja()
+        {
+            DataRow dat = data.ConsultarDatos("select * from pr_consultarcaja()").Rows[0];
+            if (dat["estado"].ToString() == "True")
+            {
+                return dat["idcaja"].ToString();
+            }
+            throw new ValidarExeption("No hay cajas activas");
+        }
+
+
 
 
     }

@@ -27,6 +27,7 @@ namespace VisapLine.Model
         public string barrios_idbarrios { get; set; }
         public string usuario_idusuario { get; set; }
         public string rh { get; set; }
+        public string telefono { get; set; }
 
 
         public DataTable ConsultarTercerosId(Terceros terc)
@@ -90,5 +91,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarterceroavanzado('" + identificacion.ToUpper() + "')");
         }
+        public bool RegitrarTerceroegreso(Terceros per)
+        {
+            return data.OperarDatos("SELECT * from public.pr_insertarterceroegreso('"+per.tipotercero_idtipotercero+"','"+per.tipodoc_idtipodoc+"','"+per.identificacion+"','"+per.nombre+"','"+per.correo+"','"+per.telefono+"');");
+        }
+
     }
 }

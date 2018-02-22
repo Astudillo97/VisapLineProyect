@@ -46,7 +46,10 @@
             <li class="breadcrumb-item active">Caja</li>
         </ol>
     </section>
-
+    <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <label class="text-center" runat="server" id="textError"></label>
+    </asp:Panel>
     <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
@@ -60,9 +63,10 @@
                     <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                     <Columns>
                         <asp:BoundField HeaderText="Codigo" DataField="idpagos" />
-                        <asp:BoundField HeaderText="Fecha de pago" DataField="apertura" />
+                        <asp:BoundField HeaderText="Fecha de pago" DataField="fechapago" />
                         <asp:BoundField HeaderText="N° Factura" DataField="factura_idfactura" />
                         <asp:BoundField HeaderText="Pago" DataField="pagado" />
+                        <asp:BoundField HeaderText="Valor iva" DataField="ivafac" />
                         <asp:BoundField HeaderText="Total" DataField="totalfac" />
                     </Columns>
 

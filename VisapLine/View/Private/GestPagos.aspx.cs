@@ -19,16 +19,26 @@ namespace VisapLine.View.Private
         Factura fact = new Factura();
         Contrato cont = new Contrato();
         Detalle deta = new Detalle();
+        Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
             factservicio.Focus();
             try
             {
-                string codig = Convert.ToString(Request.QueryString["codigo"]);
-                if (codig != null)
+                string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+                if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
                 {
-                    cod.InnerHtml = codig;
-                    ConsularDatos(codig);
+
+                    string codig = Convert.ToString(Request.QueryString["codigo"]);
+                    if (codig != null)
+                    {
+                        cod.InnerHtml = codig;
+                        ConsularDatos(codig);
+                    }
+                }
+                else
+                {
+                    Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
                 }
             }
             catch (Exception ex)

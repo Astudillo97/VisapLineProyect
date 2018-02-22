@@ -91,7 +91,7 @@ namespace VisapLine.View.Private {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1identificacion;
+        protected global::System.Web.UI.WebControls.Label TextBox1identificacion;
         
         /// <summary>
         /// Control DropDownListestadocontrato.

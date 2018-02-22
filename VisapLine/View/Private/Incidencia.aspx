@@ -30,6 +30,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
+
     <section class="content-header">
         <h1>Incidencia</h1>
         <ol class="breadcrumb">
@@ -74,7 +75,7 @@
             </div>
         </div>
         <div class="row" id="iddatosterceros" visible="false" runat="server">
-            <div class="col-5">
+            <div class="col-6">
                 <div class="box box-default">
                     <div class="box-header with-border">
                         <h3 class="box-title">Datos del Cliente</h3>
@@ -82,8 +83,8 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-5">
-                                <img src="../../Contenido/images/user2-160x160.jpg" height="135px" width="135px" />
+                            <div class="col-4">
+                                <img src="../../Contenido/images/user2-160x160.jpg" height="125px" width="125px" />
                             </div>
                             <div class="col-7">
                                 <div class="form-group row">
@@ -109,7 +110,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-7">
+            <div class="col-6">
                 <asp:Label ID="idservicio" runat="server" Visible="false"></asp:Label>
                 <div class="row" id="divtablagestcontr" runat="server" visible="false">
                     <div class="box box-primary">
@@ -117,9 +118,8 @@
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                 <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
-                                <asp:BoundField HeaderText="Codg" HeaderStyle-HorizontalAlign="Center" DataField="id" />
-                                <asp:BoundField HeaderText="Fecha" HeaderStyle-HorizontalAlign="Center" DataFormatString="{0:d}" DataField="fechainiciocol" />
-                                <asp:BoundField HeaderText="Megas" HeaderStyle-HorizontalAlign="Center" DataField="cantidadmegascol" />
+                                <asp:BoundField HeaderText="Cod" HeaderStyle-HorizontalAlign="Center" DataField="id" />
+                               <asp:BoundField HeaderText="Megas" HeaderStyle-HorizontalAlign="Center" DataField="cantidadmegascol" />
                                 <asp:BoundField HeaderText="Estado" HeaderStyle-HorizontalAlign="Center" DataField="estadocol" />
                                 <asp:BoundField HeaderText="Direccion" HeaderStyle-HorizontalAlign="Center" DataField="direccioncol" />
                                 <asp:BoundField HeaderText="Barrio" HeaderStyle-HorizontalAlign="Center" DataField="barriocol" />
