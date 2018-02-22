@@ -22,6 +22,9 @@
         function deletealert() {
             swal("SE REGISTRO CON EXITO!", "Se ha registrado con exito ", "success");
         }
+        function gestdeletealert() {
+            swal("SE LA OPERACION SE HA REALIZADO CON EXITO!", "Se completo la operacion", "success");
+        }
         function alerterror() {
             swal("NO SE REGISTRO!", "No se registro el formulario", "error");
         }

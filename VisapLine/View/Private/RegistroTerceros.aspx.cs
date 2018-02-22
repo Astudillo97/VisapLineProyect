@@ -47,6 +47,7 @@ namespace VisapLine.View.Private
                         if (valor == "SI")
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                            valor = "";
                         }
 
                         tipotercero.DataSource = ttr.ConsultarTipoTercerofiltrado();

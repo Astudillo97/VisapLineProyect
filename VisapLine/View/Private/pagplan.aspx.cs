@@ -24,12 +24,28 @@ namespace VisapLine.View.Private
             try
             {
                 string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+
                 if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
                 {
                     if (!IsPostBack)
                 {
+                        string valor = Convert.ToString(Request.QueryString["key"]);
+                        if (valor == "SI")
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "gestdeletealert();", true);
+                            valor = "";
+                        }
 
-                    cargartabla();
+                        try
+                        {
+                            cargartabla();
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+             
                  
                 }
                 }
@@ -142,10 +158,9 @@ namespace VisapLine.View.Private
             try { 
             repeteidordeinventario.DataSource = pn.ConsultarPlan();
             repeteidordeinventario.DataBind();
-
-            DataTable dt = pn.ConsultarPlan();         
+   
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

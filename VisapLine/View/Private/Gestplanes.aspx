@@ -20,10 +20,13 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         function deletealert() {
-            swal("SE REGISTRO CON EXITO!", "Se ha registrado con exito ", "success");
+            swal("SE HA ACTULIADO CON EXITO!", "La operacion se completo con exito", "success");
         }
         function alerterror() {
             swal("NO SE REGISTRO!", "No se registro el formulario", "error");
+        }
+        function error() {
+            swal("NO Se HA REGISTRADO UN ERROR!", "Informar a soporte tecnico", "error");
         }
     </script>
 
@@ -105,7 +108,9 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">Detalle:</label>
                             <div class="col-sm-10 ">
                                 <div class="md-header btn-toolbar">
-                                    <textarea data-provide="markdown" readonly="readonly" disable="true" id="texareadetalle" runat="server" data-iconlibrary="fa" class="form-control" rows="5" resize="none" data-hidden-buttons="cmdBold" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 144px;" required data-validation-required-message="This field is required"></textarea>
+                                    <asp:TextBox ID="TextBox4"  Enabled="false" TextMode="MultiLine" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="445px" Height="140px"></asp:TextBox>
+                                
+                                
                                 </div>
                             </div>
                         </div>
@@ -142,7 +147,7 @@
                 <center>
                     <table>
                          <tr>
-                        <th><asp:Button ID="Button3" runat="server" Text="Modificar" class="btn btn-block btn-info" OnClick="Button3_Click"></asp:Button>
+                        <th><asp:Button ID="Button3" runat="server" Text="Modificar" class="btn btn-block btn-info" Width="146px" OnClick="Button3_Click"></asp:Button>
                             <asp:Button runat="server" class="btn btn-block btn-success" Visible="false" ID="Button1" Text="Guardar" Width="146px" OnClick="Button1_Click" /></th>
                       <th><asp:Button runat="server" class="btn btn-block btn-danger" ID="Button2" Text="Cancelar" Width="146px" OnClick="Button2_Click" /></th>                      
              </tr>
