@@ -33,11 +33,6 @@
         }
     </script>
 
-
-
-
-
-
     <section class="content-header">
         <h1>Registro de Movimientos de la CAJA</h1>
         <ol class="breadcrumb">
@@ -58,47 +53,72 @@
             <!-- /.box-header -->
 
             <div class="box-body">
+                <div class="box-body col">
+                    <table class="table table-hover table-responsive" id="pagosdeingreso">
+                        <thead style="background-color: #507CD1">
+                            <tr>
+                                <th style="color: white">Codigo
+                                </th>
+                                <th style="color: white">Fecha
+                                </th>
+                                <th style="color: white">N° de Factura
+                                </th>
+                                <th style="color: white">Iva
+                                </th>
+                                <th style="color: white">Valor
+                                </th>
 
-                <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="5">
-                    <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-                    <Columns>
-                        <asp:BoundField HeaderText="Codigo" DataField="idpagos" />
-                        <asp:BoundField HeaderText="Fecha de pago" DataField="fechapago" />
-                        <asp:BoundField HeaderText="N° Factura" DataField="factura_idfactura" />
-                        <asp:BoundField HeaderText="Pago" DataField="pagado" />
-                        <asp:BoundField HeaderText="Valor iva" DataField="ivafac" />
-                        <asp:BoundField HeaderText="Total" DataField="totalfac" />
-                    </Columns>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <asp:Repeater ID="Repeater1" runat="server">
+                                <ItemTemplate>
 
-                    <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+                                    <tr>
+                                        <th>
+                                            <label><%#Eval("idpagos") %></label>
+                                        </th>
+                                        <th>
+                                            <label><%#Eval("fechapago") %></label>
+                                        </th>
+                                        <th>
+                                            <label><%#Eval("factura_idfactura") %></label>
+                                        </th>
+                                        <th>
+                                            <label><%#Eval("ivafac") %> </label>
+                                        </th>
+                                        <th>
+                                            <label><%#Eval("totalfac") %> </label>
+                                        </th>
 
-                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
-                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                                    </tr>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </tbody>
+                        <tfoot style="background-color: #507CD1">
+                            <tr>
+                                <th style="color: white">IdEgreso
+                                </th>
+                                <th style="color: white">Fecha
+                                </th>
+                                <th style="color: white">Observacion
+                                </th>
+                                <th style="color: white">Motivo
+                                </th>
+                                <th style="color: white">Valor
+                                </th>
+                            </tr>
+                        </tfoot>
 
-                    <PagerSettings Mode="NextPreviousFirstLast" />
-
-                    <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
-
-                    <RowStyle BackColor="#EFF3FB"></RowStyle>
-
-                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
-
-                    <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
-
-                    <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
-
-                    <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
-
-                    <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
-                </asp:GridView>
+                    </table>
+                </div>                
+              
                 <!-- /.row -->
 
             </div>
             <!-- /.box-body -->
         </div>
-
-
 
 
         <div class="box box-default">
@@ -108,46 +128,69 @@
             <!-- /.box-header -->
 
             <div class="box-body">
+                <div class="box-body col">
+                    <table class="table table-hover table-responsive" id="pagosdeegreso">
+                        <thead style="background-color: #507CD1">
+                            <tr>
+                                <th style="color: white">IdEgreso
+                                </th>
+                                <th style="color: white">Fecha
+                                </th>
+                                <th style="color: white">Observacion
+                                </th>
+                                <th style="color: white">Motivo
+                                </th>
+                                <th style="color: white">Valor
+                                </th>
 
-                <asp:GridView ID="GridView2" runat="server" class="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="5">
-                    <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-                    <Columns>
-                        <asp:BoundField HeaderText="Codigo" DataField="idegresos" />
-                        <asp:BoundField HeaderText="Fecha de pago" DataField="fechaegreso" />
-                        <asp:BoundField HeaderText="Detalle" DataField="observacion" />
-                        <asp:BoundField HeaderText="Motivo" DataField="motivo" />
-                        <asp:BoundField HeaderText="Total" DataField="valoregreso" />
-                    </Columns>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <asp:Repeater ID="repeteidordeinventario" runat="server">
+                                <ItemTemplate>
 
-                    <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+                                    <tr>
+                                        <th>
+                                            <label><%#Eval("idegresos") %></label>
+                                        </th>
+                                        <th>
+                                            <label><%#Eval("fechaegreso") %></label>
+                                        </th>
+                                        <th>
+                                            <label><%#Eval("observacion") %></label>
+                                        </th>
+                                        <th>
+                                            <label><%#Eval("motivo") %> </label>
+                                        </th>
+                                        <th>
+                                            <label><%#Eval("valoregreso") %> </label>
+                                        </th>
 
-                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
-                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                                    </tr>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </tbody>
+                        <tfoot style="background-color: #507CD1">
+                            <tr>
+                                <th style="color: white">IdEgreso
+                                </th>
+                                <th style="color: white">Fecha
+                                </th>
+                                <th style="color: white">Observacion
+                                </th>
+                                <th style="color: white">Motivo
+                                </th>
+                                <th style="color: white">Valor
+                                </th>
+                            </tr>
+                        </tfoot>
 
-                    <PagerSettings Mode="NextPreviousFirstLast" />
-
-                    <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
-
-                    <RowStyle BackColor="#EFF3FB"></RowStyle>
-
-                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
-
-                    <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
-
-                    <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
-
-                    <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
-
-                    <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
-                </asp:GridView>
-                <!-- /.row -->
+                    </table>
+                </div>                <!-- /.row -->
 
             </div>
             <!-- /.box-body -->
         </div>
-
-
     </section>
-
 </asp:Content>
