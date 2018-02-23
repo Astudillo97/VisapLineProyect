@@ -25,5 +25,17 @@ $(function () {
 			'csv', 'excel'
 		]
 	} );
-	
+
+    $('#pagosdeingreso').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel','pdf'
+        ]
+    });
+    $('#pagosdeegreso').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ]
+    });
   }); // End of use strict
