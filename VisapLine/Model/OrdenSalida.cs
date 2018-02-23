@@ -92,7 +92,7 @@ namespace VisapLine.Model
             }
             else
             {
-                return false;  q
+                return false;  
             }
         }
 

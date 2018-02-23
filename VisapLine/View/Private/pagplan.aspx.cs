@@ -160,8 +160,10 @@ namespace VisapLine.View.Private
             repeteidordeinventario.DataBind();
    
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+
+
 
             }
         }
