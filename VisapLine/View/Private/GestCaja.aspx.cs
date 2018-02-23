@@ -35,8 +35,8 @@ namespace VisapLine.View.Private
 
 
                         DataTable dtig = Validar.Consulta(ig.consultaringresos(ig));
-                        GridView1.DataSource = dtig;
-                        GridView1.DataBind();
+                        Repeater1.DataSource = Validar.Consulta(ig.consultaringresos(ig));
+                        Repeater1.DataBind();
                     }
                     catch (Exception)
                     {
