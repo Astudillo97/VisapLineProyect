@@ -38,22 +38,23 @@ namespace VisapLine.View.Private
         {
 
 
-            try
-            {
+            //try
+            //{
 
                 if (!IsPostBack)
                 {
 
 
-                    string valor = Convert.ToString(Request.QueryString["key"]);
-                    if (valor == null)
-                    {
-                        Response.Redirect("RegistroTerceros.aspx");
-                    }
-                    else
-                    {
+                //string valor = Convert.ToString(Request.QueryString["key"]);
+                //if (valor == null)
+                //{
+                //    Response.Redirect("RegistroTerceros.aspx");
+                //}
+                //else
+                //{
+                string valor = "222";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
-                        dnitercero.Text = valor;
+                        dnitercero.Text = valor ;
 
                         DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
                         DropDownListpaiscontrato.DataTextField = "pais";
@@ -92,14 +93,14 @@ namespace VisapLine.View.Private
                         Labelidtercero.Text = tercero["idterceros"].ToString();
                         cargartabla(Labelidtercero.Text);
                     }
-                }
-            }
-            catch (Exception ex)
-            {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
-            }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    textError.InnerHtml = ex.Message;
+            //    Alerta.CssClass = "alert alert-error";
+            //    Alerta.Visible = true;
+            //}
         }
         protected void cargartabla(string idusuario)
         {

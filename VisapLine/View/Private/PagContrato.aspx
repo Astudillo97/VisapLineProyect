@@ -44,42 +44,7 @@
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
     <section class="content">
-        <%--        <asp:DropDownList ID="DropDownList1" runat="server">
-            <asp:ListItem></asp:ListItem>
-            <asp:ListItem Value="Cl">Calle</asp:ListItem>
-            <asp:ListItem Value="Cr">Carrera</asp:ListItem>
-            <asp:ListItem Value="Trans">Transversal</asp:ListItem>
-            <asp:ListItem Value="Diag">Diagonal</asp:ListItem>
-            <asp:ListItem Value="Av">Avenida</asp:ListItem>
-            <asp:ListItem Value="AK">Avenida carrera</asp:ListItem>
-            <asp:ListItem Value="AC">Avenida calle</asp:ListItem>
-        </asp:DropDownList>
-        <asp:TextBox ID="TextBox1" runat="server" Width="24px"> </asp:TextBox>
-        <asp:TextBox ID="TextBox2" runat="server" Width="17px" MaxLength="1"></asp:TextBox>
-        <asp:DropDownList ID="DropDownList2" runat="server">
-            <asp:ListItem></asp:ListItem>
-            <asp:ListItem>Bis</asp:ListItem>
-        </asp:DropDownList>
-        <asp:TextBox ID="TextBox3" runat="server" Width="17px" MaxLength="1"></asp:TextBox>
-        <asp:DropDownList ID="DropDownList3" runat="server">
-            <asp:ListItem></asp:ListItem>
-            <asp:ListItem Value="N">Norte</asp:ListItem>
-            <asp:ListItem Value="S">Sur</asp:ListItem>
-            <asp:ListItem Value="E">Este</asp:ListItem>
-            <asp:ListItem Value="O">Oeste</asp:ListItem>
-        </asp:DropDownList>
-
-
-        <asp:TextBox ID="TextBox4" runat="server" Width="56px"></asp:TextBox>
-        <asp:TextBox ID="TextBox5" runat="server" Width="16px" MaxLength="1"></asp:TextBox>
-        <asp:TextBox ID="TextBox6" runat="server" Width="33px"></asp:TextBox>
-        <asp:DropDownList ID="DropDownList4" runat="server">
-            <asp:ListItem></asp:ListItem>
-            <asp:ListItem Value="N">Norte</asp:ListItem>
-            <asp:ListItem Value="S">Sur</asp:ListItem>
-            <asp:ListItem Value="E">Este</asp:ListItem>
-            <asp:ListItem Value="O">Oeste</asp:ListItem>
-        </asp:DropDownList>--%>
+     
 
         <div class="box box-default">
             <div class="box-header with-border">
