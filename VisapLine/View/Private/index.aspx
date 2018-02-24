@@ -3,30 +3,30 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-       <script type="text/javascript">
-           function donas() {
-               $.ajax({
-                   type: "POST",
-                   url: "index.aspx/GetChart",
-                   data: "{}",
-                   contentType: "application/json; charset=utf-8",
-                   dataType: "json",
-                   success: function (response) { }
-               }).done(function (response) {
-                   var aData = [{ text: 'Mes Gratuito', value: 503, color: '#CB4E00' }, { text: 'Pagado', value: 1, color: '#2F3D41' }, { text: 'Facturado', value: 491, color: '#BD0F87' }];
-                   var arr = [];
-                   $.each(aData, function (val) {
-                       var obj = {};
-                       obj.name = val.name;
-                       obj.value = val.value;
-                       obj.color = val.color;
-                       arr.push(obj);
-                   });
-                   var ctx = $("#myChart").get(0).getContext("2d");
-                   var myPieChart = new Chart(ctx).Pie(arr);
-                   }).error(function (response) { });
-               };
-               window.onload = donas;
+    <script type="text/javascript">
+        function donas() {
+            $.ajax({
+                type: "POST",
+                url: "index.aspx/GetChart",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) { }
+            }).done(function (response) {
+                var aData = [{ text: 'Mes Gratuito', value: 503, color: '#CB4E00' }, { text: 'Pagado', value: 1, color: '#2F3D41' }, { text: 'Facturado', value: 491, color: '#BD0F87' }];
+                var arr = [];
+                $.each(aData, function (val) {
+                    var obj = {};
+                    obj.name = val.name;
+                    obj.value = val.value;
+                    obj.color = val.color;
+                    arr.push(obj);
+                });
+                var ctx = $("#myChart").get(0).getContext("2d");
+                var myPieChart = new Chart(ctx).Pie(arr);
+            }).error(function (response) { });
+        };
+        window.onload = donas;
     </script>
     <section class="content-header">
         <h1>Dashboard</h1>
@@ -36,48 +36,56 @@
     </section>
     <section class="content">
 
-        <div class="row">     
+        <div class="row">
             <!-- /.col -->
-            <div class="col-md-6 col">
-                <div class="info-box bg-green">
-                    <span class="info-box-icon push-bottom"><i class="ion ion-ios-eye-outline"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Total Visits</span>
-                        <span class="info-box-number">15,489</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 40%"></div>
-                        </div>
-                        <span class="progress-description">40% Increase in 28 Days
-                        </span>
+            <div class="col-xl-3 col-md-6 col-6">
+                <!-- small box -->
+                <div class="small-box bg-purple">
+                    <div class="inner">
+                        <h3>
+                            <asp:Label ID="Label1" runat="server" Text="1"></asp:Label></h3>
+                        <p>Contratos Reg</p>
                     </div>
-                    <!-- /.info-box-content -->
+                    <div class="icon">
+                        <i class="fa fa-user-plus"></i>
+                    </div>
+                    <%-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
-                <!-- /.info-box -->
+            </div>
+            <!-- ./col -->
+            <div class="col-xl-3 col-md-6 col-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>
+                            <asp:Label ID="Label3" runat="server" Text="12"></asp:Label></h3>
+                        <p>Activos</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+                </div>
             </div>
             <div class="col-md-6 col">
-                <div class="info-box bg-red">
-                    <span class="info-box-icon push-bottom"><i class="ion-ios-chatbubble-outline"></i></span>
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>
+                            <asp:Label ID="Label2" runat="server" Text="2"></asp:Label>$</h3>
 
-                    <div class="info-box-content">
-                        <span class="info-box-text">Direct Chat</span>
-                        <span class="info-box-number">13,921</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 50%"></div>
-                        </div>
-                        <span class="progress-description">50% Increase in 28 Days
-                        </span>
+                        <p>Valor ingresos del dia</p>
                     </div>
-                    <!-- /.info-box-content -->
+                    <div class="icon">
+                        <i class="fa fa-fw fa-dollar"></i>
+                    </div>
+                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
-                <!-- /.info-box -->
             </div>
-            <!-- /.col -->
-   
 
-<%--        <br/><canvas id="myChart" width="200" height="200"></canvas>
+
+
+            <%--        <br/><canvas id="myChart" width="200" height="200"></canvas>
         <div class="row">
             <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
@@ -94,50 +102,87 @@
                 </div>
             </div>--%>
             <!-- ./col -->
+
+            <!-- ./col -->
             <div class="col-md-6 col">
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>67<sup style="font-size: 20px">%</sup></h3>
+                        <h3>
+                            <asp:Label ID="Label4" runat="server" Text="2"></asp:Label>$</h3>
 
-                        <p>Sales Rate</p>
+                        <p>Ingresos del mes</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-bar-chart"></i>
+                        <i class="fa fa-fw fa-dollar"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>
+                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
-            <!-- ./col -->
-            <div class="col-xl-3 col-md-6 col-6">
-                <!-- small box -->
-                <div class="small-box bg-purple">
-                    <div class="inner">
-                        <h3>78</h3>
 
-                        <p>Registrations</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-user-plus"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
+
+
+
             <!-- ./col -->
-            <div class="col-xl-3 col-md-6 col-6">
+              <div class="col-md-6 col">
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>65</h3>
-                        <p>New Visitors</p>
+                        <h3>
+                            <asp:Label ID="Label5" runat="server" Text="2"></asp:Label>$</h3>
+
+                        <p>Egresos del dia</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-pie-chart"></i>
+                        <i class="fa fa-fw fa-dollar"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>
+                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
-            <!-- ./col -->
+               <div class="col-md-6 col">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>
+                            <asp:Label ID="Label6" runat="server" Text="2"></asp:Label>$</h3>
+
+                        <p>Egresos del mes</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-fw fa-dollar"></i>
+                    </div>
+                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+                </div>
+            </div>
+              <div class="col-xl-3 col-md-6 col-6">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>
+                            <asp:Label ID="Label7" runat="server" Text="12"></asp:Label></h3>
+                        <p>Vecidos</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-close"></i>
+                    </div>
+                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+                </div>
+            </div>
+              <div class="col-xl-3 col-md-6 col-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>
+                            <asp:Label ID="Label8" runat="server" Text="12"></asp:Label></h3>
+                        <p>Pagos</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-fw fa-money"></i>
+                    </div>
+                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+                </div>
+            </div>
+
         </div>
     </section>
 
