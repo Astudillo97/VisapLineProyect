@@ -518,12 +518,19 @@ namespace VisapLine.View.Private
 
         protected void confimarregistro_Click(object sender, EventArgs e)
         {
+            try { 
             if (droptipoproduc.SelectedItem.Text.Equals("RADIO") || droptipoproduc.SelectedItem.Text.Equals("ONU") || droptipoproduc.SelectedItem.Text.Equals("ROUTER"))
             {
                 dtc.registrarproducto(txtserial.Text, txtdescripcion.Text, droptipoproduc.SelectedValue, txtvidautil.Text, dropmodelo.SelectedValue, txtmac.Text, txtcantidad.Text, valuecontrato);
                 cargardatosqueseusanentodolado();
                 datosdeldetalle();
                 divcaracteristicaequipo.Visible = false;
+            }
+
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('ERROR AL REGISTRAR!', 'Fallo en registar ', 'error');", true);
             }
         }
 
