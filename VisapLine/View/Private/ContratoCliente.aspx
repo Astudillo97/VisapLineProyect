@@ -90,6 +90,42 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <asp:DropDownList ID="DropDownListd" runat="server">
+                                                <asp:ListItem></asp:ListItem>
+                                                <asp:ListItem Value="Cl">Calle</asp:ListItem>
+                                                <asp:ListItem Value="Cr">Carrera</asp:ListItem>
+                                                <asp:ListItem Value="Trans">Transversal</asp:ListItem>
+                                                <asp:ListItem Value="Diag">Diagonal</asp:ListItem>
+                                                <asp:ListItem Value="Av">Avenida</asp:ListItem>
+                                                <asp:ListItem Value="AK">Avenida carrera</asp:ListItem>
+                                                <asp:ListItem Value="AC">Avenida calle</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:TextBox ID="TextBoxd" runat="server" Width="24px"> </asp:TextBox>
+                                            <asp:TextBox ID="TextBoxd2" runat="server" Width="17px" MaxLength="1"></asp:TextBox>
+                                            <asp:DropDownList ID="DropDownList2" runat="server">
+                                                <asp:ListItem></asp:ListItem>
+                                                <asp:ListItem>Bis</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:TextBox ID="TextBoxd3" runat="server" Width="17px" MaxLength="1"></asp:TextBox>
+                                            <asp:DropDownList ID="DropDownList3" runat="server">
+                                                <asp:ListItem></asp:ListItem>
+                                                <asp:ListItem Value="N">Norte</asp:ListItem>
+                                                <asp:ListItem Value="S">Sur</asp:ListItem>
+                                                <asp:ListItem Value="E">Este</asp:ListItem>
+                                                <asp:ListItem Value="O">Oeste</asp:ListItem>
+                                            </asp:DropDownList>
+
+
+                                            <asp:TextBox ID="TextBoxd5" runat="server" Width="56px"></asp:TextBox>
+                                            <asp:TextBox ID="TextBoxd6" runat="server" Width="16px" MaxLength="1"></asp:TextBox>
+                                            <asp:TextBox ID="TextBoxd7" runat="server" Width="33px"></asp:TextBox>
+                                            <asp:DropDownList ID="DropDownList4" runat="server">
+                                                <asp:ListItem></asp:ListItem>
+                                                <asp:ListItem Value="N">Norte</asp:ListItem>
+                                                <asp:ListItem Value="S">Sur</asp:ListItem>
+                                                <asp:ListItem Value="E">Este</asp:ListItem>
+                                                <asp:ListItem Value="O">Oeste</asp:ListItem>
+                                            </asp:DropDownList>
                                             <label class="col-sm-4 col-form-label">Direccion:</label>
                                             <div class="col-sm-8">
                                                 <asp:TextBox ID="TextBox1" TextMode="MultiLine" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="200px" Height="100px"></asp:TextBox>
@@ -100,9 +136,7 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-
                         <div class="box-header with-border">
                             <h3 class="box-title">Información de Residencia </h3>
                         </div>
@@ -241,8 +275,8 @@
                     <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="10" AllowPaging="True">
                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                         <Columns>
-                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" >
-<ControlStyle CssClass="glyphicon glyphicon-edit"></ControlStyle>
+                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit">
+                                <ControlStyle CssClass="glyphicon glyphicon-edit"></ControlStyle>
                             </asp:CommandField>
                             <asp:BoundField HeaderText="Codg" DataField="idplan" ItemStyle-HorizontalAlign="Center">
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
@@ -342,7 +376,7 @@
                                 </label>
                                 <textarea id="TextArea1detalleplan" runat="server" readonly="false" rows="5" resize="none" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; width: 210px; height: 115px;" required data-validation-required-message="This field is required"></textarea>
 
-                            </div>                     
+                            </div>
                         </div>
                     </div>
                 </div>

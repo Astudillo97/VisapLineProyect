@@ -11,6 +11,8 @@ namespace VisapLine.View.Private
 {
     public partial class PagContrato : System.Web.UI.Page
     {
+
+        Contrato cn = new  Contrato();
         Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,7 +21,7 @@ namespace VisapLine.View.Private
             {
                 if (!IsPostBack)
                 {
-
+                cargartabla();
 
                 }
             }
@@ -29,5 +31,20 @@ namespace VisapLine.View.Private
             }
 
         }
+        protected void cargartabla()
+        {
+            try
+            {
+                repeteidordeinventario.DataSource = cn.ConsultarContratolistado();
+                repeteidordeinventario.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
     }
 }

@@ -24,6 +24,13 @@ namespace VisapLine.View.Private
             {
                 if (!IsPostBack)
                 {
+                    string valor = Convert.ToString(Request.QueryString["key"]);
+                    if (valor == "SI")
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "guardo();", true);
+                        valor = "";
+                    }
+
                     cargartabla();
 
                 }
@@ -106,9 +113,9 @@ namespace VisapLine.View.Private
                                         FileUpload2.SaveAs(Server.MapPath("../../soportes/") + filename2);
 
                                         cargartabla();
-                                        soporteformulario.Visible = false;
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
-
+                                        string guardar = "SI";
+                                        Response.Redirect("pagsoporteclien.aspx?key=" + guardar);
+                                      
                                     }
                                     catch (Exception)
                                     {

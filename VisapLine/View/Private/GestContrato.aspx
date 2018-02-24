@@ -24,6 +24,9 @@
                 type: "success"
             });
         }
+        function gestdeletealert() {
+            swal("SE LA OPERACION SE HA REALIZADO CON EXITO!", "Se completo la operacion", "success");
+        }
         function alerterror() {
             swal("NO SE REGISTRO!", "No se registro el formulario", "error");
         }
@@ -52,7 +55,7 @@
         </ol>
     </section>
     <section class="content">
-        <div class="box box-default">
+        <div class="box box-default" id="buscador" runat="server">
             <div class="box-header with-border">
                 <h3 class="box-title">Buscar Contrato</h3>
             </div>
@@ -64,7 +67,6 @@
                             <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
                             <div class="col-sm-9">
                                 <asp:TextBox runat="server"  CssClass="form-control" ID="texboxdni" Style="text-transform: uppercase"></asp:TextBox>
-
                             </div>
                         </div>
                     </div>
@@ -156,16 +158,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Plan:</label>
-                            <div class="col-sm-8">
-                                <div class="form-group row">
-                                    <asp:DropDownList ID="DropDownListplancontrato" Enabled="false" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                        <asp:ListItem>Seleccione</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Tipo Contrato:</label>
                             <div class="col-sm-8">

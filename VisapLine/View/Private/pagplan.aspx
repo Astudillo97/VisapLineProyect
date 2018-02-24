@@ -256,6 +256,8 @@
                             </th>
                             <th style="color: white">Bajada
                             </th>
+                              <th style="color: white">Modificar
+                            </th>
                         </tr>
                     </tfoot>
 
