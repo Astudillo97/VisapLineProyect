@@ -20,7 +20,7 @@ namespace VisapLine.View.Private
         Compra comp = new Compra();
         Inventario invent = new Inventario();
         DetalleCompra dtc = new DetalleCompra();
-
+        static string valuecontrato ;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -435,7 +435,7 @@ namespace VisapLine.View.Private
                 comp.proveedor_idproveedor = Validar.validarselected(listProveedor_.SelectedValue);
                 comp.personal_idpersonal = "0";// Validar.validarsession("2");
                 DataRow dat = Validar.Consulta(comp.RegistrarCompra(comp)).Rows[0];
-                codigoCompra.InnerHtml = dat[0].ToString();
+                valuecontrato = dat[0].ToString();
                 datosdeldetalle();
 
             }
@@ -449,7 +449,7 @@ namespace VisapLine.View.Private
 
         private void datosdeldetalle()
         {
-            tablacompras.DataSource = dtc.cosultardetalle(codigoCompra.InnerHtml);
+            tablacompras.DataSource = dtc.cosultardetalle(valuecontrato);
             tablacompras.DataBind();
         }
 
@@ -463,7 +463,7 @@ namespace VisapLine.View.Private
                 invent.vidautil = Validar.validarlleno(vidautil_.Value);
                 invent.estado = Validar.validarselected(estado_.SelectedValue);
                 invent.modelo_idmodelo = Validar.validarselected(modelo_inv.SelectedValue);
-                invent.compra_idcompra = codigoCompra.InnerHtml;
+                invent.compra_idcompra = valuecontrato;
                 if (invent.RegistrarInventario(invent))
                 {
                     textError.InnerHtml = "Elemento registrado correctamente";
@@ -518,11 +518,19 @@ namespace VisapLine.View.Private
 
         protected void confimarregistro_Click(object sender, EventArgs e)
         {
+            try { 
             if (droptipoproduc.SelectedItem.Text.Equals("RADIO") || droptipoproduc.SelectedItem.Text.Equals("ONU") || droptipoproduc.SelectedItem.Text.Equals("ROUTER"))
             {
-                dtc.registrarproducto(txtserial.Text, txtdescripcion.Text, droptipoproduc.SelectedValue, txtvidautil.Text, dropmodelo.SelectedValue, txtmac.Text, txtcantidad.Text, codigoCompra.InnerHtml);
+                dtc.registrarproducto(txtserial.Text, txtdescripcion.Text, droptipoproduc.SelectedValue, txtvidautil.Text, dropmodelo.SelectedValue, txtmac.Text, txtcantidad.Text, valuecontrato);
                 cargardatosqueseusanentodolado();
                 datosdeldetalle();
+                divcaracteristicaequipo.Visible = false;
+            }
+
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('ERROR AL REGISTRAR!', 'Fallo en registar ', 'error');", true);
             }
         }
 
@@ -530,7 +538,7 @@ namespace VisapLine.View.Private
         {
             GridViewRow gvr = insumos.SelectedRow;
             TextBox textcantidad = (TextBox)gvr.FindControl("gvtxtcantidad");
-            dtc.resgistrarinsumo(codigoCompra.InnerHtml, gvr.Cells[0].Text,  textcantidad.Text);
+            dtc.resgistrarinsumo(valuecontrato, gvr.Cells[0].Text,  textcantidad.Text);
             datosdeldetalle();
             cargardatosqueseusanentodolado();
         }
@@ -541,7 +549,7 @@ namespace VisapLine.View.Private
             DataTable dt = comp.ConsultarCompraByNumero(numeropedido);
             if (dt.Rows.Count >0) {
                 rowinsertar.Visible = false;
-                codigoCompra.InnerHtml = dt.Rows[0][0].ToString();
+                valuecontrato = dt.Rows[0][0].ToString();
                 formcompra.DataSource = dt;
                 formcompra.DataBind();
                 datosdeldetalle();
