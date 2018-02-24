@@ -14,6 +14,9 @@
         function deletealert() {
             swal("EL SOPORTE FUE CARGADO CON EXITO!", "", "success");
         }
+        function guardo() {
+            swal("SE REGISTRO CON EXITO!", "La operacion se realizo con exito", "success");
+        }
         function alerterror() {
             swal("EL REGISTRO NO SE PUDO COMPLETAR EL CARGUE!", "Verifique la informacion ingresada y vuelva intentar", "error");
         }
