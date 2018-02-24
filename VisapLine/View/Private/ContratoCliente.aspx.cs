@@ -359,11 +359,6 @@ namespace VisapLine.View.Private
         {
             GridView2.PageIndex = e.NewPageIndex;
             cargartabla(Labelidtercero.Text);
-        }
-
-        protected void DropDownListtiporedenciacontrato_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        } 
     }
 }
