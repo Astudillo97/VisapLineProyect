@@ -92,10 +92,20 @@ namespace VisapLine.Model
             }
             else
             {
-                return false;  q
+                return false;  
             }
         }
-
+        public DataTable Consultarinstalacionesdeldia() {
+            return data.ConsultarDatos("select * from pr_consultarsordenesdeldia()");
+        }
+        public DataTable Consultarviablidadesdeldia()
+        {
+            return data.ConsultarDatos("select * from pr_consultarsordenesdeldia()");
+        }
+        public DataTable Consultartrabajosdeldia()
+        {
+            return data.ConsultarDatos("select * from pr_consultarsordenesdeldia()");
+        }
         public DataTable crearsolicitudes(string vartiposolicitud ,string vardetalle ,string varfechainicio ,string varfechafin ,string varmediodesolicitud ,string  vardocumento ,string varnombresolic ,string varapellidosolic ,int varservicio ,string varterceros ,bool  varrestado)
         {
             return data.ConsultarDatos("select * from pr_insertarsolicitud("+ vartiposolicitud + ",'"+ vardetalle + "','"+ varfechainicio + "','"+ varfechafin + "',current_date," + varmediodesolicitud + ",'"+ vardocumento + "','"+ varnombresolic + "','"+ varapellidosolic + "',"+ varservicio + ",'"+ varterceros + "','"+ varrestado + "')");

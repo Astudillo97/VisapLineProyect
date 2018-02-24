@@ -448,7 +448,7 @@
 
                         </div>
                         <div class="box-body col">
-                            <table class="table table-bordered table-striped table-responsive no-border" id="example">
+                            <table class="table table-bordered table-striped table-responsive no-border" id="example" >
                                 <thead>
                                     <tr>
                                         <th>DESCIPCION

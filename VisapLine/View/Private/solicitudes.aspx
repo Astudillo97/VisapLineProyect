@@ -158,7 +158,7 @@
                                                 </th>
                                                 <th style="color: white">MEDIO DE SOLICITUD
                                                 </th>
-                                                <th style="color: white">FECHA DE REGISTRO
+                                                <th style="color: white">SOLICITURD
                                                 </th>
                                                 <th style="color: white">FECHA INICIO
                                                 </th>
@@ -172,7 +172,7 @@
                                             <asp:Repeater runat="server" ID="repetidorsolicitudes">
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%#Eval("titularcol") %><span class="glyphicon glyphicon-blackboard"></span>
+                                                        <td><%#Eval("titularcol") %>
                                                         </td>
                                                         <td><%#Eval("tiposolicitudcol") %>
                                                         </td>
