@@ -29,15 +29,15 @@ namespace VisapLine.View.Private
                         listRoles.DataValueField = "idrol";
                         listRoles.DataTextField = "rol";
                         listRoles.DataBind();
-                        
+
                         if (Session["idrol"] == null)
                         {
                             listRoles.SelectedIndex = 0;
                             Session["idrol"] = listRoles.SelectedValue;
                         }
-                        listRoles.SelectedValue = Session["idrol"].ToString();             
+                        listRoles.SelectedValue = Session["idrol"].ToString();
 
-                       
+
                     }
                     CargarMenu(Session["idrol"].ToString());
                 }
@@ -119,7 +119,7 @@ namespace VisapLine.View.Private
                             HtmlGenericControl li1 = new HtmlGenericControl("li");
                             HtmlAnchor a1 = new HtmlAnchor();
                             a1.HRef = item1["href"].ToString();
-                            a1.InnerHtml= item1["nombre"].ToString();
+                            a1.InnerHtml = item1["nombre"].ToString();
                             li1.Controls.Add(a1);
                             ul.Controls.Add(li1);
                         }

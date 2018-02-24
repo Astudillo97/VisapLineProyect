@@ -80,7 +80,7 @@
                                             <asp:Label ID="Labelidtercero" runat="server" Text="" Visible="false"></asp:Label>
                                             <label class="col-sm-4 col-form-label">Nombre:</label>
                                             <div class="col-sm-8">
-                                                <asp:Label ID="Label1" runat="server" CssClass="form-control bg-gray" Width="200px" Text=""></asp:Label>
+                                                <asp:Label ID="Label1" runat="server" CssClass="form-control bg-gray" Width="200px" Height="45" Text=""></asp:Label>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -90,42 +90,6 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <asp:DropDownList ID="DropDownListd" runat="server">
-                                                <asp:ListItem></asp:ListItem>
-                                                <asp:ListItem Value="Cl">Calle</asp:ListItem>
-                                                <asp:ListItem Value="Cr">Carrera</asp:ListItem>
-                                                <asp:ListItem Value="Trans">Transversal</asp:ListItem>
-                                                <asp:ListItem Value="Diag">Diagonal</asp:ListItem>
-                                                <asp:ListItem Value="Av">Avenida</asp:ListItem>
-                                                <asp:ListItem Value="AK">Avenida carrera</asp:ListItem>
-                                                <asp:ListItem Value="AC">Avenida calle</asp:ListItem>
-                                            </asp:DropDownList>
-                                            <asp:TextBox ID="TextBoxd" runat="server" Width="24px"> </asp:TextBox>
-                                            <asp:TextBox ID="TextBoxd2" runat="server" Width="17px" MaxLength="1"></asp:TextBox>
-                                            <asp:DropDownList ID="DropDownList2" runat="server">
-                                                <asp:ListItem></asp:ListItem>
-                                                <asp:ListItem>Bis</asp:ListItem>
-                                            </asp:DropDownList>
-                                            <asp:TextBox ID="TextBoxd3" runat="server" Width="17px" MaxLength="1"></asp:TextBox>
-                                            <asp:DropDownList ID="DropDownList3" runat="server">
-                                                <asp:ListItem></asp:ListItem>
-                                                <asp:ListItem Value="N">Norte</asp:ListItem>
-                                                <asp:ListItem Value="S">Sur</asp:ListItem>
-                                                <asp:ListItem Value="E">Este</asp:ListItem>
-                                                <asp:ListItem Value="O">Oeste</asp:ListItem>
-                                            </asp:DropDownList>
-
-
-                                            <asp:TextBox ID="TextBoxd5" runat="server" Width="56px"></asp:TextBox>
-                                            <asp:TextBox ID="TextBoxd6" runat="server" Width="16px" MaxLength="1"></asp:TextBox>
-                                            <asp:TextBox ID="TextBoxd7" runat="server" Width="33px"></asp:TextBox>
-                                            <asp:DropDownList ID="DropDownList4" runat="server">
-                                                <asp:ListItem></asp:ListItem>
-                                                <asp:ListItem Value="N">Norte</asp:ListItem>
-                                                <asp:ListItem Value="S">Sur</asp:ListItem>
-                                                <asp:ListItem Value="E">Este</asp:ListItem>
-                                                <asp:ListItem Value="O">Oeste</asp:ListItem>
-                                            </asp:DropDownList>
                                             <label class="col-sm-4 col-form-label">Direccion:</label>
                                             <div class="col-sm-8">
                                                 <asp:TextBox ID="TextBox1" TextMode="MultiLine" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="200px" Height="100px"></asp:TextBox>
@@ -172,10 +136,8 @@
                                         <asp:DropDownList ID="DropDownListbarriocontrato" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                             <asp:ListItem>Seleccione</asp:ListItem>
                                         </asp:DropDownList>
-
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -192,20 +154,53 @@
                     <div class="form-element">
                         <div class="box-body">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Direccion de envio factura:</label>
-
+                                <label class="col-sm-3 col-form-label">Tipo Residencia</label>
                                 <div class="col-sm-9">
-                                    <asp:TextBox ID="TextBoxenviofactura" TextMode="MultiLine" Rows="5" Columns="15" runat="server" placeholder="CLL 27 2B-17" class="form-control" Style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 105px;"></asp:TextBox>
+                                    <asp:DropDownList ID="DropDownListtiporedenciacontrato" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="DropDownListtiporedenciacontrato_SelectedIndexChanged">
+                                        <asp:ListItem>Seleccione</asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
-
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">
-                                    Observacion:                                                       
-                                </label>
+                                <label class="col-sm-3 col-form-label">Direccion de envio factura:</label>
                                 <div class="col-sm-9">
-                                    <textarea id="TextArea1" resize="none" data-hidden-buttons="cmdBold" class="form-control" data-iconlibrary="fa" runat="server" cols="20" rows="2" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 105px;"></textarea>
-
+<%--                                    <div id="direccioncasa" runat="server" visible="false">
+                                        <asp:DropDownList ID="DropDownListd" runat="server">
+                                            <asp:ListItem></asp:ListItem>
+                                            <asp:ListItem Value="Cl">CALLE</asp:ListItem>
+                                            <asp:ListItem Value="Cr">CARRERA</asp:ListItem>
+                                            <asp:ListItem Value="Trans">TRANSVERSAL</asp:ListItem>
+                                            <asp:ListItem Value="Diag">DIAGONAL</asp:ListItem>
+                                            <asp:ListItem Value="Av">AVENIDA</asp:ListItem>
+                                            <asp:ListItem Value="AK">AVENIDA CARRERA</asp:ListItem>
+                                            <asp:ListItem Value="AC">AVENIDA CALLE</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:TextBox ID="TextBoxd" runat="server" Width="24px"> </asp:TextBox>
+                                        <asp:TextBox ID="TextBoxd2" runat="server" Width="17px" MaxLength="1"></asp:TextBox>
+                                        <asp:DropDownList ID="DropDownList2" runat="server">
+                                            <asp:ListItem></asp:ListItem>
+                                            <asp:ListItem>BIS</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:TextBox ID="TextBoxd3" runat="server" Width="17px" MaxLength="1"></asp:TextBox>
+                                        <asp:DropDownList ID="DropDownList3" runat="server">
+                                            <asp:ListItem></asp:ListItem>
+                                            <asp:ListItem Value="N">NORTE</asp:ListItem>
+                                            <asp:ListItem Value="S">SUR</asp:ListItem>
+                                            <asp:ListItem Value="E">ESTE</asp:ListItem>
+                                            <asp:ListItem Value="O">OESTE</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:TextBox ID="TextBoxd5" runat="server" Width="56px"></asp:TextBox>
+                                        <asp:TextBox ID="TextBoxd6" runat="server" Width="16px" MaxLength="1"></asp:TextBox>
+                                        <asp:TextBox ID="TextBoxd7" runat="server" Width="33px"></asp:TextBox>
+                                        <asp:DropDownList ID="DropDownList4" runat="server">
+                                            <asp:ListItem></asp:ListItem>
+                                            <asp:ListItem Value="N">NORTE</asp:ListItem>
+                                            <asp:ListItem Value="S">SUR</asp:ListItem>
+                                            <asp:ListItem Value="E">ESTE</asp:ListItem>
+                                            <asp:ListItem Value="O">OESTE</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>--%>
+                                    <asp:TextBox ID="TextBoxenviofactura" TextMode="MultiLine" Rows="5" Columns="15" runat="server" placeholder="CLL 27 2B-17" class="form-control" Style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 105px;"></asp:TextBox>
                                 </div>
                             </div>
 
@@ -221,6 +216,15 @@
                     <div class="form-element">
                         <div class="box-body">
                             <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">
+                                    Observacion:                                                       
+                                </label>
+                                <div class="col-sm-9">
+                                    <textarea id="TextArea1" resize="none" data-hidden-buttons="cmdBold" class="form-control" data-iconlibrary="fa" runat="server" cols="20" rows="2" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 105px;"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Envio de Factura</label>
                                 <div class="col-sm-9">
                                     <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true">
@@ -231,14 +235,7 @@
                                     </asp:DropDownList>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Tipo Residencia</label>
-                                <div class="col-sm-9">
-                                    <asp:DropDownList ID="DropDownListtiporedenciacontrato" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                        <asp:ListItem>Seleccione</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
+
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Estrato</label>
                                 <div class="col-sm-9">

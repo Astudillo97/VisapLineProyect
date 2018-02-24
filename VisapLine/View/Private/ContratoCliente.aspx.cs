@@ -38,21 +38,21 @@ namespace VisapLine.View.Private
         {
 
 
-            //try
-            //{
+            try
+            {
 
                 if (!IsPostBack)
                 {
 
 
-                //string valor = Convert.ToString(Request.QueryString["key"]);
-                //if (valor == null)
-                //{
-                //    Response.Redirect("RegistroTerceros.aspx");
-                //}
-                //else
-                //{
-                string valor = "222";
+                string valor = Convert.ToString(Request.QueryString["key"]);
+                if (valor == null)
+                {
+                    Response.Redirect("RegistroTerceros.aspx");
+                }
+                else
+                {
+             
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
                         dnitercero.Text = valor ;
 
@@ -93,14 +93,14 @@ namespace VisapLine.View.Private
                         Labelidtercero.Text = tercero["idterceros"].ToString();
                         cargartabla(Labelidtercero.Text);
                     }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    textError.InnerHtml = ex.Message;
-            //    Alerta.CssClass = "alert alert-error";
-            //    Alerta.Visible = true;
-            //}
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
         protected void cargartabla(string idusuario)
         {
@@ -359,6 +359,11 @@ namespace VisapLine.View.Private
         {
             GridView2.PageIndex = e.NewPageIndex;
             cargartabla(Labelidtercero.Text);
+        }
+
+        protected void DropDownListtiporedenciacontrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

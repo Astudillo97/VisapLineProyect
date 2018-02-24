@@ -812,7 +812,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="soportes\" />
+    <Folder Include="soportes\soporte_Contratos\" />
     <Folder Include="View\Public\" />
   </ItemGroup>
   <PropertyGroup>

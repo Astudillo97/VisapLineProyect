@@ -864,7 +864,6 @@ namespace VisapLine.View.Private
             else
             {
                 divsucursalempre.Visible = false;
-
             }
         }
 

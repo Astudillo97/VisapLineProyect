@@ -36,27 +36,9 @@
     </section>
     <section class="content">
 
-        <div class="row">
-            <div class="col-xl-3 col-md-6 col">
-                <div class="info-box bg-aqua">
-                    <span class="info-box-icon push-bottom"><i class="ion ion-ios-pricetag-outline"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">New Clients</span>
-                        <span class="info-box-number">450</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 45%"></div>
-                        </div>
-                        <span class="progress-description">45% Increase in 28 Days
-                        </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-            </div>
+        <div class="row">     
             <!-- /.col -->
-            <div class="col-xl-3 col-md-6 col">
+            <div class="col-md-6 col">
                 <div class="info-box bg-green">
                     <span class="info-box-icon push-bottom"><i class="ion ion-ios-eye-outline"></i></span>
 
@@ -74,27 +56,7 @@
                 </div>
                 <!-- /.info-box -->
             </div>
-            <!-- /.col -->
-            <div class="col-xl-3 col-md-6 col">
-                <div class="info-box bg-purple">
-                    <span class="info-box-icon push-bottom"><i class="ion ion-ios-cloud-download-outline"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Downloads</span>
-                        <span class="info-box-number">55,005</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 85%"></div>
-                        </div>
-                        <span class="progress-description">85% Increase in 28 Days
-                        </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-            <div class="col-xl-3 col-md-6 col">
+            <div class="col-md-6 col">
                 <div class="info-box bg-red">
                     <span class="info-box-icon push-bottom"><i class="ion-ios-chatbubble-outline"></i></span>
 
@@ -113,9 +75,9 @@
                 <!-- /.info-box -->
             </div>
             <!-- /.col -->
-        </div>
+   
 
-        <br/><canvas id="myChart" width="200" height="200"></canvas>
+<%--        <br/><canvas id="myChart" width="200" height="200"></canvas>
         <div class="row">
             <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
@@ -130,9 +92,9 @@
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>
                 </div>
-            </div>
+            </div>--%>
             <!-- ./col -->
-            <div class="col-xl-3 col-md-6 col-6">
+            <div class="col-md-6 col">
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
