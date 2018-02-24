@@ -239,7 +239,9 @@
                                             <asp:Label ID="lvldroptipoprod" runat="server">TIPO DE PRODUCTO</asp:Label>
                                         </div>
                                         <div class="col-6">
-                                            <asp:DropDownList ID="droptipoproduc" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropmodelo_SelectedIndexChanged"></asp:DropDownList>
+                                            <asp:DropDownList ID="droptipoproduc" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropmodelo_SelectedIndexChanged">
+                                                <asp:ListItem>Seleccione</asp:ListItem>
+                                            </asp:DropDownList>
                                         </div>
                                     </div>
                                     <div id="divcaracteristicaequipo" runat="server" visible="false">
