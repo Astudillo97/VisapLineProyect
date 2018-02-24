@@ -79,7 +79,9 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select * from pr_consultarsolicitudes()");
         }
 
-
+        public int consutarcontratol(string servicio) {
+           return int.Parse(data.ConsultarDatos("SELECT contrato_idcontrato FROM servicios where idservicios ="+ servicio + "").Rows[0][0].ToString()   );
+        }
     }
 
 }
