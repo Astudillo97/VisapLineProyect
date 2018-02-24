@@ -354,7 +354,6 @@
                                 </label>
                                 <div class="col-sm-9">
                                     <asp:DropDownList ID="DropDownListWIFI" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                        <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>SI</asp:ListItem>
                                         <asp:ListItem>NO</asp:ListItem>
                                     </asp:DropDownList>
@@ -489,15 +488,15 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title align-content-lg-center">¿Desea guardar el contrato y ir a servicio o solo guardar contrato?</h5>
+                        <h5 class="modal-title align-content-lg-center">¿Desea guardar el contrato y ir a servicio?</h5>
                     </div>
                     <div class="modal-footer">
                         <center>
 
                          <table>
                              <tr>
-                             <td> <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button4ontrato" Text="Guardar" OnClick="Button4ontrato_Click" Width="146px" /></td>
-                             <td> <asp:Button ID="Button2" class="btn btn-block btn-info btn-lg" OnClick="Button2_Click" runat="server" Text="Ir a Servicio" Width="146px" /></td>
+                         <%--    <td> <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button4ontrato" Text="Guardar" OnClick="Button4ontrato_Click" Width="146px" /></td>
+                         --%>    <td> <asp:Button ID="Button2" class="btn btn-block btn-info btn-lg" OnClick="Button2_Click" runat="server" Text="Ir a Servicio" Width="146px" /></td>
                         </tr>
                                  </table>
                        

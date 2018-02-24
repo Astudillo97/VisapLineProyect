@@ -336,7 +336,7 @@ namespace VisapLine.View.Private
                 {
                     contrat.terceros_idterceros = Labelidtercero.Text;
                     DataRow te = Validar.Consulta(contrat.ConsultarContratoidtercero(contrat)).Rows[0];
-                    Response.Redirect("RegistroTerceros.aspx?key=" + te["idcontrato"].ToString());
+                    Response.Redirect("servicio.aspx?key=" + te["idcontrato"].ToString());
                 }
                 else
                 {
