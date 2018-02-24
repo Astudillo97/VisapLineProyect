@@ -17,48 +17,45 @@ namespace VisapLine.View.Private
         Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
-            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
+
+
+            if (!IsPostBack)
             {
-                if (!IsPostBack)
+                string valor = Convert.ToString(Request.QueryString["key"]);
+                if (valor == null)
                 {
-                    string valor = Convert.ToString(Request.QueryString["key"]);
-                    if (valor == null)
+                    Response.Redirect("pagcaja.aspx");
+                }
+                else
+                {
+                    try
                     {
-                        Response.Redirect("pagcaja.aspx");
+                        ig.caja_idcaja_egre = valor;
+
+
+
+                        DataTable dtig = Validar.Consulta(ig.consultaringresos(ig));
+                        Repeater1.DataSource = Validar.Consulta(ig.consultaringresos(ig));
+                        Repeater1.DataBind();
                     }
-                    else
+                    catch (Exception)
                     {
-                        try
-                        {
-                            ig.caja_idcaja_egre = valor;
-                            DataTable dtig = Validar.Consulta(ig.consultaringresos(ig));
-                            GridView1.DataSource = dtig;
-                            GridView1.DataBind();
-                        }
-                        catch (Exception)
-                        {
-                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
-                        }
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                    }
 
-                        try
-                        {
-                            eg.caja_idcaja_egre = valor;
-                            DataTable dteg = Validar.Consulta(eg.consultaregresos(eg));
-                            GridView2.DataSource = dteg;
-                            GridView2.DataBind();
-                        }
-                        catch (Exception)
-                        {
+                    try
+                    {
+                        eg.caja_idcaja_egre = valor;
+                        repeteidordeinventario.DataSource = Validar.Consulta(eg.consultaregresos(eg));
+                        repeteidordeinventario.DataBind();                      
+                    }
+                    catch (Exception)
+                    {
 
-                        }
                     }
                 }
             }
-            else
-            {
-                Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
-            }
+
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)

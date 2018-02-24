@@ -36,77 +36,71 @@ namespace VisapLine.View.Private
         Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
-            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
-            {
 
-                try
+
+            //try
+            //{
+
+                if (!IsPostBack)
                 {
 
-                    if (!IsPostBack)
-                    {
 
+                //string valor = Convert.ToString(Request.QueryString["key"]);
+                //if (valor == null)
+                //{
+                //    Response.Redirect("RegistroTerceros.aspx");
+                //}
+                //else
+                //{
+                string valor = "222";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                        dnitercero.Text = valor ;
 
-                        string valor = Convert.ToString(Request.QueryString["key"]);
-                        if (valor == null)
+                        DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
+                        DropDownListpaiscontrato.DataTextField = "pais";
+                        DropDownListpaiscontrato.DataValueField = "idpais";
+                        DropDownListpaiscontrato.DataBind();
+                        DropDownListtiporedenciacontrato.DataSource = tpres.ConsultarTipoResidencia();
+                        DropDownListtiporedenciacontrato.DataTextField = "tiporesidencia";
+                        DropDownListtiporedenciacontrato.DataValueField = "idtiporesidencia";
+                        DropDownListtiporedenciacontrato.DataBind();
+                        DropDownListtipocontrato.DataSource = tpoc.ConsultarTipoContrato();
+                        DropDownListtipocontrato.DataTextField = "tipocontrato";
+                        DropDownListtipocontrato.DataValueField = "idtipocontrato";
+                        DropDownListtipocontrato.DataBind();
+                        terc.identificacion = dnitercero.Text;
+                        DataRow tercero = Validar.Consulta(terc.ConsultarTerceroDos(terc)).Rows[0];
+                        Label1.Text = tercero["nombre"].ToString();
+
+                        if (tercero["tipoterceros"].ToString() == "NATURAL" || tercero["tipoterceros"].ToString() == "EMPLEADO")
                         {
-                            Response.Redirect("RegistroTerceros.aspx");
+                            Label2.Text = tercero["apellido"].ToString();
+                            idsucursallabel.Visible = false;
+                            DropDownListsucursalcontrato.Visible = false;
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
-                            dnitercero.Text = valor;
-
-                            DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
-                            DropDownListpaiscontrato.DataTextField = "pais";
-                            DropDownListpaiscontrato.DataValueField = "idpais";
-                            DropDownListpaiscontrato.DataBind();
-                            DropDownListtiporedenciacontrato.DataSource = tpres.ConsultarTipoResidencia();
-                            DropDownListtiporedenciacontrato.DataTextField = "tiporesidencia";
-                            DropDownListtiporedenciacontrato.DataValueField = "idtiporesidencia";
-                            DropDownListtiporedenciacontrato.DataBind();
-                            DropDownListtipocontrato.DataSource = tpoc.ConsultarTipoContrato();
-                            DropDownListtipocontrato.DataTextField = "tipocontrato";
-                            DropDownListtipocontrato.DataValueField = "idtipocontrato";
-                            DropDownListtipocontrato.DataBind();
-                            terc.identificacion = dnitercero.Text;
-                            DataRow tercero = Validar.Consulta(terc.ConsultarTerceroDos(terc)).Rows[0];
-                            Label1.Text = tercero["nombre"].ToString();
-
-                            if (tercero["tipoterceros"].ToString() == "NATURAL" || tercero["tipoterceros"].ToString() == "EMPLEADO")
+                            if (tercero["tipoterceros"].ToString() == "CORPORATIVO" || tercero["tipoterceros"].ToString() == "ESPECIAL")
                             {
-                                Label2.Text = tercero["apellido"].ToString();
-                                idsucursallabel.Visible = false;
-                                DropDownListsucursalcontrato.Visible = false;
-                            }
-                            else
-                            {
-                                if (tercero["tipoterceros"].ToString() == "CORPORATIVO" || tercero["tipoterceros"].ToString() == "ESPECIAL")
-                                {
-                                    Label2.Visible = false;
-                                    idapellidolabel.Visible = false;
+                                Label2.Visible = false;
+                                idapellidolabel.Visible = false;
 
-                                    cargartablasucursal(tercero["idterceros"].ToString());
+                                cargartablasucursal(tercero["idterceros"].ToString());
 
-                                }
                             }
-                            TextBox1.Text = tercero["direccion"].ToString();
-                            Labelidtercero.Text = tercero["idterceros"].ToString();
-                            cargartabla(Labelidtercero.Text);
                         }
+                        TextBox1.Text = tercero["direccion"].ToString();
+                        Labelidtercero.Text = tercero["idterceros"].ToString();
+                        cargartabla(Labelidtercero.Text);
                     }
-                }
-                catch (Exception ex)
-                {
-                    textError.InnerHtml = ex.Message;
-                    Alerta.CssClass = "alert alert-error";
-                    Alerta.Visible = true;
-                }
-            }
-            else
-            {
-                Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
-            }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    textError.InnerHtml = ex.Message;
+            //    Alerta.CssClass = "alert alert-error";
+            //    Alerta.Visible = true;
+            //}
         }
         protected void cargartabla(string idusuario)
         {
