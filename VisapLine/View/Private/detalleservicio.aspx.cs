@@ -96,8 +96,8 @@ namespace VisapLine.View.Private
             return ser.cambiarequipo(Valor, equipo);
         }
         protected void volver_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("servicio.aspx?key="+ Valor);
+        {           
+            Response.Redirect("servicio.aspx?key="+ srv.consutarcontratol(Valor));
         }
     }
 }

@@ -32,6 +32,18 @@ $(function () {
             'csv', 'excel','pdf'
         ]
     });
+    $('.tablaexcel').DataTable({
+        'paging': true,
+        'lengthChange': true,
+        'searching': true,
+        'ordering': true,
+        'info': true,
+        'autoWidth': false,
+        dom: 'Bfrtip',
+        buttons: [
+            'excel'
+        ]
+    });
     $('#pagosdeegreso').DataTable({
         dom: 'Bfrtip',
         buttons: [

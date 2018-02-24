@@ -38,38 +38,40 @@
     </asp:Panel>
     <section class="content">
         <div class="row">
-            <asp:GridView OnSelectedIndexChanged="gridservicios_SelectedIndexChanged" OnRowDataBound="gridservicios_RowDataBound" AllowPaging="True" PageSize="6"
-                OnPageIndexChanging="gridservicios_PageIndexChanging" AutoGenerateColumns="False" runat="server"
-                ID="gridservicios" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-responsive col-md-4">
-                <AlternatingRowStyle BackColor="white" />
-                <EditRowStyle BackColor="#2461BF" />
-                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#EFF3FB" />
-                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                <Columns>
-                    <asp:BoundField HeaderText="REFEERENCIA" DataField="id" />
-                    <asp:BoundField HeaderText="FECHA DE INICIO" DataField="fechainiciocol" />
-                    <asp:BoundField HeaderText="MEGAS" DataField="cantidadmegascol" />
-                    <asp:BoundField HeaderText="ESTADO" DataField="estadocol" />
-                    <asp:BoundField HeaderText="SERVICIO" DataField="referenciascol" />
-                    <asp:BoundField HeaderText="EQUIPO" DataField="referenciaequipocol" />
-                    <asp:TemplateField ItemStyle-CssClass="btn btn-success btn-lg">
-                        <ItemTemplate>
-                            <a onclick='redireciona(<%# Eval("id") %>)'>Solicitud</a>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" ControlStyle-ForeColor="White" />
-                </Columns>
-            </asp:GridView>
+            <div class="box box-body">
+                <asp:GridView OnSelectedIndexChanged="gridservicios_SelectedIndexChanged" OnRowDataBound="gridservicios_RowDataBound" AllowPaging="True" PageSize="6"
+                    OnPageIndexChanging="gridservicios_PageIndexChanging" AutoGenerateColumns="False" runat="server"
+                    ID="gridservicios" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-responsive col-md-4">
+                    <AlternatingRowStyle BackColor="white" />
+                    <EditRowStyle BackColor="#2461BF" />
+                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#EFF3FB" />
+                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                    <Columns>
+                        <asp:BoundField HeaderText="REFEERENCIA" DataField="id" />
+                        <asp:BoundField HeaderText="FECHA DE INICIO" DataField="fechainiciocol" />
+                        <asp:BoundField HeaderText="MEGAS" DataField="cantidadmegascol" />
+                        <asp:BoundField HeaderText="ESTADO" DataField="estadocol" />
+                        <asp:BoundField HeaderText="SERVICIO" DataField="referenciascol" />
+                        <asp:BoundField HeaderText="EQUIPO" DataField="referenciaequipocol" />
+                        <asp:TemplateField ItemStyle-CssClass="btn btn-success btn-lg">
+                            <ItemTemplate>
+                                <a onclick='redireciona(<%# Eval("id") %>)'>Solicitud</a>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" ControlStyle-ForeColor="White" />
+                    </Columns>
+                </asp:GridView>
+            </div>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="box box-default">
                     <div class="box-body">
                         <div class="form-group row">
@@ -134,12 +136,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
 
-                <div style="position: absolute; width: 80%; height: 330px;" id="map"></div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div style="width: 100%; height: 330px;" id="map"></div>
+                    </div>
+                </div>
             </div>
-        </div>
 
+        </div>
 
         <div class="box box-default" id="divinternet" runat="server" visible="false">
             <div class="box-header with-border">
@@ -165,12 +171,12 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group row col">
-                                        <asp:Label ID="lvlserialasignar" runat="server" Text="EQUIPO"></asp:Label>
+                                        <asp:Label ID="lvlserialasignar" runat="server" Text="SERIAL"></asp:Label>
                                         <asp:TextBox ID="txtseralasignar" CssClass="form-control" runat="server" OnTextChanged="txtseralasignar_TextChanged"></asp:TextBox>
                                         <br />
                                     </div>
                                     <div class="form-group row col">
-                                        <asp:Label type="text" ID="Label1" runat="server" Text="EQUIPO" />
+                                        <asp:Label type="text" ID="Label1" runat="server" Text="MAC" />
                                         <asp:Label type="text" ID="identificacion" CssClass="form-control" runat="server" />
                                         <br />
                                     </div>
@@ -344,8 +350,8 @@
 
                 markers.addListener('dragend', function () {
                     document.getElementById('<%=latitud.ClientID%>').value = markers.getPosition().lat();
-                    document.getElementById('<%=longitud.ClientID%>').value = markers.getPosition().lng();
-                });
+                        document.getElementById('<%=longitud.ClientID%>').value = markers.getPosition().lng();
+                    });
             }
 
             function initMap() {
@@ -380,20 +386,20 @@
                 foreach (System.Data.DataRow item in punt.Rows)
                 {
                 %>
-                    new google.maps.Marker({
-                        position: { lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> },
-                        map: map,
-                        icon: icons['<%=item["tipo"].ToString()%>'].icon,
-                        title: '<%=item["nombre"].ToString()%>'<%cot++;%>
-                    }).addListener('click', function () {
-                        map.setZoom(15);
-                        map.setCenter({ lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> });
-                        }) <%if (cot == cont) { Response.Write(""); } else { Response.Write(","); }%>               
+                        new google.maps.Marker({
+                            position: { lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> },
+                            map: map,
+                            icon: icons['<%=item["tipo"].ToString()%>'].icon,
+                            title: '<%=item["nombre"].ToString()%>'<%cot++;%>
+                        }).addListener('click', function () {
+                            map.setZoom(15);
+                            map.setCenter({ lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> });
+                            }) <%if (cot == cont) { Response.Write(""); } else { Response.Write(","); }%>               
                 <%
                 }
             }
                   %>
-                ];
+                    ];
             }
         </script>
         <script async defer
