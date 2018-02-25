@@ -43,7 +43,7 @@
                 <div class="small-box bg-purple">
                     <div class="inner">
                         <h3>
-                            <asp:Label ID="Label1" runat="server" Text="1"></asp:Label></h3>
+                            <asp:Label ID="Labelregtro" runat="server" Text="1"></asp:Label></h3>
                         <p>Contratos Reg</p>
                     </div>
                     <div class="icon">
@@ -55,11 +55,11 @@
             <!-- ./col -->
             <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
-                <div class="small-box bg-green">
+                <div class="small-box bg-aqua">
                     <div class="inner">
                         <h3>
                             <asp:Label ID="Label3" runat="server" Text="12"></asp:Label></h3>
-                        <p>Activos</p>
+                        <p>Usuarios Activos</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-check"></i>
@@ -67,14 +67,14 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
-            <div class="col-md-6 col">
+            <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
                         <h3>
                             <asp:Label ID="Label2" runat="server" Text="2"></asp:Label>$</h3>
 
-                        <p>Valor ingresos del dia</p>
+                        <p>Ingresos del dia</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-fw fa-dollar"></i>
@@ -82,8 +82,21 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
+            <div class="col-xl-3 col-md-6 col-6">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>
+                            <asp:Label ID="Label5" runat="server" Text="2"></asp:Label>$</h3>
 
-
+                        <p>Egresos del dia</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-fw fa-dollar"></i>
+                    </div>
+                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+                </div>
+            </div>
 
             <%--        <br/><canvas id="myChart" width="200" height="200"></canvas>
         <div class="row">
@@ -124,22 +137,8 @@
 
 
             <!-- ./col -->
-              <div class="col-md-6 col">
-                <!-- small box -->
-                <div class="small-box bg-red">
-                    <div class="inner">
-                        <h3>
-                            <asp:Label ID="Label5" runat="server" Text="2"></asp:Label>$</h3>
 
-                        <p>Egresos del dia</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-fw fa-dollar"></i>
-                    </div>
-                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
-                </div>
-            </div>
-               <div class="col-md-6 col">
+            <div class="col-md-6 col">
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
@@ -154,7 +153,7 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
-              <div class="col-xl-3 col-md-6 col-6">
+            <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
@@ -168,7 +167,7 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
-              <div class="col-xl-3 col-md-6 col-6">
+            <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
@@ -182,6 +181,21 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
+            <div class="col-xl-3 col-md-6 col-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>
+                            <asp:Label ID="Label1" runat="server" Text="12"></asp:Label></h3>
+                        <p>Incidencias Abiertas</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-wrench"></i>
+                    </div>
+                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+                </div>
+            </div>
+
 
         </div>
     </section>

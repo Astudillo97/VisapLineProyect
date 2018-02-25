@@ -488,6 +488,7 @@
     <Content Include="View\Private\Gservicio.aspx" />
     <Content Include="View\Private\Incidencia.aspx" />
     <Content Include="View\Private\index.aspx" />
+    <Content Include="View\Private\Index2.aspx" />
     <Content Include="View\Private\PagCaja.aspx" />
     <Content Include="View\Private\PagContrato.aspx" />
     <Content Include="View\Private\PagEgresos.aspx" />
@@ -704,6 +705,13 @@
     </Compile>
     <Compile Include="View\Private\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Index2.aspx.cs">
+      <DependentUpon>Index2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Index2.aspx.designer.cs">
+      <DependentUpon>Index2.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\PagCaja.aspx.cs">
       <DependentUpon>PagCaja.aspx</DependentUpon>
