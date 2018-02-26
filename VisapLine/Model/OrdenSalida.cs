@@ -100,11 +100,11 @@ namespace VisapLine.Model
         }
         public DataTable Consultarviablidadesdeldia()
         {
-            return data.ConsultarDatos("select * from pr_consultarsordenesdeldia()");
+            return data.ConsultarDatos("select * from pr_consultarsordenesviabilidad()");
         }
         public DataTable Consultartrabajosdeldia()
         {
-            return data.ConsultarDatos("select * from pr_consultarsordenesdeldia()");
+            return data.ConsultarDatos("select * from pr_consultarsordenesdetrabajo()");
         }
         public DataTable crearsolicitudes(string vartiposolicitud ,string vardetalle ,string varfechainicio ,string varfechafin ,string varmediodesolicitud ,string  vardocumento ,string varnombresolic ,string varapellidosolic ,int varservicio ,string varterceros ,bool  varrestado)
         {

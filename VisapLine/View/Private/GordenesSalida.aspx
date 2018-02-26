@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" MaintainScrollPositionOnPostback="true" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Gservicio.aspx.cs" Inherits="VisapLine.View.Private.Gservicio" %>
+﻿<%@ Page Title="" MaintainScrollPositionOnPostback="true" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="GordenesSalida.aspx.cs" Inherits="VisapLine.View.Private.Gservicio" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -295,12 +295,13 @@
 
                         <div class="box box-body">
                             <div class="modal fade" id="mymodal" data-backdrop="static">
-                                <div class="modal-dialog" role="document">
+                                <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h4 class="modal-title">AGREGAR EQUIPO</h4>
                                         </div>
                                         <div class="modal-body">
+                                            <div class="row col">
                                             <asp:DropDownList CssClass="form-control dropdown-toggle" ID="droptiporduc" runat="server" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="droptiporduc_SelectedIndexChanged"></asp:DropDownList>
                                             <asp:GridView CssClass="table no-border" OnSelectedIndexChanged="inventariogrid_SelectedIndexChanged" AutoGenerateColumns="false" ID="inventariogrid" runat="server">
                                                 <Columns>
@@ -321,6 +322,7 @@
                                                     <asp:CommandField ShowSelectButton="true" ControlStyle-CssClass="btn btn-primary" SelectText="AGREGAR" />
                                                 </Columns>
                                             </asp:GridView>
+                                                </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
@@ -397,9 +399,15 @@
                                 <table class="table table-bordered table-striped table-responsive no-border tablaexcel">
                                     <thead style="background-color: #507CD1">
                                         <tr>
+                                            <th style="color: white">ESTADO
+                                            </th>
                                             <th style="color: white">CODIGO DE ORDEN
                                             </th>
                                             <th style="color: white">DIRECCION
+                                            </th>
+                                            <th style="color: white">CLIENTE
+                                            </th>
+                                            <th style="color: white">FECHA DE REGISTRO
                                             </th>
                                             <th style="color: white">OBSERVACION
                                             </th>
@@ -408,12 +416,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <asp:Repeater ID="repetidorinstalaciones" runat="server">
+                                        <asp:Repeater ID="repetidorinstalaciones" runat="server" OnItemCommand="repetidorinstalaciones_ItemCommand">
                                             <ItemTemplate>
                                                 <tr>
-                                                    <td><%#Eval("codigovaal") %>
+                                                    <td <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0?  "style='color: red'" : Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8).ToString("dd-MM-yyyy").Equals(DateTime.Now.ToString("dd-MM-yyyy"))? "style='color: orange'": "style='color: blue'" %>>
+                                                        <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0? "Atrasada" :"En Proceso " %>                        
+                                                    </td>
+                                                    <td><asp:Button ID="codigovalue" CssClass="btn btn-success" runat="server" CommandName="buscar" CommandArgument='<%#Eval("codigovaal") %>' Text='<%#Eval("codigovaal") %>' /> 
                                                     </td>
                                                     <td><%#Eval("detalleval") %>
+                                                    </td>
+                                                    <td><%#Eval("clienteval") %>
+                                                    </td>
+                                                    <td><%# Convert.ToDateTime(Eval("fecha_registroval")).ToString("dd-MM-yyyy") %>
                                                     </td>
                                                     <td><%#Eval("observacionval") %>
                                                     </td>
@@ -425,9 +440,15 @@
                                     </tbody>
                                     <tfoot style="background-color: #507CD1">
                                         <tr>
+                                            <td style="color: white">ESTADO
+                                            </td>
                                             <td style="color: white">CODIGO DE ORDEN
                                             </td>
                                             <td style="color: white">DIRECCION
+                                            </td>
+                                            <td style="color: white">CLIENTE
+                                            </td>
+                                            <td style="color: white">FECHA DE REGISTRO
                                             </td>
                                             <td style="color: white">OBSERVACION
                                             </td>
