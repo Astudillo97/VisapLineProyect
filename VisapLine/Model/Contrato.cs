@@ -84,7 +84,13 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select* from pr_consultarcontratolistado()");
         }
 
-       
+        public DataTable Consultarultimocodigo()
+        {
+            return data.ConsultarDatos("select * from pr_consultarultimocontrat()");
+        }
+      
+
+
 
     }
 }

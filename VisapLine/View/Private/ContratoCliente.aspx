@@ -58,9 +58,9 @@
             </div>
             <div class="box-body">
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Codigo:</label>
+                    <label class="col-sm-2 col-form-label">Contrato N°:</label>
                     <div class="col-sm-4">
-                        <asp:TextBox ID="TextBox4" CssClass="form-control" placeholder="" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" Enabled="false" CssClass="form-control" placeholder="" runat="server"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row">
@@ -268,6 +268,13 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Planes</h3>
                     </div>
+
+
+
+
+
+
+
                     <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="10" AllowPaging="True">
                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                         <Columns>

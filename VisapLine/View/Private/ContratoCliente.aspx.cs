@@ -92,6 +92,11 @@ namespace VisapLine.View.Private
                         TextBox1.Text = tercero["direccion"].ToString();
                         Labelidtercero.Text = tercero["idterceros"].ToString();
                         cargartabla(Labelidtercero.Text);
+                        DataRow cog = contrat.Consultarultimocodigo().Rows[0];                   
+
+                       string codgulti = cog["pr_consultarultimocontrat"].ToString() ;
+                        int codnew = Convert.ToInt32(codgulti)+1;
+                        TextBox4.Text = codnew.ToString();
                     }
                 }
             }
