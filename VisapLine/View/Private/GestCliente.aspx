@@ -33,8 +33,8 @@
     <section class="content">
         <div class="tab-pane">
             <div class="form-group row">
-                <label for="exampleInputPassword1" class="col-md-2">Identificación</label>
-                <input type="text" class="form-control col-md-6" runat="server" id="identif_" placeholder="Nit o Identificación">
+                <label for="exampleInputPassword1" class="col-md-2">Busqueda</label>
+                <input type="text" class="form-control col-md-6" runat="server" id="identif_" placeholder="Nit, Identificación, nombre, apellido, abonado">
                 <button class="btn btn-primary col-md-2" runat="server" onserverclick="ConsultarIdentif">Consultar</button>
             </div>
         </div>

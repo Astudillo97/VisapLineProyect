@@ -123,7 +123,7 @@ namespace VisapLine.View.Private
                 if (e.CommandName.ToString() == "pagarfactura")
                 {
                     string paramet = e.CommandArgument.ToString();
-                    Response.Redirect("GestPagos.aspx?codigo=" + paramet);
+                    Response.Redirect("gestpagos.aspx?codigo=" + paramet);
                 }
                 if (e.CommandName.ToString() == "correccion")
                 {
@@ -133,7 +133,7 @@ namespace VisapLine.View.Private
                 if (e.CommandName.ToString() == "editarfactura")
                 {
                     string paramet = e.CommandArgument.ToString();
-                    Response.Redirect("EditarFactura.aspx?key="+paramet);
+                    Response.Redirect("editarfactura.aspx?key="+paramet);
                 }
                 Alerta.Visible = false;
             }
