@@ -243,7 +243,6 @@ namespace VisapLine.View.Private
             try
             {
                 Terceros ter = (Terceros)Session["tercero"];
-
                 DataRow datcontcorpo = Validar.Consulta(terc.ConsultarPersonaIdenti(dnitercero.Text)).Rows[0];
                 contrat.terceros_idterceros = Validar.validarlleno(datcontcorpo["idterceros"].ToString());
                 contrat.codigo = Validar.validarlleno(TextBox4.Text.ToUpper());
@@ -303,7 +302,6 @@ namespace VisapLine.View.Private
             try
             {
                 Terceros ter = (Terceros)Session["tercero"];
-
                 DataRow datcontcorpo = Validar.Consulta(terc.ConsultarPersonaIdenti(dnitercero.Text)).Rows[0];
                 contrat.terceros_idterceros = Validar.validarlleno(datcontcorpo["idterceros"].ToString());
                 contrat.codigo = Validar.validarlleno(TextBox4.Text);

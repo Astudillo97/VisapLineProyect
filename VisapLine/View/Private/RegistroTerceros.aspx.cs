@@ -384,6 +384,7 @@ namespace VisapLine.View.Private
                 terc.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
                 terc.estrato = Validar.validarselected(DropDownListestrato.SelectedValue);
                 terc.estado = Validar.validarselected(DropDownListestado.SelectedValue);
+                Validar.Consulta(listtelefono);
 
                 ctg.identificacion = Validar.validarlleno(texboxdni.Text);
                 ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
@@ -391,22 +392,11 @@ namespace VisapLine.View.Private
 
                 if (terc.RegistrarTerceros(terc) && ctg.Registrarcargotercero(ctg))
                 {
-
                     foreach (DataRow item in listtelefono.Rows)
                     {
-                        if (listtelefono.Rows.Count > 0)
-                        {
-                            tlf.telefono = item["telefono"].ToString();
-                            tlf.terceros_idterceros = terc.identificacion;
-                            tlf.RegistrarTelefono(tlf);
-
-                        }
-                        else
-                        {
-                            textError.InnerHtml = "Por favor agregue el telefono a la lista";
-                            Alerta.CssClass = "alert alert-error";
-                            Alerta.Visible = true;
-                        }
+                        tlf.telefono = item["telefono"].ToString();
+                        tlf.terceros_idterceros = terc.identificacion;
+                        tlf.RegistrarTelefono(tlf);
                     }
                     Response.Redirect("ContratoCliente.aspx?key=" + texboxdni.Text);
                 }
@@ -414,11 +404,11 @@ namespace VisapLine.View.Private
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "nocontro();", true);
                 }
+
             }
             catch (Exception ex)
             {
                 {
-
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "errorsoft();", true);
 
                 }
@@ -660,53 +650,37 @@ namespace VisapLine.View.Private
 
                 ctg.identificacion = Validar.validarlleno(texboxdni.Text);
                 ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
+                Validar.Consulta(listtelefonocorpo);
+                Validar.Consulta(listsucursalcorpo);
+
+
+                ctg.identificacion = Validar.validarlleno(texboxdni.Text);
+                ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
 
                 if (terc.RegistrarTercerosempresatercero(terc) && ctg.Registrarcargotercero(ctg))
                 {
                     foreach (DataRow item in listtelefonocorpo.Rows)
                     {
-                        if (listtelefonocorpo.Rows.Count > 0)
-                        {
-                            tlf.telefono = item["telefono"].ToString();
-                            tlf.terceros_idterceros = terc.identificacion;
-                            tlf.RegistrarTelefono(tlf);
 
+                        tlf.telefono = item["telefono"].ToString();
+                        tlf.terceros_idterceros = terc.identificacion;
+                        tlf.RegistrarTelefono(tlf);
 
-                        }
-                        else
-                        {
-                            textError.InnerHtml = "Por favor agregue un telefono a la lista";
-                            Alerta.CssClass = "alert alert-error";
-                            Alerta.Visible = true;
-                        }
                     }
                     if (listsucursalcorpo.Rows.Count > 0)
                     {
                         foreach (DataRow item in listsucursalcorpo.Rows)
                         {
-                            if (listsucursalcorpo.Rows.Count > 0)
-                            {
-                                scsal.nombre = item["nombre"].ToString();
-                                scsal.descripcion = item["descripcion"].ToString();
-                                scsal.terceros_idterceros = terc.identificacion;
-                                scsal.direccion = item["direccion"].ToString();
-                                scsal.barrios_idbarrios = item["barrio"].ToString();
-                                scsal.Registrarsucursal(scsal);
 
-
-                            }
-                            else
-                            {
-                                textError.InnerHtml = "Por favor agregue un telefono a la lista";
-                                Alerta.CssClass = "alert alert-error";
-                                Alerta.Visible = true;
-                            }
+                            scsal.nombre = item["nombre"].ToString();
+                            scsal.descripcion = item["descripcion"].ToString();
+                            scsal.terceros_idterceros = terc.identificacion;
+                            scsal.direccion = item["direccion"].ToString();
+                            scsal.barrios_idbarrios = item["barrio"].ToString();
+                            scsal.Registrarsucursal(scsal);
                         }
+                        Response.Redirect("ContratoCliente.aspx?key=" + texboxdni.Text);
                     }
-
-
-                    Response.Redirect("ContratoCliente.aspx?key=" + texboxdni.Text);
-
                 }
                 else
                 {
@@ -945,51 +919,33 @@ namespace VisapLine.View.Private
                 ctg.identificacion = Validar.validarlleno(texboxdni.Text);
                 ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
 
+
+                Validar.Consulta(listtelefonoempre);
+                Validar.Consulta(listsucursalempre);
+
                 if (terc.RegistrarTercerosempresatercero(terc) && ctg.Registrarcargotercero(ctg))
                 {
-                    foreach (DataRow item in listtelefonocorpo.Rows)
-                    {
-                        if (listtelefonocorpo.Rows.Count > 0)
-                        {
-                            tlf.telefono = item["telefono"].ToString();
-                            tlf.terceros_idterceros = terc.identificacion;
-                            tlf.RegistrarTelefono(tlf);
-                        }
-                        else
-                        {
-                            textError.InnerHtml = "Por favor agregue un telefono a la lista";
-                            Alerta.CssClass = "alert alert-error";
-                            Alerta.Visible = true;
-                        }
 
+                    foreach (DataRow item in listtelefonoempre.Rows)
+                    {
+                        tlf.telefono = item["telefono"].ToString();
+                        tlf.terceros_idterceros = terc.identificacion;
+                        tlf.RegistrarTelefono(tlf);
                     }
                     if (listsucursalempre.Rows.Count > 0)
                     {
                         foreach (DataRow item in listsucursalempre.Rows)
                         {
-                            if (listsucursalempre.Rows.Count > 0)
-                            {
-                                scsal.nombre = item["nombre"].ToString();
-                                scsal.descripcion = item["descripcion"].ToString();
-                                scsal.terceros_idterceros = terc.identificacion;
-                                scsal.direccion = item["direccion"].ToString();
-                                scsal.barrios_idbarrios = item["barrio"].ToString();
-                                scsal.Registrarsucursal(scsal);
-
-
-                            }
-                            else
-                            {
-                                textError.InnerHtml = "Por favor agregue un telefono a la lista";
-                                Alerta.CssClass = "alert alert-error";
-                                Alerta.Visible = true;
-                            }
+                            scsal.nombre = item["nombre"].ToString();
+                            scsal.descripcion = item["descripcion"].ToString();
+                            scsal.terceros_idterceros = terc.identificacion;
+                            scsal.direccion = item["direccion"].ToString();
+                            scsal.barrios_idbarrios = item["barrio"].ToString();
+                            scsal.Registrarsucursal(scsal);
                         }
                     }
 
                     Response.Redirect("ContratoCliente.aspx?key=" + texboxdni.Text);
-
-
                 }
                 else
                 {

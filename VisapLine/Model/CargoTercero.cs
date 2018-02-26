@@ -19,7 +19,7 @@ namespace VisapLine.Model
 
         public bool Registrarcargotercero(CargoTercero cgt)
         {
-            return data.OperarDatos("select * from pr_insertarcargotercero('"+ cgt.tipotercero_idtipotercero + "','"+cgt.tercero_idtercero+"')");
+            return data.OperarDatos("select * from pr_insertarcargotercero('" + cgt.tipotercero_idtipotercero + "','" + cgt.identificacion+ "')");
         }
         public DataTable ConsultarCargoIdentifi(CargoTercero ct)
         {

@@ -23,7 +23,7 @@
             swal("NO SE REGISTRO!", "No se registro el formulario", "error");
         }
         function nocontro() {
-            swal("NO SE ENCOTRO NINGUN REGISTRO!", "Debe registrar el cliente", "error");
+            swal("NO SE ENCONTRO NINGUN REGISTRO!", "Registra por favor el cliente", "success");
         }
         function errorsoft() {
             swal("NO SE COMPLETO TODO EL FORMULARIO!", "Verficar los campos", "error");
