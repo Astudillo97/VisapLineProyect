@@ -29,6 +29,8 @@ namespace VisapLine.View.Private
                 gridbusqueda.DataSource = ord.ConsultarEstado(false);
                 gridbusqueda.DataBind();
                 llenarinstlaciones();
+                llenarViabilidades();
+                llenarTrabajos();
             }
         }
 
@@ -282,6 +284,15 @@ namespace VisapLine.View.Private
             TextBox tcant = (TextBox)row.Cells[2].FindControl("txbcanti");
             dsord.insertardetallesalida(tcant.Text, row.Cells[0].Text, valosal);
             llenardetalle();
+        }
+
+        protected void repetidorinstalaciones_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("buscar")) {
+                valosal = e.CommandArgument.ToString();
+                NewMethod(e.CommandArgument.ToString());
+                
+            }
         }
 
         protected void gridbusqueda_PageIndexChanging(object sender, GridViewPageEventArgs e)

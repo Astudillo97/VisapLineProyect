@@ -8,6 +8,9 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <asp:ScriptManager runat="server" ID="scripdatalle"></asp:ScriptManager>
     <script type="text/javascript">
+        function openModal() {
+            $('#mymodal2').modal('show');
+        }
         function dialog(ctl, event, cosa) {
             event.preventDefault();
             swal({
@@ -246,6 +249,9 @@
                             <h4 class="modal-title">SELECCIONAR EQUIPO <span class="glyphicon glyphicon-edit"></span></h4>
                         </div>
                         <div class="modal-body">
+                            <asp:TextBox ID="macnnuevoequipo" runat="server" ></asp:TextBox>
+
+                            <asp:button id="agregarEquipo" runat="server" OnClick="agregarEquipo_Click" Text="AGREGAR NUEVO"></asp:button>
                             <table class="table no-border table-striped table-responsive" id="example1">
                                 <thead style="background-color: #0198f4;">
                                     <tr>
