@@ -90,19 +90,19 @@
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Nombre:</label>
                                     <div class="col-sm-8">
-                                        <asp:Label ID="Label1" runat="server" CssClass="form-control bg-gray" Text=""></asp:Label>
+                                        <asp:Label ID="Label1" runat="server" CssClass="form-control bg-gray" height="45px" Width="200px" Text=""></asp:Label>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Apellido:</label>
                                     <div class="col-sm-8">
-                                        <asp:Label ID="Label2" CssClass="form-control bg-gray" runat="server" Text=""></asp:Label>
+                                        <asp:Label ID="Label2" CssClass="form-control bg-gray" runat="server" height="45px" Width="200px" Text=""></asp:Label>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Direccion:</label>
                                     <div class="col-sm-8">
-                                        <asp:TextBox ID="TextBox1" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="140px" Height="100px"></asp:TextBox>
+                                        <asp:TextBox ID="TextBox1" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="200px" Height="100px"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>

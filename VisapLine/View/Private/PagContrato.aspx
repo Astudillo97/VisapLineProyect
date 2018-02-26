@@ -115,7 +115,7 @@
                                     <th>
                                         <a href="servicio.aspx?key=<%#Eval("idcontrato")%>" class="glyphicon glyphicon-edit">Edit:Servicio</a>
 
-                                        <a href="GestContrato.aspx?iCnt=<%#Eval("codigo")%>" class="glyphicon glyphicon-edit">Edit:Contrato</a>
+                                        <a href="gestcontrato.aspx?iCnt=<%#Eval("codigo")%>" class="glyphicon glyphicon-edit">Edit:Contrato</a>
 
                                     </th>
 
