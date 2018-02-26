@@ -20,13 +20,13 @@
 
             var icons = {
                 Radio: {
-                    icon: '../../Contenido/radio.png'
+                    icon: 'http://191.102.85.252:30000/Contenido/radio.png'
                 },
                 Fibra: {
-                    icon: '../../Contenido/fibra.png'
+                    icon: 'http://191.102.85.252:30000/Contenido/fibra.png'
                 },
                 Indefinido: {
-                    icon: '../../Contenido/indefinido.png'
+                    icon: 'http://191.102.85.252:30000/Contenido/indefinido.png'
                 }
             };
 
