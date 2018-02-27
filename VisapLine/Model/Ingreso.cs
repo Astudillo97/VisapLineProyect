@@ -5,8 +5,6 @@ using System.Web;
 using VisapLine.DataAccess.Data;
 using VisapLine.DataAccess.Connection;
 using System.Data;
-using VisapLine.DataAccess.Data;
-using VisapLine.DataAccess.Connection;
 
 
 namespace VisapLine.Model
