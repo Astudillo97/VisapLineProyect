@@ -367,8 +367,18 @@
     <Content Include="Contenido\nuestra-empresa.jpg" />
     <Content Include="Contenido\radio.png" />
     <Content Include="index.html" />
+    <Content Include="soportes\barcode.gif" />
+    <Content Include="soportes\blog_pic1.jpg" />
+    <Content Include="soportes\blog_pic2.jpg" />
+    <Content Include="soportes\c1.jpg" />
+    <Content Include="soportes\c2.jpg" />
+    <Content Include="soportes\c3.jpg" />
+    <Content Include="soportes\Captura de pantalla %281%29.png" />
+    <Content Include="soportes\image2 %281%29.JPG" />
     <Content Include="View\Private\Admin.Master" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <Content Include="soportes\Horario_MATEO  CEBALLOS BERMUDEZ_85949.pdf" />
+    <Content Include="soportes\Windows_Server_2016_Secure_Evolve_Innovate_Solution_Brief_EN_US.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

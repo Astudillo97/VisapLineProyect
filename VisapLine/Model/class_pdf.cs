@@ -93,7 +93,7 @@ namespace VisapLine.Model
                 descripcion.Add(empresaweb);
 
                 ////Celda derecha de facturacion
-                Cell factura = new Cell().SetWidth(UnitValue.CreatePercentValue(45));
+                Cell factura = new Cell().SetWidth(UnitValue.CreatePercentValue(45)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
 
                 Table subfactura = new Table(2).SetWidth(UnitValue.CreatePercentValue(100));
 
@@ -176,7 +176,7 @@ namespace VisapLine.Model
                 Paragraph tercerotelefono = new Paragraph("TELEFONOS: " + vartelef);
                 informtercero.Add(terceronombre).Add(terceroidentficacion).Add(tercerodireccion).Add(tercerotelefono);
 
-                Table tableinformacionfactura = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetMarginTop(10).SetBold().SetBorder(new SolidBorder(1));
+                Table tableinformacionfactura = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetMarginTop(10).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
 
                 Cell informfactura = new Cell().SetWidth(UnitValue.CreatePercentValue(50)).SetBorder(Border.NO_BORDER);
                 Paragraph limitepago = new Paragraph("Fecha Limite de pago:").SetFontSize(10f);
@@ -200,7 +200,7 @@ namespace VisapLine.Model
                 doc.Add(encabezado);
                 //-------------Contenido de la Factura: Descripcion de la facturación------------------------ 
                 //-------------------------------------------------------------------------------------------
-                Table tableDescripcion = new Table(4).SetMarginTop(8f).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8).SetBorder(new SolidBorder(1));
+                Table tableDescripcion = new Table(4).SetMarginTop(8f).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
                 Cell descrpcion = new Cell().Add(new Paragraph("DESCRIPCIÓN")).SetWidth(UnitValue.CreatePercentValue(50));
                 Cell cantidad = new Cell().Add(new Paragraph("CANTIDAD")).SetWidth(UnitValue.CreatePercentValue(16));
                 Cell valorunitario = new Cell().Add(new Paragraph("VALOR UNITARIO")).SetWidth(UnitValue.CreatePercentValue(17));
@@ -232,22 +232,22 @@ namespace VisapLine.Model
 
                 doc.Add(tableDescripcion);
                 //Generacion de subtotales
-                Table totales = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8f).SetBorder(Border.NO_BORDER).SetTextAlignment(TextAlignment.RIGHT);
+                Table totales = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8f).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)).SetTextAlignment(TextAlignment.RIGHT);
 
                 Cell cel1 = new Cell().SetWidth(UnitValue.CreatePercentValue(66)).SetBorder(Border.NO_BORDER);
-                Table totales1 = new Table(2).SetWidth(UnitValue.CreatePercentValue(60)).SetBorder(new SolidBorder(1)).SetTextAlignment(TextAlignment.RIGHT);
-                totales1.AddCell(new Cell().Add(new Paragraph("Total Factura")).SetWidth(UnitValue.CreatePercentValue(50))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(Convert.ToDouble(datos["valorfac"].ToString()) + Convert.ToDouble(datos["ivafac"].ToString())).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
-                totales1.AddCell(new Cell().Add(new Paragraph("Saldo Anterior"))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos["saldofac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
-                totales1.AddCell(new Cell().Add(new Paragraph("SALDO ACTUAL").SetFontSize(10))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos["totalfac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO"))).SetFontSize(10).SetBold()));
+                Table totales1 = new Table(2).SetWidth(UnitValue.CreatePercentValue(60)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)).SetTextAlignment(TextAlignment.RIGHT);
+                totales1.AddCell(new Cell().Add(new Paragraph("Total Factura")).SetWidth(UnitValue.CreatePercentValue(50)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(Convert.ToDouble(datos["valorfac"].ToString()) + Convert.ToDouble(datos["ivafac"].ToString())).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)));
+                totales1.AddCell(new Cell().Add(new Paragraph("Saldo Anterior")).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos["saldofac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)));
+                totales1.AddCell(new Cell().Add(new Paragraph("SALDO ACTUAL").SetFontSize(10)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos["totalfac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO"))).SetFontSize(10).SetBold())).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
                 cel1.Add(totales1);
                 cel1.Add(new Cell().Add(new Paragraph("SEÑOR USUARIO LE RECORDAMOS QUE LA SUSPENCIÓN DEL SERVICIO POR NO PAGO " +
                     "GENERA COBRO DE RECONEXIÓN, PARA EL SERVICIO DE BANDA ANCHA TENDRA UN VALOR DE $11.900 MÁS IVA, " +
                     " LO INVITAMOS A REALIZAR EL PAGO OPORTUNO DE SU FACTURA.").SetFontSize(6)).SetWidth(UnitValue.CreatePercentValue(100))).SetTextAlignment(TextAlignment.CENTER);
                 Cell cel2 = new Cell().SetWidth(UnitValue.CreatePercentValue(34)).SetBorder(Border.NO_BORDER);
-                Table totales2 = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(9).SetTextAlignment(TextAlignment.RIGHT);
-                totales2.AddCell(new Cell().Add(new Paragraph("subtotal")).SetWidth(UnitValue.CreatePercentValue(50))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos["valorfac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
-                totales2.AddCell(new Cell().Add(new Paragraph("IVA(" + datos["iva"].ToString() + "%)"))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos["ivafac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
-                totales2.AddCell(new Cell().Add(new Paragraph("TOTAL FACTURA").SetFontSize(10))).AddCell(new Cell().Add(new Paragraph(Convert.ToString(Convert.ToDouble(Convert.ToDouble(datos["valorfac"].ToString()) + Convert.ToDouble(datos["ivafac"].ToString())).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBold().SetFontSize(10)));
+                Table totales2 = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(9).SetTextAlignment(TextAlignment.RIGHT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+                totales2.AddCell(new Cell().Add(new Paragraph("Subtotal")).SetWidth(UnitValue.CreatePercentValue(50)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos["valorfac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)));
+                totales2.AddCell(new Cell().Add(new Paragraph("IVA(" + datos["iva"].ToString() + "%)")).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos["ivafac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)));
+                totales2.AddCell(new Cell().Add(new Paragraph("TOTAL FACTURA").SetFontSize(10)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1))).AddCell(new Cell().Add(new Paragraph(Convert.ToString(Convert.ToDouble(Convert.ToDouble(datos["valorfac"].ToString()) + Convert.ToDouble(datos["ivafac"].ToString())).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBold().SetFontSize(10)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)));
                 cel2.Add(totales2);
                 cel2.Add(new Paragraph(Validar.enletras(Convert.ToString(Convert.ToDouble(datos["valorfac"].ToString()) + Convert.ToDouble(datos["ivafac"].ToString())))).SetFontSize(10).SetBorder(Border.NO_BORDER).SetFontSize(8));
                 totales.AddCell(cel1).AddCell(cel2);
@@ -264,7 +264,7 @@ namespace VisapLine.Model
                 doc.Add(normativa);
 
                 ////Pie de pagina
-                Table linea = new Table(1).SetBorderTop(new SolidBorder(1)).SetWidth(UnitValue.CreatePercentValue(100)).SetMarginBottom(15).SetMarginTop(15);
+                Table linea = new Table(1).SetBorderTop(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)).SetWidth(UnitValue.CreatePercentValue(100)).SetMarginBottom(15).SetMarginTop(15);
                 doc.Add(linea);
 
                 //Inicio de la parte baja de la factura
@@ -325,7 +325,7 @@ namespace VisapLine.Model
                 Document doc = new Document(documento, PageSize.LETTER);
                 for (int j = 0; j < datos.Rows.Count; j++)
                 {
-                    if (datos.Rows[j]["enviofactura"].ToString() == condicion && (datos.Rows[j]["estadof"].ToString()=="Facturado"|| datos.Rows[j]["estadof"].ToString() == "Prorateo" || datos.Rows[j]["estadof"].ToString() == "Abonado"))
+                    if (datos.Rows[j]["enviofactura"].ToString() == condicion && (datos.Rows[j]["estadof"].ToString()=="Facturado"|| datos.Rows[j]["estadof"].ToString() == "Prorateo"))
                     {
 
 
@@ -356,7 +356,7 @@ namespace VisapLine.Model
                         descripcion.Add(empresaweb);
 
                         ////Celda derecha de facturacion
-                        Cell factura = new Cell().SetWidth(UnitValue.CreatePercentValue(45));
+                        Cell factura = new Cell().SetWidth(UnitValue.CreatePercentValue(45)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
 
                         Table subfactura = new Table(2).SetWidth(UnitValue.CreatePercentValue(100));
 
@@ -429,7 +429,7 @@ namespace VisapLine.Model
                         Paragraph tercerotelefono = new Paragraph("TELEFONOS: " + vartelef);
                         informtercero.Add(terceronombre).Add(terceroidentficacion).Add(tercerodireccion).Add(tercerotelefono);
 
-                        Table tableinformacionfactura = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetMarginTop(10).SetBold().SetBorder(new SolidBorder(1));
+                        Table tableinformacionfactura = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetMarginTop(10).SetBold().SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
 
                         Cell informfactura = new Cell().SetWidth(UnitValue.CreatePercentValue(50)).SetBorder(Border.NO_BORDER);
                         Paragraph limitepago = new Paragraph("Fecha Limite de pago:").SetFontSize(10f);
@@ -453,7 +453,7 @@ namespace VisapLine.Model
                         doc.Add(encabezado);
                         //-------------Contenido de la Factura: Descripcion de la facturación------------------------ 
                         //-------------------------------------------------------------------------------------------
-                        Table tableDescripcion = new Table(4).SetMarginTop(8f).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8).SetBorder(new SolidBorder(1));
+                        Table tableDescripcion = new Table(4).SetMarginTop(8f).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
                         Cell descrpcion = new Cell().Add(new Paragraph("DESCRIPCIÓN")).SetWidth(UnitValue.CreatePercentValue(50));
                         Cell cantidad = new Cell().Add(new Paragraph("CANTIDAD")).SetWidth(UnitValue.CreatePercentValue(16));
                         Cell valorunitario = new Cell().Add(new Paragraph("VALOR UNITARIO")).SetWidth(UnitValue.CreatePercentValue(17));
@@ -485,22 +485,22 @@ namespace VisapLine.Model
 
                         doc.Add(tableDescripcion);
                         //Generacion de subtotales
-                        Table totales = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8f).SetBorder(Border.NO_BORDER).SetTextAlignment(TextAlignment.RIGHT);
+                        Table totales = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(8f).SetBorder(Border.NO_BORDER).SetTextAlignment(TextAlignment.RIGHT).SetBorderTop(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
 
-                        Cell cel1 = new Cell().SetWidth(UnitValue.CreatePercentValue(66)).SetBorder(Border.NO_BORDER);
-                        Table totales1 = new Table(2).SetWidth(UnitValue.CreatePercentValue(60)).SetBorder(new SolidBorder(1)).SetTextAlignment(TextAlignment.RIGHT);
-                        totales1.AddCell(new Cell().Add(new Paragraph("Total Factura")).SetWidth(UnitValue.CreatePercentValue(50))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(Convert.ToDouble(datos.Rows[j]["valorfac"].ToString()) + Convert.ToDouble(datos.Rows[j]["ivafac"].ToString())).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
-                        totales1.AddCell(new Cell().Add(new Paragraph("Saldo Anterior"))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos.Rows[j]["saldofac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
-                        totales1.AddCell(new Cell().Add(new Paragraph("SALDO ACTUAL").SetFontSize(10))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos.Rows[j]["totalfac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO"))).SetFontSize(10).SetBold()));
+                        Cell cel1 = new Cell().SetWidth(UnitValue.CreatePercentValue(66)).SetBorder(Border.NO_BORDER).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+                        Table totales1 = new Table(2).SetBorderTop(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)).SetWidth(UnitValue.CreatePercentValue(60)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)).SetTextAlignment(TextAlignment.RIGHT);
+                        totales1.AddCell(new Cell().Add(new Paragraph("Total Factura")).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)).SetWidth(UnitValue.CreatePercentValue(50))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(Convert.ToDouble(datos.Rows[j]["valorfac"].ToString()) + Convert.ToDouble(datos.Rows[j]["ivafac"].ToString())).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)));
+                        totales1.AddCell(new Cell().Add(new Paragraph("Saldo Anterior")).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos.Rows[j]["saldofac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)));
+                        totales1.AddCell(new Cell().Add(new Paragraph("SALDO ACTUAL").SetFontSize(10)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos.Rows[j]["totalfac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO"))).SetFontSize(10).SetBold()).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)));
                         cel1.Add(totales1);
                         cel1.Add(new Cell().Add(new Paragraph("SEÑOR USUARIO LE RECORDAMOS QUE LA SUSPENCIÓN DEL SERVICIO POR NO PAGO " +
                             "GENERA COBRO DE RECONEXIÓN, PARA EL SERVICIO DE BANDA ANCHA TENDRA UN VALOR DE $11.900 MÁS IVA, " +
                             " LO INVITAMOS A REALIZAR EL PAGO OPORTUNO DE SU FACTURA.").SetFontSize(6)).SetWidth(UnitValue.CreatePercentValue(100))).SetTextAlignment(TextAlignment.CENTER);
-                        Cell cel2 = new Cell().SetWidth(UnitValue.CreatePercentValue(34)).SetBorder(Border.NO_BORDER);
-                        Table totales2 = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(9).SetTextAlignment(TextAlignment.RIGHT);
-                        totales2.AddCell(new Cell().Add(new Paragraph("subtotal")).SetWidth(UnitValue.CreatePercentValue(50))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos.Rows[j]["valorfac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
-                        totales2.AddCell(new Cell().Add(new Paragraph("IVA(" + datos.Rows[j]["iva"].ToString() + "%)"))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos.Rows[j]["ivafac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))));
-                        totales2.AddCell(new Cell().Add(new Paragraph("TOTAL FACTURA").SetFontSize(10))).AddCell(new Cell().Add(new Paragraph(Convert.ToString(Convert.ToDouble(Convert.ToDouble(datos.Rows[j]["valorfac"].ToString()) + Convert.ToDouble(datos.Rows[j]["ivafac"].ToString())).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBold().SetFontSize(10)));
+                        Cell cel2 = new Cell().SetWidth(UnitValue.CreatePercentValue(34)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+                        Table totales2 = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(9).SetTextAlignment(TextAlignment.RIGHT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+                        totales2.AddCell(new Cell().Add(new Paragraph("Subtotal")).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)).SetWidth(UnitValue.CreatePercentValue(50))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos.Rows[j]["valorfac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)));
+                        totales2.AddCell(new Cell().Add(new Paragraph("IVA(" + datos.Rows[j]["iva"].ToString() + "%)")).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos.Rows[j]["ivafac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)));
+                        totales2.AddCell(new Cell().Add(new Paragraph("TOTAL FACTURA").SetFontSize(10)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1))).AddCell(new Cell().Add(new Paragraph(Convert.ToString(Convert.ToDouble(Convert.ToDouble(datos.Rows[j]["valorfac"].ToString()) + Convert.ToDouble(datos.Rows[j]["ivafac"].ToString())).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO")))).SetBold().SetFontSize(10)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)));
                         cel2.Add(totales2);
                         cel2.Add(new Paragraph(Validar.enletras(Convert.ToString(Convert.ToDouble(datos.Rows[j]["valorfac"].ToString()) + Convert.ToDouble(datos.Rows[j]["ivafac"].ToString())))).SetFontSize(10).SetBorder(Border.NO_BORDER).SetFontSize(8));
                         totales.AddCell(cel1).AddCell(cel2);
@@ -517,7 +517,7 @@ namespace VisapLine.Model
                         doc.Add(normativa);
 
                         ////Pie de pagina
-                        Table linea = new Table(1).SetBorderTop(new SolidBorder(1)).SetWidth(UnitValue.CreatePercentValue(100)).SetMarginBottom(15).SetMarginTop(15);
+                        Table linea = new Table(1).SetBorderTop(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1)).SetWidth(UnitValue.CreatePercentValue(100)).SetMarginBottom(15).SetMarginTop(15);
                         doc.Add(linea);
 
                         //Inicio de la parte baja de la factura
