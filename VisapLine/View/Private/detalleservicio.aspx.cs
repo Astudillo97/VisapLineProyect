@@ -99,5 +99,10 @@ namespace VisapLine.View.Private
         {           
             Response.Redirect("servicio.aspx?key="+ srv.consutarcontratol(Valor));
         }
+
+        protected void agregarEquipo_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this,this.GetType(),"pop", "openModal()", true);
+        }
     }
 }
