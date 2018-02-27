@@ -164,7 +164,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Direccion de envio factura:</label>
                                 <div class="col-sm-9">
-                                    <%--                                    <div id="direccioncasa" runat="server" visible="false">
+                                    <%--<div id="direccioncasa" runat="server" visible="false">
                                         <asp:DropDownList ID="DropDownListd" runat="server">
                                             <asp:ListItem></asp:ListItem>
                                             <asp:ListItem Value="Cl">CALLE</asp:ListItem>

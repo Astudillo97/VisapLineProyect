@@ -52,10 +52,8 @@ namespace VisapLine.View.Private
                     }
                     else
                     {
-
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
                         dnitercero.Text = valor;
-
                         DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
                         DropDownListpaiscontrato.DataTextField = "pais";
                         DropDownListpaiscontrato.DataValueField = "idpais";
@@ -68,7 +66,7 @@ namespace VisapLine.View.Private
                         cargarBarrios(DropDownListmunicipiocontrato.SelectedValue);
 
 
-                
+
                         DropDownListtiporedenciacontrato.DataSource = tpres.ConsultarTipoResidencia();
                         DropDownListtiporedenciacontrato.DataTextField = "tiporesidencia";
                         DropDownListtiporedenciacontrato.DataValueField = "idtiporesidencia";
@@ -437,7 +435,7 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
 
             }
-       
+
 
         }
 
