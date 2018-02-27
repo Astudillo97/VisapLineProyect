@@ -464,6 +464,8 @@ namespace VisapLine.View.Private
                 invent.estado = Validar.validarselected(estado_.SelectedValue);
                 invent.modelo_idmodelo = Validar.validarselected(modelo_inv.SelectedValue);
                 invent.compra_idcompra = valuecontrato;
+                invent.mac = mac_.Value;
+                invent.serial = serial_.Value;
                 if (invent.RegistrarInventario(invent))
                 {
                     textError.InnerHtml = "Elemento registrado correctamente";
