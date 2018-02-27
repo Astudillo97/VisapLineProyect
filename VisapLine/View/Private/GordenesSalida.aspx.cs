@@ -10,7 +10,7 @@ using System.Web.Services;
 
 namespace VisapLine.View.Private
 {
-    public partial class Gservicio : System.Web.UI.Page
+    public partial class GordenesSalida : System.Web.UI.Page
     {
         public static string fecha1 = "", fecha2 = "";
         OrdenSalida ord = new OrdenSalida();
