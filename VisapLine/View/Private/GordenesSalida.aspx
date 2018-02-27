@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" MaintainScrollPositionOnPostback="true" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="GordenesSalida.aspx.cs" Inherits="VisapLine.View.Private.Gservicio" %>
+﻿<%@ Page Title="" MaintainScrollPositionOnPostback="true" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="GordenesSalida.aspx.cs" Inherits="VisapLine.View.Private.GordenesSalida" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -23,7 +23,7 @@
             }, function () {
                 $.ajax({
                     type: "POST",
-                    url: "Gservicio.aspx/cerrarord_Click",
+                    url: "GordenesSalida.aspx/cerrarord_Click",
                     data: '{}',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
