@@ -253,7 +253,7 @@
                                         <div class="form-group row" id="divnacimiento">
                                             <label class="col-sm-3 col-form-label">Expedido</label>
                                             <div class="col-sm-9">
-                                                <input type="date" class="form-control" id="fecnac_" runat="server" placeholder="Fecha expedición">
+                                                <input type="date" class="form-control" id="fecnac_" runat="server" placeholder="Nacimiento">
                                             </div>
                                         </div>
                                         <div class="form-group row" id="divnombre">
