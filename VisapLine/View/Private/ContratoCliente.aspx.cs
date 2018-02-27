@@ -45,21 +45,30 @@ namespace VisapLine.View.Private
                 {
 
 
-                string valor = Convert.ToString(Request.QueryString["key"]);
-                if (valor == null)
-                {
-                    Response.Redirect("RegistroTerceros.aspx");
-                }
-                else
-                {
-             
+                    string valor = Convert.ToString(Request.QueryString["key"]);
+                    if (valor == null)
+                    {
+                        Response.Redirect("RegistroTerceros.aspx");
+                    }
+                    else
+                    {
+
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
-                        dnitercero.Text = valor ;
+                        dnitercero.Text = valor;
 
                         DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
                         DropDownListpaiscontrato.DataTextField = "pais";
                         DropDownListpaiscontrato.DataValueField = "idpais";
+                        DropDownListpaiscontrato.SelectedValue = "1";
                         DropDownListpaiscontrato.DataBind();
+                        cargarDepartamentos(DropDownListpaiscontrato.SelectedValue);
+                        DropDownListdepartamentocontrato.SelectedValue = "2";
+                        cargarMunicipios(DropDownListdepartamentocontrato.SelectedValue);
+                        DropDownListmunicipiocontrato.SelectedValue = "1";
+                        cargarBarrios(DropDownListmunicipiocontrato.SelectedValue);
+
+
+                
                         DropDownListtiporedenciacontrato.DataSource = tpres.ConsultarTipoResidencia();
                         DropDownListtiporedenciacontrato.DataTextField = "tiporesidencia";
                         DropDownListtiporedenciacontrato.DataValueField = "idtiporesidencia";
@@ -92,10 +101,10 @@ namespace VisapLine.View.Private
                         TextBox1.Text = tercero["direccion"].ToString();
                         Labelidtercero.Text = tercero["idterceros"].ToString();
                         cargartabla(Labelidtercero.Text);
-                        DataRow cog = contrat.Consultarultimocodigo().Rows[0];                   
+                        DataRow cog = contrat.Consultarultimocodigo().Rows[0];
 
-                       string codgulti = cog["pr_consultarultimocontrat"].ToString() ;
-                        int codnew = Convert.ToInt32(codgulti)+1;
+                        string codgulti = cog["pr_consultarultimocontrat"].ToString();
+                        int codnew = Convert.ToInt32(codgulti) + 1;
                         TextBox4.Text = codnew.ToString();
                     }
                 }
@@ -167,6 +176,79 @@ namespace VisapLine.View.Private
 
             }
         }
+        private void cargarDepartamentos(string dat)
+        {
+            try
+            {
+                DropDownListdepartamentocontrato.Items.Clear();
+                DropDownListdepartamentocontrato.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                depart.pais_idpais = dat;
+                DropDownListdepartamentocontrato.DataSource = Validar.Consulta(depart.ConsultarDepartamentoIdPais(depart));
+                DropDownListdepartamentocontrato.DataTextField = "departamento";
+                DropDownListdepartamentocontrato.DataValueField = "iddepartamento";
+                DropDownListdepartamentocontrato.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+
+            }
+        }
+
+        private void cargarMunicipios(string dat)
+
+        {
+
+            try
+            {
+                DropDownListmunicipiocontrato.Items.Clear();
+                DropDownListmunicipiocontrato.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                munic.departamento_iddepartamento = dat;
+                DropDownListmunicipiocontrato.DataSource = Validar.Consulta(munic.ConsultarMunicipioIdDepartamento(munic));
+                DropDownListmunicipiocontrato.DataTextField = "municipio";
+                DropDownListmunicipiocontrato.DataValueField = "idmunicipio";
+                DropDownListmunicipiocontrato.DataBind();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+
+
+            }
+
+        }
+        private void cargarBarrios(string dat)
+        {
+            try
+            {
+                DropDownListbarriocontrato.Items.Clear();
+                DropDownListbarriocontrato.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                barr.muninicio_idmunicipio = dat;
+                DropDownListbarriocontrato.DataSource = Validar.Consulta(barr.ConsultarBarriosIdMunicipio(barr));
+                DropDownListbarriocontrato.DataTextField = "barrios";
+                DropDownListbarriocontrato.DataValueField = "idbarrios";
+                DropDownListbarriocontrato.DataBind();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+
+            }
+        }
+
         protected void DropDownListdepartamentocontrato_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -339,11 +421,10 @@ namespace VisapLine.View.Private
                 {
                     contrat.terceros_idterceros = Labelidtercero.Text;
                     DataRow te = Validar.Consulta(contrat.ConsultarContratoidtercero(contrat)).Rows[0];
-                    Response.Redirect("servicio.aspx?key=" + te["idcontrato"].ToString());
+                    Response.Redirect("servicio.aspx?key=" + te["idcontrato"].ToString(), false);
                 }
                 else
                 {
-
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
                 }
 
@@ -356,12 +437,14 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
 
             }
+       
+
         }
 
         protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView2.PageIndex = e.NewPageIndex;
             cargartabla(Labelidtercero.Text);
-        } 
+        }
     }
 }

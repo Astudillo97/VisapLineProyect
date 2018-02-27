@@ -60,7 +60,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Contrato N°:</label>
                     <div class="col-sm-4">
-                        <asp:TextBox ID="TextBox4" Enabled="false" CssClass="form-control" placeholder="" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" CssClass="form-control" placeholder="" runat="server"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row">
