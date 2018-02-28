@@ -13,19 +13,29 @@ namespace VisapLine.View.Private
     {
         Factura fact = new Factura();
         static DataTable data;
+        Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+
+            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
             {
-                data=fact.ConsultarFacturasRevision();
-                listfactRevision.DataSource = data;
-                listfactRevision.DataBind();
+                try
+                {
+                    data = fact.ConsultarFacturasRevision();
+                    listfactRevision.DataSource = data;
+                    listfactRevision.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    textError.InnerHtml = ex.Message;
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
+                Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
             }
         }
 
