@@ -10,7 +10,7 @@
 namespace VisapLine.View.Private {
     
     
-    public partial class Gservicio {
+    public partial class GordenesSalida {
         
         /// <summary>
         /// Control respust.

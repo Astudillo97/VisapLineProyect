@@ -54,15 +54,15 @@
                     <SortedDescendingCellStyle BackColor="#E9EBEF" />
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     <Columns>
-                        <asp:BoundField HeaderText="REFEERENCIA" DataField="id" />
-                        <asp:BoundField HeaderText="FECHA DE INICIO" DataField="fechainiciocol" />
-                        <asp:BoundField HeaderText="MEGAS" DataField="cantidadmegascol" />
-                        <asp:BoundField HeaderText="ESTADO" DataField="estadocol" />
-                        <asp:BoundField HeaderText="SERVICIO" DataField="referenciascol" />
-                        <asp:BoundField HeaderText="EQUIPO" DataField="referenciaequipocol" />
+                        <asp:BoundField HeaderText="REFEERENCIA" DataField="idserviciosserv" />
+                        <asp:BoundField HeaderText="FECHA DE INICIO" DataField="fechainicioserv" />
+                        <asp:BoundField HeaderText="MEGAS" DataField="cantidadmegasserv" />
+                        <asp:BoundField HeaderText="ESTADO" DataField="estadoserv" />
+                        <asp:BoundField HeaderText="SERVICIO" DataField="detalleplan" />
+                        <asp:BoundField HeaderText="REFERENCIA" DataField="referenciasserv" />
                         <asp:TemplateField ItemStyle-CssClass="btn btn-success btn-lg">
                             <ItemTemplate>
-                                <a onclick='redireciona(<%# Eval("id") %>)'>Solicitud</a>
+                                <a onclick='redireciona(<%# Eval("idserviciosserv") %>)'>Solicitud</a>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" ControlStyle-ForeColor="White" />
@@ -167,22 +167,17 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">AGREGAR EQUIPO</h4>
+                                    <h4 class="modal-title">AGREGAR DESCRIPCION</h4>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="form-group row col">
-                                        <asp:Label ID="lvlserialasignar" runat="server" Text="SERIAL"></asp:Label>
-                                        <asp:TextBox ID="txtseralasignar" CssClass="form-control" runat="server" OnTextChanged="txtseralasignar_TextChanged"></asp:TextBox>
-                                        <br />
-                                    </div>
-                                    <div class="form-group row col">
-                                        <asp:Label type="text" ID="Label1" runat="server" Text="MAC" />
-                                        <asp:Label type="text" ID="identificacion" CssClass="form-control" runat="server" />
-                                        <br />
-                                    </div>
+                                <div class="modal-body">                              
                                     <div class="form-group row col">
                                         <asp:Label ID="lvlmegasasignar" runat="server" Text="MEGAS"></asp:Label>
                                         <asp:TextBox ID="txtmegasasignar" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <br />
+                                    </div>
+                                    <div class="form-group row col">
+                                        <asp:Label ID="Label1" runat="server" Text="REFERENCIA"></asp:Label>
+                                        <asp:TextBox TextMode="MultiLine" Columns="3" Rows="30" ID="TextBox3" CssClass="form-control" runat="server"></asp:TextBox>
                                         <br />
                                     </div>
                                     <div class="form-group row col">
