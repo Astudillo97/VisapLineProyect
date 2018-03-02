@@ -458,6 +458,8 @@ namespace VisapLine.View.Private
             ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
             try
             {
+                invent.serial = Validar.ConvertVarchar(serial_.Value);
+                invent.mac = Validar.ConvertVarchar(mac_.Value);
                 invent.descripcion = Validar.validarlleno(descripcion_.Value);
                 invent.tipoproducto_idtipoproducto = Validar.validarselected(tipoproducto_inv.SelectedValue);
                 invent.vidautil = Validar.validarlleno(vidautil_.Value);
