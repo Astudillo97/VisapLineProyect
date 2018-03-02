@@ -39,16 +39,7 @@ namespace VisapLine.View.Private
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
-                punt = punto.ConsultarPuntosllenos();
-            }
-            catch (Exception)
-            {
-                
-            }
             
-
             if (!IsPostBack)
             {
                 try
@@ -58,6 +49,7 @@ namespace VisapLine.View.Private
                     DropDownListpais.DataValueField = "idpais";
                     DropDownListpais.DataBind();
                     idcontrato = int.Parse(Request.QueryString["key"]);
+                    punt = punto.consultarpuntosdelcontrato("" + idcontrato);
                     DataTable dpcdt = ctt.consultadeserciciodeplancontratado(idcontrato);
                     cargardtservicio();
                     DataRow rdt = dpcdt.Rows[0];
@@ -300,7 +292,7 @@ namespace VisapLine.View.Private
             if (serve.vaalidarmegas(txtmegasasignar.Text, idcontrato))
             {
                 DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
-                DataTable dtid = serve.crearservicio("--POR ASIGNAR--", int.Parse(txtmegasasignar.Text), idcontrato, dtrs[1].ToString(), "POR INSTALAR", TextBox3.Text, TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue),Validar.validarselected(tipo_.SelectedValue), latitud.Text,longitud.Text);
+                DataTable dtid = serve.crearservicio("--POR ASIGNAR--", int.Parse(txtmegasasignar.Text), idcontrato, dtrs[1].ToString(), "POR INSTALAR", TextBox3.Text, TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue),Validar.validarselected(tipo_.SelectedValue));
                 if (dtid.Rows.Count > 0)
                 {
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "successasignation()", true);
@@ -315,7 +307,7 @@ namespace VisapLine.View.Private
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "errorasignation()", true);
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "errorasignationMEGAS()", true);
                 cargardtservicio();
             }
         }
