@@ -13,47 +13,38 @@ namespace VisapLine.View.Private
     public partial class EditarFactura : System.Web.UI.Page
     {
         Factura fact = new Factura();
-        Permisos per = new Permisos();
         Observacion obser = new Observacion();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+                try
+                {
+                    string valor =Request.QueryString["key"];
+                    if (valor != null)
+                    {
+                        fact.facturaventa = valor;
+                        DataRow dat = fact.ConsultarFacturaCodigo(fact).Rows[0];
+                        idfact.Text = dat["idfactura"].ToString();
+                        emisio.Text = Convert.ToDateTime(dat["fechaemision"]).ToString("yyyy-MM-dd");
+                        cort.Text = Convert.ToDateTime(dat["fechacorte"].ToString()).ToString("yyyy-MM-dd");
+                        vencimient.Text = Convert.ToDateTime(dat["fechavencimiento"].ToString()).ToString("yyyy-MM-dd");
+                        estado.SelectedValue = dat["estado"].ToString();
+                        cuotas.Text = dat["cuotas"].ToString();
+                        facturaventa.Text = dat["facturaventa"].ToString();
+                        valorfac.Text = dat["valorfac"].ToString();
+                        saldofact.Text = dat["saldofac"].ToString();
+                        ivafact.Text = dat["ivafac"].ToString();
+                        totalfact.Text = dat["totalfac"].ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    textError.InnerHtml = ex.Message;
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+                }
 
-                if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
-                {
-                    try
-                    {
-                        string valor = Request.QueryString["key"];
-                        if (valor != null)
-                        {
-                            fact.facturaventa = valor;
-                            DataRow dat = fact.ConsultarFacturaCodigo(fact).Rows[0];
-                            idfact.Text = dat["idfactura"].ToString();
-                            emisio.Text = Convert.ToDateTime(dat["fechaemision"]).ToString("yyyy-MM-dd");
-                            cort.Text = Convert.ToDateTime(dat["fechacorte"].ToString()).ToString("yyyy-MM-dd");
-                            vencimient.Text = Convert.ToDateTime(dat["fechavencimiento"].ToString()).ToString("yyyy-MM-dd");
-                            estado.SelectedValue = dat["estado"].ToString();
-                            cuotas.Text = dat["cuotas"].ToString();
-                            facturaventa.Text = dat["facturaventa"].ToString();
-                            valorfac.Text = dat["valorfac"].ToString();
-                            saldofact.Text = dat["saldofac"].ToString();
-                            ivafact.Text = dat["ivafac"].ToString();
-                            totalfact.Text = dat["totalfac"].ToString();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        textError.InnerHtml = ex.Message;
-                        Alerta.CssClass = "alert alert-error";
-                        Alerta.Visible = true;
-                    }
-                }
-                else
-                {
-                    Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
-                }
 
             }
         }

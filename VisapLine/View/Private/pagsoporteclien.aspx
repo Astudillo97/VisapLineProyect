@@ -32,11 +32,11 @@
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
     <section class="content-header">
-        <h1>Soporte Clientes</h1>
+        <h1>Repositorio de Documentos del Cliente</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
             <li class="breadcrumb-item"><a href="#">Clientes</a></li>
-            <li class="breadcrumb-item active">Soporte</li>
+            <li class="breadcrumb-item active">Gestion de Archivos</li>
         </ol>
     </section>
     <section class="content">
@@ -115,7 +115,7 @@
         </div>
         <div class="box box-default" id="soporteformulario" runat="server" visible="false">
             <div class="box-header with-border">
-                <h3 class="box-title">Soportes</h3>
+                <h3 class="box-title">Cargar Archivos</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -123,7 +123,7 @@
                     <div class="col-6">
                         <div class="box box-default">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Datos del Cliente  N°:
+                                <h3 class="box-title">Datos del Cliente  N° CC:
                                     <asp:Label ID="Label5" runat="server" Text=""></asp:Label></h3>
                                 <asp:Label ID="Label6" runat="server" Visible="false" Text=""></asp:Label>
                             </div>

@@ -210,7 +210,7 @@ namespace VisapLine.Model
                 DataTable tabledetalle = deta.ConsultarDetalleIdFactura(deta);
 
                 ////Recorrer una fuente de datos para Cargar
-                for (int i = 0; i < tabledetalle.Rows.Count && i < 3; i++)
+                for (int i = 0; i < tabledetalle.Rows.Count && i < 4; i++)
                 {
                     if (tabledetalle.Rows[i] != null)
                     {
@@ -221,7 +221,7 @@ namespace VisapLine.Model
                         tableDescripcion.AddCell(descrpcionval).AddCell(cantidadval).AddCell(valorunitarioval).AddCell(totalval);
                     }
                 }
-                for (int i = 0; i < 3 - tabledetalle.Rows.Count; i++)
+                for (int i = 0; i < 4 - tabledetalle.Rows.Count; i++)
                 {
                     Cell descrpcionval = new Cell().Add(new Paragraph("-")).SetWidth(UnitValue.CreatePercentValue(50)).SetBorder(Border.NO_BORDER);
                     Cell cantidadval = new Cell().Add(new Paragraph("")).SetWidth(UnitValue.CreatePercentValue(16)).SetBorder(Border.NO_BORDER).SetTextAlignment(TextAlignment.CENTER);
@@ -463,7 +463,7 @@ namespace VisapLine.Model
                         DataTable tabledetalle = deta.ConsultarDetalleIdFactura(deta);
 
                         ////Recorrer una fuente de datos para Cargar
-                        for (int i = 0; i < tabledetalle.Rows.Count && i < 3; i++)
+                        for (int i = 0; i < tabledetalle.Rows.Count && i < 4; i++)
                         {
                             if (tabledetalle.Rows[i] != null)
                             {
@@ -474,7 +474,7 @@ namespace VisapLine.Model
                                 tableDescripcion.AddCell(descrpcionval).AddCell(cantidadval).AddCell(valorunitarioval).AddCell(totalval);
                             }
                         }
-                        for (int i = 0; i < 3 - tabledetalle.Rows.Count; i++)
+                        for (int i = 0; i < 4 - tabledetalle.Rows.Count; i++)
                         {
                             Cell descrpcionval = new Cell().Add(new Paragraph("-")).SetWidth(UnitValue.CreatePercentValue(50)).SetBorder(Border.NO_BORDER);
                             Cell cantidadval = new Cell().Add(new Paragraph("")).SetWidth(UnitValue.CreatePercentValue(16)).SetBorder(Border.NO_BORDER).SetTextAlignment(TextAlignment.CENTER);
@@ -548,7 +548,9 @@ namespace VisapLine.Model
                         tableinformacionfactura1.AddCell(informfactura1).AddCell(informfacturavalue1);
 
                         encDer1.Add(part1).Add(tableinformacionfactura1);
-                        encDer1.Add(new Cell().Add(new Paragraph(Descripcion(empresa, "MENSAJE2")).SetFontSize(6)).SetWidth(UnitValue.CreatePercentValue(100)).SetTextAlignment(TextAlignment.CENTER));
+                        encDer1.Add(new Cell().Add(new Paragraph("SEÑOR USUARIO LE RECORDAMOS QUE LA SUSPENCIÓN DEL SERVICIO POR NO PAGO " +
+                           "GENERA COBRO DE RECONEXIÓN, PARA EL SERVICIO DE BANDA ANCHA TENDRA UN VALOR DE $11.900 MÁS IVA, " +
+                           " LO INVITAMOS A REALIZAR EL PAGO OPORTUNO DE SU FACTURA.").SetFontSize(6)).SetWidth(UnitValue.CreatePercentValue(100)).SetTextAlignment(TextAlignment.CENTER));
                         encabezado2.AddCell(encHiz1).AddCell(encDer1);
                         doc.Add(encabezado2);
 

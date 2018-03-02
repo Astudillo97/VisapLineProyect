@@ -1,6 +1,6 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
-  Para obtener mÃ¡s informaciÃ³n sobre cÃ³mo configurar la aplicaciÃ³n ASP.NET, visite
+  Para obtener más información sobre cómo configurar la aplicación ASP.NET, visite
   https://go.microsoft.com/fwlink/?LinkId=169433
   -->
 <configuration>
@@ -8,10 +8,9 @@
     <add name="conexion_psql" connectionString="Server=191.102.85.252; Port=30001; Uid=postgres; Password=visap67; Database = visaplinev3;" />
   </connectionStrings>
   <system.web>
-    <customErrors mode="Off"/>
     <compilation debug="true" targetFramework="4.6.1"/>
     <httpRuntime targetFramework="4.6.1"/>
-    <sessionState timeout="59"  ></sessionState>
+    <sessionState timeout="120"  ></sessionState>
   </system.web>
   <system.codedom>
     <compilers>

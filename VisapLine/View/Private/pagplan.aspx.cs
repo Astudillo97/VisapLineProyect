@@ -42,6 +42,7 @@ namespace VisapLine.View.Private
                         }
                         catch (Exception)
                         {
+
                             throw;
                         }
              

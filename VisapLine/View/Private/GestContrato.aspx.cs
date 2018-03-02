@@ -95,9 +95,10 @@ namespace VisapLine.View.Private
         }
         protected void cargarplanes()
         {
-            DropDownListplanes.DataSource = pn.ConsultarPlan();
-            DropDownListplanes.DataTextField = "detalle";
-            DropDownListplanes.DataValueField = "idplan";
+            DropDownListplanes.DataSource = pn.ConsultarPlanconca();
+            DropDownListplanes.DataTextField = "vardetalle";
+          
+            DropDownListplanes.DataValueField = "varidplan";
             DropDownListplanes.DataBind();
         }
 
@@ -275,7 +276,7 @@ namespace VisapLine.View.Private
                 if (Validar.validartrue(contrat.updatecontrato(contrat)))
                 {
                     string guardar = "SI";
-                    Response.Redirect("GestContrato.aspx?key=" + guardar);
+                    Response.Redirect("gestcontrato.aspx?key=" + guardar);
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
 

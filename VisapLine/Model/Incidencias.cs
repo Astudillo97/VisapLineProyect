@@ -45,6 +45,10 @@ namespace VisapLine.Model
             return data.OperarDatos("select * from public.pr_actualizarindencia('"+inci.idincidencias+"','"+inci.terceros_idterceros+"','"+inci.estado+"','"+inci.detalle+"','"+inci.descuento+"','"+inci.costo+"')");
 
         }
-
+        public DataTable ConsultarIncidenciasidser(string varid)
+        {
+            return data.ConsultarDatos("select * from  pr_consultarincidenciasidser('" + varid + "')");
+        }
+       
     }
 }

@@ -403,12 +403,12 @@
                                                             <asp:TextBox ID="Textboxfechafinalizacionpermanencia" runat="server" type="date" class="form-control"></asp:TextBox>
                                 </label>
                             </div>
-                            <div class="form-group row">
+                           <%-- <div class="form-group row">
                                 <label class="col-sm-12 col-form-label">
                                     Fecha de activacion del servicio:    
                                                             <asp:TextBox ID="Textboxfechaactivacionservicio" runat="server" type="date" class="form-control"></asp:TextBox>
                                 </label>
-                            </div>
+                            </div>--%>
                             <div class="form-group row">
                                 <label class="col-sm-12 col-form-label">
                                     Fecha de Facturacion:    

@@ -32,7 +32,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarpplan()");
         }
-
+        public DataTable ConsultarPlanconca()
+        {
+            return data.ConsultarDatos("select * from pr_consultarpplanconca()");
+        }
 
         public bool RegistrarPlan(Plan pln)
         {

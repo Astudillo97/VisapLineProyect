@@ -192,7 +192,7 @@
                                     <tr>
                                         <td align="center" valign="top" bgcolor="#FFFFFF" style="background-color: #FFFFFF;">
                                             <p>
-                                                <img id="img1" src="#" width="583"/>
+                                                <img id="img1" src="http://191.102.85.252:30000/Contenido/nuestra-empresa.jpg" width="583"/>
                                             </p>
 
                                             <p id="text1">C&C Visión Ltda. 
@@ -204,11 +204,11 @@
                                                 <tr>
                                                     <td align="center" width="40%" valign="top" bgcolor="#FFFFFF" style="background-color: #ffffff;">
                                                         <h3>Facturación Electronica</h3>
-                                                        <p id="text2"><a href="http://191.102.85.252:30000/demo" type="button" style="color: #FFFFFF; background-color: #2F62BB; width: 100%; border-radius: 7px; padding: 10px; border: solid 1px black; font-size: 13px; font-family: Arial, Helvetica, sans-serif;">Ver Factura</a></p>
+                                                       <%-- <p id="text2"><a href="http://191.102.85.252:30000/View/Private/Error.aspx?error= no tiene permisos" type="button" style="color: #FFFFFF; background-color: #2F62BB; width: 100%; border-radius: 7px; padding: 10px; border: solid 1px black; font-size: 13px; font-family: Arial, Helvetica, sans-serif;">Ver Factura</a></p>--%>
                                                         <p>Señor usuario, con el fin de proteger nuestro medio ambiente le recomendamos no imprimir su factura si no es necesario.</p>
                                                     </td>
                                                     <td align="center" width="60%" valign="top" bgcolor="#FFFFFF" style="background-color: #ffffff;">
-                                                        <img id="img2" src="#" vspace="10"/>
+                                                        <img id="img2" src="http://191.102.85.252:30000/Contenido/facturaelectronica.jpg" vspace="10"/>
                                                     </td>
                                                 </tr>
                                             </table>
