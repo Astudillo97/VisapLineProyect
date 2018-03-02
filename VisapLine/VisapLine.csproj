@@ -113,10 +113,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Archivos\data.txt" />
+    <Content Include="Archivos\FreeSans.ttf" />
     <Content Include="Archivos\GoEmail.dll" />
     <Content Include="Archivos\imgvisap.png" />
-    <Content Include="Archivos\Contrato_postpago_FIJOS3.pdf" />
-    <Content Include="Archivos\FreeSans.ttf" />
+    <Content Include="Archivos\publicidad.jpg" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.eot" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.ttf" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.woff" />
@@ -365,6 +365,7 @@
     <Content Include="Contenido\js\pages\widget-morris-charts.js" />
     <Content Include="Contenido\js\template.js" />
     <Content Include="Contenido\nuestra-empresa.jpg" />
+    <Content Include="Contenido\publicidad.jpg" />
     <Content Include="Contenido\radio.png" />
     <Content Include="index.html" />
     <Content Include="soportes\barcode.gif" />
@@ -498,9 +499,7 @@
     <Content Include="View\Private\GestPagos.aspx" />
     <Content Include="View\Private\Gestplanes.aspx" />
     <Content Include="View\Private\GestTercero.aspx" />
-
     <Content Include="View\Private\GordenesSalida.aspx" />
-
     <Content Include="View\Private\Incidencia.aspx" />
     <Content Include="View\Private\index.aspx" />
     <Content Include="View\Private\Index2.aspx" />
@@ -519,6 +518,7 @@
     <Content Include="View\Private\Tipofact.aspx" />
     <Content Include="View\Private\VistadeExporte.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
+    <Content Include="View\Public\facturacion.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -700,7 +700,6 @@
     <Compile Include="View\Private\GestTercero.aspx.designer.cs">
       <DependentUpon>GestTercero.aspx</DependentUpon>
     </Compile>
-
     <Compile Include="View\Private\GordenesSalida.aspx.cs">
       <DependentUpon>GordenesSalida.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -708,7 +707,6 @@
     <Compile Include="View\Private\GordenesSalida.aspx.designer.cs">
       <DependentUpon>GordenesSalida.aspx</DependentUpon>
     </Compile>
-
     <Compile Include="View\Private\Incidencia.aspx.cs">
       <DependentUpon>Incidencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -835,10 +833,16 @@
     <Compile Include="View\Private\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Public\facturacion.aspx.cs">
+      <DependentUpon>facturacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Public\facturacion.aspx.designer.cs">
+      <DependentUpon>facturacion.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="soportes\soporte_Contratos\" />
-    <Folder Include="View\Public\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -137,7 +137,7 @@ namespace VisapLine.View.Private
             try
             {
                 DataRow dat = tablefactura.Rows[e.NewSelectedIndex];
-                Response.Redirect("GestPagos.aspx?codigo=" + dat["idfactura"] + "");
+                Response.Redirect("gestpagos.aspx?codigo=" + dat["idfactura"] + "");
             }
             catch (Exception ex)
             {
@@ -162,12 +162,12 @@ namespace VisapLine.View.Private
                 if (e.CommandName.ToString() == "editarfactura")
                 {
                     string paramet = e.CommandArgument.ToString();
-                    Response.Redirect("EditarFactura.aspx?key=" + paramet);
+                    Response.Redirect("editarfactura.aspx?key=" + paramet);
                 }
                 if (e.CommandName.ToString() == "pagarfactura")
                 {
                     string paramet = e.CommandArgument.ToString();
-                    Response.Redirect("GestPagos.aspx?codigo=" + paramet);
+                    Response.Redirect("gestpagos.aspx?codigo=" + paramet);
                 }
             }
             catch (Exception ex)
@@ -258,19 +258,19 @@ namespace VisapLine.View.Private
         {
             try
             {
+                Empresa emp = new Empresa();
                 Validar.validarselected(estadofactura.SelectedValue);
-                DataTable tef= Validar.Consulta(telefon.Consultar());
-                tef.PrimaryKey = new DataColumn[] { tef.Columns["terceros_idterceros"] };
                 
                 foreach (DataRow item in tablefactura.Rows)
                 {
-                    if (item["estadof"].ToString()== estadofactura.SelectedValue)
+                    if (item["estadof"].ToString() == estadofactura.SelectedValue)
                     {
-                        string msm = "Estimado usuario de VisapLine le recordamos que su factura esta proxima a vencerse";
-                        DataRow dat = tef.Rows.Find(item["idterceros"]);
-                        if (dat["telefono"].ToString().Length>=10)
+                        string msm = Descripcion(emp.ConsultarEmpresa(), estadofactura.SelectedValue);
+                        telefon.terceros_idterceros = item["identificacion"].ToString();
+                        DataRow datf = telefon.ConsultarTelefonosIdTerceros(telefon).Rows[0];
+                        if (datf["telefono"].ToString().Length>=10)
                         {
-                            string celular = dat["telefono"].ToString();// dat["telefono"].ToString();
+                            string celular ="57"+"3123801770";// dat["telefono"].ToString();
                             string nombre = item["nombre"].ToString() +" "+ item["apellido"].ToString();
                             ClientScript.RegisterStartupScript(GetType(), "msm", "EnviarSMS('" + msm+"','"+celular+"');", true);
                         }

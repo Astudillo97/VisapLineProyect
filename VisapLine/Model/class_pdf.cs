@@ -60,6 +60,7 @@ namespace VisapLine.Model
                 string path = HttpContext.Current.Server.MapPath("~");
                 string FONT = path + "Archivos\\FreeSans.ttf";
                 string dir = "Archivos\\";
+                string dir2 = "Contenido\\";
                 string name = GenerarNombrePdf(datos["facturaventa"].ToString());
                 //creacion del documento pdf
                 PdfDocument documento = new PdfDocument(new PdfWriter(path + dir + name));
@@ -68,7 +69,7 @@ namespace VisapLine.Model
 
                 ////Definicion del encabezado
                 Table header = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
-                Image imagen = new Image(ImageDataFactory.Create(path + dir + Descripcion(empresa, "logo"))).SetWidth(UnitValue.CreatePercentValue(100));
+                Image imagen = new Image(ImageDataFactory.Create(path + dir2 + Descripcion(empresa, "logo"))).SetWidth(UnitValue.CreatePercentValue(100));
 
                 ////Celda hizaquierda de la factura
                 Cell logo = new Cell().SetBorder(Border.NO_BORDER).SetWidth(UnitValue.CreatePercentValue(25));
@@ -144,7 +145,7 @@ namespace VisapLine.Model
 
                 encHiz.Add(codigobarra);
                 Cell imagenpublic = new Cell().SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
-                Image publicidad = new Image(ImageDataFactory.Create(path + dir + Descripcion(empresa, "publicidad"))).SetWidth(UnitValue.CreatePercentValue(100));
+                Image publicidad = new Image(ImageDataFactory.Create(path + dir2 + Descripcion(empresa, "publicidad"))).SetWidth(UnitValue.CreatePercentValue(100));
                 imagenpublic.Add(publicidad);
                 encHiz.Add(imagenpublic);
 
@@ -241,7 +242,7 @@ namespace VisapLine.Model
                 totales1.AddCell(new Cell().Add(new Paragraph("SALDO ACTUAL").SetFontSize(10)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1))).AddCell(new Cell().Add(new Paragraph(Convert.ToDouble(datos["totalfac"].ToString()).ToString("C2", CultureInfo.CreateSpecificCulture("ES-CO"))).SetFontSize(10).SetBold())).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
                 cel1.Add(totales1);
                 cel1.Add(new Cell().Add(new Paragraph("SEÑOR USUARIO LE RECORDAMOS QUE LA SUSPENCIÓN DEL SERVICIO POR NO PAGO " +
-                    "GENERA COBRO DE RECONEXIÓN, PARA EL SERVICIO DE BANDA ANCHA TENDRA UN VALOR DE $11.900 MÁS IVA, " +
+                    "GENERA COBRO DE RECONEXIÓN, PARA EL SERVICIO DE BANDA ANCHA TENDRA UN VALOR DE $13.800 MÁS IVA, " +
                     " LO INVITAMOS A REALIZAR EL PAGO OPORTUNO DE SU FACTURA.").SetFontSize(6)).SetWidth(UnitValue.CreatePercentValue(100))).SetTextAlignment(TextAlignment.CENTER);
                 Cell cel2 = new Cell().SetWidth(UnitValue.CreatePercentValue(34)).SetBorder(Border.NO_BORDER);
                 Table totales2 = new Table(2).SetWidth(UnitValue.CreatePercentValue(100)).SetFontSize(9).SetTextAlignment(TextAlignment.RIGHT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
@@ -295,9 +296,7 @@ namespace VisapLine.Model
                 tableinformacionfactura1.AddCell(informfactura1).AddCell(informfacturavalue1);
 
                 encDer1.Add(part1).Add(tableinformacionfactura1);
-                encDer1.Add(new Cell().Add(new Paragraph("SEÑOR USUARIO LE RECORDAMOS QUE LA SUSPENCIÓN DEL SERVICIO POR NO PAGO " +
-                   "GENERA COBRO DE RECONEXIÓN, PARA EL SERVICIO DE BANDA ANCHA TENDRA UN VALOR DE $11.900 MÁS IVA, " +
-                   " LO INVITAMOS A REALIZAR EL PAGO OPORTUNO DE SU FACTURA.").SetFontSize(6)).SetWidth(UnitValue.CreatePercentValue(100)).SetTextAlignment(TextAlignment.CENTER));
+                encDer1.Add(new Cell().Add(new Paragraph(Descripcion(empresa, "MENSAJE2").ToUpper())));
                 encabezado2.AddCell(encHiz1).AddCell(encDer1);
                 doc.Add(encabezado2);
                 doc.Close();
@@ -320,6 +319,7 @@ namespace VisapLine.Model
                 string path = HttpContext.Current.Server.MapPath("~");
                 string FONT = path + "Archivos\\FreeSans.ttf";
                 string dir = "Archivos\\";
+                string dir2 = "Contenido\\";
                 string name = GenerarNombrePdf("FACTURACION-VISAPLINE");
                 PdfDocument documento = new PdfDocument(new PdfWriter(path + dir + name));
                 Document doc = new Document(documento, PageSize.LETTER);
@@ -331,7 +331,7 @@ namespace VisapLine.Model
 
                         ////Definicion del encabezado
                         Table header = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
-                        Image imagen = new Image(ImageDataFactory.Create(path + dir + Descripcion(empresa, "logo"))).SetWidth(UnitValue.CreatePercentValue(100));
+                        Image imagen = new Image(ImageDataFactory.Create(path + dir2 + Descripcion(empresa, "logo"))).SetWidth(UnitValue.CreatePercentValue(100));
 
                         ////Celda hizaquierda de la factura
                         Cell logo = new Cell().SetBorder(Border.NO_BORDER).SetWidth(UnitValue.CreatePercentValue(25));
@@ -407,7 +407,7 @@ namespace VisapLine.Model
 
                         encHiz.Add(codigobarra);
                         Cell imagenpublic = new Cell().SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
-                        Image publicidad = new Image(ImageDataFactory.Create(path + dir + Descripcion(empresa, "publicidad"))).SetWidth(UnitValue.CreatePercentValue(100));
+                        Image publicidad = new Image(ImageDataFactory.Create(path + dir2 + Descripcion(empresa, "publicidad"))).SetWidth(UnitValue.CreatePercentValue(100));
                         imagenpublic.Add(publicidad);
                         encHiz.Add(imagenpublic);
 
