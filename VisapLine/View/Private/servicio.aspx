@@ -20,6 +20,9 @@
         function errorasignation() {
             swal("ERROR AL CREAR EL SERVICIO", "La operacion no se pudo realizar con exito", "error");
         }
+        function errorasignationMEGAS() {
+            swal("ERROR AL CREAR EL SERVICIO", "las megas sobrepasan el limite", "error");
+        }
         function alertnoproduc() {
             swal("ERROR AL ASIGNAR EQUIPO", "No hay ningun equipo que se pueda asignar", "error");
         }
@@ -112,17 +115,6 @@
                                 <asp:TextBox ID="TextBoxdireccion" Style="text-transform: uppercase" class="form-control" placeholder="Dirección" runat="server"></asp:TextBox>
                             </div>
                         </div>
-
-                        <div class="form-group row" id="divcoordenada">
-                            <label class="col-sm-1 col-form-label">Lat.</label>
-                            <div class="col-sm-5">
-                                <asp:TextBox CssClass="form-control" runat="server" ID="latitud" />
-                            </div>
-                            <label class="col-sm-1 col-form-label">Lon.</label>
-                            <div class="col-sm-5">
-                                <asp:TextBox CssClass="form-control" runat="server" ID="longitud" />
-                            </div>
-                        </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Tipo</label>
                             <div class="col-sm-9">
@@ -182,7 +174,7 @@
                                     </div>
                                     <div class="form-group row col">
 
-                                        <asp:Button ID="btncrearinternet" runat="server" OnClientClick="return alert('ESTA SEGRUO DE REALIZAR ESTA ACCION');" OnClick="asignarequipo" Text="CREAR SERVICIO" CssClass="btn btn-success" />
+                                        <asp:Button ID="btncrearinternet" runat="server" OnClientClick="return confirm('ESTA SEGRUO DE REALIZAR ESTA ACCION');" OnClick="asignarequipo" Text="CREAR SERVICIO" CssClass="btn btn-success" />
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -340,13 +332,6 @@
                     draggable: true,
                     map: map
                 });
-                document.getElementById('<%=latitud.ClientID%>').value = markers.getPosition().lat();
-                document.getElementById('<%=longitud.ClientID%>').value = markers.getPosition().lng();
-
-                markers.addListener('dragend', function () {
-                    document.getElementById('<%=latitud.ClientID%>').value = markers.getPosition().lat();
-                        document.getElementById('<%=longitud.ClientID%>').value = markers.getPosition().lng();
-                    });
             }
 
             function initMap() {
