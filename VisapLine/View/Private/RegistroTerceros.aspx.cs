@@ -485,14 +485,14 @@ namespace VisapLine.View.Private
                         tlf.telefono = item["telefono"].ToString();
                         tlf.terceros_idterceros = terc.identificacion;
                         tlf.RegistrarTelefono(tlf);
-                    }                    
+                    }
                 }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "nocontro();", true);
                 }
 
-               Response.Redirect("ContratoCliente.aspx?key=" + texboxdni.Text,false);
+                Response.Redirect("ContratoCliente.aspx?key=" + texboxdni.Text, false);
             }
             catch (Exception ex)
             {
@@ -795,7 +795,7 @@ namespace VisapLine.View.Private
             try
             {
 
-                Validar.validarnumero(texboxdni.Text);
+                Validar.validarlleno(texboxdni.Text);
                 terc.identificacion = Validar.validarlleno(texboxdni.Text);
                 terc.direccion = Validar.validarlleno(TextBoxdireccioncorpo.Text.ToUpper());
                 terc.tipodoc_idtipodoc = Validar.validarselected(DropDownList1tipodocucorpo.SelectedValue);
@@ -812,7 +812,7 @@ namespace VisapLine.View.Private
                 ctg.identificacion = Validar.validarlleno(texboxdni.Text);
                 ctg.tipotercero_idtipotercero = Validar.validarselected(tipotercero.SelectedValue);
                 Validar.Consulta(listtelefonocorpo);
-                Validar.Consulta(listsucursalcorpo);
+
 
 
                 ctg.identificacion = Validar.validarlleno(texboxdni.Text);
@@ -840,14 +840,16 @@ namespace VisapLine.View.Private
                             scsal.barrios_idbarrios = item["barrio"].ToString();
                             scsal.Registrarsucursal(scsal);
                         }
-                        Response.Redirect("ContratoCliente.aspx?key=" + texboxdni.Text,false);
+
                     }
+
                 }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
 
                 }
+                Response.Redirect("ContratoCliente.aspx?key=" + texboxdni.Text, false);
             }
             catch (Exception ex)
             {
@@ -993,7 +995,7 @@ namespace VisapLine.View.Private
         }
 
 
-            protected void DropDownListpaisempresa_SelectedIndexChanged(object sender, EventArgs e)
+        protected void DropDownListpaisempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -1158,7 +1160,7 @@ namespace VisapLine.View.Private
 
 
                 Validar.Consulta(listtelefonoempre);
-                Validar.Consulta(listsucursalempre);
+             
 
                 if (terc.RegistrarTercerosempresatercero(terc) && ctg.Registrarcargotercero(ctg))
                 {

@@ -200,7 +200,7 @@
                                             <asp:ListItem Value="O">OESTE</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>--%>
-                                    <asp:TextBox ID="TextBoxenviofactura" TextMode="MultiLine" Rows="5" Columns="15" runat="server" placeholder="CLL 27 2B-17" class="form-control" Style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 105px;"></asp:TextBox>
+                                    <asp:TextBox ID="TextBoxenviofactura" TextMode="MultiLine" Rows="5" Columns="15" runat="server"  class="form-control" Style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 105px;"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group row">

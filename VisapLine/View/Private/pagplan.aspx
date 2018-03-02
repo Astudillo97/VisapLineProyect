@@ -93,6 +93,7 @@
                                     <asp:ListItem>Seleccione</asp:ListItem>
                                     <asp:ListItem>PUBLICO</asp:ListItem>
                                     <asp:ListItem>CORPORATIVO</asp:ListItem>
+                                    <asp:ListItem>ESPECIAL</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
