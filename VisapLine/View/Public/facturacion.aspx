@@ -18,6 +18,8 @@
             IDENTIFICACIÓN/NIT:&nbsp; <asp:TextBox ID="identificacion_" runat="server" />
             &nbsp;&nbsp;
             <asp:Button Text="Generar" BackColor="#66FF66" OnClick="Unnamed_Click" runat="server" />
+                <br />
+                <br />
             <br />
             <asp:GridView runat="server" OnRowCommand="allfactura_RowCommand" AutoGenerateColumns="False" ID="allfactura">
                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
