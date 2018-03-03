@@ -31,9 +31,6 @@ namespace VisapLine.View.Private
                     try
                     {
                         ig.caja_idcaja_egre = valor;
-
-
-
                         DataTable dtig = Validar.Consulta(ig.consultaringresos(ig));
                         Repeater1.DataSource = Validar.Consulta(ig.consultaringresos(ig));
                         Repeater1.DataBind();

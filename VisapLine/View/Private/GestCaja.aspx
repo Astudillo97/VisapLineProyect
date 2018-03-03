@@ -59,9 +59,17 @@
                             <tr>
                                 <th style="color: white">Codigo
                                 </th>
+                                <th style="color: white">N° de Factura
+                                </th>
                                 <th style="color: white">Fecha
                                 </th>
-                                <th style="color: white">N° de Factura
+                                <th style="color: white">Identificacion
+                                </th>
+                                <th style="color: white">Nombre
+                                </th>
+                                <th style="color: white">Apellido
+                                </th>
+                                <th style="color: white">Registro
                                 </th>
                                 <th style="color: white">Iva
                                 </th>
@@ -79,10 +87,22 @@
                                             <label><%#Eval("idpagos") %></label>
                                         </th>
                                         <th>
+                                            <label><%#Eval("facturaventa") %></label>
+                                        </th>
+                                        <th>
                                             <label><%#Eval("fechapago") %></label>
                                         </th>
                                         <th>
-                                            <label><%#Eval("factura_idfactura") %></label>
+                                            <label><%#Eval("identificacionfac") %> </label>
+                                        </th>
+                                        <th>
+                                            <label><%#Eval("nombrefac") %> </label>
+                                        </th>
+                                        <th>
+                                            <label><%#Eval("Apellidofac") %> </label>
+                                        </th>
+                                        <th>
+                                            <label><%#Eval("nombrereg") %> </label>
                                         </th>
                                         <th>
                                             <label><%#Eval("ivafac") %> </label>
@@ -98,13 +118,21 @@
                         </tbody>
                         <tfoot style="background-color: #507CD1">
                             <tr>
-                                <th style="color: white">IdEgreso
+                               <th style="color: white">Codigo
+                                </th>
+                                <th style="color: white">N° de Factura
                                 </th>
                                 <th style="color: white">Fecha
                                 </th>
-                                <th style="color: white">Observacion
+                                <th style="color: white">Identificacion
                                 </th>
-                                <th style="color: white">Motivo
+                                <th style="color: white">Nombre
+                                </th>
+                                <th style="color: white">Apellido
+                                </th>
+                                <th style="color: white">Registro
+                                </th>
+                                <th style="color: white">Iva
                                 </th>
                                 <th style="color: white">Valor
                                 </th>
@@ -112,8 +140,8 @@
                         </tfoot>
 
                     </table>
-                </div>                
-              
+                </div>
+
                 <!-- /.row -->
 
             </div>
@@ -187,7 +215,8 @@
                         </tfoot>
 
                     </table>
-                </div>                <!-- /.row -->
+                </div>
+                <!-- /.row -->
 
             </div>
             <!-- /.box-body -->
