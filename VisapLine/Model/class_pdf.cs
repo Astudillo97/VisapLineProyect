@@ -166,7 +166,7 @@ namespace VisapLine.Model
 
                     throw new ValidarExeption("El contrato no tiene un servicio");
                 }
-                
+
                 telef.terceros_idterceros = datos["identificacion"].ToString();
                 DataTable dattel = telef.ConsultarTelefonosIdTerceros(telef);
                 string vartelef = "";
@@ -311,8 +311,28 @@ namespace VisapLine.Model
 
 
         }
+        //public string crearincidencia(DataTable empresa, DataTable datosinci)
+        //{
+        //    try
+        //    {
+        //        string path = HttpContext.Current.Server.MapPath("~");
+        //        string FONT = path + "Archivos\\FreeSans.ttf";
+        //        string dir = "Archivos\\";
+        //        string dir2 = "Contenido\\";
+        //        string name = GenerarNombrePdf("INCIDENCIA-VISAPLINE");
+        //        PdfDocument documentoinci = new PdfDocument(new PdfWriter(path + dir + name));
+        //        Document doc = new Document(documentoinci, PageSize.LETTER);
 
-        public string CrearFacturaGrupal(DataTable empresa, DataTable datos,string condicion)
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
+
+        public string CrearFacturaGrupal(DataTable empresa, DataTable datos, string condicion)
         {
             try
             {
@@ -325,7 +345,7 @@ namespace VisapLine.Model
                 Document doc = new Document(documento, PageSize.LETTER);
                 for (int j = 0; j < datos.Rows.Count; j++)
                 {
-                    if (datos.Rows[j]["enviofactura"].ToString() == condicion && (datos.Rows[j]["estadof"].ToString()=="Facturado"|| datos.Rows[j]["estadof"].ToString() == "Prorateo"))
+                    if (datos.Rows[j]["enviofactura"].ToString() == condicion && (datos.Rows[j]["estadof"].ToString() == "Facturado" || datos.Rows[j]["estadof"].ToString() == "Prorateo"))
                     {
 
 
