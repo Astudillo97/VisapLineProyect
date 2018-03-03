@@ -22,13 +22,15 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="box box-primary">
                         <div class="box-body">
-                            <div class="form-group row" id="dividentificacion">
+                            <div class="row" id="dividentificacion">
                                 <label class="col-sm-3 col-form-label">FACTURA DE SERVICIO</label>
                                 <div class="col-sm-3">
                                     <asp:TextBox type="text" class="form-control" ID="factservicio" runat="server" />
                                 </div>
-                                <div class="col-sm-2">
-                                    <button class="btn btn-success btn-lg" runat="server" onserverclick="btnConsultar">BUSCAR FACTURA</button>
+                                <div class="col-6 row">
+                                    <button class="btn btn-success col-4" runat="server" onserverclick="btnConsultar">BUSCAR FACTURA</button>
+                                    <a class="btn btn-success col-4" href="facturacion.aspx">BUSCAR EN FACTURACIÓN</a>
+                                    <a class="btn btn-success col-4" href="gestcliente.aspx">AVANZADO</a>
                                 </div>
                             </div>
                         </div>
