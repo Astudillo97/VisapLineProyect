@@ -229,20 +229,25 @@ namespace VisapLine.View.Private
             {
                 string html = divcorreo.InnerHtml;
                 string meto=Validar.validarselected(method.SelectedValue);
+                int cont = 0;
                 foreach (DataRow item in tablefactura.Rows )
                 {
-                    if (item["enviofactura"].ToString()==meto)
+                    if (item["enviofactura"].ToString()==meto && cont>514)
                     {
                         string referen = pdf.CrearFactura(basic, item);
-                        correo.asunto = "VISAPLINE - FACTURA " + item["facturaventa"].ToString()+ " "+Convert.ToDateTime(item["fechavencimiento"].ToString()).ToString("Y", CultureInfo.CreateSpecificCulture("es-co"));
+                        correo.asunto = "VISAPLINE - FACTURA " + item["facturaventa"].ToString()+ " "+Convert.ToDateTime(item["fechaemision"].ToString()).ToString("Y", CultureInfo.CreateSpecificCulture("es-co"));
                         //correo.destinatario= item["correo"].ToString();
-                        correo.destinatario = "jab291214@gmail.com";
+                        correo.destinatario = item["correo"].ToString();
                         correo.cuerpo= html;
                         correo.html = true;
+                        if (!correo.html)
+                        {
+                            correo.cuerpo = "Señor Usuario ahora puedes descargar su factura en http://191.102.85.252:30000/View/Public/facturacion.aspx";
+                        }
                         correo.archivo= path+dir+ referen;
                         correo.EnviarMensaje();
-                        break;
                     }
+                    cont++;
                 }
             }
             catch (Exception ex)
@@ -270,7 +275,7 @@ namespace VisapLine.View.Private
                         DataRow datf = telefon.ConsultarTelefonosIdTerceros(telefon).Rows[0];
                         if (datf["telefono"].ToString().Length>=10)
                         {
-                            string celular ="57"+"3123801770";// dat["telefono"].ToString();
+                            string celular = "57" + "3118747881"; //datf["telefono"].ToString();
                             string nombre = item["nombre"].ToString() +" "+ item["apellido"].ToString();
                             ClientScript.RegisterStartupScript(GetType(), "msm", "EnviarSMS('" + msm+"','"+celular+"');", true);
                         }

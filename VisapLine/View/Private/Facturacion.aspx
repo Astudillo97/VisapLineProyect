@@ -204,7 +204,7 @@
                                                 <tr>
                                                     <td align="center" width="40%" valign="top" bgcolor="#FFFFFF" style="background-color: #ffffff;">
                                                         <h3>Facturación Electronica</h3>
-                                                       <%-- <p id="text2"><a href="http://191.102.85.252:30000/View/Private/Error.aspx?error= no tiene permisos" type="button" style="color: #FFFFFF; background-color: #2F62BB; width: 100%; border-radius: 7px; padding: 10px; border: solid 1px black; font-size: 13px; font-family: Arial, Helvetica, sans-serif;">Ver Factura</a></p>--%>
+                                                       <p id="text2"><a href="http://191.102.85.252:30000/View/Public/facturacion.aspx" type="button" style="color: #FFFFFF; background-color: #2F62BB; width: 100%; border-radius: 7px; padding: 10px; border: solid 1px black; font-size: 13px; font-family: Arial, Helvetica, sans-serif;">Ver Factura</a></p>
                                                         <p>Señor usuario, con el fin de proteger nuestro medio ambiente le recomendamos no imprimir su factura si no es necesario.</p>
                                                     </td>
                                                     <td align="center" width="60%" valign="top" bgcolor="#FFFFFF" style="background-color: #ffffff;">
