@@ -28,13 +28,16 @@ namespace VisapLine.View.Private
                 string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
                 if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
                 {
-
-                    string codig = Convert.ToString(Request.QueryString["codigo"]);
-                    if (codig != null)
+                    if (!IsPostBack)
                     {
-                        cod.InnerHtml = codig;
-                        ConsularDatos(codig);
+                        string codig = Convert.ToString(Request.QueryString["codigo"]);
+                        if (codig != null)
+                        {
+                            cod.InnerHtml = codig;
+                            ConsularDatos(codig);
+                        }
                     }
+                    
                 }
                 else
                 {
@@ -68,7 +71,7 @@ namespace VisapLine.View.Private
                     else if (values[i].Equals('-') && cont == 2)
                     {
                         codfactura = dat.Substring(i + 1);
-                        Response.Redirect("GestPagos.aspx?codigo=" + codfactura);
+                        Response.Redirect("gestpagos.aspx?codigo=" + codfactura);
                         break;
                     }
                 }
@@ -106,7 +109,7 @@ namespace VisapLine.View.Private
                     btnpago.Visible = false;
                     btnimprimir.Visible = true;
                 }
-                textpagado.Text = datafact["totalfac"].ToString();
+                textpagado.Text= datafact["totalfac"].ToString();
                 nombre.InnerText= datafact["nombre"].ToString()+" "+ datafact["apellido"].ToString();
                 identif.InnerText = datafact["identificacion"].ToString();
                 estadocliente.InnerText = datafact["estadop"].ToString();
