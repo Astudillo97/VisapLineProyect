@@ -313,6 +313,123 @@ namespace VisapLine.Model
 
         }
 
+
+        public string CrearOrdenSalida( DataTable empresa,DataTable encabezado,string vaalor,DataTable telefono,DataTable detallesalidaa)
+        {
+            //try { 
+            string path = HttpContext.Current.Server.MapPath("~");
+            string FONT = path + "Contenido\\FreeSans.ttf";
+            string dir = "Ordenes\\";
+            string name = GenerarNombrePdf("ins-000000000");
+            PdfDocument documento = new PdfDocument(new PdfWriter(path + dir + name));
+            Document doc = new Document(documento, PageSize.A5.Rotate());
+
+            Table header = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
+            Image imagen = new Image(ImageDataFactory.Create(path + dir + Descripcion(empresa, "logo"))).SetWidth(UnitValue.CreatePercentValue(100));
+
+            ////Celda hizaquierda de la factura
+            Cell logo = new Cell().SetBorder(Border.NO_BORDER).SetWidth(UnitValue.CreatePercentValue(25));
+            logo.Add(imagen);
+
+            ////Celda central de la factura
+            Cell descripcion = new Cell().SetWidth(UnitValue.CreatePercentValue(30)).SetBorder(Border.NO_BORDER); ;
+            PdfFont font = PdfFontFactory.CreateFont(FONT, "Cp1251", true);
+            Paragraph empresanombre = new Paragraph(Descripcion(empresa, "nombrejuridico")).SetFont(font).SetFontSize(11f).SetMarginTop(-4);
+            Paragraph empresanit = new Paragraph("NIT: " + Descripcion(empresa, "nit")).SetFontSize(8f).SetMarginTop(-4);
+            Paragraph empresadireccion = new Paragraph(Descripcion(empresa, "direccion")).SetFontSize(8f).SetMarginTop(-4);
+            Paragraph empresalineanacional = new Paragraph("Linea Nacional " + Descripcion(empresa, "lineanacional")).SetFontSize(8f).SetMarginTop(-4);
+            Paragraph empresatelefonos = new Paragraph(Descripcion(empresa, "telefono1") + " - " + Descripcion(empresa, "telefono2")).SetFontSize(8f).SetMarginTop(-4);
+            Paragraph empresaweb = new Paragraph(Descripcion(empresa, "web")).SetFontSize(8f).SetMarginTop(-4);
+
+            //Adicciones a la cell descripcion
+            descripcion.Add(empresanombre);
+            descripcion.Add(empresanit);
+            descripcion.Add(empresadireccion);
+            descripcion.Add(empresalineanacional);
+            descripcion.Add(empresatelefonos);
+            descripcion.Add(empresaweb);
+
+            ////Celda derecha de facturacion
+            Cell factura = new Cell().SetWidth(UnitValue.CreatePercentValue(45)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+
+            Table subfactura = new Table(2).SetWidth(UnitValue.CreatePercentValue(100));
+
+            Cell subfacizq = new Cell().SetWidth(UnitValue.CreatePercentValue(55)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
+            Paragraph facturadeventa = new Paragraph("ORDEN DE SERVICIO").SetFontSize(10f);
+            Paragraph fechaemision = new Paragraph("FECHA DE IMPRESION").SetFontSize(10f);
+            subfacizq.Add(facturadeventa);
+            subfacizq.Add(fechaemision);
+            subfactura.AddCell(subfacizq);
+
+            Cell subfacder = new Cell().SetWidth(UnitValue.CreatePercentValue(45)).SetTextAlignment(TextAlignment.RIGHT).SetBorder(Border.NO_BORDER);
+            Paragraph facturadeventavalue = new Paragraph(vaalor).SetFontSize(10f);
+            Paragraph fechaemisionvalue = new Paragraph(DateTime.Now.ToString("dd/MM/yyyy")).SetFontSize(10f);
+            subfacder.Add(facturadeventavalue);
+            subfacder.Add(fechaemisionvalue);
+            subfactura.AddCell(subfacder);
+
+            factura.Add(subfactura);
+
+            ////Agregando celdas a la tabla
+            header.AddCell(logo);
+            header.AddCell(descripcion);
+            header.AddCell(factura);
+            doc.Add(header);
+
+            Table encabezados = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            Cell cliente = new Cell().SetWidth(UnitValue.CreatePercentValue(45)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            Paragraph identificacion = new Paragraph("IDENTIFICACION : "+encabezado.Rows[0][0].ToString()).SetFontSize(10f);
+            Paragraph clienteclien = new Paragraph("CLIENTE : " + encabezado.Rows[0][1].ToString()+" "+ encabezado.Rows[0][2].ToString()).SetFontSize(10f);
+            Paragraph direccionclien = new Paragraph("DIRECCION : " + encabezado.Rows[0][4].ToString() + " "+ encabezado.Rows[0][5].ToString()).SetFontSize(10f);
+            cliente.Add(identificacion);
+            cliente.Add(clienteclien);
+            cliente.Add(direccionclien);
+
+            Cell TECNICO = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            Paragraph tecnicoclien = new Paragraph("TECNICO : " + encabezado.Rows[0][9].ToString()).SetFontSize(10f);
+
+            TECNICO.Add(tecnicoclien);
+
+            Cell TELEFONOCONTAC = new Cell().SetWidth(UnitValue.CreatePercentValue(15)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            for (int i=0; i< telefono.Rows.Count; i++) {
+                Paragraph telefonoclient = new Paragraph("TELEFONO " +(i+1)+" : " + telefono.Rows[i][0].ToString()).SetFontSize(10f);
+                TELEFONOCONTAC.Add(telefonoclient);
+            }
+                
+            encabezados.AddCell(cliente);
+            encabezados.AddCell(TECNICO);
+            encabezados.AddCell(TELEFONOCONTAC);
+            doc.Add(encabezados);
+            
+
+            Table detalle = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            for (int i = 0; i < detallesalidaa.Rows.Count; i++)
+            {
+                Cell EQUIPO = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+                Paragraph EQUIPODETLLAOD = new Paragraph("INVENTARIO " + (i + 1) + " : " + detallesalidaa.Rows[i][0].ToString()).SetFontSize(10f);
+                Cell CANTIDAD = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+                Paragraph CANTIDADDESPACHADA = new Paragraph("CANTIDAD : " + detallesalidaa.Rows[i][1].ToString()).SetFontSize(10f);
+                Cell RECIBIDO = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+                Paragraph ESTADO = new Paragraph("______________________").SetFontSize(10f);
+                EQUIPO.Add(EQUIPODETLLAOD);
+                CANTIDAD.Add(CANTIDADDESPACHADA);
+                RECIBIDO.Add(ESTADO);
+                detalle.AddCell(EQUIPO);
+                detalle.AddCell(CANTIDAD);
+                detalle.AddCell(RECIBIDO);
+            }
+            doc.Add(detalle);
+
+            doc.Close();
+            return name;
+    //    }
+    ////        catch (Exception ex)
+    ////        {
+
+    ////            throw new ValidarExeption("Error al crear el pdf: es posible que el contrato no tenga un servicio registrado " + ex.Message);
+    ////}
+}
+
         public string CrearFacturaGrupal(DataTable empresa, DataTable datos,string condicion)
         {
             try

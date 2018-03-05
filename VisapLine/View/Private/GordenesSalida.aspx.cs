@@ -17,6 +17,7 @@ namespace VisapLine.View.Private
         DetalleSalida dsord = new DetalleSalida();
         TipoProducto tp = new TipoProducto();
         public static string valosal;
+        class_pdf pdf = new class_pdf();
         Empresa emp = new Empresa();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -293,6 +294,36 @@ namespace VisapLine.View.Private
                 NewMethod(e.CommandArgument.ToString());
                 
             }
+        }
+
+        protected void btnimpresion_Click(object sender, EventArgs e)
+        {
+            Empresa empr = new Empresa();
+                 if (valosal.Contains("INS"))
+            {
+                divgrid.Visible = false;
+                DataTable consulta = ord.Consultarorden(valosal);
+                pdf.CrearOrdenSalida(empr.ConsultarEmpresa(),consulta,valosal, ord.cosnutlarlefonosorden(consulta.Rows[0][7].ToString()), ord.Consultardetalleordesali(valosal));
+               /* Llenargrid(consulta.Rows[0][7].ToString()); 
+                llenardetalle();
+                Llenardrop();
+                divconten.Visible = true;
+                divcreator.Visible = false;
+                Formtrabajos.Visible = false;*/
+            }
+            else
+            {
+             /*   divgrid.Visible = false;
+                DataTable consulta = ord.Consultarordentrab(valosal);
+                Formtrabajos.DataSource = consulta;
+                Formtrabajos.DataBind();
+                divconten.Visible = true;
+                divcreator.Visible = false;
+                llenardetalle();
+                Llenardrop();
+                formordenes.Visible = false;*/
+            }
+            
         }
 
         protected void gridbusqueda_PageIndexChanging(object sender, GridViewPageEventArgs e)
