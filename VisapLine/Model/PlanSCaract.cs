@@ -34,9 +34,9 @@ namespace VisapLine.Model
             //sirve
             return data.OperarDatos("select * from pr_insertarpuntosalservicio("+ servicios_idservicios + ","+ cantidad + ")");
         }
-        public DataTable ConsultarEquiposParainstalar() {
+        public DataTable ConsultarEquiposParainstalar(string value) {
             //sirve
-            return data.ConsultarDatos("select idinventario,serial,mac,modelo,fabricante,tipoproducto,wifi from inventario inner join tipoproducto on tipoproducto_idtipoproducto = tipoproducto.idtipoproducto inner join modelo on modelo_idmodelo=modelo.idmodelo inner join fabricante on fabricante_idfabricante = fabricante.idfabricante where estado = 'DISPONIBLE'; ");
+            return data.ConsultarDatos("select * from pr_consultarequiponecesario("+ value + ")");
         }
         public bool actualizarequipo(string equipo,string servicio) {
             return data.OperarDatos("select * from ");
