@@ -50,7 +50,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
                             <div class="col-sm-9">
-                                <asp:TextBox runat="server" type="number" CssClass="form-control" ID="texboxdni" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" CssClass="form-control" ID="texboxdni" Style="text-transform: uppercase"></asp:TextBox>
                             </div>
                         </div>
                     </div>

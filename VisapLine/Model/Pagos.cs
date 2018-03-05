@@ -24,9 +24,9 @@ namespace VisapLine.Model
             return data.ConsultarDatos("");
         }
 
-        public DataTable RegistrarPago(Pagos fac, string usuario, string ipregistro)
+        public DataTable RegistrarPago(Pagos fac, string usuario, string ipregistro,string retencion)
         {
-            return data.ConsultarDatos("select * from pr_insertar_pagos('" + usuario + "','" + ipregistro + "','" + fac.factura_idfactura + "','" + fac.terceros_idterceros + "','" + fac.pagado + "','" + obtenercaja() + "')");
+            return data.ConsultarDatos("select * from pr_insertar_pagos('" + usuario + "','" + ipregistro + "','" + fac.factura_idfactura + "','" + fac.terceros_idterceros + "','" + fac.pagado + "','" + obtenercaja() + "','"+retencion+"')");
         }
 
         public DataTable ConsultarPagoByIdFact(Pagos pag)

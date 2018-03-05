@@ -42,8 +42,8 @@ namespace VisapLine.Model
             class_correo correo = new class_correo();
             SmtpClient client = new SmtpClient();
             GoEmailv2 x = new GoEmailv2();
-            client.Credentials = new System.Net.NetworkCredential("jab291214@gmail.com", "Jab.1997");
-            MailAddress from = new MailAddress("jab291214@gmail.com","VisapLine Telecomunicaciones", System.Text.Encoding.UTF8);
+            client.Credentials = new System.Net.NetworkCredential("facturacionvisapline2018@gmail.com", "visap2018");
+            MailAddress from = new MailAddress("facturacionvisapline2018@gmail.com", "VisapLine Telecomunicaciones", System.Text.Encoding.UTF8);
             MailAddress to = new MailAddress(destinatario);
             MailMessage message = new MailMessage(from, to);
             message.Subject = asunto;
@@ -73,13 +73,13 @@ namespace VisapLine.Model
                 {
                     if (file==null)
                     {
-                        x.Enviar(destinatario, asunto, cuerpo, "VisapLine Telecomunicaciones", "jab291214@gmail.com", "Jab.1997", html);
+                        x.Enviar(destinatario, asunto, cuerpo, "VisapLine Telecomunicaciones", "facturacionvapline2018@gmail.com", "visap2018", html);
                     }
                     else
                     {
                         string[] arch = new string[1];
                         arch[0] = file;
-                        x.EnviarConArchivos(destinatario, asunto, cuerpo, "VisapLine Telecomunicaciones", "jab291214@gmail.com", "Jab.1997", html,arch);
+                        x.EnviarConArchivos(destinatario, asunto, cuerpo, "VisapLine Telecomunicaciones", "facturacionvapline2018@gmail.com", "visap2018", html,arch);
                     }
                 }
                 else

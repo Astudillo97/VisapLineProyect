@@ -60,13 +60,13 @@
                     <asp:Label ID="Labelvalorinicial" runat="server" ForeColor="Green" Text=""></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <asp:Label ID="Label6" runat="server" Text="Saldo Caja:"></asp:Label>
-                    <asp:Label ID="Labelvaloractual" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="Labelvaloractual" runat="server" Text=""></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Label ID="Label1" runat="server" Text="Valor de Ingresos:">
-                        <asp:Label ID="Labelingresos" runat="server" ForeColor="Green" Text="label"></asp:Label></asp:Label>
+                        <asp:Label ID="Labelingresos" runat="server" ForeColor="Green" Text=""></asp:Label></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Label ID="Label3" runat="server" Text="Valor de Egresos:">
-                        <asp:Label ID="Labelegresos" runat="server" ForeColor="Red" Text="Label"></asp:Label></asp:Label>
+                        <asp:Label ID="Labelegresos" runat="server" ForeColor="Red" Text=""></asp:Label></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            </center>
                

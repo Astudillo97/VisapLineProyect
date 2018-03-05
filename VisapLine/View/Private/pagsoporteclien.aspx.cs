@@ -16,14 +16,15 @@ namespace VisapLine.View.Private
 
         Permisos per = new Permisos();
         Soportes sp = new Soportes();
-
+        string idcontrato;
         protected void Page_Load(object sender, EventArgs e)
         {
             string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
             if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
             {
                 if (!IsPostBack)
-                {
+                {                  
+
                     string valor = Convert.ToString(Request.QueryString["key"]);
                     if (valor == "SI")
                     {

@@ -52,10 +52,8 @@ namespace VisapLine.View.Private
                     }
                     else
                     {
-
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
                         dnitercero.Text = valor;
-
                         DropDownListpaiscontrato.DataSource = pais.ConsultarPais();
                         DropDownListpaiscontrato.DataTextField = "pais";
                         DropDownListpaiscontrato.DataValueField = "idpais";
@@ -68,7 +66,7 @@ namespace VisapLine.View.Private
                         cargarBarrios(DropDownListmunicipiocontrato.SelectedValue);
 
 
-                
+
                         DropDownListtiporedenciacontrato.DataSource = tpres.ConsultarTipoResidencia();
                         DropDownListtiporedenciacontrato.DataTextField = "tiporesidencia";
                         DropDownListtiporedenciacontrato.DataValueField = "idtiporesidencia";
@@ -329,7 +327,7 @@ namespace VisapLine.View.Private
                 contrat.terceros_idterceros = Validar.validarlleno(datcontcorpo["idterceros"].ToString());
                 contrat.codigo = Validar.validarlleno(TextBox4.Text.ToUpper());
                 contrat.fechacontrato = Validar.validarlleno(Textboxfechainiciopermanencia.Text);
-                contrat.fechaactivacion = Validar.validarlleno(Textboxfechaactivacionservicio.Text);
+                //contrat.fechaactivacion = Validar.validarlleno(Textboxfechaactivacionservicio.Text);
                 contrat.fechafacturacion = Validar.validarlleno(Textboxfechafacturacion.Text);
                 contrat.estado = Validar.validarselected(DropDownListestadocontrato.Text);
                 contrat.tipocontrato_idtipocontrato = Validar.validarselected(DropDownListtipocontrato.SelectedValue);
@@ -388,7 +386,7 @@ namespace VisapLine.View.Private
                 contrat.terceros_idterceros = Validar.validarlleno(datcontcorpo["idterceros"].ToString());
                 contrat.codigo = Validar.validarlleno(TextBox4.Text);
                 contrat.fechacontrato = Validar.validarlleno(Textboxfechainiciopermanencia.Text);
-                contrat.fechaactivacion = Validar.validarlleno(Textboxfechaactivacionservicio.Text);
+                //contrat.fechaactivacion = Validar.validarlleno(Textboxfechaactivacionservicio.Text);
                 contrat.fechafacturacion = Validar.validarlleno(Textboxfechafacturacion.Text);
                 contrat.estado = Validar.validarselected(DropDownListestadocontrato.Text);
                 contrat.tipocontrato_idtipocontrato = Validar.validarselected(DropDownListtipocontrato.SelectedValue);
@@ -437,7 +435,7 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
 
             }
-       
+
 
         }
 

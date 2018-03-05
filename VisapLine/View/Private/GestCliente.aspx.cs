@@ -23,6 +23,7 @@ namespace VisapLine.View.Private
         static DataTable tablefactura = new DataTable();
         static DataTable tercliente = new DataTable();
         static DataTable contcliente = new DataTable();
+        Servicios serv = new Servicios();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -52,6 +53,7 @@ namespace VisapLine.View.Private
 
         protected void consultacliente_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
+            //qqqqqq
             try
             {
                 DataRow row = tercliente.Rows[e.NewSelectedIndex];
@@ -60,7 +62,7 @@ namespace VisapLine.View.Private
                 _nombre_.Value = row["nombre"].ToString() + " " + row["apellido"].ToString();
                 _correo_.Value = row["correo"].ToString();
                 _estado_.Value = row["estado"].ToString();
-
+                _direccion_.Value= row["direccion"].ToString();
                 tlf.terceros_idterceros = row["identificacion"].ToString();
                 DataTable listtelefono = tlf.ConsultarTelefonosIdTerceros(tlf);
                 string telef = "";
@@ -91,13 +93,18 @@ namespace VisapLine.View.Private
             try
             {
                 DataRow row = contcliente.Rows[e.NewSelectedIndex];
-
                 fact.contrato_idcontrato = row["idcontrato"].ToString();
                 tablefactura = fact.ConsultarFacturabyContrato(fact);
                 allfactura.DataSource = tablefactura;
                 allfactura.DataBind();
                 allfactura.Dispose();
                 Alerta.Visible = false;
+
+                DataTable dat = Validar.Consulta(serv.consultaservicioscont1(row["idcontrato"].ToString()));
+
+                GridView1.DataSource = dat;
+                GridView1.DataBind();
+
             }
             catch (Exception ex)
             {
@@ -166,17 +173,38 @@ namespace VisapLine.View.Private
             }
 
         }
-        protected void cargartabla(string idterceros)
-        {
-
-            DataTable dt = inci.ConsultarIncidencias();
-            GridView2.DataSource = dt;
+        protected void cargartabla(string idservicio)
+        {          
+            DataTable inc = inci.ConsultarIncidenciasidser(idservicio);
+            GridView2.DataSource = inc;
             GridView2.DataBind();
         }
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+          
+                    
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("buscar"))
+            {
+              
+                    cargartabla(e.CommandArgument.ToString());
+                  
+                    //punt = punto.consultarpuntosdelcontrato(e.CommandArgument.ToString());
+            
+            }
+            else
+            {
+
+            }
         }
     }
 }

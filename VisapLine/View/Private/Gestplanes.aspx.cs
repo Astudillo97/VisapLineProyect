@@ -28,7 +28,7 @@ namespace VisapLine.View.Private
                         DataRow dt = Validar.Consulta(pn.ConsultarPlanid(Label1.Text)).Rows[0];
                         TextBox1.Text = dt["valor"].ToString();
                         TextBox4.Text = dt["detalle"].ToString();
-                        if (dt["telefonia"].ToString() == "False")
+                        if (dt["internet"].ToString() == "False")
                         {
                             CheckBox1.Checked = false;
                         }
@@ -36,7 +36,7 @@ namespace VisapLine.View.Private
                         {
                             CheckBox1.Checked = true;
                         }
-                        if (dt["television"].ToString() == "False")
+                        if (dt["telefonia"].ToString() == "False")
                         {
                             CheckBox2.Checked = false;
                         }
@@ -44,7 +44,7 @@ namespace VisapLine.View.Private
                         {
                             CheckBox2.Checked = true;
                         }
-                        if (dt["internet"].ToString() == "False")
+                        if (dt["television"].ToString() == "False")
                         {
                             CheckBox3.Checked = false;
                         }

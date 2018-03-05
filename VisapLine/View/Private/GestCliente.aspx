@@ -11,7 +11,7 @@
             document.getElementById('idbusqueda').click();
         }
         function cargarIdfactura(vari) {
-            document.getElementById('<%=numero.ClientID%>').value=vari;
+            document.getElementById('<%=numero.ClientID%>').value = vari;
             document.getElementById('edicion').click();
         }
     </script>
@@ -40,7 +40,7 @@
         </div>
         <div class="tab-pane" runat="server" id="paneldatos">
             <div class="row">
-                <div class="col-lg-6 col-md-12">
+                <div class="col-lg-5">
                     <div class="box box-primary" id="paneldedatosterceros" runat="server" visible="false">
                         <div class="box-header with-border">
                             <h3 class="box-title"></h3>
@@ -82,22 +82,44 @@
                                     <input type="text" class="form-control" readonly id="_telefono_" runat="server" placeholder="TELEFONO">
                                 </div>
                             </div>
+                            <div class="form-group row" id="divdireccion">
+                                <label id="Label1" runat="server" class="col-sm-3 col-form-label">DIRECCION</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" readonly id="_direccion_" runat="server" placeholder="DIRECCION">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12">
+                <div class="col-lg-7">
                     <div class="box box-primary" style="overflow-x: auto">
                         <asp:GridView runat="server" ID="consultacontrato" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="consultacontrato_SelectedIndexChanging" AutoGenerateColumns="False">
                             <Columns>
                                 <asp:BoundField DataField="idcontrato" HeaderText="#ID"></asp:BoundField>
                                 <asp:BoundField DataField="fechacontrato" HeaderText="FECHA" DataFormatString="{0:d}"></asp:BoundField>
+                                <asp:BoundField DataField="valor" HeaderText="VALOR"></asp:BoundField>
+                                <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
                                 <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
                                 <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
                                 <asp:CommandField SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search" ShowSelectButton="True"></asp:CommandField>
+
                             </Columns>
                         </asp:GridView>
                     </div>
-                    <div class="box box-primary">
+                    <div class="box box-primary" style="overflow-x: auto">
+                        <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" AutoGenerateColumns="False">
+                            <Columns>
+                                <asp:BoundField DataField="id" HeaderText="#ID"></asp:BoundField>
+                                <asp:BoundField DataField="cantidadmegascol" HeaderText="MEGAS"></asp:BoundField>
+                                <asp:BoundField DataField="estadocol" HeaderText="ESTADO"></asp:BoundField>
+                                <asp:BoundField DataField="direccioncol" HeaderText="direccion"></asp:BoundField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Button CommandArgument='<%# Eval("id") %>' CommandName="buscar" CssClass="fa fa-search" ID="idbottonxxx" text="+" runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
                     </div>
                 </div>
             </div>
@@ -106,7 +128,7 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li><a class="active" id="pan1" href="#facturas" data-toggle="tab">FACTURAS</a></li>
-                    <li><a id="pan2" href="#insidencias" data-toggle="tab">INSIDENCIAS</a></li>
+                    <li><a id="pan2" href="#insidencias" data-toggle="tab">INCIDENCIAS</a></li>
                     <li><a href="#ordenes" id="pan3" data-toggle="tab">ORDENES</a></li>
                     <li><a href="#aprovisionamiento" id="pan4" data-toggle="tab">APROVISIONAMIENTO</a></li>
                     <li><a href="#elementos" id="pan5" data-toggle="tab">ELEMENTOS</a></li>
@@ -114,7 +136,7 @@
                 </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="facturas">
-                        <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" OnRowCommand="allfactura_RowCommand" AutoGenerateColumns="False" ID="allfactura">
+                        <asp:GridView runat="server"  CssClass="table table-bordered table-striped table-responsive" OnRowCommand="allfactura_RowCommand" AutoGenerateColumns="False" ID="allfactura">
 
                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                             <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Wrap="true" />
@@ -151,58 +173,55 @@
                             </Columns>
                         </asp:GridView>
                     </div>
-                    <div class="active tab-pane" id="insidencias">
-                        <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" ForeColor="#333333" GridLines="None" >
-                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-                        <Columns>
-                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
-                            <asp:BoundField HeaderText="Codg" DataField="idincidensia" ItemStyle-HorizontalAlign="Center">
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                            </asp:BoundField>
-                            <asp:BoundField HeaderText="Fecha Registro" DataField="fechainicio" DataFormatString="{0:f}" ItemStyle-HorizontalAlign="Center">
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                            </asp:BoundField>
-                            <asp:BoundField HeaderText="Estado" DataField="estado" ItemStyle-HorizontalAlign="Center">
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                            </asp:BoundField>
-                            <asp:BoundField HeaderText="Detalle" DataField="detalle" ItemStyle-HorizontalAlign="Center">
-                                <ControlStyle CssClass="filled-in" />
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                            </asp:BoundField>
-                            <asp:BoundField HeaderText="Tipo de Incidencia" DataField="tipoincidencia" ItemStyle-HorizontalAlign="Center">
-                                <ControlStyle CssClass="filled-in" />
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                            </asp:BoundField>
-                        </Columns>
-                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+                    <div class="tab-pane" id="insidencias">
+                        <asp:Button ID="Button1" runat="server" Text="Crear Incidencia +" CssClass="btn btn-block btn-success btn-lg" Width="143px" Height="35px" />
 
-                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+                        <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                            <Columns>                               
+                                <asp:BoundField HeaderText="Codg" DataField="idincidensia" ItemStyle-HorizontalAlign="Center">
+                                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Fecha Registro" DataField="fechainicio" DataFormatString="{0:f}" ItemStyle-HorizontalAlign="Center">
+                                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Estado" DataField="estado" ItemStyle-HorizontalAlign="Center">
+                                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Detalle" DataField="detalle" ItemStyle-HorizontalAlign="Center">
+                                    <ControlStyle CssClass="filled-in" />
+                                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+                            </Columns>
+                            <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
-                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
-                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-                        <RowStyle BackColor="#EFF3FB"></RowStyle>
+                            <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
 
-                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
 
-                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
 
-                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
 
-                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
 
-                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
-                    </asp:GridView>
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                        </asp:GridView>
                     </div>
-                    <div class="active tab-pane" id="ordenes"></div>
-                    <div class="active tab-pane" id="aprovisionamiento"></div>
-                    <div class="active tab-pane" id="elementos"></div>
-                    <div class="active tab-pane" id="mapa"></div>
+                    <div class="tab-pane" id="ordenes"></div>
+                    <div class="tab-pane" id="aprovisionamiento"></div>
+                    <div class="tab-pane" id="elementos"></div>
+                    <div class="tab-pane" id="mapa"></div>
                 </div>
             </div>
         </div>
-        <a data-toggle="modal" style="display:none" id="edicion" class="glyphicon glyphicon-cog"  href="#" data-target="#modal-primary">content</a>
+        <a data-toggle="modal" style="display: none" id="edicion" class="glyphicon glyphicon-cog" href="#" data-target="#modal-primary">content</a>
         <div class="modal fade" id="modal-primary">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -217,7 +236,7 @@
                                 <div class="box-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">#</label>
-                                        <asp:TextBox ID="numero" runat="server" Enabled="false"  CssClass="form-control-label"></asp:TextBox>
+                                        <asp:TextBox ID="numero" runat="server" Enabled="false" CssClass="form-control-label"></asp:TextBox>
                                         <asp:TextBox TextMode="MultiLine" class="form-control" runat="server" Rows="5" ID="observacion_" placeholder="Observacion" />
                                     </div>
                                 </div>

@@ -45,6 +45,7 @@ namespace VisapLine.View.Private
                         divtablagestcontr.Visible = false;
                         ideditarcontrat.Visible = true;
                         cargardatos(idcontrato);
+                        cargarplanes();
 
                     }
                     string valor = Convert.ToString(Request.QueryString["key"]);
@@ -82,12 +83,23 @@ namespace VisapLine.View.Private
                 GridView1.DataSource = datcont;
                 GridView1.DataBind();
                 divtablagestcontr.Visible = true;
+                cargarplanes();
+
+
 
             }
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "nocontro();", true);
             }
+        }
+        protected void cargarplanes()
+        {
+            DropDownListplanes.DataSource = pn.ConsultarPlanconca();
+            DropDownListplanes.DataTextField = "vardetalle";
+          
+            DropDownListplanes.DataValueField = "varidplan";
+            DropDownListplanes.DataBind();
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -99,7 +111,9 @@ namespace VisapLine.View.Private
             contrat.codigo = idcon;
             dt = Validar.Consulta(contrat.ConsultarContratocodigo(contrat)).Rows[0];
             DropDownListestadocontrato.Text = dt["estadoc"].ToString();
-
+            terc.idterceros = dt["terceros_idterceros_cont"].ToString();
+            DataRow tercerosnombre = Validar.Consulta(terc.ConsultarTercerosId(terc)).Rows[0];
+            TextBox1identificacion.Text = tercerosnombre["nombre"].ToString();
             Labelidcontrato.Text = dt["idcontrato"].ToString();
             LabelNumcontra.Text = dt["codigo"].ToString();
             DropDownListtipocontrato.DataSource = tpcont.ConsultarTipoContrato();
@@ -123,6 +137,7 @@ namespace VisapLine.View.Private
             DropDownList1.Text = dt["idbarrios"].ToString();
             TextBoxivacontrato.Text = dt["iva"].ToString();
             TextArea2.Value = dt["observacion"].ToString();
+            DropDownListplanes.SelectedValue = dt["idplan"].ToString();
             wifi = dt["wifi"].ToString();
             if (wifi == "True")
             {
@@ -136,13 +151,15 @@ namespace VisapLine.View.Private
                 }
             }
 
+
+
             ideditarcontrat.Visible = true;
             Buttoneditar.Visible = true;
             Buttoncancelar.Visible = true;
             ButtonGuardar.Visible = true;
             try
             {
-                DropDownList2.Text = dt["descuento"].ToString();
+                TextBox1.Text = dt["descuento"].ToString();
             }
             catch (Exception)
             {
@@ -182,6 +199,7 @@ namespace VisapLine.View.Private
                 DropDownList1.Text = dt["idbarrios"].ToString();
                 TextBoxivacontrato.Text = dt["iva"].ToString();
                 TextArea2.Value = dt["observacion"].ToString();
+                DropDownListplanes.SelectedValue = dt["idplan"].ToString();
                 wifi = dt["wifi"].ToString();
                 if (wifi == "True")
                 {
@@ -201,7 +219,7 @@ namespace VisapLine.View.Private
                 ButtonGuardar.Visible = true;
                 try
                 {
-                    DropDownList2.Text = dt["descuento"].ToString();
+                    TextBox1.Text = dt["descuento"].ToString();
                 }
                 catch (Exception)
                 {
@@ -237,8 +255,9 @@ namespace VisapLine.View.Private
 
                 contrat.barrio_idbarrio = Validar.validarselected(DropDownList1.SelectedValue);
                 contrat.iva = Validar.validarlleno(TextBoxivacontrato.Text);
-                contrat.observacion = Validar.validarlleno(TextArea2.Value.ToUpper());
-                contrat.descuento = Validar.validarselected(DropDownList2.Text);
+                contrat.observacion = TextArea2.Value.ToUpper();
+                contrat.descuento = TextBox1.Text;
+                contrat.plan_idplan = Validar.validarselected(DropDownListplanes.SelectedValue);
                 Validar.validarselected(DropDownList3.Text);
                 if (DropDownList3.Text == "SI")
                 {
@@ -257,7 +276,7 @@ namespace VisapLine.View.Private
                 if (Validar.validartrue(contrat.updatecontrato(contrat)))
                 {
                     string guardar = "SI";
-                    Response.Redirect("GestContrato.aspx?key=" + guardar);
+                    Response.Redirect("gestcontrato.aspx?key=" + guardar);
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
 
@@ -291,8 +310,9 @@ namespace VisapLine.View.Private
             TextBoxivacontrato.Enabled = true;
             Buttoncancelar.Enabled = true;
             ButtonGuardar.Enabled = true;
+            DropDownListplanes.Enabled = true;
             DropDownListestadocontrato.Enabled = true;
-            DropDownList2.Enabled = true;
+            TextBox1.Enabled = true;
             TextArea2.Disabled = false;
             DropDownList3.Enabled = true;
             Buttoneditar.Enabled = false;
@@ -301,7 +321,7 @@ namespace VisapLine.View.Private
 
         protected void Buttoncancelar_Click(object sender, EventArgs e)
         {
-
+            DropDownListplanes.Enabled = false;
             DropDownListtipocontrato.Enabled = false;
             TextArea1.Disabled = true;
             DropDownListenviofactura.Enabled = false;
@@ -314,7 +334,7 @@ namespace VisapLine.View.Private
             DropDownListestadocontrato.Enabled = false;
             TextArea2.Disabled = true;
             DropDownList3.Enabled = false;
-            DropDownList2.Enabled = false;
+            TextBox1.Enabled = false;
             Buttoneditar.Enabled = true;
         }
 

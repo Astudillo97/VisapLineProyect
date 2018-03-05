@@ -28,13 +28,16 @@ namespace VisapLine.View.Private
                 string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
                 if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
                 {
-
-                    string codig = Convert.ToString(Request.QueryString["codigo"]);
-                    if (codig != null)
+                    if (!IsPostBack)
                     {
-                        cod.InnerHtml = codig;
-                        ConsularDatos(codig);
+                        string codig = Convert.ToString(Request.QueryString["codigo"]);
+                        if (codig != null)
+                        {
+                            cod.InnerHtml = codig;
+                            ConsularDatos(codig);
+                        }
                     }
+                    
                 }
                 else
                 {
@@ -68,7 +71,7 @@ namespace VisapLine.View.Private
                     else if (values[i].Equals('-') && cont == 2)
                     {
                         codfactura = dat.Substring(i + 1);
-                        Response.Redirect("GestPagos.aspx?codigo=" + codfactura);
+                        Response.Redirect("gestpagos.aspx?codigo=" + codfactura);
                         break;
                     }
                 }
@@ -96,17 +99,26 @@ namespace VisapLine.View.Private
                 corte.InnerHtml = Convert.ToDateTime(datafact["fechacorte"].ToString()).ToString("dd/MM/yyyy"); ;
                 estado.InnerHtml = datafact["estado"].ToString();
                 estado2.InnerHtml = datafact["estado"].ToString();
-                if (datafact["estado"].ToString().Equals("Facturado") || datafact["estado"].ToString().Equals("Vencido") || datafact["estado"].ToString().Equals("Prorateo"))
+                valor.InnerHtml="VALOR:\n"+datafact["valorfac"].ToString();
+                saldo.InnerHtml = "SALDO:\n" + datafact["saldofac"].ToString();
+                iva.InnerHtml = "IVA:\n" + datafact["ivafac"].ToString();
+                total.InnerHtml = "TOTAL\n:" + datafact["totalfac"].ToString();
+                btnpago.Visible = true;
+                if (datafact["estado"].ToString().Equals("Abonado"))
                 {
-                    btnpago.Visible = true;
-                    btnimprimir.Visible = false;
+                    textpagado.Text = datafact["saldofac"].ToString();
+                    estado2.Attributes.Add("style", "color:blue");
                 }
-                else if (datafact["estado"].ToString().Equals("Pagado"))
+                else if(datafact["estado"].ToString().Equals("Pagado"))
                 {
-                    btnpago.Visible = false;
-                    btnimprimir.Visible = true;
+                    textpagado.Text = datafact["totalfac"].ToString();
+                    estado2.Attributes.Add("style", "color:green");
                 }
-                textpagado.Text = datafact["totalfac"].ToString();
+                else
+                {
+                    textpagado.Text = datafact["totalfac"].ToString();
+                    estado2.Attributes.Add("style", "color:red");
+                }
                 nombre.InnerText= datafact["nombre"].ToString()+" "+ datafact["apellido"].ToString();
                 identif.InnerText = datafact["identificacion"].ToString();
                 estadocliente.InnerText = datafact["estadop"].ToString();
@@ -154,15 +166,21 @@ namespace VisapLine.View.Private
                 pago.factura_idfactura = idfactura.InnerHtml;
                 string ipprivada = GetLocalIPAddress();
                 string ippublica = GetPublicIPAddress();
-                DataRow dat = pago.RegistrarPago(pago, ter.identificacion + ": " + ter.nombre + " " + ter.apellido, GetLocalIPAddress() + "-" + Dns.GetHostName() + "-" + GetPublicIPAddress()).Rows[0];
-                if (dat["pr_insertar_pagos"].ToString()!=null)
+                if (int.Parse(textretencion.Value)>=0)
                 {
-                    btnpago.Visible = false;
-                    btnimprimir.Visible = true;
-                    textError.InnerHtml = "Pago registrado correctamente";
-                    Alerta.CssClass = "alert alert-success";
-                    Alerta.Visible = true;
-                    idpago.InnerHtml = dat["pr_insertar_pagos"].ToString();
+                    DataRow dat = pago.RegistrarPago(pago, ter.identificacion + ": " + ter.nombre + " " + ter.apellido, GetLocalIPAddress() + "-" + Dns.GetHostName() + "-" + GetPublicIPAddress(), textretencion.Value).Rows[0];
+                    if (dat["pr_insertar_pagos"].ToString() != null)
+                    {
+                        
+                        btnimprimir.Visible = true;
+                        textError.InnerHtml = "Pago registrado correctamente";
+                        Alerta.CssClass = "alert alert-success";
+                        Alerta.Visible = true;
+                        idpago.InnerHtml = dat["pr_insertar_pagos"].ToString();
+                        ConsularDatos(cod.InnerHtml);
+                        btnpago.Visible = false;
+                        textretencion.Value = "0";
+                    }
                 }
             }
             catch (Exception ex)

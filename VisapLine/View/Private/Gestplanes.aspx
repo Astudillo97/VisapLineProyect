@@ -90,7 +90,8 @@
                                 <asp:DropDownList ID="DropDownList1" runat="server" Enabled="false" CssClass="form-control" AppendDataBoundItems="true" required data-validation-required-message="This field is required">
                                     <asp:ListItem>Seleccione</asp:ListItem>
                                     <asp:ListItem>PUBLICO</asp:ListItem>
-                                    <asp:ListItem>EMPRESARIAL</asp:ListItem>
+                                    <asp:ListItem>CORPORATIVO</asp:ListItem>
+                                    <asp:ListItem>ESPECIAL</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
