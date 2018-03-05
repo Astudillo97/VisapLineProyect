@@ -22,19 +22,45 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="box box-primary">
                         <div class="box-body">
-                            <div class="form-group row" id="dividentificacion">
+                            <div class="row" id="dividentificacion">
                                 <label class="col-sm-3 col-form-label">FACTURA DE SERVICIO</label>
                                 <div class="col-sm-3">
                                     <asp:TextBox type="text" class="form-control" ID="factservicio" runat="server" />
                                 </div>
-                                <div class="col-sm-2">
-                                    <button class="btn btn-success btn-lg" runat="server" onserverclick="btnConsultar">BUSCAR FACTURA</button>
+                                <div class="col-6 row">
+                                    <button class="btn btn-success col-4" runat="server" onserverclick="btnConsultar">BUSCAR FACTURA</button>
+                                    <a class="btn btn-success col-4" href="facturacion.aspx">BUSCAR EN FACTURACIÓN</a>
+                                    <a class="btn btn-success col-4" href="gestcliente.aspx">AVANZADO</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="modal fade" id="modal-primary">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="box box-primary bg-transparent">
+                            <div class="form-element">
+                                <div class="box-body">
+                                    <div class="form-group row">
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="textretencion" value="0" runat="server" placeholder="Telefono o celular">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <button type="button" class="btn btn-warning float-right" data-dismiss="modal">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
         </div>
         <div class="row">
             <div class="col-8">
@@ -55,7 +81,12 @@
                                         <label class="col-sm-3 col-form-label">VENCE</label>
                                         <label class="col-sm-3 col-form-label text-bold" runat="server" id="vencimiento"></label>
                                         <label class="col-sm-3 col-form-label">CORTE</label>
+                                        <hr />
                                         <label class="col-sm-3 col-form-label text-bold" runat="server" id="corte"></label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="valor"></label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="saldo"></label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="iva"></label>
+                                        <label class="col-sm-3 col-form-label text-bold" runat="server" id="total"></label>
                                     </div>
                                 </div>
                             </div>
@@ -70,13 +101,18 @@
                             <div class="box box-primary">
                                 <div class="box-body">
                                     <div class="row">
-                                        <div class="col-sm-12 ">
-                                            <h2 class="text-center"><label class="col-form-label text-bold"  runat="server" id="estado2"></label></h2>
+                                        <div class="col-12 ">
+                                            <h2 class="text-center">
+                                                <label class="col-form-label text-bold" runat="server" id="estado2"></label>
+                                            </h2>
                                         </div>
-                                        <div class="col-sm-12 ">
-                                            <asp:TextBox type="text" class="form-control text-center text-bold" runat="server" ID="textpagado" />
+                                        <div class="col-12">
+                                            <div class="input-group">
+                                                <a href="#" data-toggle="modal" data-target="#modal-primary" class="input-group-addon"><i class="fa fa-exchange"></i></a>
+                                                <asp:TextBox TextMode="Number" CssClass="form-control text-center text-bold" runat="server" ID="textpagado" />
+                                            </div>
                                         </div>
-                                        <div class="col-sm-12">
+                                        <div class="col-12">
                                             <button class="btn btn-success form-control btn-lg" visible="false" id="btnpago" runat="server" onserverclick="btnRegistrarpago">PAGAR</button>
                                             <button class="btn btn-secondary form-control btn-lg" visible="false" id="btnimprimir" runat="server" onserverclick="btnimprimir_ServerClick">IMPRIMIR</button>
                                             <label runat="server" id="idpago" visible="false"></label>
