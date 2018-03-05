@@ -291,7 +291,7 @@
                                 </tr>
                             </table>
                         </div>
-
+                        <asp:Button runat="server" ID="btnimpresion" OnClick="btnimpresion_Click" />
 
                         <div class="box box-body">
                             <div class="modal fade" id="mymodal" data-backdrop="static">
