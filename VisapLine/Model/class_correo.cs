@@ -42,7 +42,7 @@ namespace VisapLine.Model
             class_correo correo = new class_correo();
             SmtpClient client = new SmtpClient();
             GoEmailv2 x = new GoEmailv2();
-            client.Credentials = new System.Net.NetworkCredential("facturacionvisapline2018@gmail.com", "visap2018");
+            client.Credentials = new System.Net.NetworkCredential("facturacionvapline2018@gmail.com", "visap2018");
             MailAddress from = new MailAddress("facturacionvisapline2018@gmail.com", "VisapLine Telecomunicaciones", System.Text.Encoding.UTF8);
             MailAddress to = new MailAddress(destinatario);
             MailMessage message = new MailMessage(from, to);

@@ -24,12 +24,14 @@ namespace VisapLine.View.Private
 
                     if (!IsPostBack)
                     {
+                        Terceros ter = (Terceros)Session["tercero"];
+                        nombre.InnerHtml = ter.nombre+" "+ter.apellido;
+                        
                         DataTable listroels = (DataTable)Session["roles"];
                         listRoles.DataSource = listroels;
                         listRoles.DataValueField = "idrol";
                         listRoles.DataTextField = "rol";
                         listRoles.DataBind();
-
                         if (Session["idrol"] == null)
                         {
                             listRoles.SelectedIndex = 0;
