@@ -24,16 +24,13 @@ namespace VisapLine.View.Private
             {
                 if (!IsPostBack)
                 {
-
                     string valor = Convert.ToString(Request.QueryString["key"]);
                     if (valor == "SI")
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "guardo();", true);
                         valor = "";
                     }
-
                     cargartabla();
-
                 }
             }
             else
@@ -41,8 +38,6 @@ namespace VisapLine.View.Private
                 Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
             }
         }
-
-
 
 
         protected void cargartabla()
