@@ -523,6 +523,7 @@
     <Content Include="View\Private\servicio.aspx" />
     <Content Include="View\Private\solicitudes.aspx" />
     <Content Include="View\Private\SoporteDoc.aspx" />
+    <Content Include="View\Private\Soportescargado.aspx" />
     <Content Include="View\Private\Tipofact.aspx" />
     <Content Include="View\Private\VistadeExporte.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
@@ -833,6 +834,13 @@
     </Compile>
     <Compile Include="View\Private\SoporteDoc.aspx.designer.cs">
       <DependentUpon>SoporteDoc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Soportescargado.aspx.cs">
+      <DependentUpon>Soportescargado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Soportescargado.aspx.designer.cs">
+      <DependentUpon>Soportescargado.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Tipofact.aspx.cs">
       <DependentUpon>Tipofact.aspx</DependentUpon>

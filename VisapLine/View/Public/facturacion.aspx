@@ -1,12 +1,25 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="facturacion.aspx.cs" Inherits="VisapLine.View.Public.facturacion" %>
 
 <!DOCTYPE html>
+<style type="text/css">
+    img {
+        height: auto;
+        max-width: 100%;
+    }
 
+    #contenedor {
+        width: 25%;
+        height: 25%;
+        top: 30%;
+        left: 37.5%;
+        position: absolute;
+    }
+</style>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Facturacion</title>
-  
+
     <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="../../Contenido/assets/vendor_components/bootstrap/dist/css/bootstrap.css">
 
@@ -54,10 +67,15 @@
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 </head>
-<body >
+<body>
     <form id="form1" runat="server">
-        <div style="background-image: url('../../Archivos/Presentación1.jpg'); width: 100%; height: 100vh;">
+
+        <div id="contenedor">
+            <img src="../../Archivos/Presentación1.jpg" />
+        </div>
+        <div>
             <center>
+            
             <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <label class="text-center" runat="server" id="textError"></label>
