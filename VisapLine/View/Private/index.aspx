@@ -195,9 +195,20 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
-
-
+              <div class="col-xl-3 col-md-6 col-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>
+                            <asp:Label ID="Label9" runat="server" Text="12"></asp:Label></h3>
+                        <p>Contratos sin servicios</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-address-book-o"></i>
+                    </div>
+                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+                </div>
+            </div>
         </div>
     </section>
-
 </asp:Content>

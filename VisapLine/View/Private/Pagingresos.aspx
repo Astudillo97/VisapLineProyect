@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="PagEgresos.aspx.cs" Inherits="VisapLine.View.Private.PagEgresos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Pagingresos.aspx.cs" Inherits="VisapLine.View.Private.Pagingresos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -8,7 +8,7 @@
             resize: none;
         }
     </style>
-    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <asp:scriptmanager id="respust" runat="server"></asp:scriptmanager>
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         function deletealert() {
@@ -44,18 +44,17 @@
         }
     </script>
     <section class="content-header">
-        <h1>Egresos</h1>
+        <h1>Ingresos</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
             <li class="breadcrumb-item"><a href="#">Finanzas</a></li>
             <li class="breadcrumb-item active">Egresos</li>
         </ol>
     </section>
-    <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success">
+    <asp:panel id="Alerta" visible="false" runat="server" cssclass="col-12 alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
-    </asp:Panel>
-
+    </asp:panel>
     <section class="content">
         <div class="box box-default">
             <div class="box-body">
@@ -64,27 +63,27 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">CC o Nit:</label>
                             <div class="col-sm-9">
-                                <asp:TextBox runat="server" type="number" CssClass="form-control" ID="texboxdni" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:textbox runat="server" type="number" cssclass="form-control" id="texboxdni" style="text-transform: uppercase"></asp:textbox>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <asp:Button runat="server" class="btn btn-block btn-success btn-lg" ID="Button1" Text="Consultar" OnClick="Button1_Click" Width="146px" />
+                                <asp:button runat="server" class="btn btn-block btn-success btn-lg" id="Button1" text="Consultar" onclick="Button1_Click" width="146px" />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="box-body" id="tipopersona" runat="server" visible="false">
+            <div class="box-body" id="tipopersona" runat="server">
                 <div class="row">
                     <div class="col">
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-6" runat="server" visible="false" id="Proveedors">
+                <div class="col-6" runat="server" id="Proveedors">
                     <div>
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -96,35 +95,35 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Tipo Tercero</label>
                                             <div class="col-sm-9">
-                                                <asp:DropDownList ID="DropDownList1" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                                                <asp:dropdownlist id="DropDownList1" appenddatabounditems="true" cssclass="form-control" runat="server">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
-                                                </asp:DropDownList>
+                                                </asp:dropdownlist>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Tipo Documento</label>
                                             <div class="col-sm-9">
-                                                <asp:DropDownList ID="DropDownListtipodocu" CssClass="form-control" AppendDataBoundItems="true" runat="server">
+                                                <asp:dropdownlist id="DropDownListtipodocu" cssclass="form-control" appenddatabounditems="true" runat="server">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
-                                                </asp:DropDownList>
+                                                </asp:dropdownlist>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Razón Social</label>
                                             <div class="col-sm-9">
-                                                <asp:TextBox ID="TextBox5" class="form-control" Style="text-transform: uppercase" runat="server"></asp:TextBox>
+                                                <asp:textbox id="TextBox5" class="form-control" style="text-transform: uppercase" runat="server"></asp:textbox>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Telefono</label>
                                             <div class="col-sm-9">
-                                                <asp:TextBox ID="TextBox6" Style="text-transform: uppercase" class="form-control" runat="server"></asp:TextBox>
+                                                <asp:textbox id="TextBox6" style="text-transform: uppercase" class="form-control" runat="server"></asp:textbox>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Correo</label>
                                             <div class="col-sm-9">
-                                                <asp:TextBox ID="TextBox7" runat="server" class="form-control" ></asp:TextBox>
+                                                <asp:textbox id="TextBox7" runat="server" class="form-control"></asp:textbox>
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +132,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6" runat="server" visible="false" id="datosterceros">
+                <div class="col-6" runat="server"  visible="false" id="datosterceros">
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <h3 class="box-title">Datos del Tercero</h3>
@@ -146,22 +145,22 @@
                                 </div>
                                 <div class="col-7">
                                     <div class="form-group row">
-                                        <asp:Label ID="Labelidtercero" runat="server" Text="" Visible="false"></asp:Label>
+                                        <asp:label id="Labelidtercero" runat="server" text="" visible="false"></asp:label>
                                         <label class="col-sm-4 col-form-label">Nombre:</label>
                                         <div class="col-sm-8">
-                                            <asp:Label ID="Label1" runat="server" CssClass="form-control bg-gray" Width="200px" Text=""></asp:Label>
+                                            <asp:label id="Label1" runat="server" cssclass="form-control bg-gray" width="200px" text=""></asp:label>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label id="idapellidolabel" runat="server" class="col-sm-4 col-form-label">Apellido:</label>
                                         <div class="col-sm-8">
-                                            <asp:Label ID="Label2" CssClass="form-control bg-gray" Width="200px" runat="server" Text=""></asp:Label>
+                                            <asp:label id="Label2" cssclass="form-control bg-gray" width="200px" runat="server" text=""></asp:label>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Direccion:</label>
                                         <div class="col-sm-8">
-                                            <asp:TextBox ID="TextBox1" TextMode="MultiLine" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="200px" Height="100px"></asp:TextBox>
+                                            <asp:textbox id="TextBox1" textmode="MultiLine" rows="5" columns="15" runat="server" class="form-control bg-gray" width="200px" height="100px"></asp:textbox>
                                         </div>
                                     </div>
                                 </div>
@@ -169,39 +168,39 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6" runat="server" visible="false" id="Div1">
+                <div class="col-6" runat="server"  id="Div1">
                     <div>
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="box box-primary">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title">Egresos</h3>
+                                        <h3 class="box-title">Ingresos</h3>
                                     </div>
                                     <div class="box-body">
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Motivo</label>
                                             <div class="col-sm-9">
-                                                <asp:DropDownList ID="DropDownList2" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                                                <asp:dropdownlist id="DropDownList2" appenddatabounditems="true" cssclass="form-control" runat="server">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
+                                                </asp:dropdownlist>
+                                           </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Valor Egreso</label>
                                             <div class="col-sm-9">
-                                                <asp:TextBox ID="TextBox3" runat="server" type="number" CssClass="form-control" Style="text-transform: uppercase"></asp:TextBox>
+                                                <asp:textbox id="TextBox3" runat="server" type="number" cssclass="form-control" style="text-transform: uppercase"></asp:textbox>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Observacion</label>
                                             <div class="col-sm-9">
-                                                <asp:TextBox ID="TextBox2" TextMode="MultiLine" Style="text-transform: uppercase" Rows="5" Columns="15" runat="server" class="form-control" Height="100px"></asp:TextBox>
+                                                <asp:textbox id="TextBox2" textmode="MultiLine" style="text-transform: uppercase" rows="5" columns="15" runat="server" class="form-control" height="100px"></asp:textbox>
                                             </div>
                                         </div>
                                         <center>
-                                             <asp:Button ID="Buttonguarimpri" class="btn btn-block btn-success btn-lg" Width="143" Height="30" runat="server" Visible="false" OnClick="Buttonguarimpri_Click" Text="Guardar" />
+                                             <asp:Button ID="Buttonguarimpri" class="btn btn-block btn-success btn-lg" Width="143" Height="30" runat="server" Visible="false" OnClick="Buttonguarimpri_Click1" Text="Guardar" />
                                              <asp:Button ID="Buttonguar2" class="btn btn-block btn-success btn-lg" Width="143" Height="30" OnClick="Buttonguar2_Click" Visible="false" runat="server" Text="Guardar"></asp:Button>
-                                            </center>
+                                        </center>
                                     </div>
                                 </div>
                             </div>
@@ -211,4 +210,5 @@
             </div>
         </div>
     </section>
+
 </asp:Content>

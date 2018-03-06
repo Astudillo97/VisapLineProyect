@@ -27,6 +27,11 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("select * from public.pr_insertarsoporte('"+sop.soportes+"','"+sop.contrato_idcontrato+"','"+sop.tiposoporte_idtiposoporte+"')");
         }
+        public DataTable ConsultarSoportesidcontrato(Soportes sop)
+        {
+            return data.ConsultarDatos("select* from pr_consultarsoportescontload('"+sop.contrato_idcontrato+"')");
+        }
+ 
 
     }
 }

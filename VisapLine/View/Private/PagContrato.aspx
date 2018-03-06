@@ -44,7 +44,7 @@
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
     <section class="content">
-     
+
 
         <div class="box box-default">
             <div class="box-header with-border">
@@ -72,9 +72,8 @@
                             </th>
                             <th style="color: white">Direccion  
                             </th>
-                            <th style="color: white">
-                            Correo  
-                                 
+                            <th style="color: white">Correo  
+                            </th>
                             <th style="color: white">Edit
                             </th>
                         </tr>
@@ -82,7 +81,6 @@
                     <tbody>
                         <asp:Repeater ID="repeteidordeinventario" runat="server">
                             <ItemTemplate>
-
                                 <tr>
                                     <th>
                                         <label><%#Eval("codigo") %></label>
@@ -111,15 +109,10 @@
                                     <th>
                                         <label><%#Eval("correo") %></label>
                                     </th>
-
                                     <th>
                                         <a href="servicio.aspx?key=<%#Eval("idcontrato")%>" class="glyphicon glyphicon-edit">Edit:Servicio</a>
-
                                         <a href="gestcontrato.aspx?iCnt=<%#Eval("codigo")%>" class="glyphicon glyphicon-edit">Edit:Contrato</a>
-
                                     </th>
-
-
                                 </tr>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -142,8 +135,8 @@
                             </th>
                             <th style="color: white">Direccion  
                             </th>
-                            <th style="color: white">
-                            Correo                                  
+                            <th style="color: white">Correo       
+                            </th>
                             <th style="color: white">Modificar
                             </th>
                         </tr>

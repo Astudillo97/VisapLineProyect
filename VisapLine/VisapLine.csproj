@@ -511,6 +511,7 @@
     <Content Include="View\Private\PagCaja.aspx" />
     <Content Include="View\Private\PagContrato.aspx" />
     <Content Include="View\Private\PagEgresos.aspx" />
+    <Content Include="View\Private\Pagingresos.aspx" />
     <Content Include="View\Private\pagplan.aspx" />
     <Content Include="View\Private\pagsoporteclien.aspx" />
     <Content Include="View\Private\pagzona.aspx" />
@@ -520,6 +521,7 @@
     <Content Include="View\Private\ReporteCaja.aspx" />
     <Content Include="View\Private\servicio.aspx" />
     <Content Include="View\Private\solicitudes.aspx" />
+    <Content Include="View\Private\SoporteDoc.aspx" />
     <Content Include="View\Private\Tipofact.aspx" />
     <Content Include="View\Private\VistadeExporte.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
@@ -754,6 +756,13 @@
     <Compile Include="View\Private\PagEgresos.aspx.designer.cs">
       <DependentUpon>PagEgresos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\Pagingresos.aspx.cs">
+      <DependentUpon>Pagingresos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Pagingresos.aspx.designer.cs">
+      <DependentUpon>Pagingresos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\pagplan.aspx.cs">
       <DependentUpon>pagplan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -816,6 +825,13 @@
     </Compile>
     <Compile Include="View\Private\solicitudes.aspx.designer.cs">
       <DependentUpon>solicitudes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\SoporteDoc.aspx.cs">
+      <DependentUpon>SoporteDoc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\SoporteDoc.aspx.designer.cs">
+      <DependentUpon>SoporteDoc.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Tipofact.aspx.cs">
       <DependentUpon>Tipofact.aspx</DependentUpon>
