@@ -141,6 +141,7 @@
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regulard41d.eot" />
     <Content Include="Contenido\FreeSans.ttf" />
+    <Content Include="Ordenes\2018351857-INS-12422018.pdf" />
     <None Include="packages.config" />
     <Content Include="Contenido\assets\vendor_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="Contenido\assets\vendor_components\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -848,7 +849,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Ordenes\" />
     <Folder Include="soportes\soporte_Contratos\" />
   </ItemGroup>
   <PropertyGroup>
