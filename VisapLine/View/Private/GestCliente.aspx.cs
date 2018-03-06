@@ -24,6 +24,8 @@ namespace VisapLine.View.Private
         static DataTable tercliente = new DataTable();
         static DataTable contcliente = new DataTable();
         Servicios serv = new Servicios();
+        Puntos punto = new Puntos();
+        public DataTable punt = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -53,7 +55,6 @@ namespace VisapLine.View.Private
 
         protected void consultacliente_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-            //qqqqqq
             try
             {
                 DataRow row = tercliente.Rows[e.NewSelectedIndex];
@@ -104,7 +105,14 @@ namespace VisapLine.View.Private
 
                 GridView1.DataSource = dat;
                 GridView1.DataBind();
+                try
+                {
+                    punt = punto.consultarpuntosdelcontrato(row["idcontrato"].ToString());
+                }
+                catch (Exception)
+                {
 
+                }
             }
             catch (Exception ex)
             {
@@ -197,9 +205,17 @@ namespace VisapLine.View.Private
             {
               
                     cargartabla(e.CommandArgument.ToString());
-                  
-                    //punt = punto.consultarpuntosdelcontrato(e.CommandArgument.ToString());
-            
+
+                try
+                {
+                    punt = punto.consultarpuntosdelcontrato(e.CommandArgument.ToString());
+
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title: 'UUUUPSSS!!!!', text: 'Algo ha ocurrido estamos trabajando para solucionarlo',imageUrl: '../../Contenido/images/monkeyprogramer.jpg',imageSize: '400x250'})", true);
+                }
+
             }
             else
             {
