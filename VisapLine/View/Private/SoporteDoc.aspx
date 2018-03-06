@@ -27,7 +27,7 @@
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
     <section class="content-header">
-        <h1>Repositorio de Documentos del Cliente</h1>
+        <h1>Carga de Documentos del Cliente</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
             <li class="breadcrumb-item"><a href="#">Clientes</a></li>

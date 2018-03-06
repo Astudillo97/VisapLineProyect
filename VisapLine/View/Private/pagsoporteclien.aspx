@@ -107,7 +107,7 @@
                                                             <label><%#Eval("detalle") %> </label>
                                                         </th>
                                                         <th>
-                                                            <a href="soportedoc.aspx?key=<%#Eval("idcontrato")%>" class="glyphicon glyphicon-edit">__Subir</a>
+                                                            <a href="soportedoc.aspx?key=<%#Eval("idcontrato")%>" class="glyphicon glyphicon-edit">_Mostrar</a>
                                                         </th>
                                                     </tr>
                                                 </ItemTemplate>
