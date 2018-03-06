@@ -433,28 +433,31 @@ namespace VisapLine.Model
             Paragraph firmarecibeline = new Paragraph("____________________________").SetTextAlignment(TextAlignment.LEFT).SetFontSize(8f);
             linea.Add(firmaentregaline);
             vacio2.Add(vacio);
-            linea2.Add(linea2);
+            linea2.Add(firmarecibeline);
 
             footer.AddCell(linea);
             footer.AddCell(vacio2);
-            footer.AddCell(firmarecibeline);
+            footer.AddCell(linea2);
 
             doc.Add(footer);
 
             Table footer2 = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
             Cell linea5 = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
             Paragraph firmaentrega2 = new Paragraph("            ENTREGA            ").SetFontSize(8f);
+
             Cell vacio22 = new Cell().SetWidth(UnitValue.CreatePercentValue(20)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
             Paragraph vacio4 = new Paragraph("").SetFontSize(8f);
-            Cell linea23 = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
+
+            Cell linea222 = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
             Paragraph firmarecibel2 = new Paragraph("         RECIBE             ").SetTextAlignment(TextAlignment.LEFT).SetFontSize(8f);
+
             linea5.Add(firmaentrega2);
             vacio22.Add(vacio4);
-            linea23.Add(firmarecibel2);
+            linea222.Add(firmarecibel2);
 
             footer2.AddCell(linea5);
             footer2.AddCell(vacio22);
-            footer2.AddCell(linea23);
+            footer2.AddCell(linea222);
 
 
 
