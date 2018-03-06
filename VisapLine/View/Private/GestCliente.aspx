@@ -115,7 +115,7 @@
                                 <asp:BoundField DataField="direccioncol" HeaderText="direccion"></asp:BoundField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:Button CommandArgument='<%# Eval("id") %>' CommandName="buscar" CssClass="fa fa-search" ID="idbottonxxx" text="+" runat="server" />
+                                        <asp:Button CommandArgument='<%# Eval("id") %>' CommandName="buscar" CssClass="fa fa-search" ID="idbottonxxx" Text="+" runat="server" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -136,7 +136,7 @@
                 </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="facturas">
-                        <asp:GridView runat="server"  CssClass="table table-bordered table-striped table-responsive" OnRowCommand="allfactura_RowCommand" AutoGenerateColumns="False" ID="allfactura">
+                        <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" OnRowCommand="allfactura_RowCommand" AutoGenerateColumns="False" ID="allfactura">
 
                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                             <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Wrap="true" />
@@ -178,7 +178,7 @@
 
                         <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
-                            <Columns>                               
+                            <Columns>
                                 <asp:BoundField HeaderText="Codg" DataField="idincidensia" ItemStyle-HorizontalAlign="Center">
                                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
@@ -217,7 +217,11 @@
                     <div class="tab-pane" id="ordenes"></div>
                     <div class="tab-pane" id="aprovisionamiento"></div>
                     <div class="tab-pane" id="elementos"></div>
-                    <div class="tab-pane" id="mapa"></div>
+                    <div class="tab-pane" id="mapa">
+                        <div style="width: 100%; height: 330px;" id="map"></div>
+                        <asp:Label ID="latitud" runat="server"></asp:Label>
+                        <asp:Label ID="longitud" runat="server"></asp:Label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -288,5 +292,81 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
+        <script>
+            var markers;
+            var map;
+            var zomm = 8;
+            var myLatLng = { lat: 1.620249416453961, lng: -75.61037882799843 };
+
+            function addMarker(location) {
+
+                zomm = map.getZoom();
+                myLatLng = location;
+                initMap();
+                markers = new google.maps.Marker({
+                    position: location,
+                    draggable: true,
+                    map: map
+                });
+                document.getElementById('<%=latitud.ClientID%>').value = markers.getPosition().lat();
+                document.getElementById('<%=longitud.ClientID%>').value = markers.getPosition().lng();
+
+                markers.addListener('dragend', function () {
+                    document.getElementById('<%=latitud.ClientID%>').value = markers.getPosition().lat();
+                    document.getElementById('<%=longitud.ClientID%>').value = markers.getPosition().lng();
+                });
+            }
+
+            function initMap() {
+                var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: zomm,
+                    mapTypeId: 'satellite',
+                    center: myLatLng
+                });
+                var icons = {
+                    Radio: {
+                        icon: 'http://191.102.85.252:30000/Contenido/radio.png'
+                    },
+                    Fibra: {
+                        icon: 'http://191.102.85.252:30000/Contenido/fibra.png'
+                    },
+                    Indefinido: {
+                        icon: 'http://191.102.85.252:30000/Contenido/indefinido.png'
+                    }
+                };
+
+
+                map.addListener('click', function (event) {
+                    addMarker(event.latLng);
+                });
+
+                var marker = [
+                <%if (punt != null)
+            {
+                int cont = punt.Rows.Count;
+                int cot = 0;
+                foreach (System.Data.DataRow item in punt.Rows)
+                {
+                %>
+                    new google.maps.Marker({
+                        position: { lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> },
+                        map: map,
+                        icon: icons['<%=item["tipo"].ToString()%>'].icon,
+                        title: '<%=item["nombre"].ToString()%>'<%cot++;%>
+                    }).addListener('click', function () {
+                        map.setZoom(15);
+                        map.setCenter({ lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> });
+                        }) <%if (cot == cont) { Response.Write(""); } else { Response.Write(","); }%>               
+                <%
+                }
+            }
+                  %>
+                ];
+            }
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcz4b9tiKDFIuSFnaGlU7YpsBpfzPu7to&callback=initMap">
+        </script>
     </section>
 </asp:Content>
