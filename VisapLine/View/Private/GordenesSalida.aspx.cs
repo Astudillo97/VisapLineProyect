@@ -303,13 +303,14 @@ namespace VisapLine.View.Private
             {
                 divgrid.Visible = false;
                 DataTable consulta = ord.Consultarorden(valosal);
-                pdf.CrearOrdenSalida(empr.ConsultarEmpresa(),consulta,valosal, ord.cosnutlarlefonosorden(consulta.Rows[0][7].ToString()), ord.Consultardetalleordesali(valosal));
-               /* Llenargrid(consulta.Rows[0][7].ToString()); 
-                llenardetalle();
-                Llenardrop();
-                divconten.Visible = true;
-                divcreator.Visible = false;
-                Formtrabajos.Visible = false;*/
+                string rediret=pdf.CrearOrdenSalida(empr.ConsultarEmpresa(),consulta,valosal, ord.cosnutlarlefonosorden(consulta.Rows[0][7].ToString()), ord.Consultardetalleordesali(valosal));
+                Response.Redirect("../../Ordenes/" + rediret);
+                /* Llenargrid(consulta.Rows[0][7].ToString()); 
+                 llenardetalle();
+                 Llenardrop();
+                 divconten.Visible = true;
+                 divcreator.Visible = false;
+                 Formtrabajos.Visible = false;*/
             }
             else
             {

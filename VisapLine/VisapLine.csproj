@@ -848,6 +848,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Ordenes\" />
     <Folder Include="soportes\soporte_Contratos\" />
   </ItemGroup>
   <PropertyGroup>
