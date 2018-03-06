@@ -20,6 +20,7 @@ namespace VisapLine.View.Private
         public static DataTable dataeuipo;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack) {
                 Valor = Request.QueryString["addds"];
                 cargardatos(int.Parse(Valor));
@@ -32,9 +33,8 @@ namespace VisapLine.View.Private
                 ConsultarEquipo();
             }
         }
-
         protected void ConsultarEquipo() {
-            repetidordecolumnar.DataSource = psc.ConsultarEquiposParainstalar();
+            repetidordecolumnar.DataSource = psc.ConsultarEquiposParainstalar(Valor);
             repetidordecolumnar.DataBind();
         }
         

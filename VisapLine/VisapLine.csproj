@@ -385,6 +385,7 @@
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <Content Include="soportes\Horario_MATEO  CEBALLOS BERMUDEZ_85949.pdf" />
     <Content Include="soportes\Windows_Server_2016_Secure_Evolve_Innovate_Solution_Brief_EN_US.pdf" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -863,6 +864,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Ordenes\" />
     <Folder Include="soportes\soporte_Contratos\" />
   </ItemGroup>
   <PropertyGroup>

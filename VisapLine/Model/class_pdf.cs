@@ -311,28 +311,168 @@ namespace VisapLine.Model
 
 
         }
-        //public string crearincidencia(DataTable empresa, DataTable datosinci)
-        //{
-        //    try
-        //    {
-        //        string path = HttpContext.Current.Server.MapPath("~");
-        //        string FONT = path + "Archivos\\FreeSans.ttf";
-        //        string dir = "Archivos\\";
-        //        string dir2 = "Contenido\\";
-        //        string name = GenerarNombrePdf("INCIDENCIA-VISAPLINE");
-        //        PdfDocument documentoinci = new PdfDocument(new PdfWriter(path + dir + name));
-        //        Document doc = new Document(documentoinci, PageSize.LETTER);
 
-        //    }
-        //    catch (Exception)
-        //    {
 
-        //        throw;
-        //    }
+        public string CrearOrdenSalida(DataTable empresa, DataTable encabezado, string vaalor, DataTable telefono, DataTable detallesalidaa)
+        {
+            //try { 
+            string path = HttpContext.Current.Server.MapPath("~");
+            string FONT = path + "Contenido\\FreeSans.ttf";
+            string dir = "Ordenes\\";
+            string dir2 = "Contenido\\";
+            string dattos = GenerarNombrePdf(vaalor);
+            PdfDocument documento = new PdfDocument(new PdfWriter(path + dir + dattos));
+            Document doc = new Document(documento, PageSize.A5.Rotate());
 
-        //}
+            Table header = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
+            Image imagen = new Image(ImageDataFactory.Create(path + dir2 + Descripcion(empresa, "logo"))).SetWidth(UnitValue.CreatePercentValue(100));
+
+            ////Celda hizaquierda de la factura
+            Cell logo = new Cell().SetBorder(Border.NO_BORDER).SetWidth(UnitValue.CreatePercentValue(10)).SetHeight(UnitValue.CreatePercentValue(10));
+            logo.Add(imagen);
+
+            ////Celda derecha de facturacion
+            Cell factura = new Cell().SetWidth(UnitValue.CreatePercentValue(45)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+
+            Table subfactura = new Table(2).SetWidth(UnitValue.CreatePercentValue(100));
+
+            Cell subfacizq = new Cell().SetWidth(UnitValue.CreatePercentValue(55)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
+            Paragraph facturadeventa = new Paragraph("ORDEN DE SERVICIO").SetFontSize(8f);
+            Paragraph fechaemision = new Paragraph("FECHA DE IMPRESION").SetFontSize(8f);
+            subfacizq.Add(facturadeventa);
+            subfacizq.Add(fechaemision);
+            subfactura.AddCell(subfacizq);
+
+            Cell subfacder = new Cell().SetWidth(UnitValue.CreatePercentValue(45)).SetTextAlignment(TextAlignment.RIGHT).SetBorder(Border.NO_BORDER);
+            Paragraph facturadeventavalue = new Paragraph(vaalor).SetFontSize(8f);
+            Paragraph fechaemisionvalue = new Paragraph(DateTime.Now.ToString("dd/MM/yyyy")).SetFontSize(8f);
+            subfacder.Add(facturadeventavalue);
+            subfacder.Add(fechaemisionvalue);
+            subfactura.AddCell(subfacder);
+
+            factura.Add(subfactura);
+
+            ////Agregando celdas a la tabla
+            header.AddCell(logo);
+            header.AddCell(factura);
+            doc.Add(header);
+
+            Paragraph saltoDeLinea2 = new Paragraph("                                                                                                                                                                                                                                                                                                                                                                                   ");
+            doc.Add(saltoDeLinea2);
+
+            Table encabezados = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            Cell cliente = new Cell().SetWidth(UnitValue.CreatePercentValue(45)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            Paragraph identificacion = new Paragraph("IDENTIFICACION : " + encabezado.Rows[0][0].ToString()).SetFontSize(8f);
+            Paragraph clienteclien = new Paragraph("CLIENTE : " + encabezado.Rows[0][1].ToString() + " " + encabezado.Rows[0][2].ToString()).SetFontSize(8f);
+            Paragraph direccionclien = new Paragraph("DIRECCION : " + encabezado.Rows[0][4].ToString() + " " + encabezado.Rows[0][5].ToString()).SetFontSize(8f);
+            cliente.Add(identificacion);
+            cliente.Add(clienteclien);
+            cliente.Add(direccionclien);
+
+            Cell TECNICO = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            Paragraph tecnicoclien = new Paragraph("TECNICO : " + encabezado.Rows[0][9].ToString()).SetFontSize(8f);
+
+            TECNICO.Add(tecnicoclien);
+
+            Cell TELEFONOCONTAC = new Cell().SetWidth(UnitValue.CreatePercentValue(15)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            for (int i = 0; i < telefono.Rows.Count; i++)
+            {
+                Paragraph telefonoclient = new Paragraph("TELEFONO " + (i + 1) + " : " + telefono.Rows[i][0].ToString()).SetFontSize(8f);
+                TELEFONOCONTAC.Add(telefonoclient);
+            }
+
+            encabezados.AddCell(cliente);
+            encabezados.AddCell(TECNICO);
+            encabezados.AddCell(TELEFONOCONTAC);
+            doc.Add(encabezados);
+
+            Paragraph saltoDeLinea1 = new Paragraph("                                                                                                                                                                                                                                                                                                                                                                                   ");
+            doc.Add(saltoDeLinea1);
+            Table detalle = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            Table detalleheadeer = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            Cell EQUIPOheader = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            Paragraph EQUIPODETLLAODhead = new Paragraph("INVENTARIO").SetFontSize(8f);
+            EQUIPOheader.Add(EQUIPODETLLAODhead);
+            Cell CANTIDADheaader = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            Paragraph CANTIDADDESPACHADAhead = new Paragraph("CANTIDAD").SetFontSize(8f);
+            CANTIDADheaader.Add(CANTIDADDESPACHADAhead);
+            Cell RECIBIDOhader = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+            Paragraph estadohead = new Paragraph("REVISADO").SetFontSize(8f);
+            RECIBIDOhader.Add(estadohead);
+            detalleheadeer.AddCell(EQUIPOheader);
+            detalleheadeer.AddCell(CANTIDADheaader);
+            detalleheadeer.AddCell(RECIBIDOhader);
+            for (int i = 0; i < detallesalidaa.Rows.Count; i++)
+            {
+                Cell EQUIPO = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+                Paragraph EQUIPODETLLAOD = new Paragraph((i + 1) + " : " + detallesalidaa.Rows[i][0].ToString()).SetFontSize(8f);
+                Cell CANTIDAD = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+                Paragraph CANTIDADDESPACHADA = new Paragraph(detallesalidaa.Rows[i][1].ToString()).SetFontSize(8f);
+                Cell RECIBIDO = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+                Paragraph ESTADO = new Paragraph("").SetTextAlignment(TextAlignment.LEFT).SetFontSize(8f);
+                EQUIPO.Add(EQUIPODETLLAOD);
+                CANTIDAD.Add(CANTIDADDESPACHADA);
+                RECIBIDO.Add(ESTADO);
+                detalle.AddCell(EQUIPO);
+                detalle.AddCell(CANTIDAD);
+                detalle.AddCell(RECIBIDO);
+            }
+            doc.Add(detalleheadeer);
+            doc.Add(detalle);
+
+            doc.Add(saltoDeLinea1);
+            doc.Add(saltoDeLinea1);
+            doc.Add(saltoDeLinea1);
+
+            Table footer = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
+            Cell linea = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
+            Paragraph firmaentregaline = new Paragraph("_______________________________").SetFontSize(8f);
+            Cell vacio2 = new Cell().SetWidth(UnitValue.CreatePercentValue(20)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
+            Paragraph vacio = new Paragraph("").SetFontSize(8f);
+            Cell linea2 = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
+            Paragraph firmarecibeline = new Paragraph("____________________________").SetTextAlignment(TextAlignment.LEFT).SetFontSize(8f);
+            linea.Add(firmaentregaline);
+            vacio2.Add(vacio);
+            linea2.Add(linea2);
+
+            footer.AddCell(linea);
+            footer.AddCell(vacio2);
+            footer.AddCell(firmarecibeline);
+
+            doc.Add(footer);
+
+            Table footer2 = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
+            Cell linea5 = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
+            Paragraph firmaentrega2 = new Paragraph("            ENTREGA            ").SetFontSize(8f);
+            Cell vacio22 = new Cell().SetWidth(UnitValue.CreatePercentValue(20)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
+            Paragraph vacio4 = new Paragraph("").SetFontSize(8f);
+            Cell linea23 = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
+            Paragraph firmarecibel2 = new Paragraph("         RECIBE             ").SetTextAlignment(TextAlignment.LEFT).SetFontSize(8f);
+            linea5.Add(firmaentrega2);
+            vacio22.Add(vacio4);
+            linea23.Add(firmarecibel2);
+
+            footer2.AddCell(linea5);
+            footer2.AddCell(vacio22);
+            footer2.AddCell(linea23);
+
+
+
+
+            doc.Add(footer2);
+
+            doc.Close();
+            return dattos;
+            //    }
+            ////        catch (Exception ex)
+            ////        {
+
+            ////            throw new ValidarExeption("Error al crear el pdf: es posible que el contrato no tenga un servicio registrado " + ex.Message);
+            ////}
+        }
 
         public string CrearFacturaGrupal(DataTable empresa, DataTable datos, string condicion)
+
         {
             try
             {

@@ -41,7 +41,7 @@ namespace VisapLine.Model
         public DataTable Consultardetalleordesali(string id)
         {
             //sirve
-            return data.ConsultarDatos("SELECT * from public.pr_consultardetalleordensa('" + id + "');");
+            return data.ConsultarDatos("SELECT * from public.pr_consultardetalleordensa('" + id + "')");
         }
         public DataTable consultarinventario(int tipoinv)
         {
