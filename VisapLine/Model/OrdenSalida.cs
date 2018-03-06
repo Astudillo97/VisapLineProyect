@@ -110,6 +110,11 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_insertarsolicitud("+ vartiposolicitud + ",'"+ vardetalle + "','"+ varfechainicio + "','"+ varfechafin + "',current_date," + varmediodesolicitud + ",'"+ vardocumento + "','"+ varnombresolic + "','"+ varapellidosolic + "',"+ varservicio + ",'"+ varterceros + "','"+ varrestado + "')");
         }
+        public DataTable Consultarordenesencuro()
+        {
+            return data.ConsultarDatos("select * from pr_consultarsordenesencurso()");
+        }
 
+        
     }
 }

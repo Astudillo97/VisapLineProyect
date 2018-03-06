@@ -32,7 +32,14 @@ namespace VisapLine.View.Private
                 llenarinstlaciones();
                 llenarViabilidades();
                 llenarTrabajos();
+                llenarvista();
             }
+        }
+
+        private void llenarvista()
+        {
+            Repeater3.DataSource = ord.Consultarordenesencuro();
+            Repeater3.DataBind();
         }
 
         protected void Llenartecnicos()
@@ -213,6 +220,13 @@ namespace VisapLine.View.Private
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert('" + dt.Rows[0][0].ToString() + "');", true);
                     divconten.Visible = false;
                     divcreator.Visible = false;
+                    Llenartecnicos();
+                    gridbusqueda.DataSource = ord.ConsultarEstado(false);
+                    gridbusqueda.DataBind();
+                    llenarinstlaciones();
+                    llenarViabilidades();
+                    llenarTrabajos();
+                    llenarvista();
                 }
             }
             else
@@ -264,6 +278,7 @@ namespace VisapLine.View.Private
             if (ord.asignartecnico(row.Cells[1].Text, valosal))
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "asignacionok();", true);
+                NewMethod(valosal);
             }
             else
             {

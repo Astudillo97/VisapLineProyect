@@ -32,8 +32,11 @@
                 }
                 )
                     .done(function (data) {
-                        swal("ASIGNACION CREADA CON EXITO!", "Se registro correctamente el tecnico", "success");
-                        $('#orders-history').load(document.URL + ' #orders-history');
+                        swal({ title: "ORDEN CERRADA!", text: "Se cerro la orden con exito", type: "success" },
+                            function () {
+                                location.reload();
+                            });
+                        
                     }).error(function (data) {
                         swal("ASIGNACION FALLIDA!", "No se pudo realizar la operacion contactese con el soporte", "error");
                     });
@@ -44,7 +47,7 @@
             $('#mymodal').modal('show');
         }
         function deletealert(x) {
-            swal("ORDEN CREADA CON EXITO!", "Su orden ser creo con el numero " + x, "success");
+            swal("ORDEN CREADA CON EXITO!", "Su orden ser creo con el numero " + x, "success", function () { location.reload() });
         }
         function alerterror() {
             swal("ORDEN FALLIDA!", "La orden no se pudo crear por favor verifique o contactese con el soporte", "error");
@@ -470,7 +473,7 @@
                         </div>
                         <div class="box-body">
                             <div class="row">
-                                <table class="table table-bordered table-striped table-responsive no-border tablaexcel">
+                                <table class="col-md-12 table table-bordered table-striped table-responsive no-border tablaexcel">
                                     <thead style="background-color: #507CD1">
                                         <tr>
                                             <th style="color: white">CODIGO DE ORDEN
@@ -559,6 +562,80 @@
                                             <td style="color: white">CODIGO DE ORDEN
                                             </td>
                                             <td style="color: white">DIRECCION
+                                            </td>
+                                            <td style="color: white">OBSERVACION
+                                            </td>
+                                            <td style="color: white">PLANES
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box-default collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">ORDENES EN CURSO</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <table class="table table-bordered table-striped table-responsive no-border tablaexcel">
+                                    <thead style="background-color: #507CD1">
+                                        <tr>
+                                            <td style="color: white">ESTADO
+                                            </td>
+                                            <td style="color: white">CODIGO DE ORDEN
+                                            </td>
+                                            <td style="color: white">DIRECCION
+                                            </td>
+                                            <td style="color: white">CLIENTE
+                                            </td>
+                                            <td style="color: white">FECHA DE REGISTRO
+                                            </td>
+                                            <td style="color: white">OBSERVACION
+                                            </td>
+                                            <td style="color: white">PLANES
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <asp:Repeater ID="Repeater3" runat="server">
+                                            <ItemTemplate>
+                                                <tr>
+                                                    <td <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0?  "style='color: red'" : Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8).ToString("dd-MM-yyyy").Equals(DateTime.Now.ToString("dd-MM-yyyy"))? "style='color: orange'": "style='color: blue'" %>>
+                                                        <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0? "Atrasada" :"En Proceso " %>                        
+                                                    </td>
+                                                    <td><asp:Button ID="codigovalue" CssClass="btn btn-success" runat="server" CommandName="buscar" CommandArgument='<%#Eval("codigovaal") %>' Text='<%#Eval("codigovaal") %>' /> 
+                                                    </td>
+                                                    <td><%#Eval("detalleval") %>
+                                                    </td>
+                                                    <td><%#Eval("clienteval") %>
+                                                    </td>
+                                                    <td><%# Convert.ToDateTime(Eval("fecha_registroval")).ToString("dd-MM-yyyy") %>
+                                                    </td>
+                                                    <td><%#Eval("observacionval") %>
+                                                    </td>
+                                                    <td><%#Eval("planesval") %>
+                                                    </td>
+                                                </tr>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </tbody>
+                                    <tfoot style="background-color: #507CD1">
+                                        <tr>
+                                            <td style="color: white">ESTADO
+                                            </td>
+                                            <td style="color: white">CODIGO DE ORDEN
+                                            </td>
+                                            <td style="color: white">DIRECCION
+                                            </td>
+                                            <td style="color: white">CLIENTE
+                                            </td>
+                                            <td style="color: white">FECHA DE REGISTRO
                                             </td>
                                             <td style="color: white">OBSERVACION
                                             </td>

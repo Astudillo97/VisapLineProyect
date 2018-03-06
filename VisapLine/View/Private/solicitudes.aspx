@@ -158,7 +158,7 @@
                                                 </th>
                                                 <th style="color: white">MEDIO DE SOLICITUD
                                                 </th>
-                                                <th style="color: white">SOLICITURD
+                                                <th style="color: white">SOLICITUD
                                                 </th>
                                                 <th style="color: white">FECHA INICIO
                                                 </th>
