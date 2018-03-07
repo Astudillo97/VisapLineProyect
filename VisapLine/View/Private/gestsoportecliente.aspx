@@ -47,8 +47,7 @@
                                 <h3 class="box-title">Datos del Cliente  N° CC:
                                     <asp:Label ID="Label5" runat="server" Text=""></asp:Label></h3>
                                 <asp:Label ID="Label6" runat="server" Visible="false" Text=""></asp:Label>
-                            </div>
-                      
+                            </div>                      
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-5">
@@ -110,7 +109,6 @@
                                                 <asp:FileUpload ID="FileUpload2" runat="server" />
                                                 <br />
                                                 <br />
-
                                             </div>
                                         </div>
                                     </div>
