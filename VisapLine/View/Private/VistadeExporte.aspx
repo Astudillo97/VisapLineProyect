@@ -10,17 +10,17 @@
                     <table class="table table-hover no-border table-striped table-responsive" id="example">
                         <thead>
                             <tr>
-                                <th>TIPO DE COMPROBANTE
+                                <th>TIPO DE COMPROBANTE (OBLIGATORIO)
                                 </th>
-                                <th>CÓDIGO COMPROBANTE
+                                <th>CÓDIGO COMPROBANTE  (OBLIGATORIO)
                                 </th>
-                                <th>NÚMERO DE DOCUMENTO
+                                <th>NÚMERO DE DOCUMENTO (OBLIGATORIO)
                                 </th>
-                                <th>CUENTA CONTABLE
+                                <th>CUENTA CONTABLE   (OBLIGATORIO)
                                 </th>
-                                <th>DÉBITO O CRÉDITO
+                                <th>DÉBITO O CRÉDITO (OBLIGATORIO)
                                 </th>
-                                <th>VALOR DE LA SECUENCIA
+                                <th>VALOR DE LA SECUENCIA   (OBLIGATORIO)
                                 </th>
                                 <th>AÑO DEL DOCUMENTO
                                 </th>
@@ -68,6 +68,56 @@
                                 </th>
                                 <th>BASE IVA AIU
                                 </th>
+                                <th>LÍNEA PRODUCTO
+                                </th>
+                                <th>GRUPO PRODUCTO
+                                </th>
+                                <th>CÓDIGO PRODUCTO
+                                </th>
+                                <th>CANTIDAD
+                                </th>
+                                <th>CANTIDAD DOS
+                                </th>
+                                <th>CÓDIGO DE LA BODEGA
+                                </th>
+                                <th>CANTIDAD DE FACTOR DE CONVERSIÓN
+                                </th>
+                                <th>OPERADOR DE FACTOR DE CONVERSIÓN
+                                </th>
+                                <th>VALOR DEL FACTOR DE CONVERSIÓN
+                                </th>
+                                <th>SERIAL DEL PRODUCTO
+                                </th>
+                                <th>DIAS DE GARANTÍA PARA EL SERIAL
+                                </th>
+                                <th>GRUPO ACTIVOS
+                                </th>
+                                <th>CÓDIGO ACTIVO
+                                </th>
+                                <th>ADICIÓN O MEJORA
+                                </th>
+                                <th>VECES ADICIONALES A DEPRECIAR POR ADICIÓN O MEJORA
+                                </th>
+                                <th>VECES A DEPRECIAR NIIF
+                                </th>
+                                <th>NÚMERO DEL DOCUMENTO DEL PROVEEDOR
+                                </th>
+                                <th>PREFIJO DEL DOCUMENTO DEL PROVEEDOR
+                                </th>
+                                <th>AÑO DOCUMENTO DEL PROVEEDOR
+                                </th>
+                                <th>MES DOCUMENTO DEL PROVEEDOR
+                                </th>
+                                <th>DÍA DOCUMENTO DEL PROVEEDOR
+                                </th>
+                                <th>TIPO DOCUMENTO DE PEDIDO
+                                </th>
+                                <th>CÓDIGO COMPROBANTE DE PEDIDO
+                                </th>
+                                <th>NÚMERO DE COMPROBANTE PEDIDO
+                                </th>
+                                <th>SECUENCIA DE PEDIDO
+                                </th>
                                 <th>TIPO Y COMPROBANTE CRUCE
                                 </th>
                                 <th>NÚMERO DE DOCUMENTO CRUCE
@@ -79,6 +129,8 @@
                                 <th>MES VENCIMIENTO DE DOCUMENTO CRUCE
                                 </th>
                                 <th>DÍA VENCIMIENTO DE DOCUMENTO CRUCE
+                                </th>
+                                <th>NÚMERO DE CAJA ASOCIADA AL COMPROBANTE
                                 </th>
                             </tr>
                         </thead>
@@ -117,8 +169,6 @@
                                         <td><%#Eval("subcentrodecosto") %>
                                         </td>
                                         <td><%#Eval("nit") %>
-                                        </td>
-                                        <td>
                                         </td>
                                         <td><%#Eval("descripciondelasecuencia") %>
                                         </td>
