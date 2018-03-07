@@ -603,13 +603,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <asp:Repeater ID="Repeater3" runat="server">
+                                        <asp:Repeater ID="Repeater3" runat="server" OnItemCommand="repetidorinstalaciones_ItemCommand">
                                             <ItemTemplate>
                                                 <tr>
                                                     <td <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0?  "style='color: red'" : Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8).ToString("dd-MM-yyyy").Equals(DateTime.Now.ToString("dd-MM-yyyy"))? "style='color: orange'": "style='color: blue'" %>>
                                                         <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0? "Atrasada" :"En Proceso " %>                        
                                                     </td>
-                                                    <td><asp:Button ID="codigovalue" CssClass="btn btn-success" runat="server" CommandName="buscar" CommandArgument='<%#Eval("codigovaal") %>' Text='<%#Eval("codigovaal") %>' /> 
+                                                    <td><asp:Button ID="codigovalue" CssClass="btn btn-success" runat="server" CommandName="buscar" CommandArgument='<%#Eval("codigovaal") %>' Text='<%#Eval("codigovaal") %>' />
                                                     </td>
                                                     <td><%#Eval("detalleval") %>
                                                     </td>

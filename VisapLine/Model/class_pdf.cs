@@ -312,6 +312,51 @@ namespace VisapLine.Model
 
         }
 
+       public string CrearInsidencia(DataTable empresa)
+        {
+            string path = HttpContext.Current.Server.MapPath("~");
+            string FONT = path + "Contenido\\FreeSans.ttf";
+            string dir = "Insidencias\\";
+            string dir2 = "Contenido\\";
+            string dattos = GenerarNombrePdf("");
+            PdfDocument documento = new PdfDocument(new PdfWriter(path + dir + dattos));
+            Document doc = new Document(documento, PageSize.LETTER);
+
+            Table header = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
+            Image imagen = new Image(ImageDataFactory.Create(path + dir2 + Descripcion(empresa, "logo"))).SetWidth(UnitValue.CreatePercentValue(100));
+
+            ////Celda hizaquierda de la factura
+            Cell logo = new Cell().SetBorder(Border.NO_BORDER).SetWidth(UnitValue.CreatePercentValue(10)).SetHeight(UnitValue.CreatePercentValue(10));
+            logo.Add(imagen);
+
+            ////Celda derecha de facturacion
+            Cell factura = new Cell().SetWidth(UnitValue.CreatePercentValue(45)).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
+
+            Table subfactura = new Table(2).SetWidth(UnitValue.CreatePercentValue(100));
+
+            Cell subfacizq = new Cell().SetWidth(UnitValue.CreatePercentValue(55)).SetTextAlignment(TextAlignment.LEFT).SetBorder(Border.NO_BORDER);
+            Paragraph facturadeventa = new Paragraph("INCIDENCIA").SetFontSize(8f);
+            Paragraph fechaemision = new Paragraph("FECHA DE IMPRESION").SetFontSize(8f);
+            subfacizq.Add(facturadeventa);
+            subfacizq.Add(fechaemision);
+            subfactura.AddCell(subfacizq);
+
+            Cell subfacder = new Cell().SetWidth(UnitValue.CreatePercentValue(45)).SetTextAlignment(TextAlignment.RIGHT).SetBorder(Border.NO_BORDER);
+            Paragraph facturadeventavalue = new Paragraph("").SetFontSize(8f);
+            Paragraph fechaemisionvalue = new Paragraph(DateTime.Now.ToString("dd/MM/yyyy")).SetFontSize(8f);
+            subfacder.Add(facturadeventavalue);
+            subfacder.Add(fechaemisionvalue);
+            subfactura.AddCell(subfacder);
+
+            factura.Add(subfactura);
+
+            ////Agregando celdas a la tabla
+            header.AddCell(logo);
+            header.AddCell(factura);
+            doc.Add(header);
+
+            return dattos;
+        }
 
         public string CrearOrdenSalida(DataTable empresa, DataTable encabezado, string vaalor, DataTable telefono, DataTable detallesalidaa)
         {
@@ -322,7 +367,8 @@ namespace VisapLine.Model
             string dir2 = "Contenido\\";
             string dattos = GenerarNombrePdf(vaalor);
             PdfDocument documento = new PdfDocument(new PdfWriter(path + dir + dattos));
-            Document doc = new Document(documento, PageSize.A5.Rotate());
+            Document doc = new Document(documento,PageSize.LETTER);
+          
 
             Table header = new Table(3).SetWidth(UnitValue.CreatePercentValue(100)).SetBorder(Border.NO_BORDER);
             Image imagen = new Image(ImageDataFactory.Create(path + dir2 + Descripcion(empresa, "logo"))).SetWidth(UnitValue.CreatePercentValue(100));

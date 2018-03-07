@@ -17,6 +17,8 @@ namespace VisapLine.View.Private
         Contrato cont = new Contrato();
         Terceros terc = new Terceros();
         Permisos per = new Permisos();
+        class_pdf pdf = new class_pdf();
+        Empresa emp = new Empresa();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -64,6 +66,7 @@ namespace VisapLine.View.Private
             TextBox1.Text = ter["direccion"].ToString();
             iddatosterceros.Visible = true;
             Button1.Visible = true;
+            btnimprimir.Visible = true;
         }
 
 
@@ -126,7 +129,7 @@ namespace VisapLine.View.Private
                     TextBox2.Text = "";
                     TextArea1detalle.Value = "";
                     Button1.Visible = false;
-
+                    btnimprimir.Visible = false;
                 }
                 else
                 {
@@ -156,6 +159,12 @@ namespace VisapLine.View.Private
                 }
             }
 
+        }
+
+        protected void btnimprimir_Click(object sender, EventArgs e)
+        {
+            Empresa empr = new Empresa();
+            pdf.CrearInsidencia(empr.ConsultarEmpresa());
         }
     }
 }
