@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Soportescargado.aspx.cs" Inherits="VisapLine.View.Private.Soportescargado" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+       <style>
+        textarea {
+            resize: none;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
@@ -27,7 +32,7 @@
         <label class="text-center" runat="server" id="textError"></label>
     </asp:Panel>
     <section class="content-header">
-        <h1>Repositorio de Documentos del Cliente</h1>
+        <h1>Carga de Contratos</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
             <li class="breadcrumb-item"><a href="#">Clientes</a></li>

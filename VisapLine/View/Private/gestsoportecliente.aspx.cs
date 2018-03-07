@@ -10,7 +10,7 @@ using System.Data;
 using System.IO;
 namespace VisapLine.View.Private
 {
-    
+
     public partial class gestsoportecliente : System.Web.UI.Page
     {
         Permisos per = new Permisos();
@@ -18,18 +18,27 @@ namespace VisapLine.View.Private
         DataRow dat;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string valor = Convert.ToString(Request.QueryString["key"]);
-            if (valor != null)
-            {
-                sp.contrato_idcontrato = valor;
-                dat = sp.ConsultarSoportescargadosidcontrato(sp).Rows[0];
+            //string valor = Convert.ToString(Request.QueryString["key"]);
+            //if (valor != null)
+            //{
+            sp.contrato_idcontrato = "275";
+            dat = sp.ConsultarSoportescargadosidcontrato(sp).Rows[0];
+            Label6.Text = dat["idcontrato"].ToString();
+            Label5.Text = dat["identificacion"].ToString();
+            Label3.Text = dat["nombre"].ToString();
+            Label4.Text = dat["apellido"].ToString();
+            TextBox1.Text = dat["direnviofactura"].ToString();
 
+            //}
+            //else
+            //{
+            //    Response.Redirect("gestsoportecliente.aspx");
+            //}
+        }
 
-            }
-            else
-            {
-                Response.Redirect("gestsoportecliente.aspx");
-            }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="SoporteDoc.aspx.cs" Inherits="VisapLine.View.Private.SoporteDoc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+       <style>
+        textarea {
+            resize: none;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
