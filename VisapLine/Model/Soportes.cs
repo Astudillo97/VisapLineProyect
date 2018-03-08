@@ -38,7 +38,7 @@ namespace VisapLine.Model
         }
         public DataTable ConsultarSoportescargadosidcontrato(Soportes sop)
         {
-            return data.ConsultarDatos("select* from pr_consultarsoportescontcargadoidcontr('" + sop.contrato_idcontrato + "')");
+            return data.ConsultarDatos("select * from pr_consultarsoportescontcargadoidcontr('" + sop.contrato_idcontrato + "')");
         }
 
         

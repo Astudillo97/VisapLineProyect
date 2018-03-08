@@ -51,7 +51,7 @@ namespace VisapLine.View.Private
                         sp.contrato_idcontrato = Validar.validarlleno(Label6.Text);
                         sp.tiposoporte_idtiposoporte = Validar.validarlleno("1");
                         sp.RegistrarSoportes(sp);
-                        FileUploadControl.SaveAs(Server.MapPath("../../soportes/soporte_Contratos") + filename);
+                        FileUploadControl.SaveAs(Server.MapPath("../../soportes/") + filename);
 
                         if (FileUpload1.HasFile == true)
                         {

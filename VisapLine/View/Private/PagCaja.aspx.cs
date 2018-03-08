@@ -15,7 +15,6 @@ namespace VisapLine.View.Private
         int valoringre, valoregre, valorini, valoractualcaja;
         Caja cj = new Caja();
         Permisos per = new Permisos();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
@@ -35,18 +34,12 @@ namespace VisapLine.View.Private
                     {
 
                     }
-                }
+                }            
                 
-
-
-
             }else
                 {
                     Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
                 }
-
-
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -82,7 +75,6 @@ namespace VisapLine.View.Private
         public void cargarestado()
         {
             DataRow dt = Validar.Consulta(cj.ConsultarCaja()).Rows[0];
-
             if (dt["estado"].ToString() == "True")
             {
                 Labelestado.Text = "ACTIVA";
@@ -122,11 +114,7 @@ namespace VisapLine.View.Private
             {
                 Labelvaloractual.Text = valoractualcaja.ToString();
                 Labelvaloractual.ForeColor = Color.Red;
-
             }
-
-
-
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
@@ -162,8 +150,5 @@ namespace VisapLine.View.Private
             GridViewRow gridw = GridView1.SelectedRow;
             Response.Redirect("gestcaja.aspx?key=" + gridw.Cells[1].Text);
         }
-
-
-
     }
 }
