@@ -28,13 +28,18 @@ namespace VisapLine.View.Private
             Label3.Text = dat["nombre"].ToString();
             Label4.Text = dat["apellido"].ToString();
             TextBox1.Text = dat["direnviofactura"].ToString();
+                cargardocumento();
             }
             else
             {
-                Response.Redirect("gestsoportecliente.aspx");
+                Response.Redirect("pagsoporteclien.aspx");
             }
         }
-
+        protected void cargardocumento()
+        {
+            sp.contrato_idcontrato = Label6.Text;          
+            DataRow sopor = sp.ConsultarSoportescargadosidcontrato(sp).Rows[0];      
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
 

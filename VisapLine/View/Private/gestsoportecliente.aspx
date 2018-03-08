@@ -37,7 +37,7 @@
     <section class="content">
         <div class="box box-default" id="soporteformulario" runat="server">
             <div class="box-header with-border">
-                <h3 class="box-title">Cargar Archivos</h3>
+                <h3 class="box-title">Archivos</h3>
             </div>
             <div class="box-body">
                 <div class="row">
