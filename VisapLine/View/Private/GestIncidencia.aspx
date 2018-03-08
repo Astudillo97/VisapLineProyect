@@ -165,7 +165,7 @@
                                         <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AppendDataBoundItems="true">
                                             <asp:ListItem>NO</asp:ListItem>
                                             <asp:ListItem>SI</asp:ListItem>
-                                    
+
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -181,10 +181,11 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <center>
                  <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="143" Height="30" Visible="false" Text="Guardar" OnClick="Button1_Click" />
+                 <asp:Button ID="btnimprimir" runat="server" CssClass="btn btn-block btn-success btn-lg" Width="143" Height="30" Visible="false" Text="Imprimir" OnClick="btnimprimir_Click" />
             </center>
 
 
