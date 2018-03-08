@@ -83,7 +83,7 @@ namespace VisapLine.View.Private
             if (e.CommandName.ToString() == "verdocumento")
             {
                 string paramet = e.CommandArgument.ToString();
-                Response.Redirect("http://191.102.85.252:30000/soportes/" + paramet);
+                Response.Redirect("../../soportes/" + paramet);
                 //Response.Redirect("../../soportes/soporte_Contratos" + paramet);
             }
 
