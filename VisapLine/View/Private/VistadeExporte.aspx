@@ -6,7 +6,7 @@
     <div class="content">
         <div class="box box-body">
             <div class="row">
-                <div class="col-md-auto col-lg-12" style="overflow-x:scroll">
+                <div class="col-md-auto col-lg-12" style="overflow-x: scroll">
                     <table class="table table-hover no-border table-striped table-responsive" id="example">
                         <thead>
                             <tr>
@@ -138,74 +138,128 @@
                             <asp:Repeater ID="repetidor" runat="server">
                                 <ItemTemplate>
                                     <tr>
-                                        <td><%#Eval("tipocomprobante") %>
-                                        </td>
-                                        <td><%#Eval("codigocomprobante") %>
-                                        </td>
-                                        <td><%#Eval("numerodocumento") %>
-                                        </td>
-                                        <td><%#Eval("cuentacontable") %>
-                                        </td>
-                                        <td><%#Eval("debitoocredito") %>
-                                        </td>
-                                        <td><%#Eval("valordelasecuencia") %>
-                                        </td>
-                                        <td><%#Eval("aniodocumento") %>
-                                        </td>
-                                        <td><%#Eval("mesdocumento") %>
-                                        </td>
-                                        <td><%#Eval("diadocumento") %>
-                                        </td>
-                                        <td><%#Eval("codigovendedor") %>
-                                        </td>
-                                        <td><%#Eval("codigociudad") %>
-                                        </td>
-                                        <td><%#Eval("codigozona") %>
-                                        </td>
-                                        <td><%#Eval("secuencia") %>
-                                        </td>
-                                        <td><%#Eval("centrodecosto") %>
-                                        </td>
-                                        <td><%#Eval("subcentrodecosto") %>
-                                        </td>
-                                        <td><%#Eval("nit") %>
-                                        </td>
-                                        <td><%#Eval("descripciondelasecuencia") %>
-                                        </td>
-                                        <td><%#Eval("numerodecheque") %>
-                                        </td>
-                                        <td><%#Eval("comprobanteanulado") %>
-                                        </td>
-                                        <td><%#Eval("codigomotivodevolucion") %>
-                                        </td>
-                                        <td><%#Eval("formadepago") %>
-                                        </td>
-                                        <td><%#Eval("porcentajedelivadelasecuencia") %>
-                                        </td>
-                                        <td><%#Eval("valordelivadelasecuencia") %>
-                                        </td>
-                                        <td><%#Eval("basederetencion") %>
-                                        </td>
-                                        <td><%#Eval("baseparacuentasmarcadascomoreteiva") %>
-                                        </td>
-                                        <td><%#Eval("secuenciagravadaoexcenta") %>
-                                        </td>
-                                        <td><%#Eval("porcentajeaiu") %>
-                                        </td>
-                                        <td><%#Eval("baseivaiu") %>
-                                        </td>
-                                        <td><%#Eval("tipoycomprobantedecruce") %>
-                                        </td>
-                                        <td><%#Eval("numerodocumentocruce") %>
-                                        </td>
-                                        <td><%#Eval("numerodevencimiento") %>
-                                        </td>
-                                        <td><%#Eval("aniodocumentovenc") %>
-                                        </td>
-                                        <td><%#Eval("mesdocumentovenc") %>
-                                        </td>
-                                        <td><%#Eval("diadocumentovenc") %>
-                                        </td>
+                                        <th>F
+                                        </th>
+                                        <th>11
+                                        </th>
+                                        <th><%#Eval("numerodoc") %>
+                                        </th>
+                                        <th><%#Eval("cuentacontable") %>
+                                        </th>
+                                        <th><%#Eval("devitocredito") %>
+                                        </th>
+                                        <th><%#Eval("valorsecuencia") %>
+                                        </th>
+                                        <th><%#Eval("añodoc") %>
+                                        </th>
+                                        <th><%#Eval("mesdoc") %>
+                                        </th>
+                                        <th><%#Eval("diadoc") %>
+                                        </th>
+                                        <th>1
+                                        </th>
+                                        <th>10
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th><%#Eval("secuencia") %>
+                                        </th>
+                                        <th>11
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th><%#Eval("nit") %>
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th><%#Eval("descripcion") %>
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>N
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th><%#Eval("fromadepago") %>
+                                        </th>
+                                        <th><%#Eval("porcentageiva") %>
+                                        </th>
+                                        <th><%#Eval("valoriva") %>
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th>0
+                                        </th>
+                                        <th><%#Eval("tipoconprobante") %>
+                                        </th>
+                                        <th><%#Eval("numerodocumentocruce") %>
+                                        </th>
+                                        <th><%#Eval("numerovencimiento") %>
+                                        </th>
+                                        <th><%#Eval("aniovencimiento") %>
+                                        </th>
+                                        <th><%#Eval("mesvencimeinto") %>
+                                        </th>
+                                        <th><%#Eval("diavenciemiento") %>
+                                        </th>
+                                        <th>NÚMERO DE CAJA ASOCIADA AL COMPROBANTE
+                                        </th>
                                     </tr>
                                 </ItemTemplate>
                             </asp:Repeater>

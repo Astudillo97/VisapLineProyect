@@ -19,35 +19,36 @@ namespace VisapLine.Model
         {
 
             if (!IsPostBack) {
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("codigocomprobante");
-                exportsiigo.Columns.Add("numerodocumento");
+                exportsiigo.Columns.Add("numerodoc");
                 exportsiigo.Columns.Add("cuentacontable");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                exportsiigo.Columns.Add("tipocomprobante");
-                
+                exportsiigo.Columns.Add("devitocredito");
+                exportsiigo.Columns.Add("cuentacontable");
+                exportsiigo.Columns.Add("valorsecuencia");
+                exportsiigo.Columns.Add("aniodoc");
+                exportsiigo.Columns.Add("mesdoc");
+                exportsiigo.Columns.Add("diadoc");
+                exportsiigo.Columns.Add("secuencia");
+                exportsiigo.Columns.Add("nit");
+                exportsiigo.Columns.Add("descripcion");
+                exportsiigo.Columns.Add("fromadepago");
+                exportsiigo.Columns.Add("porcentageiva");
+                exportsiigo.Columns.Add("valoriva");
+                exportsiigo.Columns.Add("tipoconprobante");
+                exportsiigo.Columns.Add("numerodocumentocruce");
+                exportsiigo.Columns.Add("numerovencimiento");
+                exportsiigo.Columns.Add("aniovencimiento");
+                exportsiigo.Columns.Add("mesvencimeinto");
+                exportsiigo.Columns.Add("diavenciemiento");
+
+
                 tablefactura = fact.ConsultarFacturas("null::date", "null::date", "null::character varying", "null::integer", "4");
                 for (int i = 0; i < tablefactura.Rows.Count; i++)
                 {
-                    tablefactura.Rows[i][""].ToString();
-                    
+                    DataRow cel1 = exportsiigo.NewRow();
+                    cel1["numerodoc"] = tablefactura.Rows[i]["facturaventa"].ToString();
+                    DataRow cel2 = exportsiigo.NewRow();
+                    cel1["numerodoc"] = tablefactura.Rows[i]["facturaventa"].ToString();
+                    exportsiigo.Rows.Add();
                 }
             }
         }
