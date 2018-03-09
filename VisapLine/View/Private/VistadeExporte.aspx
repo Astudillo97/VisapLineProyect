@@ -80,6 +80,8 @@
                                 </th>
                                 <th>CÓDIGO DE LA BODEGA
                                 </th>
+                                <th>CÓDIGO DE LA UBICACIÓN
+                                </th>
                                 <th>CANTIDAD DE FACTOR DE CONVERSIÓN
                                 </th>
                                 <th>OPERADOR DE FACTOR DE CONVERSIÓN
@@ -150,13 +152,13 @@
                                         </th>
                                         <th><%#Eval("valorsecuencia") %>
                                         </th>
-                                        <th><%#Eval("añodoc") %>
+                                        <th><%#Eval("aniodoc") %>
                                         </th>
                                         <th><%#Eval("mesdoc") %>
                                         </th>
                                         <th><%#Eval("diadoc") %>
                                         </th>
-                                        <th>1
+                                        <th>5
                                         </th>
                                         <th>10
                                         </th>
@@ -189,6 +191,8 @@
                                         <th>0
                                         </th>
                                         <th>0
+                                        </th>
+                                        <th><%#Eval("gravada") %>
                                         </th>
                                         <th>0
                                         </th>
@@ -258,7 +262,7 @@
                                         </th>
                                         <th><%#Eval("diavenciemiento") %>
                                         </th>
-                                        <th>NÚMERO DE CAJA ASOCIADA AL COMPROBANTE
+                                        <th>0
                                         </th>
                                     </tr>
                                 </ItemTemplate>
