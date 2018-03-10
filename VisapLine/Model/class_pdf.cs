@@ -312,7 +312,7 @@ namespace VisapLine.Model
 
         }
 
-       public string CrearInsidencia(DataTable empresa)
+       public string CrearInsidencia(DataTable empresa,DataTable insidencia)
         {
             string path = HttpContext.Current.Server.MapPath("~");
             string FONT = path + "Contenido\\FreeSans.ttf";
@@ -358,7 +358,7 @@ namespace VisapLine.Model
             return dattos;
         }
 
-        public string CrearOrdenSalida(DataTable empresa, DataTable encabezado, string vaalor, DataTable telefono, DataTable detallesalidaa)
+        public string CrearOrdenSalida(DataTable empresa, DataTable encabezado, string vaalor, DataTable telefono, DataTable detallesalidaa,string megas)
         {
             //try { 
             string path = HttpContext.Current.Server.MapPath("~");
@@ -417,8 +417,10 @@ namespace VisapLine.Model
 
             Cell TECNICO = new Cell().SetWidth(UnitValue.CreatePercentValue(40)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
             Paragraph tecnicoclien = new Paragraph("TECNICO : " + encabezado.Rows[0][9].ToString()).SetFontSize(8f);
+            Paragraph plan = new Paragraph("PLAN : " + megas).SetFontSize(8f);
 
             TECNICO.Add(tecnicoclien);
+            TECNICO.Add(plan);
 
             Cell TELEFONOCONTAC = new Cell().SetWidth(UnitValue.CreatePercentValue(15)).SetTextAlignment(TextAlignment.LEFT).SetBorder(new SolidBorder(new iText.Kernel.Colors.DeviceCmyk(0, 0, 0, 11), 1));
             for (int i = 0; i < telefono.Rows.Count; i++)

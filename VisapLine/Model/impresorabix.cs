@@ -12,7 +12,7 @@ namespace VisapLine.Model
 {
     public class impresorabix
     {
-        StringBuilder linea = new StringBuilder();
+        public StringBuilder linea = new StringBuilder();
         int maxCar = 40, cortar;
 
         public string lineasGuia()
@@ -242,6 +242,7 @@ namespace VisapLine.Model
             linea.AppendLine("\x1B"+"d"+"\x09");
         }
         public void ImprimirTiket(string impresora) {
+            
             RawPrinterHelper.SendStringToPrinter(impresora,linea.ToString());
             linea.Clear();
         }

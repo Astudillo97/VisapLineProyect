@@ -295,6 +295,7 @@
                             </table>
                         </div>
                         <asp:Button runat="server" CssClass="btn btn-success" ID="btnimpresion" Text="IMPRIMIR" OnClick="btnimpresion_Click" />
+                        <Button runat="server" CssClass="btn btn-success" ID="Button4" Text="IMPRIMIR" onserverclick="immprimir" />
 
                         <div class="box box-body">
                             <div class="modal fade" id="mymodal" data-backdrop="static">

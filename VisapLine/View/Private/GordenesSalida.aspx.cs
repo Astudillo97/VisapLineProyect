@@ -136,7 +136,7 @@ namespace VisapLine.View.Private
 
         }
 
-        protected void immprimir()
+        protected void immprimir(object sender, EventArgs e)
         {
             DataTable dt = emp.ConsultarEmpresa();
             string Nomb = "", Nit = "", Direcion = "", nomjuri = "", telefonos = "";
@@ -206,7 +206,8 @@ namespace VisapLine.View.Private
             ticket.TextoIzquierdo("");
             ticket.TextoCentro("¡FIRME AQUI!");
             ticket.Cortartiket();
-            ticket.ImprimirTiket("BIXOLON SRP-350plus");//Nombre de la impresora ticketera
+
+            ticket.ImprimirTiket(@"\\DESKTOP-ODOE09F\BIXOLON SRP-350plus");//Nombre de la impresora ticketera
             ticket.Cortartiket();
         }
 
@@ -318,7 +319,8 @@ namespace VisapLine.View.Private
             {
                 divgrid.Visible = false;
                 DataTable consulta = ord.Consultarorden(valosal);
-                string rediret=pdf.CrearOrdenSalida(empr.ConsultarEmpresa(),consulta,valosal, ord.cosnutlarlefonosorden(consulta.Rows[0][7].ToString()), ord.Consultardetalleordesali(valosal));
+                string plan = ord.megas(valosal).Rows[0][5].ToString();
+                string rediret=pdf.CrearOrdenSalida(empr.ConsultarEmpresa(),consulta,valosal, ord.cosnutlarlefonosorden(consulta.Rows[0][7].ToString()), ord.Consultardetalleordesali(valosal),plan);
                 Response.Redirect("../../Ordenes/" + rediret);
                 /* Llenargrid(consulta.Rows[0][7].ToString()); 
                  llenardetalle();
