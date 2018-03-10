@@ -275,9 +275,10 @@ namespace VisapLine.View.Private
                         DataRow datf = telefon.ConsultarTelefonosIdTerceros(telefon).Rows[0];
                         if (datf["telefono"].ToString().Length>=10)
                         {
-                            string celular = "57" + "3118747881"; //datf["telefono"].ToString();
+                            string celular = "57" + "3123801770"; //datf["telefono"].ToString();
                             string nombre = item["nombre"].ToString() +" "+ item["apellido"].ToString();
                             ClientScript.RegisterStartupScript(GetType(), "msm", "EnviarSMS('" + msm+"','"+celular+"');", true);
+                            break;
                         }
                     }
                 }
