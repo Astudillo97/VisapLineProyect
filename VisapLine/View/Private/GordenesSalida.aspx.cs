@@ -40,6 +40,8 @@ namespace VisapLine.View.Private
         {
             Repeater3.DataSource = ord.Consultarordenesencuro();
             Repeater3.DataBind();
+            Repeater4.DataSource = ord.Consultarordenescerradas();
+            Repeater4.DataBind();
         }
 
         protected void Llenartecnicos()
@@ -70,8 +72,8 @@ namespace VisapLine.View.Private
         protected void droptiporduc_SelectedIndexChanged(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "openModal();", true);
-            inventariogrid.DataSource = ord.consultarinventario(int.Parse(droptiporduc.SelectedValue));
-            inventariogrid.DataBind();
+            repetidorequipos.DataSource = ord.consultarinventario(int.Parse(droptiporduc.SelectedValue));
+            repetidorequipos.DataBind();
 
         }
 
@@ -136,7 +138,7 @@ namespace VisapLine.View.Private
 
         }
 
-        protected void immprimir()
+        protected void immprimir(object sender, EventArgs e)
         {
             DataTable dt = emp.ConsultarEmpresa();
             string Nomb = "", Nit = "", Direcion = "", nomjuri = "", telefonos = "";
@@ -206,7 +208,8 @@ namespace VisapLine.View.Private
             ticket.TextoIzquierdo("");
             ticket.TextoCentro("¡FIRME AQUI!");
             ticket.Cortartiket();
-            ticket.ImprimirTiket("BIXOLON SRP-350plus");//Nombre de la impresora ticketera
+
+            ticket.ImprimirTiket(@"\\DESKTOP-ODOE09F\BIXOLON SRP-350plus");//Nombre de la impresora ticketera
             ticket.Cortartiket();
         }
 
@@ -294,13 +297,6 @@ namespace VisapLine.View.Private
             return ord.Cerrarorden(valosal);
         }
 
-        protected void inventariogrid_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GridViewRow row = inventariogrid.SelectedRow;
-            TextBox tcant = (TextBox)row.Cells[2].FindControl("txbcanti");
-            dsord.insertardetallesalida(tcant.Text, row.Cells[0].Text, valosal);
-            llenardetalle();
-        }
 
         protected void repetidorinstalaciones_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
@@ -318,7 +314,8 @@ namespace VisapLine.View.Private
             {
                 divgrid.Visible = false;
                 DataTable consulta = ord.Consultarorden(valosal);
-                string rediret=pdf.CrearOrdenSalida(empr.ConsultarEmpresa(),consulta,valosal, ord.cosnutlarlefonosorden(consulta.Rows[0][7].ToString()), ord.Consultardetalleordesali(valosal));
+                string plan = ord.megas(valosal).Rows[0][5].ToString();
+                string rediret=pdf.CrearOrdenSalida(empr.ConsultarEmpresa(),consulta,valosal, ord.cosnutlarlefonosorden(consulta.Rows[0][7].ToString()), ord.Consultardetalleordesali(valosal),plan);
                 Response.Redirect("../../Ordenes/" + rediret);
                 /* Llenargrid(consulta.Rows[0][7].ToString()); 
                  llenardetalle();
@@ -339,6 +336,18 @@ namespace VisapLine.View.Private
                 Llenardrop();
                 formordenes.Visible = false;*/
             }
+            
+        }
+
+        protected void repetidorequipos_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("asigacin")) {
+                TextBox tcant = (TextBox)e.Item.FindControl("cantidadequipo");
+                dsord.insertardetallesalida(tcant.Text, e.CommandArgument.ToString(), valosal);
+                llenardetalle();
+            }
+            
+            
             
         }
 

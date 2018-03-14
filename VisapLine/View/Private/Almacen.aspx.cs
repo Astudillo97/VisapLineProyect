@@ -466,8 +466,6 @@ namespace VisapLine.View.Private
                 invent.estado = Validar.validarselected(estado_.SelectedValue);
                 invent.modelo_idmodelo = Validar.validarselected(modelo_inv.SelectedValue);
                 invent.compra_idcompra = valuecontrato;
-                invent.mac = mac_.Value;
-                invent.serial = serial_.Value;
                 if (invent.RegistrarInventario(invent))
                 {
                     textError.InnerHtml = "Elemento registrado correctamente";
@@ -503,6 +501,7 @@ namespace VisapLine.View.Private
         protected void dropmodelo_SelectedIndexChanged(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "openModal()", true);
+
             if (droptipoproduc.SelectedItem.Text.Equals("RADIO") || droptipoproduc.SelectedItem.Text.Equals("ONU") || droptipoproduc.SelectedItem.Text.Equals("ROUTER"))
             {
                 divcaracteristicaequipo.Visible = true;
@@ -522,10 +521,12 @@ namespace VisapLine.View.Private
 
         protected void confimarregistro_Click(object sender, EventArgs e)
         {
-            try { 
-            if (droptipoproduc.SelectedItem.Text.Equals("RADIO") || droptipoproduc.SelectedItem.Text.Equals("ONU") || droptipoproduc.SelectedItem.Text.Equals("ROUTER"))
+            try {
+                invent.serial = Validar.ConvertVarchar(txtserial.Text);
+                invent.mac = Validar.ConvertVarchar(txtmac.Text);
+                if (droptipoproduc.SelectedItem.Text.Equals("RADIO") || droptipoproduc.SelectedItem.Text.Equals("ONU") || droptipoproduc.SelectedItem.Text.Equals("ROUTER"))
             {
-                dtc.registrarproducto(txtserial.Text, txtdescripcion.Text, droptipoproduc.SelectedValue, txtvidautil.Text, dropmodelo.SelectedValue, txtmac.Text, txtcantidad.Text, valuecontrato);
+                dtc.registrarproducto(invent.serial, txtdescripcion.Text, droptipoproduc.SelectedValue, txtvidautil.Text, dropmodelo.SelectedValue, invent.mac, txtcantidad.Text, valuecontrato);
                 cargardatosqueseusanentodolado();
                 datosdeldetalle();
                 divcaracteristicaequipo.Visible = false;

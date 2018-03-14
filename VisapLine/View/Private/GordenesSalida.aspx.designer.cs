@@ -301,13 +301,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.DropDownList droptiporduc;
         
         /// <summary>
-        /// Control inventariogrid.
+        /// Control repetidorequipos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView inventariogrid;
+        protected global::System.Web.UI.WebControls.Repeater repetidorequipos;
         
         /// <summary>
         /// Control gridtecnicos.
@@ -371,5 +371,14 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater Repeater3;
+        
+        /// <summary>
+        /// Control Repeater4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater Repeater4;
     }
 }

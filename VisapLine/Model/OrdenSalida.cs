@@ -28,6 +28,11 @@ namespace VisapLine.Model
             //sirve
             return data.ConsultarDatos("select * from pr_consultarcrdenvista('" + id + "')"); ;
         }
+        public DataTable megas(string id)
+        {
+            //sirve
+            return data.ConsultarDatos("select * from pr_consultarsordenepresi('" + id + "')"); ;
+        }
         public DataTable Consultarordentrab(string id)
         {
             //sirve
@@ -114,7 +119,11 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarsordenesencurso()");
         }
+        public DataTable Consultarordenescerradas()
+        {
+            return data.ConsultarDatos("select * from pr_consultarsordenesfinalizadas()");
+        }
 
-        
+
     }
 }

@@ -36,7 +36,7 @@
                             function () {
                                 location.reload();
                             });
-                        
+
                     }).error(function (data) {
                         swal("ASIGNACION FALLIDA!", "No se pudo realizar la operacion contactese con el soporte", "error");
                     });
@@ -67,6 +67,7 @@
             <ul class="nav nav-tabs">
                 <li><a href="#COrdenes" id="pan1" data-toggle="tab" class="active">CONSULTAR ORDENES</a></li>
                 <li><a href="#VOrdenes" id="pan2" data-toggle="tab">ORDENES DEL DIA</a></li>
+                <li><a href="#VOC" id="pan3" data-toggle="tab">ORDENES CERRADAS</a></li>
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="COrdenes">
@@ -305,27 +306,52 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="row col">
-                                            <asp:DropDownList CssClass="form-control dropdown-toggle" ID="droptiporduc" runat="server" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="droptiporduc_SelectedIndexChanged"></asp:DropDownList>
-                                            <asp:GridView CssClass="table no-border" OnSelectedIndexChanged="inventariogrid_SelectedIndexChanged" AutoGenerateColumns="false" ID="inventariogrid" runat="server">
-                                                <Columns>
-                                                    <asp:BoundField HeaderText="CODIGO" DataField="idinventario" />
-                                                    <asp:TemplateField HeaderText="DESCRIPCION">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Label6" runat="server" Text=' <%#Eval("serial") %> '></asp:Label>
-                                                            <asp:Label ID="Label7" runat="server" Text=' <%#Eval("mac") %> '></asp:Label>
-                                                            <asp:Label ID="descripcion" runat="server" Text=' <%#Eval("descripcion") %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:BoundField HeaderText="DESCRIPCION" DataField="descripcion" />
-                                                    <asp:TemplateField HeaderText="CANTIDAD">
-                                                        <ItemTemplate>
-                                                            <asp:TextBox TextMode="Number" CssClass="form-control border-left-0 border-top-0 border-right-0" ID="txbcanti" runat="server"></asp:TextBox>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:CommandField ShowSelectButton="true" ControlStyle-CssClass="btn btn-primary" SelectText="AGREGAR" />
-                                                </Columns>
-                                            </asp:GridView>
-                                                </div>
+
+
+
+
+
+                                                <asp:DropDownList CssClass="form-control dropdown-toggle" ID="droptiporduc" runat="server" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="droptiporduc_SelectedIndexChanged"></asp:DropDownList>
+
+                                                <table class="table no-border table-responsive tablaexcel">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>EQUIPO
+                                                            </th>
+                                                            <th>CANTIDAD
+                                                            </th>
+                                                            <th>ACCION
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <asp:Repeater ID="repetidorequipos" runat="server" OnItemCommand="repetidorequipos_ItemCommand">
+                                                            <ItemTemplate>
+                                                                <tr>
+                                                                    <td>
+                                                                        <asp:Label ID="Label6" runat="server" Text=' <%#Eval("serial") %> '></asp:Label>
+                                                                        <asp:Label ID="Label7" runat="server" Text=' <%#Eval("mac") %> '></asp:Label>
+                                                                        <asp:Label ID="descripcion" runat="server" Text=' <%#Eval("descripcion") %>'></asp:Label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:TextBox ID="cantidadequipo" runat="server"></asp:TextBox>
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:Button ID="btnasignarequipo" CssClass="btn btn-success" Text="ASIGNAR" CommandName="asigacin" CommandArgument='<%#Eval("idinventario") %>' runat="server" />
+                                                                    </td>
+                                                                </tr>
+                                                            </ItemTemplate>
+                                                        </asp:Repeater>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <td>EQUIPO</td>
+                                                            <td>CANTIDAD</td>
+                                                            <td>ACCION</td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
@@ -425,7 +451,8 @@
                                                     <td <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0?  "style='color: red'" : Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8).ToString("dd-MM-yyyy").Equals(DateTime.Now.ToString("dd-MM-yyyy"))? "style='color: orange'": "style='color: blue'" %>>
                                                         <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0? "Atrasada" :"En Proceso " %>                        
                                                     </td>
-                                                    <td><asp:Button ID="codigovalue" CssClass="btn btn-success" runat="server" CommandName="buscar" CommandArgument='<%#Eval("codigovaal") %>' Text='<%#Eval("codigovaal") %>' /> 
+                                                    <td>
+                                                        <asp:Button ID="codigovalue" CssClass="btn btn-success" runat="server" CommandName="buscar" CommandArgument='<%#Eval("codigovaal") %>' Text='<%#Eval("codigovaal") %>' />
                                                     </td>
                                                     <td><%#Eval("detalleval") %>
                                                     </td>
@@ -609,7 +636,85 @@
                                                     <td <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0?  "style='color: red'" : Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8).ToString("dd-MM-yyyy").Equals(DateTime.Now.ToString("dd-MM-yyyy"))? "style='color: orange'": "style='color: blue'" %>>
                                                         <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0? "Atrasada" :"En Proceso " %>                        
                                                     </td>
-                                                    <td><asp:Button ID="codigovalue" CssClass="btn btn-success" runat="server" CommandName="buscar" CommandArgument='<%#Eval("codigovaal") %>' Text='<%#Eval("codigovaal") %>' />
+                                                    <td>
+                                                        <asp:Button ID="codigovalue" CssClass="btn btn-success" runat="server" CommandName="buscar" CommandArgument='<%#Eval("codigovaal") %>' Text='<%#Eval("codigovaal") %>' />
+                                                    </td>
+                                                    <td><%#Eval("detalleval") %>
+                                                    </td>
+                                                    <td><%#Eval("clienteval") %>
+                                                    </td>
+                                                    <td><%# Convert.ToDateTime(Eval("fecha_registroval")).ToString("dd-MM-yyyy") %>
+                                                    </td>
+                                                    <td><%#Eval("observacionval") %>
+                                                    </td>
+                                                    <td><%#Eval("planesval") %>
+                                                    </td>
+                                                </tr>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </tbody>
+                                    <tfoot style="background-color: #507CD1">
+                                        <tr>
+                                            <td style="color: white">ESTADO
+                                            </td>
+                                            <td style="color: white">CODIGO DE ORDEN
+                                            </td>
+                                            <td style="color: white">DIRECCION
+                                            </td>
+                                            <td style="color: white">CLIENTE
+                                            </td>
+                                            <td style="color: white">FECHA DE REGISTRO
+                                            </td>
+                                            <td style="color: white">OBSERVACION
+                                            </td>
+                                            <td style="color: white">PLANES
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="VOC">
+                    <div class="box box-default collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">ORDENES CERRADAS</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <table class="table table-bordered table-striped table-responsive no-border tablaexcel">
+                                    <thead style="background-color: #507CD1">
+                                        <tr>
+                                            <th style="color: white">ESTADO
+                                            </th>
+                                            <th style="color: white">CODIGO DE ORDEN
+                                            </th>
+                                            <th style="color: white">DIRECCION
+                                            </th>
+                                            <th style="color: white">CLIENTE
+                                            </th>
+                                            <th style="color: white">FECHA DE REGISTRO
+                                            </th>
+                                            <th style="color: white">OBSERVACION
+                                            </th>
+                                            <th style="color: white">PLANES
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <asp:Repeater ID="Repeater4" runat="server" OnItemCommand="repetidorinstalaciones_ItemCommand">
+                                            <ItemTemplate>
+                                                <tr>
+                                                    <td <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0?  "style='color: red'" : Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8).ToString("dd-MM-yyyy").Equals(DateTime.Now.ToString("dd-MM-yyyy"))? "style='color: orange'": "style='color: blue'" %>>
+                                                        <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0? "Atrasada" :"En Proceso " %>                        
+                                                    </td>
+                                                    <td>
+                                                        <asp:Button ID="codigovalue" CssClass="btn btn-success" runat="server" CommandName="buscar" CommandArgument='<%#Eval("codigovaal") %>' Text='<%#Eval("codigovaal") %>' />
                                                     </td>
                                                     <td><%#Eval("detalleval") %>
                                                     </td>

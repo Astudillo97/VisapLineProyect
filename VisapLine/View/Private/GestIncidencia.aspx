@@ -23,6 +23,9 @@
         function botonmodalgesti() {
             document.getElementById("botonmodalcontr").click();
         }
+        function openmodalimpresion() {
+            $('#modalimpri').modal('show');
+        }
     </script>
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -45,10 +48,15 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Incidencias</h3>
                     </div>
-                    <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridView2_PageIndexChanging">
+                    <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnRowCommand="GridView2_RowCommand" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridView2_PageIndexChanging">
                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                         <Columns>
                             <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton CommandArgument='<%# Eval("idincidensia") %>' runat="server" ID="btnprint" CommandName="imprimir" Text="" CssClass="glyphicon glyphicon-print" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:BoundField HeaderText="Codg" DataField="idincidensia" ItemStyle-HorizontalAlign="Center">
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:BoundField>
@@ -185,9 +193,8 @@
         </div>
         <center>
                  <asp:Button ID="Button1" runat="server" class="btn btn-block btn-success btn-lg" Width="143" Height="30" Visible="false" Text="Guardar" OnClick="Button1_Click" />
-                 <asp:Button ID="btnimprimir" runat="server" CssClass="btn btn-block btn-success btn-lg" Width="143" Height="30" Visible="false" Text="Imprimir" OnClick="btnimprimir_Click" />
-            </center>
-
+        </center>
+        
 
     </section>
 
