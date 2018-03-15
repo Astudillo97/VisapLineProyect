@@ -211,6 +211,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.GridView allfactura;
         
         /// <summary>
+        /// Control cargosadicionales.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView cargosadicionales;
+        
+        /// <summary>
         /// Control Button1.
         /// </summary>
         /// <remarks>

@@ -25,6 +25,7 @@ namespace VisapLine.View.Private
         static DataTable contcliente = new DataTable();
         Servicios serv = new Servicios();
         Puntos punto = new Puntos();
+        CargoAdicional cargo = new CargoAdicional();
         public DataTable punt = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -101,13 +102,16 @@ namespace VisapLine.View.Private
                 allfactura.Dispose();
                 Alerta.Visible = false;
 
-                DataTable dat = Validar.Consulta(serv.consultaservicioscont1(row["idcontrato"].ToString()));
+                DataTable dat = Validar.Consulta(serv.consultaservicioscont2(row["idcontrato"].ToString()));
 
                 GridView1.DataSource = dat;
                 GridView1.DataBind();
                 try
                 {
                     punt = punto.consultarpuntosdelcontrato(row["idcontrato"].ToString());
+                    cargo.contrato_idcontrato_cargo = row["idcontrato"].ToString();
+                    cargosadicionales.DataSource= cargo.ConsultarCargosIdContrato(cargo);
+                    cargosadicionales.DataBind();
                 }
                 catch (Exception)
                 {
@@ -203,8 +207,8 @@ namespace VisapLine.View.Private
         {
             if (e.CommandName.Equals("buscar"))
             {
-              
-                    cargartabla(e.CommandArgument.ToString());
+                string dat = e.CommandArgument.ToString();
+                    cargartabla(dat);
 
                 try
                 {
