@@ -249,5 +249,14 @@ namespace VisapLine.Exeption
 
         }
 
+        public static double ObtenerLongitud(double grados, double minutos, double segundos)
+        {
+            return grados - (minutos / 60) - (segundos / 3600);
+        }
+        public static double ObtenerLatitud(double grados, double minutos, double segundos)
+        {
+            return grados + (minutos / 60) + (segundos / 3600);
+        }
+
     }
 }
