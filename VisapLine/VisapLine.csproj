@@ -542,6 +542,7 @@
     <Compile Include="Model\Caja.cs" />
     <Compile Include="Model\CargoTercero.cs" />
     <Compile Include="Model\CategoriaIncidencia.cs" />
+    <Compile Include="Model\Class1.cs" />
     <Compile Include="Model\class_pdf.cs" />
     <Compile Include="Model\DetalleCompra.cs" />
     <Compile Include="Model\Egreso.cs" />

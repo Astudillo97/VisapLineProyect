@@ -27,6 +27,7 @@ namespace VisapLine.View.Private
         Puntos punto = new Puntos();
         CargoAdicional cargo = new CargoAdicional();
         public DataTable punt = new DataTable();
+        public static string ident;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -61,6 +62,7 @@ namespace VisapLine.View.Private
                 DataRow row = tercliente.Rows[e.NewSelectedIndex];
                 _tipocliente.Value = row["tipoterceros"].ToString();
                 identificacion_.Value = row["identificacion"].ToString();
+                ident= row["identificacion"].ToString();
                 _nombre_.Value = row["nombre"].ToString() + " " + row["apellido"].ToString();
                 _correo_.Value = row["correo"].ToString();
                 _estado_.Value = row["estado"].ToString();

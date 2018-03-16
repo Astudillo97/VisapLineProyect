@@ -61,8 +61,6 @@ namespace VisapLine.View.Private
                     //TextBoxcodcontra.Text = "";
                     DropDownListestadoinc.Text = "Seleccione";
                     TextArea1detalle.Value = "";
-
-
                 }
                 else
                 {
@@ -95,9 +93,6 @@ namespace VisapLine.View.Private
             GridViewRow gridw = GridView1.SelectedRow;
             idservicio.Text = gridw.Cells[1].Text;
             divincidencia.Visible = true;
-
-
-
         }
 
         protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
@@ -134,7 +129,6 @@ namespace VisapLine.View.Private
             }
             catch (Exception ex)
             {
-
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
@@ -183,9 +177,7 @@ namespace VisapLine.View.Private
                     textError.InnerHtml = ex.Message;
                     Alerta.CssClass = "alert alert-error";
                     Alerta.Visible = true;
-
                 }
-
             }
             catch (Exception ex)
             {

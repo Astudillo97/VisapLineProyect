@@ -43,7 +43,12 @@
                 <div class="col-lg-5">
                     <div class="box box-primary" id="paneldedatosterceros" runat="server" visible="false">
                         <div class="box-header with-border">
-                            <h3 class="box-title"></h3>
+                            <h3 class="box-title">Informacion del cliente</h3>
+                            <div class="box-tools pull-right">
+                                <a href="gesttercero.aspx?codigo=<%=ident%>" class="btn btn-box-tool btn-pinterest glyphicon glyphicon-edit">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </a>
+                            </div>
                         </div>
                         <div class="box-body">
                             <div class="form-group row" id="tipocliente">
@@ -112,7 +117,7 @@
                                 <asp:BoundField DataField="idservicios" HeaderText="#ID"></asp:BoundField>
                                 <asp:BoundField DataField="fechainicio" DataFormatString="{0:d}" HeaderText="FECHA"></asp:BoundField>
                                 <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
-                                <asp:BoundField DataField="tipo"  HeaderText="TIPO"></asp:BoundField>
+                                <asp:BoundField DataField="tipo" HeaderText="TIPO"></asp:BoundField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <asp:LinkButton CommandArgument='<%# Eval("idservicios") %>' CommandName="buscar" CssClass="btn btn-success fa fa-search" ID="idbottonxxx" Text="" runat="server" />
