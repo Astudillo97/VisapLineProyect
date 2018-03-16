@@ -19,13 +19,11 @@ namespace VisapLine.Model
         public string terceros_idterceroregistra { get; set; }
         public string contrato_idcontrato_cargo { get; set; }
         public string estadoca { get; set; }
+        public string aplicaiva { get; set; }
 
         public DataTable ConsultarCargosIdContrato(CargoAdicional ca)
         {
             return data.ConsultarDatos("select * from pr_consultarcargoadicional("+ca.contrato_idcontrato_cargo+")");
         }
-
-
-
     }
 }

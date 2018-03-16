@@ -341,7 +341,7 @@ namespace VisapLine.View.Private
                 }
                 else
                 {
-                    terc.identificacion = Validar.validarnumero(identificacion_.Value);
+                    terc.identificacion = Validar.validarlleno(identificacion_.Value);
                     if (terc.ConsultarPersonaIdentifall(terc).Rows.Count > 0)
                     {
                         textError.InnerHtml = "El usuario ya se encuentra registrado";
@@ -374,7 +374,7 @@ namespace VisapLine.View.Private
                             }
                             foreach (DataRow item in tabletipo.Rows)
                             {
-                                ct.tercero_idtercero = identificacion_.Value;
+                                ct.identificacion = identificacion_.Value;
                                 ct.tipotercero_idtipotercero = item[0].ToString();
                                 ct.Registrarcargotercero(ct);
                             }

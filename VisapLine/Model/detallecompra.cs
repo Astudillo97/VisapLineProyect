@@ -16,7 +16,7 @@ namespace VisapLine.Model
         public string personal_idepersonal { get; set; }
         public bool registrarproducto(string serial,string descripcion,string tipoproducto,string vidautil,string modeloequipo,string mac,string cantidad,string compra) {
             //sirve
-            string producto = data.ConsultarDatos("select * from pr_insertarinventario('"+ serial+"','"+descripcion+"',"+tipoproducto+",'"+vidautil+"','DISPONIBLE',"+ modeloequipo+",'"+ mac+"')").Rows[0][0].ToString();
+            string producto = data.ConsultarDatos("select * from pr_insertarinventario("+ serial+",'"+descripcion+"',"+tipoproducto+",'"+vidautil+"','DISPONIBLE',"+ modeloequipo+","+ mac+")").Rows[0][0].ToString();
             //sirve
             return data.OperarDatos("select * from pr_insertardetallecompra("+ producto + ","+ compra + ","+ cantidad + ")");
         }

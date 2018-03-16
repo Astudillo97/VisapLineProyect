@@ -43,7 +43,12 @@
                 <div class="col-lg-5">
                     <div class="box box-primary" id="paneldedatosterceros" runat="server" visible="false">
                         <div class="box-header with-border">
-                            <h3 class="box-title"></h3>
+                            <h3 class="box-title">Informacion del cliente</h3>
+                            <div class="box-tools pull-right">
+                                <a href="gesttercero.aspx?codigo=<%=ident%>" class="btn btn-box-tool btn-pinterest glyphicon glyphicon-edit">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </a>
+                            </div>
                         </div>
                         <div class="box-body">
                             <div class="form-group row" id="tipocliente">
@@ -109,13 +114,13 @@
                     <div class="box box-primary" style="overflow-x: auto">
                         <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" AutoGenerateColumns="False">
                             <Columns>
-                                <asp:BoundField DataField="id" HeaderText="#ID"></asp:BoundField>
-                                <asp:BoundField DataField="cantidadmegascol" HeaderText="MEGAS"></asp:BoundField>
-                                <asp:BoundField DataField="estadocol" HeaderText="ESTADO"></asp:BoundField>
-                                <asp:BoundField DataField="direccioncol" HeaderText="direccion"></asp:BoundField>
+                                <asp:BoundField DataField="idservicios" HeaderText="#ID"></asp:BoundField>
+                                <asp:BoundField DataField="fechainicio" DataFormatString="{0:d}" HeaderText="FECHA"></asp:BoundField>
+                                <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
+                                <asp:BoundField DataField="tipo" HeaderText="TIPO"></asp:BoundField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:Button CommandArgument='<%# Eval("id") %>' CommandName="buscar" CssClass="fa fa-search" ID="idbottonxxx" Text="+" runat="server" />
+                                        <asp:LinkButton CommandArgument='<%# Eval("idservicios") %>' CommandName="buscar" CssClass="btn btn-success fa fa-search" ID="idbottonxxx" Text="" runat="server" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -128,6 +133,7 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li><a class="active" id="pan1" href="#facturas" data-toggle="tab">FACTURAS</a></li>
+                    <li><a id="pan7" href="#recargos" data-toggle="tab">RECARGOS</a></li>
                     <li><a id="pan2" href="#insidencias" data-toggle="tab">INCIDENCIAS</a></li>
                     <li><a href="#ordenes" id="pan3" data-toggle="tab">ORDENES</a></li>
                     <li><a href="#aprovisionamiento" id="pan4" data-toggle="tab">APROVISIONAMIENTO</a></li>
@@ -173,6 +179,18 @@
                             </Columns>
                         </asp:GridView>
                     </div>
+                    <div class="tab-pane" id="recargos">
+                        <asp:GridView runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped table-responsive" ID="cargosadicionales">
+                            <Columns>
+                                <asp:BoundField DataField="idcargoadicional" HeaderText="#"></asp:BoundField>
+                                <asp:BoundField DataField="descripcion" HeaderText="DESCRIPCION"></asp:BoundField>
+                                <asp:BoundField DataField="valor" HeaderText="VALOR"></asp:BoundField>
+                                <asp:BoundField DataField="fecha" DataFormatString="{0:d}" HeaderText="FECHA"></asp:BoundField>
+                                <asp:BoundField DataField="inventario_idinventario" HeaderText="#INV"></asp:BoundField>
+                                <asp:BoundField DataField="estadoca" HeaderText="ESTADO"></asp:BoundField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
                     <div class="tab-pane" id="insidencias">
                         <asp:Button ID="Button1" runat="server" Text="Crear Incidencia +" CssClass="btn btn-block btn-success btn-lg" Width="143px" Height="35px" />
 
@@ -189,6 +207,10 @@
                                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
                                 <asp:BoundField HeaderText="Detalle" DataField="detalle" ItemStyle-HorizontalAlign="Center">
+                                    <ControlStyle CssClass="filled-in" />
+                                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Observacion" DataField="obervacion" ItemStyle-HorizontalAlign="Center">
                                     <ControlStyle CssClass="filled-in" />
                                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>

@@ -45,6 +45,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarservicios(" + contrato + ")");
         }
+        public DataTable consultaservicioscont2(string contrato)
+        {
+            return data.ConsultarDatos("select * from servicios inner join puntos on puntos_idpuntos=idpuntos where contrato_idcontrato="+contrato);
+        }
         public DataTable consultarserivcioid(int i) {
             return data.ConsultarDatos("select * from pr_consultartodoservicio(" + i + ")");
         }

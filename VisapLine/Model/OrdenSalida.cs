@@ -119,7 +119,11 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarsordenesencurso()");
         }
+        public DataTable Consultarordenescerradas()
+        {
+            return data.ConsultarDatos("select * from pr_consultarsordenesfinalizadas()");
+        }
 
-        
+
     }
 }
