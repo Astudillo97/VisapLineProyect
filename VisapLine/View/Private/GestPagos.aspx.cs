@@ -35,6 +35,7 @@ namespace VisapLine.View.Private
                         {
                             cod.InnerHtml = codig;
                             ConsularDatos(codig);
+
                         }
                     }
                     

@@ -18,6 +18,9 @@ namespace VisapLine.Model
         public string terceros_idterceros { get; set; }
         public string pagado { get; set; }
         public string caja_idcaja_ingr { get; set; }
+        public string tipopago_idtipopago { get; set; }
+        public string banco_idbanco { get; set; }
+        public string referencia { get; set; }
 
         public DataTable ConsultarPago(Pagos fac)
         {
@@ -26,7 +29,7 @@ namespace VisapLine.Model
 
         public DataTable RegistrarPago(Pagos fac, string usuario, string ipregistro,string retencion)
         {
-            return data.ConsultarDatos("select * from pr_insertar_pagos('" + usuario + "','" + ipregistro + "','" + fac.factura_idfactura + "','" + fac.terceros_idterceros + "','" + fac.pagado + "','" + obtenercaja() + "','"+retencion+"')");
+            return data.ConsultarDatos("select * from pr_insertar_pagos('" + usuario + "','" + ipregistro + "','" + fac.factura_idfactura + "','" + fac.terceros_idterceros + "','" + fac.pagado + "','" + obtenercaja() + "','"+retencion+"','"+fac.tipopago_idtipopago+"','"+fac.banco_idbanco+"','"+fac.referencia+"')");
         }
 
         public DataTable ConsultarPagoByIdFact(Pagos pag)

@@ -113,6 +113,20 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
+                                            <br>
+                                       <label class="col-form-label text-bold">Tipo de Pago: </label>
+                                            <asp:DropDownList ID="DropDownListtipopago" runat="server" Height="32px" Width="163px">
+                                                <asp:ListItem>Seleccione</asp:ListItem>
+                                            </asp:DropDownList>                                         
+                                            <br><br>
+                                              <label class="col-form-label text-bold">Caja: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <asp:DropDownList ID="DropDownListbanco" runat="server" Height="32px" Width="177px">
+                                                <asp:ListItem>Seleccione</asp:ListItem>
+                                            </asp:DropDownList><br><br>
+                                           
+                                            <label class="col-form-label text-bold">Referencia: </label>&nbsp;&nbsp;&nbsp;
+                                            <asp:TextBox ID="TextBox1" runat="server" Visible="true"></asp:TextBox><br>
+                                            <br>
                                             <button class="btn btn-success form-control btn-lg" visible="false" id="btnpago" runat="server" onserverclick="btnRegistrarpago">PAGAR</button>
                                             <button class="btn btn-secondary form-control btn-lg" visible="false" id="btnimprimir" runat="server" onserverclick="btnimprimir_ServerClick">IMPRIMIR</button>
                                             <label runat="server" id="idpago" visible="false"></label>

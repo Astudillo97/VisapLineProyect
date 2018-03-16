@@ -137,11 +137,10 @@
                             </th>
                             <th style="color: white">Correo       
                             </th>
-                            <th style="color: white">Modificar
+                            <th style="color: white">Edit
                             </th>
                         </tr>
                     </tfoot>
-
                 </table>
             </div>
         </div>

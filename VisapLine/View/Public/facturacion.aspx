@@ -87,7 +87,7 @@
   <td>IDENTIFICACIÓN/NIT:</td>
   <td><asp:TextBox ID="identificacion_" runat="server" /></td>
   <td><asp:Button Text="Generar" class="btn btn-block btn-success" Width="143px" Height="30px" OnClick="Unnamed_Click" runat="server" />
-      </td>
+      </td>  
 </tr>
                    </table>      
                <br />
