@@ -20,6 +20,8 @@ namespace VisapLine.View.Private
         Contrato cont = new Contrato();
         Detalle deta = new Detalle();
         Permisos per = new Permisos();
+        tipopago tp = new tipopago();
+        banco ban = new banco();
         protected void Page_Load(object sender, EventArgs e)
         {
             factservicio.Focus();
@@ -35,6 +37,17 @@ namespace VisapLine.View.Private
                         {
                             cod.InnerHtml = codig;
                             ConsularDatos(codig);
+
+                            DropDownListtipopago.DataSource =tp.Consultartipopago();
+                            DropDownListtipopago.DataTextField = "tipopago";
+                            DropDownListtipopago.DataValueField = "idtipopago";
+                            DropDownListtipopago.DataBind();
+
+                            DropDownListbanco.DataSource = ban.Consultarbancos();
+                            DropDownListtipopago.DataTextField = "banco";
+                            DropDownListtipopago.DataValueField = "idbanco";
+                            DropDownListtipopago.DataBind();
+
 
                         }
                     }

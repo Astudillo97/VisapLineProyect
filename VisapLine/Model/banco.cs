@@ -16,7 +16,7 @@ namespace VisapLine.Model
         public string idbancos { get; set; }
         public string bancos { get; set; }
 
-        public DataTable Consultarbancos(banco bn)
+        public DataTable Consultarbancos()
         {
             return data.ConsultarDatos("select * from pr_consultarbanco()");
         }       

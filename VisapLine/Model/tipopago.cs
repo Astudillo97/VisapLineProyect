@@ -14,7 +14,7 @@ namespace VisapLine.Model
         IData data = new Data();
         public string idtipopago { get; set; }
         public string tipopagos { get; set; }
-        public DataTable Consultartipppago(tipopago fac)
+        public DataTable Consultartipopago()
         {
             return data.ConsultarDatos("select * from pr_consultartipopago()");
         }
