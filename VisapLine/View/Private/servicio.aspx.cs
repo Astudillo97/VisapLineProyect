@@ -39,7 +39,7 @@ namespace VisapLine.View.Private
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
                 try
@@ -74,8 +74,9 @@ namespace VisapLine.View.Private
                     }
                 }
                 catch (Exception)
-               {
-                   ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title: 'UUUUPSSS!!!!', text: 'Algo ha ocurrido estamos trabajando para solucionarlo',imageUrl: '../../Contenido/images/monkeyprogramer.jpg',imageSize: '400x250'}, function() { window.location.href = 'index.aspx'; })", true);}
+                {
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title: 'UUUUPSSS!!!!', text: 'Algo ha ocurrido estamos trabajando para solucionarlo',imageUrl: '../../Contenido/images/monkeyprogramer.jpg',imageSize: '400x250'}, function() { window.location.href = 'index.aspx'; })", true);
+                }
             }
             else
             {
@@ -292,7 +293,7 @@ namespace VisapLine.View.Private
             if (serve.vaalidarmegas(txtmegasasignar.Text, idcontrato))
             {
                 DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
-                DataTable dtid = serve.crearservicio("--POR ASIGNAR--", int.Parse(txtmegasasignar.Text), idcontrato, dtrs[1].ToString(), "POR INSTALAR", TextBox3.Text, TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue),Validar.validarselected(tipo_.SelectedValue));
+                DataTable dtid = serve.crearservicio("--POR ASIGNAR--", int.Parse(txtmegasasignar.Text), idcontrato, dtrs[1].ToString(), "POR INSTALAR", TextBox3.Text, TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue), Validar.validarselected(tipo_.SelectedValue));
                 if (dtid.Rows.Count > 0)
                 {
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "successasignation()", true);
@@ -330,7 +331,7 @@ namespace VisapLine.View.Private
         //        identificacion.Text = dato;
         //    }
         //    ScriptManager.RegisterStartupScript(this, this.GetType(),"pop", "openmodal()",true);
-            
+
         //}
     }
 }

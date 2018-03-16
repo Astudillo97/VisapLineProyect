@@ -169,11 +169,13 @@ namespace VisapLine.View.Private
                 DataRow ser = serv.consultaserviciosid(indat["servicios_idservicios"].ToString()).Rows[0];
                 cont.idcontrato = ser["contrato_idcontrato"].ToString();
                 DataRow estratomegas = cont.estratoymegas(int.Parse(cont.idcontrato)).Rows[0];
+
                 DataRow con = cont.ConsultarContratoidcontrato(cont).Rows[0];
                 terc.idterceros = con["terceros_idterceros_cont"].ToString();
                 DataRow ter = terc.ConsultarTercerosId(terc).Rows[0];
                 OrdenSalida ord = new OrdenSalida();
                 DataRow telefono = ord.cosnutlarlefonosorden(""+terc.idterceros).Rows[0];
+
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title:'INCIDENCIA # " + Labelidincidencia.Text + "',text:'CLIENTE : " + ter["nombre"].ToString() + " " + ter["apellido"].ToString()+" DIRECCION : "+ ter["direccion"].ToString() + " DETALLE : "+ indat["detalle"].ToString() + " TELEFONO : "+telefono["telefono"].ToString()+" PLAN : "+ estratomegas["estrato"].ToString() +" "+ estratomegas["subida"].ToString() + "MB',type:'warning'},function(){window.print();})", true);
             }
         }

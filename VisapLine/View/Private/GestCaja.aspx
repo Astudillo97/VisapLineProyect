@@ -108,7 +108,7 @@
                                             <label><%#Eval("ivafac") %> </label>
                                         </th>
                                         <th>
-                                            <label><%#Eval("totalfac") %> </label>
+                                            <label><%#Eval("pagado") %> </label>
                                         </th>
 
 
