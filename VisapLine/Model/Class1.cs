@@ -17,5 +17,11 @@ namespace VisapLine.Model
 
             return data.ConsultarDatos(sql);
         }
+        public DataTable totalescartera()
+        {
+            string sql = "select * from pr_consultartotalcartera()";
+
+            return data.ConsultarDatos(sql);
+        }
     }
 }
