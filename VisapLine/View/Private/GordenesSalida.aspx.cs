@@ -19,6 +19,9 @@ namespace VisapLine.View.Private
         public static string valosal;
         class_pdf pdf = new class_pdf();
         Empresa emp = new Empresa();
+
+        Puntos punto = new Puntos();
+        public DataTable punt = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -33,6 +36,7 @@ namespace VisapLine.View.Private
                 llenarViabilidades();
                 llenarTrabajos();
                 llenarvista();
+                
             }
         }
 
@@ -303,7 +307,7 @@ namespace VisapLine.View.Private
             if (e.CommandName.Equals("buscar")) {
                 valosal = e.CommandArgument.ToString();
                 NewMethod(e.CommandArgument.ToString());
-                
+                punt = punto.consultarpuntosdelcontrato("321");
             }
         }
 
