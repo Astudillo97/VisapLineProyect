@@ -26,7 +26,7 @@ namespace VisapLine.View.Private
                     Labeltime.Text = DateTime.Now.ToLongDateString();
                     try
                     {
-                        DataRow dt = Validar.Consulta(cj.ConsultarCaja()).Rows[0];
+                        //DataRow dt = Validar.Consulta(cj.ConsultarCaja()).Rows[0];
                         cargarestado();
                         cargartabla();
                     }
@@ -51,8 +51,8 @@ namespace VisapLine.View.Private
                 if (cj.AbrirCaja(cj))
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "activarcajalert();", true);
-                    cargartabla();
                     cargarestado();
+                    cargartabla();
                 }
                 else
                 {

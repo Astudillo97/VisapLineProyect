@@ -120,7 +120,7 @@
                                             </asp:DropDownList>                                         
                                             <br><br>
                                               <label class="col-form-label text-bold" id="entidad" runat="server" visible="false">Entidad: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <asp:DropDownList ID="DropDownListbanco" Visible="false" runat="server"  AppendDataBoundItems="true"  AutoPostBack="true" OnSelectedIndexChanged="DropDownListtipopago_SelectedIndexChanged" Height="32px" Width="177px">
+                                            <asp:DropDownList ID="DropDownListbanco" Visible="false" runat="server"  AppendDataBoundItems="true" Height="32px" Width="177px">
                                                 <asp:ListItem>Seleccione</asp:ListItem>
                                             </asp:DropDownList><br><br>
                                            
