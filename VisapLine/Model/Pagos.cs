@@ -29,7 +29,7 @@ namespace VisapLine.Model
 
         public DataTable RegistrarPago(Pagos fac, string usuario, string ipregistro,string retencion)
         {
-            return data.ConsultarDatos("select * from pr_insertar_pagos('" + usuario + "','" + ipregistro + "','" + fac.factura_idfactura + "','" + fac.terceros_idterceros + "','" + fac.pagado + "','" + obtenercaja() + "','"+retencion+"','"+fac.tipopago_idtipopago+"','"+fac.banco_idbanco+"','"+fac.referencia+"')");
+            return data.ConsultarDatos("select * from pr_insertar_pagos('" + usuario + "','" + ipregistro + "','" + fac.factura_idfactura + "','" + fac.terceros_idterceros + "','" + fac.pagado + "','" + obtenercaja() + "','"+retencion+"','"+fac.tipopago_idtipopago+"',"+fac.banco_idbanco+","+fac.referencia+")");
         }
 
         public DataTable ConsultarPagoByIdFact(Pagos pag)

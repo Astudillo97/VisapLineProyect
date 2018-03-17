@@ -109,7 +109,7 @@
                                         <div class="col-12">
                                             <div class="input-group">
                                                 <a href="#" data-toggle="modal" data-target="#modal-primary" class="input-group-addon"><i class="fa fa-exchange"></i></a>
-                                                <asp:TextBox TextMode="Number" CssClass="form-control text-center text-bold" runat="server" ID="textpagado" />
+                                                <asp:TextBox CssClass="form-control text-center text-bold" runat="server" ID="textpagado" />
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -128,7 +128,7 @@
                                             <asp:TextBox ID="TextBoxnumreferencia" runat="server" Visible="false"></asp:TextBox><br>
                                             <br>
                                             <button class="btn btn-success form-control btn-lg" id="btnpago" runat="server" onserverclick="btnRegistrarpago">PAGAR</button>
-                                            <button class="btn btn-secondary form-control btn-lg" hidden="hidden" id="btnimprimir" runat="server" onserverclick="btnimprimir_ServerClick">IMPRIMIR</button>
+                                            <button class="btn btn-secondary form-control btn-lg" id="btnimprimir" runat="server" onserverclick="btnimprimir_ServerClick">IMPRIMIR</button>
                                             <label runat="server" id="idpago" visible="false"></label>
                                         </div>
                                     </div>

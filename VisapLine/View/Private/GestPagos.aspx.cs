@@ -112,6 +112,7 @@ namespace VisapLine.View.Private
                 iva.InnerHtml = "IVA:\n" + datafact["ivafac"].ToString();
                 total.InnerHtml = "TOTAL\n:" + datafact["totalfac"].ToString();
                 btnpago.Visible = true;
+                btnimprimir.Visible = false;
                 if (datafact["estado"].ToString().Equals("Abonado"))
                 {
                     textpagado.Text = datafact["saldofac"].ToString();
@@ -169,30 +170,41 @@ namespace VisapLine.View.Private
             try
             {
                 Terceros ter = (Terceros)Session["tercero"];
-                pago.pagado = textpagado.Text;
-                pago.terceros_idterceros = ter.idterceros;
-                pago.factura_idfactura = idfactura.InnerHtml;
-                pago.tipopago_idtipopago = DropDownListtipopago.SelectedValue;
-                pago.banco_idbanco =Validar.ConvertNumber(DropDownListbanco.SelectedValue);
-                pago.referencia = TextBoxnumreferencia.Text;
-                string ipprivada = GetLocalIPAddress();
-                string ippublica = GetPublicIPAddress();
-                if (int.Parse(textretencion.Value) >= 0)
+                if (Convert.ToInt32(textpagado.Text)>0)
                 {
-                    DataRow dat = pago.RegistrarPago(pago, ter.identificacion + ": " + ter.nombre + " " + ter.apellido, GetLocalIPAddress() + "-" + Dns.GetHostName() + "-" + GetPublicIPAddress(), textretencion.Value).Rows[0];
-                    if (dat["pr_insertar_pagos"].ToString() != null)
+                    pago.pagado = textpagado.Text;
+                    pago.terceros_idterceros = ter.idterceros;
+                    pago.factura_idfactura = idfactura.InnerHtml;
+                    pago.tipopago_idtipopago = DropDownListtipopago.SelectedValue;
+                    pago.banco_idbanco = Validar.ConvertNumber(DropDownListbanco.SelectedValue);
+                    pago.referencia = Validar.ConvertVarchar(TextBoxnumreferencia.Text);
+                    string ipprivada = GetLocalIPAddress();
+                    string ippublica = GetPublicIPAddress();
+                    if (int.Parse(textretencion.Value) >= 0)
                     {
+                        DataRow dat = pago.RegistrarPago(pago, ter.identificacion + ": " + ter.nombre + " " + ter.apellido, GetLocalIPAddress() + "-" + Dns.GetHostName() + "-" + GetPublicIPAddress(), textretencion.Value).Rows[0];
+                        if (dat["pr_insertar_pagos"].ToString() != null)
+                        {
 
-                        btnimprimir.Visible = true;
-                        textError.InnerHtml = "Pago registrado correctamente";
-                        Alerta.CssClass = "alert alert-success";
-                        Alerta.Visible = true;
-                        idpago.InnerHtml = dat["pr_insertar_pagos"].ToString();
-                        ConsularDatos(cod.InnerHtml);
-                        btnpago.Visible = false;
-                        textretencion.Value = "0";
+                            btnimprimir.Visible = true;
+                            textError.InnerHtml = "Pago registrado correctamente";
+                            Alerta.CssClass = "alert alert-success";
+                            Alerta.Visible = true;
+                            idpago.InnerHtml = dat["pr_insertar_pagos"].ToString();
+                            ConsularDatos(cod.InnerHtml);
+                            btnpago.Visible = false;
+                            btnimprimir.Visible = true;
+                            textretencion.Value = "0";
+                        }
                     }
                 }
+                else
+                {
+                    textError.InnerHtml = "Esta Ingresando un valor negativo o letras";
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
+                }
+
             }
             catch (Exception ex)
             {
