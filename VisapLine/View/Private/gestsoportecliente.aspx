@@ -14,6 +14,9 @@
         function deletealert() {
             swal("EL SOPORTE FUE CARGADO CON EXITO!", "", "success");
         }
+        function eliminar() {
+            swal("EL SOPORTE FUE ELIMINADO CON EXITO!", "", "success");
+        }
         function guardo() {
             swal("SE REGISTRO CON EXITO!", "La operacion se realizo con exito", "success");
         }
@@ -89,7 +92,7 @@
                                 <div class="row" id="div1" runat="server">
                                     <div class="box box-primary">
                                         <div class="form-group row">
-                                            <label for="example-text-input" class="col-sm-2 col-form-label">Doc:</label>
+                                            <label for="example-text-input" class="col-sm-2 col-form-label">Documento:</label>
                                             <div class="col-sm-10">
                                                 <asp:FileUpload ID="FileUploadControl" runat="server" />
                                                 <br />
@@ -105,11 +108,15 @@
                         <table>
                             <tr>
                                 <td>
+                                     <asp:Button ID="Button4" runat="server" CssClass="btn btn-block btn-info btn-lg" OnClick="Button3_Click" Width="143px" Height="30px" Text="Volver" />
+                                </td>
+                                <td>
                                     <asp:Button ID="Button1" runat="server" CssClass="btn btn-block btn-success btn-lg" OnClick="Button1_Click" Width="143px" Height="30px" Text="Guardar" />
                                 </td>
                                 <td>
                                     <asp:Button ID="Button3" runat="server" CssClass="btn btn-block btn-danger btn-lg" OnClick="Button3_Click" Width="143px" Height="30px" Text="Cancelar" />
                                 </td>
+
                             </tr>
                         </table>
                         </center>
@@ -134,9 +141,14 @@
                                                         <label runat="server"><%#Eval("nombre") %> <%#Eval("apellido") %></label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="">
+                                                <asp:TemplateField HeaderText="Ver">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="btn1" runat="server" CssClass="glyphicon glyphicon-copy" CommandName="verdocumento" CommandArgument='<%# Eval("soportes") %>' Text="" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Elim">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="btn2" runat="server" CssClass="glyphicon glyphicon-trash" CommandName="eliminardocumento" CommandArgument='<%# Eval("idsoportes") %>' Text="" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -146,7 +158,7 @@
                             </div>
                         </div>
                         <center>
-                            <asp:Button ID="Button2" runat="server" CssClass="btn btn-block btn-info btn-lg" OnClick="Button2_Click" Width="143px" Height="30px"  Text="Archivos Subir" />
+                            <asp:Button ID="Button2" runat="server" CssClass="btn btn-block btn-info btn-lg" OnClick="Button2_Click" Width="143px" Height="30px"  Text="Subir Archivos" />
                     </center>
                     </div>
                 </div>
