@@ -18,7 +18,7 @@ namespace VisapLine.Model
 
         public DataTable Consultarbancos()
         {
-            return data.ConsultarDatos("select * from pr_consultarbanco()");
+            return data.ConsultarDatos("select * from pr_consultarbancos()");
         }       
 
     }

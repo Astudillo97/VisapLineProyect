@@ -38,20 +38,14 @@ namespace VisapLine.View.Private
                             cod.InnerHtml = codig;
                             ConsularDatos(codig);
 
-                            DropDownListtipopago.DataSource =tp.Consultartipopago();
+                            DropDownListtipopago.DataSource = tp.Consultartipopago();
                             DropDownListtipopago.DataTextField = "tipopago";
                             DropDownListtipopago.DataValueField = "idtipopago";
                             DropDownListtipopago.DataBind();
 
-                            DropDownListbanco.DataSource = ban.Consultarbancos();
-                            DropDownListtipopago.DataTextField = "banco";
-                            DropDownListtipopago.DataValueField = "idbanco";
-                            DropDownListtipopago.DataBind();
-
-
                         }
                     }
-                    
+
                 }
                 else
                 {
@@ -113,7 +107,7 @@ namespace VisapLine.View.Private
                 corte.InnerHtml = Convert.ToDateTime(datafact["fechacorte"].ToString()).ToString("dd/MM/yyyy"); ;
                 estado.InnerHtml = datafact["estado"].ToString();
                 estado2.InnerHtml = datafact["estado"].ToString();
-                valor.InnerHtml="VALOR:\n"+datafact["valorfac"].ToString();
+                valor.InnerHtml = "VALOR:\n" + datafact["valorfac"].ToString();
                 saldo.InnerHtml = "SALDO:\n" + datafact["saldofac"].ToString();
                 iva.InnerHtml = "IVA:\n" + datafact["ivafac"].ToString();
                 total.InnerHtml = "TOTAL\n:" + datafact["totalfac"].ToString();
@@ -123,7 +117,7 @@ namespace VisapLine.View.Private
                     textpagado.Text = datafact["saldofac"].ToString();
                     estado2.Attributes.Add("style", "color:blue");
                 }
-                else if(datafact["estado"].ToString().Equals("Pagado"))
+                else if (datafact["estado"].ToString().Equals("Pagado"))
                 {
                     textpagado.Text = datafact["totalfac"].ToString();
                     estado2.Attributes.Add("style", "color:green");
@@ -133,7 +127,7 @@ namespace VisapLine.View.Private
                     textpagado.Text = datafact["totalfac"].ToString();
                     estado2.Attributes.Add("style", "color:red");
                 }
-                nombre.InnerText= datafact["nombre"].ToString()+" "+ datafact["apellido"].ToString();
+                nombre.InnerText = datafact["nombre"].ToString() + " " + datafact["apellido"].ToString();
                 identif.InnerText = datafact["identificacion"].ToString();
                 estadocliente.InnerText = datafact["estadop"].ToString();
                 correo.InnerText = datafact["correo"].ToString();
@@ -143,7 +137,7 @@ namespace VisapLine.View.Private
                 fechacontrato.InnerHtml = datafact["fechacontrato"].ToString();
                 fechaactivacion.InnerHtml = datafact["fechaactivacion"].ToString();
                 estadoc.InnerHtml = datafact["estadoc"].ToString();
-                codigo.InnerHtml= datafact["codigo"].ToString();
+                codigo.InnerHtml = datafact["codigo"].ToString();
                 fechafinalizacion.InnerHtml = datafact["fechafinalizacion"].ToString();
                 descuento.InnerHtml = datafact["fechafinalizacion"].ToString();
             }
@@ -178,14 +172,17 @@ namespace VisapLine.View.Private
                 pago.pagado = textpagado.Text;
                 pago.terceros_idterceros = ter.idterceros;
                 pago.factura_idfactura = idfactura.InnerHtml;
+                pago.tipopago_idtipopago = DropDownListtipopago.SelectedValue;
+                pago.banco_idbanco =Validar.ConvertNumber(DropDownListbanco.SelectedValue);
+                pago.referencia = TextBoxnumreferencia.Text;
                 string ipprivada = GetLocalIPAddress();
                 string ippublica = GetPublicIPAddress();
-                if (int.Parse(textretencion.Value)>=0)
+                if (int.Parse(textretencion.Value) >= 0)
                 {
                     DataRow dat = pago.RegistrarPago(pago, ter.identificacion + ": " + ter.nombre + " " + ter.apellido, GetLocalIPAddress() + "-" + Dns.GetHostName() + "-" + GetPublicIPAddress(), textretencion.Value).Rows[0];
                     if (dat["pr_insertar_pagos"].ToString() != null)
                     {
-                        
+
                         btnimprimir.Visible = true;
                         textError.InnerHtml = "Pago registrado correctamente";
                         Alerta.CssClass = "alert alert-success";
@@ -268,7 +265,7 @@ namespace VisapLine.View.Private
             //De aqui en adelante pueden formar su ticket a su gusto... Les muestro un ejemplo
             pago.factura_idfactura = idfactura.InnerHtml;
             Terceros ter = (Terceros)Session["tercero"];
-            DataRow pag=pago.ConsultarPagoByIdFact(pago).Rows[0];
+            DataRow pag = pago.ConsultarPagoByIdFact(pago).Rows[0];
             fact.facturaventa = cod.InnerHtml;
             DataRow factura = fact.ConsultarFacturaCodigo(fact).Rows[0];
             //Datos de la cabecera del Ticket.
@@ -280,18 +277,18 @@ namespace VisapLine.View.Private
             ticket.TextoCentro(telefonos);
 
             ticket.TextoIzquierdo("");
-            ticket.TextoIzquierdo("REFERENCIA:"+ factura ["idfactura"]+ "-FS-"+ factura["facturaventa"].ToString());
+            ticket.TextoIzquierdo("REFERENCIA:" + factura["idfactura"] + "-FS-" + factura["facturaventa"].ToString());
             ticket.TextoExtermos("FECHA: " + Convert.ToDateTime(factura["fechapago"]).ToString("dd/MM/yyyy"), "HORA: " + Convert.ToDateTime(factura["fechapago"]).ToShortTimeString());
             ticket.lineasAsteriscos();
 
             //Sub cabecera.
             ticket.TextoIzquierdo("");
-            ticket.TextoIzquierdo("ATENDIO: "+ter.nombre+" "+ter.apellido);
-            ticket.TextoIzquierdo("CLIENTE: "+ factura["nombre"]+factura["apellido"]);
-            ticket.TextoIzquierdo("NIT:"+ factura["identificacion"]);
+            ticket.TextoIzquierdo("ATENDIO: " + ter.nombre + " " + ter.apellido);
+            ticket.TextoIzquierdo("CLIENTE: " + factura["nombre"] + factura["apellido"]);
+            ticket.TextoIzquierdo("NIT:" + factura["identificacion"]);
             ticket.TextoExtermos("CODIGO: " + factura["codigo"], "ESTADO:" + factura["estado_serv"]);
             ticket.TextoIzquierdo("DIRECCION: " + factura["nombre"]);
-            
+
             ticket.lineasAsteriscos();
             //Articulos a vender.
             ticket.EncabezadoFactura();//NOMBRE DEL ARTICULO, CANT, PRECIO, IMPORTE
@@ -318,6 +315,31 @@ namespace VisapLine.View.Private
             ticket.Cortartiket();
             ticket.ImprimirTiket("BIXOLON SRP-350plus");//Nombre de la impresora ticketera
             ticket.Cortartiket();
+        }
+
+        protected void DropDownListtipopago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+            if (DropDownListtipopago.SelectedValue == "1")
+            {
+                DropDownListbanco.Visible = false;
+                TextBoxnumreferencia.Visible = false;
+                referencia.Visible = false;             
+                entidad.Visible = false;
+                DropDownListbanco.SelectedValue = null;
+            }
+            else
+            {
+                DropDownListbanco.Visible = true;
+                TextBoxnumreferencia.Visible = true;
+                referencia.Visible = true;
+                DropDownListbanco.DataSource = ban.Consultarbancos();
+                DropDownListbanco.DataTextField = "banco";
+                DropDownListbanco.DataValueField = "idbanco";
+                DropDownListbanco.DataBind();        
+                entidad.Visible = true;
+            }
         }
     }
 }
