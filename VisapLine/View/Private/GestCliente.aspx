@@ -98,6 +98,7 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="box box-primary" style="overflow-x: auto">
+                        <h5>Contrato</h5>
                         <asp:GridView runat="server" ID="consultacontrato" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="consultacontrato_SelectedIndexChanging" AutoGenerateColumns="False">
                             <Columns>
                                 <asp:BoundField DataField="idcontrato" HeaderText="#ID"></asp:BoundField>
@@ -106,21 +107,32 @@
                                 <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
                                 <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
                                 <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
-                                <asp:CommandField SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search" ShowSelectButton="True"></asp:CommandField>
+                                <asp:CommandField HeaderText="BUSCAR" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search" ShowSelectButton="True"></asp:CommandField>
 
+                                <asp:TemplateField HeaderText="EDITAR">
+                                    <ItemTemplate>
+                                        <a href="gestcontrato.aspx?iCnt=<%# Eval("codigo") %>" class="btn btn-success fa fa-edit"></a>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
                     </div>
                     <div class="box box-primary" style="overflow-x: auto">
+                        <h5>Servicio</h5>
                         <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" AutoGenerateColumns="False">
                             <Columns>
                                 <asp:BoundField DataField="idservicios" HeaderText="#ID"></asp:BoundField>
                                 <asp:BoundField DataField="fechainicio" DataFormatString="{0:d}" HeaderText="FECHA"></asp:BoundField>
                                 <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
                                 <asp:BoundField DataField="tipo" HeaderText="TIPO"></asp:BoundField>
-                                <asp:TemplateField>
+                                <asp:TemplateField HeaderText="BUSCAR">
                                     <ItemTemplate>
                                         <asp:LinkButton CommandArgument='<%# Eval("idservicios") %>' CommandName="buscar" CssClass="btn btn-success fa fa-search" ID="idbottonxxx" Text="" runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="EDITAR">
+                                    <ItemTemplate>
+                                        <asp:LinkButton CommandArgument='<%# Eval("idservicios") %>' CommandName="getservicio" CssClass="btn btn-success fa fa-edit" ID="idbottonxx" Text="" runat="server" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -192,8 +204,8 @@
                         </asp:GridView>
                     </div>
                     <div class="tab-pane" id="insidencias">
-                        <asp:Button ID="Button1" runat="server" Text="Crear Incidencia +" CssClass="btn btn-block btn-success btn-lg" Width="143px" Height="35px" />
-
+                        <a href="#Div1" class="btn btn-block btn-success btn-lg col-md-2" id="idincidencia" data-target=".bs-example-modal-xl" data-toggle="modal">Crear Incidencia +</a>
+                        <br />
                         <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
@@ -314,6 +326,29 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
+
+
+        <div class="modal fade bs-example-modal-xl" runat="server" id="Div1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-pane" runat="server" id="Div3">
+                            <div class="box box-primary" style="overflow-x: auto">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
         <script>
             var markers;
             var map;
