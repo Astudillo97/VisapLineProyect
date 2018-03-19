@@ -1,14 +1,29 @@
 ﻿<%@ Page Title="" Language="C#" MaintainScrollPositionOnPostback="true" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="GestCliente.aspx.cs" Inherits="VisapLine.View.Private.GestCliente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
+
     <script type="text/javascript">
         window.onload = function cerrar() {
             setTimeout(function () {
                 document.getElementById("<%=Alerta.ClientID%>").style.display = 'none';
             }, 5000);
         }
+        function deletealertinci() {
+            swal("LA INCIDENCIA FUE CREADA CON EXITO!", "", "success");
+        }
+        function alerterrorinci() {
+            swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
+        }
         function panelbutton() {
             document.getElementById('idbusqueda').click();
+        }
+        function panelmodalinci() {
+            document.getElementById('idincidencia').click();
         }
         function cargarIdfactura(vari) {
             document.getElementById('<%=numero.ClientID%>').value = vari;
@@ -119,6 +134,7 @@
                     </div>
                     <div class="box box-primary" style="overflow-x: auto">
                         <h5>Servicio</h5>
+                        <asp:Label ID="Labelidincidencia" runat="server" Text="" Visible="false"></asp:Label>
                         <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" AutoGenerateColumns="False">
                             <Columns>
                                 <asp:BoundField DataField="idservicios" HeaderText="#ID"></asp:BoundField>
@@ -337,6 +353,63 @@
                     <div class="modal-body">
                         <div class="tab-pane" runat="server" id="Div3">
                             <div class="box box-primary" style="overflow-x: auto">
+                                <div class="box box-default" id="divincidencia" runat="server">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Crear Incidencia</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-6 col-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label">Estado</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList ID="DropDownListestadoinc" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                                            <asp:ListItem>ABIERTO</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label">Detalle</label>
+                                                    <div class="col-sm-8">
+                                                        <textarea id="TextArea1detalle" class="form-control" runat="server" data-iconlibrary="fa" data-hidden-buttons="cmdBold" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 139px;" required data-validation-required-message="This field is required"></textarea>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6 col-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label">Caracteristica</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList ID="DropDownList3caracteriscainci" runat="server" CssClass="form-control" AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownList3caracteriscainci_SelectedIndexChanged">
+                                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label">Tipo Incidencia</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList ID="DropDownList2tipoinci" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label"></label>
+                                                    <div class="col-sm-8">
+                                                        <asp:Button ID="ButtonGuardarinci" runat="server" Text="Registrar" class="btn btn-block btn-success btn-lg" Width="150px" Height="35px" OnClick="ButtonGuardarinci_Click" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

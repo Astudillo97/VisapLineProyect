@@ -12,6 +12,7 @@ namespace VisapLine.View.Private
 {
     public partial class GestCliente : System.Web.UI.Page
     {
+
         Terceros tercero = new Terceros();
         Telefono tlf = new Telefono();
         Contrato contrato = new Contrato();
@@ -28,6 +29,8 @@ namespace VisapLine.View.Private
         CargoAdicional cargo = new CargoAdicional();
         public DataTable punt = new DataTable();
         public static string ident;
+        CategoriaIncidencia cinci = new CategoriaIncidencia();
+        TipoIncidencia tpin = new TipoIncidencia();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -38,7 +41,7 @@ namespace VisapLine.View.Private
             try
             {
                 tercero.identificacion = Validar.validarlleno(identif_.Value);
-                tercliente =Validar.Consulta(tercero.ConsultarTerceroAvanzado(tercero));
+                tercliente = Validar.Consulta(tercero.ConsultarTerceroAvanzado(tercero));
                 consultacliente.DataSource = tercliente;
                 consultacliente.DataBind();
                 Alerta.Visible = false;
@@ -62,11 +65,11 @@ namespace VisapLine.View.Private
                 DataRow row = tercliente.Rows[e.NewSelectedIndex];
                 _tipocliente.Value = row["tipoterceros"].ToString();
                 identificacion_.Value = row["identificacion"].ToString();
-                ident= row["identificacion"].ToString();
+                ident = row["identificacion"].ToString();
                 _nombre_.Value = row["nombre"].ToString() + " " + row["apellido"].ToString();
                 _correo_.Value = row["correo"].ToString();
                 _estado_.Value = row["estado"].ToString();
-                _direccion_.Value= row["direccion"].ToString();
+                _direccion_.Value = row["direccion"].ToString();
                 tlf.terceros_idterceros = row["identificacion"].ToString();
                 DataTable listtelefono = tlf.ConsultarTelefonosIdTerceros(tlf);
                 string telef = "";
@@ -81,6 +84,8 @@ namespace VisapLine.View.Private
                 consultacontrato.DataBind();
                 paneldedatosterceros.Visible = true;
                 Alerta.Visible = false;
+
+          
             }
             catch (Exception ex)
             {
@@ -112,7 +117,7 @@ namespace VisapLine.View.Private
                 {
                     punt = punto.consultarpuntosdelcontrato(row["idcontrato"].ToString());
                     cargo.contrato_idcontrato_cargo = row["idcontrato"].ToString();
-                    cargosadicionales.DataSource= cargo.ConsultarCargosIdContrato(cargo);
+                    cargosadicionales.DataSource = cargo.ConsultarCargosIdContrato(cargo);
                     cargosadicionales.DataBind();
                 }
                 catch (Exception)
@@ -126,7 +131,7 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-            
+
         }
         protected void allfactura_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -137,7 +142,7 @@ namespace VisapLine.View.Private
                     string paramet = e.CommandArgument.ToString();
                     tablefactura.PrimaryKey = new DataColumn[] { tablefactura.Columns["idfactura"] };
                     DataRow dat = tablefactura.Rows.Find(paramet);
-                    DataRow dato=fact.ConsultarFacturas("null::date", "null::date", "NULL::character varying", dat["facturaventa"].ToString(), "3").Rows[0];
+                    DataRow dato = fact.ConsultarFacturas("null::date", "null::date", "NULL::character varying", dat["facturaventa"].ToString(), "3").Rows[0];
                     string referen = pdf.CrearFactura(empresa.ConsultarEmpresa(), dato);
                     Response.Redirect("../../Archivos/" + referen);
                 }
@@ -149,12 +154,12 @@ namespace VisapLine.View.Private
                 if (e.CommandName.ToString() == "correccion")
                 {
                     string paramet = e.CommandArgument.ToString();
-                    ClientScript.RegisterStartupScript(GetType(), "mod", "cargarIdfactura('"+paramet+"');", true);
+                    ClientScript.RegisterStartupScript(GetType(), "mod", "cargarIdfactura('" + paramet + "');", true);
                 }
                 if (e.CommandName.ToString() == "editarfactura")
                 {
                     string paramet = e.CommandArgument.ToString();
-                    Response.Redirect("editarfactura.aspx?key="+paramet);
+                    Response.Redirect("editarfactura.aspx?key=" + paramet);
                 }
                 Alerta.Visible = false;
             }
@@ -170,7 +175,7 @@ namespace VisapLine.View.Private
         {
             try
             {
-                observac.observacion =  Validar.validarlleno(observacion_.Text);
+                observac.observacion = Validar.validarlleno(observacion_.Text);
                 observac.factura_idfactura_obs = numero.Text;
                 if (observac.RegistrarObservacion(observac))
                 {
@@ -188,7 +193,8 @@ namespace VisapLine.View.Private
 
         }
         protected void cargartabla(string idservicio)
-        {          
+        {
+            Labelidincidencia.Text = idservicio;
             DataTable inc = inci.ConsultarIncidenciasidser(idservicio);
             GridView2.DataSource = inc;
             GridView2.DataBind();
@@ -201,8 +207,8 @@ namespace VisapLine.View.Private
 
         protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-          
-                    
+
+
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -210,7 +216,11 @@ namespace VisapLine.View.Private
             if (e.CommandName.Equals("buscar"))
             {
                 string dat = e.CommandArgument.ToString();
-                    cargartabla(dat);
+                DropDownList3caracteriscainci.DataSource = cinci.Consultarcategoriaincidencia();
+                DropDownList3caracteriscainci.DataTextField = "categoriaincidencia";
+                DropDownList3caracteriscainci.DataValueField = "idcategoriaincidencia";
+                DropDownList3caracteriscainci.DataBind();
+                cargartabla(dat);
 
                 try
                 {
@@ -239,6 +249,60 @@ namespace VisapLine.View.Private
 
         }
 
-     
+        protected void ButtonGuardarinci_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Terceros ter = (Terceros)Session["tercero"];
+                inci.estado = Validar.validarselected(DropDownListestadoinc.Text);
+                inci.detalle = Validar.validarlleno(TextArea1detalle.Value.ToUpper());
+                inci.terceros_idterceros = Validar.validarlleno(ter.idterceros);
+                inci.servicios_idservicios = Validar.validarlleno(Labelidincidencia.Text);
+                inci.tipoincidencia_idtipoincidencia = Validar.validarselected(DropDownList3caracteriscainci.SelectedValue);
+
+                if (inci.RegistrarInsidencias(inci))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealertinci();", true);
+                    divincidencia.Visible = false;
+
+                    //TextBoxcodcontra.Text = "";
+                    DropDownListestadoinc.Text = "Seleccione";
+                    TextArea1detalle.Value = "";
+                    cargartabla(Labelidincidencia.Text);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterrorinci();", true);
+                }
+            }
+
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+
+            }
+        }
+        protected void DropDownList3caracteriscainci_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DropDownList2tipoinci.Items.Clear();
+                DropDownList2tipoinci.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                tpin.categoriaincidencia_idcategoriaindencia = Validar.validarselected(DropDownList3caracteriscainci.SelectedValue);
+                DropDownList2tipoinci.DataSource = Validar.Consulta(tpin.Consultartipoincidencia(tpin));
+                DropDownList2tipoinci.DataTextField = "tipoincidencia";
+                DropDownList2tipoinci.DataValueField = "idtipoincidencia";
+                DropDownList2tipoinci.DataBind();
+                ClientScript.RegisterStartupScript(GetType(), "alerta", "panelmodalinci();", true);
+            }
+            catch (Exception ex)
+            {
+
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
     }
 }
