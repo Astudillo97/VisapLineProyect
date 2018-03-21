@@ -17,6 +17,7 @@ namespace VisapLine.Model
         public string factura_idfactura { get; set; }
         public string terceros_idterceros { get; set; }
         public string pagado { get; set; }
+        public string contrato_idcontrato { get; set; }
         public string caja_idcaja_ingr { get; set; }
         public string tipopago_idtipopago { get; set; }
         public string banco_idbanco { get; set; }
@@ -35,6 +36,10 @@ namespace VisapLine.Model
         public DataTable ConsultarPagoByIdFact(Pagos pag)
         {
             return data.ConsultarDatos("select * from pr_consultapagosidfact(" + pag.factura_idfactura + ")");
+        }
+        public DataTable ConsultarPagosidcontrato(Pagos pag)
+        {
+            return data.ConsultarDatos(" select * from pr_consultarpagos("+pag.contrato_idcontrato+")");
         }
         public DataTable ConsultarPagoByIdPago(Pagos pag)
         {

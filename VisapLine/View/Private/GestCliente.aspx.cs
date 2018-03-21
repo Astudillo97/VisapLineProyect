@@ -31,6 +31,7 @@ namespace VisapLine.View.Private
         public static string ident;
         CategoriaIncidencia cinci = new CategoriaIncidencia();
         TipoIncidencia tpin = new TipoIncidencia();
+        Pagos pg = new Pagos();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -85,7 +86,7 @@ namespace VisapLine.View.Private
                 paneldedatosterceros.Visible = true;
                 Alerta.Visible = false;
 
-          
+
             }
             catch (Exception ex)
             {
@@ -113,8 +114,15 @@ namespace VisapLine.View.Private
 
                 GridView1.DataSource = dat;
                 GridView1.DataBind();
+
                 try
                 {
+                    pg.contrato_idcontrato = row["idcontrato"].ToString();
+                    DataTable pagosidcon = Validar.Consulta(pg.ConsultarPagosidcontrato(pg));
+                    GridViewpagos.DataSource = pagosidcon;
+                    GridViewpagos.DataBind();
+
+
                     punt = punto.consultarpuntosdelcontrato(row["idcontrato"].ToString());
                     cargo.contrato_idcontrato_cargo = row["idcontrato"].ToString();
                     cargosadicionales.DataSource = cargo.ConsultarCargosIdContrato(cargo);
@@ -225,7 +233,6 @@ namespace VisapLine.View.Private
                 try
                 {
                     punt = punto.consultarpuntosdelcontrato(e.CommandArgument.ToString());
-
                 }
                 catch (Exception ex)
                 {
@@ -263,13 +270,11 @@ namespace VisapLine.View.Private
 
                 if (inci.RegistrarInsidencias(inci))
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealertinci();", true);
-                    divincidencia.Visible = false;
-
-                    //TextBoxcodcontra.Text = "";
                     DropDownListestadoinc.Text = "Seleccione";
                     TextArea1detalle.Value = "";
                     cargartabla(Labelidincidencia.Text);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealertinci();", true);
+                    ClientScript.RegisterStartupScript(GetType(), "alerta", "panelincidencia();", true);
                 }
                 else
                 {
