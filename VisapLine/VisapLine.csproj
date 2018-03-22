@@ -487,6 +487,7 @@
     <Content Include="View\Private\Almacen.aspx" />
     <Content Include="View\Private\consultadefactura.aspx" />
     <Content Include="View\Private\ContratoCliente.aspx" />
+    <Content Include="View\Private\CrearFactura.aspx" />
     <Content Include="View\Private\detalleservicio.aspx" />
     <Content Include="View\Private\EditarFactura.aspx" />
     <Content Include="View\Private\Error.aspx" />
@@ -632,6 +633,13 @@
     </Compile>
     <Compile Include="View\Private\ContratoCliente.aspx.designer.cs">
       <DependentUpon>ContratoCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\CrearFactura.aspx.cs">
+      <DependentUpon>CrearFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\CrearFactura.aspx.designer.cs">
+      <DependentUpon>CrearFactura.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\detalleservicio.aspx.cs">
       <DependentUpon>detalleservicio.aspx</DependentUpon>

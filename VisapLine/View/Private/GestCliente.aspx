@@ -29,9 +29,24 @@
             document.getElementById('<%=numero.ClientID%>').value = vari;
             document.getElementById('edicion').click();
         }
+
+        function panelincidencia() {
+            document.getElementById('pan2').click();
+        }
     </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        function deletealertinci() {
+            swal("LA INCIDENCIA FUE CREADA CON EXITO!", "", "success");
+        }
+        function alerterror() {
+            swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
+        }
+    </script>
     <section class="content-header">
         <h2>Gestion del Cliente
         </h2>
@@ -50,7 +65,7 @@
             <div class="form-group row">
                 <label for="exampleInputPassword1" class="col-md-2">Busqueda</label>
                 <input type="text" class="form-control col-md-6" runat="server" id="identif_" placeholder="Nit, Identificación, nombre, apellido, abonado">
-                <button class="btn btn-primary col-md-2" runat="server" onserverclick="ConsultarIdentif">Consultar</button>
+                <button class="btn btn-success col-md-2" runat="server" onserverclick="ConsultarIdentif">Consultar</button>
             </div>
         </div>
         <div class="tab-pane" runat="server" id="paneldatos">
@@ -114,7 +129,8 @@
                 <div class="col-lg-7">
                     <div class="box box-primary" style="overflow-x: auto">
                         <h5>Contrato</h5>
-                        <asp:GridView runat="server" ID="consultacontrato" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="consultacontrato_SelectedIndexChanging" AutoGenerateColumns="False">
+                        <asp:GridView runat="server" ID="consultacontrato" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="consultacontrato_SelectedIndexChanging" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                 <asp:BoundField DataField="idcontrato" HeaderText="#ID"></asp:BoundField>
                                 <asp:BoundField DataField="fechacontrato" HeaderText="FECHA" DataFormatString="{0:d}"></asp:BoundField>
@@ -122,46 +138,97 @@
                                 <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
                                 <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
                                 <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
-                                <asp:CommandField HeaderText="BUSCAR" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search" ShowSelectButton="True"></asp:CommandField>
+                                <asp:CommandField HeaderText="BUSCAR" SelectText="" ControlStyle-CssClass="btn btn-success fa fa-search" ShowSelectButton="True">
+                                    <ItemStyle HorizontalAlign="Justify"></ItemStyle>
+                                </asp:CommandField>
 
                                 <asp:TemplateField HeaderText="EDITAR">
                                     <ItemTemplate>
                                         <a href="gestcontrato.aspx?iCnt=<%# Eval("codigo") %>" class="btn btn-success fa fa-edit"></a>
+
                                     </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Justify"></ItemStyle>
                                 </asp:TemplateField>
                             </Columns>
+                            <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
                     </div>
                     <div class="box box-primary" style="overflow-x: auto">
                         <h5>Servicio</h5>
                         <asp:Label ID="Labelidincidencia" runat="server" Text="" Visible="false"></asp:Label>
-                        <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" AutoGenerateColumns="False">
+                        <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                 <asp:BoundField DataField="idservicios" HeaderText="#ID"></asp:BoundField>
                                 <asp:BoundField DataField="fechainicio" DataFormatString="{0:d}" HeaderText="FECHA"></asp:BoundField>
                                 <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
                                 <asp:BoundField DataField="tipo" HeaderText="TIPO"></asp:BoundField>
+                                <asp:BoundField DataField="direccionip" HeaderText="IP"></asp:BoundField>
                                 <asp:TemplateField HeaderText="BUSCAR">
                                     <ItemTemplate>
                                         <asp:LinkButton CommandArgument='<%# Eval("idservicios") %>' CommandName="buscar" CssClass="btn btn-success fa fa-search" ID="idbottonxxx" Text="" runat="server" />
                                     </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Justify"></ItemStyle>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="EDITAR">
                                     <ItemTemplate>
                                         <asp:LinkButton CommandArgument='<%# Eval("idservicios") %>' CommandName="getservicio" CssClass="btn btn-success fa fa-edit" ID="idbottonxx" Text="" runat="server" />
                                     </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Justify"></ItemStyle>
                                 </asp:TemplateField>
                             </Columns>
+                            <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+
         <div class="tab-pane" runat="server" id="divoperaciones">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li><a class="active" id="pan1" href="#facturas" data-toggle="tab">FACTURAS</a></li>
-                    <li><a id="pan7" href="#recargos" data-toggle="tab">RECARGOS</a></li>
+                    <li><a id="pan8" href="#recargos" data-toggle="tab">RECARGOS</a></li>
+                    <li><a id="pan7" href="#pagos" data-toggle="tab">PAGOS</a></li>
                     <li><a id="pan2" href="#insidencias" data-toggle="tab">INCIDENCIAS</a></li>
                     <li><a href="#ordenes" id="pan3" data-toggle="tab">ORDENES</a></li>
                     <li><a href="#aprovisionamiento" id="pan4" data-toggle="tab">APROVISIONAMIENTO</a></li>
@@ -170,10 +237,26 @@
                 </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="facturas">
-                        <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" OnRowCommand="allfactura_RowCommand" AutoGenerateColumns="False" ID="allfactura">
+                        <asp:GridView runat="server" CssClass="table table-bordered table-striped table-responsive" OnRowCommand="allfactura_RowCommand" AutoGenerateColumns="False" ID="allfactura" CellPadding="4" ForeColor="#333333" GridLines="None">
+
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                            <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                             <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Wrap="true" />
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                             <Columns>
                                 <asp:TemplateField HeaderText="FS">
                                     <ItemTemplate>
@@ -181,7 +264,7 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="fechaemision" DataFormatString="{0:d}" HeaderText="Emision"></asp:BoundField>
-                                <asp:BoundField DataField="valorfac" HeaderText="Correo"></asp:BoundField>
+                                <asp:BoundField DataField="valorfac" HeaderText="Valor Factura"></asp:BoundField>
                                 <asp:BoundField DataField="estadof" HeaderText="Estado"></asp:BoundField>
                                 <asp:BoundField DataField="totalfac" HeaderText="Valor"></asp:BoundField>
                                 <asp:TemplateField HeaderText="">
@@ -207,6 +290,7 @@
                             </Columns>
                         </asp:GridView>
                     </div>
+
                     <div class="tab-pane" id="recargos">
                         <asp:GridView runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped table-responsive" ID="cargosadicionales">
                             <Columns>
@@ -219,6 +303,38 @@
                             </Columns>
                         </asp:GridView>
                     </div>
+                    <div class="tab-pane" id="pagos">
+                        <asp:GridView runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped table-responsive" ID="GridViewpagos" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                            <Columns>
+                                <asp:BoundField DataField="idfactura" HeaderText="#Factura"></asp:BoundField>
+                                <asp:BoundField DataField="estado" HeaderText="Estado"></asp:BoundField>
+                                <asp:BoundField DataField="saldofac" HeaderText="Saldo"></asp:BoundField>
+                                <asp:BoundField DataField="pagado" HeaderText="Pagado"></asp:BoundField>
+                                <asp:BoundField DataField="fechapago" HeaderText="Fecha de Pago"></asp:BoundField>
+                            </Columns>
+                            <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                        </asp:GridView>
+                    </div>
+
                     <div class="tab-pane" id="insidencias">
                         <a href="#Div1" class="btn btn-block btn-success btn-lg col-md-2" id="idincidencia" data-target=".bs-example-modal-xl" data-toggle="modal">Crear Incidencia +</a>
                         <br />
@@ -236,11 +352,11 @@
                                 </asp:BoundField>
                                 <asp:BoundField HeaderText="Detalle" DataField="detalle" ItemStyle-HorizontalAlign="Center">
                                     <ControlStyle CssClass="filled-in" />
-                                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                    <ItemStyle HorizontalAlign="Justify"></ItemStyle>
                                 </asp:BoundField>
                                 <asp:BoundField HeaderText="Observacion" DataField="obervacion" ItemStyle-HorizontalAlign="Center">
                                     <ControlStyle CssClass="filled-in" />
-                                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                    <ItemStyle HorizontalAlign="Justify"></ItemStyle>
                                 </asp:BoundField>
                             </Columns>
                             <EditRowStyle BackColor="#2461BF"></EditRowStyle>
