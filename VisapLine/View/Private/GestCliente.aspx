@@ -311,7 +311,7 @@
                                 <asp:BoundField DataField="estado" HeaderText="Estado"></asp:BoundField>
                                 <asp:BoundField DataField="saldofac" HeaderText="Saldo"></asp:BoundField>
                                 <asp:BoundField DataField="pagado" HeaderText="Pagado"></asp:BoundField>
-                                <asp:BoundField DataField="fechapago" HeaderText="Estado"></asp:BoundField>
+                                <asp:BoundField DataField="fechapago" HeaderText="Fecha de Pago"></asp:BoundField>
                             </Columns>
                             <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
