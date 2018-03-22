@@ -515,6 +515,7 @@
     <Content Include="View\Private\Point.aspx" />
     <Content Include="View\Private\RegistroTerceros.aspx" />
     <Content Include="View\Private\ReporteCaja.aspx" />
+    <Content Include="View\Private\RevisionCartera.aspx" />
     <Content Include="View\Private\servicio.aspx" />
     <Content Include="View\Private\solicitudes.aspx" />
     <Content Include="View\Private\SoporteDoc.aspx" />
@@ -523,7 +524,9 @@
     <Content Include="View\Private\VistadeExporte.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
     <Content Include="View\Public\facturacion.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\Connection\Postgres\conexion_psql.cs" />
@@ -825,6 +828,13 @@
     </Compile>
     <Compile Include="View\Private\ReporteCaja.aspx.designer.cs">
       <DependentUpon>ReporteCaja.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\RevisionCartera.aspx.cs">
+      <DependentUpon>RevisionCartera.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\RevisionCartera.aspx.designer.cs">
+      <DependentUpon>RevisionCartera.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\servicio.aspx.cs">
       <DependentUpon>servicio.aspx</DependentUpon>

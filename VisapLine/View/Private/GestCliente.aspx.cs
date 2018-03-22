@@ -31,9 +31,138 @@ namespace VisapLine.View.Private
         public static string ident;
         CategoriaIncidencia cinci = new CategoriaIncidencia();
         TipoIncidencia tpin = new TipoIncidencia();
+        Pais pais = new Pais();
+        Departamento depart = new Departamento();
+        Municipio munic = new Municipio();
+        Barrios barr = new Barrios();
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (!IsPostBack)
+                {
+                    pais_.DataSource = pais.ConsultarPais();
+                    pais_.DataTextField = "pais";
+                    pais_.DataValueField = "idpais";
+                    pais_.DataBind();
+                    pais_.SelectedValue = "1";
+                    cargarDepartamentos(pais_.SelectedValue);
+                    departamento_.SelectedValue = "2";
+                    cargarMunicipios(departamento_.SelectedValue);
+                    municipio_.SelectedValue = "1";
+                    cargarBarrios(municipio_.SelectedValue);
+                }
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
+        protected void pais__SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+            try
+            {
+                cargarDepartamentos(Validar.validarselected(pais_.SelectedValue));
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void departamento__SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+            try
+            {
+                cargarMunicipios(Validar.validarselected(departamento_.SelectedValue));
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = " alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void municipio__SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "panel2();", true);
+            try
+            {
+                cargarBarrios(Validar.validarselected(municipio_.SelectedValue));
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        private void cargarDepartamentos(string dat)
+        {
+            try
+            {
+                departamento_.Items.Clear();
+                departamento_.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                depart.pais_idpais = dat;
+                departamento_.DataSource = Validar.Consulta(depart.ConsultarDepartamentoIdPais(depart));
+                departamento_.DataTextField = "departamento";
+                departamento_.DataValueField = "iddepartamento";
+                departamento_.DataBind();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        private void cargarMunicipios(string dat)
+        {
+            try
+            {
+                municipio_.Items.Clear();
+                municipio_.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                munic.departamento_iddepartamento = dat;
+                municipio_.DataSource = Validar.Consulta(munic.ConsultarMunicipioIdDepartamento(munic));
+                municipio_.DataTextField = "municipio";
+                municipio_.DataValueField = "idmunicipio";
+                municipio_.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        private void cargarBarrios(string dat)
+        {
+            try
+            {
+                barrio_.Items.Clear();
+                barrio_.Items.Add(new ListItem("Seleccione", "Seleccione"));
+                barr.muninicio_idmunicipio = dat;
+                barrio_.DataSource = Validar.Consulta(barr.ConsultarBarriosIdMunicipio(barr));
+                barrio_.DataTextField = "barrios";
+                barrio_.DataValueField = "idbarrios";
+                barrio_.DataBind();
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
 
         protected void ConsultarIdentif(object sender, EventArgs e)
@@ -221,6 +350,15 @@ namespace VisapLine.View.Private
                 DropDownList3caracteriscainci.DataValueField = "idcategoriaincidencia";
                 DropDownList3caracteriscainci.DataBind();
                 cargartabla(dat);
+
+                barr.idbarrios = "";
+                DataRow dir = barr.ConsultarTodoporBarrio(barr).Rows[0];
+                cargarDepartamentos(dir["idpais"].ToString());
+                pais_.SelectedValue = dir["idpais"].ToString();
+                departamento_.SelectedValue = dir["iddepartamento"].ToString();
+                cargarMunicipios(dir["iddepartamento"].ToString());
+                municipio_.SelectedValue = dir["idmunicipio"].ToString();
+                cargarBarrios(dir["idmunicipio"].ToString());
 
                 try
                 {
