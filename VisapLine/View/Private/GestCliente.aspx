@@ -264,7 +264,7 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="fechaemision" DataFormatString="{0:d}" HeaderText="Emision"></asp:BoundField>
-                                <asp:BoundField DataField="valorfac" HeaderText="Correo"></asp:BoundField>
+                                <asp:BoundField DataField="valorfac" HeaderText="Valor Factura"></asp:BoundField>
                                 <asp:BoundField DataField="estadof" HeaderText="Estado"></asp:BoundField>
                                 <asp:BoundField DataField="totalfac" HeaderText="Valor"></asp:BoundField>
                                 <asp:TemplateField HeaderText="">
