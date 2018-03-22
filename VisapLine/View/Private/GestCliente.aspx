@@ -384,9 +384,39 @@
                     <div class="tab-pane" id="aprovisionamiento"></div>
                     <div class="tab-pane" id="elementos"></div>
                     <div class="tab-pane" id="mapa">
-                        <div style="width: 100%; height: 330px;" id="map"></div>
-                        <asp:Label ID="latitud" runat="server"></asp:Label>
-                        <asp:Label ID="longitud" runat="server"></asp:Label>
+                        <div class="row">
+                            <div class="col-3">
+                                
+                                País:<asp:DropDownList ID="pais_" runat="server" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="pais__SelectedIndexChanged">
+                                    <asp:ListItem Text="Seleccione" />
+                                </asp:DropDownList>
+                                Departamento:<asp:DropDownList ID="departamento_" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="departamento__SelectedIndexChanged" runat="server">
+                                    <asp:ListItem Text="Seleccione" />
+                                </asp:DropDownList>
+                                Municipio:<asp:DropDownList ID="municipio_" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="municipio__SelectedIndexChanged" runat="server">
+                                    <asp:ListItem Text="Seleccione" />
+                                </asp:DropDownList><br />
+                                Barrio:<asp:DropDownList ID="barrio_" runat="server">
+                                    <asp:ListItem Text="Seleccione" />
+                                </asp:DropDownList><br />
+                                Tipo:<asp:DropDownList runat="server">
+                                    <asp:ListItem Text="Seleccione" />
+                                </asp:DropDownList><br />
+                                Estado:<asp:DropDownList runat="server">
+                                    <asp:ListItem Text="Seleccione" />
+                                </asp:DropDownList>
+                                <asp:TextBox runat="server"  placeholder="Direccion"  />
+                                <asp:TextBox ID="latitud_" runat="server"  placeholder="Latitud"></asp:TextBox>
+                                <asp:TextBox ID="longitud_" runat="server"  placeholder="Longitud"></asp:TextBox>
+                                <asp:TextBox runat="server"  placeholder="Referencia"  />
+                                <asp:TextBox runat="server"  placeholder="idservicio"  />
+                                <asp:TextBox runat="server"  placeholder="anteriorpunto"  />
+                            </div>
+                            <div class="col-9">
+                                <div style="width: 100%; height: 450px;" id="map"></div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -554,12 +584,12 @@
                     draggable: true,
                     map: map
                 });
-                document.getElementById('<%=latitud.ClientID%>').value = markers.getPosition().lat();
-                document.getElementById('<%=longitud.ClientID%>').value = markers.getPosition().lng();
+                document.getElementById('<%=latitud_.ClientID%>').value = markers.getPosition().lat();
+                document.getElementById('<%=longitud_.ClientID%>').value = markers.getPosition().lng();
 
                 markers.addListener('dragend', function () {
-                    document.getElementById('<%=latitud.ClientID%>').value = markers.getPosition().lat();
-                    document.getElementById('<%=longitud.ClientID%>').value = markers.getPosition().lng();
+                    document.getElementById('<%=latitud_.ClientID%>').value = markers.getPosition().lat();
+                    document.getElementById('<%=longitud_.ClientID%>').value = markers.getPosition().lng();
                 });
             }
 

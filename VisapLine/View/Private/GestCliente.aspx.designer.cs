@@ -256,22 +256,58 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.GridView GridView2;
         
         /// <summary>
-        /// Control latitud.
+        /// Control pais_.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label latitud;
+        protected global::System.Web.UI.WebControls.DropDownList pais_;
         
         /// <summary>
-        /// Control longitud.
+        /// Control departamento_.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label longitud;
+        protected global::System.Web.UI.WebControls.DropDownList departamento_;
+        
+        /// <summary>
+        /// Control municipio_.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList municipio_;
+        
+        /// <summary>
+        /// Control barrio_.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList barrio_;
+        
+        /// <summary>
+        /// Control latitud_.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox latitud_;
+        
+        /// <summary>
+        /// Control longitud_.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox longitud_;
         
         /// <summary>
         /// Control numero.
