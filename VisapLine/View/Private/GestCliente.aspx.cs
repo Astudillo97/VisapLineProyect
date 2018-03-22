@@ -136,7 +136,7 @@ namespace VisapLine.View.Private
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
+                Alerta.CssClass = "alert alert-error"; 
                 Alerta.Visible = true;
             }
 

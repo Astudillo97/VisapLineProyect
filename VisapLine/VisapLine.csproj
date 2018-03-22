@@ -487,6 +487,7 @@
     <Content Include="View\Private\Almacen.aspx" />
     <Content Include="View\Private\consultadefactura.aspx" />
     <Content Include="View\Private\ContratoCliente.aspx" />
+    <Content Include="View\Private\CrearFactura.aspx" />
     <Content Include="View\Private\detalleservicio.aspx" />
     <Content Include="View\Private\EditarFactura.aspx" />
     <Content Include="View\Private\Error.aspx" />
@@ -515,6 +516,7 @@
     <Content Include="View\Private\Point.aspx" />
     <Content Include="View\Private\RegistroTerceros.aspx" />
     <Content Include="View\Private\ReporteCaja.aspx" />
+    <Content Include="View\Private\RevisionCartera.aspx" />
     <Content Include="View\Private\servicio.aspx" />
     <Content Include="View\Private\solicitudes.aspx" />
     <Content Include="View\Private\SoporteDoc.aspx" />
@@ -629,6 +631,13 @@
     </Compile>
     <Compile Include="View\Private\ContratoCliente.aspx.designer.cs">
       <DependentUpon>ContratoCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\CrearFactura.aspx.cs">
+      <DependentUpon>CrearFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\CrearFactura.aspx.designer.cs">
+      <DependentUpon>CrearFactura.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\detalleservicio.aspx.cs">
       <DependentUpon>detalleservicio.aspx</DependentUpon>
@@ -825,6 +834,13 @@
     </Compile>
     <Compile Include="View\Private\ReporteCaja.aspx.designer.cs">
       <DependentUpon>ReporteCaja.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\RevisionCartera.aspx.cs">
+      <DependentUpon>RevisionCartera.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\RevisionCartera.aspx.designer.cs">
+      <DependentUpon>RevisionCartera.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\servicio.aspx.cs">
       <DependentUpon>servicio.aspx</DependentUpon>

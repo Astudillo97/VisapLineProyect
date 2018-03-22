@@ -69,27 +69,25 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
         <div id="contenedor">
             <img src="../../Archivos/Presentación1.jpg" />
         </div>
         <div>
-            <center>
-            
+            <center>            
             <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <label class="text-center" runat="server" id="textError"></label>
             </asp:Panel>
                 <br />
                 <br />
-                           <table>
+ <table>
                    <tr>
   <td>IDENTIFICACIÓN/NIT:</td>
   <td><asp:TextBox ID="identificacion_" runat="server" /></td>
   <td><asp:Button Text="Generar" class="btn btn-block btn-success" Width="143px" Height="30px" OnClick="Unnamed_Click" runat="server" />
       </td>  
 </tr>
-                   </table>      
+ </table>      
                <br />
                 <br />          
             <asp:GridView runat="server" OnRowCommand="allfactura_RowCommand" AutoGenerateColumns="False" ID="allfactura" CellPadding="4" ForeColor="#333333" GridLines="None">
