@@ -114,7 +114,6 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-
         }
 
         public void cargarActualizar(string ent)
