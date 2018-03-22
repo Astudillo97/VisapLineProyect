@@ -304,15 +304,34 @@
                         </asp:GridView>
                     </div>
                     <div class="tab-pane" id="pagos">
-                        <asp:GridView runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped table-responsive" ID="GridViewpagos">
+                        <asp:GridView runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped table-responsive" ID="GridViewpagos" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
-                                <asp:BoundField DataField="idcargoadicional" HeaderText="#"></asp:BoundField>
-                                <asp:BoundField DataField="descripcion" HeaderText="DESCRIPCION"></asp:BoundField>
-                                <asp:BoundField DataField="valor" HeaderText="VALOR"></asp:BoundField>
-                                <asp:BoundField DataField="fecha" DataFormatString="{0:d}" HeaderText="FECHA"></asp:BoundField>
-                                <asp:BoundField DataField="inventario_idinventario" HeaderText="#INV"></asp:BoundField>
-                                <asp:BoundField DataField="estadoca" HeaderText="ESTADO"></asp:BoundField>
+                                <asp:BoundField DataField="idfactura" HeaderText="#Factura"></asp:BoundField>
+                                <asp:BoundField DataField="estado" HeaderText="Estado"></asp:BoundField>
+                                <asp:BoundField DataField="saldofac" HeaderText="Saldo"></asp:BoundField>
+                                <asp:BoundField DataField="pagado" HeaderText="Pagado"></asp:BoundField>
+                                <asp:BoundField DataField="fechapago" HeaderText="Estado"></asp:BoundField>
                             </Columns>
+                            <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
                     </div>
 
