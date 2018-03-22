@@ -377,7 +377,6 @@ namespace VisapLine.View.Private
                 {
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title: 'UUUUPSSS!!!!', text: 'Algo ha ocurrido estamos trabajando para solucionarlo',imageUrl: '../../Contenido/images/monkeyprogramer.jpg',imageSize: '400x250'})", true);
                 }
-
             }
             else
             {
