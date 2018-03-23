@@ -176,7 +176,7 @@ namespace VisapLine.View.Private
                 OrdenSalida ord = new OrdenSalida();
                 DataRow telefono = ord.cosnutlarlefonosorden(""+terc.idterceros).Rows[0];
 
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title:'INCIDENCIA # " + Labelidincidencia.Text + "',text:'CLIENTE : " + ter["nombre"].ToString() + " " + ter["apellido"].ToString()+" DIRECCION : "+ ter["direccion"].ToString() + " DETALLE : "+ indat["detalle"].ToString() + " TELEFONO : "+telefono["telefono"].ToString()+" PLAN : "+ estratomegas["estrato"].ToString() +" "+ estratomegas["subida"].ToString() + "MB',type:'warning'},function(){window.print();})", true);
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title:'INCIDENCIA # " + Labelidincidencia.Text + "',text:'CLIENTE : " + ter["nombre"].ToString() + " " + ter["apellido"].ToString() + " CEDULA : " + ter["identificacion"].ToString()+" DIRECCION : " + ter["direccion"].ToString() + " DETALLE : "+ indat["detalle"].ToString() + " TELEFONO : "+telefono["telefono"].ToString()+" PLAN : "+ estratomegas["estrato"].ToString() +" "+ estratomegas["subida"].ToString() + "MB',type:'warning'},function(){window.print();})", true);
             }
         }
     }
