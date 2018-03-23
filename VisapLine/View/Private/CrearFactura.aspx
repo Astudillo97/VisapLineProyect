@@ -16,7 +16,7 @@
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <label class="text-center" runat="server" id="textError"></label>
         </asp:Panel>
-         <div class="box box-default">
+        <div class="box box-default">
             <div class="box-header with-border">
                 <h3 class="box-title">Buscar Contrato</h3>
             </div>
@@ -33,12 +33,12 @@
                                 <asp:Button runat="server" ID="Button2" CssClass="btn btn-block btn-success btn-lg" Text="Buscar" OnClick="Button2_Click" Width="100px" />
                             </div>
                         </div>
-                    </div>           
+                    </div>
                 </div>
                 <!-- /.col -->
             </div>
         </div>
-         <div class="row">
+        <div class="row">
             <div class="col-6">
                 <div class="box box-default">
                     <div class="box-header with-border">
@@ -54,13 +54,13 @@
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Nombre:</label>
                                     <div class="col-sm-8">
-                                        <asp:Label ID="Label1" runat="server" CssClass="form-control bg-gray" height="45px" Width="200px" Text=""></asp:Label>
+                                        <asp:Label ID="Label1" runat="server" CssClass="form-control bg-gray" Height="45px" Width="200px" Text=""></asp:Label>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Apellido:</label>
                                     <div class="col-sm-8">
-                                        <asp:Label ID="Label2" CssClass="form-control bg-gray" runat="server" height="45px" Width="200px" Text=""></asp:Label>
+                                        <asp:Label ID="Label2" CssClass="form-control bg-gray" runat="server" Height="45px" Width="200px" Text=""></asp:Label>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -73,6 +73,44 @@
                         </div>
                     </div>
                 </div>
-            </div>           
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Datos del Cliente</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="../../Contenido/images/user2-160x160.jpg" height="125px" width="125px" />
+                            </div>
+                            <div class="col-7">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Nombre:</label>
+                                    <div class="col-sm-8">
+                                        <asp:Label ID="Label3" runat="server" CssClass="form-control bg-gray" Height="45px" Width="200px" Text=""></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Apellido:</label>
+                                    <div class="col-sm-8">
+                                        <asp:Label ID="Label4" CssClass="form-control bg-gray" runat="server" Height="45px" Width="200px" Text=""></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Direccion:</label>
+                                    <div class="col-sm-8">
+                                        <asp:TextBox ID="TextBox2" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="200px" Height="100px"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </asp:Content>
