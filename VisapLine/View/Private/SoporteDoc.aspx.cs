@@ -67,7 +67,7 @@ namespace VisapLine.View.Private
                             }
                             catch (Exception)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                                
                             }
                         }
 
@@ -85,7 +85,7 @@ namespace VisapLine.View.Private
                             }
                             catch (Exception)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                                
                             }
                         }
                     }
