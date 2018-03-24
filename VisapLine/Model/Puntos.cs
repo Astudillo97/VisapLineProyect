@@ -48,7 +48,7 @@ namespace VisapLine.Model
         }
         public bool ActualizarPuntoAvanzado(string estado, string direccion, string x, string y, string barrio, string tipo, string idservicio, string referencia, string antiguopunto)
         {
-            return data.OperarDatos("select * from .pr_actualizarpuntoavanza('"+estado+"', '"+direccion+"','"+x+"','"+y+"',"+barrio+",'"+tipo+"', "+idservicio+",'"+referencia+"', "+antiguopunto+")");
+            return data.OperarDatos("select * from pr_actualizarpuntoavanza('"+estado+"', '"+direccion+"','"+x.Replace(',','.')+"','"+y.Replace(',', '.') + "',"+barrio+",'"+tipo+"', "+idservicio+",'"+referencia+"', "+antiguopunto+")");
         }
     }
 }
