@@ -53,7 +53,7 @@ namespace VisapLine.View.Private
                 tercliente = Validar.Consulta(tercero.ConsultarTerceroAvanzado(tercero));
                 consultacliente.DataSource = tercliente;
                 consultacliente.DataBind();
-                Alerta.Visible = false;              
+                Alerta.Visible = false;
                 ClientScript.RegisterStartupScript(GetType(), "alerta", "panelbutton();", true);
             }
             catch (Exception ex)
@@ -83,9 +83,12 @@ namespace VisapLine.View.Private
                     telef += item["telefono"].ToString() + " - ";
                 }
                 _telefono_.Value = telef;
-                contrato.terceros_idterceros = row["idterceros"].ToString();             
-                Alerta.Visible = false;
+                contrato.terceros_idterceros = row["idterceros"].ToString();
+                DataRow contclientes = contrato.ConsultarContratoIdTercero(contrato).Rows[0];
 
+
+                Alerta.Visible = false;
+                datos.Visible = true;
 
             }
             catch (Exception ex)

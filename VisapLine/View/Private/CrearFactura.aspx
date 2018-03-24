@@ -66,7 +66,7 @@
                     <!-- /.col -->
                 </div>
             </div>
-            <div class="row">
+            <div class="row" runat="server" id="datos" visible="true">
                 <div class="col-6">
                     <div class="box box-default">
                         <div class="box-header with-border">
