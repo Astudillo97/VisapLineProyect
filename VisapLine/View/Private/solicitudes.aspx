@@ -11,6 +11,9 @@
         function openmodal() {
             $('#mymodal').modal('show');
         }
+        function deletealert(x) {
+            swal("ORDEN CREADA CON EXITO!", "Su orden ser creo con el numero " + x, "success", function () { location.reload() });
+        }
     </script>
     <section class="content-header">
         <h1>Crear Solicitudes</h1>

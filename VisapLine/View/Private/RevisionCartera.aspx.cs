@@ -41,6 +41,10 @@ namespace VisapLine.View.Private
         {
 
         }
-       
+
+        protected void btnconsultarcarteara_ServerClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

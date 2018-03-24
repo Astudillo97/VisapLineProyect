@@ -65,8 +65,29 @@ namespace VisapLine.View.Private
         protected void btnguardar_Click(object sender, EventArgs e)
         {
 
-            ord.crearsolicitudes(dropdownTSoli.SelectedValue,TextBox1.Text,fechIni_.Value,fechFin_.Value,dropdownMSoli.SelectedValue,Solicitanteidenti.Text,Solicitantenombre.Text,Solicitanteapellido.Text,idsrv, empleado,false);
-
+            int count = ord.crearsolicitudes(dropdownTSoli.SelectedValue, TextBox1.Text, fechIni_.Value, fechFin_.Value, dropdownMSoli.SelectedValue, Solicitanteidenti.Text, Solicitantenombre.Text, Solicitanteapellido.Text, idsrv, empleado, false).Rows.Count;
+            if (dropdownTSoli.SelectedItem.Text.Equals("Cancelacion") && count > 0)
+            {
+                DataTable dt = ord.Insertarsolicitud("RECOJER EQUIPOS POR QUE EL CLIENTE DECIDE RETIRARSE", TextBox1.Text, 0, idsrv, "TRABAJO");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert('" + dt.Rows[0][0].ToString() + "');", true);
+            }
+            else
+            {
+                if (dropdownTSoli.SelectedItem.Text.Equals("Traslado") && count > 0)
+                {
+                    DataTable dt = ord.Insertarsolicitud("RECOJER EQUIPOS Y TRASLADAR EL SERVICIO", TextBox1.Text, 0, idsrv, "TRABAJO");
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert('" + dt.Rows[0][0].ToString() + "');", true);
+                }
+                else {
+                    if (count > 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('SOLICITUD CREADA CON EXITO!', 'Su solicitud se creo con extio ', 'success', function () { location.reload() };", true);
+                    }
+                    else {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('SOLICITUD FALLIDA!', 'No se pudo crear la solicitud ', 'error', function () { location.reload() };", true);
+                    }
+                }
+            }
         }
 
         protected void dropsolicitante_TextChanged(object sender, EventArgs e)

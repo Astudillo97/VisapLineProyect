@@ -35,6 +35,25 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
+                            <asp:Label runat="server" ID="lblmes" CssClass="form-control col-2 no-border" Text="SELECCIONE EL MES"></asp:Label>
+                            <asp:DropDownList runat="server" ID="dropmes" class="form-control border-top-0 border-left-0 border-right-0 col-1">
+                                <asp:ListItem Text="-SELECCIONE-" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="ENERO" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="FEBRERO" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="MARZO" Value="3"></asp:ListItem>
+                                <asp:ListItem Text="ABRIL" Value="4"></asp:ListItem>
+                                <asp:ListItem Text="MAYO" Value="5"></asp:ListItem>
+                                <asp:ListItem Text="JUNIO" Value="6"></asp:ListItem>
+                                <asp:ListItem Text="JULIO" Value="7"></asp:ListItem>
+                                <asp:ListItem Text="AGOSTO" Value="8"></asp:ListItem>
+                                <asp:ListItem Text="SEPTIEMBRE" Value="9"></asp:ListItem>
+                                <asp:ListItem Text="OCTUBRE" Value="10"></asp:ListItem>
+                                <asp:ListItem Text="NOVIEMBRE" Value="11"></asp:ListItem>
+                                <asp:ListItem Text="DICIEMBRE" Value="12"></asp:ListItem>
+                            </asp:DropDownList>
+                            <button runat="server" id="btnconsultarcarteara" onserverclick="btnconsultarcarteara_ServerClick"><span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                        <div class="row">
                             <table class="table table-bordered table-striped table-responsive no-border tablaexcel">
                                 <thead style="background-color: #507CD1">
                                     <tr>
@@ -112,9 +131,9 @@
                                                 </td>
                                                 <td style="color: black"><%#Convert.ToString(Eval("totalfact")).Replace(',','.') %>
                                                 </td>
-                                                <td style="color: black"><%#Eval("estadofac") %>
+                                                <td  <%# Eval("estadofac").Equals("Pagado")?"style='color: green'":Eval("estadofac").Equals("Facturado")?"style='color: red'":Eval("estadofac").Equals("Abonado")?"style='color: yellow'":"style='color: blue'" %>><%#Eval("estadofac") %>
                                                 </td>
-                                                <td style="color: black"><%#Eval("pagado") %>
+                                                <td style="color: black"><%#Convert.ToString(Eval("pagado")).Replace(',','.') %>
                                                 </td> 
                                             </tr>
                                         </ItemTemplate>

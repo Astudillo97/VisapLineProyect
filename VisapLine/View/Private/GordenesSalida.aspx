@@ -398,6 +398,7 @@
                                     <asp:BoundField HeaderText="DESCRIPCION" DataField="descripcioncol" />
                                     <asp:BoundField HeaderText="CANTIDAD" DataField="cantidadcol" />
                                     <asp:BoundField HeaderText="ESTADO" DataField="estadocol" />
+                                    
                                 </Columns>
                                 <EditRowStyle BackColor="#2461BF" />
                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -710,8 +711,7 @@
                                         <asp:Repeater ID="Repeater4" runat="server" OnItemCommand="repetidorinstalaciones_ItemCommand">
                                             <ItemTemplate>
                                                 <tr>
-                                                    <td <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0?  "style='color: red'" : Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8).ToString("dd-MM-yyyy").Equals(DateTime.Now.ToString("dd-MM-yyyy"))? "style='color: orange'": "style='color: blue'" %>>
-                                                        <%# DateTime.Compare(Convert.ToDateTime(Eval("fecha_registroval")).AddDays(8.9),DateTime.Now)<0? "Atrasada" :"En Proceso " %>                        
+                                                    <td>FINALIZADA                       
                                                     </td>
                                                     <td>
                                                         <asp:Button ID="codigovalue" CssClass="btn btn-success" runat="server" CommandName="buscar" CommandArgument='<%#Eval("codigovaal") %>' Text='<%#Eval("codigovaal") %>' />

@@ -74,7 +74,7 @@ namespace VisapLine.Model
         }
         public DataTable datosdeldueniodelseervicio(int idservicio)
         {
-            return data.ConsultarDatos("select terceros.identificacion,terceros.nombre,terceros.apellido from servicios inner join contrato on contrato.idcontrato = servicios.idservicios inner join terceros on contrato.terceros_idterceros_cont = terceros.idterceros where servicios.idservicios = " + idservicio + "");
+            return data.ConsultarDatos("select terceros.identificacion,terceros.nombre,terceros.apellido from servicios inner join contrato on contrato.idcontrato = servicios.contrato_idcontrato inner join terceros on contrato.terceros_idterceros_cont = terceros.idterceros where servicios.idservicios = " + idservicio + "");
         }
         public DataTable mediosolicitud()
         {

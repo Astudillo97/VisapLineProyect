@@ -23,6 +23,11 @@ namespace VisapLine.Model
             //sirve
             return data.ConsultarDatos("select * from pr_insertarordenldiff('" + detalle + "','" + observacion + "'," + tercereg + ",'" + tipoorden + "')");
         }
+        public DataTable Insertarsolicitud(string vardetalle,string varobservacion ,int  varregistra ,int  varservicio ,string   vartipoorden )
+        {
+            //sirve
+            return data.ConsultarDatos("select * from pr_insertarordensolicitud('"+vardetalle+"', '"+varobservacion+"' ,  "+varregistra+" ,  "+varservicio+" ,   '"+vartipoorden+"' )");
+        }
         public DataTable Consultarorden(string id)
         {
             //sirve
