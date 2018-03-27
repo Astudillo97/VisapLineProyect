@@ -241,7 +241,7 @@ namespace VisapLine.View.Private
                 Alerta.Visible = false;
 
                 DataTable dat = Validar.Consulta(serv.consultaservicioscont2(row["idcontrato"].ToString()));
-
+                punt = punto.consultarpuntosdelcontrato(e.NewSelectedIndex.ToString());
                 GridView1.DataSource = dat;
                 GridView1.DataBind();
 
@@ -360,7 +360,8 @@ namespace VisapLine.View.Private
                 DropDownList3caracteriscainci.DataBind();
                 cargartabla(dat);
 
-                barr.idbarrios = "";
+                DataRow puntoedit = punto.ConsultarPuntosEdit(dat).Rows[0];
+                barr.idbarrios = puntoedit["barrios_idbarrioscol"].ToString();
                 DataRow dir = barr.ConsultarTodoporBarrio(barr).Rows[0];
                 cargarDepartamentos(dir["idpais"].ToString());
                 pais_.SelectedValue = dir["idpais"].ToString();
@@ -368,16 +369,23 @@ namespace VisapLine.View.Private
                 cargarMunicipios(dir["iddepartamento"].ToString());
                 municipio_.SelectedValue = dir["idmunicipio"].ToString();
                 cargarBarrios(dir["idmunicipio"].ToString());
-
+                barrio_.SelectedValue= puntoedit["barrios_idbarrioscol"].ToString();
+                tipo.SelectedValue= puntoedit["tipocol"].ToString();
+                estadoserv.SelectedValue= puntoedit["estadocol"].ToString();
+                longitud_.Text= puntoedit["coordenadaxcol"].ToString();
+                latitud_.Text = puntoedit["coordenadaycol"].ToString();
+                direcciont_.Text= puntoedit["direcioncol"].ToString();
+                referencia_.Text= puntoedit["referenciascol"].ToString();
+                idserv.Text = puntoedit["idservicioscol"].ToString();
+                idpuntoac.Text = puntoedit["idpuntoscol"].ToString();
                 try
                 {
-                    punt = punto.consultarpuntosdelcontrato(e.CommandArgument.ToString());
+                    punt = punto.consultarpuntosdelservicio(e.CommandArgument.ToString());
                 }
                 catch (Exception ex)
                 {
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title: 'UUUUPSSS!!!!', text: 'Algo ha ocurrido estamos trabajando para solucionarlo',imageUrl: '../../Contenido/images/monkeyprogramer.jpg',imageSize: '400x250'})", true);
                 }
-
             }
             else
             {
@@ -446,6 +454,53 @@ namespace VisapLine.View.Private
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
+            }
+        }
+
+        protected void btn_actualizara_ServerClick(object sender, EventArgs e)
+        {
+            try
+            {
+                Validar.validarselected(estadoserv.SelectedValue);
+                Validar.validarselected(barrio_.SelectedValue);
+                Validar.validarselected(tipo.SelectedValue);
+                Validar.validarlleno(direcciont_.Text);
+                Validar.ConvertVarchar(referencia_.Text);
+                double lat;
+                double lon;
+                if (latitud_.Text.Equals("") && longitud_.Text.Equals(""))
+                {
+                    lat = Validar.ObtenerLatitud(Convert.ToInt32(latgrados.Value), Convert.ToInt32(latminut.Value), Convert.ToDouble(latsegun.Value.Replace('.',',')));
+                    lon = Validar.ObtenerLongitud(Convert.ToInt32(longrados.Value), Convert.ToInt32(lonminut.Value), Convert.ToDouble(lonsegun.Value.Replace('.', ',')));
+                }
+                else
+                {
+                    lat = Convert.ToDouble(latitud_.Text.Replace('.',','));
+                    lon = Convert.ToDouble(longitud_.Text.Replace('.',','));
+                }
+                if (punto.ActualizarPuntoAvanzado(estadoserv.SelectedValue, direcciont_.Text, lat.ToString(), lon.ToString(), barrio_.SelectedValue, tipo.SelectedValue, idserv.Text, referencia_.Text, idpuntoac.Text))
+                {
+                    punt = punto.consultarpuntosdelservicio(idserv.Text);
+                    estadoserv.SelectedValue = "Seleccione";
+                    direcciont_.Text = "";
+                    barrio_.SelectedValue = "Seleccione";
+                    tipo.SelectedValue = "Seleccione";
+                    idserv.Text = "";
+                    referencia_.Text = "";
+                    idpuntoac.Text = "";
+                    
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "ErrorPunto('ACTUALIZACION EXITOSA!','Punto Geografico Actualizado correctamente','success');", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "ErrorPunto('ACTUALIZACION FALLIDA','Verifique que los espacios se encuentren correctamente diligenciados, recuerde seleccionar el servicio a modificar!','error');", true);
+                }
+                
+
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "ErrorPunto('ACTUALIZACION FALLIDA','" + ex.Message + "','error');", true);
             }
         }
     }

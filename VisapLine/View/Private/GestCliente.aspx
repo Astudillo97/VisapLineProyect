@@ -19,6 +19,7 @@
         function alerterrorinci() {
             swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
         }
+        
         function panelbutton() {
             document.getElementById('idbusqueda').click();
         }
@@ -45,6 +46,24 @@
         }
         function alerterror() {
             swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
+        }
+        function ErrorPunto(princiapal, data, accion) {
+            document.getElementById('pan6').click();
+            document.getElementById('map').focus();
+            swal(princiapal, data, accion);
+        }
+        function fn_limpiar() {
+            document.getElementById('<%=longitud_.ClientID%>').value = '';
+            document.getElementById('<%=latitud_.ClientID%>').value = '';
+            
+        }
+        function cancelar() {
+            document.getElementById('<%=longrados.ClientID%>').value = '';
+            document.getElementById('<%=lonminut.ClientID%>').value = '';
+            document.getElementById('<%=lonsegun.ClientID%>').value = '';
+            document.getElementById('<%=latgrados.ClientID%>').value = '';
+            document.getElementById('<%=latminut.ClientID%>').value = '';
+            document.getElementById('<%=latsegun.ClientID%>').value = '';
         }
     </script>
     <section class="content-header">
@@ -385,35 +404,133 @@
                     <div class="tab-pane" id="elementos"></div>
                     <div class="tab-pane" id="mapa">
                         <div class="row">
-                            <div class="col-3">
-                                
-                                País:<asp:DropDownList ID="pais_" runat="server" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="pais__SelectedIndexChanged">
-                                    <asp:ListItem Text="Seleccione" />
-                                </asp:DropDownList>
-                                Departamento:<asp:DropDownList ID="departamento_" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="departamento__SelectedIndexChanged" runat="server">
-                                    <asp:ListItem Text="Seleccione" />
-                                </asp:DropDownList>
-                                Municipio:<asp:DropDownList ID="municipio_" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="municipio__SelectedIndexChanged" runat="server">
-                                    <asp:ListItem Text="Seleccione" />
-                                </asp:DropDownList><br />
-                                Barrio:<asp:DropDownList ID="barrio_" runat="server">
-                                    <asp:ListItem Text="Seleccione" />
-                                </asp:DropDownList><br />
-                                Tipo:<asp:DropDownList runat="server">
-                                    <asp:ListItem Text="Seleccione" />
-                                </asp:DropDownList><br />
-                                Estado:<asp:DropDownList runat="server">
-                                    <asp:ListItem Text="Seleccione" />
-                                </asp:DropDownList>
-                                <asp:TextBox runat="server"  placeholder="Direccion"  />
-                                <asp:TextBox ID="latitud_" runat="server"  placeholder="Latitud"></asp:TextBox>
-                                <asp:TextBox ID="longitud_" runat="server"  placeholder="Longitud"></asp:TextBox>
-                                <asp:TextBox runat="server"  placeholder="Referencia"  />
-                                <asp:TextBox runat="server"  placeholder="idservicio"  />
-                                <asp:TextBox runat="server"  placeholder="anteriorpunto"  />
-                            </div>
-                            <div class="col-9">
+                            <div class="col-12">
                                 <div style="width: 100%; height: 450px;" id="map"></div>
+                            </div>
+                            <div class="col-12">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Información del servicio</h3>
+                                        <div class="box-tools pull-right">
+                                            <a href="#coordenada" data-target=".bs-example-modal-lp" data-toggle="modal" onclick="fn_limpiar();" class="input-group-addon glyphicon glyphicon-edit">CARGAR COORDENADAS GEOGRAFICAS</a>
+                                            <button type="button" class="btn btn-box-tool" id="colap" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="form-element">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">País:</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:DropDownList ID="pais_" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="pais__SelectedIndexChanged">
+                                                                <asp:ListItem Text="Seleccione" />
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Departamento:</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:DropDownList ID="departamento_" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="departamento__SelectedIndexChanged" runat="server">
+                                                                <asp:ListItem Text="Seleccione" />
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Municipio:</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:DropDownList ID="municipio_" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="municipio__SelectedIndexChanged" runat="server">
+                                                                <asp:ListItem Text="Seleccione" />
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Barrio:</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:DropDownList ID="barrio_" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                                                                <asp:ListItem Text="Seleccione" />
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Tipo:</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:DropDownList ID="tipo" CssClass="form-control" runat="server">
+                                                                <asp:ListItem Text="Seleccione" />
+                                                                <asp:ListItem Text="Fibra" />
+                                                                <asp:ListItem Text="Radio" />
+                                                                <asp:ListItem Text="Indefinido" />
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Estado:</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:DropDownList ID="estadoserv" CssClass="form-control" runat="server">
+                                                                <asp:ListItem Text="Seleccione" />
+                                                                <asp:ListItem Text="POR INSTALAR" />
+                                                                <asp:ListItem Text="ACTIVO" />
+                                                                <asp:ListItem Text="INACTIVO" />
+                                                                <asp:ListItem Text="SUSPENDIDO" />
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+
+                                                        <label class="col-sm-4 col-form-label">Latitud</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox ID="latitud_" CssClass="form-control" runat="server" placeholder="Latitud"></asp:TextBox>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Longitud:</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox ID="longitud_" CssClass="form-control" runat="server" placeholder="Longitud"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Direccion:</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox runat="server" ID="direcciont_" CssClass="form-control" placeholder="Direccion" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Referencia:</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox runat="server" ID="referencia_" TextMode="MultiLine" Rows="9" CssClass="form-control" placeholder="Referencia" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" style="display: none">
+                                                        <label class="col-sm-4 col-form-label">Ref. Serv:</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox runat="server" ID="idserv" CssClass="form-control" placeholder="idservicio" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" style="display: none">
+                                                        <label class="col-sm-4 col-form-label">Punt. Ant:</label>
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox runat="server" ID="idpuntoac" CssClass="form-control" placeholder="anteriorpunto" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box-footer">
+                                        <a href="#" ID="btn_actualizara" onserverclick="btn_actualizara_ServerClick" class="btn btn-success float-right" runat="server" >ACTUALIZAR SERVICIO</a>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -489,6 +606,53 @@
             <!-- /.modal-dialog -->
         </div>
 
+
+        <div class="modal fade bs-example-modal-lp" runat="server" id="coordenada" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="res">Coordenadas</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-pane" runat="server" id="Div4">
+                            <div class="box box-primary">
+                                <div class="form-inline">
+                                    <label for="example-text-input" class="col-sm-3 col-form-label">Latitud</label>
+                                    <div class="col-sm-3">
+                                        G:<input class="form-control col-sm-12" runat="server" id="latgrados" type="text">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        M:<input class="form-control col-sm-12" runat="server" id="latminut" type="text">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        S:<input class="form-control col-sm-12" runat="server" id="latsegun" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-inline">
+                                    <label for="example-text-input" class="col-sm-3 col-form-label">Longitud</label>
+                                    <div class="col-sm-3">
+                                        G:<input class="form-control col-sm-12" runat="server" id="longrados" type="text">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        M:<input class="form-control col-sm-12" runat="server" id="lonminut" type="text">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        S:<input class="form-control col-sm-12" runat="server" id="lonsegun" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="cancelar();" class="btn btn-danger waves-effect text-left" data-dismiss="modal">CANCELAR</button>
+                        <button type="button" class="btn btn-success waves-effect text-right" data-dismiss="modal">GUARDAR</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
 
         <div class="modal fade bs-example-modal-xl" runat="server" id="Div1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog modal-lg">
@@ -602,13 +766,13 @@
                 });
                 var icons = {
                     Radio: {
-                        icon: 'http://191.102.85.252:30000/Contenido/radio.png'
+                        icon: 'http://45.71.180.50:30000/Contenido/radio.png'
                     },
                     Fibra: {
-                        icon: 'http://191.102.85.252:30000/Contenido/fibra.png'
+                        icon: 'http://45.71.180.50:30000/Contenido/fibra.png'
                     },
                     Indefinido: {
-                        icon: 'http://191.102.85.252:30000/Contenido/indefinido.png'
+                        icon: 'http://45.71.180.50:30000/Contenido/indefinido.png'
                     }
                 };
 
@@ -639,10 +803,46 @@
             }
                   %>
                 ];
+
+                var flightPlanCoordinates = [
+                    { lat: 37.772, lng: -122.214 },
+                    { lat: 21.291, lng: -157.821 },
+                    { lat: -18.142, lng: 178.431 },
+                    { lat: -27.467, lng: 153.027 }
+                ];
+                var flightPath = new google.maps.Polyline({
+                    path: flightPlanCoordinates,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
+                });
+
+                flightPath.setMap(map);
+
+                var triangleCoords = [
+                    { lat: 25.774, lng: -80.190 },
+                    { lat: 18.466, lng: -66.118 },
+                    { lat: 32.321, lng: -64.757 },
+                    { lat: 25.774, lng: -80.190 }
+                ];
+
+                // Construct the polygon.
+                var bermudaTriangle = new google.maps.Polygon({
+                    paths: triangleCoords,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    title:'CIUDAD MAYORDOMA',
+                    fillOpacity: 0.35
+                });
+                bermudaTriangle.setMap(map);
+
             }
         </script>
         <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcz4b9tiKDFIuSFnaGlU7YpsBpfzPu7to&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTPEF0lA-wVVfI913xc0RNK8v-9iI3nuE&callback=initMap">
         </script>
     </section>
 </asp:Content>
