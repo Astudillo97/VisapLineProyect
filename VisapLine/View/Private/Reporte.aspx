@@ -39,11 +39,19 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">CASO:</label>
                                             <div class="col-sm-8">
-                                                <asp:dropdownlist id="caso" runat="server" cssclass="form-control" appenddatabounditems="true">
+                                                <asp:dropdownlist id="caso" runat="server" cssclass="form-control" appenddatabounditems="true" AutoPostBack="true" OnSelectedIndexChanged="caso_SelectedIndexChanged">
                                                                 <asp:ListItem Text="Seleccione" />
                                                                 <asp:ListItem value="ESTADOTER" Text="POR ESTADO TERCERO" />
                                                     <asp:ListItem value="ESTADOCONT" Text="POR ESTADO CONTRATO" />
                                                     <asp:ListItem value="ESTADOSER" Text="POR ESTADO SERVICIO" />
+                                                    <asp:ListItem value="FACTURAFECHA" Text="FECHA FACTURA" />
+                                                    <asp:ListItem value="CONTRATOFECHA" Text="FECHA CONTARTO" />
+                                                    <asp:ListItem value="SALDOS" Text="SALDOS" />
+                                                    <asp:ListItem value="BARRIOS" Text="BARRIOS" />
+                                                    <asp:ListItem value="PLANES" Text="PLANES" />
+                                                    <asp:ListItem value="TIPO" Text="TIPO SERVICIO" />
+                                                    <asp:ListItem value="METHODO" Text="METODO DE ENVIO" />
+
                                                             </asp:dropdownlist>
                                             </div>
                                         </div>
@@ -76,23 +84,16 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Tipo:</label>
                                             <div class="col-sm-8">
-                                                <asp:dropdownlist id="tipo" cssclass="form-control" runat="server">
+                                                <asp:dropdownlist id="tipo" cssclass="form-control" runat="server" AppendDataBoundItems="true">
                                                                 <asp:ListItem Text="Seleccione" />
-                                                                <asp:ListItem Text="Fibra" />
-                                                                <asp:ListItem Text="Radio" />
-                                                                <asp:ListItem Text="INDEFINIDO" />
                                                             </asp:dropdownlist>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Estado:</label>
+                                            <label class="col-sm-4 col-form-label">EstadoNN:</label>
                                             <div class="col-sm-8">
                                                 <asp:dropdownlist id="estadoserv" cssclass="form-control" runat="server">
                                                                 <asp:ListItem Text="Seleccione" />
-                                                                <asp:ListItem Text="POR INSTALAR" />
-                                                                <asp:ListItem Text="ACTIVO" />
-                                                                <asp:ListItem Text="INACTIVO" />
-                                                                <asp:ListItem Text="SUSPENDIDO" />
                                                             </asp:dropdownlist>
                                             </div>
                                         </div>
@@ -101,14 +102,14 @@
 
                                             <label class="col-sm-4 col-form-label">FECHA INICIO</label>
                                             <div class="col-sm-8">
-                                                <asp:textbox id="fechainicio" cssclass="form-control" runat="server" placeholder="INICIO"></asp:textbox>
+                                                <asp:textbox id="fechainicio" TextMode="Date" cssclass="form-control" runat="server" placeholder="INICIO"></asp:textbox>
                                             </div>
 
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">FECHA FIN</label>
                                             <div class="col-sm-8">
-                                                <asp:textbox id="fechafin" cssclass="form-control" runat="server" placeholder="FIN"></asp:textbox>
+                                                <asp:textbox id="fechafin" TextMode="Date" cssclass="form-control" runat="server" placeholder="FIN"></asp:textbox>
                                             </div>
                                         </div>
                                     </div>
@@ -122,13 +123,9 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">METODO</label>
                                             <div class="col-sm-8">
-                                                <asp:dropdownlist id="methenvio" cssclass="form-control" runat="server">
+                                                <asp:dropdownlist id="methenvio" cssclass="form-control" runat="server" AppendDataBoundItems="true">
                                                                 <asp:ListItem Text="Seleccione" />
-                                                                <asp:ListItem Text="POR INSTALAR" />
-                                                                <asp:ListItem Text="ACTIVO" />
-                                                                <asp:ListItem Text="INACTIVO" />
-                                                                <asp:ListItem Text="SUSPENDIDO" />
-                                                            </asp:dropdownlist>
+                                                </asp:dropdownlist>
                                             </div>
                                         </div>
                                     </div>
@@ -140,8 +137,8 @@
                         </div>
                     </div>
                     <div class="box box-primary">
-                        <div class="row" style="overflow-x:auto">
-                            <table class="table table-bordered table-striped no-border tablaexcel">
+                        <div class="row col-lg-12 col-sm-12 col-xl-12 col-md-12" style="overflow-x:scroll; font-size:8px;">
+                            <table class="table table-bordered table-responsive table-striped no-border tablaexcel" >
                                 <thead style="background-color: #507CD1">
                                     <tr>
                                         <td style="color: white">NIT/CC
@@ -157,6 +154,8 @@
                                         <td style="color: white">ESTADO CONTRATO
                                         </td>
                                         <td style="color: white">ESTADO SERVICIO
+                                        </td>
+                                        <td style="color: white">FECHA CONTRATO
                                         </td>
                                         <td style="color: white">DIRECCION
                                         </td>
@@ -194,15 +193,17 @@
                                                 </td>
                                                 <td <%# Eval("estadoser").Equals("ACTIVO")?"style='color: green'":Eval("estadoser").Equals("ELIMINADO")?"style='color: red'":Eval("estadoser").Equals("SUSPENDIDO")?"style='color: yellow'":"style='color: blue'" %>><%#Eval("estadoser") %>
                                                 </td>
+                                                <td style="color: black"><%#Eval("fechacont")is DBNull ?"":Convert.ToDateTime(Eval("fechacont")).ToString("dd-MM-yyyy") %>
+                                                </td>
                                                 <td style="color: black"><%#Eval("direccion") %>
                                                 </td>
                                                 <td style="color: black"><%#Eval("plan") %>
                                                 </td>
-                                                <td style="color: black"><%#Convert.ToString(Eval("suscripcion")).Replace(',','.').ToString()%>
+                                                <td style="color: black"><%#Convert.ToString(Eval("suscripcion"))%>
                                                 </td>
-                                                <td style="color: black"><%#Convert.ToString(Eval("saldototal")).Replace(',','.') %>
+                                                <td style="color: black"><%#Convert.ToString(Eval("saldototal")) %>
                                                 </td>
-                                                <td style="color: black"><%#Eval("tiposerv") %>%
+                                                <td style="color: black"><%#Eval("tiposerv") %>
                                                 </td>
                                                 <td style="color: black"><%#Convert.ToString(Eval("barrioserv")).Replace(',','.') %>
                                                 </td>      

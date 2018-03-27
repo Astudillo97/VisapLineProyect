@@ -466,7 +466,7 @@
                                                                 <asp:ListItem Text="Seleccione" />
                                                                 <asp:ListItem Text="Fibra" />
                                                                 <asp:ListItem Text="Radio" />
-                                                                <asp:ListItem Text="INDEFINIDO" />
+                                                                <asp:ListItem Text="Indefinido" />
                                                             </asp:DropDownList>
                                                         </div>
                                                     </div>
@@ -771,7 +771,7 @@
                     Fibra: {
                         icon: 'http://45.71.180.50:30000/Contenido/fibra.png'
                     },
-                    INDEFINIDO: {
+                    Indefinido: {
                         icon: 'http://45.71.180.50:30000/Contenido/indefinido.png'
                     }
                 };
