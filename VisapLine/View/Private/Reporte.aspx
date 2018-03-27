@@ -1,15 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Reporte.aspx.cs" Inherits="VisapLine.View.Private.Reporte" %>
+﻿<%@ Page Title="Reporte Visapline C & C Vision SAS" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="Reporte.aspx.cs" Inherits="VisapLine.View.Private.Reporte" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
-        <h2>Gestion del Cliente
+        <h2>Reporte de clintes
         </h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i>VisapLine</a></li>
-            <li class="breadcrumb-item"><a href="#">Clientes</a></li>
-            <li class="breadcrumb-item active">Registro</li>
+            <li class="breadcrumb-item"><a href="#">Reporte</a></li>
+            <li class="breadcrumb-item active">Cliente</li>
         </ol>
     </section>
     <asp:panel id="Alerta" visible="false" runat="server" cssclass="col-12 alert alert-success">
@@ -22,7 +22,7 @@
                 <div class="col-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Información del servicio</h3>
+                            <h3 class="box-title">Parametros de la consulta</h3>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" id="colap" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                                     <i class="fa fa-minus"></i>
