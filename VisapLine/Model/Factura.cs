@@ -94,5 +94,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select estado as estado1,estado as estado2 from factura group by estado");
         }
+
+        public DataTable ConsultarSaldo(string dat)
+        {
+            return data.ConsultarDatos("select * FROM pr_consultarsaldo(" + dat + ")");
+        }
     }
 }
