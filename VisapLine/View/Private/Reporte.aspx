@@ -137,7 +137,7 @@
                         </div>
                     </div>
                     <div class="box box-primary">
-                        <div class="row col-lg-12 col-sm-12 col-xl-12 col-md-12" style="overflow-x:scroll; font-size:8px;">
+                        <div class="row col-lg-12 col-sm-12 col-xl-12 col-md-12" style="overflow-x:scroll;">
                             <table class="table table-bordered table-responsive table-striped no-border tablaexcel" >
                                 <thead style="background-color: #507CD1">
                                     <tr>
@@ -187,11 +187,11 @@
                                                 </td>
                                                 <td style="color: black"><%#Eval("telefonos") %>
                                                 </td>
-                                                <td <%# Eval("estadoter").Equals("ACTIVO")?"style='color: green'":Eval("estadoter").Equals("ELIMINADO")?"style='color: red'":Eval("estadoter").Equals("SUSPENDIDO")?"style='color: yellow'":"style='color: blue'" %>><%#Eval("estadoter") %>
+                                                <td <%# Eval("estadoter").Equals("ACTIVO")?"style='color: green'":Eval("estadoter").Equals("ELIMINADO")?"style='color: red'":Eval("estadoter").Equals("SUSPENDIDO")?"style='color: coffee'":"style='color: blue'" %>><%#Eval("estadoter") %>
                                                 </td>
-                                                <td <%# Eval("estadocont").Equals("ACTIVO")?"style='color: green'":Eval("estadocont").Equals("ELIMINADO")?"style='color: red'":Eval("estadocont").Equals("SUSPENDIDO")?"style='color: yellow'":"style='color: blue'" %>><%#Eval("estadocont") %>
+                                                <td <%# Eval("estadocont").Equals("ACTIVO")?"style='color: green'":Eval("estadocont").Equals("ELIMINADO")?"style='color: red'":Eval("estadocont").Equals("SUSPENDIDO")?"style='color: coffee'":"style='color: blue'" %>><%#Eval("estadocont") %>
                                                 </td>
-                                                <td <%# Eval("estadoser").Equals("ACTIVO")?"style='color: green'":Eval("estadoser").Equals("ELIMINADO")?"style='color: red'":Eval("estadoser").Equals("SUSPENDIDO")?"style='color: yellow'":"style='color: blue'" %>><%#Eval("estadoser") %>
+                                                <td <%# Eval("estadoser").Equals("ACTIVO")?"style='color: green'":Eval("estadoser").Equals("ELIMINADO")?"style='color: red'":Eval("estadoser").Equals("SUSPENDIDO")?"style='color: coffee'":"style='color: blue'" %>><%#Eval("estadoser") %>
                                                 </td>
                                                 <td style="color: black"><%#Eval("fechacont")is DBNull ?"":Convert.ToDateTime(Eval("fechacont")).ToString("dd-MM-yyyy") %>
                                                 </td>
