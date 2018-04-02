@@ -129,6 +129,18 @@
                                                 <%--       <asp:Label runat="server" ID="Label4" Text="Upload status: " />--%>
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-sm-2 col-form-label">ORDEN DE INSTALACIÓN</label>
+                                            <div class="col-sm-10">
+                                                <br />
+                                                <asp:FileUpload ID="FileUpload3" runat="server" />
+                                                <%--     <asp:Button runat="server" ID="Button2" Text="Upload" OnClick="UploadButton_Click" />
+                                                --%>
+                                                <br />
+                                                <br />
+                                                <%--       <asp:Label runat="server" ID="Label4" Text="Upload status: " />--%>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

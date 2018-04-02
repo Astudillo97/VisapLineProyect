@@ -88,6 +88,22 @@ namespace VisapLine.View.Private
                                 
                             }
                         }
+                        if (FileUpload2.HasFile == true)
+                        {
+                            try
+                            {
+                                string filename3 = Path.GetFileName(FileUpload3.FileName);
+                                sp.soportes = Validar.validarlleno(filename3);
+                                sp.contrato_idcontrato = Validar.validarlleno(Label6.Text);
+                                sp.tiposoporte_idtiposoporte = Validar.validarlleno("5");
+                                sp.RegistrarSoportes(sp);
+                                FileUpload2.SaveAs(Server.MapPath("../../soportes/") + filename3);
+                            }
+                            catch (Exception)
+                            {
+
+                            }
+                        }
                     }
                     catch (Exception)
                     {
