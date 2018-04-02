@@ -11,6 +11,21 @@
         function openmodal() {
             $('#mymodal').modal('show');
         }
+        function deletealert() {
+            swal("LA SOLICITUD FUE CREADA CON EXITO!", "", "success");
+        }
+        function guardo() {
+            swal("SE REGISTRO CON EXITO!", "La operacion se realizo con exito", "success");
+        }
+        function alerterror() {
+            swal("EL REGISTRO NO SE PUDO COMPLETAR EL CARGUE!", "Verifique la informacion ingresada y vuelva intentar", "error");
+        }
+        function alrt() {
+            swal("ESTA OPCION AUN NO ESTA DISPONIBLE!", "Los super ingnieros estan en proceso de implocion espere", "error");
+        }
+        function botonmodalgesti() {
+            document.getElementById("botonmodalcontr").click();
+        }
     </script>
     <section class="content-header">
         <h1>Crear Solicitudes</h1>

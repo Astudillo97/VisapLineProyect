@@ -66,7 +66,7 @@ namespace VisapLine.View.Private
         {
 
             ord.crearsolicitudes(dropdownTSoli.SelectedValue,TextBox1.Text,fechIni_.Value,fechFin_.Value,dropdownMSoli.SelectedValue,Solicitanteidenti.Text,Solicitantenombre.Text,Solicitanteapellido.Text,idsrv, empleado,false);
-
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
         }
 
         protected void dropsolicitante_TextChanged(object sender, EventArgs e)
