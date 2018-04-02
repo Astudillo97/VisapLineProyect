@@ -53,6 +53,9 @@ namespace VisapLine.View.Private
                     cargarMunicipios(departamento_.SelectedValue);
                     municipio_.SelectedValue = "1";
                     cargarBarrios(municipio_.SelectedValue);
+                    Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+                    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                    Response.Cache.SetNoStore();
                 }
             }
             catch (Exception)
@@ -266,7 +269,7 @@ namespace VisapLine.View.Private
             catch (Exception ex)
             {
                 textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error"; 
+                Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
 
@@ -369,13 +372,13 @@ namespace VisapLine.View.Private
                 cargarMunicipios(dir["iddepartamento"].ToString());
                 municipio_.SelectedValue = dir["idmunicipio"].ToString();
                 cargarBarrios(dir["idmunicipio"].ToString());
-                barrio_.SelectedValue= puntoedit["barrios_idbarrioscol"].ToString();
-                tipo.SelectedValue= puntoedit["tipocol"].ToString();
-                estadoserv.SelectedValue= puntoedit["estadocol"].ToString();
-                longitud_.Text= puntoedit["coordenadaxcol"].ToString();
+                barrio_.SelectedValue = puntoedit["barrios_idbarrioscol"].ToString();
+                tipo.SelectedValue = puntoedit["tipocol"].ToString();
+                estadoserv.SelectedValue = puntoedit["estadocol"].ToString();
+                longitud_.Text = puntoedit["coordenadaxcol"].ToString();
                 latitud_.Text = puntoedit["coordenadaycol"].ToString();
-                direcciont_.Text= puntoedit["direcioncol"].ToString();
-                referencia_.Text= puntoedit["referenciascol"].ToString();
+                direcciont_.Text = puntoedit["direcioncol"].ToString();
+                referencia_.Text = puntoedit["referenciascol"].ToString();
                 idserv.Text = puntoedit["idservicioscol"].ToString();
                 idpuntoac.Text = puntoedit["idpuntoscol"].ToString();
                 try
@@ -470,13 +473,13 @@ namespace VisapLine.View.Private
                 double lon;
                 if (latitud_.Text.Equals("") && longitud_.Text.Equals(""))
                 {
-                    lat = Validar.ObtenerLatitud(Convert.ToInt32(latgrados.Value), Convert.ToInt32(latminut.Value), Convert.ToDouble(latsegun.Value.Replace('.',',')));
+                    lat = Validar.ObtenerLatitud(Convert.ToInt32(latgrados.Value), Convert.ToInt32(latminut.Value), Convert.ToDouble(latsegun.Value.Replace('.', ',')));
                     lon = Validar.ObtenerLongitud(Convert.ToInt32(longrados.Value), Convert.ToInt32(lonminut.Value), Convert.ToDouble(lonsegun.Value.Replace('.', ',')));
                 }
                 else
                 {
-                    lat = Convert.ToDouble(latitud_.Text.Replace('.',','));
-                    lon = Convert.ToDouble(longitud_.Text.Replace('.',','));
+                    lat = Convert.ToDouble(latitud_.Text.Replace('.', ','));
+                    lon = Convert.ToDouble(longitud_.Text.Replace('.', ','));
                 }
                 if (punto.ActualizarPuntoAvanzado(estadoserv.SelectedValue, direcciont_.Text, lat.ToString(), lon.ToString(), barrio_.SelectedValue, tipo.SelectedValue, idserv.Text, referencia_.Text, idpuntoac.Text))
                 {
@@ -488,14 +491,14 @@ namespace VisapLine.View.Private
                     idserv.Text = "";
                     referencia_.Text = "";
                     idpuntoac.Text = "";
-                    
+
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "ErrorPunto('ACTUALIZACION EXITOSA!','Punto Geografico Actualizado correctamente','success');", true);
                 }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "ErrorPunto('ACTUALIZACION FALLIDA','Verifique que los espacios se encuentren correctamente diligenciados, recuerde seleccionar el servicio a modificar!','error');", true);
                 }
-                
+
 
             }
             catch (Exception ex)
