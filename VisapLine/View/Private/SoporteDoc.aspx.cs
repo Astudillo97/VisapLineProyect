@@ -88,7 +88,7 @@ namespace VisapLine.View.Private
                                 
                             }
                         }
-                        if (FileUpload2.HasFile == true)
+                        if (FileUpload3.HasFile == true)
                         {
                             try
                             {
