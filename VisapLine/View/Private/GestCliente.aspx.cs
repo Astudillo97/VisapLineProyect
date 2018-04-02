@@ -53,6 +53,7 @@ namespace VisapLine.View.Private
                     cargarMunicipios(departamento_.SelectedValue);
                     municipio_.SelectedValue = "1";
                     cargarBarrios(municipio_.SelectedValue);
+
                     Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
                     Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     Response.Cache.SetNoStore();
@@ -181,6 +182,13 @@ namespace VisapLine.View.Private
                 Alerta.Visible = false;
                 allfactura.DataSource = null;
                 allfactura.DataBind();
+                GridViewpagos.DataSource = null;
+                GridViewpagos.DataBind();
+                cargosadicionales.DataSource = null;
+                cargosadicionales.DataBind();
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+
                 consultacontrato.Dispose();
                 ClientScript.RegisterStartupScript(GetType(), "alerta", "panelbutton();", true);
             }
@@ -251,8 +259,8 @@ namespace VisapLine.View.Private
                 try
                 {
                     pg.contrato_idcontrato = row["idcontrato"].ToString();
-                    DataTable pagosidcon = Validar.Consulta(pg.ConsultarPagosidcontrato(pg));
-                    GridViewpagos.DataSource = pagosidcon;
+                    //DataTable pagosidcon = Validar.Consulta();
+                    GridViewpagos.DataSource = pg.ConsultarPagosidcontrato(pg);
                     GridViewpagos.DataBind();
 
 
