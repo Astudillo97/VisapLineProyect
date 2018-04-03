@@ -25,9 +25,6 @@
         function panelmodalinci() {
             document.getElementById('idincidencia').click();
         }
-
-
-
         function panelincidencia() {
             document.getElementById('pan2').click();
         }
@@ -140,13 +137,13 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Nombre:</label>
                                         <div class="col-sm-8">
-                                            <asp:Label ID="Label3" runat="server" CssClass="form-control bg-gray" Height="45px" Width="200px" Text=""></asp:Label>
+                                            <asp:Label ID="Label3" runat="server" CssClass="form-control bg-gray" Height="35px" Width="100px" Text=""></asp:Label>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Apellido:</label>
                                         <div class="col-sm-8">
-                                            <asp:Label ID="Label4" CssClass="form-control bg-gray" runat="server" Height="45px" Width="200px" Text=""></asp:Label>
+                                            <asp:Label ID="Label4" CssClass="form-control bg-gray" runat="server" Height="35px" Width="100px" Text=""></asp:Label>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -163,7 +160,6 @@
             </div>
             <div class="row">
             </div>
-
             <a href="#panelbusqueda" id="idbusqueda" class="row" data-target=".bs-example-modal-lg" data-toggle="modal"></a>
             <div class="modal fade bs-example-modal-lg" runat="server" id="panelbusqueda" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                 <div class="modal-dialog modal-lg">
