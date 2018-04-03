@@ -40,7 +40,7 @@ namespace VisapLine.Model
         public void llenarTabla()
         {
 
-            tablefactura = fact.ConsultaSiigo("01-03-2018","31-03-2018");
+            tablefactura = fact.ConsultaSiigo("01-04-2018","31-05-2018");
             for (int i = 0; i < tablefactura.Rows.Count; i++)
             {
                 DataRow cel1 = exportsiigo.NewRow();
