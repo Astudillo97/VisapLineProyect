@@ -69,60 +69,118 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="contenedor">
-            <img src="../../Archivos/Presentación1.jpg" />
-        </div>
         <div>
-            <center>            
             <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <label class="text-center" runat="server" id="textError"></label>
             </asp:Panel>
-                <br />
-                <br />
- <table>
-                   <tr>
-  <td>IDENTIFICACIÓN/NIT:</td>
-  <td><asp:TextBox ID="identificacion_" runat="server" /></td>
-  <td><asp:Button Text="Generar" class="btn btn-block btn-success" Width="143px" Height="30px" OnClick="Unnamed_Click" runat="server" />
-      </td>  
-</tr>
- </table>      
-               <br />
-                <br />          
-            <asp:GridView runat="server" OnRowCommand="allfactura_RowCommand" AutoGenerateColumns="False" ID="allfactura" CellPadding="4" ForeColor="#333333" GridLines="None">
-                <EditRowStyle BackColor="#2461BF" />
-                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Wrap="true" />
-                <AlternatingRowStyle BackColor="White" />
-                <Columns>
-                    <asp:BoundField DataField="facturaventa" HeaderText="FS"></asp:BoundField>
-                    <asp:BoundField DataField="identificacion" HeaderText="NIT/IDENTIF"></asp:BoundField>
-                    <asp:TemplateField HeaderText="Tercero">
-                        <ItemTemplate>
-                            <label runat="server"><%#Eval("nombre") %> <%#Eval("apellido") %></label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="correo" HeaderText="Correo"></asp:BoundField>
-                    <asp:BoundField DataField="fechaemision" DataFormatString="{0:d}" HeaderText="Emision"></asp:BoundField>
-                    <asp:BoundField DataField="estadof" HeaderText="Estado"></asp:BoundField>
-                    <asp:BoundField DataField="totalfac" HeaderText="Valor"></asp:BoundField>
-                    <asp:TemplateField HeaderText="">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="btn1" runat="server" CssClass="glyphicon glyphicon-copy" CommandName="verfactura" CommandArgument='<%# Eval("idfactura") %>' Text="DESCARGAR" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-                <RowStyle BackColor="#EFF3FB" />
-                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                <SortedDescendingHeaderStyle BackColor="#4870BE" />
-            </asp:GridView>
-            <br />
-                </center>
+        </div>
+        <div>
+            <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <title>FACTURA C & C VISIÓN - VISAPLINE </title>
+            </head>
+            <body>
+                <div style="width: 100%;" align="center">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="center" valign="top" style="background-color: #ffffff;" bgcolor="#53636e;">
+                                <table width="583" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="center" valign="top" bgcolor="#FFFFFF" style="background-color: #ffffff;">
+                                            <asp:Label ID="Label1" runat="server" ForeColor="#2E2EFE" Font-Size="40px" Text="C & C VISION -VISAPLINE"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" valign="top" bgcolor="#FFFFFF" style="background-color: #FFFFFF;">
+                                            <p>
+                                                <img id="img1" src="http://45.71.180.50:30000/Contenido/nuestra-empresa.jpg" width="583" />
+                                            </p>
+
+                                            <p id="text1" align="justify">
+                                                C&C Visión Ltda. 
+				Desarrolla efectivamente servicios en Tecnología de la Información y las Comunicaciones, permanentes y de alto impacto a través de redes Inalámbricas, Fibra óptica, Satelital, Microondas. 
+				Hasta el usuario final, con responsabilidad social y sostenibilidad ambiental, buscando la eficiencia, eficacia en los procesos de comunicación de usuarios y empresas con el mundo. 
+                                            </p>
+                                            <p>&nbsp;</p>
+                                            <table width="583" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td align="center" width="40%" valign="top" bgcolor="#FFFFFF" style="background-color: #ffffff;">
+                                                        <h3>Facturación Electronica </h3>
+                                                        <h6>IDENTIFICACIÓN/NIT:</h6>
+                                                        <asp:TextBox ID="identificacion_" runat="server" />
+                                                        <br />
+                                                        <br />
+                                                        <asp:Button Text="Generar" class="btn btn-block btn-info" Width="143px" Height="30px" OnClick="Unnamed_Click" runat="server" />
+                                                        <p align="justify">Señor usuario, con el fin de proteger nuestro medio ambiente le recomendamos no imprimir su factura si no es necesario.</p>
+                                                    </td>
+                                                    <td align="center" width="60%" valign="top" bgcolor="#FFFFFF" style="background-color: #ffffff;">
+                                                        <img id="img2" src="http://45.71.180.50:30000/Contenido/facturaelectronica.jpg" vspace="10" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <asp:GridView runat="server" OnRowCommand="allfactura_RowCommand" AutoGenerateColumns="False" ID="allfactura" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                        <EditRowStyle BackColor="#2461BF" />
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Wrap="true" />
+                                        <AlternatingRowStyle BackColor="White" />
+                                        <Columns>
+                                            <asp:BoundField DataField="facturaventa" HeaderText="FS"></asp:BoundField>
+                                            <asp:BoundField DataField="identificacion" HeaderText="NIT/IDENTIF"></asp:BoundField>
+                                            <asp:TemplateField HeaderText="Tercero">
+                                                <ItemTemplate>
+                                                    <label runat="server"><%#Eval("nombre") %> <%#Eval("apellido") %></label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="fechaemision" DataFormatString="{0:d}" HeaderText="Emision"></asp:BoundField>
+                                            <asp:BoundField DataField="estadof" HeaderText="Estado"></asp:BoundField>
+                                            <asp:BoundField DataField="totalfac" HeaderText="Valor"></asp:BoundField>
+                                            <asp:TemplateField HeaderText="">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="btn1" runat="server" CssClass="glyphicon glyphicon-copy" CommandName="verfactura" CommandArgument='<%# Eval("idfactura") %>' Text="DESCARGAR" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                        <RowStyle BackColor="#EFF3FB" />
+                                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                    </asp:GridView>
+                                    <br />
+                                    <br />
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#3d90bd" style="background-color: #2F62BB;">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="35">&nbsp;</td>
+                                                    <td height="50" valign="middle" style="color: #FFFFFF; font-size: 11px; font-family: Arial, Helvetica, sans-serif;">
+                                                        <br>Dirección:	
+			Carrera 10 # 15-60 Barrio Centro Edificio Pioneros 2do piso Oficina 4 Florencia-Caquetá </br>
+                                                        <br>Linea Nacional: 018000 952240 - Celulares:  (+57) 318 490 3427 - (+57) 321 206 5866
+                                                        </br>
+                                                    </td>
+                                                    <td width="35">&nbsp;</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br>
+                                <br>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </body>
+            </html>
         </div>
     </form>
     <script src="../../Contenido/assets/vendor_components/jquery/dist/jquery.js"></script>
