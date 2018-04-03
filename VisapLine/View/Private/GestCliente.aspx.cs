@@ -54,6 +54,11 @@ namespace VisapLine.View.Private
                     municipio_.SelectedValue = "1";
                     cargarBarrios(municipio_.SelectedValue);
 
+                    DropDownList3caracteriscainci.DataSource = cinci.Consultarcategoriaincidencia();
+                    DropDownList3caracteriscainci.DataTextField = "categoriaincidencia";
+                    DropDownList3caracteriscainci.DataValueField = "idcategoriaincidencia";
+                    DropDownList3caracteriscainci.DataBind();
+
                     Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
                     Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     Response.Cache.SetNoStore();
@@ -365,10 +370,7 @@ namespace VisapLine.View.Private
             if (e.CommandName.Equals("buscar"))
             {
                 string dat = e.CommandArgument.ToString();
-                DropDownList3caracteriscainci.DataSource = cinci.Consultarcategoriaincidencia();
-                DropDownList3caracteriscainci.DataTextField = "categoriaincidencia";
-                DropDownList3caracteriscainci.DataValueField = "idcategoriaincidencia";
-                DropDownList3caracteriscainci.DataBind();
+              
                 cargartabla(dat);
 
                 DataRow puntoedit = punto.ConsultarPuntosEdit(dat).Rows[0];
