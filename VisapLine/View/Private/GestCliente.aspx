@@ -19,7 +19,7 @@
         function alerterrorinci() {
             swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
         }
-        
+
         function panelbutton() {
             document.getElementById('idbusqueda').click();
         }
@@ -55,7 +55,7 @@
         function fn_limpiar() {
             document.getElementById('<%=longitud_.ClientID%>').value = '';
             document.getElementById('<%=latitud_.ClientID%>').value = '';
-            
+
         }
         function cancelar() {
             document.getElementById('<%=longrados.ClientID%>').value = '';
@@ -191,9 +191,40 @@
                         </asp:GridView>
                     </div>
                     <div class="box box-primary" style="overflow-x: auto">
+                        <h5>Cuenta</h5>
+                        <asp:GridView ID="GridViewcuenta" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                            <Columns>
+                                <asp:BoundField DataField="idservicios" HeaderText="#ID"></asp:BoundField>
+
+                            </Columns>
+
+
+                            <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                        </asp:GridView>
+                    </div>
+                    <div class="box box-primary" style="overflow-x: auto">
                         <h5>Servicio</h5>
                         <asp:Label ID="Labelidincidencia" runat="server" Text="" Visible="false"></asp:Label>
-
                         <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
@@ -490,7 +521,7 @@
                                                         <div class="col-sm-8">
                                                             <asp:TextBox ID="latitud_" CssClass="form-control" runat="server" placeholder="Latitud"></asp:TextBox>
                                                         </div>
-                                                        
+
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-sm-4 col-form-label">Longitud:</label>
@@ -529,7 +560,7 @@
                                         </div>
                                     </div>
                                     <div class="box-footer">
-                                        <a href="#" ID="btn_actualizara" onserverclick="btn_actualizara_ServerClick" class="btn btn-success float-right" runat="server" >ACTUALIZAR SERVICIO</a>
+                                        <a href="#" id="btn_actualizara" onserverclick="btn_actualizara_ServerClick" class="btn btn-success float-right" runat="server">ACTUALIZAR SERVICIO</a>
                                     </div>
                                 </div>
                             </div>
@@ -835,7 +866,7 @@
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
                     fillColor: '#FF0000',
-                    title:'CIUDAD MAYORDOMA',
+                    title: 'CIUDAD MAYORDOMA',
                     fillOpacity: 0.35
                 });
                 bermudaTriangle.setMap(map);

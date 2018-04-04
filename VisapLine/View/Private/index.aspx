@@ -36,7 +36,7 @@
     </section>
     <section class="content">
 
-        <div class="row">
+        <div class="row" id="administrador" visible="false">
             <!-- /.col -->
             <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
@@ -97,26 +97,6 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
-
-            <%--        <br/><canvas id="myChart" width="200" height="200"></canvas>
-        <div class="row">
-            <div class="col-xl-3 col-md-6 col-6">
-                <!-- small box -->
-                <div class="small-box bg-aqua">
-                    <div class="inner">
-                        <h3>255</h3>
-
-                        <p>New Orders</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-shopping-bag"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>--%>
-            <!-- ./col -->
-
-            <!-- ./col -->
             <div class="col-md-6 col">
                 <!-- small box -->
                 <div class="small-box bg-green">
@@ -132,9 +112,6 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
-
-
-
 
             <!-- ./col -->
 
@@ -195,7 +172,7 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
-              <div class="col-xl-3 col-md-6 col-6">
+            <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
@@ -208,6 +185,11 @@
                     </div>
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
+            </div>
+        </div>
+        <div class="row" visible="false" id="emple">
+            <div id="contenedor">
+                <img src="../../Archivos/imgvisap.png" />
             </div>
         </div>
     </section>

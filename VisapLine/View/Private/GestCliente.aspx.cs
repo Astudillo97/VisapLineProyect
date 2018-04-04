@@ -227,8 +227,16 @@ namespace VisapLine.View.Private
                 _telefono_.Value = telef;
                 contrato.terceros_idterceros = row["idterceros"].ToString();
                 contcliente = contrato.ConsultarContratoIdTercero(contrato);
+                GridViewpagos.DataSource = null;
+                GridViewpagos.DataBind();
+                cargosadicionales.DataSource = null;
+                cargosadicionales.DataBind();
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+                GridView2.DataSource = null;
+                GridView2.DataBind();
                 consultacontrato.DataSource = contcliente;
-                consultacontrato.DataBind();
+                consultacontrato.DataBind();              
                 paneldedatosterceros.Visible = true;
                 Alerta.Visible = false;
 
@@ -254,6 +262,7 @@ namespace VisapLine.View.Private
                 allfactura.DataSource = tablefactura;
                 allfactura.DataBind();
                 allfactura.Dispose();
+
                 Alerta.Visible = false;
 
                 DataTable dat = Validar.Consulta(serv.consultaservicioscont2(row["idcontrato"].ToString()));
@@ -370,7 +379,7 @@ namespace VisapLine.View.Private
             if (e.CommandName.Equals("buscar"))
             {
                 string dat = e.CommandArgument.ToString();
-              
+
                 cargartabla(dat);
 
                 DataRow puntoedit = punto.ConsultarPuntosEdit(dat).Rows[0];
