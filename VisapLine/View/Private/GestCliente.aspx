@@ -193,6 +193,7 @@
                     <div class="box box-primary" style="overflow-x: auto">
                         <h5>Servicio</h5>
                         <asp:Label ID="Labelidincidencia" runat="server" Text="" Visible="false"></asp:Label>
+
                         <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
