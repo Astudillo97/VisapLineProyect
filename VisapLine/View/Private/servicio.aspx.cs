@@ -155,8 +155,8 @@ namespace VisapLine.View.Private
 
         private void cargardtservicio()
         {
-            gridservicios.DataSource = srv.consultaserviciosdetallados(idcontrato);
-            gridservicios.DataBind();
+            repetidorservices.DataSource = srv.consultaserviciosdetallados(idcontrato);
+            repetidorservices.DataBind();
         }
 
         private DataTable GetIvserdt()
@@ -210,8 +210,8 @@ namespace VisapLine.View.Private
             {
                 if (!txbptv.Text.Equals(""))
                 {
-                    DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
-                    DataTable dtid = srv.crearsertv(txbdiptv.Text, idcontrato, dtrs[1].ToString(), "POR INSTALAR", "TELEVISION", TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
+                    DataRow dtrs = ctt.estratoymegas(int.Parse(Request.QueryString["key"])).Rows[0];
+                    DataTable dtid = srv.crearsertv(txbdiptv.Text, int.Parse(Request.QueryString["key"]), dtrs[1].ToString(), "POR INSTALAR", "TELEVISION", TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
                     int idservi = int.Parse(dtid.Rows[0][0].ToString());
                     psc.registrarpuertos(idservi, int.Parse(txbptv.Text));
                     divtv.Visible = false;
@@ -239,8 +239,8 @@ namespace VisapLine.View.Private
             {
                 if (!TextBox2.Text.Equals(""))
                 {
-                    DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
-                    DataTable dtid = srv.crearsertv(TextBox1.Text, idcontrato, dtrs[1].ToString(), "POR INSTALAR", "TELEFONIA", TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
+                    DataRow dtrs = ctt.estratoymegas(int.Parse(Request.QueryString["key"])).Rows[0];
+                    DataTable dtid = srv.crearsertv(TextBox1.Text, int.Parse(Request.QueryString["key"]), dtrs[1].ToString(), "POR INSTALAR", "TELEFONIA", TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue));
                     int idservi = int.Parse(dtid.Rows[0][0].ToString());
                     psc.registrarpuertos(idservi, int.Parse(TextBox2.Text));
                     divtelefono.Visible = false;
@@ -262,11 +262,6 @@ namespace VisapLine.View.Private
 
         }
 
-        protected void gridservicios_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            gridservicios.PageIndex = e.NewPageIndex;
-            cargardtservicio();
-        }
 
         protected void gridservicios_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -292,8 +287,8 @@ namespace VisapLine.View.Private
             Servicios serve = new Servicios();
             if (serve.vaalidarmegas(txtmegasasignar.Text, idcontrato))
             {
-                DataRow dtrs = ctt.estratoymegas(idcontrato).Rows[0];
-                DataTable dtid = serve.crearservicio("--POR ASIGNAR--", int.Parse(txtmegasasignar.Text), idcontrato, dtrs[1].ToString(), "POR INSTALAR", TextBox3.Text, TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue), Validar.validarselected(tipo_.SelectedValue));
+                DataRow dtrs = ctt.estratoymegas(int.Parse(Request.QueryString["key"])).Rows[0];
+                DataTable dtid = serve.crearservicio("--POR ASIGNAR--", int.Parse(txtmegasasignar.Text), int.Parse(Request.QueryString["key"]), dtrs[1].ToString(), "POR INSTALAR", TextBox3.Text, TextBoxdireccion.Text, int.Parse(DropDownListbarrio.SelectedValue), Validar.validarselected(tipo_.SelectedValue));
                 if (dtid.Rows.Count > 0)
                 {
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "successasignation()", true);
@@ -311,12 +306,6 @@ namespace VisapLine.View.Private
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "errorasignationMEGAS()", true);
                 cargardtservicio();
             }
-        }
-        protected void gridservicios_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GridViewRow grvr = gridservicios.SelectedRow;
-            idsrv = int.Parse(grvr.Cells[0].Text);
-            Response.Redirect("detalleservicio.aspx?addds=" + idsrv);
         }
 
         //protected void txtseralasignar_TextChanged(object sender, EventArgs e)

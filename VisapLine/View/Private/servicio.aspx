@@ -11,6 +11,9 @@
         function redireciona(cosa) {
             window.location = 'solicitudes.aspx?key=' + cosa;
         }
+        function redirecionadetalle(cosa) {
+            window.location = 'detalleservicio.aspx?addds=' + cosa;
+        }
         function openmodal() {
             $('#mymodal').modal('show');
         }
@@ -42,35 +45,36 @@
     <section class="content">
         <div class="row">
             <div class="box box-body">
-                <asp:GridView OnSelectedIndexChanged="gridservicios_SelectedIndexChanged" OnRowDataBound="gridservicios_RowDataBound" AllowPaging="True" PageSize="6"
-                    OnPageIndexChanging="gridservicios_PageIndexChanging" AutoGenerateColumns="False" runat="server"
-                    ID="gridservicios" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-responsive col-md-4">
-                    <AlternatingRowStyle BackColor="white" />
-                    <EditRowStyle BackColor="#2461BF" />
-                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#EFF3FB" />
-                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                    <Columns>
-                        <asp:BoundField HeaderText="REFEERENCIA" DataField="idserviciosserv" />
-                        <asp:BoundField HeaderText="FECHA DE INICIO" DataField="fechainicioserv" />
-                        <asp:BoundField HeaderText="MEGAS" DataField="cantidadmegasserv" />
-                        <asp:BoundField HeaderText="ESTADO" DataField="estadoserv" />
-                        <asp:BoundField HeaderText="SERVICIO" DataField="detalleplan" />
-                        <asp:BoundField HeaderText="REFERENCIA" DataField="referenciasserv" />
-                        <asp:TemplateField ItemStyle-CssClass="btn btn-success btn-lg">
+                <table class="table table-bordered table-striped table-responsive no-border">
+                    <thead style="background-color: #507CD1">
+                        <tr>
+                            <th style="color: white">REFEERENCIA</th>
+                            <th style="color: white">FECHA DE INICIO</th>
+                            <th style="color: white">MEGAS</th>
+                            <th style="color: white">ESTADO</th>
+                            <th style="color: white">SERVICIO</th>
+                            <th style="color: white">REFERENCIA</th>
+                            <th style="color: white">SOLICITUD</th>
+                            <th style="color: white">DETALLE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <asp:Repeater ID="repetidorservices" runat="server">
                             <ItemTemplate>
-                                <a onclick='redireciona(<%# Eval("idserviciosserv") %>)'>Solicitud</a>
+                                <tr <%# string.Compare(Convert.ToString(Eval("estadoserv")),"ACTIVO")==0?  "style='color: green'": string.Compare(Convert.ToString(Eval("estadoserv")),"ELIMINADO")==0?  "style='color: red'": "style='color: yellow'" %>>
+                                    <td><%# Eval("idserviciosserv") %></td>
+                                    <td><%# Eval("fechainicioserv")%></td>
+                                    <td><%# Eval("cantidadmegasserv")%></td>
+                                    <td><%# Eval("estadoserv")%></td>
+                                    <td><%# Eval("detalleplan")%></td>
+                                    <td><%# Eval("referenciasserv")%></td>
+                                    <td><a class="glyphicon glyphicon-alert" onclick='redireciona(<%# Eval("idserviciosserv") %>)'></a></td>
+                                    <td><a class="glyphicon glyphicon-eye-open" onclick='redirecionadetalle(<%# Eval("idserviciosserv") %>)'></a></td>
+                                </tr>
                             </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="btn btn-success btn-lg" ControlStyle-ForeColor="White" />
-                    </Columns>
-                </asp:GridView>
+                        </asp:Repeater>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="row">
