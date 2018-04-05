@@ -375,6 +375,7 @@
     <Content Include="Contenido\publicidad.jpg" />
     <Content Include="Contenido\radio.png" />
     <Content Include="index.html" />
+    <Content Include="View\Login\logeomk.aspx" />
     <Content Include="View\Private\Admin.Master" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -549,6 +550,7 @@
     <Compile Include="Model\Historico.cs" />
     <Compile Include="Model\impresorabix.cs" />
     <Compile Include="Model\Ingreso.cs" />
+    <Compile Include="Model\MK.cs" />
     <Compile Include="Model\Modelo.cs" />
     <Compile Include="Model\Motivo.cs" />
     <Compile Include="Model\Observacion.cs" />
@@ -601,6 +603,13 @@
     <Compile Include="Model\UsuarioL.cs" />
     <Compile Include="Model\Zonas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Login\logeomk.aspx.cs">
+      <DependentUpon>logeomk.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Login\logeomk.aspx.designer.cs">
+      <DependentUpon>logeomk.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Login\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
