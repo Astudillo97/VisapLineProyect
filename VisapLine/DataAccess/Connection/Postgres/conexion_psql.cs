@@ -13,10 +13,11 @@ namespace VisapLine.DataAccess.Connection
             try
             {
                 conexion1.Open();
+                
             }
             catch (Exception)
             {
-
+                
                 conexion1.Close();
                 throw new ValidarExeption("Error de conexion:Intentelo de nuevo");
             }
@@ -28,6 +29,7 @@ namespace VisapLine.DataAccess.Connection
             try
             {
                 conexion1.Close();
+
             }
             catch (Exception)
             {
@@ -37,5 +39,6 @@ namespace VisapLine.DataAccess.Connection
             
             return conexion1;
         }
+
     }
 }

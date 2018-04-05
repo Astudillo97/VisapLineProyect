@@ -284,9 +284,7 @@ namespace VisapLine.View.Private
             if (e.CommandName.Equals("buscar"))
             {
                 string dat = e.CommandArgument.ToString();
-
                 cargartabla(dat);
-
                 DataRow puntoedit = punto.ConsultarPuntosEdit(dat).Rows[0];
                 barr.idbarrios = puntoedit["barrios_idbarrioscol"].ToString();
                 DataRow dir = barr.ConsultarTodoporBarrio(barr).Rows[0];

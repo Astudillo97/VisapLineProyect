@@ -51,5 +51,7 @@ namespace VisapLine.DataAccess.Connection
                 throw new ValidarExeption("No se han encontrado registros "+ex.Message,ex);
             }
         }
+        
     }
+    
 }
