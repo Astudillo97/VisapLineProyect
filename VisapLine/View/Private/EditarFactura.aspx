@@ -97,6 +97,7 @@
                         </div>
                     </div>
                 </div>
+                <asp:GridView ID="GridView1" runat="server"></asp:GridView>
             </div>
         </div>
     </section>
