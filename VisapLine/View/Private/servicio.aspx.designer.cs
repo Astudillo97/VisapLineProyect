@@ -40,13 +40,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl textError;
         
         /// <summary>
-        /// Control gridservicios.
+        /// Control repetidorservices.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridservicios;
+        protected global::System.Web.UI.WebControls.Repeater repetidorservices;
         
         /// <summary>
         /// Control DropDownListpais.

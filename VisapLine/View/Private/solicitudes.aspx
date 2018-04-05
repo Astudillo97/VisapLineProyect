@@ -11,6 +11,10 @@
         function openmodal() {
             $('#mymodal').modal('show');
         }
+
+        function deletealert(x) {
+            swal("ORDEN CREADA CON EXITO!", "Su orden ser creo con el numero " + x, "success", function () { location.reload() });
+
         function deletealert() {
             swal("LA SOLICITUD FUE CREADA CON EXITO!", "", "success");
         }
@@ -25,6 +29,7 @@
         }
         function botonmodalgesti() {
             document.getElementById("botonmodalcontr").click();
+
         }
     </script>
     <section class="content-header">
