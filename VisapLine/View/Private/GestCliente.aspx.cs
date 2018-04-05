@@ -205,97 +205,11 @@ namespace VisapLine.View.Private
             }
         }
 
-        protected void consultacliente_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            try
-            {
-                DataRow row = tercliente.Rows[e.NewSelectedIndex];
-                _tipocliente.Value = row["tipoterceros"].ToString();
-                identificacion_.Value = row["identificacion"].ToString();
-                ident = row["identificacion"].ToString();
-                _nombre_.Value = row["nombre"].ToString() + " " + row["apellido"].ToString();
-                _correo_.Value = row["correo"].ToString();
-                _estado_.Value = row["estado"].ToString();
-                _direccion_.Value = row["direccion"].ToString();
-                tlf.terceros_idterceros = row["identificacion"].ToString();
-                DataTable listtelefono = tlf.ConsultarTelefonosIdTerceros(tlf);
-                string telef = "";
-                foreach (DataRow item in listtelefono.Rows)
-                {
-                    telef += item["telefono"].ToString() + " ";
-                }
-                _telefono_.Value = telef;
-                contrato.terceros_idterceros = row["idterceros"].ToString();
-                contcliente = contrato.ConsultarContratoIdTercero(contrato);
-                GridViewpagos.DataSource = null;
-                GridViewpagos.DataBind();
-                cargosadicionales.DataSource = null;
-                cargosadicionales.DataBind();
-                GridView1.DataSource = null;
-                GridView1.DataBind();
-                GridView2.DataSource = null;
-                GridView2.DataBind();
-                consultacontrato.DataSource = contcliente;
-                consultacontrato.DataBind();              
-                paneldedatosterceros.Visible = true;
-                Alerta.Visible = false;
 
 
-            }
-            catch (Exception ex)
-            {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
-            }
 
 
-        }
-
-        protected void consultacontrato_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            try
-            {
-                DataRow row = contcliente.Rows[e.NewSelectedIndex];
-                fact.contrato_idcontrato = row["idcontrato"].ToString();
-                tablefactura = fact.ConsultarFacturabyContrato(fact);
-                allfactura.DataSource = tablefactura;
-                allfactura.DataBind();
-                allfactura.Dispose();
-
-                Alerta.Visible = false;
-
-                DataTable dat = Validar.Consulta(serv.consultaservicioscont2(row["idcontrato"].ToString()));
-                punt = punto.consultarpuntosdelcontrato(e.NewSelectedIndex.ToString());
-                GridView1.DataSource = dat;
-                GridView1.DataBind();
-
-                try
-                {
-                    pg.contrato_idcontrato = row["idcontrato"].ToString();
-                    //DataTable pagosidcon = Validar.Consulta();
-                    GridViewpagos.DataSource = pg.ConsultarPagosidcontrato(pg);
-                    GridViewpagos.DataBind();
-
-
-                    punt = punto.consultarpuntosdelcontrato(row["idcontrato"].ToString());
-                    cargo.contrato_idcontrato_cargo = row["idcontrato"].ToString();
-                    cargosadicionales.DataSource = cargo.ConsultarCargosIdContrato(cargo);
-                    cargosadicionales.DataBind();
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-            catch (Exception ex)
-            {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
-            }
-
-        }
+  
         protected void allfactura_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
@@ -363,16 +277,7 @@ namespace VisapLine.View.Private
             GridView2.DataBind();
         }
 
-        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-
-
-        }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -523,6 +428,99 @@ namespace VisapLine.View.Private
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "ErrorPunto('ACTUALIZACION FALLIDA','" + ex.Message + "','error');", true);
+            }
+        }
+
+        protected void consultacliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //AQUI SE SELECCIONA LA PERSONA
+            try
+            {
+                GridViewRow gridw = consultacliente.SelectedRow;
+                tercero.identificacion = Validar.validarlleno(gridw.Cells[0].Text);
+                DataRow row = Validar.Consulta(tercero.ConsultarTerceroAvanzado(tercero)).Rows[0];
+                _tipocliente.Value = row["tipoterceros"].ToString();
+                identificacion_.Value = row["identificacion"].ToString();
+                ident = row["identificacion"].ToString();
+                _nombre_.Value = row["nombre"].ToString() + " " + row["apellido"].ToString();
+                _correo_.Value = row["correo"].ToString();
+                _estado_.Value = row["estado"].ToString();
+                _direccion_.Value = row["direccion"].ToString();
+                tlf.terceros_idterceros = row["identificacion"].ToString();
+                DataTable listtelefono = tlf.ConsultarTelefonosIdTerceros(tlf);
+                string telef = "";
+                foreach (DataRow item in listtelefono.Rows)
+                {
+                    telef += item["telefono"].ToString() + " ";
+                }
+                _telefono_.Value = telef;
+                contrato.terceros_idterceros = row["idterceros"].ToString();
+                contcliente = contrato.ConsultarContratoIdTercero(contrato);
+                GridViewpagos.DataSource = null;
+                GridViewpagos.DataBind();
+                cargosadicionales.DataSource = null;
+                cargosadicionales.DataBind();
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+                GridView2.DataSource = null;
+                GridView2.DataBind();
+                consultacontrato.DataSource = contcliente;
+                consultacontrato.DataBind();
+                paneldedatosterceros.Visible = true;
+                Alerta.Visible = false;
+
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+        }
+
+        protected void consultacontrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow gridw = consultacontrato.SelectedRow;
+                fact.contrato_idcontrato = gridw.Cells[0].Text;
+                tablefactura = fact.ConsultarFacturabyContrato(fact);
+                allfactura.DataSource = tablefactura;
+                allfactura.DataBind();
+                allfactura.Dispose();
+
+                Alerta.Visible = false;
+
+                DataTable dat = Validar.Consulta(serv.consultaservicioscont2(gridw.Cells[0].Text));
+                punt = punto.consultarpuntosdelcontrato(gridw.Cells[0].Text);
+                GridView1.DataSource = dat;
+                GridView1.DataBind();
+
+                try
+                {
+                    pg.contrato_idcontrato = gridw.Cells[0].Text;
+                    //DataTable pagosidcon = Validar.Consulta();
+                    GridViewpagos.DataSource = pg.ConsultarPagosidcontrato(pg);
+                    GridViewpagos.DataBind();
+
+
+                    punt = punto.consultarpuntosdelcontrato(gridw.Cells[0].Text);
+                    cargo.contrato_idcontrato_cargo = gridw.Cells[0].Text;
+                    cargosadicionales.DataSource = cargo.ConsultarCargosIdContrato(cargo);
+                    cargosadicionales.DataBind();
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
             }
         }
     }

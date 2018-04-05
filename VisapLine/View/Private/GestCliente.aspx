@@ -148,7 +148,7 @@
                 <div class="col-lg-7">
                     <div class="box box-primary" style="overflow-x: auto">
                         <h5>Contrato</h5>
-                        <asp:GridView runat="server" ID="consultacontrato" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="consultacontrato_SelectedIndexChanging" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <asp:GridView runat="server" ID="consultacontrato" OnSelectedIndexChanged="consultacontrato_SelectedIndexChanged" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                 <asp:BoundField DataField="idcontrato" HeaderText="#ID"></asp:BoundField>
@@ -157,14 +157,13 @@
                                 <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
                                 <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
                                 <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
-                                <asp:CommandField HeaderText="BUSCAR" SelectText="" ControlStyle-CssClass="btn btn-success fa fa-search" ShowSelectButton="True">
-                                    <ItemStyle HorizontalAlign="Justify"></ItemStyle>
+                                <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
+                                    <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
                                 </asp:CommandField>
 
                                 <asp:TemplateField HeaderText="EDITAR">
                                     <ItemTemplate>
                                         <a href="gestcontrato.aspx?iCnt=<%# Eval("codigo") %>" class="btn btn-success fa fa-edit"></a>
-
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Justify"></ItemStyle>
                                 </asp:TemplateField>
@@ -196,8 +195,10 @@
 
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
-                                <asp:BoundField DataField="idservicios" HeaderText="#ID"></asp:BoundField>
-
+                                <asp:BoundField DataField="contrato" HeaderText="#ID"></asp:BoundField>
+                                <asp:BoundField DataField="facturado" HeaderText="facturado"></asp:BoundField>
+                                <asp:BoundField DataField="pagad" HeaderText="pagado"></asp:BoundField>
+                                <asp:BoundField DataField="pagad" HeaderText="pagado"></asp:BoundField>
                             </Columns>
 
 
@@ -225,7 +226,7 @@
                     <div class="box box-primary" style="overflow-x: auto">
                         <h5>Servicio</h5>
                         <asp:Label ID="Labelidincidencia" runat="server" Text="" Visible="false"></asp:Label>
-                        <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                 <asp:BoundField DataField="idservicios" HeaderText="#ID"></asp:BoundField>
@@ -389,7 +390,7 @@
                     <div class="tab-pane" id="insidencias">
                         <a href="#Div1" class="btn btn-block btn-success btn-lg col-md-2" id="idincidencia" data-target=".bs-example-modal-xl" data-toggle="modal">Crear Incidencia +</a>
                         <br />
-                        <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" class="table table-bordered table-striped" AutoGenerateColumns="False" ForeColor="#333333" GridLines="None">
+                        <asp:GridView ID="GridView2" runat="server" AutoPostBack="true" class="table table-bordered table-striped" AutoGenerateColumns="False" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                 <asp:BoundField HeaderText="Codg" DataField="idincidensia" ItemStyle-HorizontalAlign="Center">
@@ -612,8 +613,10 @@
                     <div class="modal-body">
                         <div class="tab-pane" runat="server" id="panelconsulta">
                             <div class="box box-primary" style="overflow-x: auto">
-                                <asp:GridView runat="server" ID="consultacliente" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="consultacliente_SelectedIndexChanging" AutoGenerateColumns="False">
+
+                                <asp:GridView runat="server" ID="consultacliente" OnSelectedIndexChanged="consultacliente_SelectedIndexChanged" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False">
                                     <Columns>
+
                                         <asp:BoundField DataField="identificacion" HeaderText="CC/NIT"></asp:BoundField>
                                         <asp:TemplateField HeaderText="USUARIO">
                                             <ItemTemplate>
@@ -623,7 +626,10 @@
                                         <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
                                         <asp:BoundField DataField="direccion" HeaderText="DIRECCION"></asp:BoundField>
                                         <asp:BoundField DataField="tipoterceros" HeaderText="PERSONA"></asp:BoundField>
-                                        <asp:CommandField SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search" ShowSelectButton="True"></asp:CommandField>
+                                        <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
+                                            <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
+                                        </asp:CommandField>
+
                                     </Columns>
                                 </asp:GridView>
                             </div>
