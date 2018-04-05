@@ -46,9 +46,14 @@ namespace VisapLine.Model
 
         public DataTable ConsultaSiigo(string fecha1, string fecha2)
         {
-            return data.ConsultarDatos("select t.identificacion, (SELECT extract(YEAR FROM f.fechaemision)) as anioinicio,(SELECT extract(MONTH FROM f.fechaemision)) as mesinicio,(SELECT extract(DAY FROM f.fechaemision)) as diainicio, (SELECT extract(YEAR FROM f.fechavencimiento)) as aniovence,(SELECT extract(MONTH FROM f.fechavencimiento)) as mesvence,(SELECT extract(day FROM f.fechavencimiento)) as diavence, concat(t.nombre,' ',t.apellido) as nombre, p.detalle as plan, f.facturaventa, (f.totalfac-ivafac- case when  ca.valor is null then 0 else (CASE WHEN ca.ESTADOCA='EFECTUADO' THEN CA.VALOR ELSE 0 END) end) as valor,  CA.ESTADOCA AS APLICA, ca.valor as saldo, c.iva,f.ivafac as ivavalor,f.totalfac as total  from factura f inner join contrato c on f.contrato_idcontrato=c.idcontrato inner join plan p on c.plan_idplan=p.idplan inner join terceros t on c.terceros_idterceros_cont=t.idterceros left join cargoadicional ca on ca.contrato_idcontrato_cargo=c.idcontrato where f.fechaemision between '" + fecha1+"' and '"+fecha2+ "' order by f.facturaventa asc");
+            return data.ConsultarDatos("select * from pr_consultarparasiigo('"+fecha1+"', '"+fecha2+"')");
         }
 
+
+        public DataTable consultarcuenta(string id)
+        {
+            return data.ConsultarDatos("select * from pr_consultarsaldosimple('"+id+"')");
+        }
         public DataTable ConsultarFacturaCodigo(Factura fac)
         {
             return data.ConsultarDatos("select * from pr_consultarfacturacodigo(" + fac.facturaventa + ")");
@@ -93,6 +98,11 @@ namespace VisapLine.Model
         public DataTable listEstado()
         {
             return data.ConsultarDatos("select estado as estado1,estado as estado2 from factura group by estado");
+        }
+
+        public DataTable ConsultarSaldo(string dat)
+        {
+            return data.ConsultarDatos("select * FROM pr_consultarsaldo(" + dat + ")");
         }
     }
 }

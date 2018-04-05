@@ -67,7 +67,7 @@ namespace VisapLine.View.Private
                             }
                             catch (Exception)
                             {
-
+                                
                             }
                         }
 
@@ -82,6 +82,22 @@ namespace VisapLine.View.Private
                                 sp.tiposoporte_idtiposoporte = Validar.validarlleno("3");
                                 sp.RegistrarSoportes(sp);
                                 FileUpload2.SaveAs(Server.MapPath("../../soportes/") + filename2);
+                            }
+                            catch (Exception)
+                            {
+                                
+                            }
+                        }
+                        if (FileUpload3.HasFile == true)
+                        {
+                            try
+                            {
+                                string filename3 = Path.GetFileName(FileUpload3.FileName);
+                                sp.soportes = Validar.validarlleno(filename3);
+                                sp.contrato_idcontrato = Validar.validarlleno(Label6.Text);
+                                sp.tiposoporte_idtiposoporte = Validar.validarlleno("5");
+                                sp.RegistrarSoportes(sp);
+                                FileUpload2.SaveAs(Server.MapPath("../../soportes/") + filename3);
                             }
                             catch (Exception)
                             {
@@ -106,7 +122,6 @@ namespace VisapLine.View.Private
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
-
             }
 
 

@@ -755,6 +755,105 @@
                 </div>
             </div>
         </div>
+
+        <a href="#panelbusqueda" id="idbusqueda" hidden="hidden" class="btn btn-success" data-target=".bs-example-modal-lg" data-toggle="modal">AGREGAR COORDENADA</a>
+        
+        <div class="modal fade bs-example-modal-lg" runat="server" id="panelbusqueda" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">COORDENADAS</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-pane" runat="server" id="panelconsulta">
+                            <div class="box box-primary" style="overflow-x: auto">
+                                
+                            </div>
+                        </div>
+                        <div class="tab-pane" runat="server" id="Div1">
+                        <asp:Label ID="latitud" runat="server"></asp:Label>
+                        <asp:Label ID="longitud" runat="server"></asp:Label>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success waves-effect text-right" data-dismiss="modal">Guardar</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <div style="width:300px; height:200px;" id="map"></div>
     </section>
+
+    <script>
+        var markers;
+        var map;
+        var zomm = 8;
+        var myLatLng = { lat: 1.620249416453961, lng: -75.61037882799843 };
+
+        function addMarker(location) {
+
+            zomm = map.getZoom();
+            myLatLng = location;
+            initMap();
+            markers = new google.maps.Marker({
+                position: location,
+                draggable: true,
+                map: map
+            });
+        }
+
+        function initMap() {
+            var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: zomm,
+                mapTypeId: 'satellite',
+                center: myLatLng
+            });
+            var icons = {
+                Radio: {
+                    icon: 'http://191.102.85.252:30000/Contenido/radio.png'
+                },
+                Fibra: {
+                    icon: 'http://191.102.85.252:30000/Contenido/fibra.png'
+                },
+                Indefinido: {
+                    icon: 'http://191.102.85.252:30000/Contenido/indefinido.png'
+                }
+            };
+
+
+            map.addListener('click', function (event) {
+                addMarker(event.latLng);
+            });
+
+            var marker = [
+                <%if (punt != null)
+            {
+                int cont = punt.Rows.Count;
+                int cot = 0;
+                foreach (System.Data.DataRow item in punt.Rows)
+                {
+                %>
+                    new google.maps.Marker({
+                        position: { lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> },
+                        map: map,
+                        icon: icons['<%=item["tipo"].ToString()%>'].icon,
+                            title: '<%=item["nombre"].ToString()%>'<%cot++;%>
+                    }).addListener('click', function () {
+                        map.setZoom(15);
+                        map.setCenter({ lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> });
+                        }) <%if (cot == cont) { Response.Write(""); } else { Response.Write(","); }%>               
+                <%
+                }
+            }
+                  %>
+                ];
+            }
+        </script>
 
 </asp:Content>

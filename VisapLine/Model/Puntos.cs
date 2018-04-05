@@ -42,6 +42,13 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select t.identificacion as id, concat(t.nombre, ' ', t.apellido) as nombre, ST_X(ST_AsTEXT(p.coordenadas)) as CoordenadaX, ST_Y(ST_AsTEXT(p.coordenadas)) as CoordenadaY, t.direccion as direccion, b.barrios, s.estado, p.tipo from puntos p inner join servicios s on s.puntos_idpuntos = p.idpuntos inner join contrato c on c.idcontrato = s.contrato_idcontrato inner join terceros t on c.terceros_idterceros_cont = t.idterceros inner join barrios b on p.barrios_idbarrios = b.idbarrios where coordenadas is not null and s.idservicios= " + servicio + "");
         }
-        
+        public DataTable ConsultarPuntosEdit(string dat)
+        {
+            return data.ConsultarDatos("select * from  pr_consultarpunto("+dat+") ");
+        }
+        public bool ActualizarPuntoAvanzado(string estado, string direccion, string x, string y, string barrio, string tipo, string idservicio, string referencia, string antiguopunto)
+        {
+            return data.OperarDatos("select * from pr_actualizarpuntoavanza('"+estado+"', '"+direccion+"','"+x.Replace(',','.')+"','"+y.Replace(',', '.') + "',"+barrio+",'"+tipo+"', "+idservicio+",'"+referencia+"', "+antiguopunto+")");
+        }
     }
 }

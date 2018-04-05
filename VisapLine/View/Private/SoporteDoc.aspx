@@ -1,11 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="SoporteDoc.aspx.cs" Inherits="VisapLine.View.Private.SoporteDoc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-       <style>
-        textarea {
-            resize: none;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
@@ -27,6 +22,11 @@
             document.getElementById("botonmodalcontr").click();
         }
     </script>
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
@@ -106,7 +106,7 @@
                                                 <%--   <asp:Label runat="server" ID="StatusLabel" Text="Upload status: " />--%>
                                             </div>
                                         </div>
-                                          <div class="form-group row">
+                                        <div class="form-group row">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">CEDULA</label>
                                             <div class="col-sm-10">
                                                 <asp:FileUpload ID="FileUpload1" runat="server" />
@@ -117,11 +117,23 @@
                                                 <%--                         <asp:Label runat="server" ID="Label3" Text="Upload status: " />--%>
                                             </div>
                                         </div>
-                                      
+
                                         <div class="form-group row">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">RECIBO</label>
                                             <div class="col-sm-10">
                                                 <asp:FileUpload ID="FileUpload2" runat="server" />
+                                                <%--     <asp:Button runat="server" ID="Button2" Text="Upload" OnClick="UploadButton_Click" />
+                                                --%>
+                                                <br />
+                                                <br />
+                                                <%--       <asp:Label runat="server" ID="Label4" Text="Upload status: " />--%>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-sm-2 col-form-label">ORDEN DE INSTALACIÓN</label>
+                                            <div class="col-sm-10">
+                                                <br />
+                                                <asp:FileUpload ID="FileUpload3" runat="server" />
                                                 <%--     <asp:Button runat="server" ID="Button2" Text="Upload" OnClick="UploadButton_Click" />
                                                 --%>
                                                 <br />

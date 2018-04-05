@@ -1,9 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="VistadeExporte.aspx.cs" Inherits="VisapLine.Model.VistadeExporte" %>
+﻿<%@ Page Title="EXCEL-SIIGO" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="VistadeExporte.aspx.cs" Inherits="VisapLine.Model.VistadeExporte" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content">
+        <div class="box box-body">
+
+        </div>
         <div class="box box-body">
             <div class="row">
                 <div class="col-md-auto col-lg-12" style="overflow-x: scroll">

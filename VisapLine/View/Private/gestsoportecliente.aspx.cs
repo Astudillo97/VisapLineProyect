@@ -55,6 +55,7 @@ namespace VisapLine.View.Private
                     sp.tiposoporte_idtiposoporte = Validar.validarlleno("4");
                     sp.RegistrarSoportes(sp);
                     FileUploadControl.SaveAs(Server.MapPath("../../soportes/") + filename);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
 
                 }
                 else
@@ -85,6 +86,13 @@ namespace VisapLine.View.Private
                 string paramet = e.CommandArgument.ToString();
                 Response.Redirect("../../soportes/" + paramet);
                 //Response.Redirect("../../soportes/soporte_Contratos" + paramet);
+            }
+            if (e.CommandName.ToString() == "eliminardocumento")
+            {
+                string DeleteRowId = e.CommandArgument.ToString();
+                sp.eliminar(int.Parse(DeleteRowId));            
+                cargardocumento();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "eliminar();", true);
             }
 
         }

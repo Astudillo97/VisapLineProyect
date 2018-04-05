@@ -39,7 +39,6 @@ namespace VisapLine.View.Private
                     allfactura.DataSource = tablefactura;
                     allfactura.DataBind();
                 }
-
             }
             catch (Exception ex)
             {
@@ -129,7 +128,6 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-
         }
 
         protected void allfactura_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -232,7 +230,7 @@ namespace VisapLine.View.Private
                 int cont = 0;
                 foreach (DataRow item in tablefactura.Rows )
                 {
-                    if (item["enviofactura"].ToString()==meto && cont>514)
+                    if (item["enviofactura"].ToString()==meto)
                     {
                         string referen = pdf.CrearFactura(basic, item);
                         correo.asunto = "VISAPLINE - FACTURA " + item["facturaventa"].ToString()+ " "+Convert.ToDateTime(item["fechaemision"].ToString()).ToString("Y", CultureInfo.CreateSpecificCulture("es-co"));
@@ -242,7 +240,7 @@ namespace VisapLine.View.Private
                         correo.html = true;
                         if (!correo.html)
                         {
-                            correo.cuerpo = "Señor Usuario ahora puedes descargar su factura en http://191.102.85.252:30000/View/Public/facturacion.aspx";
+                            correo.cuerpo = "Señor Usuario ahora puedes descargar su factura en http://45.71.180.50:30000/View/Public/facturacion.aspx";
                         }
                         correo.archivo= path+dir+ referen;
                         correo.EnviarMensaje();

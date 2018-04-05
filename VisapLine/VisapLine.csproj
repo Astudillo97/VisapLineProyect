@@ -487,6 +487,7 @@
     <Content Include="View\Private\Almacen.aspx" />
     <Content Include="View\Private\consultadefactura.aspx" />
     <Content Include="View\Private\ContratoCliente.aspx" />
+    <Content Include="View\Private\CrearFactura.aspx" />
     <Content Include="View\Private\detalleservicio.aspx" />
     <Content Include="View\Private\EditarFactura.aspx" />
     <Content Include="View\Private\Error.aspx" />
@@ -514,7 +515,9 @@
     <Content Include="View\Private\Personal.aspx" />
     <Content Include="View\Private\Point.aspx" />
     <Content Include="View\Private\RegistroTerceros.aspx" />
+    <Content Include="View\Private\Reporte.aspx" />
     <Content Include="View\Private\ReporteCaja.aspx" />
+    <Content Include="View\Private\RevisionCartera.aspx" />
     <Content Include="View\Private\servicio.aspx" />
     <Content Include="View\Private\solicitudes.aspx" />
     <Content Include="View\Private\SoporteDoc.aspx" />
@@ -523,7 +526,9 @@
     <Content Include="View\Private\VistadeExporte.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
     <Content Include="View\Public\facturacion.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\Connection\Postgres\conexion_psql.cs" />
@@ -577,6 +582,7 @@
     <Compile Include="Model\Puntos.cs" />
     <Compile Include="Model\ReferenciasPersonales.cs" />
     <Compile Include="Model\Renovacion.cs" />
+    <Compile Include="Model\reporte.cs" />
     <Compile Include="Model\Rol.cs" />
     <Compile Include="Model\Servicios.cs" />
     <Compile Include="Model\SoportePago.cs" />
@@ -629,6 +635,13 @@
     </Compile>
     <Compile Include="View\Private\ContratoCliente.aspx.designer.cs">
       <DependentUpon>ContratoCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\CrearFactura.aspx.cs">
+      <DependentUpon>CrearFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\CrearFactura.aspx.designer.cs">
+      <DependentUpon>CrearFactura.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\detalleservicio.aspx.cs">
       <DependentUpon>detalleservicio.aspx</DependentUpon>
@@ -819,12 +832,26 @@
     <Compile Include="View\Private\RegistroTerceros.aspx.designer.cs">
       <DependentUpon>RegistroTerceros.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\Reporte.aspx.cs">
+      <DependentUpon>Reporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Reporte.aspx.designer.cs">
+      <DependentUpon>Reporte.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\ReporteCaja.aspx.cs">
       <DependentUpon>ReporteCaja.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Private\ReporteCaja.aspx.designer.cs">
       <DependentUpon>ReporteCaja.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\RevisionCartera.aspx.cs">
+      <DependentUpon>RevisionCartera.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\RevisionCartera.aspx.designer.cs">
+      <DependentUpon>RevisionCartera.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\servicio.aspx.cs">
       <DependentUpon>servicio.aspx</DependentUpon>

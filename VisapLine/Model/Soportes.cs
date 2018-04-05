@@ -40,8 +40,11 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarsoportescontcargadoidcontr('" + sop.contrato_idcontrato + "')");
         }
+        public void eliminar(int x)
+        {
+            data.OperarDatos("select * from pr_borrarsoporte(" + x + ")");
+        }
 
-        
 
     }
 }

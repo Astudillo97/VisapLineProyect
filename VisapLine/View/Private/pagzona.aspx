@@ -111,11 +111,8 @@
                                                 <!-- /.row -->
                                             </div>
                                             <!-- /.box-body -->
-
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
@@ -165,9 +162,6 @@
                         <!-- /.col -->
                     </div>
                 </div>
-
-
-
                 <div class="tab-pane" id="barrios">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -295,9 +289,5 @@
                 </div>
             </div>
         </div>
-
     </section>
-
-
-
 </asp:Content>
