@@ -209,7 +209,7 @@ namespace VisapLine.View.Private
 
 
 
-  
+
         protected void allfactura_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
@@ -464,6 +464,8 @@ namespace VisapLine.View.Private
                 GridView1.DataBind();
                 GridView2.DataSource = null;
                 GridView2.DataBind();
+                GridViewcuenta.DataSource = null;
+                GridViewcuenta.DataBind();
                 consultacontrato.DataSource = contcliente;
                 consultacontrato.DataBind();
                 paneldedatosterceros.Visible = true;
@@ -498,6 +500,7 @@ namespace VisapLine.View.Private
                 GridView1.DataSource = dat;
                 GridView1.DataBind();
 
+
                 try
                 {
                     pg.contrato_idcontrato = gridw.Cells[0].Text;
@@ -505,15 +508,19 @@ namespace VisapLine.View.Private
                     GridViewpagos.DataSource = pg.ConsultarPagosidcontrato(pg);
                     GridViewpagos.DataBind();
 
+                    GridViewcuenta.DataSource = Validar.Consulta(fact.consultarcuenta(gridw.Cells[0].Text));
+                    GridViewcuenta.DataBind();
 
                     punt = punto.consultarpuntosdelcontrato(gridw.Cells[0].Text);
                     cargo.contrato_idcontrato_cargo = gridw.Cells[0].Text;
                     cargosadicionales.DataSource = cargo.ConsultarCargosIdContrato(cargo);
                     cargosadicionales.DataBind();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    textError.InnerHtml = ex.Message;
+                    Alerta.CssClass = "alert alert-error";
+                    Alerta.Visible = true;
                 }
             }
             catch (Exception ex)

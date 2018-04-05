@@ -191,14 +191,14 @@
                     </div>
                     <div class="box box-primary" style="overflow-x: auto">
                         <h5>Cuenta</h5>
-                        <asp:GridView ID="GridViewcuenta" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <asp:GridView ID="GridViewcuenta" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False"  GridLines="None">
 
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
-                                <asp:BoundField DataField="contrato" HeaderText="#ID"></asp:BoundField>
-                                <asp:BoundField DataField="facturado" HeaderText="facturado"></asp:BoundField>
-                                <asp:BoundField DataField="pagad" HeaderText="pagado"></asp:BoundField>
-                                <asp:BoundField DataField="pagad" HeaderText="pagado"></asp:BoundField>
+                                <asp:BoundField DataField="contrato" HeaderText="#Contrato"></asp:BoundField>
+                                <asp:BoundField DataField="facturado" HeaderText="Facturado"></asp:BoundField>
+                                <asp:BoundField DataField="pagad" HeaderText="Pagado"></asp:BoundField>
+                                <asp:BoundField DataField="saldo" HeaderText="Saldo"></asp:BoundField>
                             </Columns>
 
 

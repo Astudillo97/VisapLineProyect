@@ -187,7 +187,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" visible="false" id="emple">
+        <div class="row" visible="false" runat="server" id="emple">
             <div id="contenedor">
                 <img src="../../Archivos/imgvisap.png" />
             </div>

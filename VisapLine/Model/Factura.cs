@@ -49,6 +49,11 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select * from pr_consultarparasiigo('"+fecha1+"', '"+fecha2+"')");
         }
 
+
+        public DataTable consultarcuenta(string id)
+        {
+            return data.ConsultarDatos("select * from pr_consultarsaldosimple('"+id+"')");
+        }
         public DataTable ConsultarFacturaCodigo(Factura fac)
         {
             return data.ConsultarDatos("select * from pr_consultarfacturacodigo(" + fac.facturaventa + ")");
