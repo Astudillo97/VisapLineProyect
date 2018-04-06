@@ -1,6 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="VisapLine.View.Private.index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        img {
+            height: auto;
+            max-width: 100%;
+        }
+
+        #contenedor {
+            width: 25%;
+            height: 25%;
+            top: 30%;
+            left: 37.5%;
+            position: absolute;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
@@ -36,7 +50,7 @@
     </section>
     <section class="content">
 
-        <div class="row" id="administrador" visible="false">
+        <div class="row" id="administrador" runat="server" visible="false">
             <!-- /.col -->
             <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
@@ -97,14 +111,28 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
-            <div class="col-md-6 col">
+            <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
                         <h3>
                             <asp:Label ID="Label4" runat="server" Text="2"></asp:Label>$</h3>
 
-                        <p>Ingresos del mes</p>
+                        <p>Ingresos del dia</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-fw fa-dollar"></i>
+                    </div>
+                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>
+                            <asp:Label ID="Label10" runat="server" Text="2"></asp:Label>$</h3>
+                        <p>Ingresos del dia</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-fw fa-dollar"></i>
@@ -114,15 +142,13 @@
             </div>
 
             <!-- ./col -->
-
-            <div class="col-md-6 col">
+            <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
-                <div class="small-box bg-red">
+                <div class="small-box bg-green">
                     <div class="inner">
                         <h3>
                             <asp:Label ID="Label6" runat="server" Text="2"></asp:Label>$</h3>
-
-                        <p>Egresos del mes</p>
+                        <p>Ingresos del dia</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-fw fa-dollar"></i>
@@ -130,55 +156,28 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
+           
             <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
                         <h3>
                             <asp:Label ID="Label7" runat="server" Text="12"></asp:Label></h3>
-                        <p>Vecidos</p>
+                        <p>Vencidos</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-close"></i>
                     </div>
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-6">
-                <!-- small box -->
-                <div class="small-box bg-green">
-                    <div class="inner">
-                        <h3>
-                            <asp:Label ID="Label8" runat="server" Text="12"></asp:Label></h3>
-                        <p>Pagos</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-fw fa-money"></i>
-                    </div>
-                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-6">
+            </div>         
+          <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
                         <h3>
-                            <asp:Label ID="Label1" runat="server" Text="12"></asp:Label></h3>
-                        <p>Incidencias Abiertas</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-wrench"></i>
-                    </div>
-                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-6">
-                <!-- small box -->
-                <div class="small-box bg-aqua">
-                    <div class="inner">
-                        <h3>
-                            <asp:Label ID="Label9" runat="server" Text="12"></asp:Label></h3>
-                        <p>Contratos sin servicios</p>
+                            <asp:Label ID="Label12" runat="server" Text="12"></asp:Label></h3>
+                        <p>incidencias Abiertas</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-address-book-o"></i>
@@ -186,6 +185,46 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
+           
+            <asp:Repeater ID="Repeater2" runat="server">
+                <ItemTemplate>
+                    <div class="col-xl-3 col-md-6 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                                <h3>
+                                    <asp:Label ID="Label12" runat="server" Text=""><%#Eval("num") %></asp:Label>
+                                </h3>
+                                <p>Servicio <%#Eval("estado") %></p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-cog"></i>
+                            </div>
+                            <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+            <asp:Repeater ID="Repeater1" runat="server">
+                <ItemTemplate>
+                    <div class="col-xl-3 col-md-6 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-aqua">
+                            <div class="inner">
+                                <h3>
+                                    <asp:Label ID="Label12" runat="server" Text=""><%#Eval("num") %></asp:Label>
+
+                                </h3>
+                                <p>Contratos <%#Eval("estadoc") %></p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-address-book-o"></i>
+                            </div>
+                            <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
         <div class="row" visible="false" runat="server" id="emple">
             <div id="contenedor">

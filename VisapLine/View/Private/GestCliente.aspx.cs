@@ -193,8 +193,9 @@ namespace VisapLine.View.Private
                 cargosadicionales.DataBind();
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-
+                Labelidincidencia.Text =null;
                 consultacontrato.Dispose();
+
                 ClientScript.RegisterStartupScript(GetType(), "alerta", "panelbutton();", true);
             }
             catch (Exception ex)
@@ -284,9 +285,7 @@ namespace VisapLine.View.Private
             if (e.CommandName.Equals("buscar"))
             {
                 string dat = e.CommandArgument.ToString();
-
                 cargartabla(dat);
-
                 DataRow puntoedit = punto.ConsultarPuntosEdit(dat).Rows[0];
                 barr.idbarrios = puntoedit["barrios_idbarrioscol"].ToString();
                 DataRow dir = barr.ConsultarTodoporBarrio(barr).Rows[0];
@@ -323,7 +322,7 @@ namespace VisapLine.View.Private
             if (e.CommandName.Equals("getservicio"))
             {
                 string t = e.CommandArgument.ToString();
-                Response.Redirect("servicio.aspx?key=" + t, false);
+                Response.Redirect("detalleservicio.aspx?addds=" + t, false);
 
             }
 

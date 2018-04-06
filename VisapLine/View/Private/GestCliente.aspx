@@ -359,11 +359,17 @@
                         <asp:GridView runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped table-responsive" ID="GridViewpagos" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
-                                <asp:BoundField DataField="idfactura" HeaderText="#Factura"></asp:BoundField>
+                                <asp:BoundField DataField="facturaventa" HeaderText="#Factura"></asp:BoundField>
+                                <asp:BoundField DataField="idfactura" HeaderText="ID-Factura"></asp:BoundField>
                                 <asp:BoundField DataField="estado" HeaderText="Estado"></asp:BoundField>
+                                 <asp:BoundField DataField="valorfac" HeaderText="Valor Fact"></asp:BoundField>
+                                <asp:BoundField DataField="valorre" HeaderText="Retencion"></asp:BoundField>
                                 <asp:BoundField DataField="saldofac" HeaderText="Saldo"></asp:BoundField>
                                 <asp:BoundField DataField="pagado" HeaderText="Pagado"></asp:BoundField>
                                 <asp:BoundField DataField="fechapago" HeaderText="Fecha de Pago"></asp:BoundField>
+                                 <asp:BoundField DataField="nombre" HeaderText="Personal"></asp:BoundField>
+                                 <asp:BoundField DataField="caja_idcaja_ingr" HeaderText="#Caja"></asp:BoundField>
+
                             </Columns>
                             <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 

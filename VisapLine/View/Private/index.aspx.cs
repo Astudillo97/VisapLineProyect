@@ -9,12 +9,53 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VisapLine.Model;
 
+using VisapLine.Exeption;
+
 namespace VisapLine.View.Private
 {
     public partial class index : System.Web.UI.Page
     {
+        Contrato cont = new Contrato();
+        Permisos per = new Permisos();
+        Servicios ser = new Servicios();
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (!IsPostBack)
+                {
+
+                    DataTable tercer = (DataTable)Session["roles"];
+                    string rol = tercer.Rows[0][7].ToString();
+
+                    if (rol == "7")
+                    {
+                        administrador.Visible = true;
+                        emple.Visible = false;
+                    }
+                    else
+                    {
+                        administrador.Visible = false;
+                        emple.Visible = true;
+
+                    }
+
+                    DataRow cmescon = Validar.Consulta(cont.ConsultarContratosmes()).Rows[0];
+
+                    Labelregtro.Text = cmescon["num"].ToString();
+                    DataRow useractivos = Validar.Consulta(cont.Consultarusarioactivos()).Rows[0];
+                    Label3.Text = useractivos["num"].ToString();
+                    Repeater1.DataSource = Validar.Consulta(cont.Consultarestodoscontratos());
+                    Repeater1.DataBind();
+                    Repeater2.DataSource = Validar.Consulta(ser.consultarestadoservicio());
+                    Repeater2.DataBind();
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
 
         }
         //[WebMethod]
