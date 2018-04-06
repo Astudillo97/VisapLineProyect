@@ -47,8 +47,8 @@ namespace VisapLine.View.Private
                     Label3.Text = useractivos["num"].ToString();
                     Repeater1.DataSource = Validar.Consulta(cont.Consultarestodoscontratos());
                     Repeater1.DataBind();
-                    Repeater1.DataSource = Validar.Consulta(ser.consultarestadoservicio());
-                    Repeater1.DataBind();
+                    Repeater2.DataSource = Validar.Consulta(ser.consultarestadoservicio());
+                    Repeater2.DataBind();
                 }
 
             }

@@ -193,8 +193,9 @@ namespace VisapLine.View.Private
                 cargosadicionales.DataBind();
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-
+                Labelidincidencia.Text =null;
                 consultacontrato.Dispose();
+
                 ClientScript.RegisterStartupScript(GetType(), "alerta", "panelbutton();", true);
             }
             catch (Exception ex)
