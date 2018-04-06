@@ -81,82 +81,14 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6 col-6">
-                <!-- small box -->
-                <div class="small-box bg-green">
-                    <div class="inner">
-                        <h3>
-                            <asp:Label ID="Label2" runat="server" Text="2"></asp:Label>$</h3>
-
-                        <p>Ingresos del dia</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-fw fa-dollar"></i>
-                    </div>
-                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-6">
-                <!-- small box -->
-                <div class="small-box bg-red">
-                    <div class="inner">
-                        <h3>
-                            <asp:Label ID="Label5" runat="server" Text="2"></asp:Label>$</h3>
-
-                        <p>Egresos del dia</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-fw fa-dollar"></i>
-                    </div>
-                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-6">
-                <!-- small box -->
-                <div class="small-box bg-green">
-                    <div class="inner">
-                        <h3>
-                            <asp:Label ID="Label4" runat="server" Text="2"></asp:Label>$</h3>
-
-                        <p>Ingresos del dia</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-fw fa-dollar"></i>
-                    </div>
-                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-6">
-                <!-- small box -->
-                <div class="small-box bg-green">
-                    <div class="inner">
-                        <h3>
-                            <asp:Label ID="Label10" runat="server" Text="2"></asp:Label>$</h3>
-                        <p>Ingresos del dia</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-fw fa-dollar"></i>
-                    </div>
-                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
-                </div>
-            </div>
+            
+        
+         
+         
+          
 
             <!-- ./col -->
-            <div class="col-xl-3 col-md-6 col-6">
-                <!-- small box -->
-                <div class="small-box bg-green">
-                    <div class="inner">
-                        <h3>
-                            <asp:Label ID="Label6" runat="server" Text="2"></asp:Label>$</h3>
-                        <p>Ingresos del dia</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-fw fa-dollar"></i>
-                    </div>
-                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
-                </div>
-            </div>
-           
+     
             <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
                 <div class="small-box bg-red">
