@@ -321,7 +321,7 @@ namespace VisapLine.View.Private
             if (e.CommandName.Equals("getservicio"))
             {
                 string t = e.CommandArgument.ToString();
-                Response.Redirect("servicio.aspx?key=" + t, false);
+                Response.Redirect("detalleservicio.aspx?key=" + t, false);
 
             }
 

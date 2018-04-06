@@ -17,6 +17,7 @@ namespace VisapLine.View.Private
     {
         Contrato cont = new Contrato();
         Permisos per = new Permisos();
+        Servicios ser = new Servicios();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -45,6 +46,8 @@ namespace VisapLine.View.Private
                     DataRow useractivos = Validar.Consulta(cont.Consultarusarioactivos()).Rows[0];
                     Label3.Text = useractivos["num"].ToString();
                     Repeater1.DataSource = Validar.Consulta(cont.Consultarestodoscontratos());
+                    Repeater1.DataBind();
+                    Repeater1.DataSource = Validar.Consulta(ser.consultarestadoservicio());
                     Repeater1.DataBind();
                 }
 

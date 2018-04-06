@@ -132,7 +132,6 @@
                     <div class="inner">
                         <h3>
                             <asp:Label ID="Label10" runat="server" Text="2"></asp:Label>$</h3>
-
                         <p>Ingresos del dia</p>
                     </div>
                     <div class="icon">
@@ -149,7 +148,6 @@
                     <div class="inner">
                         <h3>
                             <asp:Label ID="Label6" runat="server" Text="2"></asp:Label>$</h3>
-
                         <p>Ingresos del dia</p>
                     </div>
                     <div class="icon">
@@ -243,6 +241,25 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
+            <asp:Repeater ID="Repeater2" runat="server">
+                <ItemTemplate>
+                    <div class="col-xl-3 col-md-6 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-aqua">
+                            <div class="inner">
+                                <h3>
+                                    <asp:Label ID="Label12" runat="server" Text=""><%#Eval("num") %></asp:Label>
+                                </h3>
+                                <p>Contratos <%#Eval("estado") %></p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-address-book-o"></i>
+                            </div>
+                            <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
             <asp:Repeater ID="Repeater1" runat="server">
                 <ItemTemplate>
                     <div class="col-xl-3 col-md-6 col-6">
