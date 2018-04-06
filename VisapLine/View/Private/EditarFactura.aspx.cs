@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using VisapLine.Model;
 using VisapLine.Exeption;
 using System.Data;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.Data.OleDb;
 
 namespace VisapLine.View.Private
 {
@@ -20,7 +23,7 @@ namespace VisapLine.View.Private
             {
                 try
                 {
-                    string valor =Request.QueryString["key"];
+                    string valor = Request.QueryString["key"];
                     if (valor != null)
                     {
                         fact.facturaventa = valor;
@@ -69,7 +72,7 @@ namespace VisapLine.View.Private
                 {
                     obser.factura_idfactura_obs = fact.idfactura;
                     obser.observacion = observacion.Text;
-
+                    GenerateExcelData("C:/Users/Developers_1/Documents/GitHub/VisapLineProyect/VisapLine/Archivos/arch.xlsx");
                     obser.RegistrarObservaciondos(obser);
                     textError.InnerHtml = "Actualizado Correctamente";
                     Alerta.CssClass = "alert alert-success";
@@ -83,5 +86,42 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
+        private void GenerateExcelData(string SlnoAbbreviation)
+        {
+            OleDbConnection oledbConn=null;
+            try
+            {
+                // need to pass relative path after deploying on server
+                string path = SlnoAbbreviation;
+                oledbConn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + path + ";Extended Properties = 'Excel 12.0;HDR=YES;IMEX=1;'; ");
+
+                oledbConn.Open();
+                OleDbCommand cmd = new OleDbCommand(); ;
+                OleDbDataAdapter oleda = new OleDbDataAdapter();
+                DataSet ds = new DataSet();
+
+                // passing list to drop-down list
+
+                // selecting distinct list of Slno 
+                cmd.Connection = oledbConn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT * FROM [Hoja1$]";
+                oleda = new OleDbDataAdapter(cmd);
+                oleda = new OleDbDataAdapter(cmd);
+                oleda.Fill(ds);
+
+                // binding form data with grid view
+                GridView1.DataSource = ds.Tables[0].DefaultView;
+                GridView1.DataBind();
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            finally
+            {
+                oledbConn.Close();
+            }
+        }// close of method GemerateExceLData
     }
 }
