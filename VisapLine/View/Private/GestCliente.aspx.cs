@@ -193,7 +193,7 @@ namespace VisapLine.View.Private
                 cargosadicionales.DataBind();
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                Labelidincidencia.Text =null;
+                Labelidincidencia.Text = null;
                 consultacontrato.Dispose();
 
                 ClientScript.RegisterStartupScript(GetType(), "alerta", "panelbutton();", true);
@@ -272,7 +272,6 @@ namespace VisapLine.View.Private
         }
         protected void cargartabla(string idservicio)
         {
-            Labelidincidencia.Text = idservicio;
             DataTable inc = inci.ConsultarIncidenciasidser(idservicio);
             GridView2.DataSource = inc;
             GridView2.DataBind();
@@ -286,6 +285,7 @@ namespace VisapLine.View.Private
             {
                 string dat = e.CommandArgument.ToString();
                 cargartabla(dat);
+                Labelidincidencia.Text = dat;
                 DataRow puntoedit = punto.ConsultarPuntosEdit(dat).Rows[0];
                 barr.idbarrios = puntoedit["barrios_idbarrioscol"].ToString();
                 DataRow dir = barr.ConsultarTodoporBarrio(barr).Rows[0];
@@ -312,6 +312,8 @@ namespace VisapLine.View.Private
                 {
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title: 'UUUUPSSS!!!!', text: 'Algo ha ocurrido estamos trabajando para solucionarlo',imageUrl: '../../Contenido/images/monkeyprogramer.jpg',imageSize: '400x250'})", true);
                 }
+
+
             }
             else
             {

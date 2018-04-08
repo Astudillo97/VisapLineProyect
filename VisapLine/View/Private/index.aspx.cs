@@ -18,6 +18,7 @@ namespace VisapLine.View.Private
         Contrato cont = new Contrato();
         Permisos per = new Permisos();
         Servicios ser = new Servicios();
+        Incidencias inc =new Incidencias();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -49,6 +50,8 @@ namespace VisapLine.View.Private
                     Repeater1.DataBind();
                     Repeater2.DataSource = Validar.Consulta(ser.consultarestadoservicio());
                     Repeater2.DataBind();
+                    DataRow inciabierta = Validar.Consulta(inc.ConsultarIncidencias()).Rows[0];
+                    Label12.Text= inciabierta["num"].ToString();
                 }
 
             }

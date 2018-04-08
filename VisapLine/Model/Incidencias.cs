@@ -49,6 +49,11 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from  pr_consultarincidenciasidser('" + varid + "')");
         }
+        public DataTable ConsultarIncidenciasidser()
+        {
+            return data.ConsultarDatos("select* from pr_consultarincidenciasabiertas()");
+        }
        
+
     }
 }

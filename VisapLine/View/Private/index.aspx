@@ -80,16 +80,11 @@
                     </div>
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
-            </div>
-            
-        
-         
-         
-          
+            </div>            
 
             <!-- ./col -->
      
-            <div class="col-xl-3 col-md-6 col-6">
+           <%-- <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
@@ -100,9 +95,9 @@
                     <div class="icon">
                         <i class="fa fa-close"></i>
                     </div>
-                    <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+              
                 </div>
-            </div>         
+            </div>  --%>       
           <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
                 <div class="small-box bg-aqua">
