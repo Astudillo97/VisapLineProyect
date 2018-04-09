@@ -7,7 +7,6 @@
     <script src="../../Contenido/assets/vendor_components/glyphicons/glyphicon.css"></script>
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <asp:ScriptManager ID="scripservicc" runat="server"></asp:ScriptManager>
-
     <script type="text/javascript">
         $('#example').on('click', 'tbody tr', function (event) {
             $(this).addClass('highlight').siblings().removeClass('highlight');

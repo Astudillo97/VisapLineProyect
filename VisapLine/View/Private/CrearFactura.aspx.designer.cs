@@ -166,6 +166,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlInputText _direccion_;
         
         /// <summary>
+        /// Control consultacontrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView consultacontrato;
+        
+        /// <summary>
         /// Control Label7.
         /// </summary>
         /// <remarks>

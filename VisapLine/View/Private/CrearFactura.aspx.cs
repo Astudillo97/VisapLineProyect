@@ -86,7 +86,7 @@ namespace VisapLine.View.Private
                 contrato.terceros_idterceros = row["idterceros"].ToString();
                 DataRow contclientes = contrato.ConsultarContratoIdTercero(contrato).Rows[0];
                 contrato.terceros_idterceros = row["idterceros"].ToString();
-               DataRow  contcliente = contrato.ConsultarContratoIdTercero(contrato).Rows[0];
+                DataRow contcliente = contrato.ConsultarContratoIdTercero(contrato).Rows[0];
 
 
                 Alerta.Visible = false;

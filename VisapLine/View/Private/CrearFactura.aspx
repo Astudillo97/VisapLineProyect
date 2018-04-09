@@ -132,18 +132,58 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Datos del Contrato</h3>
                     </div>
+                     <asp:GridView runat="server" ID="consultacontrato" OnSelectedIndexChanged="consultacontrato_SelectedIndexChanged" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                            <Columns>
+                                <asp:BoundField DataField="idcontrato" HeaderText="#ID"></asp:BoundField>
+                                <asp:BoundField DataField="fechacontrato" HeaderText="FECHA" DataFormatString="{0:d}"></asp:BoundField>
+                                <asp:BoundField DataField="valor" HeaderText="VALOR"></asp:BoundField>
+                                <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
+                                <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
+                                <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
+                                <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
+                                    <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
+                                </asp:CommandField>
+
+                                <asp:TemplateField HeaderText="EDITAR">
+                                    <ItemTemplate>
+                                        <a href="gestcontrato.aspx?iCnt=<%# Eval("codigo") %>" class="btn btn-success fa fa-edit"></a>
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Justify"></ItemStyle>
+                                </asp:TemplateField>
+                            </Columns>
+                            <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                            <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                            <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                            <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                            <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                            <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                        </asp:GridView>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Nombre:</label>
+                                    <label class="col-sm-4 col-form-label">Estado:</label>
                                     <div class="col-sm-8">
                                         <asp:Label ID="Label7" runat="server" CssClass="form-control bg-gray" Height="35px" Width="150px" Text=""></asp:Label>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Apellido:</label>
+                                    <label class="col-sm-4 col-form-label">Iva:</label>
                                     <div class="col-sm-8">
                                         <asp:Label ID="Label8" CssClass="form-control bg-gray" runat="server" Height="35px" Width="150px" Text=""></asp:Label>
                                     </div>
@@ -157,19 +197,19 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Nombre:</label>
+                                    <label class="col-sm-4 col-form-label">Factura:</label>
                                     <div class="col-sm-8">
                                         <asp:Label ID="Label3" runat="server" CssClass="form-control bg-gray" Height="35px" Width="150px" Text=""></asp:Label>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Apellido:</label>
+                                    <label class="col-sm-4 col-form-label">Tipo Contrato:</label>
                                     <div class="col-sm-8">
                                         <asp:Label ID="Label4" CssClass="form-control bg-gray" runat="server" Height="35px" Width="150px" Text=""></asp:Label>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Direccion:</label>
+                                    <label class="col-sm-4 col-form-label">Observa:</label>
                                     <div class="col-sm-8">
                                         <asp:TextBox ID="TextBox2" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="150px" Height="100px"></asp:TextBox>
                                     </div>
