@@ -103,7 +103,6 @@
                                             <small class="mb-5">
                                                 <label runat="server" id="tipousuar"></label>
                                             </small>
-                                            <a href="#" class="btn btn-danger btn-sm">Ver Perfil</a>
 
                                         </p>
                                     </li>

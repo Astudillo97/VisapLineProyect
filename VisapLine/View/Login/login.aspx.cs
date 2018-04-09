@@ -15,12 +15,14 @@ namespace VisapLine.View.Login
         class_correo cor = new class_correo();
         Permisos perm = new Permisos();
         AsignacionRol asg = new AsignacionRol();
-        protected void Page_Load(object sender, EventArgs e)
+        
+    protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["tercero"]!=null && Session["roles"]!=null)
             {
                 Response.Redirect("../Private/index.aspx");
             }
+            
         }
 
         protected void Login(object sender, EventArgs e)

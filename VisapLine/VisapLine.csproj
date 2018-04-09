@@ -594,6 +594,7 @@
     <Compile Include="Model\reporte.cs" />
     <Compile Include="Model\Rol.cs" />
     <Compile Include="Model\Servicios.cs" />
+    <Compile Include="Model\SocketServer.cs" />
     <Compile Include="Model\SoportePago.cs" />
     <Compile Include="Model\Soportes.cs" />
     <Compile Include="Model\Sucursal.cs" />
