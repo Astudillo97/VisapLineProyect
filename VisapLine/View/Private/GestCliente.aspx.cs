@@ -504,10 +504,7 @@ namespace VisapLine.View.Private
 
                 try
                 {
-                    pg.contrato_idcontrato = gridw.Cells[0].Text;
-                    //DataTable pagosidcon = Validar.Consulta();
-                    GridViewpagos.DataSource = pg.ConsultarPagosidcontrato(pg);
-                    GridViewpagos.DataBind();
+                    
 
                     GridViewcuenta.DataSource = Validar.Consulta(fact.consultarcuenta(gridw.Cells[0].Text));
                     GridViewcuenta.DataBind();
@@ -529,6 +526,18 @@ namespace VisapLine.View.Private
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
+            }
+            try
+            {
+                GridViewRow gridw = consultacontrato.SelectedRow;
+                pg.contrato_idcontrato = gridw.Cells[0].Text;
+                //DataTable pagosidcon = Validar.Consulta();
+                GridViewpagos.DataSource = pg.ConsultarPagosidcontrato(pg);
+                GridViewpagos.DataBind();
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

@@ -15,6 +15,7 @@ namespace VisapLine.View.Private
     {
         Model.Menu men = new Model.Menu();
         Permisos perm = new Permisos();
+        static SocketServer socket = new SocketServer();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -38,8 +39,6 @@ namespace VisapLine.View.Private
                             Session["idrol"] = listRoles.SelectedValue;
                         }
                         listRoles.SelectedValue = Session["idrol"].ToString();
-
-
                     }
                     CargarMenu(Session["idrol"].ToString());
                 }
@@ -52,6 +51,16 @@ namespace VisapLine.View.Private
             {
 
             }
+            
+            //if (!socket.dat)
+            //{
+            //    socket.Iniciar();
+            //    tipousuar.InnerHtml = "En Linea";
+            //}
+            //else
+            //{
+            //    tipousuar.InnerHtml = "En Linea";
+            //}
         }
 
         protected void Salir(object sender, EventArgs e)

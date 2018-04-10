@@ -10,6 +10,8 @@ using System.Data;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using System.Data.OleDb;
+using System.Net.Sockets;
+using System.Net;
 
 namespace VisapLine.View.Private
 {
@@ -123,5 +125,26 @@ namespace VisapLine.View.Private
                 oledbConn.Close();
             }
         }// close of method GemerateExceLData
+
+        public static void Conectar()
+        {
+            Socket miPrimerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            // paso 2 - creamos el socket
+            IPEndPoint miDireccion = new IPEndPoint(IPAddress.Parse("192.168.0.61"), 1234);
+            //paso 3 - Acá debemos poner la Ip del servidor, y el puerto de escucha del servidor
+            //Yo puse esa porque corrí las dos aplicaciones en la misma pc
+            try
+            {
+                miPrimerSocket.Connect(miDireccion); // Conectamos               
+                Console.WriteLine("Conectado con exito");
+                miPrimerSocket.Close();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine("Error: {0}",error.ToString());
+            }
+            Console.WriteLine("Presione cualquier tecla para terminar");
+            Console.ReadLine();
+        }
     }
 }
