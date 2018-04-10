@@ -33,6 +33,7 @@ namespace VisapLine.DataAccess.Connection
                 CloseConexion();
                 throw new ValidarExeption("No se ha realizado la operacion "+ex.Message,ex);
             }
+          
         }
 
         public DataTable ConsultarDatos(string sql)
@@ -50,6 +51,7 @@ namespace VisapLine.DataAccess.Connection
                 CloseConexion();
                 throw new ValidarExeption("No se han encontrado registros "+ex.Message,ex);
             }
+      
         }
         
     }
