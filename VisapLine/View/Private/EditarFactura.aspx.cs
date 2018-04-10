@@ -74,7 +74,7 @@ namespace VisapLine.View.Private
                 {
                     obser.factura_idfactura_obs = fact.idfactura;
                     obser.observacion = observacion.Text;
-                    GenerateExcelData("C:/Users/Developers_1/Documents/GitHub/VisapLineProyect/VisapLine/Archivos/arch.xlsx");
+                    //GenerateExcelData("C:/Users/Developers_1/Documents/GitHub/VisapLineProyect/VisapLine/Archivos/arch.xlsx");
                     obser.RegistrarObservaciondos(obser);
                     textError.InnerHtml = "Actualizado Correctamente";
                     Alerta.CssClass = "alert alert-success";
