@@ -39,8 +39,6 @@ namespace VisapLine.View.Private
                             Session["idrol"] = listRoles.SelectedValue;
                         }
                         listRoles.SelectedValue = Session["idrol"].ToString();
-
-
                     }
                     CargarMenu(Session["idrol"].ToString());
                 }
