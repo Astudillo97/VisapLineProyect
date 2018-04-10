@@ -143,14 +143,7 @@
                                 <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
                                 <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
                                     <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
-                                </asp:CommandField>
-
-                                <asp:TemplateField HeaderText="EDITAR">
-                                    <ItemTemplate>
-                                        <a href="gestcontrato.aspx?iCnt=<%# Eval("codigo") %>" class="btn btn-success fa fa-edit"></a>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Justify"></ItemStyle>
-                                </asp:TemplateField>
+                                </asp:CommandField>                              
                             </Columns>
                             <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
