@@ -84,10 +84,8 @@ namespace VisapLine.View.Private
                 }
                 _telefono_.Value = telef;
                 contrato.terceros_idterceros = row["idterceros"].ToString();
-                DataRow contclientes = contrato.ConsultarContratoIdTercero(contrato).Rows[0];
-                contrato.terceros_idterceros = row["idterceros"].ToString();
-                DataRow contcliente = contrato.ConsultarContratoIdTercero(contrato).Rows[0];
-                consultacontrato.DataSource = contcliente;
+                DataTable contclientes =contrato.ConsultarContratoIdTercero(contrato);               
+                consultacontrato.DataSource = contclientes;
                 consultacontrato.DataBind();
 
                 Alerta.Visible = false;

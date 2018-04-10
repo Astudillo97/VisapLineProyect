@@ -456,7 +456,9 @@ namespace VisapLine.View.Private
                 }
                 _telefono_.Value = telef;
                 contrato.terceros_idterceros = row["idterceros"].ToString();
-                contcliente = contrato.ConsultarContratoIdTercero(contrato);
+                contcliente = Validar.Consulta(contrato.ConsultarContratoIdTercero(contrato));
+                consultacontrato.DataSource = contcliente;
+                consultacontrato.DataBind();
                 GridViewpagos.DataSource = null;
                 GridViewpagos.DataBind();
                 cargosadicionales.DataSource = null;
@@ -466,9 +468,7 @@ namespace VisapLine.View.Private
                 GridView2.DataSource = null;
                 GridView2.DataBind();
                 GridViewcuenta.DataSource = null;
-                GridViewcuenta.DataBind();
-                consultacontrato.DataSource = contcliente;
-                consultacontrato.DataBind();
+                GridViewcuenta.DataBind();            
                 paneldedatosterceros.Visible = true;
                 Alerta.Visible = false;
 
@@ -504,7 +504,7 @@ namespace VisapLine.View.Private
 
                 try
                 {
-                    
+
 
                     GridViewcuenta.DataSource = Validar.Consulta(fact.consultarcuenta(gridw.Cells[0].Text));
                     GridViewcuenta.DataBind();
