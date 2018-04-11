@@ -7,17 +7,22 @@ using VisapLine.Exeption;
 
 namespace VisapLine.DataAccess.Connection
 {
-    public class Data : conexion_psql, IData
+    public class Data:IData
     {
-
+        conexion_psql conx;
         public bool OperarDatos(string sql)
         {
             DataTable datos = new DataTable();
+            
+            if (conx==null)
+            {
+                conx = new conexion_psql();
+            }
             try
             {
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, OpenConexion());
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conx.OpenConexion());
                 da.Fill(datos);
-                CloseConexion();
+                conx.CloseConexion();
                 if (Convert.ToInt32(datos.Rows[0][0].ToString()) > 0)
                 {
                     return true;
@@ -30,7 +35,7 @@ namespace VisapLine.DataAccess.Connection
             }
             catch(Exception ex)
             {
-                CloseConexion();
+                conx.CloseConexion();
                 throw new ValidarExeption("No se ha realizado la operacion "+ex.Message,ex);
             }
           
@@ -39,16 +44,20 @@ namespace VisapLine.DataAccess.Connection
         public DataTable ConsultarDatos(string sql)
         {
             DataTable datos = new DataTable();
+            if (conx == null)
+            {
+                conx = new conexion_psql();
+            }
             try
             {
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, OpenConexion());
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conx.OpenConexion());
                 da.Fill(datos);
-                CloseConexion();
+                conx.CloseConexion();
                 return datos;
             }
             catch(Exception ex)
             {
-                CloseConexion();
+                conx.CloseConexion();
                 throw new ValidarExeption("No se han encontrado registros "+ex.Message,ex);
             }
       
