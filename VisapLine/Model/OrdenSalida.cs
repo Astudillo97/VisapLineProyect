@@ -128,7 +128,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarsordenesfinalizadas()");
         }
-
+        public DataTable ConsultarIdservicio(string dat)
+        {
+            return data.ConsultarDatos("select * from pr_consultaridservicioorden('"+dat+"')");
+        }
 
     }
 }

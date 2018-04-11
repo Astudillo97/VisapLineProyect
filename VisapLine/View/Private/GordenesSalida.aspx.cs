@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using VisapLine.Model;
 using System.Data;
 using System.Web.Services;
+using VisapLine.Exeption;
 
 namespace VisapLine.View.Private
 {
@@ -19,12 +20,12 @@ namespace VisapLine.View.Private
         public static string valosal;
         class_pdf pdf = new class_pdf();
         Empresa emp = new Empresa();
-
+        static bool bandera = false;
         Puntos punto = new Puntos();
         public DataTable punt = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            bandera = false;
             if (!IsPostBack)
             {
                 divconten.Visible = false;
@@ -36,7 +37,7 @@ namespace VisapLine.View.Private
                 llenarViabilidades();
                 llenarTrabajos();
                 llenarvista();
-                
+
             }
         }
 
@@ -298,13 +299,20 @@ namespace VisapLine.View.Private
         public static bool cerrarord_Click()
         {
             OrdenSalida ord = new OrdenSalida();
-            return ord.Cerrarorden(valosal);
+            if (bandera)
+            {
+                
+                bool dat= ord.Cerrarorden(valosal);
+                return dat;
+            }
+            return false;
         }
 
 
         protected void repetidorinstalaciones_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            if (e.CommandName.Equals("buscar")) {
+            if (e.CommandName.Equals("buscar"))
+            {
                 valosal = e.CommandArgument.ToString();
                 NewMethod(e.CommandArgument.ToString());
                 punt = punto.consultarpuntosdelcontrato("321");
@@ -314,12 +322,12 @@ namespace VisapLine.View.Private
         protected void btnimpresion_Click(object sender, EventArgs e)
         {
             Empresa empr = new Empresa();
-                 if (valosal.Contains("INS"))
+            if (valosal.Contains("INS"))
             {
                 divgrid.Visible = false;
                 DataTable consulta = ord.Consultarorden(valosal);
                 string plan = ord.megas(valosal).Rows[0][5].ToString();
-                string rediret=pdf.CrearOrdenSalida(empr.ConsultarEmpresa(),consulta,valosal, ord.cosnutlarlefonosorden(consulta.Rows[0][7].ToString()), ord.Consultardetalleordesali(valosal),plan);
+                string rediret = pdf.CrearOrdenSalida(empr.ConsultarEmpresa(), consulta, valosal, ord.cosnutlarlefonosorden(consulta.Rows[0][7].ToString()), ord.Consultardetalleordesali(valosal), plan);
                 Response.Redirect("../../Ordenes/" + rediret);
                 /* Llenargrid(consulta.Rows[0][7].ToString()); 
                  llenardetalle();
@@ -330,29 +338,59 @@ namespace VisapLine.View.Private
             }
             else
             {
-             /*   divgrid.Visible = false;
-                DataTable consulta = ord.Consultarordentrab(valosal);
-                Formtrabajos.DataSource = consulta;
-                Formtrabajos.DataBind();
-                divconten.Visible = true;
-                divcreator.Visible = false;
-                llenardetalle();
-                Llenardrop();
-                formordenes.Visible = false;*/
+                /*   divgrid.Visible = false;
+                   DataTable consulta = ord.Consultarordentrab(valosal);
+                   Formtrabajos.DataSource = consulta;
+                   Formtrabajos.DataBind();
+                   divconten.Visible = true;
+                   divcreator.Visible = false;
+                   llenardetalle();
+                   Llenardrop();
+                   formordenes.Visible = false;*/
             }
-            
+
         }
 
         protected void repetidorequipos_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            if (e.CommandName.Equals("asigacin")) {
+            if (e.CommandName.Equals("asigacin"))
+            {
                 TextBox tcant = (TextBox)e.Item.FindControl("cantidadequipo");
                 dsord.insertardetallesalida(tcant.Text, e.CommandArgument.ToString(), valosal);
                 llenardetalle();
             }
-            
-            
-            
+
+
+
+        }
+
+        protected void GuardarCoordenada(object sender, EventArgs e)
+        {
+            double lat;
+            double lon;
+            try
+            {
+                lat = Validar.ObtenerLatitud(Convert.ToInt32(latgrados.Value), Convert.ToInt32(latminut.Value), Convert.ToDouble(latsegun.Value.Replace('.', ',')));
+                lon = Validar.ObtenerLongitud(Convert.ToInt32(longrados.Value), Convert.ToInt32(lonminut.Value), Convert.ToDouble(lonsegun.Value.Replace('.', ',')));
+                DataRow dat=ord.ConsultarIdservicio(valosal).Rows[0];
+                DataRow puntoedit = punto.ConsultarPuntosEdit(dat["idservicio"].ToString()).Rows[0];
+                if (punto.ActualizarPuntoAvanzado(puntoedit["estadocol"].ToString(), puntoedit["direcioncol"].ToString(), lat.ToString(), lon.ToString(), puntoedit["barrios_idbarrioscol"].ToString(), puntoedit["tipocol"].ToString(), puntoedit["idservicioscol"].ToString(), puntoedit["referenciascol"].ToString(), puntoedit["idpuntoscol"].ToString()))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "ErrorPunto('ACTUALIZACION EXITOSA!','Punto Geografico Actualizado correctamente','success');", true);
+                    bandera = true;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "ErrorPunto('ACTUALIZACION FALLIDA','Verifique que los espacios se encuentren correctamente diligenciados, recuerde seleccionar el servicio a modificar!','error');", true);
+                    bandera = false;    
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "ErrorPunto('ACTUALIZACION FALLIDA','" + ex.Message + "','error');", true);
+                bandera = false;
+            }
+
         }
 
         protected void gridbusqueda_PageIndexChanging(object sender, GridViewPageEventArgs e)
