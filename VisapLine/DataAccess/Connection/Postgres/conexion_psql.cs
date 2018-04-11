@@ -7,15 +7,14 @@ namespace VisapLine.DataAccess.Connection
 {
     public class conexion_psql
     {
-        private static NpgsqlConnection conexion1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["conexion_psql"].ConnectionString);
-        public static NpgsqlConnection OpenConexion()
+        private  NpgsqlConnection conexion1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["conexion_psql"].ConnectionString);
+        public  NpgsqlConnection OpenConexion()
         {
             try
             {
                 conexion1.Open();
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 conexion1.Close();
                 throw new ValidarExeption("Error de conexion:Intentelo de nuevo");
@@ -23,7 +22,7 @@ namespace VisapLine.DataAccess.Connection
             return conexion1;
         }
 
-        public static NpgsqlConnection CloseConexion()
+        public NpgsqlConnection CloseConexion()
         {
             try
             {
@@ -35,8 +34,6 @@ namespace VisapLine.DataAccess.Connection
                 conexion1.Close();
                 throw new ValidarExeption("Error de conexion:Intentelo de nuevo");
             }
-          
-
             return conexion1;
         }
 

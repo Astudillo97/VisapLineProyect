@@ -32,11 +32,15 @@
                 }
                 )
                     .done(function (data) {
-                        swal({ title: "ORDEN CERRADA!", text: "Se cerro la orden con exito", type: "success" },
-                            function () {
-                                location.reload();
-                            });
-
+                        if (data.d == true) {
+                            swal({ title: "ORDEN CERRADA!", text: "Se cerro la orden con exito", type: "success" },
+                                function () {
+                                    
+                                });
+                        } else {
+                            swal("ORDEN FALLIDA!", "Por favor cargar las coordenadas geograficas", "error");
+                        }
+                        console.log(data);
                     }).error(function (data) {
                         swal("ASIGNACION FALLIDA!", "No se pudo realizar la operacion contactese con el soporte", "error");
                     });
@@ -51,6 +55,9 @@
         }
         function alerterror() {
             swal("ORDEN FALLIDA!", "La orden no se pudo crear por favor verifique o contactese con el soporte", "error");
+        }
+        function ErrorPunto(princiapal, data, accion) {
+            swal(princiapal, data, accion);
         }
     </script>
 
@@ -385,6 +392,50 @@
                                 </div>
                                 <!-- /.modal-dialog -->
                             </div>
+                            <div class="modal fade" id="mymodal3" data-backdrop="”static”">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">AGREGAR COORDENADA <span class="glyphicon glyphicon-p"></span></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="tab-pane" runat="server" id="Div4">
+                                                <div class="box box-primary">
+                                                    <div class="form-inline">
+                                                        <label for="example-text-input" class="col-sm-3 col-form-label">Latitud</label>
+                                                        <div class="col-sm-3">
+                                                            G:<input class="form-control col-sm-12" runat="server" id="latgrados" type="text">
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            M:<input class="form-control col-sm-12" runat="server" id="latminut" type="text">
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            S:<input class="form-control col-sm-12" runat="server" id="latsegun" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-inline">
+                                                        <label for="example-text-input" class="col-sm-3 col-form-label">Longitud</label>
+                                                        <div class="col-sm-3">
+                                                            G:<input class="form-control col-sm-12" runat="server" id="longrados" type="text">
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            M:<input class="form-control col-sm-12" runat="server" id="lonminut" type="text">
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            S:<input class="form-control col-sm-12" runat="server" id="lonsegun" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" runat="server" onserverclick="GuardarCoordenada" class="btn btn-default" data-dismiss="modal">GUARDAR</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
                             <asp:Button ID="cerrarord" Text="CERRAR ORDEN" runat="server" CssClass="btn btn-danger" OnClientClick='return dialog(this,event);' />
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mymodal">
                                 ASIGNAR INVENTARIO +
@@ -392,13 +443,16 @@
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mymodal2">
                                 ASIGNAR TECNICO +
                             </button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mymodal3">
+                                AGREGAR COORDENADA +
+                            </button>
                             <asp:GridView ID="GridViewdeta" CssClass="table table-responsive no-border" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
                                     <asp:BoundField HeaderText="DESCRIPCION" DataField="descripcioncol" />
                                     <asp:BoundField HeaderText="CANTIDAD" DataField="cantidadcol" />
                                     <asp:BoundField HeaderText="ESTADO" DataField="estadocol" />
-                                    
+
                                 </Columns>
                                 <EditRowStyle BackColor="#2461BF" />
                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -757,7 +811,7 @@
         </div>
 
         <a href="#panelbusqueda" id="idbusqueda" hidden="hidden" class="btn btn-success" data-target=".bs-example-modal-lg" data-toggle="modal">AGREGAR COORDENADA</a>
-        
+
         <div class="modal fade bs-example-modal-lg" runat="server" id="panelbusqueda" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -768,12 +822,11 @@
                     <div class="modal-body">
                         <div class="tab-pane" runat="server" id="panelconsulta">
                             <div class="box box-primary" style="overflow-x: auto">
-                                
                             </div>
                         </div>
                         <div class="tab-pane" runat="server" id="Div1">
-                        <asp:Label ID="latitud" runat="server"></asp:Label>
-                        <asp:Label ID="longitud" runat="server"></asp:Label>
+                            <asp:Label ID="latitud" runat="server"></asp:Label>
+                            <asp:Label ID="longitud" runat="server"></asp:Label>
 
                         </div>
                     </div>
@@ -786,7 +839,7 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
-        <div style="width:300px; height:200px;" id="map"></div>
+        <div style="width: 300px; height: 200px;" id="map"></div>
     </section>
 
     <script>
@@ -833,27 +886,27 @@
 
             var marker = [
                 <%if (punt != null)
+        {
+            int cont = punt.Rows.Count;
+            int cot = 0;
+            foreach (System.Data.DataRow item in punt.Rows)
             {
-                int cont = punt.Rows.Count;
-                int cot = 0;
-                foreach (System.Data.DataRow item in punt.Rows)
-                {
                 %>
-                    new google.maps.Marker({
-                        position: { lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> },
-                        map: map,
-                        icon: icons['<%=item["tipo"].ToString()%>'].icon,
-                            title: '<%=item["nombre"].ToString()%>'<%cot++;%>
-                    }).addListener('click', function () {
-                        map.setZoom(15);
-                        map.setCenter({ lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> });
-                        }) <%if (cot == cont) { Response.Write(""); } else { Response.Write(","); }%>               
+                new google.maps.Marker({
+                    position: { lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> },
+                    map: map,
+                    icon: icons['<%=item["tipo"].ToString()%>'].icon,
+                        title: '<%=item["nombre"].ToString()%>'<%cot++;%>
+                }).addListener('click', function () {
+                    map.setZoom(15);
+                    map.setCenter({ lat: <%=item["coordenaday"].ToString().Replace(',','.')%>, lng: <%=item["coordenadax"].ToString().Replace(',','.')%> });
+                    }) <%if (cot == cont) { Response.Write(""); } else { Response.Write(","); }%>               
                 <%
-                }
             }
+        }
                   %>
-                ];
-            }
-        </script>
+            ];
+        }
+    </script>
 
 </asp:Content>
