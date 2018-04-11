@@ -201,7 +201,6 @@
                                 <asp:BoundField DataField="saldo" HeaderText="Saldo"></asp:BoundField>
                             </Columns>
 
-
                             <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>

@@ -63,7 +63,7 @@
                     <!-- /.col -->
                 </div>
             </div>
-            <div class="row" runat="server" id="datos" visible="true">
+            <div class="row" runat="server" id="datos" visible="false">
                 <div class="col-6">
                     <div class="box box-default">
                         <div class="box-header with-border">
@@ -124,15 +124,15 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-6">
-                <div class="box box-default">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Datos del Contrato</h3>
-                    </div>
-                     <asp:GridView runat="server" ID="consultacontrato" OnSelectedIndexChanged="consultacontrato_SelectedIndexChanged" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <div class="col-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Datos del Contrato</h3>
+                        </div>
+                        <asp:GridView runat="server" ID="consultacontrato" OnSelectedIndexChanged="consultacontrato_SelectedIndexChanged" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
                                 <asp:BoundField DataField="idcontrato" HeaderText="#ID"></asp:BoundField>
@@ -144,13 +144,6 @@
                                 <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
                                     <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
                                 </asp:CommandField>
-
-                                <asp:TemplateField HeaderText="EDITAR">
-                                    <ItemTemplate>
-                                        <a href="gestcontrato.aspx?iCnt=<%# Eval("codigo") %>" class="btn btn-success fa fa-edit"></a>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Justify"></ItemStyle>
-                                </asp:TemplateField>
                             </Columns>
                             <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
@@ -172,8 +165,8 @@
 
                             <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
-                    <!-- /.box-header -->
-                    <div class="box-body">
+                        <!-- /.box-header -->
+                        <%--<div class="box-body">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group row">
@@ -216,56 +209,58 @@
                                 </div>
                             </div>
                         </div>
+                    </div>--%>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <div class="box box-default">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Datos del Contrato</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Nombre:</label>
-                                    <div class="col-sm-8">
-                                        <asp:Label ID="Label9" runat="server" CssClass="form-control bg-gray" Height="35px" Width="150px" Text=""></asp:Label>
+            <div class="row">
+                <div class="col-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Datos del Contrato</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Nombre:</label>
+                                        <div class="col-sm-8">
+                                            <asp:Label ID="Label9" runat="server" CssClass="form-control bg-gray" Height="35px" Width="150px" Text=""></asp:Label>
+                                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Apellido:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Direccion:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Apellido:</label>
-                                    <div class="col-sm-8">
-                                        <asp:Label ID="Label10" CssClass="form-control bg-gray" runat="server" Height="35px" Width="150px" Text=""></asp:Label>
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Nombre:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Direccion:</label>
-                                    <div class="col-sm-8">
-                                        <asp:TextBox ID="TextBox3" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="150px" Height="100px"></asp:TextBox>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Apellido:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Nombre:</label>
-                                    <div class="col-sm-8">
-                                        <asp:Label ID="Label11" runat="server" CssClass="form-control bg-gray" Height="35px" Width="150px" Text=""></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Apellido:</label>
-                                    <div class="col-sm-8">
-                                        <asp:Label ID="Label12" CssClass="form-control bg-gray" runat="server" Height="35px" Width="150px" Text=""></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Direccion:</label>
-                                    <div class="col-sm-8">
-                                        <asp:TextBox ID="TextBox4" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="150px" Height="100px"></asp:TextBox>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Direccion:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -273,42 +268,41 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <a href="#panelbusqueda" id="idbusqueda" class="row" data-target=".bs-example-modal-lg" data-toggle="modal"></a>
-        <div class="modal fade bs-example-modal-lg" runat="server" id="panelbusqueda" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myLargeModalLabel">Resultados</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="tab-pane" runat="server" id="panelconsulta">
-                            <div class="box box-primary" style="overflow-x: auto">
-                                <asp:GridView runat="server" ID="consultacliente" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="consultacliente_SelectedIndexChanging" AutoGenerateColumns="False">
-                                    <Columns>
-                                        <asp:BoundField DataField="identificacion" HeaderText="CC/NIT"></asp:BoundField>
-                                        <asp:TemplateField HeaderText="USUARIO">
-                                            <ItemTemplate>
-                                                <label runat="server"><%#Eval("nombre") %> <%#Eval("apellido") %></label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
-                                        <asp:BoundField DataField="direccion" HeaderText="DIRECCION"></asp:BoundField>
-                                        <asp:BoundField DataField="tipoterceros" HeaderText="PERSONA"></asp:BoundField>
-                                        <asp:CommandField SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search" ShowSelectButton="True"></asp:CommandField>
-                                    </Columns>
-                                </asp:GridView>
+            <a href="#panelbusqueda" id="idbusqueda" class="row" data-target=".bs-example-modal-lg" data-toggle="modal"></a>
+            <div class="modal fade bs-example-modal-lg" runat="server" id="panelbusqueda" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myLargeModalLabel">Resultados</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="tab-pane" runat="server" id="panelconsulta">
+                                <div class="box box-primary" style="overflow-x: auto">
+                                    <asp:GridView runat="server" ID="consultacliente" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="consultacliente_SelectedIndexChanging" AutoGenerateColumns="False">
+                                        <Columns>
+                                            <asp:BoundField DataField="identificacion" HeaderText="CC/NIT"></asp:BoundField>
+                                            <asp:TemplateField HeaderText="USUARIO">
+                                                <ItemTemplate>
+                                                    <label runat="server"><%#Eval("nombre") %> <%#Eval("apellido") %></label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
+                                            <asp:BoundField DataField="direccion" HeaderText="DIRECCION"></asp:BoundField>
+                                            <asp:BoundField DataField="tipoterceros" HeaderText="PERSONA"></asp:BoundField>
+                                            <asp:CommandField SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search" ShowSelectButton="True"></asp:CommandField>
+                                        </Columns>
+                                    </asp:GridView>
+                                </div>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
-                    </div>
+                    <!-- /.modal-content -->
                 </div>
-                <!-- /.modal-content -->
+                <!-- /.modal-dialog -->
             </div>
-            <!-- /.modal-dialog -->
-        </div>
     </section>
 </asp:Content>

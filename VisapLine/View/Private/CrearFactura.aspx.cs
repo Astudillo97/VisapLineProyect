@@ -33,7 +33,7 @@ namespace VisapLine.View.Private
         Departamento depart = new Departamento();
         Municipio munic = new Municipio();
         Barrios barr = new Barrios();
-
+        
         Pagos pg = new Pagos();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -84,13 +84,14 @@ namespace VisapLine.View.Private
                 }
                 _telefono_.Value = telef;
                 contrato.terceros_idterceros = row["idterceros"].ToString();
-                DataRow contclientes = contrato.ConsultarContratoIdTercero(contrato).Rows[0];
-                contrato.terceros_idterceros = row["idterceros"].ToString();
-                DataRow contcliente = contrato.ConsultarContratoIdTercero(contrato).Rows[0];
-
+                DataTable contclientes =contrato.ConsultarContratoIdTercero(contrato);               
+                consultacontrato.DataSource = contclientes;
+                consultacontrato.DataBind();
 
                 Alerta.Visible = false;
                 datos.Visible = true;
+
+
 
             }
             catch (Exception ex)
@@ -100,6 +101,11 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
 
+
+        }
+
+        protected void consultacontrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }
