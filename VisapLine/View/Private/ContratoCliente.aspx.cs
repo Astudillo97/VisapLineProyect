@@ -356,7 +356,9 @@ namespace VisapLine.View.Private
                 }
                 contrat.wifi = wiifi;
 
-                if (contrat.RegistrarContrato(contrat))
+                string ddd = contrat.RegistrarContrato(contrat).Rows[0][0].ToString();
+
+                if (Convert.ToInt32(ddd) > 0)
                 {
                     string guardar = "SI";
                     Response.Redirect("RegistroTerceros.aspx?key=" + guardar);
@@ -415,11 +417,11 @@ namespace VisapLine.View.Private
                 }
                 contrat.wifi = wiifi;
 
-                if (contrat.RegistrarContrato(contrat))
+                string ddd = contrat.RegistrarContrato(contrat).Rows[0][0].ToString();
+
+                if (Convert.ToInt32(ddd)>0)
                 {
-                    contrat.terceros_idterceros = Labelidtercero.Text;
-                    DataRow te = Validar.Consulta(contrat.ConsultarContratoidtercero(contrat)).Rows[0];
-                    Response.Redirect("servicio.aspx?key=" + te["idcontrato"].ToString(), false);
+                    Response.Redirect("servicio.aspx?key=" + ddd, false);
                 }
                 else
                 {

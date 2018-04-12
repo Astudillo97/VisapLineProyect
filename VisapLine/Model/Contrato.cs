@@ -46,9 +46,9 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select * from pr_consultarcontratoidallter('"+cont.terceros_idterceros+"')");
         }
 
-        public bool RegistrarContrato(Contrato cont)
+        public DataTable RegistrarContrato(Contrato cont)
         {
-            return data.OperarDatos("select * from pr_insertarcontrato('" + cont.terceros_idterceros+"','"+cont.codigo+"','"+cont.fechacontrato+"','"+cont.fechafacturacion+ "','" + cont.estado + "','" + cont.tipocontrato_idtipocontrato+"','"+cont.plan_idplan+"','"+cont.iva+"','"+cont.enviofactura+"','"+cont.facturaunica+"','"+cont.personal_idpersonal+"',"+cont.sucursal_idsucursal+",'"+cont.observaciondirec+"','"+cont.direccionenviofact+"','"+cont.barrio_idbarrio+"','"+cont.wifi+"')");
+            return data.ConsultarDatos("select * from pr_insertarcontrato('" + cont.terceros_idterceros+"','"+cont.codigo+"','"+cont.fechacontrato+"','"+cont.fechafacturacion+ "','" + cont.estado + "','" + cont.tipocontrato_idtipocontrato+"','"+cont.plan_idplan+"','"+cont.iva+"','"+cont.enviofactura+"','"+cont.facturaunica+"','"+cont.personal_idpersonal+"',"+cont.sucursal_idsucursal+",'"+cont.observaciondirec+"','"+cont.direccionenviofact+"','"+cont.barrio_idbarrio+"','"+cont.wifi+"')");
         }
 
         public DataTable consultadeserciciodeplancontratado(int contrato) {
