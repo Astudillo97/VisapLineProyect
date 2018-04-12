@@ -282,6 +282,7 @@
                     <li><a id="pan7" href="#pagos" data-toggle="tab">PAGOS</a></li>
                     <li><a id="pan2" href="#insidencias" data-toggle="tab">INCIDENCIAS</a></li>
                     <li><a href="#ordenes" id="pan3" data-toggle="tab">ORDENES</a></li>
+                    <li><a href="#solicitudes" id="pan10" data-toggle="tab">SOLICITUDES</a></li>
                     <li><a href="#aprovisionamiento" id="pan4" data-toggle="tab">APROVISIONAMIENTO</a></li>
                     <li><a href="#elementos" id="pan5" data-toggle="tab">ELEMENTOS</a></li>
                     <li><a href="#mapa" id="pan6" data-toggle="tab">VISTA EN MAPA</a></li>
@@ -437,7 +438,16 @@
                             <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
                     </div>
-                    <div class="tab-pane" id="ordenes"></div>
+                    <div class="tab-pane" id="ordenes">
+                        <div class="box-body">
+                            <asp:GridView CssClass="table table-bordered table-striped table-responsive" ID="listordenes" runat="server"></asp:GridView>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="solicitudes">
+                        <div class="box-body">
+                            <asp:GridView CssClass="table table-bordered table-striped table-responsive" ID="listsolicitudes" runat="server"></asp:GridView>
+                        </div>
+                    </div>
                     <div class="tab-pane" id="aprovisionamiento"></div>
                     <div class="tab-pane" id="elementos"></div>
                     <div class="tab-pane" id="mapa">
