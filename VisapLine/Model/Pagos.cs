@@ -39,7 +39,7 @@ namespace VisapLine.Model
         }
         public DataTable ConsultarPagosidcontrato(Pagos pag)
         {
-            return data.ConsultarDatos(" select * from pr_consultarpagos("+pag.contrato_idcontrato+")");
+            return data.ConsultarDatos("select * from pr_consultarpagos("+pag.contrato_idcontrato+")");
         }
         public DataTable ConsultarPagoByIdPago(Pagos pag)
         {
