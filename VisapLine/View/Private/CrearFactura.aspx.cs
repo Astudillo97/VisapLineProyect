@@ -106,6 +106,11 @@ namespace VisapLine.View.Private
 
         protected void consultacontrato_SelectedIndexChanged(object sender, EventArgs e)
         {
+            GridViewRow gridw = consultacontrato.SelectedRow;
+            Labelidcontrato.Text = Validar.validarlleno(gridw.Cells[0].Text);
+
+
+
 
         }
     }

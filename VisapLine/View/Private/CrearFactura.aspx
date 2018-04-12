@@ -165,51 +165,7 @@
 
                             <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
-                        <!-- /.box-header -->
-                        <%--<div class="box-body">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Estado:</label>
-                                    <div class="col-sm-8">
-                                        <asp:Label ID="Label7" runat="server" CssClass="form-control bg-gray" Height="35px" Width="150px" Text=""></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Iva:</label>
-                                    <div class="col-sm-8">
-                                        <asp:Label ID="Label8" CssClass="form-control bg-gray" runat="server" Height="35px" Width="150px" Text=""></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Direccion:</label>
-                                    <div class="col-sm-8">
-                                        <asp:TextBox ID="TextBox1" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="150px" Height="100px"></asp:TextBox>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Factura:</label>
-                                    <div class="col-sm-8">
-                                        <asp:Label ID="Label3" runat="server" CssClass="form-control bg-gray" Height="35px" Width="150px" Text=""></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Tipo Contrato:</label>
-                                    <div class="col-sm-8">
-                                        <asp:Label ID="Label4" CssClass="form-control bg-gray" runat="server" Height="35px" Width="150px" Text=""></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Observa:</label>
-                                    <div class="col-sm-8">
-                                        <asp:TextBox ID="TextBox2" TextMode="MultiLine" Enabled="false" Rows="5" Columns="15" runat="server" class="form-control bg-gray" Width="150px" Height="100px"></asp:TextBox>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>--%>
+         
                     </div>
                 </div>
             </div>
@@ -226,8 +182,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Nombre:</label>
                                         <div class="col-sm-8">
-                                            <asp:Label ID="Label9" runat="server" CssClass="form-control bg-gray" Height="35px" Width="150px" Text=""></asp:Label>
-                                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                                           <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -267,6 +222,7 @@
                         </div>
                     </div>
                 </div>
+                <asp:Label ID="Labelidcontrato" runat="server" Text="" Visible="false"></asp:Label>
             </div>
             <a href="#panelbusqueda" id="idbusqueda" class="row" data-target=".bs-example-modal-lg" data-toggle="modal"></a>
             <div class="modal fade bs-example-modal-lg" runat="server" id="panelbusqueda" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">

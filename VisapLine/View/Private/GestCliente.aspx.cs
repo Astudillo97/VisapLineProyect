@@ -488,7 +488,7 @@ namespace VisapLine.View.Private
             try
             {
                 GridViewRow gridw = consultacontrato.SelectedRow;
-                fact.contrato_idcontrato = gridw.Cells[0].Text;
+                fact.contrato_idcontrato =Validar.validarlleno(gridw.Cells[0].Text);
                 tablefactura = fact.ConsultarFacturabyContrato(fact);
                 allfactura.DataSource = tablefactura;
                 allfactura.DataBind();
