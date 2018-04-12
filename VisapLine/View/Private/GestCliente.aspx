@@ -309,6 +309,8 @@
 
                             <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                             <Columns>
+                                   <asp:BoundField DataField="idfactura" DataFormatString="{0:d}" HeaderText="#Idfactura"></asp:BoundField>
+                              
                                 <asp:TemplateField HeaderText="FS">
                                     <ItemTemplate>
                                         <label runat="server"><%#Eval("facturaventa") %></label>
