@@ -86,7 +86,8 @@ namespace VisapLine.View.Private
         {
             try
             {
-                allfactura.DataSource = fact.ConsultarFacturas("'"+fecinicio_.Value+"'", "'"+fecfin_.Value+"'", "null::character varying", "null::integer", "1");
+                tablefactura= fact.ConsultarFacturas("'" + fecinicio_.Value + "'", "'" + fecfin_.Value + "'", "null::character varying", "null::integer", "1");
+                allfactura.DataSource = tablefactura;
                 allfactura.DataBind();
                 Alerta.Visible = false;
             }
@@ -273,10 +274,9 @@ namespace VisapLine.View.Private
                         DataRow datf = telefon.ConsultarTelefonosIdTerceros(telefon).Rows[0];
                         if (datf["telefono"].ToString().Length>=10)
                         {
-                            string celular = "57" + "3123801770"; //datf["telefono"].ToString();
+                            string celular = "57" + datf["telefono"].ToString(); //datf["telefono"].ToString();
                             string nombre = item["nombre"].ToString() +" "+ item["apellido"].ToString();
                             ClientScript.RegisterStartupScript(GetType(), "msm", "EnviarSMS('" + msm+"','"+celular+"');", true);
-                            break;
                         }
                     }
                 }

@@ -304,6 +304,11 @@ namespace VisapLine.View.Private
                 referencia_.Text = puntoedit["referenciascol"].ToString();
                 idserv.Text = puntoedit["idservicioscol"].ToString();
                 idpuntoac.Text = puntoedit["idpuntoscol"].ToString();
+                listsolicitudes.DataSource = serv.consultarSolicitudesID(dat);
+                listsolicitudes.DataBind();
+                OrdenSalida ord = new OrdenSalida();
+                listordenes.DataSource= ord.ConsultarByservicio(dat);
+                listordenes.DataBind();
                 try
                 {
                     punt = punto.consultarpuntosdelservicio(e.CommandArgument.ToString());
@@ -312,8 +317,6 @@ namespace VisapLine.View.Private
                 {
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title: 'UUUUPSSS!!!!', text: 'Algo ha ocurrido estamos trabajando para solucionarlo',imageUrl: '../../Contenido/images/monkeyprogramer.jpg',imageSize: '400x250'})", true);
                 }
-
-
             }
             else
             {

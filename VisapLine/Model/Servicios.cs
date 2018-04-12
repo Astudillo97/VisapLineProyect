@@ -94,6 +94,10 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultarsolicitudes()");
         }
+        public DataTable consultarSolicitudesID(string dat)
+        {
+            return data.ConsultarDatos("select * from pr_consultarsolicitudesid("+dat+")");
+        }
 
         public int consutarcontratol(string servicio)
         {

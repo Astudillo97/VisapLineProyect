@@ -265,6 +265,24 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.GridView GridView2;
         
         /// <summary>
+        /// Control listordenes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView listordenes;
+        
+        /// <summary>
+        /// Control listsolicitudes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView listsolicitudes;
+        
+        /// <summary>
         /// Control pais_.
         /// </summary>
         /// <remarks>
