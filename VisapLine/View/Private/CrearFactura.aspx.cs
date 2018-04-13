@@ -32,14 +32,12 @@ namespace VisapLine.View.Private
         Pais pais = new Pais();
         Departamento depart = new Departamento();
         Municipio munic = new Municipio();
-        Barrios barr = new Barrios();
-        
+        Barrios barr = new Barrios();        
         Pagos pg = new Pagos();
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
         protected void Button2_Click(object sender, EventArgs e)
         {
 
@@ -108,9 +106,6 @@ namespace VisapLine.View.Private
         {
             GridViewRow gridw = consultacontrato.SelectedRow;
             Labelidcontrato.Text = Validar.validarlleno(gridw.Cells[0].Text);
-
-
-
 
         }
     }

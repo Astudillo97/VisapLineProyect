@@ -165,7 +165,7 @@
 
                             <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                         </asp:GridView>
-         
+
                     </div>
                 </div>
             </div>
@@ -178,43 +178,23 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12">
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Nombre:</label>
+                                        <label class="col-sm-4 col-form-label">Numero Factura:</label>
                                         <div class="col-sm-8">
-                                           <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Apellido:</label>
+                                        <label class="col-sm-4 col-form-label">Fecha de factura:</label>
                                         <div class="col-sm-8">
-                                            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="Textboxfechafacturacion" runat="server" type="date" class="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Direccion:</label>
+                                        <label class="col-sm-4 col-form-label">Fecha de corte:</label>
                                         <div class="col-sm-8">
-                                            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Nombre:</label>
-                                        <div class="col-sm-8">
-                                            <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Apellido:</label>
-                                        <div class="col-sm-8">
-                                            <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Direccion:</label>
-                                        <div class="col-sm-8">
-                                            <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="Textboxfechacorte" runat="server" type="date" class="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
