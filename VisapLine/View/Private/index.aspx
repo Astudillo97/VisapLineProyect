@@ -57,7 +57,7 @@
                 <div class="small-box bg-purple">
                     <div class="inner">
                         <h3>
-                            <asp:Label ID="Labelregtro" runat="server" Text="1"></asp:Label></h3>
+                            <asp:Label ID="Labelregtro" runat="server" Text=""></asp:Label></h3>
                         <p>Contratos Reg</p>
                     </div>
                     <div class="icon">
@@ -72,7 +72,7 @@
                 <div class="small-box bg-aqua">
                     <div class="inner">
                         <h3>
-                            <asp:Label ID="Label3" runat="server" Text="12"></asp:Label></h3>
+                            <asp:Label ID="Label3" runat="server" Text=""></asp:Label></h3>
                         <p>Usuarios Activos</p>
                     </div>
                     <div class="icon">
@@ -80,11 +80,11 @@
                     </div>
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
-            </div>            
+            </div>
 
             <!-- ./col -->
-     
-           <%-- <div class="col-xl-3 col-md-6 col-6">
+
+            <%-- <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
@@ -97,13 +97,13 @@
                     </div>
               
                 </div>
-            </div>  --%>       
-          <div class="col-xl-3 col-md-6 col-6">
+            </div>  --%>
+            <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
                         <h3>
-                            <asp:Label ID="Label12" runat="server" Text="12"></asp:Label></h3>
+                            <asp:Label ID="Label12" runat="server" Text=""></asp:Label></h3>
                         <p>incidencias Abiertas</p>
                     </div>
                     <div class="icon">
@@ -112,26 +112,6 @@
                     <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
                 </div>
             </div>
-           
-            <asp:Repeater ID="Repeater2" runat="server">
-                <ItemTemplate>
-                    <div class="col-xl-3 col-md-6 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-green">
-                            <div class="inner">
-                                <h3>
-                                    <asp:Label ID="Label12" runat="server" Text=""><%#Eval("num") %></asp:Label>
-                                </h3>
-                                <p>Servicio <%#Eval("estado") %></p>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-cog"></i>
-                            </div>
-                            <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
-                        </div>
-                    </div>
-                </ItemTemplate>
-            </asp:Repeater>
             <asp:Repeater ID="Repeater1" runat="server">
                 <ItemTemplate>
                     <div class="col-xl-3 col-md-6 col-6">
@@ -152,6 +132,26 @@
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
+            <asp:Repeater ID="Repeater2" runat="server">
+                <ItemTemplate>
+                    <div class="col-xl-3 col-md-6 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                                <h3>
+                                    <asp:Label ID="Label12" runat="server" Text=""><%#Eval("num") %></asp:Label>
+                                </h3>
+                                <p>Servicio <%#Eval("estado") %></p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-cog"></i>
+                            </div>
+                            <%--  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>--%>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+
         </div>
         <div class="row" visible="false" runat="server" id="emple">
             <div id="contenedor">

@@ -543,5 +543,10 @@ namespace VisapLine.View.Private
 
             }
         }
+
+        protected void Button1crearfactura_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

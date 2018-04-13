@@ -142,7 +142,11 @@
                                     <input type="text" class="form-control" readonly id="_direccion_" runat="server" placeholder="DIRECCION">
                                 </div>
                             </div>
+                            <div class="float-right">
+                                <asp:Button ID="Button1crearfactura" class="btn btn-success" runat="server" Text="Crear Factura +" OnClick="Button1crearfactura_Click" />
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -191,7 +195,7 @@
                     </div>
                     <div class="box box-primary" style="overflow-x: auto">
                         <h5>Cuenta</h5>
-                        <asp:GridView ID="GridViewcuenta" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False"  GridLines="None">
+                        <asp:GridView ID="GridViewcuenta" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False" GridLines="None">
 
                             <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                             <Columns>
@@ -310,8 +314,8 @@
 
                             <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                             <Columns>
-                                   <asp:BoundField DataField="idfactura" DataFormatString="{0:d}" HeaderText="#Idfactura"></asp:BoundField>
-                              
+                                <asp:BoundField DataField="idfactura" DataFormatString="{0:d}" HeaderText="#Idfactura"></asp:BoundField>
+
                                 <asp:TemplateField HeaderText="FS">
                                     <ItemTemplate>
                                         <label runat="server"><%#Eval("facturaventa") %></label>
@@ -364,14 +368,14 @@
                                 <asp:BoundField DataField="facturaventa" HeaderText="#Factura"></asp:BoundField>
                                 <asp:BoundField DataField="idfactura" HeaderText="ID-Factura"></asp:BoundField>
                                 <asp:BoundField DataField="estadof" HeaderText="Estado"></asp:BoundField>
-                                 <asp:BoundField DataField="valorfac" HeaderText="Valor Fact"></asp:BoundField>
+                                <asp:BoundField DataField="valorfac" HeaderText="Valor Fact"></asp:BoundField>
                                 <asp:BoundField DataField="valorre" HeaderText="Retencion"></asp:BoundField>
                                 <asp:BoundField DataField="saldofac" HeaderText="Saldo"></asp:BoundField>
                                 <asp:BoundField DataField="pagado" HeaderText="Pagado"></asp:BoundField>
                                 <asp:BoundField DataField="fechapago" HeaderText="Fecha de Pago"></asp:BoundField>
-                                 <asp:BoundField DataField="nombre" HeaderText="Personal"></asp:BoundField>
-                                 <asp:BoundField DataField="caja_idcaja_ingr" HeaderText="#Caja"></asp:BoundField>
-                                   <asp:BoundField DataField="tipopago" HeaderText="Metodo"></asp:BoundField>
+                                <asp:BoundField DataField="nombre" HeaderText="Personal"></asp:BoundField>
+                                <asp:BoundField DataField="caja_idcaja_ingr" HeaderText="#Caja"></asp:BoundField>
+                                <asp:BoundField DataField="tipopago" HeaderText="Metodo"></asp:BoundField>
                                 <asp:BoundField DataField="banco" HeaderText="Banco"></asp:BoundField>
                             </Columns>
                             <EditRowStyle BackColor="#2461BF"></EditRowStyle>

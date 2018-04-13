@@ -184,6 +184,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlInputText _direccion_;
         
         /// <summary>
+        /// Control Button1crearfactura.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1crearfactura;
+        
+        /// <summary>
         /// Control consultacontrato.
         /// </summary>
         /// <remarks>
