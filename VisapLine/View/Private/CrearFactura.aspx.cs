@@ -32,11 +32,20 @@ namespace VisapLine.View.Private
         Pais pais = new Pais();
         Departamento depart = new Departamento();
         Municipio munic = new Municipio();
-        Barrios barr = new Barrios();        
+        Barrios barr = new Barrios();
         Pagos pg = new Pagos();
         protected void Page_Load(object sender, EventArgs e)
         {
+            string valor = Convert.ToString(Request.QueryString["key"]);
+            if (valor == null)
+            {
+                Response.Redirect("gestcliente.aspx");
+            }
+            else
+            {
+                consultardatoscliente(valor);
 
+            }
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
@@ -61,36 +70,46 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
-        protected void consultacliente_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+
+        protected void consultacontrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow gridw = consultacontrato.SelectedRow;
+            Labelidcontrato.Text = Validar.validarlleno(gridw.Cells[0].Text);
+
+        }
+        private void consultardatoscliente(string identificacion)
+        {
+            tercero.identificacion = Validar.validarlleno(identificacion);
+            DataRow row = Validar.Consulta(tercero.ConsultarTerceroAvanzado(tercero)).Rows[0];
+            _tipocliente.Value = row["tipoterceros"].ToString();
+            identificacion_.Value = row["identificacion"].ToString();
+            ident = row["identificacion"].ToString();
+            _nombre_.Value = row["nombre"].ToString() + " " + row["apellido"].ToString();
+            _correo_.Value = row["correo"].ToString();
+            _estado_.Value = row["estado"].ToString();
+            _direccion_.Value = row["direccion"].ToString();
+            tlf.terceros_idterceros = row["identificacion"].ToString();
+            DataTable listtelefono = tlf.ConsultarTelefonosIdTerceros(tlf);
+            string telef = "";
+            foreach (DataRow item in listtelefono.Rows)
+            {
+                telef += item["telefono"].ToString() + " ";
+            }
+            _telefono_.Value = telef;
+            contrato.terceros_idterceros = row["idterceros"].ToString();
+            DataTable contclientes = contrato.ConsultarContratoIdTercero(contrato);
+            consultacontrato.DataSource = contclientes;
+            consultacontrato.DataBind();
+        }
+
+        protected void consultacliente_SelectedIndexChanged1(object sender, EventArgs e)
         {
             try
             {
-                DataRow row = tercliente.Rows[e.NewSelectedIndex];
-                _tipocliente.Value = row["tipoterceros"].ToString();
-                identificacion_.Value = row["identificacion"].ToString();
-                ident = row["identificacion"].ToString();
-                _nombre_.Value = row["nombre"].ToString() + " " + row["apellido"].ToString();
-                _correo_.Value = row["correo"].ToString();
-                _estado_.Value = row["estado"].ToString();
-                _direccion_.Value = row["direccion"].ToString();
-                tlf.terceros_idterceros = row["identificacion"].ToString();
-                DataTable listtelefono = tlf.ConsultarTelefonosIdTerceros(tlf);
-                string telef = "";
-                foreach (DataRow item in listtelefono.Rows)
-                {
-                    telef += item["telefono"].ToString() + " - ";
-                }
-                _telefono_.Value = telef;
-                contrato.terceros_idterceros = row["idterceros"].ToString();
-                DataTable contclientes =contrato.ConsultarContratoIdTercero(contrato);               
-                consultacontrato.DataSource = contclientes;
-                consultacontrato.DataBind();
-
+                GridViewRow gridw = consultacliente.SelectedRow;
+                consultardatoscliente(Validar.validarlleno(gridw.Cells[0].Text));
                 Alerta.Visible = false;
                 datos.Visible = true;
-
-
-
             }
             catch (Exception ex)
             {
@@ -98,15 +117,6 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
-
-
-        }
-
-        protected void consultacontrato_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GridViewRow gridw = consultacontrato.SelectedRow;
-            Labelidcontrato.Text = Validar.validarlleno(gridw.Cells[0].Text);
-
         }
     }
 }

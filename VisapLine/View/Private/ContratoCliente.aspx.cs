@@ -48,7 +48,7 @@ namespace VisapLine.View.Private
                     string valor = Convert.ToString(Request.QueryString["key"]);
                     if (valor == null)
                     {
-                        Response.Redirect("RegistroTerceros.aspx");
+                        Response.Redirect("registroterceros.aspx");
                     }
                     else
                     {

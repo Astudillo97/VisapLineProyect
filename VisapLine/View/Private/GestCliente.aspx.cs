@@ -444,6 +444,7 @@ namespace VisapLine.View.Private
                 tercero.identificacion = Validar.validarlleno(gridw.Cells[0].Text);
                 DataRow row = Validar.Consulta(tercero.ConsultarTerceroAvanzado(tercero)).Rows[0];
                 _tipocliente.Value = row["tipoterceros"].ToString();
+
                 identificacion_.Value = row["identificacion"].ToString();
                 ident = row["identificacion"].ToString();
                 _nombre_.Value = row["nombre"].ToString() + " " + row["apellido"].ToString();
@@ -547,6 +548,7 @@ namespace VisapLine.View.Private
         protected void Button1crearfactura_Click(object sender, EventArgs e)
         {
 
+            Response.Redirect("RegistroTerceros.aspx?key="+ identificacion_.Value);
         }
     }
 }

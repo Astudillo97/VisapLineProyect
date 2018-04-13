@@ -215,7 +215,7 @@
                         <div class="modal-body">
                             <div class="tab-pane" runat="server" id="panelconsulta">
                                 <div class="box box-primary" style="overflow-x: auto">
-                                    <asp:GridView runat="server" ID="consultacliente" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanging="consultacliente_SelectedIndexChanging" AutoGenerateColumns="False">
+                                    <asp:GridView runat="server" ID="consultacliente"  OnSelectedIndexChanged="consultacliente_SelectedIndexChanged1" CssClass="table table-bordered table-striped table-responsive"  AutoGenerateColumns="False">
                                         <Columns>
                                             <asp:BoundField DataField="identificacion" HeaderText="CC/NIT"></asp:BoundField>
                                             <asp:TemplateField HeaderText="USUARIO">
@@ -226,7 +226,9 @@
                                             <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
                                             <asp:BoundField DataField="direccion" HeaderText="DIRECCION"></asp:BoundField>
                                             <asp:BoundField DataField="tipoterceros" HeaderText="PERSONA"></asp:BoundField>
-                                            <asp:CommandField SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search" ShowSelectButton="True"></asp:CommandField>
+                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
+                                                <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
+                                            </asp:CommandField>
                                         </Columns>
                                     </asp:GridView>
                                 </div>
