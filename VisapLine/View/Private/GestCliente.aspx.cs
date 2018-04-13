@@ -307,7 +307,7 @@ namespace VisapLine.View.Private
                 listsolicitudes.DataSource = serv.consultarSolicitudesID(dat);
                 listsolicitudes.DataBind();
                 OrdenSalida ord = new OrdenSalida();
-                listordenes.DataSource= ord.ConsultarByservicio(dat);
+                listordenes.DataSource = ord.ConsultarByservicio(dat);
                 listordenes.DataBind();
                 try
                 {
@@ -472,7 +472,7 @@ namespace VisapLine.View.Private
                 GridView2.DataSource = null;
                 GridView2.DataBind();
                 GridViewcuenta.DataSource = null;
-                GridViewcuenta.DataBind();            
+                GridViewcuenta.DataBind();
                 paneldedatosterceros.Visible = true;
                 Alerta.Visible = false;
 
@@ -492,7 +492,7 @@ namespace VisapLine.View.Private
             try
             {
                 GridViewRow gridw = consultacontrato.SelectedRow;
-                fact.contrato_idcontrato =Validar.validarlleno(gridw.Cells[0].Text);
+                fact.contrato_idcontrato = Validar.validarlleno(gridw.Cells[0].Text);
                 tablefactura = fact.ConsultarFacturabyContrato(fact);
                 allfactura.DataSource = tablefactura;
                 allfactura.DataBind();
@@ -545,10 +545,11 @@ namespace VisapLine.View.Private
             }
         }
 
-        protected void Button1crearfactura_Click(object sender, EventArgs e)
-        {
+    
 
-            Response.Redirect("RegistroTerceros.aspx?key="+ identificacion_.Value);
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("gestcliente.aspx?key=" + identificacion_.Value);
         }
     }
 }

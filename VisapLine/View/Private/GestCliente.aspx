@@ -143,10 +143,9 @@
                                 </div>
                             </div>
                             <div class="float-right">
-                                <asp:Button ID="Button1crearfactura" class="btn btn-success" runat="server" Text="Crear Factura +" OnClick="Button1crearfactura_Click" />
+                                <a href="#" runat="server" class="btn btn-success" onserverclick="Button2_Click">Redireccionar</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-lg-7">

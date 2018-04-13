@@ -44,7 +44,6 @@ namespace VisapLine.View.Private
             else
             {
                 consultardatoscliente(valor);
-
             }
         }
         protected void Button2_Click(object sender, EventArgs e)
