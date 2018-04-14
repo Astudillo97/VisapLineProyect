@@ -106,9 +106,9 @@ namespace VisapLine.View.Private
             try
             {
                 GridViewRow gridw = consultacliente.SelectedRow;
-                consultardatoscliente(Validar.validarlleno(gridw.Cells[0].Text));
                 Alerta.Visible = false;
                 datos.Visible = true;
+                consultardatoscliente(Validar.validarlleno(gridw.Cells[0].Text));               
             }
             catch (Exception ex)
             {

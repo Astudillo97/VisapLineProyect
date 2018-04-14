@@ -549,7 +549,7 @@ namespace VisapLine.View.Private
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("gestcliente.aspx?key=" + identificacion_.Value);
+            Response.Redirect("crearfactura.aspx?key=" + identificacion_.Value);
         }
     }
 }
