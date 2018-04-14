@@ -99,16 +99,18 @@ namespace VisapLine.View.Private
             DataTable contclientes = contrato.ConsultarContratoIdTercero(contrato);
             consultacontrato.DataSource = contclientes;
             consultacontrato.DataBind();
+            Alerta.Visible = false;
+            datos.Visible = true;
         }
 
         protected void consultacliente_SelectedIndexChanged1(object sender, EventArgs e)
         {
             try
             {
-                GridViewRow gridw = consultacliente.SelectedRow;
                 Alerta.Visible = false;
                 datos.Visible = true;
-                consultardatoscliente(Validar.validarlleno(gridw.Cells[0].Text));               
+                GridViewRow gridw = consultacliente.SelectedRow;
+                consultardatoscliente(Validar.validarlleno(gridw.Cells[0].Text));
             }
             catch (Exception ex)
             {

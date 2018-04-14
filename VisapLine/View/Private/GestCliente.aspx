@@ -143,7 +143,7 @@
                                 </div>
                             </div>
                             <div class="float-right">
-                                <a href="#" runat="server" class="btn btn-success" onserverclick="Button2_Click">Redireccionar</a>
+                                <a href="#" runat="server" class="btn btn-success" onserverclick="Button2_Click">Crear Factura +</a>
                             </div>
                         </div>
                     </div>
