@@ -34,16 +34,25 @@ namespace VisapLine.View.Private
         Municipio munic = new Municipio();
         Barrios barr = new Barrios();
         Pagos pg = new Pagos();
+        Permisos per = new Permisos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string valor = Convert.ToString(Request.QueryString["key"]);
-            if (valor == null)
+            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
             {
-                Response.Redirect("gestcliente.aspx");
+                string valor = Convert.ToString(Request.QueryString["key"]);
+                if (valor == null)
+                {
+                    Response.Redirect("gestcliente.aspx");
+                }
+                else
+                {
+                    consultardatoscliente(valor);
+                }
             }
             else
             {
-                consultardatoscliente(valor);
+                Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
             }
         }
         protected void Button2_Click(object sender, EventArgs e)
