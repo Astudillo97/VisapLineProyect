@@ -43,5 +43,13 @@ namespace VisapLine.Model
         public bool cancelarselecioninventarion(int datoacancelar) {
             return data.OperarDatos("select * from pr_calcelarinventarioproce("+ datoacancelar + ")");
         }
+
+        public DataTable inventariogrup() {
+            return data.ConsultarDatos("select * from pr_agupacioninventario()");
+        }
+        public DataTable inventdispo(string invent)
+        {
+            return data.ConsultarDatos("select * from rowinventario('"+ invent + "')");
+        }
     }
 }
