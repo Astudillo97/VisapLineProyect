@@ -456,49 +456,52 @@
                         </div>
                     </div>
                     <div class="box-body col">
-                        <asp:Repeater ID="repeateragruper" runat="server" OnItemDataBound="repeateragruper_ItemDataBound">
-                            <ItemTemplate>
-                                <div class="box box-default collapsed-box">
-                                    <div class="box-header with-border">
-                                        <asp:Label ID="tprodcuto" runat="server" Text='<%# Eval("producto") %>' CssClass="box-title"></asp:Label>
-                                        <label>CANTIDAD DE EQUIPOS DISPONIBLES: <%# Eval("cantidad") %></label>
-                                        <div class="box-tools pull-right">
-                                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                        <div class="row">
+                            <asp:Repeater ID="repeateragruper" runat="server" OnItemDataBound="repeateragruper_ItemDataBound">
+                                <ItemTemplate>
+                                    <div class="box box-default col-md-6 collapsed-box">
+                                        <div class="box-header with-border">
+                                            <asp:Label ID="tprodcuto" runat="server" Text='<%# Eval("producto") %>' CssClass="box-title"></asp:Label>
+                                            <label>CANTIDAD DE EQUIPOS DISPONIBLES: <%# Eval("cantidad") %></label>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <table class="table table-bordered table-striped table-responsive no-border tablaexcel">
+                                                    <thead style="background-color: #507CD1">
+                                                        <tr>
+                                                            <th style="color: white">CODIGO</th>
+                                                            <th style="color: white">DESCRIPCCION</th>
+                                                            <th style="color: white">MODELO</th>
+                                                            <th style="color: white">FABRICANTE</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <asp:Repeater ID="childrepeater" runat="server">
+                                                            <ItemTemplate>
+                                                                <tr>
+                                                                    <td><%# Eval("idinventarioval") %></td>
+                                                                    <td>
+                                                                        <label><%# Eval("descripcionval") %></label>
+                                                                        <label><%# Eval("serialval") %> </label>
+                                                                        <label><%# Eval("macval") %></label>
+                                                                    </td>
+                                                                    <td><%# Eval("modeloval") %></td>
+                                                                    <td><%# Eval("fabricanteval") %></td>
+                                                                </tr>
+                                                            </ItemTemplate>
+                                                        </asp:Repeater>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="box-body">
-                                        <div class="row">                                                     
-                                            <table class="table table-bordered table-striped table-responsive no-border tablaexcel">
-                                                <thead style="background-color: #507CD1">
-                                                    <tr>
-                                                        <th style="color: white">CODIGO</th>
-                                                        <th style="color: white">DESCRIPCCION</th>
-                                                        <th style="color: white">MODELO</th>
-                                                        <th style="color: white">FABRICANTE</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <asp:Repeater ID="childrepeater" runat="server">
-                                                        <ItemTemplate>
-                                                            <tr>
-                                                                <td><%# Eval("idinventarioval") %></td>
-                                                                <td>
-                                                                    <label><%# Eval("descripcionval") %></label>
-                                                                    <label><%# Eval("serialval") %> </label>
-                                                                    <label><%# Eval("macval") %></label>
-                                                                </td>
-                                                                <td><%# Eval("modeloval") %></td>
-                                                                <td><%# Eval("fabricanteval") %></td>
-                                                            </tr>
-                                                        </ItemTemplate>
-                                                    </asp:Repeater>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ItemTemplate>
-                        </asp:Repeater>
+
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </div>
                     </div>
                 </div>
 
