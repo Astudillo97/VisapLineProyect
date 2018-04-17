@@ -26,12 +26,15 @@ namespace VisapLine.View.Private
             try
             {
                 if (!IsPostBack)
-                {                  
+                {
+                    repeateragruper.DataSource = invent.inventariogrup();
+                    repeateragruper.DataBind();
                     cargardatosqueseusanentodolado();
                 }
             }
             catch (Exception ex)
             {
+
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
@@ -80,9 +83,6 @@ namespace VisapLine.View.Private
             modelo_inv.DataValueField = "idmodelo";
             modelo_inv.DataTextField = "modelo";
             modelo_inv.DataBind();
-
-            repeteidordeinventario.DataSource = invent.consultarinventario();
-            repeteidordeinventario.DataBind();
 
             tipoproducto_inv.Items.Clear();
             tipoproducto_inv.Items.Add("Seleccionar");
@@ -564,6 +564,14 @@ namespace VisapLine.View.Private
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "nodata()", true);
             }
             
+        }
+
+        protected void repeateragruper_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            Label producto = (Label)e.Item.FindControl("tprodcuto");
+            Repeater childrepeater = (Repeater)e.Item.FindControl("childrepeater");
+            childrepeater.DataSource = invent.inventdispo(producto.Text);
+            childrepeater.DataBind();
         }
     }
 }
