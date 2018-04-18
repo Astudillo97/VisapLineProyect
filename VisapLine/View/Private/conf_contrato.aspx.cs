@@ -45,6 +45,18 @@ namespace VisapLine.View.Private
 
         protected void Guardar(object sender, EventArgs e)
         {
+            try
+            {
+                Validar.validarlleno(contrato_.Value);
+                Validar.validarlleno(fechaactivacionfac.Value);
+                Validar.validarlleno(caso.SelectedValue);
+                contrato.ActaulizarFechaActivacion(contrato_.Value, fechaactivacionfac.Value, caso.SelectedValue);
+                ClientScript.RegisterStartupScript(GetType(), "hwa", "ErrorPunto('ACTUALIZACION EXITOSA!','Prorateo Actualizado correctamente','success');", true);
+            }
+            catch (Exception)
+            {
+                ClientScript.RegisterStartupScript(GetType(), "hwa", "ErrorPunto('ACTUALIZACION FALLIDA','Verifique que los espacios se encuentren correctamente diligenciados!','error');", true);
+            }
 
         }
         protected void consultacontrato_SelectedIndexChanged(object sender, EventArgs e)

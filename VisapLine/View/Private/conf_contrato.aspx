@@ -1,8 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="conf_contrato.aspx.cs" Inherits="VisapLine.View.Private.conf_contrato" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        function ErrorPunto(princiapal, data, accion) {
+            swal(princiapal, data, accion);
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <script type="text/javascript">
+        function ErrorPunto(princiapal, data, accion) {
+            swal(princiapal, data, accion);
+        }
+    </script>
     <section class="content-header">
         <h2>Configuracion de Contrato
         </h2>
@@ -97,7 +108,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Meses Gratis</label>
                                             <div class="col-sm-8">
-                                                <asp:DropDownList runat="server" ID="tipodoc_" CssClass="form-control" AppendDataBoundItems="true">
+                                                <asp:DropDownList runat="server" ID="caso" CssClass="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem>Seleccione</asp:ListItem>
                                                     <asp:ListItem Value="0">Ninguno</asp:ListItem>
                                                     <asp:ListItem Value="1">1 Mes Gratis</asp:ListItem>

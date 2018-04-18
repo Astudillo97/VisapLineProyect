@@ -283,6 +283,11 @@ namespace VisapLine.View.Private
         {
             if (e.CommandName.Equals("buscar"))
             {
+                listordenes.DataSource = null;
+                listordenes.DataBind();
+                listsolicitudes.DataSource = null;
+                listsolicitudes.DataBind();
+
                 string dat = e.CommandArgument.ToString();
                 cargartabla(dat);
                 Labelidincidencia.Text = dat;
@@ -476,9 +481,9 @@ namespace VisapLine.View.Private
                 GridViewcuenta.DataBind();
                 paneldedatosterceros.Visible = true;
                 Alerta.Visible = false;
-                listordenes = null;
+                listordenes.DataSource = null;
                 listordenes.DataBind();
-                listsolicitudes = null;
+                listsolicitudes.DataSource = null;
                 listsolicitudes.DataBind();
 
             }
@@ -495,6 +500,11 @@ namespace VisapLine.View.Private
         {
             try
             {
+                listordenes.DataSource = null;
+                listordenes.DataBind();
+                listsolicitudes.DataSource = null;
+                listsolicitudes.DataBind();
+
                 GridViewRow gridw = consultacontrato.SelectedRow;
                 fact.contrato_idcontrato = Validar.validarlleno(gridw.Cells[0].Text);
                 tablefactura = fact.ConsultarFacturabyContrato(fact);
