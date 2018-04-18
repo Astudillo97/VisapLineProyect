@@ -175,6 +175,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.GridView consultacontrato;
         
         /// <summary>
+        /// Control datosfactura.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl datosfactura;
+        
+        /// <summary>
         /// Control Labelidcontrato.
         /// </summary>
         /// <remarks>
@@ -209,6 +218,15 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Textboxfechacorte;
+        
+        /// <summary>
+        /// Control Textbox8.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Textbox8;
         
         /// <summary>
         /// Control DropDownList1.
@@ -272,6 +290,33 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Textbox7;
+        
+        /// <summary>
+        /// Control datosfactura1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl datosfactura1;
+        
+        /// <summary>
+        /// Control GridView2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView2;
+        
+        /// <summary>
+        /// Control GridView3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView3;
         
         /// <summary>
         /// Control panelbusqueda.

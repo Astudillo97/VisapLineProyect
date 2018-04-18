@@ -8,6 +8,9 @@
     </style>
 
     <script type="text/javascript">
+
+
+
         window.onload = function cerrar() {
             setTimeout(function () {
                 document.getElementById("<%=Alerta.ClientID%>").style.display = 'none';
@@ -31,6 +34,22 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script type="text/javascript">  
+        function trabaja(x) {
+
+            // o parseFlaot si los queres flotantes 
+            numero1 = parseInt(document.getElementById('numero1').value);
+            numero2 = parseInt(document.getElementById('numero2').value);
+            numero3 = parseInt(document.getElementById('numero3').value);
+            numero4 = parseInt(document.getElementById('numero4').value);
+
+            if (x == 'suma') {
+                resultado = numero1 + numero2;
+                document.getElementById('resultado').value = resultado.toFixed(2);
+                // 2 decimales 
+            }
+
+    </script>
     <section class="content-header">
         <h1>Crear Factura</h1>
         <ol class="breadcrumb">
@@ -171,14 +190,17 @@
                     </div>
                 </div>
             </div>
-            <asp:Label ID="Labelidcontrato" runat="server" Text="" Visible="false"></asp:Label>
+
         </div>
-        <div class="box box-default">
+        <div class="box box-default" runat="server" id="datosfactura" visible="false">
             <div class="row">
                 <div class="col-6">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Datos de Factura</h3>
+                            <h3 class="box-title">ID Contrato:
+                                <asp:Label ID="Labelidcontrato" runat="server" Text=""></asp:Label></h3>
+                            <br />
+                            <h3 class="box-title">Datos de la Factura </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -191,21 +213,32 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Fecha de factura:</label>
+                                        <label class="col-sm-4 col-form-label">Fecha de Factura:</label>
                                         <div class="col-sm-8">
                                             <asp:TextBox ID="Textboxfechafacturacion" runat="server" type="date" class="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Fecha de corte:</label>
+                                        <label class="col-sm-4 col-form-label">Fecha de Corte:</label>
                                         <div class="col-sm-8">
                                             <asp:TextBox ID="Textboxfechacorte" runat="server" type="date" class="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Fecha de Vencimiento:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="Textbox8" runat="server" type="date" class="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Estado:</label>
                                         <div class="col-sm-8">
-                                            <asp:DropDownList ID="DropDownList1" class="form-control" runat="server"></asp:DropDownList>
+                                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                <asp:ListItem>Seleccione</asp:ListItem>
+                                                <asp:ListItem>FACTURADO</asp:ListItem>
+                                                <asp:ListItem>ABONADO</asp:ListItem>
+                                                <asp:ListItem>VENCIDO</asp:ListItem>
+                                            </asp:DropDownList>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -265,7 +298,7 @@
                 </div>
             </div>
         </div>
-        <div class="box box-default">
+        <div class="box box-default" runat="server" id="datosfactura1" visible="false">
             <div class="row">
                 <div class="col-6">
                     <div class="box box-default">
@@ -276,6 +309,39 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-12">
+                                    <asp:GridView runat="server" ID="GridView2" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                        <Columns>
+                                            <asp:BoundField DataField="idcontrato" HeaderText="#ID"></asp:BoundField>
+                                            <asp:BoundField DataField="fechacontrato" HeaderText="FECHA" DataFormatString="{0:d}"></asp:BoundField>
+                                            <asp:BoundField DataField="valor" HeaderText="VALOR"></asp:BoundField>
+                                            <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
+                                            <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
+                                            <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
+                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
+                                                <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
+                                            </asp:CommandField>
+                                        </Columns>
+                                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                                        <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                                    </asp:GridView>
                                 </div>
                             </div>
                         </div>
@@ -290,6 +356,39 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-12">
+                                    <asp:GridView runat="server" ID="GridView3" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                        <Columns>
+                                            <asp:BoundField DataField="idcontrato" HeaderText="#ID"></asp:BoundField>
+                                            <asp:BoundField DataField="fechacontrato" HeaderText="FECHA" DataFormatString="{0:d}"></asp:BoundField>
+                                            <asp:BoundField DataField="valor" HeaderText="VALOR"></asp:BoundField>
+                                            <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
+                                            <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
+                                            <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
+                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
+                                                <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
+                                            </asp:CommandField>
+                                        </Columns>
+                                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                                        <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                                    </asp:GridView>
                                 </div>
                             </div>
                         </div>
@@ -297,6 +396,8 @@
                 </div>
             </div>
         </div>
+
+
 
 
         <a href="#panelbusqueda" id="idbusqueda" class="row" data-target=".bs-example-modal-lg" data-toggle="modal"></a>

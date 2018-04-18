@@ -81,8 +81,14 @@ namespace VisapLine.View.Private
 
         protected void consultacontrato_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             GridViewRow gridw = consultacontrato.SelectedRow;
+            datosfactura.Visible = true;
+            datosfactura1.Visible = true;
             Labelidcontrato.Text = Validar.validarlleno(gridw.Cells[0].Text);
+            DataRow saldo = Validar.Consulta(fact.consultarcuenta(Labelidcontrato.Text)).Rows[0];
+
+
 
         }
         private void consultardatoscliente(string identificacion)
