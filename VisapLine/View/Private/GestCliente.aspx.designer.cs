@@ -67,6 +67,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl paneldedatosterceros;
         
         /// <summary>
+        /// Control num.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl num;
+        
+        /// <summary>
         /// Control Label4.
         /// </summary>
         /// <remarks>
