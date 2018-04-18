@@ -494,6 +494,7 @@
     <Content Include="Contenido\images\visa.png" />
     <Content Include="View\Login\login.aspx" />
     <Content Include="View\Private\Almacen.aspx" />
+    <Content Include="View\Private\conf_contrato.aspx" />
     <Content Include="View\Private\consultadefactura.aspx" />
     <Content Include="View\Private\ContratoCliente.aspx" />
     <Content Include="View\Private\CrearFactura.aspx" />
@@ -639,6 +640,13 @@
     </Compile>
     <Compile Include="View\Private\Almacen.aspx.designer.cs">
       <DependentUpon>Almacen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\conf_contrato.aspx.cs">
+      <DependentUpon>conf_contrato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\conf_contrato.aspx.designer.cs">
+      <DependentUpon>conf_contrato.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\consultadefactura.aspx.cs">
       <DependentUpon>consultadefactura.aspx</DependentUpon>

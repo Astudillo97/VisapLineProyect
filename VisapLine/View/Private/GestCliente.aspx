@@ -92,7 +92,7 @@
                 <div class="col-lg-5">
                     <div class="box box-primary" id="paneldedatosterceros" runat="server" visible="false">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Informacion del cliente</h3>
+                            <h3 class="box-title">Informacion del cliente N° <label runat="server" id="num"></label></h3>
                             <div class="box-tools pull-right">
                                 <a href="gesttercero.aspx?codigo=<%=ident%>" class="btn btn-box-tool btn-pinterest glyphicon glyphicon-edit">
                                     <i class="glyphicon glyphicon-user"></i>
@@ -141,6 +141,9 @@
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" readonly id="_direccion_" runat="server" placeholder="DIRECCION">
                                 </div>
+                            </div>
+                            <div class="float-right">
+                                <a href="#" runat="server" class="btn btn-success" onserverclick="ConfiguracionCont">Configuración +</a>
                             </div>
                             <div class="float-right">
                                 <a href="#" runat="server" class="btn btn-success" onserverclick="Button2_Click">Crear Factura +</a>
