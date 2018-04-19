@@ -262,6 +262,7 @@
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <h3 class="box-title">Valores de la Factura</h3>
+                            <label class="col-sm-4 col-form-label">Saldo:</label><asp:Label ID="Label3" runat="server" Text=""></asp:Label><a href="#" runat="server" class="btn btn-success">+</a>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">

@@ -446,6 +446,7 @@ namespace VisapLine.View.Private
                 _tipocliente.Value = row["tipoterceros"].ToString();
 
                 identificacion_.Value = row["identificacion"].ToString();
+                num.InnerHtml = row["idterceros"].ToString();
                 ident = row["identificacion"].ToString();
                 _nombre_.Value = row["nombre"].ToString() + " " + row["apellido"].ToString();
                 _correo_.Value = row["correo"].ToString();
@@ -475,7 +476,10 @@ namespace VisapLine.View.Private
                 GridViewcuenta.DataBind();
                 paneldedatosterceros.Visible = true;
                 Alerta.Visible = false;
-
+                listordenes = null;
+                listordenes.DataBind();
+                listsolicitudes = null;
+                listsolicitudes.DataBind();
 
             }
             catch (Exception ex)
@@ -550,6 +554,10 @@ namespace VisapLine.View.Private
         protected void Button2_Click(object sender, EventArgs e)
         {
             Response.Redirect("crearfactura.aspx?key=" + identificacion_.Value);
+        }
+        protected void ConfiguracionCont(object sender, EventArgs e)
+        {
+            Response.Redirect("conf_contrato.aspx?key=" + num.InnerHtml);
         }
     }
 }

@@ -87,7 +87,11 @@ namespace VisapLine.View.Private
             datosfactura1.Visible = true;
             Labelidcontrato.Text = Validar.validarlleno(gridw.Cells[0].Text);
             DataRow saldo = Validar.Consulta(fact.consultarcuenta(Labelidcontrato.Text)).Rows[0];
-
+            Textbox4.Text = "0";
+            Textbox5.Text = "0";
+            Textbox7.Text = "0";
+            Label3.Text= saldo["saldo"].ToString();
+            Textbox6.Text = "0";
 
 
         }

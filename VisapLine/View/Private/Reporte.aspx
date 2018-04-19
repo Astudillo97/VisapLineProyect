@@ -117,7 +117,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">SALDO</label>
                                             <div class="col-sm-8">
-                                                <asp:textbox runat="server" id="saldo" cssclass="form-control" placeholder="Direccion" />
+                                                <asp:textbox runat="server" id="saldo" cssclass="form-control" placeholder="Saldo" />
                                             </div>
                                         </div>
                                         <div class="form-group row">
