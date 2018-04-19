@@ -1,17 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="conf_contrato.aspx.cs" Inherits="VisapLine.View.Private.conf_contrato" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
+
         function ErrorPunto(princiapal, data, accion) {
             swal(princiapal, data, accion);
         }
-    </script>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
-    <script type="text/javascript">
-        function ErrorPunto(princiapal, data, accion) {
-            swal(princiapal, data, accion);
+
+        function deletealertinci() {
+            swal("LA INCIDENCIA FUE CREADA CON EXITO!", "", "success");
         }
     </script>
     <section class="content-header">
@@ -84,10 +85,10 @@
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li><a class="active" id="pan1" href="#prorateo" data-toggle="tab">PRORATEO</a></li>
+                <li><a id="pan2" href="#recargos" data-toggle="tab">RECARGOS</a></li>
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="prorateo">
-
                     <div class="box box-primary">
                         <div class="box-body">
                             <div class="row">
@@ -96,7 +97,7 @@
                                         <div class="form-group row" id="numerocontrato">
                                             <label class="col-sm-4 col-form-label">Contrato No.</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="contrato_" runat="server" placeholder="">
+                                                <input type="text" disabled="disabled" class="form-control" id="contrato_" runat="server" placeholder="">
                                             </div>
                                         </div>
                                         <div class="form-group row" id="dividentificacion">
@@ -124,7 +125,41 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button class="btn btn-primary col-md-2 float-right" runat="server" onserverclick="Guardar">Guardar</button>
+                            <button class="btn btn-success col-md-2 float-right" runat="server" onserverclick="Guardar">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="recargos">
+
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="form-element">
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-form-label">Contrato No.</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" disabled="disabled" class="form-control" id="numero" runat="server" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-form-label">Valor</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="valor" runat="server" placeholder="$10000">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-form-label">Descripción</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="descripcion" runat="server" placeholder="Descrpcion">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <a href="#" runat="server" onserverclick="GuardarCargo" class="btn btn-success col-md-2 float-right">Guardar Cargo Adicional</a>
                         </div>
                     </div>
                 </div>
