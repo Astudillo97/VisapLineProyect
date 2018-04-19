@@ -262,7 +262,12 @@
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <h3 class="box-title">Valores de la Factura</h3>
-                            <label class="col-sm-4 col-form-label">Saldo:</label><asp:Label ID="Label3" runat="server" Text=""></asp:Label><a href="#" runat="server" class="btn btn-success">+</a>
+                            <br />
+                            <br />
+                            <h3 class="box-title">SALDO:</h3>
+                            <asp:Label ID="Label3" Class="box-title" ForeColor="Red" runat="server" Text=""></asp:Label>
+                            <a href="#" runat="server" class="btn btn-success" onclick="Button1_Click">+</a>
+
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -304,7 +309,7 @@
                 <div class="col-6">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Cargos Adicional del Contrato</h3>
+                            <h3 class="box-title">Cargo Adicional del Contrato</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">

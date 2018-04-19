@@ -138,5 +138,10 @@ namespace VisapLine.View.Private
                 Alerta.Visible = true;
             }
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Textbox6.Text = Label3.Text;
+        }
     }
 }
