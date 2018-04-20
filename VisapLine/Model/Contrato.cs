@@ -102,7 +102,10 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select * from pr_consultarestadoscontratos()");
 
         }
-
+        public bool ActaulizarFechaActivacion(string idcontrat,string fecha, string caso)
+        {
+            return data.OperarDatos("select * from pr_actualizarprorateo("+idcontrat+",'"+fecha+"',"+caso+")");
+        }
        
     }
 }
