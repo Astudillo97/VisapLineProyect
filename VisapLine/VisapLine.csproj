@@ -664,6 +664,7 @@
     <Compile Include="Model\Sucursal.cs" />
     <Compile Include="Model\Telefono.cs" />
     <Compile Include="Model\Terceros.cs" />
+    <Compile Include="Model\Ticket.cs" />
     <Compile Include="Model\TipoContrato.cs" />
     <Compile Include="Model\TipoDoc.cs" />
     <Compile Include="Model\TipoFactura.cs" />
