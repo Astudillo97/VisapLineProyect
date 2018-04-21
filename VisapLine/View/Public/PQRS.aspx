@@ -92,7 +92,9 @@
                         <label>¿Cuál es el tipo de su documento de identidad o el de su empresa?*</label>
                     </div>
                     <div class="col-md-4">
-                          <asp:TextBox runat="server" CssClass="form-control" ></asp:TextBox>             
+                        <asp:DropDownList runat="server" CssClass="form-control">
+                                 <asp:ListItem Text="Seleccione una opcion" Selected="True"></asp:ListItem>
+                        </asp:DropDownList>    
                     </div>
                 </div>
 
@@ -141,7 +143,7 @@
                     </div>
                     <div class="col-md-4">
                        <asp:DropDownList runat="server" CssClass="form-control"> 
-                           <asp:ListItem Text=""></asp:ListItem>
+                        <asp:ListItem Text="Seleccione una opcion" Selected="True"></asp:ListItem>
 
                        </asp:DropDownList>        
                     </div>
