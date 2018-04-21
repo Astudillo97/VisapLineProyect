@@ -9,7 +9,7 @@
 	
 
 	<meta charset="utf-8"/>
-     <link rel="shortcut icon" href="assets/images/imgvisap.ico" />
+     <link rel="shortcut icon" href="../../Content/images/imgvisap.ico" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -18,15 +18,15 @@
 
   
     
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="assets/css/magnific-popup.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="assets/css/flexslider.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="assets/css/animate.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="assets/css/jquery.bxslider.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="assets/css/YTPlayer.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="assets/css/responsive.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../../Content/css/bootstrap.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../../Content/css/magnific-popup.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../../Content/css/flexslider.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../../Content/css/animate.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../../Content/css/font-awesome.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../../Content/css/jquery.bxslider.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../../Content/css/YTPlayer.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../../Content/css/style.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../../Content/css/responsive.css" media="screen"/>
 	
 	<script src="http://www.youtube.com/player_api" id="YTAPI"></script>
 	
@@ -85,7 +85,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#"><img height="50px" src="assets/images/imgvisap.png"/></a>
+						<a class="navbar-brand" href="#"><img height="50px" src="../../Content/images/imgvisap.png"/></a>
 					</div>
 					<div class="navbar-collapse collapse dropdown" >
                         <nav id="menu">
@@ -121,7 +121,7 @@
 					<ul class="slides">
 						<li>
 							<div class="flexcaption">
-                                <img src="assets/images/imgvisap.png"/>
+                                <img src="../../Content/images/imgvisap.png"/>
 							<%--	<h1> <span class="diff-color">Visap</span>Line</h1>
                                 	<p>Comunicación sin límites </p>--%>
 							</div>
@@ -189,7 +189,7 @@
 					</div>
 
 					<div class="img-holder triggerAnimation animated" data-animate="bounceIn">
-						<img alt="" src="images/image.png">
+						<img alt="" src="../../Content/image.png">
 					</div>
 
           
@@ -221,7 +221,7 @@
 								<div class="about-title">
 													
 								</div>
-							<img  height="350px" src="assets/images/nuestra-empresa.jpg"/>
+							<img  height="350px" src="../../Content/images/nuestra-empresa.jpg"/>
 							</div>
 						</div>
 					</div>
@@ -408,22 +408,22 @@
 	</div>
 	
 
-	<script type="text/javascript" src="assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.migrate.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.mb.YTPlayer.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.appear.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.flexslider.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.bxslider.min.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.magnific-popup.min.js"></script>
-	<script type="text/javascript" src="assets/js/bootstrap.js"></script>
-	<script type="text/javascript" src="assets/js/waypoints.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.imagesloaded.min.js"></script>
-  	<script type="text/javascript" src="assets/js/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="../../Content/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../Content/js/jquery.migrate.js"></script>
+	<script type="text/javascript" src="../../Content/js/jquery.mb.YTPlayer.js"></script>
+	<script type="text/javascript" src="../../Content/js/jquery.appear.js"></script>
+	<script type="text/javascript" src="../../Content/js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="../../Content/js/jquery.bxslider.min.js"></script>
+	<script type="text/javascript" src="../../Content/js/jquery.magnific-popup.min.js"></script>
+	<script type="text/javascript" src="../../Content/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../../Content/js/waypoints.js"></script>
+	<script type="text/javascript" src="../../Content/js/jquery.imagesloaded.min.js"></script>
+  	<script type="text/javascript" src="../../Content/js/jquery.isotope.min.js"></script>
   	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7z3qSfW7_1ArWHGs69jHLbLw-jOOGwuk"></script>
-	<script type="text/javascript" src="assets/js/gmap3.min.js"></script>
-	<script type="text/javascript" src="assets/js/smooth-scroll.js"></script>
-	<script type="text/javascript" src="asstes/js/plugins-scroll.js"></script>
-	<script type="text/javascript" src="assets/js/script.js"></script>
+	<script type="text/javascript" src="../../Content/js/gmap3.min.js"></script>
+	<script type="text/javascript" src="../../Content/js/smooth-scroll.js"></script>
+	<script type="text/javascript" src="../../Content/js/plugins-scroll.js"></script>
+	<script type="text/javascript" src="../../Content/js/script.js"></script>
    
 </body>
 </html>

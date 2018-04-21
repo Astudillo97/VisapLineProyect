@@ -23,7 +23,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#"><img height="50px" src="assets/images/imgvisap.png"/></a>
+						<a class="navbar-brand" href="#"><img height="50px" src="../../Content/images/imgvisap.png"/></a>
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -39,7 +39,7 @@
         </header>
         <div class="container">
         <div class="h1">
-            <label>Formulario de registro de petición, queja o recurso (PQRS)</label>
+            <label>Formulario de registro de petición, queja, reclamo, sugerencias, felicitaciones (PQRSF)</label>
                 
         </div>
             <div class="col-md-8 list-group-item">
