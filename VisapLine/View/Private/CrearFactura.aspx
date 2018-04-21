@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="CrearFactura.aspx.cs" Inherits="VisapLine.View.Private.CrearFactura" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="CrearFactura.aspx.cs" Inherits="VisapLine.View.Private.CrearFactura" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -8,9 +8,6 @@
     </style>
 
     <script type="text/javascript">
-
-
-
         window.onload = function cerrar() {
             setTimeout(function () {
                 document.getElementById("<%=Alerta.ClientID%>").style.display = 'none';
@@ -31,25 +28,11 @@
         function panelincidencia() {
             document.getElementById('pan2').click();
         }
+
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type="text/javascript">  
-        function trabaja(x) {
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" onload="sinVueltaAtras();" onpageshow="if (event.persisted) sinVueltaAtras();" onunload="">
 
-            // o parseFlaot si los queres flotantes 
-            numero1 = parseInt(document.getElementById('numero1').value);
-            numero2 = parseInt(document.getElementById('numero2').value);
-            numero3 = parseInt(document.getElementById('numero3').value);
-            numero4 = parseInt(document.getElementById('numero4').value);
-
-            if (x == 'suma') {
-                resultado = numero1 + numero2;
-                document.getElementById('resultado').value = resultado.toFixed(2);
-                // 2 decimales 
-            }
-
-    </script>
     <section class="content-header">
         <h1>Crear Factura</h1>
         <ol class="breadcrumb">
@@ -162,8 +145,8 @@
                                 <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
                                 <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
                                 <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
-                                <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
-                                    <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
+                                <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="fa fa-level-down">
+                                    <ControlStyle CssClass="fa fa-level-down"></ControlStyle>
                                 </asp:CommandField>
                             </Columns>
                             <EditRowStyle BackColor="#2461BF"></EditRowStyle>
@@ -266,7 +249,7 @@
                             <br />
                             <h3 class="box-title">SALDO:</h3>
                             <asp:Label ID="Label3" Class="box-title" ForeColor="Red" runat="server" Text=""></asp:Label>
-                            <a href="#" runat="server" class="btn btn-success" onclick="Button1_Click">+</a>
+                            <a href="#" runat="server" class="btn btn-success fa fa-level-down" onclick="Button1_Click"></a>
 
                         </div>
                         <!-- /.box-header -->
@@ -318,14 +301,13 @@
                                     <asp:GridView runat="server" ID="GridView2" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                         <Columns>
-                                            <asp:BoundField DataField="idcontrato" HeaderText="#ID"></asp:BoundField>
-                                            <asp:BoundField DataField="fechacontrato" HeaderText="FECHA" DataFormatString="{0:d}"></asp:BoundField>
-                                            <asp:BoundField DataField="valor" HeaderText="VALOR"></asp:BoundField>
-                                            <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
-                                            <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
-                                            <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
-                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
-                                                <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
+                                            <asp:BoundField DataField="idcargoadicional" HeaderText="#ID"></asp:BoundField>
+                                            <asp:BoundField DataField="descripcion" HeaderText="Descripcion"></asp:BoundField>
+                                            <asp:BoundField DataField="valor" HeaderText="Valor"></asp:BoundField>
+                                            <asp:BoundField DataField="fecha" HeaderText="Fecha" DataFormatString="{0:d}"></asp:BoundField>
+                                            <asp:BoundField DataField="estadoca" HeaderText="Estado"></asp:BoundField>
+                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="fa fa-fw fa-arrow-right">
+                                                <ControlStyle CssClass="fa fa-fw fa-arrow-right"></ControlStyle>
                                             </asp:CommandField>
                                         </Columns>
                                         <EditRowStyle BackColor="#2461BF"></EditRowStyle>

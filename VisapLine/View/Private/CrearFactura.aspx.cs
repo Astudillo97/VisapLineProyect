@@ -35,6 +35,7 @@ namespace VisapLine.View.Private
         Barrios barr = new Barrios();
         Pagos pg = new Pagos();
         Permisos per = new Permisos();
+        CargoAdicional caradi = new CargoAdicional();
         protected void Page_Load(object sender, EventArgs e)
         {
             string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
@@ -86,13 +87,24 @@ namespace VisapLine.View.Private
             datosfactura.Visible = true;
             datosfactura1.Visible = true;
             Labelidcontrato.Text = Validar.validarlleno(gridw.Cells[0].Text);
+            caradi.contrato_idcontrato_cargo = Labelidcontrato.Text;
+
             DataRow saldo = Validar.Consulta(fact.consultarcuenta(Labelidcontrato.Text)).Rows[0];
             Textbox4.Text = "0";
             Textbox5.Text = "0";
             Textbox7.Text = "0";
-            Label3.Text= saldo["saldo"].ToString();
+            Label3.Text = saldo["saldo"].ToString();
             Textbox6.Text = "0";
+            try
+            {
+                DataTable cargoadicional = Validar.Consulta(caradi.ConsultarCargosIdContratoporefect(caradi));
+                GridView2.DataSource = cargoadicional;
+                GridView2.DataBind();
+            }
+            catch (Exception)
+            {
 
+            }
 
         }
         private void consultardatoscliente(string identificacion)
@@ -130,6 +142,7 @@ namespace VisapLine.View.Private
                 datos.Visible = true;
                 GridViewRow gridw = consultacliente.SelectedRow;
                 consultardatoscliente(Validar.validarlleno(gridw.Cells[0].Text));
+
             }
             catch (Exception ex)
             {
