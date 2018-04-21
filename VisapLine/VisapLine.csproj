@@ -148,6 +148,7 @@
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regulard41d.eot" />
     <Content Include="Contenido\FreeSans.ttf" />
+    <Content Include="Contenido\images\feria_turismo_florencia.jpg" />
     <Content Include="Contenido\images\monkeyprogramer.jpg" />
     <Content Include="Ordenes\2018351857-INS-12422018.pdf" />
     <Content Include="Insidencias\2018351857-INS-12422018.pdf" />

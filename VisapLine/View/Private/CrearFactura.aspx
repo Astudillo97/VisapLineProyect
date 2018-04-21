@@ -145,8 +145,8 @@
                                 <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
                                 <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
                                 <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
-                                <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="fa fa-level-down">
-                                    <ControlStyle CssClass="fa fa-level-down"></ControlStyle>
+                                <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="btn btn-success fa fa-level-down">
+                                    <ControlStyle CssClass="btn btn-success fa fa-level-down"></ControlStyle>
                                 </asp:CommandField>
                             </Columns>
                             <EditRowStyle BackColor="#2461BF"></EditRowStyle>
@@ -280,10 +280,21 @@
                                             <asp:TextBox ID="Textbox7" runat="server" class="form-control"></asp:TextBox>
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+
+                                        <div class="col-sm-8">
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
+                    <center>
+                    <br />
+                    <br />
+                    <asp:Button ID="Button1" Class="btn btn-success" OnClick="Button1_Click1" runat="server" Style="width: 150px; height: 35px" Font-Size="Medium" Text="Crear Factura" />
+              </center>
                 </div>
             </div>
         </div>
@@ -306,8 +317,8 @@
                                             <asp:BoundField DataField="valor" HeaderText="Valor"></asp:BoundField>
                                             <asp:BoundField DataField="fecha" HeaderText="Fecha" DataFormatString="{0:d}"></asp:BoundField>
                                             <asp:BoundField DataField="estadoca" HeaderText="Estado"></asp:BoundField>
-                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="fa fa-fw fa-arrow-right">
-                                                <ControlStyle CssClass="fa fa-fw fa-arrow-right"></ControlStyle>
+                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="btn btn-success fa fa-fw fa-arrow-right">
+                                                <ControlStyle CssClass="btn btn-success fa fa-fw fa-arrow-right"></ControlStyle>
                                             </asp:CommandField>
                                         </Columns>
                                         <EditRowStyle BackColor="#2461BF"></EditRowStyle>
@@ -353,8 +364,8 @@
                                             <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
                                             <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
                                             <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
-                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
-                                                <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
+                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="btn btn-success glyphicon glyphicon-search">
+                                                <ControlStyle CssClass="btn btn-success glyphicon glyphicon-search"></ControlStyle>
                                             </asp:CommandField>
                                         </Columns>
                                         <EditRowStyle BackColor="#2461BF"></EditRowStyle>
@@ -410,8 +421,8 @@
                                         <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
                                         <asp:BoundField DataField="direccion" HeaderText="DIRECCION"></asp:BoundField>
                                         <asp:BoundField DataField="tipoterceros" HeaderText="PERSONA"></asp:BoundField>
-                                        <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
-                                            <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
+                                        <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="btn btn-success glyphicon glyphicon-search">
+                                            <ControlStyle CssClass="btn btn-success glyphicon glyphicon-search"></ControlStyle>
                                         </asp:CommandField>
                                     </Columns>
                                 </asp:GridView>

@@ -34,6 +34,10 @@ namespace VisapLine.Model
             return data.OperarDatos("select * from pr_insertarfactura(0001212121283,'"+fac.fechaemision+"','"+fac.fechavencimiento+"','"+fac.fechacorte+"',"+fac.ConsultarsecueniciaFactura()+",'"+fac.estado+"','"+fac.cuotas+"',"+fac.contrato_idcontrato+")");
         }
 
+        public DataTable RegistrarFactura1(Factura fac)
+        {
+            return data.ConsultarDatos("select * from pr_insertarfactura(0001212121283,'" + fac.fechaemision + "','" + fac.fechavencimiento + "','" + fac.fechacorte + "'," + fac.ConsultarsecueniciaFactura() + ",'" + fac.estado + "','" + fac.cuotas + "'," + fac.contrato_idcontrato + ")");
+        }
         public int ConsultarsecueniciaFactura()
         {
             DataRow dat = data.ConsultarDatos("select * from pr_consultarfacturasecuencia()").Rows[0];
