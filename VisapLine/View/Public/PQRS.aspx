@@ -49,7 +49,7 @@
                           <label class="item">¿Cuál es el nombre de su operador?</label>
                      </div> 
                       <div class="col-md-4 ">
-                             <asp:TextBox runat="server" CssClass="form-control"></asp:TextBox> </div>
+                             <asp:TextBox runat="server" CssClass="form-control" Text="VisapLine" Enabled="false"></asp:TextBox> </div>
                       </div>
                 <br /> 
                    <div class="row">
@@ -60,6 +60,7 @@
 
                        <div class="col-md-4 ">
                             <asp:DropDownList CssClass="form-control" runat="server" ID="REQUERIMIENTO">
+                                <asp:ListItem Text="Seleccione una opcion" Selected="True"></asp:ListItem>
                                 <asp:ListItem Text="PETICION" Value="1"> </asp:ListItem>
                                   <asp:ListItem Text="QUEJA" Value="2"> </asp:ListItem>
                                   <asp:ListItem Text="RECLAMO" Value="3"> </asp:ListItem>
@@ -122,12 +123,27 @@
                     </div>
                 </div>
                 <br />
+                   <div class="row"> 
+                    <div class="col-md-6">
+                        <label>   ¿Servicio objeto de la queja/reclamo ?*</label>
+                    </div>
+                    <div class="col-md-4">
+                       <asp:DropDownList runat="server" CssClass="form-control" Enabled="false"> 
+                           <asp:ListItem Text="Internet" Value="1">INTERNET</asp:ListItem>
+
+                       </asp:DropDownList>        
+                    </div>
+                </div>
+                <br />
                  <div class="row"> 
                     <div class="col-md-6">
                         <label>   ¿Cuál es el objeto de su petición, queja/reclamo o recurso?*</label>
                     </div>
                     <div class="col-md-4">
-                          <asp:TextBox runat="server" CssClass="form-control" ></asp:TextBox>             
+                       <asp:DropDownList runat="server" CssClass="form-control"> 
+                           <asp:ListItem Text=""></asp:ListItem>
+
+                       </asp:DropDownList>        
                     </div>
                 </div>
                 <br />
