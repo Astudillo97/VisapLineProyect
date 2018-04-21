@@ -89,7 +89,7 @@
         </div>
         <div class="tab-pane" runat="server" id="paneldatos">
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <div class="box box-primary" id="paneldedatosterceros" runat="server" visible="false">
                         <div class="box-header with-border">
                             <h3 class="box-title">Informacion del cliente N°
@@ -104,43 +104,43 @@
                         <div class="box-body">
                             <div class="form-group row" id="tipocliente">
                                 <label id="Label4" runat="server" class="col-sm-3 col-form-label">PERSONA</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" readonly id="_tipocliente" runat="server" placeholder="PERSONA">
                                 </div>
                             </div>
                             <div class="form-group row" id="dividentificacion">
                                 <label class="col-sm-3 col-form-label">CC/NIT</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" readonly id="identificacion_" runat="server" placeholder="Nit o Identificación">
                                 </div>
                             </div>
                             <div class="form-group row" id="divnombre">
                                 <label id="_nombr" runat="server" class="col-sm-3 col-form-label">CLIENTE</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" readonly id="_nombre_" runat="server" placeholder="Nombre">
                                 </div>
                             </div>
                             <div class="form-group row" id="divemail">
                                 <label id="_email_" runat="server" class="col-sm-3 col-form-label">CORREO</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" readonly id="_correo_" runat="server" placeholder="Correo">
                                 </div>
                             </div>
                             <div class="form-group row" id="divestado">
                                 <label id="Label2" runat="server" class="col-sm-3 col-form-label">ESTADO</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" readonly id="_estado_" runat="server" placeholder="Estado">
                                 </div>
                             </div>
                             <div class="form-group row" id="divtelefono">
                                 <label id="Label3" runat="server" class="col-sm-3 col-form-label">TELEFONO</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" readonly id="_telefono_" runat="server" placeholder="TELEFONO">
                                 </div>
                             </div>
                             <div class="form-group row" id="divdireccion">
                                 <label id="Label1" runat="server" class="col-sm-3 col-form-label">DIRECCION</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" readonly id="_direccion_" runat="server" placeholder="DIRECCION">
                                 </div>
                             </div>
@@ -154,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-8">
                     <div class="box box-primary" style="overflow-x: auto">
                         <h5>Contrato</h5>
                         <asp:GridView runat="server" ID="consultacontrato" OnSelectedIndexChanged="consultacontrato_SelectedIndexChanged" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
@@ -836,12 +836,12 @@
                     map: map
                 });
                 document.getElementById('<%=latitud_.ClientID%>').value = markers.getPosition().lat();
-            document.getElementById('<%=longitud_.ClientID%>').value = markers.getPosition().lng();
+                document.getElementById('<%=longitud_.ClientID%>').value = markers.getPosition().lng();
 
-            markers.addListener('dragend', function () {
-                document.getElementById('<%=latitud_.ClientID%>').value = markers.getPosition().lat();
-                    document.getElementById('<%=longitud_.ClientID%>').value = markers.getPosition().lng();
-                });
+                markers.addListener('dragend', function () {
+                    document.getElementById('<%=latitud_.ClientID%>').value = markers.getPosition().lat();
+                document.getElementById('<%=longitud_.ClientID%>').value = markers.getPosition().lng();
+            });
             }
 
             function initMap() {
