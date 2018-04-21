@@ -163,7 +163,12 @@ namespace VisapLine.View.Private
             try
             {
 
-               string numfactura= Validar.Consulta(fact.RegistrarFactura1(fact)).Rows[0][0].ToString();
+                fact.contrato_idcontrato = Labelidcontrato.Text;
+                fact.Referenciapago = TextBox1.Text;
+
+
+
+                string numfactura= Validar.Consulta(fact.RegistrarFactura1(fact)).Rows[0][0].ToString();
                 datosfactura1.Visible = true;
                 datosfactura.Visible = false;
             }
