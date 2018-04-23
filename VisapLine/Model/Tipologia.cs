@@ -16,6 +16,7 @@ namespace VisapLine.Model
         public string codTipologia { get; set; }
         public string descTipologia { get; set; }
         public string estaTipologia { get; set; }
+        public string NombreTipologia { get; set; }
 
 
         public DataTable ConsultarTipologia()

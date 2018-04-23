@@ -677,6 +677,7 @@
     <Compile Include="Model\TipoProducto.cs" />
     <Compile Include="Model\TipoResidencia.cs" />
     <Compile Include="Model\TipoTercero.cs" />
+    <Compile Include="Model\TipoTicket.cs" />
     <Compile Include="Model\UsuarioL.cs" />
     <Compile Include="Model\Zonas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

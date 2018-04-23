@@ -90,7 +90,7 @@
                         <label>¿Cuál es el tipo de su documento de identidad o el de su empresa?*</label>
                     </div>
                     <div class="col-md-4">
-                        <asp:DropDownList runat="server" CssClass="form-control">
+                        <asp:DropDownList runat="server" CssClass="form-control" ID="TIPODOC">
                                  <asp:ListItem Text="Seleccione una opcion" Selected="True"></asp:ListItem>
                         </asp:DropDownList>    
                     </div>
@@ -140,7 +140,7 @@
                         <label>   ¿Cuál es el objeto de su petición, queja/reclamo o recurso?*</label>
                     </div>
                     <div class="col-md-4">
-                       <asp:DropDownList runat="server" CssClass="form-control"> 
+                       <asp:DropDownList runat="server" CssClass="form-control" ID="TIPOLOGIA"> 
                         <asp:ListItem Text="Seleccione una opcion" Selected="True"></asp:ListItem>
 
                        </asp:DropDownList>        

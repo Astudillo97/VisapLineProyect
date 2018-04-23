@@ -16,15 +16,16 @@ namespace VisapLineWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             Areas areas = new Areas();
-           
+            
+
             Ticket ticket = new Ticket();
             ServicioTicket servicioTicket = new ServicioTicket();
 
             if (!IsPostBack)
             {
 
-                CargarTipologia();
-
+                CargarTipoTicket();
+                CargarTipoDoc();
 
 
 
@@ -39,14 +40,35 @@ namespace VisapLineWeb
 
         }
 
+        protected void CargarTipoTicket()
+        {
+            TipoTicket tipoTicket = new TipoTicket();
+         
+            DataTable dat = tipoTicket.ConsultarTipoticket();
+            REQUERIMIENTO.DataSource = dat;
+            REQUERIMIENTO.DataTextField = "NombreTipoTicket";
+            REQUERIMIENTO.DataValueField = "idTipoTicket";
+            REQUERIMIENTO.DataBind();
+        }
+
+        protected void CargarTipoDoc()
+        {
+            TipoDoc tipoDoc = new TipoDoc();
+            DataTable dat = tipoDoc.ConsultarTipoDoc();
+            TIPODOC.DataSource = dat;
+            TIPODOC.DataTextField = "tipodoc";
+            TIPODOC.DataValueField = "idtipodoc";
+            TIPODOC.DataBind();
+        }
+
         protected void CargarTipologia()
         {
             Tipologia tipologia = new Tipologia();
-            DataTable inci = tipologia.ConsultarTipologia();
-            REQUERIMIENTO.DataSource = inci;
-            REQUERIMIENTO.DataTextField = "descTipologia";
-            REQUERIMIENTO.DataValueField = "idTipologia";
-            REQUERIMIENTO.DataBind();
+            DataTable dat = tipologia.ConsultarTipologia();
+            TIPOLOGIA.DataSource = dat;
+            TIPOLOGIA.DataTextField = "NombreTipologia";
+            TIPOLOGIA.DataValueField = "idTipologia";
+            TIPOLOGIA.DataBind();
         }
     }
 }
