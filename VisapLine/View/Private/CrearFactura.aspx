@@ -6,20 +6,22 @@
             resize: none;
         }
     </style>
-
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" onload="sinVueltaAtras();" onpageshow="if (event.persisted) sinVueltaAtras();" onunload="">
     <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
-    <script src="../../Contenido/assets/vendor_components/sweetadlert/sweetalert.min.js"></script>
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
-        window.onload = function cerrar() {
-            setTimeout(function () {
-                document.getElementById("<%=Alerta.ClientID%>").style.display = 'none';
-            }, 5000);
-        }
         function deletealert() {
-            swal("LA FACTURA FUE CREADA CON EXITO!", "", "success");
+            swal("LA INCIDENCIA FUE CREADA CON EXITO!", "", "success");
+        }
+        function alerterror() {
+            swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
+        }
+        function alrt() {
+            swal("ESTA OPCION AUN NO ESTA DISPONIBLE!", "Los super ingnieros estan en proceso de implocion espere", "error");
+        }
+        function botonmodalgesti() {
+            document.getElementById("botonmodalcontr").click();
         }
     </script>
     <section class="content-header">

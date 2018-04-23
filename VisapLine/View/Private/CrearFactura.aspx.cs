@@ -179,7 +179,7 @@ namespace VisapLine.View.Private
 
                 string numfactura = Validar.Consulta(fact.RegistrarFactura1(fact)).Rows[0][0].ToString();
                 if (numfactura != null)
-                {                  
+                {
                     datosfactura1.Visible = true;
                     datosfactura.Visible = false;
                     Label4.Text = numfactura;
