@@ -36,7 +36,7 @@ namespace VisapLine.View.Private
         Pagos pg = new Pagos();
         Permisos per = new Permisos();
         CargoAdicional caradi = new CargoAdicional();
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
@@ -86,7 +86,7 @@ namespace VisapLine.View.Private
 
             GridViewRow gridw = consultacontrato.SelectedRow;
             datosfactura.Visible = true;
-       
+
             Labelidcontrato.Text = Validar.validarlleno(gridw.Cells[0].Text);
             caradi.contrato_idcontrato_cargo = Labelidcontrato.Text;
 
@@ -96,6 +96,11 @@ namespace VisapLine.View.Private
             Textbox7.Text = "0";
             Label3.Text = saldo["saldo"].ToString();
             Textbox6.Text = "0";
+            Textbox3.Text = "1293214";
+            Textbox2.Text = "0";
+            DataRow secuencia = Validar.Consulta(fact.Consultarsecuencia()).Rows[0];
+            TextBox1.Text = secuencia["facturaventacol"].ToString();
+
             try
             {
                 DataTable cargoadicional = Validar.Consulta(caradi.ConsultarCargosIdContratoporefect(caradi));
@@ -162,15 +167,24 @@ namespace VisapLine.View.Private
         {
             try
             {
+                fact.contrato_idcontrato = Validar.validarlleno(Labelidcontrato.Text);
+                fact.Referenciapago = Validar.validarlleno(Textbox3.Text);
+                fact.fechaemision = Validar.validarlleno(Textboxfechafacturacion.Text);
+                fact.fechavencimiento = Validar.validarlleno(Textbox8.Text);
+                fact.fechacorte = Validar.validarlleno(Textboxfechacorte.Text);
+                fact.facturaventa = Validar.validarlleno(TextBox1.Text);
+                fact.estado = Validar.validarselected(DropDownList1.Text);
+                fact.cuotas = Validar.validarlleno(Textbox2.Text);
+                fact.saldo = Validar.validarlleno(Textbox7.Text);
 
-                fact.contrato_idcontrato = Labelidcontrato.Text;
-                fact.Referenciapago = TextBox1.Text;
-
-
-
-                string numfactura= Validar.Consulta(fact.RegistrarFactura1(fact)).Rows[0][0].ToString();
-                datosfactura1.Visible = true;
-                datosfactura.Visible = false;
+                string numfactura = Validar.Consulta(fact.RegistrarFactura1(fact)).Rows[0][0].ToString();
+                if (numfactura != null)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                    datosfactura1.Visible = true;
+                    datosfactura.Visible = false;
+                    Label4.Text = numfactura;
+                }
             }
             catch (Exception ex)
             {

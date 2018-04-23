@@ -202,15 +202,15 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Fecha de Corte:</label>
-                                        <div class="col-sm-8">
-                                            <asp:TextBox ID="Textboxfechacorte" runat="server" type="date" class="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Fecha de Vencimiento:</label>
                                         <div class="col-sm-8">
                                             <asp:TextBox ID="Textbox8" runat="server" type="date" class="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Fecha de Corte:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="Textboxfechacorte" runat="server" type="date" class="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -303,6 +303,9 @@
                 <div class="col-6">
                     <div class="box box-default">
                         <div class="box-header with-border">
+                            <h3 class="box-title">N° Factura:
+                                <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label></h3>
+                            <br />
                             <h3 class="box-title">Cargo Adicional del Contrato</h3>
                         </div>
                         <!-- /.box-header -->
