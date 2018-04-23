@@ -179,11 +179,11 @@ namespace VisapLine.View.Private
 
                 string numfactura = Validar.Consulta(fact.RegistrarFactura1(fact)).Rows[0][0].ToString();
                 if (numfactura != null)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                {                  
                     datosfactura1.Visible = true;
                     datosfactura.Visible = false;
                     Label4.Text = numfactura;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
                 }
             }
             catch (Exception ex)

@@ -7,32 +7,21 @@
         }
     </style>
 
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" onload="sinVueltaAtras();" onpageshow="if (event.persisted) sinVueltaAtras();" onunload="">
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <script src="../../Contenido/assets/vendor_components/sweetadlert/sweetalert.min.js"></script>
     <script type="text/javascript">
         window.onload = function cerrar() {
             setTimeout(function () {
                 document.getElementById("<%=Alerta.ClientID%>").style.display = 'none';
             }, 5000);
         }
-        function deletealertinci() {
-            swal("LA INCIDENCIA FUE CREADA CON EXITO!", "", "success");
+        function deletealert() {
+            swal("LA FACTURA FUE CREADA CON EXITO!", "", "success");
         }
-        function alerterrorinci() {
-            swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
-        }
-        function panelbutton() {
-            document.getElementById('idbusqueda').click();
-        }
-        function panelmodalinci() {
-            document.getElementById('idincidencia').click();
-        }
-        function panelincidencia() {
-            document.getElementById('pan2').click();
-        }
-
     </script>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" onload="sinVueltaAtras();" onpageshow="if (event.persisted) sinVueltaAtras();" onunload="">
-
     <section class="content-header">
         <h1>Crear Factura</h1>
         <ol class="breadcrumb">
