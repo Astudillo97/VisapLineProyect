@@ -39,22 +39,33 @@ namespace VisapLine.View.Private
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
-            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
+            DataTable tercer = (DataTable)Session["roles"];
+            string rol = tercer.Rows[0][7].ToString();
+
+            if (rol == "7")
             {
-                string valor = Convert.ToString(Request.QueryString["key"]);
-                if (valor == null)
+                string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+                if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
                 {
-                    Response.Redirect("gestcliente.aspx");
+                    string valor = Convert.ToString(Request.QueryString["key"]);
+                    if (valor == null)
+                    {
+                        Response.Redirect("gestcliente.aspx");
+                    }
+                    else
+                    {
+                        consultardatoscliente(valor);
+                    }
                 }
                 else
                 {
-                    consultardatoscliente(valor);
+                    Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
                 }
             }
             else
             {
                 Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
+
             }
         }
         protected void Button2_Click(object sender, EventArgs e)

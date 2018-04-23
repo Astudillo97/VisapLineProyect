@@ -12,7 +12,7 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         function deletealert() {
-            swal("LA INCIDENCIA FUE CREADA CON EXITO!", "", "success");
+            swal("LA FACTURA FUE CREADA CON EXITO!, INSERTE POR FAVOR EL DETALLE DE LA FACTURA", "", "success");
         }
         function alerterror() {
             swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
