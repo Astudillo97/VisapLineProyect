@@ -61,9 +61,7 @@
                        <div class="col-md-4 ">
                             <asp:DropDownList CssClass="form-control" runat="server" ID="REQUERIMIENTO">
                                 <asp:ListItem Text="Seleccione una opcion" Selected="True"></asp:ListItem>
-                                <asp:ListItem Text="PETICION" Value="1"> </asp:ListItem>
-                                  <asp:ListItem Text="QUEJA" Value="2"> </asp:ListItem>
-                                  <asp:ListItem Text="RECLAMO" Value="3"> </asp:ListItem>
+                              
                             </asp:DropDownList>              
                        </div>        
                    </div>

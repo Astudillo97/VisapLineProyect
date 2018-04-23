@@ -25,9 +25,9 @@ namespace VisapLine.Model
         public string DescTicket { get; set; }
         public string tipoTicket { get; set; }
 
-        public DataTable RegistrarTicket()
+        public bool RegistrarTicket(EmisorTicket emisor, Ticket tick)
         {
-            return data.OperarDatos("select * from public.Insertar_Ticket('"++"')");
+            return data.OperarDatos("select * from public.Insertar_Ticket('"+emisor.NombreEmisorTicket+"','"+emisor.ApellidoEmisorTicket+"','"+emisor.CorreoEmisorticket+"','"+emisor.DocumentoEmisorTicket+"','cc','"+emisor.TelefonoEmisorticket+"','"+tick.DescTicket+"','"+tick.tipoTicket+"','"+tick.TipologiaFK+"','"+tick.ServiciosFK+")");
         }
 
         

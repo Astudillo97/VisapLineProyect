@@ -606,6 +606,7 @@
     <Compile Include="DataAccess\Connection\Postgres\conexion_psql.cs" />
     <Compile Include="DataAccess\Connection\Data.cs" />
     <Compile Include="DataAccess\Data\IData.cs" />
+    <Compile Include="Model\Areas.cs" />
     <Compile Include="Model\AsignacionRol.cs" />
     <Compile Include="Model\banco.cs" />
     <Compile Include="Model\Caja.cs" />
@@ -615,6 +616,7 @@
     <Compile Include="Model\class_pdf.cs" />
     <Compile Include="Model\DetalleCompra.cs" />
     <Compile Include="Model\Egreso.cs" />
+    <Compile Include="Model\EmisorTicket.cs" />
     <Compile Include="Model\Empresa.cs" />
     <Compile Include="Model\excel.cs" />
     <Compile Include="Model\Garantia.cs" />
@@ -658,6 +660,7 @@
     <Compile Include="Model\reporte.cs" />
     <Compile Include="Model\Rol.cs" />
     <Compile Include="Model\Servicios.cs" />
+    <Compile Include="Model\ServicioTicket.cs" />
     <Compile Include="Model\SocketServer.cs" />
     <Compile Include="Model\SoportePago.cs" />
     <Compile Include="Model\Soportes.cs" />
@@ -669,6 +672,7 @@
     <Compile Include="Model\TipoDoc.cs" />
     <Compile Include="Model\TipoFactura.cs" />
     <Compile Include="Model\TipoIncidencia.cs" />
+    <Compile Include="Model\Tipologia.cs" />
     <Compile Include="Model\tipopago.cs" />
     <Compile Include="Model\TipoProducto.cs" />
     <Compile Include="Model\TipoResidencia.cs" />
