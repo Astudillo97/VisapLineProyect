@@ -18,7 +18,7 @@ namespace VisapLineWeb
             Areas areas = new Areas();
             
 
-            Ticket ticket = new Ticket();
+           
             ServicioTicket servicioTicket = new ServicioTicket();
 
             if (!IsPostBack)
@@ -37,6 +37,23 @@ namespace VisapLineWeb
 
         protected void Enviar(object sender, EventArgs e)
         {
+            
+            Ticket ticket = new Ticket();
+            EmisorTicket emisor = new EmisorTicket();
+
+            emisor.NombreEmisorTicket = NombreEmisor.Text;
+            emisor.ApellidoEmisorTicket = ApellidoEmisor.Text;
+            emisor.DocumentoEmisorTicket = documentoEmisor.Text;
+            emisor.tipoDocumentoEmisorTicket = TIPODOC.SelectedValue;
+            emisor.CorreoEmisorticket = CorreoEmisor.Text;
+            emisor.TelefonoEmisorticket = telefonoEmisor.Text;
+
+            ticket.ServiciosFK = TipoServicio.SelectedValue;
+            ticket.DescTicket = Descripcion.InnerText;
+            ticket.tipoTicket = REQUERIMIENTO.SelectedValue;
+            ticket.TipoReclamo = TIPORECLAMO.SelectedValue;
+            ticket.RegistrarTicket(emisor, ticket);
+
 
         }
 

@@ -25,9 +25,11 @@ namespace VisapLine.Model
         public string DescTicket { get; set; }
         public string tipoTicket { get; set; }
 
+        public string TipoReclamo { get; set; }
+
         public bool RegistrarTicket(EmisorTicket emisor, Ticket tick)
         {
-            return data.OperarDatos("select * from public.Insertar_Ticket('"+emisor.NombreEmisorTicket+"','"+emisor.ApellidoEmisorTicket+"','"+emisor.CorreoEmisorticket+"','"+emisor.DocumentoEmisorTicket+"','cc','"+emisor.TelefonoEmisorticket+"','"+tick.DescTicket+"','"+tick.tipoTicket+"','"+tick.TipologiaFK+"','"+tick.ServiciosFK+")");
+            return data.OperarDatos("select * from public.Insertar_Ticket('"+emisor.NombreEmisorTicket+"','"+emisor.ApellidoEmisorTicket+"','"+emisor.CorreoEmisorticket+"','"+emisor.DocumentoEmisorTicket+"',,'"+emisor.TelefonoEmisorticket+"','"+tick.DescTicket+"','"+tick.tipoTicket+"','"+tick.TipologiaFK+"','"+tick.ServiciosFK+"','"+tick.tipoTicket+"','"+tick.DescTicket+"','"+tick.TipoReclamo+")");
         }
 
         

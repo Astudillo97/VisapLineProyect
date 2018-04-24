@@ -72,7 +72,7 @@
                         <label>¿Cual es su nombre o la razón social de su empresa? *</label>
                     </div>
                     <div class="col-md-4">
-                          <asp:TextBox runat="server" CssClass="form-control" ></asp:TextBox>             
+                          <asp:TextBox runat="server" CssClass="form-control" id="NombreEmisor"></asp:TextBox>             
                     </div>
                 </div>
                 <br />
@@ -81,7 +81,7 @@
                         <label>¿Cuáles son sus apellidos? *</label>
                     </div>
                     <div class="col-md-4">
-                          <asp:TextBox runat="server" CssClass="form-control" ></asp:TextBox>             
+                          <asp:TextBox runat="server" CssClass="form-control" ID="ApellidoEmisor" ></asp:TextBox>             
                     </div>
                 </div>
                 <br />
@@ -101,7 +101,7 @@
                         <label> ¿Cuál es el número de su documento de identidad o el de su empresa?*</label>
                     </div>
                     <div class="col-md-4">
-                          <asp:TextBox runat="server" CssClass="form-control" ></asp:TextBox>             
+                          <asp:TextBox runat="server" CssClass="form-control" id="documentoEmisor"></asp:TextBox>             
                     </div>
                 </div>
 
@@ -110,7 +110,7 @@
                         <label> ¿Cuál es el correo electrónico al cual quiere llegue la respuesta? <span class="danger">*</span></label>
                     </div>
                     <div class="col-md-4">
-                          <asp:TextBox runat="server" CssClass="form-control" ></asp:TextBox>             
+                          <asp:TextBox runat="server" CssClass="form-control" ID="CorreoEmisor" ></asp:TextBox>             
                     </div>
                 </div>
 
@@ -119,7 +119,7 @@
                         <label>¿Cuál es el número de telefono de contacto ?</label>
                     </div>
                     <div class="col-md-4">
-                          <asp:TextBox runat="server" CssClass="form-control" ></asp:TextBox>             
+                          <asp:TextBox runat="server" CssClass="form-control" id="telefonoEmisor"></asp:TextBox>             
                     </div>
                 </div>
                 <br />
@@ -128,7 +128,7 @@
                         <label>   ¿Servicio objeto de la queja/reclamo ?*</label>
                     </div>
                     <div class="col-md-4">
-                       <asp:DropDownList runat="server" CssClass="form-control" Enabled="false"> 
+                       <asp:DropDownList runat="server" CssClass="form-control" Enabled="false" ID="TipoServicio"> 
                            <asp:ListItem Text="Internet" Value="1">INTERNET</asp:ListItem>
 
                        </asp:DropDownList>        
@@ -152,7 +152,7 @@
                         <label>    ¿Cuáles son los hechos en que se fundamenta la petición, queja/reclamo o recurso?*</label>
                     </div>
                     <div class="col-md-4">
-                        <textarea runat="server" class="form-control"></textarea>
+                        <textarea runat="server" class="form-control" id="Descripcion"></textarea>
                                 
                     </div>
                 </div>

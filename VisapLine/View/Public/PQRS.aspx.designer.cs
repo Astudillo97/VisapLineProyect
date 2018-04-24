@@ -31,6 +31,24 @@ namespace VisapLineWeb {
         protected global::System.Web.UI.WebControls.DropDownList REQUERIMIENTO;
         
         /// <summary>
+        /// Control NombreEmisor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox NombreEmisor;
+        
+        /// <summary>
+        /// Control ApellidoEmisor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ApellidoEmisor;
+        
+        /// <summary>
         /// Control TIPODOC.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,42 @@ namespace VisapLineWeb {
         protected global::System.Web.UI.WebControls.DropDownList TIPODOC;
         
         /// <summary>
+        /// Control documentoEmisor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox documentoEmisor;
+        
+        /// <summary>
+        /// Control CorreoEmisor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CorreoEmisor;
+        
+        /// <summary>
+        /// Control telefonoEmisor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox telefonoEmisor;
+        
+        /// <summary>
+        /// Control TipoServicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList TipoServicio;
+        
+        /// <summary>
         /// Control TIPORECLAMO.
         /// </summary>
         /// <remarks>
@@ -47,5 +101,14 @@ namespace VisapLineWeb {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList TIPORECLAMO;
+        
+        /// <summary>
+        /// Control Descripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea Descripcion;
     }
 }

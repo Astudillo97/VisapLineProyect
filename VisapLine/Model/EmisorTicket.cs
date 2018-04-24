@@ -14,7 +14,7 @@ namespace VisapLine.Model
         public string DocumentoEmisorTicket { get; set; }
         public string TelefonoEmisorticket { get; set; }
         public string estadoEmisorTicket { get; set; }
-
+        public string tipoDocumentoEmisorTicket { get; set; }
 
 
 
