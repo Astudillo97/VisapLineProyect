@@ -675,6 +675,7 @@
     <Compile Include="Model\Tipologia.cs" />
     <Compile Include="Model\tipopago.cs" />
     <Compile Include="Model\TipoProducto.cs" />
+    <Compile Include="Model\TipoReclamo.cs" />
     <Compile Include="Model\TipoResidencia.cs" />
     <Compile Include="Model\TipoTercero.cs" />
     <Compile Include="Model\TipoTicket.cs" />

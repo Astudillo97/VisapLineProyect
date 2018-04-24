@@ -140,7 +140,7 @@
                         <label>   ¿Cuál es el objeto de su petición, queja/reclamo o recurso?*</label>
                     </div>
                     <div class="col-md-4">
-                       <asp:DropDownList runat="server" CssClass="form-control" ID="TIPOLOGIA"> 
+                       <asp:DropDownList runat="server" CssClass="form-control" ID="TIPORECLAMO"> 
                         <asp:ListItem Text="Seleccione una opcion" Selected="True"></asp:ListItem>
 
                        </asp:DropDownList>        

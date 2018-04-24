@@ -26,7 +26,7 @@ namespace VisapLineWeb
 
                 CargarTipoTicket();
                 CargarTipoDoc();
-
+                CargarTipoReclamo();
 
 
 
@@ -63,12 +63,17 @@ namespace VisapLineWeb
 
         protected void CargarTipologia()
         {
-            Tipologia tipologia = new Tipologia();
-            DataTable dat = tipologia.ConsultarTipologia();
-            TIPOLOGIA.DataSource = dat;
-            TIPOLOGIA.DataTextField = "NombreTipologia";
-            TIPOLOGIA.DataValueField = "idTipologia";
-            TIPOLOGIA.DataBind();
+           
+        }
+
+        protected void CargarTipoReclamo()
+        {
+            TipoReclamo tipoReclamo = new TipoReclamo();
+            DataTable dat = tipoReclamo.ConsultarTipoReclamo();
+            TIPORECLAMO.DataSource = dat;
+            TIPORECLAMO.DataTextField = "nombreTipoReclamo";
+            TIPORECLAMO.DataValueField = "idTipoReclamo";
+            TIPORECLAMO.DataBind();
         }
     }
 }
