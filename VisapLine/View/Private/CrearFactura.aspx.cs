@@ -39,34 +39,27 @@ namespace VisapLine.View.Private
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DataTable tercer = (DataTable)Session["roles"];
-            string rol = tercer.Rows[0][7].ToString();
 
-            if (rol == "7")
+
+            string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
+            if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
             {
-                string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
-                if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
+                string valor = Convert.ToString(Request.QueryString["key"]);
+                if (valor == null)
                 {
-                    string valor = Convert.ToString(Request.QueryString["key"]);
-                    if (valor == null)
-                    {
-                        Response.Redirect("gestcliente.aspx");
-                    }
-                    else
-                    {
-                        consultardatoscliente(valor);
-                    }
+                    Response.Redirect("gestcliente.aspx");
                 }
                 else
                 {
-                    Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
+                    consultardatoscliente(valor);
                 }
             }
             else
             {
                 Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
-
             }
+
+
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
@@ -172,6 +165,7 @@ namespace VisapLine.View.Private
         protected void Button1_Click(object sender, EventArgs e)
         {
             Textbox6.Text = Label3.Text;
+
         }
 
         protected void Button1_Click1(object sender, EventArgs e)
@@ -203,6 +197,15 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
+        }
+
+        protected void Button2_Click1(object sender, EventArgs e)
+        {
+            string valor1 = Textbox4.Text;
+            string valor2 = Textbox5.Text;
+            string valor3 = Textbox6.Text;
+            ulong valor4 = (Convert.ToUInt64(valor1) + Convert.ToUInt64(valor2)) + Convert.ToUInt64(valor3);
+            Textbox7.Text = Convert.ToString(valor4);
         }
     }
 }

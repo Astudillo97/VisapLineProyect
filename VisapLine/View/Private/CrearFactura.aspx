@@ -23,6 +23,21 @@
         function botonmodalgesti() {
             document.getElementById("botonmodalcontr").click();
         }
+
+
+        function sumar() {
+            var valor1 = verificar("Textbox4");
+            var valor2 = verificar("Textbox5");
+            var valor3 = verificar("Textbox6");
+            // realizamos la suma de los valores y los ponemos en la casilla del
+            // formulario que contiene el total
+            document.getElementById("Textbox7").value = parseFloat(valor1) + parseFloat(valor2) + parseFloat(valor3) + parseFloat(valor4);
+        }
+
+        /**
+         * Funcion para verificar los valores de los cuadros de texto. Si no es un
+         * valor numerico, cambia de color el borde del cuadro de texto
+       
     </script>
     <section class="content-header">
         <h1>Crear Factura</h1>
@@ -250,27 +265,35 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Valor Facturado:</label>
                                         <div class="col-sm-8">
-                                            <asp:TextBox ID="Textbox4" runat="server" class="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="Textbox4" runat="server" class="form-control" onkeyup="sumar();"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Iva:</label>
                                         <div class="col-sm-8">
-                                            <asp:TextBox ID="Textbox5" runat="server" class="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="Textbox5" runat="server" class="form-control" onkeyup="sumar();"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Saldo:</label>
                                         <div class="col-sm-8">
-                                            <asp:TextBox ID="Textbox6" runat="server" class="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="Textbox6" runat="server" class="form-control" onkeyup="sumar();"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Total:</label>
-                                        <div class="col-sm-8">
-                                            <asp:TextBox ID="Textbox7" runat="server" class="form-control"></asp:TextBox>
+                                        <div class="input-group col-sm-8">
+                                            <asp:TextBox ID="Textbox7" runat="server" class="form-control" onkeyup="sumar();"></asp:TextBox>
+                                            <span class="input-group-btn">
+                                                <button type="submit" runat="server" name="search"  onserverclick="Button2_Click1" class="btn btn-flat">
+                                                    <i class="fa fa-fw fa-refresh"></i>
+                                                </button>
+                                            </span>
                                         </div>
                                     </div>
+                                    <%-- <div class="input-group">
+                                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                                    </div>--%>
                                     <div class="form-group row">
 
                                         <div class="col-sm-8">
