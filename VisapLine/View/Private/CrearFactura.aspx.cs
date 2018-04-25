@@ -219,9 +219,9 @@ namespace VisapLine.View.Private
             GridViewRow gridw = GridView2.SelectedRow;
             try
             {
-                if (Validar.validartrue(caradi.Actualizarestadocargo(gridw.Cells[0].Text, Label4.Text, gridw.Cells[1].Text, gridw.Cells[2].Text)))
+                if (Validar.validartrue(caradi.Actualizarestadocargo(gridw.Cells[0].Text, Label4.Text,gridw.Cells[1].Text, gridw.Cells[2].Text)))
                 {
-                    Validar.Consulta(detallefactura.ConsultarDetalleIdFactura(Label4.Text));
+                    Validar.Consulta(detallefactura.ConsultarDetalleIdFactura1(Label4.Text));
 
                 }
                 else
