@@ -7,20 +7,35 @@ using System.Configuration;
 using System.Net.Sockets;
 using System.IO;
 using System.Text;
+using VisapLine.DataAccess.Data;
+using VisapLine.DataAccess.Connection;
+using System.Data;
 
 namespace VisapLine.Model
 {
     public class MK
     {
-
+        IData data = new Data();
+        public string iprout { get; set; }
+        public string userrout { get; set; }
+        public string passrout { get; set; }
+        public string nombrerout { get; set; }
+        public string apirout { get; set; }
+        public int zonarout { get; set; }
         Stream connection;
         TcpClient con;
 
+        public MK() {
+        }
         public MK(string ip)
         {
             con = new TcpClient();
             con.Connect(ip, 8728);
             connection = (Stream)con.GetStream();
+        }
+        public bool crearequipo()
+        {
+            return data.OperarDatos("select * from pr_insertarouterboard('" + this.userrout + "','" + this.passrout + "','" + this.iprout + "','" + this.nombrerout + "'," + this.apirout + "," + this.zonarout + ")");
         }
         public void Close()
         {
