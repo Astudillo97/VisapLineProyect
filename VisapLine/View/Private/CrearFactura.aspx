@@ -23,21 +23,62 @@
         function botonmodalgesti() {
             document.getElementById("botonmodalcontr").click();
         }
-
-
         function sumar() {
             var valor1 = verificar("Textbox4");
             var valor2 = verificar("Textbox5");
             var valor3 = verificar("Textbox6");
             // realizamos la suma de los valores y los ponemos en la casilla del
             // formulario que contiene el total
-            document.getElementById("Textbox7").value = parseFloat(valor1) + parseFloat(valor2) + parseFloat(valor3) + parseFloat(valor4);
+            document.getElementById("Textbox7").value = parseFloat(valor1) + parseFloat(valor2) + parseFloat(valor3);
+        }
+        /**
+             * Funcion para verificar los valores de los cuadros de texto. Si no es un
+             * valor numerico, cambia de color el borde del cuadro de texto
+             */
+        function verificar(id) {
+            var obj = document.getElementById(id);
+            if (obj.value == "")
+                value = "0";
+            else
+                value = obj.value;
+            if (validate_importe(value, 1)) {
+                // marcamos como erroneo
+                obj.style.borderColor = "#808080";
+                return value;
+            } else {
+                // marcamos como erroneo
+                obj.style.borderColor = "#f00";
+                return 0;
+            }
         }
 
         /**
-         * Funcion para verificar los valores de los cuadros de texto. Si no es un
-         * valor numerico, cambia de color el borde del cuadro de texto
-       
+         * Funcion para validar el importe
+         * Tiene que recibir:
+         *  El valor del importe (Ej. document.formName.operator)
+         *  Determina si permite o no decimales [1-si|0-no]
+         * Devuelve:
+         *  true-Todo correcto
+         *  false-Incorrecto
+         */
+        function validate_importe(value, decimal) {
+            if (decimal == undefined)
+                decimal = 0;
+
+            if (decimal == 1) {
+                // Permite decimales tanto por . como por ,
+                var patron = new RegExp("^[0-9]+((,|\.)[0-9]{1,2})?$");
+            } else {
+                // Numero entero normal
+                var patron = new RegExp("^([0-9])*$")
+            }
+
+            if (value && value.search(patron) == 0) {
+                return true;
+            }
+            return false;
+        }
+
     </script>
     <section class="content-header">
         <h1>Crear Factura</h1>
@@ -283,9 +324,9 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Total:</label>
                                         <div class="input-group col-sm-8">
-                                            <asp:TextBox ID="Textbox7" runat="server" class="form-control" onkeyup="sumar();"></asp:TextBox>
+                                            <asp:TextBox ID="Textbox7" runat="server" class="form-control"></asp:TextBox>
                                             <span class="input-group-btn">
-                                                <button type="submit" runat="server" name="search"  onserverclick="Button2_Click1" class="btn btn-flat">
+                                                <button type="submit" runat="server" name="search" onserverclick="Button2_Click1" class="btn btn-flat">
                                                     <i class="fa fa-fw fa-refresh"></i>
                                                 </button>
                                             </span>
@@ -326,7 +367,7 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-12">
-                                    <asp:GridView runat="server" ID="GridView2" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                    <asp:GridView runat="server" ID="GridView2" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                         <Columns>
                                             <asp:BoundField DataField="idcargoadicional" HeaderText="#ID"></asp:BoundField>
@@ -372,15 +413,15 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-12">
-                                    <asp:GridView runat="server" ID="GridView3" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                    <asp:GridView runat="server" ID="GridView3" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanged="GridView3_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                         <Columns>
-                                            <asp:BoundField DataField="idcontrato" HeaderText="#ID"></asp:BoundField>
-                                            <asp:BoundField DataField="fechacontrato" HeaderText="FECHA" DataFormatString="{0:d}"></asp:BoundField>
-                                            <asp:BoundField DataField="valor" HeaderText="VALOR"></asp:BoundField>
-                                            <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
-                                            <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
-                                            <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
+                                            <asp:BoundField DataField="iddetalle" HeaderText="#ID"></asp:BoundField>
+                                            <asp:BoundField DataField="cantidad" HeaderText="Cantidad"></asp:BoundField>
+                                            <asp:BoundField DataField="valor" HeaderText="Valor"></asp:BoundField>
+                                            <asp:BoundField DataField="factura_idfactura" HeaderText="Factura"></asp:BoundField>
+                                            <asp:BoundField DataField="descripcion" HeaderText="Descripcion"></asp:BoundField>
+                                            <asp:BoundField DataField="cargoadicional_cargoadicional" HeaderText="Cargo"></asp:BoundField>
                                             <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="btn btn-success glyphicon glyphicon-search">
                                                 <ControlStyle CssClass="btn btn-success glyphicon glyphicon-search"></ControlStyle>
                                             </asp:CommandField>

@@ -35,5 +35,11 @@ namespace VisapLine.Model
         {
             return data.OperarDatos("select * from pr_insertarcargoadicional('" + ca.descripcion + "'," + ca.valor + ",'12-12-2018'," + ca.terceros_idterceroregistra + "," + ca.contrato_idcontrato_cargo + ")");
         }
+
+        public bool Actualizarestadocargo(string idcargoadicional, string descripcion, string valor, string varfactura)
+        {
+            return data.OperarDatos("select* from pr_actualizarcargoadicionalestadoefect('"+ idcargoadicional +  "','"+ varfactura + "','"+ descripcion + "','"+ valor + "')");
+        }
+
     }
 }

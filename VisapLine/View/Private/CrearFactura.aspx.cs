@@ -36,6 +36,7 @@ namespace VisapLine.View.Private
         Pagos pg = new Pagos();
         Permisos per = new Permisos();
         CargoAdicional caradi = new CargoAdicional();
+        Detalle detallefactura = new Detalle();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -206,6 +207,35 @@ namespace VisapLine.View.Private
             string valor3 = Textbox6.Text;
             ulong valor4 = (Convert.ToUInt64(valor1) + Convert.ToUInt64(valor2)) + Convert.ToUInt64(valor3);
             Textbox7.Text = Convert.ToString(valor4);
+        }
+
+        protected void GridView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow gridw = GridView2.SelectedRow;
+            try
+            {
+                if (Validar.validartrue(caradi.Actualizarestadocargo(gridw.Cells[0].Text, Label4.Text, gridw.Cells[1].Text, gridw.Cells[2].Text)))
+                {
+                    Validar.Consulta(detallefactura.ConsultarDetalleIdFactura(Label4.Text));
+
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
     }
 }
