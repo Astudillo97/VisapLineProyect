@@ -44,14 +44,14 @@ namespace VisapLineWeb
             emisor.NombreEmisorTicket = NombreEmisor.Text;
             emisor.ApellidoEmisorTicket = ApellidoEmisor.Text;
             emisor.DocumentoEmisorTicket = documentoEmisor.Text;
-            emisor.tipoDocumentoEmisorTicket = TIPODOC.SelectedValue;
+            emisor.tipoDocumentoEmisorTicket = Int32.Parse(TIPODOC.SelectedValue);
             emisor.CorreoEmisorticket = CorreoEmisor.Text;
             emisor.TelefonoEmisorticket = telefonoEmisor.Text;
 
-            ticket.ServiciosFK = TipoServicio.SelectedValue;
+            ticket.ServiciosFK = Int32.Parse(TipoServicio.SelectedValue);
             ticket.DescTicket = Descripcion.InnerText;
-            ticket.tipoTicket = REQUERIMIENTO.SelectedValue;
-            ticket.TipoReclamo = TIPORECLAMO.SelectedValue;
+            ticket.tipoTicket = Int32.Parse(REQUERIMIENTO.SelectedValue);
+            ticket.TipoReclamo = Int32.Parse(TIPORECLAMO.SelectedValue);
             ticket.RegistrarTicket(emisor, ticket);
 
 
@@ -63,8 +63,8 @@ namespace VisapLineWeb
          
             DataTable dat = tipoTicket.ConsultarTipoticket();
             REQUERIMIENTO.DataSource = dat;
-            REQUERIMIENTO.DataTextField = "NombreTipoTicket";
-            REQUERIMIENTO.DataValueField = "idTipoTicket";
+            REQUERIMIENTO.DataTextField = "nombretipoticket";
+            REQUERIMIENTO.DataValueField = "idtipoticket";
             REQUERIMIENTO.DataBind();
         }
 
@@ -88,8 +88,8 @@ namespace VisapLineWeb
             TipoReclamo tipoReclamo = new TipoReclamo();
             DataTable dat = tipoReclamo.ConsultarTipoReclamo();
             TIPORECLAMO.DataSource = dat;
-            TIPORECLAMO.DataTextField = "nombreTipoReclamo";
-            TIPORECLAMO.DataValueField = "idTipoReclamo";
+            TIPORECLAMO.DataTextField = "nombretiporeclamo";
+            TIPORECLAMO.DataValueField = "idtiporeclamo";
             TIPORECLAMO.DataBind();
         }
     }

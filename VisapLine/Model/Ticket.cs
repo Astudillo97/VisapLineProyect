@@ -16,20 +16,20 @@ namespace VisapLine.Model
         public string fechaCreacionTicket { get; set; }
         public string empaTicket { get; set; }
         public string estaTicket { get; set; }
-        public string TipologiaFK { get; set; }
-        public string ServiciosFK { get; set; }
-        public string MedioAtencionFK { get; set; }
-        public string EmisorTicketFK { get; set; }
-        public string RespuestaTicketFK { get; set; }
-        public string AreasFK { get; set; }
+        public int TipologiaFK { get; set; }
+        public int ServiciosFK { get; set; }
+        public int MedioAtencionFK { get; set; }
+        public int EmisorTicketFK { get; set; }
+        public int RespuestaTicketFK { get; set; }
+        public int AreasFK { get; set; }
         public string DescTicket { get; set; }
-        public string tipoTicket { get; set; }
+        public int tipoTicket { get; set; }
 
-        public string TipoReclamo { get; set; }
+        public int TipoReclamo { get; set; }
 
         public bool RegistrarTicket(EmisorTicket emisor, Ticket tick)
         {
-            return data.OperarDatos("select * from public.Insertar_Ticket('"+emisor.NombreEmisorTicket+"','"+emisor.ApellidoEmisorTicket+"','"+emisor.CorreoEmisorticket+"','"+emisor.DocumentoEmisorTicket+"',,'"+emisor.TelefonoEmisorticket+"','"+tick.DescTicket+"','"+tick.tipoTicket+"','"+tick.TipologiaFK+"','"+tick.ServiciosFK+"','"+tick.tipoTicket+"','"+tick.DescTicket+"','"+tick.TipoReclamo+")");
+            return data.OperarDatos("select * from public.Insertar_Ticket('"+emisor.NombreEmisorTicket+"','"+emisor.ApellidoEmisorTicket+"','"+emisor.CorreoEmisorticket+"','"+emisor.DocumentoEmisorTicket+"','"+emisor.tipoDocumentoEmisorTicket+"','"+emisor.TelefonoEmisorticket+"','"+tick.DescTicket+"','"+tick.tipoTicket+"','"+tick.ServiciosFK+"','"+tick.tipoTicket+"','"+tick.TipoReclamo+"')");
         }
 
         

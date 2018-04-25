@@ -22,7 +22,7 @@ namespace VisapLine.Model
         public DataTable ConsultarServicioTicket()
         {
 
-            return data.ConsultarDatos("Select * from public.Consultar_Servicio");
+            return data.ConsultarDatos("Select * from public.ConsultarServicioTicket()");
         }
 
     }

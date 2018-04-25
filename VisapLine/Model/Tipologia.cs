@@ -21,7 +21,7 @@ namespace VisapLine.Model
 
         public DataTable ConsultarTipologia()
         {
-            return data.ConsultarDatos("select * from public.Consultar_Tipologia");
+            return data.ConsultarDatos("select * from public.Tipologia");
         }
 
     }

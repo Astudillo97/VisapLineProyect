@@ -19,7 +19,7 @@ namespace VisapLine.Model
 
         public DataTable ConsultarTipoticket()
         {
-            return data.ConsultarDatos("select * from public.consultar_tipoticket()");
+            return data.ConsultarDatos("select * from public.ConsultarTipoTicket()");
         }
     }
 }

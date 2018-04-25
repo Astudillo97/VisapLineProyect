@@ -19,7 +19,7 @@ namespace VisapLine.Model
         public DataTable ConsultarTipoReclamo()
         {
 
-            return data.ConsultarDatos("select * from public.Consultar_TipoReclamo()");
+            return data.ConsultarDatos("select * from public.ConsultarTipoReclamo()");
         }
         
     }
