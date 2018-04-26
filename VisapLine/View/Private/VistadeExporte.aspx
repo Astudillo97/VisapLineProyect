@@ -5,13 +5,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content">
         <div class="box box-body">
-
         </div>
         <div class="box box-body">
             <div class="row">
                 <div class="col-md-auto col-lg-12" style="overflow-x: scroll">
                     <table class="table table-hover no-border table-striped table-responsive" id="example">
-                        <thead>
+                        <%--<thead>
                             <tr>
                                 <th>TIPO DE COMPROBANTE (OBLIGATORIO)
                                 </th>
@@ -138,9 +137,31 @@
                                 <th>NÚMERO DE CAJA ASOCIADA AL COMPROBANTE
                                 </th>
                             </tr>
-                        </thead>
+                        </thead>--%>
                         <tbody>
-                            <asp:Repeater ID="repetidor" runat="server">
+                            <% if (exportsiigo != null)
+                                {
+                                    foreach (System.Data.DataRow item in exportsiigo.Rows)
+                                    {
+                            %>
+                            <tr>
+                                <% for (int i = 0; i < item.ItemArray.Length; i++)
+                                    {
+                                %>
+                                           <th><%=item.ItemArray[i].ToString() %></th>
+                                            <%
+                                                } %>
+                            </tr>
+                            <%
+                                    }
+                                }%>
+                            <tr>
+                                <th>F
+                                </th>
+                                <th>11
+                                </th>
+                            </tr>
+                            <%-- <asp:Repeater ID="repetidor" runat="server">
                                 <ItemTemplate>
                                     <tr>
                                         <th>F
@@ -269,7 +290,7 @@
                                         </th>
                                     </tr>
                                 </ItemTemplate>
-                            </asp:Repeater>
+                            </asp:Repeater>--%>
                         </tbody>
                     </table>
                 </div>

@@ -88,12 +88,20 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Npgsql, Version=3.2.6.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.3.2.6\lib\net451\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=106.2.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.2.1\lib\net452\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -125,6 +133,40 @@
     <Content Include="Archivos\imgvisap.png" />
     <Content Include="Archivos\Presentación1.jpg" />
     <Content Include="Archivos\publicidad.jpg" />
+    <None Include="Connected Services\ComandCmd\ExecuteCmd.wsdl" />
+    <Content Include="Connected Services\ComandCmd\VisapLine.ComandCmd.ExecuteCommandResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\MovimientoContable\configuration91.svcinfo" />
+    <None Include="Connected Services\MovimientoContable\configuration.svcinfo" />
+    <None Include="Connected Services\MovimientoContable\MovCont1.wsdl" />
+    <None Include="Connected Services\MovimientoContable\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\ComandCmd\ExecuteCmd.disco" />
+    <None Include="Connected Services\ComandCmd\configuration91.svcinfo" />
+    <None Include="Connected Services\ComandCmd\configuration.svcinfo" />
+    <None Include="Connected Services\ComandCmd\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\MovimientoContable\MovCont1.disco" />
+    <None Include="Connected Services\ServiceReference1\MovCont.wsdl" />
+    <None Include="Connected Services\Servicio\MovCont.disco" />
+    <None Include="Connected Services\Servicio\configuration91.svcinfo" />
+    <None Include="Connected Services\Servicio\configuration.svcinfo" />
+    <None Include="Connected Services\Servicio\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\ServiceReference1\MovCont.disco" />
+    <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
+    <None Include="Connected Services\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.eot" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.ttf" />
     <Content Include="Contenido\assets\vendor_components\font-awesome\fonts\fontawesome-webfont3e6e.woff" />
@@ -151,6 +193,7 @@
     <Content Include="Contenido\images\monkeyprogramer.jpg" />
     <Content Include="Ordenes\2018351857-INS-12422018.pdf" />
     <Content Include="Insidencias\2018351857-INS-12422018.pdf" />
+    <None Include="Connected Services\Servicio\MovCont.wsdl" />
     <None Include="packages.config" />
     <Content Include="Contenido\assets\vendor_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="Contenido\assets\vendor_components\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -385,9 +428,19 @@
     <Content Include="index.html" />
     <Content Include="View\Login\logeomk.aspx" />
     <Content Include="View\Private\Admin.Master" />
+    <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\localhost\MovCont.wsdl" />
+    <Content Include="Web References\localhost\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -536,11 +589,32 @@
     <Content Include="View\Private\VistadeExporte.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
     <Content Include="View\Public\facturacion.aspx" />
+    <None Include="Web References\localhost\MovCont1.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ComandCmd\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\MovimientoContable\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\Servicio\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\Connection\Postgres\conexion_psql.cs" />
     <Compile Include="DataAccess\Connection\Data.cs" />
     <Compile Include="DataAccess\Data\IData.cs" />
@@ -550,6 +624,7 @@
     <Compile Include="Model\CargoTercero.cs" />
     <Compile Include="Model\CategoriaIncidencia.cs" />
     <Compile Include="Model\Class1.cs" />
+    <Compile Include="Model\class_export.cs" />
     <Compile Include="Model\class_pdf.cs" />
     <Compile Include="Model\DetalleCompra.cs" />
     <Compile Include="Model\Egreso.cs" />
@@ -613,6 +688,11 @@
     <Compile Include="Model\UsuarioL.cs" />
     <Compile Include="Model\Zonas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="View\Login\logeomk.aspx.cs">
       <DependentUpon>logeomk.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -935,9 +1015,39 @@
     <Compile Include="View\Public\facturacion.aspx.designer.cs">
       <DependentUpon>facturacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web References\localhost\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="soportes\soporte_Contratos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ComandCmd\" />
+    <WCFMetadataStorage Include="Connected Services\MovimientoContable\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
+    <WCFMetadataStorage Include="Connected Services\Servicio\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:58054/Connected%2520Services/MovimientoContable/MovCont1.disco">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\localhost\</RelPath>
+      <UpdateFromURL>http://localhost:58054/Connected%2520Services/MovimientoContable/MovCont1.disco</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>VisapLine_localhost_MovCont</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

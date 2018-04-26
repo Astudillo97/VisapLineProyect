@@ -65,6 +65,7 @@
                                     </div>
                                     <div>
                                         <asp:Button CssClass=" btn btn-success float-right" Text="Actualizar" OnClick="btnActualizar_Click" runat="server" ID="btnActualizar" />
+                                        <asp:Button CssClass=" btn btn-success float-right" Text="Prueba" OnClick="CargarSiigo" runat="server" ID="Prueba" />
                                     </div>
                                 </div>
                             </div>
@@ -97,8 +98,9 @@
                         </div>
                     </div>
                 </div>
-                <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+                
             </div>
         </div>
+        <asp:GridView ID="GridView1" runat="server"></asp:GridView>
     </section>
 </asp:Content>
