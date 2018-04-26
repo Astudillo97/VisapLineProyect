@@ -22,33 +22,44 @@ namespace VisapLine.Model
         public string nombrerout { get; set; }
         public string apirout { get; set; }
         public int zonarout { get; set; }
+        public int zonastring { get; set; }
         Stream connection;
         TcpClient con;
 
         public MK() {
         }
-        public MK(string ip)
+        public MK(string nombrerouter)
         {
+            DataTable dt = data.ConsultarDatos("select * from pr_consultarrouterboard('" + nombrerouter + "')");
+            this.nombrerout = dt.Rows[0][4].ToString();
+            this.userrout = dt.Rows[0][1].ToString();
+            this.passrout = dt.Rows[0][2].ToString();
+            this.iprout = dt.Rows[0][3].ToString();
+            this.apirout = dt.Rows[0][5].ToString();
             con = new TcpClient();
-            con.Connect(ip, 8728);
+            con.Connect(this.iprout, int.Parse(this.apirout));
             connection = (Stream)con.GetStream();
         }
         public bool crearequipo()
         {
             return data.OperarDatos("select * from pr_insertarouterboard('" + this.userrout + "','" + this.passrout + "','" + this.iprout + "','" + this.nombrerout + "'," + this.apirout + "," + this.zonarout + ")");
         }
+        public DataTable consultarequipos() {
+            return data.ConsultarDatos("select * from pr_consultarroutername()");
+        }
+
         public void Close()
         {
             connection.Close();
             con.Close();
         }
-        public bool Login(string username, string password)
+        public bool Login()
         {
             Send("/login", true);
             string hash = Read()[0].Split(new string[] { "ret=" }, StringSplitOptions.None)[1];
             Send("/login");
-            Send("=name=" + username);
-            Send("=response=00" + EncodePassword(password, hash), true);
+            Send("=name=" + this.userrout);
+            Send("=response=00" + EncodePassword(this.passrout, hash), true);
             if (Read()[0] == "!done")
             {
                 return true;
