@@ -48,9 +48,9 @@ namespace VisapLine.Model
             return data.ConsultarDatos("select * from pr_consultarfacturabetwenfechas(" + inicio + "," + fin + "," + identf + "," + codigo + "," + caso + ")");
         }
 
-        public DataTable ConsultaSiigo(string fecha1, string fecha2)
+        public DataTable ConsultaSiigo(string fecha1, string fecha2,string parametro, string caso)
         {
-            return data.ConsultarDatos("select * from pr_consultarparasiigo('" + fecha1 + "', '" + fecha2 + "')");
+            return data.ConsultarDatos("select * from pr_consultarparasiigo('"+fecha1+"', '"+fecha2+"','"+parametro+"',"+caso+")");
         }
 
 
