@@ -148,6 +148,11 @@
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regulard41d.eot" />
     <Content Include="Contenido\FreeSans.ttf" />
+    <Content Include="Contenido\plan10mb.png" />
+    <Content Include="Contenido\plan3mb.png" />
+    <Content Include="Contenido\plan4mb.png" />
+    <Content Include="Contenido\plan5mb.png" />
+    <Content Include="Contenido\plan8mb.png" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\flexslider.css" />
