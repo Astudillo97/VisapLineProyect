@@ -10,7 +10,29 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
- 
+ <style>
+     #butonEnvio{
+         display: inline-block;
+    padding: 10px 30px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+     }
+ </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -42,7 +64,7 @@
             <label>Formulario de registro de petición, queja, reclamo, sugerencias, felicitaciones (PQRSF)</label>
                 
         </div>
-            <div class="col-md-8 list-group-item">
+            <div class="col-md-8 list-group-item" style="width:auto">
               
                   <div class="row">
                      <div class="col-md-6">
@@ -59,7 +81,7 @@
                         (seleccione de acuerdo al requerimiento que desea presentar)</label></div>
 
                        <div class="col-md-4 ">
-                            <asp:DropDownList CssClass="form-control" runat="server" ID="REQUERIMIENTO">
+                            <asp:DropDownList CssClass="form-control" AppendDataBoundItems="true" runat="server" ID="REQUERIMIENTO" >
                                 <asp:ListItem Text="Seleccione una opcion" Selected="True"></asp:ListItem>
                               
                             </asp:DropDownList>              
@@ -90,12 +112,12 @@
                         <label>¿Cuál es el tipo de su documento de identidad o el de su empresa?*</label>
                     </div>
                     <div class="col-md-4">
-                        <asp:DropDownList runat="server" CssClass="form-control" ID="TIPODOC">
+                        <asp:DropDownList runat="server" AppendDataBoundItems="true" CssClass="form-control" ID="TIPODOC">
                                  <asp:ListItem Text="Seleccione una opcion" Selected="True"></asp:ListItem>
                         </asp:DropDownList>    
                     </div>
                 </div>
-
+                  <br />
                     <div class="row"> 
                     <div class="col-md-6">
                         <label> ¿Cuál es el número de su documento de identidad o el de su empresa?*</label>
@@ -104,7 +126,7 @@
                           <asp:TextBox runat="server" CssClass="form-control" id="documentoEmisor"></asp:TextBox>             
                     </div>
                 </div>
-
+                  <br />
                    <div class="row"> 
                     <div class="col-md-6">
                         <label> ¿Cuál es el correo electrónico al cual quiere llegue la respuesta? <span class="danger">*</span></label>
@@ -113,7 +135,7 @@
                           <asp:TextBox runat="server" CssClass="form-control" ID="CorreoEmisor" ></asp:TextBox>             
                     </div>
                 </div>
-
+                  <br />
                  <div class="row"> 
                     <div class="col-md-6">
                         <label>¿Cuál es el número de telefono de contacto ?</label>
@@ -140,7 +162,7 @@
                         <label>   ¿Cuál es el objeto de su petición, queja/reclamo o recurso?*</label>
                     </div>
                     <div class="col-md-4">
-                       <asp:DropDownList runat="server" CssClass="form-control" ID="TIPORECLAMO"> 
+                       <asp:DropDownList runat="server" AppendDataBoundItems="true" CssClass="form-control" ID="TIPORECLAMO"> 
                         <asp:ListItem Text="Seleccione una opcion" Selected="True"></asp:ListItem>
 
                        </asp:DropDownList>        
@@ -157,17 +179,19 @@
                     </div>
                 </div>
             </div>
-          <br />
-            <div class="row">
+         </div>
+            <div  style="    padding-right: 10px; padding-left: 15px; margin-right: auto;   margin-left: 75%;   margin-top: 4%;">
                 <div class="col-md-5">
-                     <asp:Button  runat="server" CssClass="btn btn-success" Text="Enviar" OnClick="Enviar"/>
+                     <asp:Button  runat="server" CssClass="btn-success" ID="butonEnvio" Text="Enviar" OnClick="Enviar"/>
                 </div>
-               
+                
             </div>
 
 
-        </div>
-
+   <br />
+        
+   <br />
+   <br />
        <footer>
 			<div class="container">
 				<p>&#169; 2018 VisapLine,  All Rights Reserved</p>

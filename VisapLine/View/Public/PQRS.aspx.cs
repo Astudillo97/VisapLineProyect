@@ -37,22 +37,30 @@ namespace VisapLineWeb
 
         protected void Enviar(object sender, EventArgs e)
         {
+            try
+            {
+                Ticket ticket = new Ticket();
+                EmisorTicket emisor = new EmisorTicket();
+
+                emisor.NombreEmisorTicket = Validar.validarlleno(NombreEmisor.Text);
+                emisor.ApellidoEmisorTicket = Validar.validarlleno(ApellidoEmisor.Text);
+                emisor.DocumentoEmisorTicket = Validar.validarnumero(documentoEmisor.Text);
+                emisor.tipoDocumentoEmisorTicket = Int32.Parse(TIPODOC.SelectedValue);
+                emisor.CorreoEmisorticket = Validar.validarlleno(CorreoEmisor.Text);
+                emisor.TelefonoEmisorticket = Validar.validarlleno(telefonoEmisor.Text);
+
+                ticket.ServiciosFK = Int32.Parse(TipoServicio.SelectedValue);
+                ticket.DescTicket = Validar.validarlleno(Descripcion.InnerText);
+                ticket.tipoTicket = Int32.Parse(REQUERIMIENTO.SelectedValue);
+                ticket.TipoReclamo = Int32.Parse(TIPORECLAMO.SelectedValue);
+                ticket.RegistrarTicket(emisor, ticket);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             
-            Ticket ticket = new Ticket();
-            EmisorTicket emisor = new EmisorTicket();
-
-            emisor.NombreEmisorTicket = NombreEmisor.Text;
-            emisor.ApellidoEmisorTicket = ApellidoEmisor.Text;
-            emisor.DocumentoEmisorTicket = documentoEmisor.Text;
-            emisor.tipoDocumentoEmisorTicket = Int32.Parse(TIPODOC.SelectedValue);
-            emisor.CorreoEmisorticket = CorreoEmisor.Text;
-            emisor.TelefonoEmisorticket = telefonoEmisor.Text;
-
-            ticket.ServiciosFK = Int32.Parse(TipoServicio.SelectedValue);
-            ticket.DescTicket = Descripcion.InnerText;
-            ticket.tipoTicket = Int32.Parse(REQUERIMIENTO.SelectedValue);
-            ticket.TipoReclamo = Int32.Parse(TIPORECLAMO.SelectedValue);
-            ticket.RegistrarTicket(emisor, ticket);
 
 
         }
