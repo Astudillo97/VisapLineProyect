@@ -296,7 +296,7 @@
                             <br />
                             <h3 class="box-title">SALDO:</h3>
                             <asp:Label ID="Label3" Class="box-title" ForeColor="Red" runat="server" Text=""></asp:Label>
-                            <a href="#" runat="server" class="btn btn-success fa fa-level-down" onclick="Button1_Click"></a>
+                            <a href="#" runat="server" class="btn btn-success fa fa-level-down" onserverclick="Unnamed_ServerClick"></a>
 
                         </div>
                         <!-- /.box-header -->
@@ -413,6 +413,7 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-12">
+                                      <a href="#Div1" class="btn btn-block btn-success btn-lg col-md-2" id="idincidencia" data-target=".bs-example-modal-xl" data-toggle="modal">Crear Incidencia +</a>
                                     <asp:GridView runat="server" ID="GridView3" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanged="GridView3_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                         <Columns>
@@ -446,6 +447,7 @@
 
                                         <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                                     </asp:GridView>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -484,6 +486,86 @@
                                         </asp:CommandField>
                                     </Columns>
                                 </asp:GridView>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+
+
+        <div class="modal fade bs-example-modal-xl" runat="server" id="Div1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-pane" runat="server" id="Div3">
+                            <div class="box box-primary" style="overflow-x: auto">
+                                <div class="box box-default" id="divincidencia" runat="server">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Crear Detalle</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-6 col-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label">Estado</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList ID="DropDownListestadoinc" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                                            <asp:ListItem>ABIERTO</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label">Detalle</label>
+                                                    <div class="col-sm-8">
+                                                        <textarea id="TextArea1detalle" class="form-control" runat="server" data-iconlibrary="fa" data-hidden-buttons="cmdBold" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 139px;" required data-validation-required-message="This field is required"></textarea>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6 col-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label">Caracteristica</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList ID="DropDownList3caracteriscainci" runat="server" CssClass="form-control" AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownList3caracteriscainci_SelectedIndexChanged">
+                                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label">Tipo Incidencia</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList ID="DropDownList2tipoinci" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label"></label>
+                                                    <div class="col-sm-8">
+                                                         <asp:Button ID="Button2" runat="server" Class="btn btn-success" Text="Guardar" OnClick="Button2_Click2" />                                                      
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

@@ -165,7 +165,7 @@ namespace VisapLine.View.Private
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Textbox6.Text = Label3.Text;
+
 
         }
 
@@ -209,20 +209,21 @@ namespace VisapLine.View.Private
             Textbox7.Text = Convert.ToString(valor4);
         }
 
-        protected void GridView3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow gridw = GridView2.SelectedRow;
             try
             {
-                if (Validar.validartrue(caradi.Actualizarestadocargo(gridw.Cells[0].Text, Label4.Text,gridw.Cells[1].Text, gridw.Cells[2].Text)))
+                if (Validar.validartrue(caradi.Actualizarestadocargo(gridw.Cells[0].Text, Label4.Text, gridw.Cells[1].Text, gridw.Cells[2].Text)))
                 {
-                    Validar.Consulta(detallefactura.ConsultarDetalleIdFactura1(Label4.Text));
+                    caradi.contrato_idcontrato_cargo = Labelidcontrato.Text;
+                    DataTable detalle1 = detallefactura.ConsultarDetalleIdFactura1(Label4.Text);
+                    GridView3.DataSource = detalle1;
+                    GridView3.DataBind();
 
+                    DataTable cargo2 = Validar.Consulta(caradi.ConsultarCargosIdContratoporefect(caradi));
+                    GridView2.DataSource = cargo2;
+                    GridView2.DataBind();
                 }
                 else
                 {
@@ -236,6 +237,21 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
+        }
+
+        protected void Unnamed_ServerClick(object sender, EventArgs e)
+        {
+            Textbox6.Text = Label3.Text;
+        }
+
+        protected void Button2_Click2(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
