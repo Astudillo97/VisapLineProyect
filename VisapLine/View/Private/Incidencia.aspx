@@ -25,7 +25,6 @@
             document.getElementById("botonmodalcontr").click();
         }
     </script>
-
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success alert-error">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
@@ -59,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-               <%--     <div class="col-md-6 col-15">
+                    <%--     <div class="col-md-6 col-15">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">Codigo:</label>
                             <div class="col-sm-5">
@@ -90,13 +89,13 @@
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Nombre:</label>
                                     <div class="col-sm-8">
-                                        <asp:Label ID="Label1" runat="server" CssClass="form-control bg-gray" height="45px" Width="200px" Text=""></asp:Label>
+                                        <asp:Label ID="Label1" runat="server" CssClass="form-control bg-gray" Height="45px" Width="200px" Text=""></asp:Label>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Apellido:</label>
                                     <div class="col-sm-8">
-                                        <asp:Label ID="Label2" CssClass="form-control bg-gray" runat="server" height="45px" Width="200px" Text=""></asp:Label>
+                                        <asp:Label ID="Label2" CssClass="form-control bg-gray" runat="server" Height="45px" Width="200px" Text=""></asp:Label>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -119,7 +118,7 @@
                             <Columns>
                                 <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-edit" />
                                 <asp:BoundField HeaderText="Cod" HeaderStyle-HorizontalAlign="Center" DataField="id" />
-                               <asp:BoundField HeaderText="Megas" HeaderStyle-HorizontalAlign="Center" DataField="cantidadmegascol" />
+                                <asp:BoundField HeaderText="Megas" HeaderStyle-HorizontalAlign="Center" DataField="cantidadmegascol" />
                                 <asp:BoundField HeaderText="Estado" HeaderStyle-HorizontalAlign="Center" DataField="estadocol" />
                                 <asp:BoundField HeaderText="Direccion" HeaderStyle-HorizontalAlign="Center" DataField="direccioncol" />
                                 <asp:BoundField HeaderText="Barrio" HeaderStyle-HorizontalAlign="Center" DataField="barriocol" />
@@ -164,7 +163,7 @@
                             <div class="col-sm-8">
                                 <asp:DropDownList ID="DropDownListestadoinc" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                     <asp:ListItem>Seleccione</asp:ListItem>
-                                      <asp:ListItem>ABIERTO</asp:ListItem>
+                                    <asp:ListItem>ABIERTO</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>

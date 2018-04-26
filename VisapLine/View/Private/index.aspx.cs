@@ -25,7 +25,7 @@ namespace VisapLine.View.Private
             {
                 if (!IsPostBack)
                 {
-
+                    Labeltime.Text = DateTime.Now.ToLongDateString();
                     DataTable tercer = (DataTable)Session["roles"];
                     string rol = tercer.Rows[0][7].ToString();
 

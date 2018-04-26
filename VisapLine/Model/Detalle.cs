@@ -23,5 +23,9 @@ namespace VisapLine.Model
         {
             return data.ConsultarDatos("select * from pr_consultardetalleidfactura("+det.factura_idfactura+")");
         }
+        public DataTable ConsultarDetalleIdFactura1(string factura_idfactura)
+        {
+            return data.ConsultarDatos("select * from pr_consultardetalleidfactura(" + factura_idfactura + ")");
+        }
     }
 }

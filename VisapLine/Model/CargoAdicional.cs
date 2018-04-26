@@ -23,12 +23,23 @@ namespace VisapLine.Model
 
         public DataTable ConsultarCargosIdContrato(CargoAdicional ca)
         {
-            return data.ConsultarDatos("select * from pr_consultarcargoadicional("+ca.contrato_idcontrato_cargo+")");
+            return data.ConsultarDatos("select * from pr_consultarcargoadicional(" + ca.contrato_idcontrato_cargo + ")");
+        }
+
+        public DataTable ConsultarCargosIdContratoporefect(CargoAdicional ca)
+        {
+            return data.ConsultarDatos("select * from pr_consultarcargoadicionalporefect(" + ca.contrato_idcontrato_cargo + ")");
         }
 
         public bool RegistrarCargoContrato(CargoAdicional ca)
         {
-            return data.OperarDatos("select * from pr_insertarcargoadicional('"+ca.descripcion+"',"+ca.valor+",'12-12-2018',"+ca.terceros_idterceroregistra+","+ca.contrato_idcontrato_cargo+")");
+            return data.OperarDatos("select * from pr_insertarcargoadicional('" + ca.descripcion + "'," + ca.valor + ",'12-12-2018'," + ca.terceros_idterceroregistra + "," + ca.contrato_idcontrato_cargo + ")");
         }
+
+        public bool Actualizarestadocargo(string idcargoadicional, string varfactura, string descripcion, string valor )
+        {
+            return data.OperarDatos("select* from pr_actualizarcargoadicionalestadoefect('"+ idcargoadicional +  "','"+ varfactura + "','"+ descripcion + "','"+ valor + "')");
+        }
+
     }
 }

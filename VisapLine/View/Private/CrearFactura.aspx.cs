@@ -35,8 +35,13 @@ namespace VisapLine.View.Private
         Barrios barr = new Barrios();
         Pagos pg = new Pagos();
         Permisos per = new Permisos();
+        CargoAdicional caradi = new CargoAdicional();
+        Detalle detallefactura = new Detalle();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
             string url = Request.Url.Segments[Request.Url.Segments.Length - 1];//Obtiene GestioanrCooperativa.aspx
             if (per.ValidarPermisos(url, (DataTable)Session["roles"]))
             {
@@ -54,6 +59,8 @@ namespace VisapLine.View.Private
             {
                 Response.Redirect("Error.aspx?error=Acceso denegado: No tiene permisos");
             }
+
+
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
@@ -81,8 +88,34 @@ namespace VisapLine.View.Private
 
         protected void consultacontrato_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             GridViewRow gridw = consultacontrato.SelectedRow;
+            datosfactura.Visible = true;
+
             Labelidcontrato.Text = Validar.validarlleno(gridw.Cells[0].Text);
+            caradi.contrato_idcontrato_cargo = Labelidcontrato.Text;
+
+            DataRow saldo = Validar.Consulta(fact.consultarcuenta(Labelidcontrato.Text)).Rows[0];
+            Textbox4.Text = "0";
+            Textbox5.Text = "0";
+            Textbox7.Text = "0";
+            Label3.Text = saldo["saldo"].ToString();
+            Textbox6.Text = "0";
+            Textbox3.Text = "1293214";
+            Textbox2.Text = "0";
+            DataRow secuencia = Validar.Consulta(fact.Consultarsecuencia()).Rows[0];
+            TextBox1.Text = secuencia["facturaventacol"].ToString();
+
+            try
+            {
+                DataTable cargoadicional = Validar.Consulta(caradi.ConsultarCargosIdContratoporefect(caradi));
+                GridView2.DataSource = cargoadicional;
+                GridView2.DataBind();
+            }
+            catch (Exception)
+            {
+
+            }
 
         }
         private void consultardatoscliente(string identificacion)
@@ -120,6 +153,82 @@ namespace VisapLine.View.Private
                 datos.Visible = true;
                 GridViewRow gridw = consultacliente.SelectedRow;
                 consultardatoscliente(Validar.validarlleno(gridw.Cells[0].Text));
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Textbox6.Text = Label3.Text;
+
+        }
+
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            try
+            {
+                fact.contrato_idcontrato = Validar.validarlleno(Labelidcontrato.Text);
+                fact.Referenciapago = Validar.validarlleno(Textbox3.Text);
+                fact.fechaemision = Validar.validarlleno(Textboxfechafacturacion.Text);
+                fact.fechavencimiento = Validar.validarlleno(Textbox8.Text);
+                fact.fechacorte = Validar.validarlleno(Textboxfechacorte.Text);
+                fact.facturaventa = Validar.validarlleno(TextBox1.Text);
+                fact.estado = Validar.validarselected(DropDownList1.Text);
+                fact.cuotas = Validar.validarlleno(Textbox2.Text);
+                fact.saldo = Validar.validarlleno(Textbox7.Text);
+
+                string numfactura = Validar.Consulta(fact.RegistrarFactura1(fact)).Rows[0][0].ToString();
+                if (numfactura != null)
+                {
+                    datosfactura1.Visible = true;
+                    datosfactura.Visible = false;
+                    Label4.Text = numfactura;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+        }
+
+        protected void Button2_Click1(object sender, EventArgs e)
+        {
+            string valor1 = Textbox4.Text;
+            string valor2 = Textbox5.Text;
+            string valor3 = Textbox6.Text;
+            ulong valor4 = (Convert.ToUInt64(valor1) + Convert.ToUInt64(valor2)) + Convert.ToUInt64(valor3);
+            Textbox7.Text = Convert.ToString(valor4);
+        }
+
+        protected void GridView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow gridw = GridView2.SelectedRow;
+            try
+            {
+                if (Validar.validartrue(caradi.Actualizarestadocargo(gridw.Cells[0].Text, Label4.Text,gridw.Cells[1].Text, gridw.Cells[2].Text)))
+                {
+                    Validar.Consulta(detallefactura.ConsultarDetalleIdFactura1(Label4.Text));
+
+                }
+                else
+                {
+
+                }
+
             }
             catch (Exception ex)
             {
