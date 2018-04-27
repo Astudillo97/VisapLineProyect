@@ -327,6 +327,7 @@
                                             <asp:TextBox ID="Textbox7" runat="server" class="form-control"></asp:TextBox>
                                             <span class="input-group-btn">
                                                 <button type="submit" runat="server" name="search" onserverclick="Button2_Click1" class="btn btn-flat">
+
                                                     <i class="fa fa-fw fa-refresh"></i>
                                                 </button>
                                             </span>
@@ -348,7 +349,7 @@
                     <center>
                     <br />
                     <br />
-                    <asp:Button ID="Button1" Class="btn btn-success" OnClick="Button1_Click1" runat="server" Style="width: 150px; height: 35px" Font-Size="Medium" Text="Crear Factura" />
+                        <button type="submit" runat="server" name="buttona"  onserverclick="Button3_Click"  Class="btn btn-success" Text="Crear Factura"></button>                        
               </center>
                 </div>
             </div>
@@ -413,7 +414,7 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-12">
-                                      <a href="#Div1" class="btn btn-block btn-success btn-lg col-md-2" id="idincidencia" data-target=".bs-example-modal-xl" data-toggle="modal">Crear Incidencia +</a>
+                                    <a href="#Div1" class="btn btn-block btn-success btn-lg col-md-2" id="idincidencia" data-target=".bs-example-modal-xl" data-toggle="modal">Crear Incidencia +</a>
                                     <asp:GridView runat="server" ID="GridView3" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanged="GridView3_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                         <Columns>
@@ -423,8 +424,8 @@
                                             <asp:BoundField DataField="factura_idfactura" HeaderText="Factura"></asp:BoundField>
                                             <asp:BoundField DataField="descripcion" HeaderText="Descripcion"></asp:BoundField>
                                             <asp:BoundField DataField="cargoadicional_cargoadicional" HeaderText="Cargo"></asp:BoundField>
-                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="btn btn-success glyphicon glyphicon-search">
-                                                <ControlStyle CssClass="btn btn-success glyphicon glyphicon-search"></ControlStyle>
+                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="btn btn-success fa fa-times">
+                                                <ControlStyle CssClass="btn btn-success fa fa-times"></ControlStyle>
                                             </asp:CommandField>
                                         </Columns>
                                         <EditRowStyle BackColor="#2461BF"></EditRowStyle>
@@ -447,7 +448,7 @@
 
                                         <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                                     </asp:GridView>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -539,9 +540,6 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-4 col-form-label">Caracteristica</label>
                                                     <div class="col-sm-8">
-                                                        <asp:DropDownList ID="DropDownList3caracteriscainci" runat="server" CssClass="form-control" AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="DropDownList3caracteriscainci_SelectedIndexChanged">
-                                                            <asp:ListItem>Seleccione</asp:ListItem>
-                                                        </asp:DropDownList>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -555,7 +553,7 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-4 col-form-label"></label>
                                                     <div class="col-sm-8">
-                                                         <asp:Button ID="Button2" runat="server" Class="btn btn-success" Text="Guardar" OnClick="Button2_Click2" />                                                      
+                                                        <asp:Button ID="Button2" runat="server" Class="btn btn-success" Text="Guardar" OnClick="Button2_Click2" />
                                                     </div>
                                                 </div>
                                             </div>

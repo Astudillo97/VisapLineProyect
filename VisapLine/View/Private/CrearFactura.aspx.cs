@@ -169,37 +169,6 @@ namespace VisapLine.View.Private
 
         }
 
-        protected void Button1_Click1(object sender, EventArgs e)
-        {
-            try
-            {
-                fact.contrato_idcontrato = Validar.validarlleno(Labelidcontrato.Text);
-                fact.Referenciapago = Validar.validarlleno(Textbox3.Text);
-                fact.fechaemision = Validar.validarlleno(Textboxfechafacturacion.Text);
-                fact.fechavencimiento = Validar.validarlleno(Textbox8.Text);
-                fact.fechacorte = Validar.validarlleno(Textboxfechacorte.Text);
-                fact.facturaventa = Validar.validarlleno(TextBox1.Text);
-                fact.estado = Validar.validarselected(DropDownList1.Text);
-                fact.cuotas = Validar.validarlleno(Textbox2.Text);
-                fact.saldo = Validar.validarlleno(Textbox7.Text);
-
-                string numfactura = Validar.Consulta(fact.RegistrarFactura1(fact)).Rows[0][0].ToString();
-                if (numfactura != null)
-                {
-                    datosfactura1.Visible = true;
-                    datosfactura.Visible = false;
-                    Label4.Text = numfactura;
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
-                }
-            }
-            catch (Exception ex)
-            {
-                textError.InnerHtml = ex.Message;
-                Alerta.CssClass = "alert alert-error";
-                Alerta.Visible = true;
-            }
-        }
-
         protected void Button2_Click1(object sender, EventArgs e)
         {
             string valor1 = Textbox4.Text;
@@ -252,6 +221,37 @@ namespace VisapLine.View.Private
         protected void GridView3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                fact.contrato_idcontrato = Validar.validarlleno(Labelidcontrato.Text);
+                fact.Referenciapago = Validar.validarlleno(Textbox3.Text);
+                fact.fechaemision = Validar.validarlleno(Textboxfechafacturacion.Text);
+                fact.fechavencimiento = Validar.validarlleno(Textbox8.Text);
+                fact.fechacorte = Validar.validarlleno(Textboxfechacorte.Text);
+                fact.facturaventa = Validar.validarlleno(TextBox1.Text);
+                fact.estado = Validar.validarselected(DropDownList1.Text);
+                fact.cuotas = Validar.validarlleno(Textbox2.Text);
+                fact.saldo = Validar.validarlleno(Textbox7.Text);
+
+                string numfactura = Validar.Consulta(fact.RegistrarFactura1(fact)).Rows[0][0].ToString();
+                if (numfactura != null)
+                {
+                    datosfactura1.Visible = true;
+                    datosfactura.Visible = false;
+                    Label4.Text = numfactura;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "deletealert();", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
     }
 }

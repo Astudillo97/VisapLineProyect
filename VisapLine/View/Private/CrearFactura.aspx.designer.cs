@@ -310,15 +310,6 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.TextBox Textbox7;
         
         /// <summary>
-        /// Control Button1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
         /// Control datosfactura1.
         /// </summary>
         /// <remarks>
@@ -425,15 +416,6 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea1detalle;
-        
-        /// <summary>
-        /// Control DropDownList3caracteriscainci.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3caracteriscainci;
         
         /// <summary>
         /// Control DropDownList2tipoinci.
