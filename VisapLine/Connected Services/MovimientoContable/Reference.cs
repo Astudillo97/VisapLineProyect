@@ -25,17 +25,10 @@ namespace VisapLine.MovimientoContable {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistrarMovimiento", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool RegistrarMovimiento(System.Data.DataTable dat, string nombre);
+        string RegistrarMovimiento(string plnt, System.Data.DataTable dat, string path);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistrarMovimiento", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> RegistrarMovimientoAsync(System.Data.DataTable dat, string nombre);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CrearExcelModificado", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string CrearExcelModificado(System.Data.DataTable dat, string input, string ouput);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CrearExcelModificado", ReplyAction="*")]
-        System.Threading.Tasks.Task<string> CrearExcelModificadoAsync(System.Data.DataTable dat, string input, string ouput);
+        System.Threading.Tasks.Task<string> RegistrarMovimientoAsync(string plnt, System.Data.DataTable dat, string path);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -73,20 +66,12 @@ namespace VisapLine.MovimientoContable {
             return base.Channel.ConsultaMovimientoAsync(nombre);
         }
         
-        public bool RegistrarMovimiento(System.Data.DataTable dat, string nombre) {
-            return base.Channel.RegistrarMovimiento(dat, nombre);
+        public string RegistrarMovimiento(string plnt, System.Data.DataTable dat, string path) {
+            return base.Channel.RegistrarMovimiento(plnt, dat, path);
         }
         
-        public System.Threading.Tasks.Task<bool> RegistrarMovimientoAsync(System.Data.DataTable dat, string nombre) {
-            return base.Channel.RegistrarMovimientoAsync(dat, nombre);
-        }
-        
-        public string CrearExcelModificado(System.Data.DataTable dat, string input, string ouput) {
-            return base.Channel.CrearExcelModificado(dat, input, ouput);
-        }
-        
-        public System.Threading.Tasks.Task<string> CrearExcelModificadoAsync(System.Data.DataTable dat, string input, string ouput) {
-            return base.Channel.CrearExcelModificadoAsync(dat, input, ouput);
+        public System.Threading.Tasks.Task<string> RegistrarMovimientoAsync(string plnt, System.Data.DataTable dat, string path) {
+            return base.Channel.RegistrarMovimientoAsync(plnt, dat, path);
         }
     }
 }

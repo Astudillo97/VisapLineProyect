@@ -12,7 +12,7 @@ namespace VisapLine.Model
     {
         Factura fact = new Factura();
         public static DataTable tablefactura = new DataTable();
-        public static DataTable exportsiigo = new DataTable();
+        public static DataTable exportsiigo = new DataTable("DATA");
         excel drexcel = new excel();
         public class_export()
         {

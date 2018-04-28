@@ -252,16 +252,17 @@ namespace VisapLine.View.Private
         protected void CargarSiigo(object sender, EventArgs e)
         {
             MovimientoContable.MovContSoapClient movcont = new MovimientoContable.MovContSoapClient();
-            ComandCmd.ExecuteCmdSoapClient comandcmd = new ComandCmd.ExecuteCmdSoapClient();
+            //ComandCmd.ExecuteCmdSoapClient comandcmd = new ComandCmd.ExecuteCmdSoapClient();
             //observacion.Text=comandcmd.ExecuteCommand("ipconfig");
             //DataTable dat=movcont.ConsultaMovimiento("Consulta");
-            Servicio.MovContSoapClient serv = new Servicio.MovContSoapClient();
-            DataTable dat = serv.ConsultaMovimiento("Consulta");
-            GridView1.DataSource = dat;
-            GridView1.DataBind();
+            //DataTable dat = movcont.ConsultaMovimiento("C:\\inetpub\\wwwroot\\ServicioSiigo\\SiigoServicio\\Consulta.xls");
+            //GridView1.DataSource = dat;
+            //GridView1.DataBind();
+            class_export exp = new class_export();
+            observacion.Text = movcont.RegistrarMovimiento("C:\\inetpub\\wwwroot\\ServicioSiigo\\SiigoServicio\\plantilla.xls", exp.llenarTabla("2-04-2018", "20-04-2018", null, "1"), "C:\\inetpub\\wwwroot\\ServicioSiigo\\SiigoServicio\\");
             //getExcelFile();
             //CrearExcel(new DataTable(),"");
-            class_export exp = new class_export();
+            
             //movcont.CrearExcelModificado(exp.llenarTabla("2-04-2018", "20-04-2018", null, ""), "plantilla", "SIIGO");
         }
     }
