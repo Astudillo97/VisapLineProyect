@@ -417,7 +417,7 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="#Div1" class="btn btn-block btn-success btn-lg col-md-3" id="idincidencia" data-target=".bs-example-modal-xl" data-toggle="modal">Crear Incidencia +</a>
+                                    <a href="#Div1" class="btn btn-block btn-success btn-lg col-md-3" id="idincidencia" data-target=".bs-example-modal-xl" data-toggle="modal">Crear Factura+</a>
                                     <asp:GridView runat="server" ID="GridView3" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanged="GridView3_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                         <Columns>
@@ -530,7 +530,6 @@
                                                     <label class="col-sm-4 col-form-label">Valor</label>
                                                     <div class="col-sm-8">
                                                         <asp:TextBox ID="TextBox9" runat="server" class="form-control"></asp:TextBox>
-
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -540,7 +539,6 @@
 
                                                     </div>
                                                 </div>
-<<<<<<< HEAD
                                                 <div class="form-group row">
                                                     <label class="col-sm-4 col-form-label"></label>
                                                     <div class="col-sm-8">
@@ -591,9 +589,6 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-6">
-
-=======
->>>>>>> master
                                                 <div class="form-group row">
                                                     <label class="col-sm-4 col-form-label"></label>
                                                     <div class="col-sm-8">
