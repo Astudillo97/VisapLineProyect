@@ -219,14 +219,23 @@ namespace VisapLine.View.Private
             {
                 if (detallefactura.Creardetallefactura(Label4.Text, TextBox9.Text, TextArea1detalle.Value))
                 {
-                    DataTable detalle1 = detallefactura.ConsultarDetalleIdFactura1(Label4.Text);
-                    GridView3.DataSource = detalle1;
-                    GridView3.DataBind();
+                    try
+                    {
+                        DataTable detalle1 = detallefactura.ConsultarDetalleIdFactura1(Label4.Text);
+                        GridView3.DataSource = detalle1;
+                        GridView3.DataBind();
 
-                    DataTable cargo2 = Validar.Consulta(caradi.ConsultarCargosIdContratoporefect(caradi));
-                    GridView2.DataSource = cargo2;
-                    GridView2.DataBind();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "creardetallet();", true);
+                        DataTable cargo2 = Validar.Consulta(caradi.ConsultarCargosIdContratoporefect(caradi));
+                        GridView2.DataSource = cargo2;
+                        GridView2.DataBind();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "creardetallet();", true);
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+
                 }
                 else
                 {
@@ -248,14 +257,23 @@ namespace VisapLine.View.Private
             {
                 if (detallefactura.Deletdetalle(gridw.Cells[5].Text))
                 {
-                    DataTable detalle1 = detallefactura.ConsultarDetalleIdFactura1(Label4.Text);
-                    GridView3.DataSource = detalle1;
-                    GridView3.DataBind();
+                    try
+                    {
+                        DataTable detalle1 = detallefactura.ConsultarDetalleIdFactura1(Label4.Text);
+                        GridView3.DataSource = detalle1;
+                        GridView3.DataBind();
 
-                    DataTable cargo2 = Validar.Consulta(caradi.ConsultarCargosIdContratoporefect(caradi));
-                    GridView2.DataSource = cargo2;
-                    GridView2.DataBind();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "creardetallet();", true);
+                        DataTable cargo2 = Validar.Consulta(caradi.ConsultarCargosIdContratoporefect(caradi));
+                        GridView2.DataSource = cargo2;
+                        GridView2.DataBind();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "creardetallet();", true);
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                
                 }
                 else
                 {
