@@ -35,9 +35,7 @@ namespace VisapLine.Model
         }
         public bool Deletdetalle(string idcargo)
         {
-
             return data.OperarDatos("select * from pr_actualizarcargoadicionalestadoporefec('" + idcargo + "')");
-
         }
 
     }

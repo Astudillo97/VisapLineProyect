@@ -428,7 +428,7 @@ namespace VisapLine.View.Private {
         
         /// <summary>
         /// Control Button2.
-<<<<<<< HEAD
+
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
@@ -438,8 +438,7 @@ namespace VisapLine.View.Private {
         
         /// <summary>
         /// Control Div2.
-=======
->>>>>>> master
+
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
