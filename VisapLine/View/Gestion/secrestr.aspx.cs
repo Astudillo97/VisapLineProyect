@@ -12,11 +12,12 @@ namespace VisapLine.View.Gestion
 {
     public partial class secrestr : System.Web.UI.Page
     {
-        comando cmdd = new comando();
+        secrest cmdduser = new secrest();
+        activeconection cmddactive = new activeconection();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                grivsecre.DataSource = cmdd.consultarsecrets("router main");
+                grivsecre.DataSource = cmdduser.consultarsecrets("router main");
                 grivsecre.DataBind();
             }
             
@@ -26,8 +27,12 @@ namespace VisapLine.View.Gestion
         {
             if (e.CommandName.Equals("desact"))
             {
-                if (cmdd.userdesctivar(e.CommandArgument.ToString(), "router main"))
+                if (cmdduser.userdesctivar(e.CommandArgument.ToString(), "router main"))
                 {
+                    if (cmddactive.removeactive(e.CommandArgument.ToString(), "router main"))
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('bien!', 'Fallo en registar la operacion', 'success');", true);
+                    }
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('bien!', 'Fallo en registar la operacion', 'success');", true);
                 }
                 else {
