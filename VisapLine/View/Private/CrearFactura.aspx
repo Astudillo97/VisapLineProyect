@@ -14,6 +14,9 @@
         function deletealert() {
             swal("LA FACTURA FUE CREADA CON EXITO!, INSERTE POR FAVOR EL DETALLE DE LA FACTURA", "", "success");
         }
+        function creardetallet() {
+            swal("EL DETALLE FUE CREADO CON EXITO!", "", "success");
+        }
         function alerterror() {
             swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
         }
@@ -349,7 +352,7 @@
                     <center>
                     <br />
                     <br />
-                        <button type="submit" runat="server" name="buttona"  onserverclick="Button3_Click"  Class="btn btn-success" Text="Crear Factura"></button>                        
+                        <button type="submit" runat="server" name="buttona"  onserverclick="Button3_Click"  Class="btn btn-success" >Crear Factura+</button>                        
               </center>
                 </div>
             </div>
@@ -414,7 +417,7 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="#Div1" class="btn btn-block btn-success btn-lg col-md-2" id="idincidencia" data-target=".bs-example-modal-xl" data-toggle="modal">Crear Incidencia +</a>
+                                    <a href="#Div1" class="btn btn-block btn-success btn-lg col-md-3" id="idincidencia" data-target=".bs-example-modal-xl" data-toggle="modal">Crear Incidencia +</a>
                                     <asp:GridView runat="server" ID="GridView3" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanged="GridView3_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                                         <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                         <Columns>
@@ -517,37 +520,19 @@
                                     <!-- /.box-header -->
                                     <div class="box-body">
                                         <div class="row">
-                                            <div class="col-md-6 col-6">
+                                            <div class="col-md-12 col-12">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-4 col-form-label">Estado</label>
+                                                    <label class="col-sm-4 col-form-label">Valor</label>
                                                     <div class="col-sm-8">
-                                                        <asp:DropDownList ID="DropDownListestadoinc" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                            <asp:ListItem>Seleccione</asp:ListItem>
-                                                            <asp:ListItem>ABIERTO</asp:ListItem>
-                                                        </asp:DropDownList>
+                                                        <asp:TextBox ID="TextBox9" runat="server" class="form-control"></asp:TextBox>
+
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-sm-4 col-form-label">Detalle</label>
+                                                    <label class="col-sm-4 col-form-label">Descripcion</label>
                                                     <div class="col-sm-8">
                                                         <textarea id="TextArea1detalle" class="form-control" runat="server" data-iconlibrary="fa" data-hidden-buttons="cmdBold" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 139px;" required data-validation-required-message="This field is required"></textarea>
 
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-6 col-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-4 col-form-label">Caracteristica</label>
-                                                    <div class="col-sm-8">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-4 col-form-label">Tipo Incidencia</label>
-                                                    <div class="col-sm-8">
-                                                        <asp:DropDownList ID="DropDownList2tipoinci" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                            <asp:ListItem>Seleccione</asp:ListItem>
-                                                        </asp:DropDownList>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -557,23 +542,21 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-                                    <!-- /.col -->
                                 </div>
-
-
+                                <!-- /.col -->
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
-                    </div>
                 </div>
-                <!-- /.modal-content -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                </div>
             </div>
-            <!-- /.modal-dialog -->
+            <!-- /.modal-content -->
         </div>
+        <!-- /.modal-dialog -->
+
     </section>
 </asp:Content>

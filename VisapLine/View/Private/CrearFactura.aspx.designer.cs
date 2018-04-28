@@ -346,6 +346,15 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.WebControls.GridView GridView3;
         
         /// <summary>
+        /// Control Button1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
         /// Control panelbusqueda.
         /// </summary>
         /// <remarks>
@@ -400,13 +409,13 @@ namespace VisapLine.View.Private {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divincidencia;
         
         /// <summary>
-        /// Control DropDownListestadoinc.
+        /// Control TextBox9.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListestadoinc;
+        protected global::System.Web.UI.WebControls.TextBox TextBox9;
         
         /// <summary>
         /// Control TextArea1detalle.
@@ -416,15 +425,6 @@ namespace VisapLine.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea1detalle;
-        
-        /// <summary>
-        /// Control DropDownList2tipoinci.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2tipoinci;
         
         /// <summary>
         /// Control Button2.
