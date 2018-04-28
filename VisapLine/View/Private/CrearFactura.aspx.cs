@@ -225,7 +225,7 @@ namespace VisapLine.View.Private
                         GridView3.DataSource = detalle1;
                         GridView3.DataBind();
 
-                        DataTable cargo2 = Validar.Consulta(caradi.ConsultarCargosIdContratoporefect(caradi));
+                        DataTable cargo2 = caradi.ConsultarCargosIdContratoporefect(caradi);
                         GridView2.DataSource = cargo2;
                         GridView2.DataBind();
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "creardetallet();", true);
@@ -263,7 +263,7 @@ namespace VisapLine.View.Private
                         GridView3.DataSource = detalle1;
                         GridView3.DataBind();
 
-                        DataTable cargo2 = Validar.Consulta(caradi.ConsultarCargosIdContratoporefect(caradi));
+                        DataTable cargo2 = caradi.ConsultarCargosIdContratoporefect(caradi);
                         GridView2.DataSource = cargo2;
                         GridView2.DataBind();
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "creardetallet();", true);
@@ -273,7 +273,7 @@ namespace VisapLine.View.Private
 
                         throw;
                     }
-                
+
                 }
                 else
                 {
