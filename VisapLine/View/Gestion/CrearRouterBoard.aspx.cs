@@ -32,6 +32,7 @@ namespace VisapLine.View.Gestion
             dispositivo.apirout = textapiport.Text;
             dispositivo.zonarout = int.Parse(dropdownzonas.SelectedValue);
             if (dispositivo.crearequipo()) {
+
             } else {
             }
         }

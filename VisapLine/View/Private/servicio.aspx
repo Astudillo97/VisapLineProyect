@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="servicio.aspx.cs" Inherits="VisapLine.View.Private.servicio" %>
+﻿<%@ Page Title="" Language="C#" enableEventValidation="true" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="servicio.aspx.cs" Inherits="VisapLine.View.Private.servicio" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -56,10 +56,12 @@
                             <th style="color: white">REFERENCIA</th>
                             <th style="color: white">SOLICITUD</th>
                             <th style="color: white">DETALLE</th>
+                            <th style="color:white">CORTAR</th>
+                            <th style="color:white">ACTIVAR</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <asp:Repeater ID="repetidorservices" runat="server">
+                        <asp:Repeater ID="repetidorservices" runat="server" OnItemCommand="repetidorservices_ItemCommand">
                             <ItemTemplate>
                                 <tr <%# string.Compare(Convert.ToString(Eval("estadoserv")),"ACTIVO")==0?  "style='color: green'": string.Compare(Convert.ToString(Eval("estadoserv")),"ELIMINADO")==0?  "style='color: red'": "style='color: yellow'" %>>
                                     <td><%# Eval("idserviciosserv") %></td>
@@ -70,6 +72,8 @@
                                     <td><%# Eval("referenciasserv")%></td>
                                     <td><a class="glyphicon glyphicon-alert" onclick='redireciona(<%# Eval("idserviciosserv") %>)'></a></td>
                                     <td><a class="glyphicon glyphicon-eye-open" onclick='redirecionadetalle(<%# Eval("idserviciosserv") %>)'></a></td>
+                                    <td><asp:LinkButton runat="server" ID="btncortar" CommandName="cortar" CommandArgument='<%# Eval("direccionipserV") %>' Text=" " CssClass="btn btn-danger glyphicon glyphicon-signal"/></td>
+                                    <td><asp:LinkButton runat="server" ID="LinkButton1" CommandName="activar" CommandArgument='<%# Eval("direccionipserV") %>' Text=" " CssClass="btn btn-success glyphicon glyphicon-signal"/></td>
                                 </tr>
                             </ItemTemplate>
                         </asp:Repeater>

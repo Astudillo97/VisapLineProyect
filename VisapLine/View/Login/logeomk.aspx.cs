@@ -18,8 +18,8 @@ namespace VisapLine.View.Login
 
         protected void btn_Click(object sender, EventArgs e)
         {
-            MK mikro = new MK(ip.Text);
-            if (!mikro.Login(user.Text, pass.Text))
+            MK mikro = new MK();
+            if (!mikro.Login())
             {
 
             }
