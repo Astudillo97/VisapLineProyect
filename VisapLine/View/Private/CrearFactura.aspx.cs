@@ -196,7 +196,7 @@ namespace VisapLine.View.Private
                 }
                 else
                 {
-
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
                 }
 
             }
@@ -215,12 +215,61 @@ namespace VisapLine.View.Private
 
         protected void Button2_Click2(object sender, EventArgs e)
         {
+            try
+            {
+                if (detallefactura.Creardetallefactura(Label4.Text, TextBox9.Text, TextArea1detalle.Value))
+                {
+                    DataTable detalle1 = detallefactura.ConsultarDetalleIdFactura1(Label4.Text);
+                    GridView3.DataSource = detalle1;
+                    GridView3.DataBind();
 
+                    DataTable cargo2 = Validar.Consulta(caradi.ConsultarCargosIdContratoporefect(caradi));
+                    GridView2.DataSource = cargo2;
+                    GridView2.DataBind();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "creardetallet();", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
 
         protected void GridView3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            GridViewRow gridw = GridView2.SelectedRow;
+            try
+            {
+                if (detallefactura.Deletdetalle(gridw.Cells[5].Text))
+                {
+                    DataTable detalle1 = detallefactura.ConsultarDetalleIdFactura1(Label4.Text);
+                    GridView3.DataSource = detalle1;
+                    GridView3.DataBind();
 
+                    DataTable cargo2 = Validar.Consulta(caradi.ConsultarCargosIdContratoporefect(caradi));
+                    GridView2.DataSource = cargo2;
+                    GridView2.DataBind();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "creardetallet();", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -252,6 +301,11 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
+        }
+
+        protected void Button3_Click1(object sender, EventArgs e)
+        {
+
         }
     }
 }

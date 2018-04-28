@@ -21,11 +21,22 @@ namespace VisapLine.Model
 
         public DataTable ConsultarDetalleIdFactura(Detalle det)
         {
-            return data.ConsultarDatos("select * from pr_consultardetalleidfactura("+det.factura_idfactura+")");
+            return data.ConsultarDatos("select * from pr_consultardetalleidfactura(" + det.factura_idfactura + ")");
         }
         public DataTable ConsultarDetalleIdFactura1(string factura_idfactura)
         {
             return data.ConsultarDatos("select * from pr_consultardetalleidfactura(" + factura_idfactura + ")");
         }
+
+        public bool Creardetallefactura(string valor, string factura, string descripcion)
+        {
+            return data.OperarDatos("select * from pr_insertardetallefactura('1','" + valor + "','" + factura + "','" + descripcion + "')");
+        }
+
+        public bool Deletdetalle(string idcargo)
+        {
+            return data.OperarDatos("select * from pr_actualizarcargoadicionalestadoporefec('" + idcargo + "')");
+        }
+
     }
 }
