@@ -97,7 +97,7 @@
                                 <li><a href="#team-section">Información para usuarios</a>
                                     <ul class="dropdown-menu " role="menu">
                                         <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Factores de limitación de velocidad de internet</a></li>
-                                        <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Indicadores de Calidad del Servicio de Internet</a></li>
+                                        <li role="presentation"><a href="Indicadores.aspx" role="menuitem" tabindex="-1">Indicadores de Calidad del Servicio de Internet</a></li>
                                         <li role="presentation"><a href="PQRS.aspx" role="menuitem" tabindex="-1">PQRS</a></li>
                                     </ul>
                                 </li>
@@ -217,6 +217,13 @@
                         </div>
 
                         <div class="col-md-6">
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+
+
                             <div class="clients triggerAnimation animated" data-animate="fadeInRight">
                                
                                 <img height="350px" src="../../Content/images/nuestra-empresa.jpg" />
@@ -341,8 +348,7 @@
 			================================================== -->
     <div class="section">
         <div id="contact-section">
-            <div class="map">
-            </div>
+           
 
             <div class="contact-content">
                 <div class="container">
@@ -361,12 +367,8 @@
                             </div>
                             <ul class="contact-info-list">
                                 <li><i class="fa fa-home"></i>Carrera 10 # 15-60 Barrio Centro Edificio Pioneros 2do piso Oficina 4 Florencia-Caquetá</li>
-                                <li><i class="fa fa-phone"></i>(+57) 318 490 3427
-                                    <br />
-                                    (+57) 321 206 5866</li>
-                                <li><i class="fa fa-envelope"></i><a href="#">gerencia@visapline.com
-                                    <br />
-                                    visapline@gmail.com</a></li>
+                                <li><i class="fa fa-phone"></i> <a>(+57) 318 490 3427 </a> <a> (+57) 310 246 6908</a>  </li>
+                                <li><i class="fa fa-envelope"></i><a href="#">  visapline@gmail.com</a> <a>gerencia@visapline.com</a></li>
                             </ul>
                         </div>
                         <div class="col-md-6 triggerAnimation animated" data-animate="fadeInRight">

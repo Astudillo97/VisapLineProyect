@@ -572,6 +572,7 @@
     <Content Include="View\Private\GestCliente.aspx" />
     <Content Include="View\Private\GestContrato.aspx" />
     <Content Include="View\Private\GestIncidencia.aspx" />
+    <Content Include="View\Private\GestionarIndicadores.aspx" />
     <Content Include="View\Private\GestPagos.aspx" />
     <Content Include="View\Private\Gestplanes.aspx" />
     <Content Include="View\Private\gestsoportecliente.aspx" />
@@ -602,6 +603,7 @@
     <Content Include="View\Private\WebForm1.aspx" />
     <Content Include="View\Public\facturacion.aspx" />
     <Content Include="View\Public\Index.aspx" />
+    <Content Include="View\Public\Indicadores.aspx" />
     <Content Include="View\Public\PQRS.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -627,6 +629,7 @@
     <Compile Include="Model\Garantia.cs" />
     <Compile Include="Model\Historico.cs" />
     <Compile Include="Model\impresorabix.cs" />
+    <Compile Include="Model\Indicador.cs" />
     <Compile Include="Model\Ingreso.cs" />
     <Compile Include="Model\MK.cs" />
     <Compile Include="Model\Modelo.cs" />
@@ -798,6 +801,13 @@
     </Compile>
     <Compile Include="View\Private\GestIncidencia.aspx.designer.cs">
       <DependentUpon>GestIncidencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\GestionarIndicadores.aspx.cs">
+      <DependentUpon>GestionarIndicadores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\GestionarIndicadores.aspx.designer.cs">
+      <DependentUpon>GestionarIndicadores.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\GestPagos.aspx.cs">
       <DependentUpon>GestPagos.aspx</DependentUpon>
@@ -1008,6 +1018,13 @@
     </Compile>
     <Compile Include="View\Public\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Public\Indicadores.aspx.cs">
+      <DependentUpon>Indicadores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Public\Indicadores.aspx.designer.cs">
+      <DependentUpon>Indicadores.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Public\PQRS.aspx.cs">
       <DependentUpon>PQRS.aspx</DependentUpon>
