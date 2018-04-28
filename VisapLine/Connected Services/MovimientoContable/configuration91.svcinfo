@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="HV9Mob47N6TGOhf0OtbVDCKEMUk=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="BuX38T7jtVVnJrZcZBT0NdhGlmQ=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="MovContSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="MovContSoap" contract="MovimientoContable.MovContSoap" bindingType="basicHttpBinding" address="http://192.168.0.101/MovCont.asmx" bindingConfiguration="MovContSoap">
+    <endpoint name="MovContSoap" contract="MovimientoContable.MovContSoap" bindingType="basicHttpBinding" address="http://localhost/MovCont.asmx" bindingConfiguration="MovContSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.0.101/MovCont.asmx</serializedValue>
+          <serializedValue>http://localhost/MovCont.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

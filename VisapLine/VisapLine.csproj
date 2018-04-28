@@ -133,37 +133,10 @@
     <Content Include="Archivos\imgvisap.png" />
     <Content Include="Archivos\Presentación1.jpg" />
     <Content Include="Archivos\publicidad.jpg" />
-    <None Include="Connected Services\ComandCmd\ExecuteCmd.wsdl" />
-    <Content Include="Connected Services\ComandCmd\VisapLine.ComandCmd.ExecuteCommandResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
+    <None Include="Connected Services\MovimientoContable\MovCont.disco" />
     <None Include="Connected Services\MovimientoContable\configuration91.svcinfo" />
     <None Include="Connected Services\MovimientoContable\configuration.svcinfo" />
-    <None Include="Connected Services\MovimientoContable\MovCont1.wsdl" />
     <None Include="Connected Services\MovimientoContable\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Connected Services\ComandCmd\ExecuteCmd.disco" />
-    <None Include="Connected Services\ComandCmd\configuration91.svcinfo" />
-    <None Include="Connected Services\ComandCmd\configuration.svcinfo" />
-    <None Include="Connected Services\ComandCmd\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Connected Services\MovimientoContable\MovCont1.disco" />
-    <None Include="Connected Services\ServiceReference1\MovCont.wsdl" />
-    <None Include="Connected Services\Servicio\MovCont.disco" />
-    <None Include="Connected Services\Servicio\configuration91.svcinfo" />
-    <None Include="Connected Services\Servicio\configuration.svcinfo" />
-    <None Include="Connected Services\Servicio\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Connected Services\ServiceReference1\MovCont.disco" />
-    <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
-    <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
-    <None Include="Connected Services\ServiceReference1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -194,7 +167,7 @@
     <Content Include="Contenido\images\monkeyprogramer.jpg" />
     <Content Include="Ordenes\2018351857-INS-12422018.pdf" />
     <Content Include="Insidencias\2018351857-INS-12422018.pdf" />
-    <None Include="Connected Services\Servicio\MovCont.wsdl" />
+    <None Include="Connected Services\MovimientoContable\MovCont.wsdl" />
     <None Include="packages.config" />
     <Content Include="Contenido\assets\vendor_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="Contenido\assets\vendor_components\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -427,6 +400,7 @@
     <Content Include="Contenido\publicidad.jpg" />
     <Content Include="Contenido\radio.png" />
     <Content Include="index.html" />
+    <Content Include="View\Gestion\CrearRouterBoard.aspx" />
     <Content Include="View\Login\logeomk.aspx" />
     <Content Include="View\Private\Admin.Master" />
     <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
@@ -437,6 +411,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="View\Gestion\Gestion.Master" />
     <None Include="Web References\localhost\MovCont.wsdl" />
     <Content Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -596,22 +571,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\ComandCmd\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Connected Services\MovimientoContable\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\ServiceReference1\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\Servicio\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -627,6 +587,7 @@
     <Compile Include="Model\Class1.cs" />
     <Compile Include="Model\class_export.cs" />
     <Compile Include="Model\class_pdf.cs" />
+    <Compile Include="Model\comando.cs" />
     <Compile Include="Model\DetalleCompra.cs" />
     <Compile Include="Model\Egreso.cs" />
     <Compile Include="Model\Empresa.cs" />
@@ -671,6 +632,7 @@
     <Compile Include="Model\Renovacion.cs" />
     <Compile Include="Model\reporte.cs" />
     <Compile Include="Model\Rol.cs" />
+    <Compile Include="Model\secrest.cs" />
     <Compile Include="Model\Servicios.cs" />
     <Compile Include="Model\SocketServer.cs" />
     <Compile Include="Model\SoportePago.cs" />
@@ -693,6 +655,20 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gestion\CrearRouterBoard.aspx.cs">
+      <DependentUpon>CrearRouterBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Gestion\CrearRouterBoard.aspx.designer.cs">
+      <DependentUpon>CrearRouterBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gestion\Gestion.Master.cs">
+      <DependentUpon>Gestion.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Gestion\Gestion.Master.designer.cs">
+      <DependentUpon>Gestion.Master</DependentUpon>
     </Compile>
     <Compile Include="View\Login\logeomk.aspx.cs">
       <DependentUpon>logeomk.aspx</DependentUpon>
@@ -1029,12 +1005,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ComandCmd\" />
-    <WCFMetadataStorage Include="Connected Services\MovimientoContable\" />
-    <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
-    <WCFMetadataStorage Include="Connected Services\Servicio\" />
-  </ItemGroup>
-  <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
@@ -1049,6 +1019,9 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>VisapLine_localhost_MovCont</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\MovimientoContable\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
