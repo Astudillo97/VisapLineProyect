@@ -51,7 +51,7 @@ namespace VisapLine.View.Private
                 Validar.validarlleno(contrato_.Value);
                 Validar.validarlleno(fechaactivacionfac.Value);
                 Validar.validarlleno(caso.SelectedValue);
-                if (contrato.ActaulizarFechaActivacion(contrato_.Value, fechaactivacionfac.Value, caso.SelectedValue))
+                if (Validar.validartrue(contrato.ActaulizarFechaActivacion(contrato_.Value, fechaactivacionfac.Value, caso.SelectedValue)))
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "hwa", "ErrorPunto('ACTUALIZACION EXITOSA!','Prorateo Actualizado correctamente','success');", true);
 
@@ -64,9 +64,11 @@ namespace VisapLine.View.Private
                     ScriptManager.RegisterStartupScript(this, GetType(), "hwa", "ErrorPunto('ACTUALIZACION FALLIDA','Comuniquese con el soporte tecnico!','error');", true);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "hwa", "ErrorPunto('ACTUALIZACION FALLIDA','Verifique que los espacios se encuentren correctamente diligenciados!','error');", true);
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
             }
 
         }
@@ -87,7 +89,7 @@ namespace VisapLine.View.Private
                 car.valor = Validar.validarlleno(valor.Value);
                 car.contrato_idcontrato_cargo = Validar.validarlleno(numero.Value);
                 car.terceros_idterceroregistra = ter.idterceros;
-                if (car.RegistrarCargoContrato(car))
+                if (Validar.validartrue(car.RegistrarCargoContrato(car)))
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "hwa", "ErrorPunto('REGISTRO EXITOSO!','Cargo registrado correctamente','success');", true);
                 }
@@ -96,11 +98,13 @@ namespace VisapLine.View.Private
                     ScriptManager.RegisterStartupScript(this, GetType(), "hwa", "ErrorPunto('REGISTRO FALLIDO','No se pudo registrar el cargo adicional!','error');", true);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "hwa", "ErrorPunto('REGISTRO FALLIDO','Verifique que los espacios se encuentren correctamente diligenciados!','error');", true);
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
             }
-            
+
         }
     }
 }
