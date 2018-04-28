@@ -212,16 +212,34 @@
                                     <h2>Nuestra Empresa</h2>
 
                                 </div>
-                                <p><span>C&C VISION LTDA “VISAPLINE”</span> es una empresa proveedora de los Servicios de Internet, Voz, Datos y Vídeo, con licencia desde el año 2001, cobertura total en 15 Municipios del Caquetá y el resto del país, contamos con unas instalaciones en fibra óptica de 46.5 kilómetros, en el municipio de Florencia con cabecera GPON de Última Tecnología. Llegamos a lugares que por su situación Geográfica no cuentan con cobertura de comunicaciones. Igualmente somos integradores de soluciones en Sistemas o Circuitos cerrados de televisión, Cámaras de Vigilancia y soluciones en energía solar, entre otros. Nos hemos consolidado como la empresa líder en innovación de comunicaciones en el departamento. Que beneficia finalmente al cliente que adquiere nuestros servicios. </p>
+                                <p style="text-align:justify"><span>C&C VISION LTDA “VISAPLINE”</span> es una empresa proveedora de los Servicios de Internet, Voz, Datos y Vídeo, con licencia desde el año 2001, cobertura total en 15 Municipios del Caquetá y el resto del país, contamos con unas instalaciones en fibra óptica de 46.5 kilómetros, en el municipio de Florencia con cabecera GPON de Última Tecnología. Llegamos a lugares que por su situación Geográfica no cuentan con cobertura de comunicaciones. Igualmente somos integradores de soluciones en Sistemas o Circuitos cerrados de televisión, Cámaras de Vigilancia y soluciones en energía solar, entre otros. Nos hemos consolidado como la empresa líder en innovación de comunicaciones en el departamento. Que beneficia finalmente al cliente que adquiere nuestros servicios. </p>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="clients triggerAnimation animated" data-animate="fadeInRight">
-                                <div class="about-title">
-                                </div>
+                               
                                 <img height="350px" src="../../Content/images/nuestra-empresa.jpg" />
                             </div>
+                        </div>
+                    </div>
+                    <div class="last-row">
+                        <div class="col-md-6">
+                            <div class="biography triggerAnimation animated" data-animate="fadeInLeft">
+                                 <div class="about-title">
+                                     <h2>MISIÓN</h2>
+                                </div>
+                                    <p style="text-align:justify"><span>C&C VISION LTDA</span>. Desarrolla efectivamente servicios en Tecnología de la Información y las Comunicaciones, permanentes y de alto impacto a través de redes Inalámbricas, Fibra óptica, Satelital, Microondas. Hasta el usuario final, con responsabilidad social y sostenibilidad ambiental, buscando la eficiencia, eficacia en los procesos de comunicación de usuarios y empresas con el mundo. </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="biography triggerAnimation animated" data-animate="fadeInLeft" >
+                                <div class="about-title">
+                                    <h2>VISIÓN</h2>
+                                </div>
+                                <p style="text-align:justify"><span>C&C VISION LTDA</span>. Será en el 2018, una empresa líder en el mercado de telecomunicaciones con altos niveles de satisfacción de sus clientes y vinculados, con la generación de amplios beneficios sociales en armonía con el medio ambiente. Específicamente para el Departamento del Caquetá. Implementando las mejores ideas en el campo de las TIC.</p>
+                            </div>
+
                         </div>
                     </div>
 
@@ -255,8 +273,8 @@
                                             <div class="staff-post">
                                                 <img alt="" src="../../Contenido/plan3mb.png">
 
-                                                <h2><a class="diff-color">PLAN HOGAR BÁSICO</a></h2>
-                                                <p>Ideal para las tareas básicas del hogar, reproducir música, hacer consultas, revisar tu correo electronico</p>
+                                                <h2><a class="diff-color">PLAN BRONCE</a></h2>
+                                                <p>Ideal para las tareas básicas del hogar, reproducir música, hacer consultas, revisar tu correo electronico.</p>
                                             </div>
                                         </div>
 
@@ -264,8 +282,8 @@
                                             <div class="staff-post">
                                                 <img alt="" src="../../Contenido/plan4mb.png">
 
-                                                <h2><a href="single-post.html">Mobile Friendly Comments Dashboardnow launched!</a></h2>
-                                                <p>Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu</p>
+                                                <h2><a class="diff-color">PLAN PLATA </a></h2>
+                                                <p>Ideal para las tareas básicas del hogar, reproducir música, hacer consultas, revisar tu correo electronico, reproducción de videos en calidad media y video conferencias.   </p>
                                             </div>
                                         </div>
 
@@ -273,8 +291,8 @@
                                             <div class="staff-post">
                                                 <img alt="" src="../../Contenido/plan5mb.png">
 
-                                                <h2><a href="single-post.html">Mobile Friendly Comments Dashboardnow launched!</a></h2>
-                                                <p>Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu</p>
+                                                <h2><a href="single-post.html">PLAN ORO</a></h2>
+                                                <p>Ideal para las tareas básicas del hogar, reproducir música, hacer consultas, revisar tu correo electronico, reproducción de videos en calidad alta y video conferencias, soporte para varios dispositivos conectados.</p>
                                             </div>
                                         </div>
 
@@ -282,8 +300,8 @@
                                             <div class="staff-post">
                                                 <img alt="" src="../../Contenido/plan8mb.png">
                                              
-                                                <h2><a href="single-post.html">Mobile Friendly Comments Dashboardnow launched!</a></h2>
-                                                <p>Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu</p>
+                                                <h2><a href="single-post.html">PLAN PLATINO</a></h2>
+                                                <p>Ideal para las tareas básicas del hogar, reproducir música, hacer consultas, revisar tu correo electronico, reproducción de videos en HD y video conferencias, soporte para varios dispositivos conectados, ideal para juegos online y descargas pesadas.</p>
                                             </div>
                                         </div>
                                            </div>
@@ -295,8 +313,8 @@
                                         <div class="col-md-3">
                                             <div class="staff-post">
                                                 <img alt="" src="../../Contenido/plan10mb.png">
-                                                  <h2><a href="single-post.html">Mobile Friendly Comments Dashboardnow launched!</a></h2>
-                                                <p>Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu</p>
+                                                  <h2><a href="single-post.html">PLAN DIAMANTE</a></h2>
+                                                <p>Ideal para las tareas básicas del hogar, reproducir música, hacer consultas, revisar tu correo electronico, reproducción de videos en HD y video conferencias, soporte para varios dispositivos conectados, ideal para juegos online y descargas pesadas.</p>
                                             </div>
                                         </div>
                                         </div>
