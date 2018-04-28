@@ -232,8 +232,13 @@ namespace VisapLine.View.Private
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "alerterror();", true);
                 }
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> master
             }
             catch (Exception ex)
             {

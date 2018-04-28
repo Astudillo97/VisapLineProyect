@@ -540,6 +540,7 @@
 
                                                     </div>
                                                 </div>
+<<<<<<< HEAD
                                                 <div class="form-group row">
                                                     <label class="col-sm-4 col-form-label"></label>
                                                     <div class="col-sm-8">
@@ -591,6 +592,8 @@
                                             </div>
                                             <div class="col-md-6 col-6">
 
+=======
+>>>>>>> master
                                                 <div class="form-group row">
                                                     <label class="col-sm-4 col-form-label"></label>
                                                     <div class="col-sm-8">
@@ -612,5 +615,7 @@
             </div>
             <!-- /.modal-content -->
         </div>
+        <!-- /.modal-dialog -->
+
     </section>
 </asp:Content>

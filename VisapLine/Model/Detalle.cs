@@ -31,11 +31,13 @@ namespace VisapLine.Model
         public bool Creardetallefactura(string valor, string factura, string descripcion)
         {
             return data.OperarDatos("select * from pr_insertardetallefactura('1','" + valor + "','" + factura + "','" + descripcion + "')");
-        }
 
+        }
         public bool Deletdetalle(string idcargo)
         {
+
             return data.OperarDatos("select * from pr_actualizarcargoadicionalestadoporefec('" + idcargo + "')");
+
         }
 
     }
