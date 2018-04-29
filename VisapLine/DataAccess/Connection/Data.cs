@@ -11,33 +11,38 @@ namespace VisapLine.DataAccess.Connection
     public class Data:IData
     {
         conexion_psql conx;
+        Terceros ter = null;
         public bool OperarDatos(string sql)
         {
             DataTable datos = new DataTable();
-            Terceros ter=null;
+            
             if (conx==null)
             {
                 conx = new conexion_psql();
-                if ((Terceros)System.Web.HttpContext.Current.Session["key"]!=null)
+                if ((Terceros)System.Web.HttpContext.Current.Session["tercero"] !=null)
                 {
-                    ter = (Terceros)System.Web.HttpContext.Current.Session["key"];
+                    ter = (Terceros)System.Web.HttpContext.Current.Session["tercero"];
                 }
             }
             try
             {
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conx.OpenConexion());
                 da.Fill(datos);
-                conx.CloseConexion();
                 if (Convert.ToInt32(datos.Rows[0][0].ToString()) > 0)
                 {
                     NpgsqlDataAdapter aud = new NpgsqlDataAdapter("select * from pr_insertaraudit('"+sql+"','CORRECTO',"+ter.idterceros+",'"+ter.nombre+" "+ter.apellido+"','"+ter.usuario_idusuario+"')", conx.GetConexion());
+                    conx.CloseConexion();
                     return true;
+                    
                 }
                 else
                 {
                     NpgsqlDataAdapter aud = new NpgsqlDataAdapter("select * from pr_insertaraudit('" + sql + "','CORRECTO'," + ter.idterceros + ",'" + ter.nombre + " " + ter.apellido + "','" + ter.usuario_idusuario + "')", conx.GetConexion());
+                    conx.CloseConexion();
                     return false;
+                    
                 }
+                
             }
             catch(Exception ex)
             {
