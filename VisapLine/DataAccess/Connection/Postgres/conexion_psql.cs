@@ -21,7 +21,10 @@ namespace VisapLine.DataAccess.Connection
             }
             return conexion1;
         }
-
+        public NpgsqlConnection GetConexion()
+        {
+            return conexion1;
+        }
         public NpgsqlConnection CloseConexion()
         {
             try

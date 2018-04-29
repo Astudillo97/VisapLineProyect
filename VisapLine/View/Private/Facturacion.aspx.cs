@@ -207,6 +207,10 @@ namespace VisapLine.View.Private
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
             }
+            finally
+            {
+                Dispose();
+            }
         }
         private static string Descripcion(DataTable data, string key)
         {
@@ -244,7 +248,15 @@ namespace VisapLine.View.Private
                             correo.cuerpo = "Señor Usuario ahora puedes descargar su factura en http://45.71.180.50:30000/View/Public/facturacion.aspx";
                         }
                         correo.archivo= path+dir+ referen;
-                        correo.EnviarMensaje();
+                        try
+                        {
+                            correo.EnviarMensaje();
+                        }
+                        catch (Exception)
+                        {
+                            Console.Write("Error por correro mal dijitado" + item["correo"].ToString());
+                        }
+                        
                     }
                     cont++;
                 }

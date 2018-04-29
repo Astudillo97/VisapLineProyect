@@ -12,6 +12,9 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using System.Data.OleDb;
 using System.Net.Sockets;
 using System.Net;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
+
 
 namespace VisapLine.View.Private
 {
@@ -74,7 +77,7 @@ namespace VisapLine.View.Private
                 {
                     obser.factura_idfactura_obs = fact.idfactura;
                     obser.observacion = observacion.Text;
-                    //GenerateExcelData("C:/Users/Developers_1/Documents/GitHub/VisapLineProyect/VisapLine/Archivos/arch.xlsx");
+                    GenerateExcelData("C:\\SiigoServicio\\Consulta.xls");
                     obser.RegistrarObservaciondos(obser);
                     textError.InnerHtml = "Actualizado Correctamente";
                     Alerta.CssClass = "alert alert-success";
@@ -90,7 +93,7 @@ namespace VisapLine.View.Private
         }
         private void GenerateExcelData(string SlnoAbbreviation)
         {
-            OleDbConnection oledbConn=null;
+            OleDbConnection oledbConn = null;
             try
             {
                 // need to pass relative path after deploying on server
@@ -118,7 +121,7 @@ namespace VisapLine.View.Private
             }
             catch (Exception ex)
             {
-                
+
             }
             finally
             {
@@ -126,6 +129,105 @@ namespace VisapLine.View.Private
             }
         }// close of method GemerateExceLData
 
+        public static void getExcelFile()
+        {
+
+            //Create COM Objects. Create a COM object for everything that is referenced
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"C:\SiigoServicio\Consulta.xls");
+            Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+            Excel.Range xlRange = xlWorksheet.UsedRange;
+
+            int rowCount = xlRange.Rows.Count;
+            int colCount = xlRange.Columns.Count;
+            DataTable dataTable = new DataTable();
+            //dataTable.Columns.AddRange(new DataColumn[16] { new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn(), new DataColumn() });
+            
+            //iterate over the rows and columns and print to the console as it appears in the file
+            //excel is not zero based!!
+            for (int i = 1; i <= rowCount; i++)
+            {
+                DataRow dat= dataTable.NewRow();
+                for (int j = 1; j <= colCount; j++)
+                {
+                    //new line
+                    if (i == 1)
+                    {
+                        dataTable.Columns.Add(xlRange.Cells[i, j].Value2.ToString());
+                    }
+                    else
+                    {
+                        dat[j-1] = xlRange.Cells[i, j].Value2.ToString();
+                    }
+                }
+                dataTable.Rows.Add(dat);
+            }
+
+            //cleanup
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            //rule of thumb for releasing com objects:
+            //  never use two dots, all COM objects must be referenced and released individually
+            //  ex: [somthing].[something].[something] is bad
+
+            //release com objects to fully kill excel process from running in the background
+            Marshal.ReleaseComObject(xlRange);
+            Marshal.ReleaseComObject(xlWorksheet);
+
+            //close and release
+            xlWorkbook.Close();
+            Marshal.ReleaseComObject(xlWorkbook);
+
+            //quit and release
+            xlApp.Quit();
+            Marshal.ReleaseComObject(xlApp);
+        }
+
+        private bool CrearExcel(DataTable dat, string ouput)
+        {
+            Excel.Application xlApp = new Excel.Application();
+
+            if (xlApp == null)
+            {
+                //MessageBox.Show("Excel is not properly installed!!");
+                return false;
+            }
+
+
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+            for (int i = 0; i < dat.Rows.Count; i++)
+            {
+                for (int j = 0; j < dat.Rows[i].ItemArray.Length; j++)
+                {
+                    xlWorkSheet.Cells[i, j] = dat.Rows[i][j];
+                }
+            }
+
+            //xlWorkSheet.Cells[1, 1] = "ID";
+            //xlWorkSheet.Cells[1, 2] = "Name";
+            //xlWorkSheet.Cells[2, 1] = "1";
+            //xlWorkSheet.Cells[2, 2] = "One";
+            //xlWorkSheet.Cells[3, 1] = "2";
+            //xlWorkSheet.Cells[3, 2] = "Two";
+
+
+
+            xlWorkBook.SaveAs(@"C:\SiigoServicio\"+ouput);
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+
+            Marshal.ReleaseComObject(xlWorkSheet);
+            Marshal.ReleaseComObject(xlWorkBook);
+            Marshal.ReleaseComObject(xlApp);
+            return true;
+        }
         public static void Conectar()
         {
             Socket miPrimerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -145,6 +247,23 @@ namespace VisapLine.View.Private
             }
             Console.WriteLine("Presione cualquier tecla para terminar");
             Console.ReadLine();
+        }
+
+        protected void CargarSiigo(object sender, EventArgs e)
+        {
+            MovimientoContable.MovContSoapClient movcont = new MovimientoContable.MovContSoapClient();
+            //ComandCmd.ExecuteCmdSoapClient comandcmd = new ComandCmd.ExecuteCmdSoapClient();
+            //observacion.Text=comandcmd.ExecuteCommand("ipconfig");
+            //DataTable dat=movcont.ConsultaMovimiento("Consulta");
+            //DataTable dat = movcont.ConsultaMovimiento("C:\\inetpub\\wwwroot\\ServicioSiigo\\SiigoServicio\\Consulta.xls");
+            //GridView1.DataSource = dat;
+            //GridView1.DataBind();
+            class_export exp = new class_export();
+            observacion.Text = movcont.RegistrarMovimiento("C:\\inetpub\\wwwroot\\ServicioSiigo\\SiigoServicio\\plantilla.xls", exp.llenarTabla("2-04-2018", "20-04-2018", null, "1"), "C:\\inetpub\\wwwroot\\ServicioSiigo\\SiigoServicio\\");
+            //getExcelFile();
+            //CrearExcel(new DataTable(),"");
+            
+            //movcont.CrearExcelModificado(exp.llenarTabla("2-04-2018", "20-04-2018", null, ""), "plantilla", "SIIGO");
         }
     }
 }

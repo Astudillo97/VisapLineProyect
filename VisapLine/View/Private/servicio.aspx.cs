@@ -78,10 +78,6 @@ namespace VisapLine.View.Private
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "pop", "swal({title: 'UUUUPSSS!!!!', text: 'Algo ha ocurrido estamos trabajando para solucionarlo',imageUrl: '../../Contenido/images/monkeyprogramer.jpg',imageSize: '400x250'}, function() { window.location.href = 'index.aspx'; })", true);
                 }
             }
-            else
-            {
-                cargardtservicio();
-            }
 
         }
 
@@ -305,6 +301,39 @@ namespace VisapLine.View.Private
             {
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "errorasignationMEGAS()", true);
                 cargardtservicio();
+            }
+        }
+
+        protected void repetidorservices_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("cortar")) {
+                secrest sec = new secrest();
+                activeconection acticon = new activeconection();
+                sec = sec.consultarsecretsbyip("router main", e.CommandArgument.ToString());
+                if (sec.userdesctivar(sec.name, "router main")) {
+                    if (acticon.removeactive(sec.name, "router main"))
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('bien!', 'Fallo en registar la operacion', 'success');", true);
+                    }
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('bien!', 'Fallo en registar la operacion', 'success');", true);
+                }
+                else {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('ERROR!', 'Fallo en registar la operacion', 'error');", true);
+                }
+            }
+            if (e.CommandName.Equals("activar"))
+            {
+                secrest sec = new secrest();
+                activeconection acticon = new activeconection();
+                sec = sec.consultarsecretsbyip("router main", e.CommandArgument.ToString());
+                if (sec.useractivar(sec.name, "router main"))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('bien!', 'Fallo en registar la operacion', 'success');", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('ERROR!', 'Fallo en registar la operacion', 'error');", true);
+                }
             }
         }
 

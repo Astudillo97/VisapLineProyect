@@ -11,14 +11,13 @@
         function openmodal() {
             $('#mymodal').modal('show');
         }
-
         function deletealert(x) {
             swal("ORDEN CREADA CON EXITO!", "Su orden ser creo con el numero " + x, "success", function () { location.reload() });
-
+        }
         function deletealert() {
             swal("LA SOLICITUD FUE CREADA CON EXITO!", "", "success");
         }
-        function guardo() {
+        function guardoddd() {
             swal("SE REGISTRO CON EXITO!", "La operacion se realizo con exito", "success");
         }
         function alerterror() {

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" AutoEventWireup="true" CodeBehind="CrearFactura.aspx.cs" Inherits="VisapLine.View.Private.CrearFactura" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Private/Admin.Master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="CrearFactura.aspx.cs" Inherits="VisapLine.View.Private.CrearFactura" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -6,31 +6,83 @@
             resize: none;
         }
     </style>
-
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" onload="sinVueltaAtras();" onpageshow="if (event.persisted) sinVueltaAtras();" onunload="">
+    <asp:ScriptManager ID="respust" runat="server"></asp:ScriptManager>
+    <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
-        window.onload = function cerrar() {
-            setTimeout(function () {
-                document.getElementById("<%=Alerta.ClientID%>").style.display = 'none';
-            }, 5000);
+        function deletealert() {
+            swal("LA FACTURA FUE CREADA CON EXITO!, INSERTE POR FAVOR EL DETALLE DE LA FACTURA", "", "success");
         }
-        function deletealertinci() {
-            swal("LA INCIDENCIA FUE CREADA CON EXITO!", "", "success");
+        function creardetallet() {
+            swal("EL DETALLE FUE CREADO CON EXITO!", "", "success");
         }
-        function alerterrorinci() {
+        function alerterror() {
             swal("EL REGISTRO NO SE PUDO COMPLETAR!", "Verifique la informacion ingresada y vuelva intentar", "error");
         }
-        function panelbutton() {
-            document.getElementById('idbusqueda').click();
+        function alrt() {
+            swal("ESTA OPCION AUN NO ESTA DISPONIBLE!", "Los super ingnieros estan en proceso de implocion espere", "error");
         }
-        function panelmodalinci() {
-            document.getElementById('idincidencia').click();
+        function botonmodalgesti() {
+            document.getElementById("botonmodalcontr").click();
         }
-        function panelincidencia() {
-            document.getElementById('pan2').click();
+        function sumar() {
+            var valor1 = verificar("Textbox4");
+            var valor2 = verificar("Textbox5");
+            var valor3 = verificar("Textbox6");
+            // realizamos la suma de los valores y los ponemos en la casilla del
+            // formulario que contiene el total
+            document.getElementById("Textbox7").value = parseFloat(valor1) + parseFloat(valor2) + parseFloat(valor3);
         }
+        /**
+             * Funcion para verificar los valores de los cuadros de texto. Si no es un
+             * valor numerico, cambia de color el borde del cuadro de texto
+             */
+        function verificar(id) {
+            var obj = document.getElementById(id);
+            if (obj.value == "")
+                value = "0";
+            else
+                value = obj.value;
+            if (validate_importe(value, 1)) {
+                // marcamos como erroneo
+                obj.style.borderColor = "#808080";
+                return value;
+            } else {
+                // marcamos como erroneo
+                obj.style.borderColor = "#f00";
+                return 0;
+            }
+        }
+
+        /**
+         * Funcion para validar el importe
+         * Tiene que recibir:
+         *  El valor del importe (Ej. document.formName.operator)
+         *  Determina si permite o no decimales [1-si|0-no]
+         * Devuelve:
+         *  true-Todo correcto
+         *  false-Incorrecto
+         */
+        function validate_importe(value, decimal) {
+            if (decimal == undefined)
+                decimal = 0;
+
+            if (decimal == 1) {
+                // Permite decimales tanto por . como por ,
+                var patron = new RegExp("^[0-9]+((,|\.)[0-9]{1,2})?$");
+            } else {
+                // Numero entero normal
+                var patron = new RegExp("^([0-9])*$")
+            }
+
+            if (value && value.search(patron) == 0) {
+                return true;
+            }
+            return false;
+        }
+
     </script>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
         <h1>Crear Factura</h1>
         <ol class="breadcrumb">
@@ -63,7 +115,9 @@
                     <!-- /.col -->
                 </div>
             </div>
-            <div class="row" runat="server" id="datos" visible="false" >
+        </div>
+        <div class="box box-default">
+            <div class="row" runat="server" id="datos" visible="false">
                 <div class="col-6">
                     <div class="box box-default">
                         <div class="box-header with-border">
@@ -141,8 +195,8 @@
                                 <asp:BoundField DataField="estadoc" HeaderText="ESTADO"></asp:BoundField>
                                 <asp:BoundField DataField="detalle" HeaderText="PLAN"></asp:BoundField>
                                 <asp:BoundField DataField="codigo" HeaderText="CODIGO"></asp:BoundField>
-                                <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
-                                    <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
+                                <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="btn btn-success fa fa-level-down">
+                                    <ControlStyle CssClass="btn btn-success fa fa-level-down"></ControlStyle>
                                 </asp:CommandField>
                             </Columns>
                             <EditRowStyle BackColor="#2461BF"></EditRowStyle>
@@ -169,11 +223,17 @@
                     </div>
                 </div>
             </div>
+
+        </div>
+        <div class="box box-default" runat="server" id="datosfactura" visible="false">
             <div class="row">
                 <div class="col-6">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Datos del Contrato</h3>
+                            <h3 class="box-title">ID Contrato:
+                                <asp:Label ID="Labelidcontrato" runat="server" Text=""></asp:Label></h3>
+                            <br />
+                            <h3 class="box-title">Datos de la Factura </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -182,19 +242,48 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Numero Factura:</label>
                                         <div class="col-sm-8">
-                                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="TextBox1" class="form-control" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Fecha de factura:</label>
+                                        <label class="col-sm-4 col-form-label">Fecha de Factura:</label>
                                         <div class="col-sm-8">
                                             <asp:TextBox ID="Textboxfechafacturacion" runat="server" type="date" class="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Fecha de corte:</label>
+                                        <label class="col-sm-4 col-form-label">Fecha de Vencimiento:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="Textbox8" runat="server" type="date" class="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Fecha de Corte:</label>
                                         <div class="col-sm-8">
                                             <asp:TextBox ID="Textboxfechacorte" runat="server" type="date" class="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Estado:</label>
+                                        <div class="col-sm-8">
+                                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                <asp:ListItem>Seleccione</asp:ListItem>
+                                                <asp:ListItem>FACTURADO</asp:ListItem>
+                                                <asp:ListItem>ABONADO</asp:ListItem>
+                                                <asp:ListItem>VENCIDO</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">N° Cuotas:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="Textbox2" runat="server" class="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">N° Referencia:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="Textbox3" runat="server" class="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -202,45 +291,326 @@
                         </div>
                     </div>
                 </div>
-                <asp:Label ID="Labelidcontrato" runat="server" Text="" Visible="false"></asp:Label>
-            </div>
-            <a href="#panelbusqueda" id="idbusqueda" class="row" data-target=".bs-example-modal-lg" data-toggle="modal"></a>
-            <div class="modal fade bs-example-modal-lg" runat="server" id="panelbusqueda" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="myLargeModalLabel">Resultados</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <div class="col-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Valores de la Factura</h3>
+                            <br />
+                            <br />
+                            <h3 class="box-title">SALDO:</h3>
+                            <asp:Label ID="Label3" Class="box-title" ForeColor="Red" runat="server" Text=""></asp:Label>
+                            <a href="#" runat="server" class="btn btn-success fa fa-level-down" onserverclick="Unnamed_ServerClick"></a>
+
                         </div>
-                        <div class="modal-body">
-                            <div class="tab-pane" runat="server" id="panelconsulta">
-                                <div class="box box-primary" style="overflow-x: auto">
-                                    <asp:GridView runat="server" ID="consultacliente"  OnSelectedIndexChanged="consultacliente_SelectedIndexChanged1" CssClass="table table-bordered table-striped table-responsive"  AutoGenerateColumns="False">
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Valor Facturado:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="Textbox4" runat="server" class="form-control" onkeyup="sumar();"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Iva:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="Textbox5" runat="server" class="form-control" onkeyup="sumar();"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Saldo:</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="Textbox6" runat="server" class="form-control" onkeyup="sumar();"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Total:</label>
+                                        <div class="input-group col-sm-8">
+                                            <asp:TextBox ID="Textbox7" runat="server" class="form-control"></asp:TextBox>
+                                            <span class="input-group-btn">
+                                                <button type="submit" runat="server" name="search" onserverclick="Button2_Click1" class="btn btn-flat">
+
+                                                    <i class="fa fa-fw fa-refresh"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <%-- <div class="input-group">
+                                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                                    </div>--%>
+                                    <div class="form-group row">
+
+                                        <div class="col-sm-8">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <center>
+                    <br />
+                    <br />
+                        <button type="submit" runat="server" name="buttona"  onserverclick="Button3_Click"  Class="btn btn-success" >Crear Factura+</button>                        
+              </center>
+                </div>
+            </div>
+        </div>
+        <div class="box box-default" runat="server" id="datosfactura1" visible="false">
+            <div class="row">
+                <div class="col-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">N° Factura:
+                                <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label></h3>
+                            <br />
+                            <h3 class="box-title">Cargo Adicional del Contrato</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <asp:GridView runat="server" ID="GridView2" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
                                         <Columns>
-                                            <asp:BoundField DataField="identificacion" HeaderText="CC/NIT"></asp:BoundField>
-                                            <asp:TemplateField HeaderText="USUARIO">
-                                                <ItemTemplate>
-                                                    <label runat="server"><%#Eval("nombre") %> <%#Eval("apellido") %></label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
-                                            <asp:BoundField DataField="direccion" HeaderText="DIRECCION"></asp:BoundField>
-                                            <asp:BoundField DataField="tipoterceros" HeaderText="PERSONA"></asp:BoundField>
-                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="glyphicon glyphicon-search">
-                                                <ControlStyle CssClass="glyphicon glyphicon-search"></ControlStyle>
+                                            <asp:BoundField DataField="idcargoadicional" HeaderText="#ID"></asp:BoundField>
+                                            <asp:BoundField DataField="descripcion" HeaderText="Descripcion"></asp:BoundField>
+                                            <asp:BoundField DataField="valor" HeaderText="Valor"></asp:BoundField>
+                                            <asp:BoundField DataField="fecha" HeaderText="Fecha" DataFormatString="{0:d}"></asp:BoundField>
+                                            <asp:BoundField DataField="estadoca" HeaderText="Estado"></asp:BoundField>
+                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="btn btn-success fa fa-fw fa-arrow-right">
+                                                <ControlStyle CssClass="btn btn-success fa fa-fw fa-arrow-right"></ControlStyle>
                                             </asp:CommandField>
                                         </Columns>
+                                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                                        <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
                                     </asp:GridView>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Detalle de Factura</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <a href="#Div1" class="btn btn-block btn-success btn-lg col-md-3" id="idincidencia" data-target=".bs-example-modal-xl" data-toggle="modal">Crear Factura+</a>
+                                    <asp:GridView runat="server" ID="GridView3" CssClass="table table-bordered table-striped table-responsive" OnSelectedIndexChanged="GridView3_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                        <Columns>
+                                            <asp:BoundField DataField="iddetalle" HeaderText="#ID"></asp:BoundField>
+                                            <asp:BoundField DataField="cantidad" HeaderText="Cantidad"></asp:BoundField>
+                                            <asp:BoundField DataField="valor" HeaderText="Valor"></asp:BoundField>
+                                            <asp:BoundField DataField="factura_idfactura" HeaderText="Factura"></asp:BoundField>
+                                            <asp:BoundField DataField="descripcion" HeaderText="Descripcion"></asp:BoundField>
+                                            <asp:BoundField DataField="cargoadicional_cargoadicional" HeaderText="Cargo"></asp:BoundField>
+                                            <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="btn btn-success fa fa-times">
+                                                <ControlStyle CssClass="btn btn-success fa fa-times"></ControlStyle>
+                                            </asp:CommandField>
+                                        </Columns>
+                                        <EditRowStyle BackColor="#2461BF"></EditRowStyle>
+
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                                        <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
+
+                                        <RowStyle BackColor="#EFF3FB"></RowStyle>
+
+                                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                                        <SortedAscendingCellStyle BackColor="#F5F7FB"></SortedAscendingCellStyle>
+
+                                        <SortedAscendingHeaderStyle BackColor="#6D95E1"></SortedAscendingHeaderStyle>
+
+                                        <SortedDescendingCellStyle BackColor="#E9EBEF"></SortedDescendingCellStyle>
+
+                                        <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
+                                    </asp:GridView>
+
+                                </div>
+                                <center>
+                               <br />
+                                <br />
+                                <asp:Button ID="Button1" runat="server" Text="Finalizar" Class="btn btn-success" />
+                                    </center>
+                            </div>
                         </div>
                     </div>
-                    <!-- /.modal-content -->
                 </div>
-                <!-- /.modal-dialog -->
             </div>
+        </div>
+
+
+
+
+        <a href="#panelbusqueda" id="idbusqueda" class="row" data-target=".bs-example-modal-lg" data-toggle="modal"></a>
+        <div class="modal fade bs-example-modal-lg" runat="server" id="panelbusqueda" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">Resultados</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-pane" runat="server" id="panelconsulta">
+                            <div class="box box-primary" style="overflow-x: auto">
+                                <asp:GridView runat="server" ID="consultacliente" OnSelectedIndexChanged="consultacliente_SelectedIndexChanged1" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False">
+                                    <Columns>
+                                        <asp:BoundField DataField="identificacion" HeaderText="CC/NIT"></asp:BoundField>
+                                        <asp:TemplateField HeaderText="USUARIO">
+                                            <ItemTemplate>
+                                                <label runat="server"><%#Eval("nombre") %> <%#Eval("apellido") %></label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="estado" HeaderText="ESTADO"></asp:BoundField>
+                                        <asp:BoundField DataField="direccion" HeaderText="DIRECCION"></asp:BoundField>
+                                        <asp:BoundField DataField="tipoterceros" HeaderText="PERSONA"></asp:BoundField>
+                                        <asp:CommandField ShowSelectButton="true" SelectText="" ControlStyle-CssClass="btn btn-success glyphicon glyphicon-search">
+                                            <ControlStyle CssClass="btn btn-success glyphicon glyphicon-search"></ControlStyle>
+                                        </asp:CommandField>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+
+
+        <div class="modal fade bs-example-modal-xl" runat="server" id="Div1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-pane" runat="server" id="Div3">
+                            <div class="box box-primary" style="overflow-x: auto">
+                                <div class="box box-default" id="divincidencia" runat="server">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Crear Detalle</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-12">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label">Valor</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:TextBox ID="TextBox9" runat="server" class="form-control"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label">Descripcion</label>
+                                                    <div class="col-sm-8">
+                                                        <textarea id="TextArea1detalle" class="form-control" runat="server" data-iconlibrary="fa" data-hidden-buttons="cmdBold" style="text-transform: uppercase; margin-top: 0px; margin-bottom: 0px; height: 139px;" required data-validation-required-message="This field is required"></textarea>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label"></label>
+                                                    <div class="col-sm-8">
+                                                        <asp:Button ID="Button2" runat="server" Class="btn btn-success" Text="Guardar" OnClick="Button2_Click2" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+
+
+        <div class="modal fade bs-example-modal-xl" runat="server" id="Div2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-pane" runat="server" id="Div4">
+                            <div class="box box-primary" style="overflow-x: auto">
+                                <div class="box box-default" id="div5" runat="server">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">¿Esta seguro que quiere finalizar la factura?</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-6 col-6">
+
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label"></label>
+                                                    <div class="col-sm-8">
+                                                        <asp:Button ID="Button3" runat="server" Class="btn btn-success" Text="Guardar" OnClick="Button3_Click1" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label"></label>
+                                                    <div class="col-sm-8">
+                                                        <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Cancelar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+
     </section>
 </asp:Content>

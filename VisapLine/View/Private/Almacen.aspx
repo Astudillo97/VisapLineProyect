@@ -8,10 +8,16 @@
     <script src="../../Contenido/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <asp:ScriptManager ID="scripservicc" runat="server"></asp:ScriptManager>
     <script type="text/javascript">
+        function openModaldesc() {
+            $('#modalpre').modal('show');
+        }
         $('#example').on('click', 'tbody tr', function (event) {
             $(this).addClass('highlight').siblings().removeClass('highlight');
         });
-
+        function errores(msg) {
+            //msg.responseText tiene el mensaje de error enviado por el servidor
+            alert('Error: ' + msg.responseText);
+        }
         function nointro() {
             window.addEventListener("keypress", function (event) {
                 if (event.keyCode == 13) {
@@ -71,8 +77,6 @@
                         }, function () { location.reload(true); }
                         );
                         $('#orders-history').load(document.URL + ' #orders-history');
-
-
                     }).error(function (data) {
                         swal("ASIGNACION FALLIDA!", "No se pudo realizar la operacion contactese con el soporte", "error");
                     });
@@ -86,6 +90,7 @@
         };
     </script>
     <section class="content-header">
+        <div type="text" id="num3"></div>
         <h1>Gestion del Inventario
         </h1>
         <ol class="breadcrumb">
@@ -94,6 +99,39 @@
             <li class="breadcrumb-item active">Registro</li>
         </ol>
     </section>
+    <div class="modal fade" id="modalpre" data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">DETALLE DEL PRODUCTO<span class="glyphicon glyphicon-shopping-cart"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row col">
+                        <asp:GridView CssClass="table table-responsive no-border" OnRowCommand="GridView1_RowCommand" AutoGenerateColumns="false" ID="GridView1" runat="server">
+                            <Columns>
+                                <asp:TemplateField HeaderText="EQUIPO">
+                                    <ItemTemplate>
+                                        <label><%# Eval("serial") %></label>
+                                        <label><%# Eval("mac") %></label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="DESACTIVAR">
+                                    <ItemTemplate>
+                                        <asp:Button ID="devolver" Text="REGRESAR" runat="server" CommandArgument='<%# Eval("idinventario") %>' CommandName="dipo"></asp:Button>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </div>
     <asp:Panel ID="Alerta" Visible="false" runat="server" CssClass="col-12 alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <label class="text-center" runat="server" id="textError"></label>
@@ -373,6 +411,7 @@
                                             <label class="col-sm-3 col-form-label">Serial</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="serial_" runat="server" placeholder="Serial">
+                                                <button id="consultar" runat="server" onserverclick="consultar_ServerClick"></button>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -453,58 +492,57 @@
                             </div>
 
                         </div>
-                        <div class="box-body col">
+                    </div>
+                    <div class="box-body col">
+                        <div class="row">
+                            <asp:Repeater ID="repeateragruper" runat="server" OnItemDataBound="repeateragruper_ItemDataBound">
+                                <ItemTemplate>
+                                    <div class="box box-default col-md-6 collapsed-box">
+                                        <div class="box-header with-border">
+                                            <asp:Label ID="tprodcuto" runat="server" Text='<%# Eval("producto") %>' CssClass="box-title"></asp:Label>
+                                            <label>CANTIDAD DE EQUIPOS DISPONIBLES: <%# Eval("cantidad") %></label>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <table class="table table-bordered table-striped table-responsive no-border tablaexcel">
+                                                    <thead style="background-color: #507CD1">
+                                                        <tr>
+                                                            <th style="color: white">CODIGO</th>
+                                                            <th style="color: white">DESCRIPCCION</th>
+                                                            <th style="color: white">MODELO</th>
+                                                            <th style="color: white">FABRICANTE</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <asp:Repeater ID="childrepeater" runat="server">
+                                                            <ItemTemplate>
+                                                                <tr>
+                                                                    <td><%# Eval("idinventarioval") %></td>
+                                                                    <td>
+                                                                        <label><%# Eval("descripcionval") %></label>
+                                                                        <label><%# Eval("serialval") %> </label>
+                                                                        <label><%# Eval("macval") %></label>
+                                                                    </td>
+                                                                    <td><%# Eval("modeloval") %></td>
+                                                                    <td><%# Eval("fabricanteval") %></td>
+                                                                </tr>
+                                                            </ItemTemplate>
+                                                        </asp:Repeater>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <table class="table table-bordered table-striped table-responsive no-border" id="example">
-
-                                <thead>
-                                    <tr>
-                                        <th>DESCIPCION
-                                        </th>
-                                        <th>CANTIDAD
-                                        </th>
-                                        <th>UNIDAD
-                                        </th>
-                                        <th>TIPO PRODUCTO
-                                        </th>
-                                        <th>MODELO
-                                        </th>
-                                        <th>VIDA UTIL
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <asp:Repeater ID="repeteidordeinventario" runat="server">
-                                        <ItemTemplate>
-                                            <tr>
-                                                <th>
-                                                    <label><%#Eval("descripcion") %></label>
-                                                    <label><%# Eval("serial") %></label>
-                                                    <label><%# Eval("mac") %></label>
-                                                </th>
-                                                <th>
-                                                    <label><%# Eval("cantidad") %></label>
-                                                </th>
-                                                <th>UNIDAD
-                                                </th>
-                                                <th>
-                                                    <label><%# Eval("tipoproducto") %></label>
-                                                </th>
-                                                <th>
-                                                    <label><%# Eval("fabricante") %></label>
-                                                    <label><%# Eval("modelo") %></label>
-                                                </th>
-                                                <th>
-                                                    <label><%# Eval("vidautil") %></label>
-                                                </th>
-                                            </tr>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </tbody>
-                            </table>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </div>
                     </div>
                 </div>
+
                 <div class="tab-pane" id="Tipoproduct">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

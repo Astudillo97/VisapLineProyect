@@ -149,7 +149,7 @@
                                     <asp:DropDownList ID="DropDownListestadocontrato" Enabled="false" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>ACTIVO</asp:ListItem>
-                                        <asp:ListItem>INACTIVO</asp:ListItem>
+                                        <asp:ListItem>CORTADO</asp:ListItem>
                                         <asp:ListItem>ELIMINADO</asp:ListItem>
                                         <asp:ListItem>SUSPENDIDO</asp:ListItem>
                                         <asp:ListItem>ANULADO</asp:ListItem>

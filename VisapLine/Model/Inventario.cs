@@ -20,7 +20,7 @@ namespace VisapLine.Model
         public string modelo_idmodelo { get; set; }
         public string mac { get; set; }
         public string compra_idcompra { get; set; }
-
+        public string fabricante { get; set; }
         public bool RegistrarInventario(Inventario inv)
         {
             return data.OperarDatos("select * from pr_insertarinventarioexistente(" + inv.serial+ ",'" + inv.descripcion + "','" + inv.tipoproducto_idtipoproducto + "','" + inv.vidautil + "','" + inv.estado.ToUpper() + "','" + inv.modelo_idmodelo + "'," + inv.mac + ")");
@@ -42,6 +42,22 @@ namespace VisapLine.Model
 
         public bool cancelarselecioninventarion(int datoacancelar) {
             return data.OperarDatos("select * from pr_calcelarinventarioproce("+ datoacancelar + ")");
+        }
+
+        public DataTable inventariogrup() {
+            return data.ConsultarDatos("select * from pr_agupacioninventario()");
+        }
+        public DataTable inventdispo(string invent)
+        {
+            return data.ConsultarDatos("select * from rowinventario('"+ invent + "')");
+        }
+        public DataTable inventseril(string dato)
+        {
+            return data.ConsultarDatos("select * from pr_inventarioserialormac("+ dato + ")");
+        }
+        public bool activariventario(string dato)
+        {
+            return data.OperarDatos("select * from productodisponible("+ dato+")");
         }
     }
 }

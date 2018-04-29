@@ -8,6 +8,8 @@ using VisapLine.Model;
 using VisapLine.Exeption;
 using System.Data;
 using System.Web.Services;
+using System.Web.Script.Services;
+using System.Web.Script.Serialization;
 
 namespace VisapLine.View.Private
 {
@@ -20,18 +22,21 @@ namespace VisapLine.View.Private
         Compra comp = new Compra();
         Inventario invent = new Inventario();
         DetalleCompra dtc = new DetalleCompra();
-        static string valuecontrato ;
+        static string valuecontrato;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 if (!IsPostBack)
-                {                  
+                {
+                    repeateragruper.DataSource = invent.inventariogrup();
+                    repeateragruper.DataBind();
                     cargardatosqueseusanentodolado();
                 }
             }
             catch (Exception ex)
             {
+
                 textError.InnerHtml = ex.Message;
                 Alerta.CssClass = "alert alert-error";
                 Alerta.Visible = true;
@@ -55,14 +60,14 @@ namespace VisapLine.View.Private
 
             dropmarca.Items.Clear();
             dropmarca.Items.Add("Seleccionar");
-            dropmarca.DataSource = fab.ConsultarFabricante();           
+            dropmarca.DataSource = fab.ConsultarFabricante();
             dropmarca.DataValueField = "idfabricante";
             dropmarca.DataTextField = "fabricante";
             dropmarca.DataBind();
 
             fabricante_inv.Items.Clear();
             fabricante_inv.Items.Add("Seleccionar");
-            fabricante_inv.DataSource = fab.ConsultarFabricante();           
+            fabricante_inv.DataSource = fab.ConsultarFabricante();
             fabricante_inv.DataValueField = "idfabricante";
             fabricante_inv.DataTextField = "fabricante";
             fabricante_inv.DataBind();
@@ -80,9 +85,6 @@ namespace VisapLine.View.Private
             modelo_inv.DataValueField = "idmodelo";
             modelo_inv.DataTextField = "modelo";
             modelo_inv.DataBind();
-
-            repeteidordeinventario.DataSource = invent.consultarinventario();
-            repeteidordeinventario.DataBind();
 
             tipoproducto_inv.Items.Clear();
             tipoproducto_inv.Items.Add("Seleccionar");
@@ -278,7 +280,7 @@ namespace VisapLine.View.Private
             {
                 mod.modelo = modelo_.Value;
                 mod.fabricante_idfabricante = listfabricante.SelectedValue;
-                if (mod.RegistrarModelo(mod,checkwifi.Checked))
+                if (mod.RegistrarModelo(mod, checkwifi.Checked))
                 {
                     textError.InnerHtml = "Modelo Registrado correctamente";
                     Alerta.CssClass = "alert alert-success";
@@ -521,16 +523,17 @@ namespace VisapLine.View.Private
 
         protected void confimarregistro_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 invent.serial = Validar.ConvertVarchar(txtserial.Text);
                 invent.mac = Validar.ConvertVarchar(txtmac.Text);
                 if (droptipoproduc.SelectedItem.Text.Equals("RADIO") || droptipoproduc.SelectedItem.Text.Equals("ONU") || droptipoproduc.SelectedItem.Text.Equals("ROUTER"))
-            {
-                dtc.registrarproducto(invent.serial, txtdescripcion.Text, droptipoproduc.SelectedValue, txtvidautil.Text, dropmodelo.SelectedValue, invent.mac, txtcantidad.Text, valuecontrato);
-                cargardatosqueseusanentodolado();
-                datosdeldetalle();
-                divcaracteristicaequipo.Visible = false;
-            }
+                {
+                    dtc.registrarproducto(invent.serial, txtdescripcion.Text, droptipoproduc.SelectedValue, txtvidautil.Text, dropmodelo.SelectedValue, invent.mac, txtcantidad.Text, valuecontrato);
+                    cargardatosqueseusanentodolado();
+                    datosdeldetalle();
+                    divcaracteristicaequipo.Visible = false;
+                }
 
             }
             catch (Exception ex)
@@ -543,7 +546,7 @@ namespace VisapLine.View.Private
         {
             GridViewRow gvr = insumos.SelectedRow;
             TextBox textcantidad = (TextBox)gvr.FindControl("gvtxtcantidad");
-            dtc.resgistrarinsumo(valuecontrato, gvr.Cells[0].Text,  textcantidad.Text);
+            dtc.resgistrarinsumo(valuecontrato, gvr.Cells[0].Text, textcantidad.Text);
             datosdeldetalle();
             cargardatosqueseusanentodolado();
         }
@@ -552,7 +555,8 @@ namespace VisapLine.View.Private
         {
             string numeropedido = Validar.validarlleno(numeropedido_.Value);
             DataTable dt = comp.ConsultarCompraByNumero(numeropedido);
-            if (dt.Rows.Count >0) {
+            if (dt.Rows.Count > 0)
+            {
                 rowinsertar.Visible = false;
                 valuecontrato = dt.Rows[0][0].ToString();
                 formcompra.DataSource = dt;
@@ -563,7 +567,39 @@ namespace VisapLine.View.Private
             {
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", "nodata()", true);
             }
-            
+
+        }
+
+        protected void repeateragruper_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            Label producto = (Label)e.Item.FindControl("tprodcuto");
+            Repeater childrepeater = (Repeater)e.Item.FindControl("childrepeater");
+            childrepeater.DataSource = invent.inventdispo(producto.Text);
+            childrepeater.DataBind();
+        }
+
+        protected void consultar_ServerClick(object sender, EventArgs e)
+        {
+            string Valor2 = Validar.ConvertVarchar(serial_.Value);
+            DataTable dtinve = invent.inventseril(Valor2);
+            GridView1.DataSource = dtinve;
+            GridView1.DataBind();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "openModaldesc();", true);
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("dipo"))
+            {
+                string valosal = e.CommandArgument.ToString();
+                if (invent.activariventario(valosal)) {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('EXITO!', 'La operacion se completo con exito ', 'success');", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "hwa", "swal('ERROR!', 'Fallo en registar la operacion', 'error');", true);
+                }
+            }
         }
     }
 }

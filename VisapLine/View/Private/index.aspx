@@ -51,6 +51,26 @@
     <section class="content">
 
         <div class="row" id="administrador" runat="server" visible="false">
+    
+            <div class="col-lg-6">
+                <!-- Default box -->
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Florencia, Caquetá </h3>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Label ID="Labeltime" Class="box-title" runat="server" Text=""></asp:Label>
+                    </div>
+                    <div class="box-body">
+                        <center>
+                        <img class="img-fluid" src="../../Contenido/images/florencia2.jpg" alt="...">
+                            </center>
+                    </div>
+                </div>
+                <!-- /.box -->
+
+            </div>
+             
+         
             <!-- /.col -->
             <div class="col-xl-3 col-md-6 col-6">
                 <!-- small box -->
@@ -153,6 +173,7 @@
             </asp:Repeater>
 
         </div>
+         
         <div class="row" visible="false" runat="server" id="emple">
             <div id="contenedor">
                 <img src="../../Archivos/imgvisap.png" />
