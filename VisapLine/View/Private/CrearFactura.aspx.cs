@@ -232,10 +232,8 @@ namespace VisapLine.View.Private
                     }
                     catch (Exception)
                     {
-
                         throw;
                     }
-
                 }
                 else
                 {
@@ -270,7 +268,6 @@ namespace VisapLine.View.Private
                     }
                     catch (Exception)
                     {
-
                         throw;
                     }
 
@@ -321,7 +318,7 @@ namespace VisapLine.View.Private
 
         protected void Button3_Click1(object sender, EventArgs e)
         {
-
+            Response.Redirect("gestcliente.aspx");
         }
     }
 }
