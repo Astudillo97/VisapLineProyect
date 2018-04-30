@@ -46,6 +46,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Registrar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="plnt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="path" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ConsultaMovimientoSoapIn">
@@ -60,6 +75,12 @@
   <wsdl:message name="RegistrarMovimientoSoapOut">
     <wsdl:part name="parameters" element="tns:RegistrarMovimientoResponse" />
   </wsdl:message>
+  <wsdl:message name="RegistrarSoapIn">
+    <wsdl:part name="parameters" element="tns:Registrar" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarResponse" />
+  </wsdl:message>
   <wsdl:portType name="MovContSoap">
     <wsdl:operation name="ConsultaMovimiento">
       <wsdl:input message="tns:ConsultaMovimientoSoapIn" />
@@ -68,6 +89,10 @@
     <wsdl:operation name="RegistrarMovimiento">
       <wsdl:input message="tns:RegistrarMovimientoSoapIn" />
       <wsdl:output message="tns:RegistrarMovimientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Registrar">
+      <wsdl:input message="tns:RegistrarSoapIn" />
+      <wsdl:output message="tns:RegistrarSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MovContSoap" type="tns:MovContSoap">
@@ -90,6 +115,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Registrar">
+      <soap:operation soapAction="http://tempuri.org/Registrar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="MovContSoap12" type="tns:MovContSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -104,6 +138,15 @@
     </wsdl:operation>
     <wsdl:operation name="RegistrarMovimiento">
       <soap12:operation soapAction="http://tempuri.org/RegistrarMovimiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Registrar">
+      <soap12:operation soapAction="http://tempuri.org/Registrar" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

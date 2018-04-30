@@ -29,6 +29,13 @@ namespace VisapLine.MovimientoContable {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistrarMovimiento", ReplyAction="*")]
         System.Threading.Tasks.Task<string> RegistrarMovimientoAsync(string plnt, System.Data.DataTable dat, string path);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Registrar", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string Registrar(string plnt, string path);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Registrar", ReplyAction="*")]
+        System.Threading.Tasks.Task<string> RegistrarAsync(string plnt, string path);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -72,6 +79,14 @@ namespace VisapLine.MovimientoContable {
         
         public System.Threading.Tasks.Task<string> RegistrarMovimientoAsync(string plnt, System.Data.DataTable dat, string path) {
             return base.Channel.RegistrarMovimientoAsync(plnt, dat, path);
+        }
+        
+        public string Registrar(string plnt, string path) {
+            return base.Channel.Registrar(plnt, path);
+        }
+        
+        public System.Threading.Tasks.Task<string> RegistrarAsync(string plnt, string path) {
+            return base.Channel.RegistrarAsync(plnt, path);
         }
     }
 }

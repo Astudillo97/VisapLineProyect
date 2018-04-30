@@ -182,7 +182,7 @@ namespace VisapLine.View.Private
                     string ippublica = GetPublicIPAddress();
                     if (int.Parse(textretencion.Value) >= 0)
                     {
-                        DataRow dat = pago.RegistrarPago(pago, ter.identificacion + ": " + ter.nombre + " " + ter.apellido, GetLocalIPAddress() + "-" + Dns.GetHostName() + "-" + GetPublicIPAddress(), textretencion.Value).Rows[0];
+                        DataRow dat = pago.RegistrarPago(pago, ter.identificacion + ": " + ter.nombre + " " + ter.apellido, GetLocalIPAddress() + "-" + GetRemoteNameDNS() + "-" + GetPublicIPAddress(), textretencion.Value).Rows[0];
                         if (dat["pr_insertar_pagos"].ToString() != null)
                         {
 
@@ -227,6 +227,10 @@ namespace VisapLine.View.Private
             throw new ValidarExeption("No network adapters with an IPv4 address in the system!");
         }
 
+        public string GetRemoteNameDNS()
+        {
+            return this.Request.UserHostName.ToString();
+        }
         public string GetPublicIPAddress()
         {
             return this.Request.UserHostAddress.ToString();
