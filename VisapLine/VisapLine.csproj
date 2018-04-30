@@ -163,11 +163,83 @@
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Contenido\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regulard41d.eot" />
     <Content Include="Contenido\FreeSans.ttf" />
+
+    <Content Include="Contenido\plan10mb.png" />
+    <Content Include="Contenido\plan3mb.png" />
+    <Content Include="Contenido\plan4mb.png" />
+    <Content Include="Contenido\plan5mb.png" />
+    <Content Include="Contenido\plan8mb.png" />
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\flexslider.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\jquery.bxslider.css" />
+    <Content Include="Content\css\magnific-popup.css" />
+    <Content Include="Content\css\responsive.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\YTPlayer.css" />
+    <Content Include="Content\images\bx_loader.gif" />
+    <Content Include="Content\images\client-logo1.png" />
+    <Content Include="Content\images\client-logo2.png" />
+    <Content Include="Content\images\client-logo3.png" />
+    <Content Include="Content\images\client-logo4.png" />
+    <Content Include="Content\images\fondo.png" />
+    <Content Include="Content\images\FONDO2.png" />
+    <Content Include="Content\images\image.png" />
+    <Content Include="Content\images\imgvisap.ico" />
+    <Content Include="Content\images\imgvisap.png" />
+    <Content Include="Content\images\logo-1.ico" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\nuestra-empresa.jpg" />
+    <Content Include="Content\images\wallpaper-sazum.jpg" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\gmap3.min.js" />
+    <Content Include="Content\js\jquery.appear.js" />
+    <Content Include="Content\js\jquery.bxslider.min.js" />
+    <Content Include="Content\js\jquery.flexslider.js" />
+    <Content Include="Content\js\jquery.isotope.min.js" />
+    <Content Include="Content\js\jquery.magnific-popup.min.js" />
+    <Content Include="Content\js\jquery.mb.YTPlayer.js" />
+    <Content Include="Content\js\jquery.migrate.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\plugins-scroll.js" />
+    <Content Include="Content\js\script.js" />
+    <Content Include="Content\js\smooth-scroll.js" />
+    <Content Include="Content\js\waypoints.js" />
+    <Content Include="Content\upload\1.jpg" />
+    <Content Include="Content\upload\10.jpg" />
+    <Content Include="Content\upload\2.jpg" />
+    <Content Include="Content\upload\3.jpg" />
+    <Content Include="Content\upload\4.jpg" />
+    <Content Include="Content\upload\5.jpg" />
+    <Content Include="Content\upload\6.jpg" />
+    <Content Include="Content\upload\7.jpg" />
+    <Content Include="Content\upload\8.jpg" />
+    <Content Include="Content\upload\9.jpg" />
+    <Content Include="Content\upload\background1.jpg" />
+    <Content Include="Content\upload\image1.jpg" />
+    <Content Include="Content\upload\image2.jpg" />
+    <Content Include="Content\upload\image3.jpg" />
+    <Content Include="Content\upload\image4.jpg" />
+    <Content Include="Content\upload\single-project\1.jpg" />
+    <Content Include="Content\upload\single-project\2.jpg" />
+    <Content Include="Content\upload\single-project\3.jpg" />
+    <Content Include="Content\upload\slide.jpg" />
+    <Content Include="Content\upload\team1.jpg" />
+    <Content Include="Content\upload\team2.jpg" />
+    <Content Include="Content\upload\team3.jpg" />
+    <Content Include="Content\upload\team4.jpg" />
+    <Content Include="Ordenes\2018351857-INS-12422018.pdf" />
+    <Content Include="Insidencias\2018351857-INS-12422018.pdf" />
+    <Content Include="Content\css\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\images\3DLayer.obj" />
+
     <Content Include="Contenido\images\feria_turismo_florencia.jpg" />
     <Content Include="Contenido\images\monkeyprogramer.jpg" />
     <Content Include="Ordenes\2018351857-INS-12422018.pdf" />
     <Content Include="Insidencias\2018351857-INS-12422018.pdf" />
     <None Include="Connected Services\MovimientoContable\MovCont.wsdl" />
+
     <None Include="packages.config" />
     <Content Include="Contenido\assets\vendor_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="Contenido\assets\vendor_components\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -537,6 +609,7 @@
     <Content Include="View\Private\GestCliente.aspx" />
     <Content Include="View\Private\GestContrato.aspx" />
     <Content Include="View\Private\GestIncidencia.aspx" />
+    <Content Include="View\Private\GestionarIndicadores.aspx" />
     <Content Include="View\Private\GestPagos.aspx" />
     <Content Include="View\Private\Gestplanes.aspx" />
     <Content Include="View\Private\gestsoportecliente.aspx" />
@@ -566,7 +639,13 @@
     <Content Include="View\Private\VistadeExporte.aspx" />
     <Content Include="View\Private\WebForm1.aspx" />
     <Content Include="View\Public\facturacion.aspx" />
+
+    <Content Include="View\Public\Index.aspx" />
+    <Content Include="View\Public\Indicadores.aspx" />
+    <Content Include="View\Public\PQRS.aspx" />
+
     <None Include="Web References\localhost\MovCont1.disco" />
+
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -580,7 +659,11 @@
     <Compile Include="DataAccess\Connection\Postgres\conexion_psql.cs" />
     <Compile Include="DataAccess\Connection\Data.cs" />
     <Compile Include="DataAccess\Data\IData.cs" />
+
+    <Compile Include="Model\Areas.cs" />
+
     <Compile Include="Model\activeconection.cs" />
+
     <Compile Include="Model\AsignacionRol.cs" />
     <Compile Include="Model\banco.cs" />
     <Compile Include="Model\Caja.cs" />
@@ -591,11 +674,13 @@
     <Compile Include="Model\class_pdf.cs" />
     <Compile Include="Model\DetalleCompra.cs" />
     <Compile Include="Model\Egreso.cs" />
+    <Compile Include="Model\EmisorTicket.cs" />
     <Compile Include="Model\Empresa.cs" />
     <Compile Include="Model\excel.cs" />
     <Compile Include="Model\Garantia.cs" />
     <Compile Include="Model\Historico.cs" />
     <Compile Include="Model\impresorabix.cs" />
+    <Compile Include="Model\Indicador.cs" />
     <Compile Include="Model\Ingreso.cs" />
     <Compile Include="Model\interGraph.cs" />
     <Compile Include="Model\MK.cs" />
@@ -636,20 +721,25 @@
     <Compile Include="Model\Rol.cs" />
     <Compile Include="Model\secrest.cs" />
     <Compile Include="Model\Servicios.cs" />
+    <Compile Include="Model\ServicioTicket.cs" />
     <Compile Include="Model\SocketServer.cs" />
     <Compile Include="Model\SoportePago.cs" />
     <Compile Include="Model\Soportes.cs" />
     <Compile Include="Model\Sucursal.cs" />
     <Compile Include="Model\Telefono.cs" />
     <Compile Include="Model\Terceros.cs" />
+    <Compile Include="Model\Ticket.cs" />
     <Compile Include="Model\TipoContrato.cs" />
     <Compile Include="Model\TipoDoc.cs" />
     <Compile Include="Model\TipoFactura.cs" />
     <Compile Include="Model\TipoIncidencia.cs" />
+    <Compile Include="Model\Tipologia.cs" />
     <Compile Include="Model\tipopago.cs" />
     <Compile Include="Model\TipoProducto.cs" />
+    <Compile Include="Model\TipoReclamo.cs" />
     <Compile Include="Model\TipoResidencia.cs" />
     <Compile Include="Model\TipoTercero.cs" />
+    <Compile Include="Model\TipoTicket.cs" />
     <Compile Include="Model\UsuarioL.cs" />
     <Compile Include="Model\Zonas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -797,6 +887,13 @@
     </Compile>
     <Compile Include="View\Private\GestIncidencia.aspx.designer.cs">
       <DependentUpon>GestIncidencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\GestionarIndicadores.aspx.cs">
+      <DependentUpon>GestionarIndicadores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\GestionarIndicadores.aspx.designer.cs">
+      <DependentUpon>GestionarIndicadores.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\GestPagos.aspx.cs">
       <DependentUpon>GestPagos.aspx</DependentUpon>
@@ -1001,10 +1098,33 @@
     <Compile Include="View\Public\facturacion.aspx.designer.cs">
       <DependentUpon>facturacion.aspx</DependentUpon>
     </Compile>
+
+    <Compile Include="View\Public\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Public\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Public\Indicadores.aspx.cs">
+      <DependentUpon>Indicadores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Public\Indicadores.aspx.designer.cs">
+      <DependentUpon>Indicadores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Public\PQRS.aspx.cs">
+      <DependentUpon>PQRS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Public\PQRS.aspx.designer.cs">
+      <DependentUpon>PQRS.aspx</DependentUpon>
+
     <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
+
     </Compile>
   </ItemGroup>
   <ItemGroup>
