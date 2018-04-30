@@ -133,10 +133,21 @@
     <Content Include="Archivos\imgvisap.png" />
     <Content Include="Archivos\Presentación1.jpg" />
     <Content Include="Archivos\publicidad.jpg" />
+    <None Include="Connected Services\ComandCmd\ExecuteCmd.wsdl" />
+    <Content Include="Connected Services\ComandCmd\VisapLine.ComandCmd.ExecuteCommandResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\MovimientoContable\MovCont.disco" />
     <None Include="Connected Services\MovimientoContable\configuration91.svcinfo" />
     <None Include="Connected Services\MovimientoContable\configuration.svcinfo" />
     <None Include="Connected Services\MovimientoContable\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\ComandCmd\ExecuteCmd.disco" />
+    <None Include="Connected Services\ComandCmd\configuration91.svcinfo" />
+    <None Include="Connected Services\ComandCmd\configuration.svcinfo" />
+    <None Include="Connected Services\ComandCmd\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -651,6 +662,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ComandCmd\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\MovimientoContable\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1150,6 +1166,7 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ComandCmd\" />
     <WCFMetadataStorage Include="Connected Services\MovimientoContable\" />
   </ItemGroup>
   <PropertyGroup>

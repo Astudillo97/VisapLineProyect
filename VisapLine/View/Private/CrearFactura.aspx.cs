@@ -7,6 +7,10 @@ using System.Web.UI.WebControls;
 using VisapLine.Model;
 using VisapLine.Exeption;
 using System.Data;
+using System.Security.Cryptography;
+using System.Text;
+using System.Configuration;
+
 namespace VisapLine.View.Private
 {
     public partial class CrearFactura : System.Web.UI.Page
@@ -318,7 +322,75 @@ namespace VisapLine.View.Private
 
         protected void Button3_Click1(object sender, EventArgs e)
         {
-            Response.Redirect("gestcliente.aspx");
+            try
+            {
+                string user_siigo = "GESTION";
+                string pass_siigo = "Visa67";
+                string path = "C:\\inetpub\\wwwroot\\ServicioSiigo\\SiigoServicio\\";
+                string datos=Encrypt(user_siigo+pass_siigo, true);
+                class_export export = new class_export();
+                MovimientoContable.MovContSoapClient movcont = new MovimientoContable.MovContSoapClient();
+                DataTable dat = export.llenarTabla("2018-02-20", "2018-02-20", Validar.validarlleno(Label4.Text), "3");
+                string retur = movcont.RegistrarMovimiento("C:\\inetpub\\wwwroot\\ServicioSiigo\\SiigoServicio\\plantilla.xls", dat, path);
+                ComandCmd.ExecuteCmdSoapClient ComandoCmd = new ComandCmd.ExecuteCmdSoapClient();
+                //ExcelSIIGO C:\SIIWI04\ 2018 PUSHMOV L GESTION Visa67 C:\prueba\ExcelSiigopruebaINSERT.log C:\prueba\MovimientoContableprueba.xls
+                string SALID= ComandoCmd.ExecuteCommand("C:\\Siigo\\ExcelSIIGO", "C:\\SIIWI04\\", "2018", "PUSHMOV", "L", user_siigo, pass_siigo, path+"DAT.LOG", retur,datos);
+                //Response.Redirect("gestcliente.aspx");
+                Alerta.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                textError.InnerHtml = ex.Message;
+                Alerta.CssClass = "alert alert-error";
+                Alerta.Visible = true;
+            }
+
+        }
+
+
+        public static string Encrypt(string toEncrypt, bool useHashing)
+        {
+            byte[] keyArray;
+            byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(toEncrypt);
+
+            System.Configuration.AppSettingsReader settingsReader = new AppSettingsReader();
+            // Get the key from config file
+
+            string key = (string)settingsReader.GetValue("SecurityKey",
+                                                             typeof(String));
+            //System.Windows.Forms.MessageBox.Show(key);
+            //If hashing use get hashcode regards to your key
+            if (useHashing)
+            {
+                MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
+                keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+                //Always release the resources and flush data
+                // of the Cryptographic service provide. Best Practice
+
+                hashmd5.Clear();
+            }
+            else
+                keyArray = UTF8Encoding.UTF8.GetBytes(key);
+
+            TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+            //set the secret key for the tripleDES algorithm
+            tdes.Key = keyArray;
+            //mode of operation. there are other 4 modes.
+            //We choose ECB(Electronic code Book)
+            tdes.Mode = CipherMode.ECB;
+            //padding mode(if any extra byte added)
+
+            tdes.Padding = PaddingMode.PKCS7;
+
+            ICryptoTransform cTransform = tdes.CreateEncryptor();
+            //transform the specified region of bytes array to resultArray
+            byte[] resultArray =
+              cTransform.TransformFinalBlock(toEncryptArray, 0,
+              toEncryptArray.Length);
+            //Release resources held by TripleDes Encryptor
+            tdes.Clear();
+            //Return the encrypted data into unreadable string format
+            return Convert.ToBase64String(resultArray, 0, resultArray.Length);
         }
     }
 }

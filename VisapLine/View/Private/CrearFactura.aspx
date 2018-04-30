@@ -456,7 +456,7 @@
                                 <center>
                                <br />
                                 <br />
-                                <asp:Button ID="Button1" runat="server" Text="Finalizar" Class="btn btn-success" />
+                                <asp:Button ID="Button1" runat="server" OnClick="Button3_Click1" Text="Finalizar" Class="btn btn-success" />
                                     </center>
                             </div>
                         </div>

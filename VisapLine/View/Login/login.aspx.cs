@@ -4,6 +4,8 @@ using VisapLine.Model;
 using VisapLine.Exeption;
 using System.Net.Mail;
 using System.Net.Mime;
+using System.Net;
+using System.Net.Sockets;
 
 namespace VisapLine.View.Login
 {
@@ -23,6 +25,28 @@ namespace VisapLine.View.Login
                 Response.Redirect("../Private/index.aspx");
             }
             
+        }
+
+        public string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new ValidarExeption("No network adapters with an IPv4 address in the system!");
+        }
+
+        public string GetRemoteNameDNS()
+        {
+            return this.Request.UserHostName.ToString();
+        }
+        public string GetPublicIPAddress()
+        {
+            return this.Request.UserHostAddress.ToString();
         }
 
         protected void Login(object sender, EventArgs e)
@@ -57,6 +81,7 @@ namespace VisapLine.View.Login
                         tercero.fechanatcimiento = dat["fechexp"].ToString();
                         tercero.tipodoc_idtipodoc = dat["tipodoc_idtipodoc"].ToString();
                         tercero.rh = dat["rh"].ToString();
+                        tercero.usuario_idusuario = GetLocalIPAddress() + "-" + GetRemoteNameDNS() + "-" + GetPublicIPAddress();
                         Session["tercero"] = tercero;
                         ClientScript.RegisterStartupScript(GetType(), "alerta", "redirect();", true);
                         break;
